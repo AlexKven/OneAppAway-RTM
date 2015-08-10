@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="OneAppAway.BusArrivalBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:converters="using:OneAppAway.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="50"
+    d:DesignWidth="180" RequestedTheme="Dark">
+    <Grid>
+        <Grid.Resources>
+            <converters:RandomConverter x:Key="RandConverter"/>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45" x:Name="NumberColumn"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="45"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0" x:Name="LongNameRow"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Opacity="1" Grid.RowSpan="3" Fill="{Binding ElementName=RouteNumberBlock, Path=Tag, Converter={StaticResource ThemeBrushConverters}, ConverterParameter={Binding Source=0.7, Converter={StaticResource RandConverter}, ConverterParameter=0.5 }}"/>
+        <TextBlock FontSize="24" Grid.Row="1" Grid.RowSpan="2" x:Name="RouteNumberBlock" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords" Tag="{ThemeResource SystemColorControlAccentColor}"/>
+        <TextBlock FontSize="24" Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" x:Name="MinutesAwayBlock" Margin="5,5,15,5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="2" Grid.Row="1" x:Name="PredictedTimeBlock" Margin="2,0,2,0" Foreground="{Binding ElementName=RouteNumberBlock, Path=Tag, Converter={StaticResource ThemeBrushConverters}, ConverterParameter=3}"/>
+        <TextBlock Grid.Column="2" Grid.Row="2" x:Name="ScheduledTimeBlock" Margin="2,0,2,0"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" MaxHeight="45" HorizontalAlignment="Left" Margin="5,2,5,2" x:Name="DestinationBlock" TextWrapping="WrapWholeWords" TextTrimming="WordEllipsis" FontSize="10"/>
+    </Grid>
+</UserControl>

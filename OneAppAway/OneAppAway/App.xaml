@@ -1,0 +1,62 @@
+﻿<Application
+    x:Class="OneAppAway.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:converters="using:OneAppAway.Converters"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <local:ApplicationSettings x:Key="Settings" BandwidthSetting="Auto"/>
+        <converters:ValueConverterGroup x:Key="ThemeBrushConverters">
+            <converters:LightenColorConverter/>
+            <converters:ColorToBrushConverter/>
+        </converters:ValueConverterGroup>
+        <converters:MinutesUntilArrivalConverter x:Key="MinutesUntilArrivalConverter"/>
+        <converters:MaxConverter x:Key="MaxConverter"/>
+        <converters:MinConverter x:Key="MinConverter"/>
+        <converters:BasicGeopositionToStringConverter x:Key="BasicGeopositionStringConverter"/>
+        <converters:BandwidthOptionsRowHeightConverter x:Key="BandwidthButtonConverter"/>
+        <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
+            <Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="Pressed">
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PressRectangle">
+                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Visible</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <Storyboard>
+                                <DoubleAnimation Duration="0" To="0.8" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter"/>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="PointerOver">
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="HighlightRectangle">
+                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Visible</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Rectangle Fill="{TemplateBinding Background}"/>
+                <Rectangle Fill="#44FFFFFF" x:Name="HighlightRectangle" Visibility="Collapsed"/>
+                <Rectangle Fill="#44000000" x:Name="PressRectangle" Visibility="Collapsed"/>
+                <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Border BorderThickness="4" BorderBrush="#66FFFFFF" x:Name="SelectedBorder" Visibility="Collapsed" IsHitTestVisible="False"/>
+            </Grid>
+        </ControlTemplate>
+    </Application.Resources>
+</Application>

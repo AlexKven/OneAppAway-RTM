@@ -1,0 +1,72 @@
+﻿<local:NavigationFriendlyPage
+    x:Class="OneAppAway.BusMapPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:converters="using:OneAppAway.Converters"
+    mc:Ignorable="d" SizeChanged="Page_SizeChanged">
+    <Grid x:Name="MainGrid">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ArrivalBoxVisualStates" CurrentStateChanged="ArrivalBoxVisualStates_CurrentStateChanged" CurrentStateChanging="ArrivalBoxVisualStates_CurrentStateChanging">
+                <VisualState x:Name="ArrivalBoxShown">
+                    <Storyboard>
+                        <DoubleAnimation Duration="0:0:0.15" To="0" Storyboard.TargetProperty="(CompositeTransform.TranslateY)" Storyboard.TargetName="StopArrivalBoxTranslation" d:IsOptimized="True"/>
+                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="StopArrivalBox" d:IsOptimized="True">
+                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                        </ObjectAnimationUsingKeyFrames>-->
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ArrivalBoxHidden">
+                    <Storyboard>
+                        <DoubleAnimation Duration="0:0:0.15" To="25" Storyboard.TargetProperty="(CompositeTransform.TranslateY)" Storyboard.TargetName="StopArrivalBoxTranslation" d:IsOptimized="True"/>
+                        <!--<ObjectAnimationUsingKeyFrames Duration="0:0:0.15" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="StopArrivalBox" d:IsOptimized="True">
+                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                <DiscreteObjectKeyFrame KeyTime="1" Value="Collapsed"/>
+                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                        </ObjectAnimationUsingKeyFrames>-->
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="WindowSizeVisualStates" CurrentStateChanging="WindowSizeVisualStates_CurrentStateChanging">
+                <VisualState x:Name="NormalState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="400" MinWindowHeight="400"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1" MinWindowHeight="1"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <local:BusMap x:Name="MainMap" StopsClicked="MainMap_StopsClicked" PropertyChanged="BusMap_PropertyChanged" Grid.RowSpan="2"/>
+        <StackPanel Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" x:Name="ButtonsPanel">
+            <RepeatButton Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" Click="ZoomInButton_Click">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Foreground="White">+</TextBlock>
+            </RepeatButton>
+            <RepeatButton Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" Click="ZoomOutButton_Click">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Foreground="White">-</TextBlock>
+            </RepeatButton>
+            <Button Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333">
+                <BitmapIcon Foreground="White" UriSource="/Assets/Icons/RefreshStopsIcon.png" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Button>
+        </StackPanel>
+        <local:MultiStopArrivalsBox x:Name="StopArrivalBox" CloseRequested="StopArrivalBox_CloseRequested" Opacity="0" Maps:MapControl.NormalizedAnchorPoint="0.5, 1">
+            <local:MultiStopArrivalsBox.RenderTransform>
+                <CompositeTransform TranslateY="25" x:Name="StopArrivalBoxTranslation"/>
+            </local:MultiStopArrivalsBox.RenderTransform>
+        </local:MultiStopArrivalsBox>
+        <ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="Collapsed" x:Name="LoadingIndicator"/>
+    </Grid>
+</local:NavigationFriendlyPage>

@@ -1,0 +1,26 @@
+﻿<local:NavigationFriendlyPage
+    x:Class="OneAppAway.RouteViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Dark">
+    <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+        <Grid Background="#505050">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="MapColumn" Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="36" x:Name="RouteNameBlock" Margin="10,10,10,0"/>
+                <local:BusMap StopVisibilityThreshold="10" x:Name="MainMap" Margin="10" Grid.Row="1"/>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</local:NavigationFriendlyPage>

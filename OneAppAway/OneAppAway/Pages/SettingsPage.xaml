@@ -1,0 +1,70 @@
+﻿<local:NavigationFriendlyPage
+    x:Class="OneAppAway.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Dark">
+
+    <ScrollViewer HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ItemsControl>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid ItemWidth="320" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <StackPanel Margin="0,10,0,10">
+                <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="5">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{ThemeResource SystemColorControlAccentColor}"/>
+                    </TextBlock.Foreground>
+                    Normal Bandwidth Settings
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center" FontSize="12">(typically used on Wifi)</TextBlock>
+
+                <TextBlock FontSize="16" Margin="5,5,5,5">When I start the app...</TextBlock>
+                <RadioButton IsChecked="True" Margin="30,5,5,5">Show the map</RadioButton>
+                <RadioButton Margin="30,5,5,5">Show my favorites</RadioButton>
+
+                <Rectangle Fill="DarkGray" Height="2" Margin="5"/>
+
+                <TextBlock FontSize="16" Margin="5">On the map page...</TextBlock>
+                <ToggleSwitch Margin="30,5,5,5" OffContent="Manually scan map for stops" OnContent="Automatically scan map for stops"/>
+                <TextBlock TextWrapping="WrapWholeWords" Margin="5,5,5,5">When this is off, a button to scan map for stops will be shown on the map.</TextBlock>
+
+                <Rectangle Fill="DarkGray" Height="2" Margin="5"/>
+
+                <TextBlock FontSize="16" Margin="5">On a bus stop page...</TextBlock>
+                <ToggleSwitch Margin="30,5,5,5">
+                    <ToggleSwitch.OnContent>
+                        <TextBlock Text="Automatically download&#x0a;schedule for stop"/>
+                    </ToggleSwitch.OnContent>
+                    <ToggleSwitch.OffContent>
+                        <TextBlock Text="Don't automatically&#x0a;download schedule for stop"/>
+                    </ToggleSwitch.OffContent>
+                </ToggleSwitch>
+                <TextBlock TextWrapping="WrapWholeWords" Margin="5,5,5,5">Turning this off can save a substantial amount of bandwidth, particularly on busy stops.</TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0,10,0,10">
+                <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="5">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{ThemeResource SystemColorControlAccentColor}"/>
+                    </TextBlock.Foreground>
+                    Low Bandwidth Settings
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center" FontSize="12">(typically used on limited cell data)</TextBlock>
+
+                <TextBlock FontSize="16" Margin="5,5,5,5">When I start the app...</TextBlock>
+                <RadioButton IsChecked="True" Margin="30,5,5,5">Show the map</RadioButton>
+                <RadioButton Margin="30,5,5,5">Show my favorites</RadioButton>
+
+                <Rectangle Fill="DarkGray" Height="2" Margin="5"/>
+
+                <TextBlock FontSize="16" Margin="5">On the map page...</TextBlock>
+                <ToggleSwitch Margin="30,5,5,5" OffContent="Manually scan map for stops" OnContent="Automatically scan map for stops"/>
+                <TextBlock TextWrapping="WrapWholeWords" Margin="5,5,5,5">When this is off, a button to scan map for stops will be shown on the map.</TextBlock>
+            </StackPanel>
+        </ItemsControl>
+    </ScrollViewer>
+</local:NavigationFriendlyPage>
