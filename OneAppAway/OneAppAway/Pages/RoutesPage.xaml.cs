@@ -42,6 +42,7 @@ namespace OneAppAway
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            await FileManager.LoadPendingDownloads();
             foreach (var agency in await ApiLayer.GetTransitAgencies(MasterCancellationTokenSource.Token))
             {
                 AgenciesListView.Items.Add(agency);
@@ -72,6 +73,7 @@ namespace OneAppAway
 
         private async void AgenciesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            LoadingRect.Visibility = Visibility.Visible;
             MainProgressRing.IsActive = true;
             var inOrder = (Func<RouteListing, RouteListing, bool>)delegate (RouteListing first, RouteListing second)
             {
@@ -97,12 +99,15 @@ namespace OneAppAway
             SortedSet<RouteListing> routesList = new SortedSet<RouteListing>(Comparer<RouteListing>.Create(new Comparison<RouteListing>((rt1, rt2) => inOrder(rt1, rt2) ? -1 : 1)));
             foreach (var rte in await ApiLayer.GetBusRoutes(agency.ID, MasterCancellationTokenSource.Token))
             {
-                routesList.Add(new RouteListing(rte));
+                var listing = new RouteListing(rte);
+                await listing.RefreshIsDownloaded();
+                routesList.Add(listing);
             }
             foreach (var rte in routesList)
                 MainList.Items.Add(rte);
             await FileManager.SaveAgency(agency, routesList.Select(item => item.Route.ID).ToArray());
             MainProgressRing.IsActive = false;
+            LoadingRect.Visibility = Visibility.Collapsed;
         }
 
         private void Route_Clicked(object sender, EventArgs e)
@@ -151,16 +156,6 @@ namespace OneAppAway
             {
                 await SetProgress(1, "Cancelled");
             }
-            //foreach (RouteListing item in items)
-            //{
-            //    await DownloadManager.Create(item);
-            //}
-            //BusStop? stop;
-            //while ((stop = DownloadManager.DownloadNext()) != null)
-            //{
-            //    DownloadManager.StopDownloaded(stop.Value);
-            //    await Task.Delay(5);
-            //}
             VisualStateManager.GoToState(this, "NotDownloadingState", true);
             if (errors != null && errors.Length > 0)
             {
@@ -169,6 +164,11 @@ namespace OneAppAway
                     listing.IsChecked = errors.Contains(listing);
                 MessageDialog dialog = new MessageDialog("There was an error downloading " + errors.Length.ToString() + " of the routes. The affected routes are selected.", "Error downloading some routes");
                 await dialog.ShowAsync();
+            }
+            else
+            {
+                foreach (RouteListing listing in MainList.Items)
+                    listing.IsChecked = false;
             }
         }
 
@@ -229,6 +229,22 @@ namespace OneAppAway
         {
             DownloadsCancellationTokenSource.Cancel();
             DownloadsCancellationTokenSource = new CancellationTokenSource();
+        }
+
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadingRect.Visibility = Visibility.Visible;
+            MainProgressRing.IsActive = true;
+            var items = MainList.Items.Where(item => ((item as RouteListing)?.IsChecked).GetValueOrDefault(false)).Select(item => (RouteListing)item).ToArray();
+            bool sure = false;
+            MessageDialog dialog = new MessageDialog("If you delete these routes, you won't be able to see their schedules unless you are connected to the internet.", "Delete routes?");
+            dialog.Commands.Add(new UICommand("Delete Routes", new UICommandInvokedHandler((cmd) => sure = true)));
+            dialog.Commands.Add(new UICommand("Cancel", new UICommandInvokedHandler((cmd) => sure = false)));
+            await dialog.ShowAsync();
+            if (sure)
+                await DownloadManager.DeleteRoutes(items);
+            MainProgressRing.IsActive = false;
+            LoadingRect.Visibility = Visibility.Collapsed;
         }
     }
 }

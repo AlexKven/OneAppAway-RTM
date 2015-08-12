@@ -1,0 +1,70 @@
+﻿<local:NavigationFriendlyPage x:ConnectionId='1'
+    x:Class="OneAppAway.RoutesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Dark"                               >
+    <Grid x:ConnectionId='2' Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="MainGrid">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:ConnectionId='3' x:Name="DownloadingStates"                                                                                                                          >
+                <VisualState x:ConnectionId='7' x:Name="NotDownloadingState"/>
+                <VisualState x:ConnectionId='8' x:Name="DownloadingState"/>
+            </VisualStateGroup>
+            <VisualStateGroup x:ConnectionId='4' x:Name="SelectionStates"                                                          >
+                <VisualState x:ConnectionId='5' x:Name="NotSelectingState"/>
+                <VisualState x:ConnectionId='6' x:Name="SelectingState"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer x:ConnectionId='9' local:ScrollViewerSnapping.SnapInterval="140" Background="#555555" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled" x:Name="AgencyBar">
+            <ListView x:ConnectionId='21' x:Name="AgenciesListView" SelectionMode="Single"                                                     >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid ItemWidth="140" ItemHeight="60" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <TextBlock Text="{Binding Name}" TextWrapping="WrapWholeWords"/>
+                        </ContentControl>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:ConnectionId='19' x:Name="MainList" Tag="100">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:RouteListingControl x:ConnectionId='20' Route="{Binding Route}" ShowCheckBox="{Binding ElementName=CheckToggle, Path=IsChecked}" ShowProgress="{Binding Path=ShowProgress}" Progress="{Binding Path=Progress}" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}"                      />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid ItemWidth="{Binding ElementName=MainList, Path=Tag}" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+        <ProgressRing x:ConnectionId='10' Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" x:Name="MainProgressRing"/>
+        <RelativePanel x:ConnectionId='11' Grid.Row="2" x:Name="MainStatusBar" Background="#202020" Visibility="Collapsed">
+            <TextBlock x:ConnectionId='17' x:Name="StatusBlock"/>
+            <ProgressBar x:ConnectionId='18' x:Name="MasterProgressBar" Minimum="0" Maximum="1" RelativePanel.Below="StatusBlock" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+        </RelativePanel>
+        <CommandBar Grid.Row="3">
+            <AppBarToggleButton x:ConnectionId='12' Icon="List" Label="Select Routes" x:Name="CheckToggle"                                                                />
+            <AppBarButton x:ConnectionId='13' Icon="SelectAll" Label="Select All Routes"                               x:Name="SelectAllButton"/>
+            <AppBarButton x:ConnectionId='14' Icon="Download" Label="Download Selected Routes"                              Visibility="Collapsed" x:Name="DownloadButton"/>
+            <AppBarButton x:ConnectionId='15' Icon="Delete" Label="Delete Selected Routes"                              Visibility="Collapsed" x:Name="DeleteButton"/>
+            <AppBarButton x:ConnectionId='16' Icon="Cancel" Label="Cancel Download" Visibility="Collapsed" x:Name="CancelButton"                           />
+        </CommandBar>
+    </Grid>
+</local:NavigationFriendlyPage>
+

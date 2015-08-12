@@ -55,6 +55,7 @@ namespace OneAppAway
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 320));
+            await FileManager.EnsureFolders();
             Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)

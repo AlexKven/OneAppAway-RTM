@@ -13,7 +13,6 @@ using Windows.Foundation;
 using Windows.Storage.Streams;
 using System.Linq;
 using Windows.UI.Xaml.Navigation;
-using Windows.Storage.Pickers;
 using System.IO;
 using System.Xml.Linq;
 using System.Text;
@@ -104,7 +103,7 @@ namespace OneAppAway
                 //await GetStopsTask;
             }
             GetStopsCancellationTokenSource = new CancellationTokenSource();
-            GetStopsTask = Data.GetBusStopsForArea(bounds, stopsLoadedCallback, GetStopsCancellationTokenSource.Token);
+            GetStopsTask = Data.GetBusStopsForArea(bounds, stopsLoadedCallback, GetStopsCancellationTokenSource.Token, true);
         }
         #endregion
 
@@ -141,6 +140,7 @@ namespace OneAppAway
                 }
                 catch (TaskCanceledException) { }
             }
+            ApplicationView.GetForCurrentView().Title = "(" + MainMap.TopLeft.Latitude.ToString("F5") + ", " + MainMap.TopLeft.Longitude.ToString("F5") + "), (" + MainMap.BottomRight.Latitude.ToString("F5") + ", " + MainMap.BottomRight.Longitude.ToString("F5") + ")";
         }
 
         private void StopArrivalBox_CloseRequested(object sender, EventArgs e)

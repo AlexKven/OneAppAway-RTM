@@ -39,9 +39,9 @@ namespace OneAppAway
 
         public void AddServiceDay(ServiceDay day, DaySchedule schedule)
         {
+            if (schedule == null || schedule.IsEmpty) return;
             ServiceDay totalDay = day;
             List<int> psuedoIdenticalDays = new List<int>();
-            if (schedule.IsEmpty) return;
             for (int i = 0; i < DaySchedules.Count; i++)
             {
                 if (DaySchedules[i].IsIdenticalToByTripId(schedule))
@@ -69,7 +69,7 @@ namespace OneAppAway
             {
                 for (int i = 0; i < TechnicalDays.Count; i++)
                 {
-                    if (day.HasFlag(TechnicalDays[i]))
+                    if (TechnicalDays[i].HasFlag(day))
                         return DaySchedules[i];
                 }
                 return null;
@@ -95,10 +95,16 @@ namespace OneAppAway
             get { return TechnicalDays.ToArray(); }
         }
 
-        public void FilterByRoute(params string[] routeIds)
+        public void FilterByRoutes(params string[] routeIds)
         {
             foreach (var sch in DaySchedules)
-                sch.FilterByRoute(routeIds);
+                sch?.FilterByRoutes(routeIds);
+        }
+
+        public void RemoveRoutes(params string[] routeIds)
+        {
+            foreach (var sch in DaySchedules)
+                sch?.RemoveRoutes(routeIds);
         }
 
         public void Format(CompactFormatWriter formatter)
@@ -114,7 +120,7 @@ namespace OneAppAway
             }
         }
 
-        public void ReadFrom(CompactFormatReader reader)
+        public void Deformat(CompactFormatReader reader)
         {
             Days.Clear();
             TechnicalDays.Clear();
@@ -125,10 +131,66 @@ namespace OneAppAway
                 ServiceDay nextDay = (ServiceDay)items[0].ReadInt();
                 ServiceDay nextTechnicalDay = (ServiceDay)items[1].ReadInt();
                 DaySchedule schedule = new DaySchedule();
-                schedule.ReadFrom(items[2]);
+                schedule.Deformat(items[2]);
                 Days.Add(nextDay);
                 TechnicalDays.Add(nextTechnicalDay);
                 DaySchedules.Add(schedule);
+            }
+        }
+
+        public void MergeByRoute(WeekSchedule other)
+        {
+            ServiceDay[] days = { ServiceDay.Monday, ServiceDay.Tuesday, ServiceDay.Wednesday, ServiceDay.Thursday, ServiceDay.Friday, ServiceDay.Saturday, ServiceDay.Sunday, ServiceDay.ReducedWeekday };
+            DaySchedule[] sch1 = new DaySchedule[8];
+            DaySchedule[] sch2 = new DaySchedule[8];
+            for (int i = 0; i < 8; i++)
+            {
+                sch1[i] = this[days[i]]?.Clone();
+                sch2[i] = other[days[i]];
+                if (sch1[i] == null)
+                {
+                    if (sch2[i] != null)
+                        sch1[i] = sch2[i].Clone();
+                }
+                else
+                {
+                    if (sch2[i] != null)
+                        sch1[i].MergeByRoute(sch2[i]);
+                }
+            }
+            this.Days.Clear();
+            this.DaySchedules.Clear();
+            this.TechnicalDays.Clear();
+            for (int i = 0; i < 8; i++)
+            {
+                this.AddServiceDay(days[i], sch1[i]);
+            }
+        }
+
+        public string[] Routes
+        {
+            get
+            {
+                List<string> result = new List<string>();
+                foreach (var sch in DaySchedules)
+                {
+                    if (sch != null)
+                        result.AddRange(sch.Routes);
+                }
+                return result.ToArray();
+            }
+        }
+
+        public bool IsEmpty
+        {
+            get
+            {
+                foreach (var sch in DaySchedules)
+                {
+                    if (sch != null && !sch.IsEmpty)
+                        return false;
+                }
+                return true;
             }
         }
     }
@@ -186,11 +248,18 @@ namespace OneAppAway
             catch (Exception) { }
         }
 
-        public void FilterByRoute(params string[] routeIds)
+        public void FilterByRoutes(params string[] routeIds)
         {
             NamesAndTimes = null;
             TripIds = null;
             Data = Data.Where(item => routeIds.Contains(item.Item1)).ToArray();
+        }
+
+        public void RemoveRoutes(params string[] routeIds)
+        {
+            NamesAndTimes = null;
+            TripIds = null;
+            Data = Data.Where(item => !routeIds.Contains(item.Item1)).ToArray();
         }
 
         public bool IsIdenticalToByTime(DaySchedule other)
@@ -306,7 +375,7 @@ namespace OneAppAway
             formatter.CloseParens();
         }
 
-        public void ReadFrom(CompactFormatReader reader)
+        public void Deformat(CompactFormatReader reader)
         {
             List<Tuple<string, string, Tuple<short, string>[]>> data = new List<Tuple<string, string, Tuple<short, string>[]>>();
 
@@ -328,6 +397,43 @@ namespace OneAppAway
                 }
             }
             Data = data.ToArray();
+        }
+
+        public void MergeByRoute(DaySchedule other)
+        {
+            var newData = Data?.ToList();
+            if (newData == null)
+                newData = new List<Tuple<string, string, Tuple<short, string>[]>>();
+            foreach (var item in other.Data)
+            {
+                if (!newData.Any(itm => itm.Item1 == item.Item1 && itm.Item2 == item.Item2))
+                    newData.Add(item);
+            }
+            Data = newData.ToArray();
+            TripIds = null;
+            NamesAndTimes = null;
+        }
+
+        public DaySchedule Clone()
+        {
+            DaySchedule result = new DaySchedule();
+            result.MergeByRoute(this);
+            return result;
+        }
+
+        public string[] Routes
+        {
+            get
+            {
+                if (Data == null) return new string[0];
+                List<string> result = new List<string>();
+                foreach (var item in Data)
+                {
+                    if (!result.Contains(item.Item1))
+                        result.Add(item.Item1);
+                }
+                return result.ToArray();
+            }
         }
     }
 

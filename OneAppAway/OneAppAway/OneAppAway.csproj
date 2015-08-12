@@ -17,7 +17,11 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>OneAppAway_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>OneAppAway_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxPackageDir>C:\AppPackages\OneAppAway\</AppxPackageDir>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>4C9398A8DE465CD0BB8CAB66C3EEA638F9F59404</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -90,22 +94,23 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="OneAppAway_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiLayer.cs" />
+    <Compile Include="Data\ApiLayer.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationSettings.cs" />
-    <Compile Include="BandwidthManager.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="Settings\BandwidthManager.cs" />
     <Compile Include="ComboBoxIconAndText.cs" />
     <Compile Include="Common\NavigationFriendlyPage.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="CompactFormatter.cs" />
+    <Compile Include="Data\CompactFormatter.cs" />
     <Compile Include="Controls\BusArrivalBox.xaml.cs" />
     <Compile Include="Controls\BusMap.xaml.cs" />
     <Compile Include="Controls\HamburgerBar.xaml.cs" />
@@ -125,9 +130,9 @@
     <Compile Include="Converters\TimeDifferenceConverter.cs" />
     <Compile Include="Converters\TimespanMinutesConverter.cs" />
     <Compile Include="Converters\ValueConverterGroup.cs" />
-    <Compile Include="Data.cs" />
-    <Compile Include="DownloadManager.cs" />
-    <Compile Include="FileManager.cs" />
+    <Compile Include="Data\Data.cs" />
+    <Compile Include="Data\DownloadManager.cs" />
+    <Compile Include="Data\FileManager.cs" />
     <Compile Include="HelperFunctions.cs" />
     <Compile Include="Keys.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -142,7 +147,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="ScrollViewerSnapping.cs" />
-    <Compile Include="SettingsManager.cs" />
+    <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Structs.cs" />
     <Compile Include="TemplateSelectors\RouteListingTemplateSelector.cs" />
   </ItemGroup>
@@ -196,6 +201,7 @@
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\WideLogo.scale-100.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

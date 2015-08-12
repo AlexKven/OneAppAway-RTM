@@ -11,6 +11,7 @@
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Route" />
     <RootPropertyPathName Name="ShowProgress" />
+    <RootPropertyPathName Name="IsDownloaded" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="RouteId" />
     <RootPropertyPathName Name="Agency" />
@@ -21,9 +22,7 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Resources" />
     </RootType>
-    <RootType FullName="OneAppAway.ApplicationSettings">
-      <RootProperty Name="BandwidthSetting" />
-    </RootType>
+    <RootType FullName="OneAppAway.ApplicationSettings" />
     <RootType FullName="OneAppAway.Converters.ValueConverterGroup" />
     <RootType FullName="OneAppAway.Converters.MinutesUntilArrivalConverter" />
     <RootType FullName="OneAppAway.Converters.MaxConverter" />
@@ -270,6 +269,7 @@
       <RootProperty Name="ShowProgress" />
       <RootProperty Name="Progress" />
       <RootProperty Name="IsChecked" />
+      <RootProperty Name="IsDownloaded" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">

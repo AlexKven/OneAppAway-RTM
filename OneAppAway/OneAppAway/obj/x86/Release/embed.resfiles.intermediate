@@ -1,0 +1,15 @@
+App.xbf
+Controls\BusArrivalBox.xbf
+Controls\BusMap.xbf
+Controls\HamburgerBar.xbf
+Controls\MultiStopArrivalsBox.xbf
+Controls\RouteListingControl.xbf
+Controls\ScheduleBrowser.xbf
+Controls\StopArrivalsBox.xbf
+MainPage.xbf
+Pages\BusMapPage.xbf
+Pages\RoutesPage.xbf
+Pages\RouteViewPage.xbf
+Pages\SettingsPage.xbf
+Pages\StopViewPage.xbf
+Pages\TestPage.xbf

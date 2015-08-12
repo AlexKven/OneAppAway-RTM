@@ -31,6 +31,7 @@ namespace OneAppAway
         public static readonly DependencyProperty ProgressProperty = DependencyProperty.Register("Progress", typeof(double), typeof(RouteListingControl), new PropertyMetadata(0.25));
         public static readonly DependencyProperty ShowCheckBoxProperty = DependencyProperty.Register("ShowCheckBox", typeof(bool), typeof(RouteListingControl), new PropertyMetadata(false, OnShowCheckBoxChangedStatic));
         public static readonly DependencyProperty ShowProgressProperty = DependencyProperty.Register("ShowProgress", typeof(bool), typeof(RouteListingControl), new PropertyMetadata(false, OnShowProgressChangedStatic));
+        public static readonly DependencyProperty IsDownloadedProperty = DependencyProperty.Register("IsDownloaded", typeof(DownloadStatus), typeof(RouteListingControl), new PropertyMetadata(DownloadStatus.NotDownloaded, OnIsDownloadedChangedStatic));
 
         public bool IsChecked
         {
@@ -60,6 +61,12 @@ namespace OneAppAway
         {
             get { return (bool)GetValue(ShowProgressProperty); }
             set { SetValue(ShowProgressProperty, value); }
+        }
+
+        public DownloadStatus IsDownloaded
+        {
+            get { return (DownloadStatus)GetValue(IsDownloadedProperty); }
+            set { SetValue(IsDownloadedProperty, value); }
         }
 
         private static void OnRouteChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
@@ -97,6 +104,24 @@ namespace OneAppAway
                 //sb.Children.Add(animation);
                 //sb.Begin();
                 typedSender.MainProgressBar.Height = (bool)e.NewValue ? 3 : 0;
+            }
+        }
+
+        private static void OnIsDownloadedChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            RouteListingControl typedSender = (RouteListingControl)sender;
+            DownloadStatus status = (DownloadStatus)e.NewValue;
+            switch (status)
+            {
+                case DownloadStatus.NotDownloaded:
+                    typedSender.DownloadStatusBlock.Text = "";
+                    break;
+                case DownloadStatus.Downloaded:
+                    typedSender.DownloadStatusBlock.Text = "";
+                    break;
+                case DownloadStatus.Downloading:
+                    typedSender.DownloadStatusBlock.Text = "";
+                    break;
             }
         }
 

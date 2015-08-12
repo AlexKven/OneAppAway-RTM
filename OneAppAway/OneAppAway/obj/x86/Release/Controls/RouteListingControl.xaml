@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="OneAppAway.RouteListingControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="30"
+    d:DesignWidth="400">
+
+    <Grid x:ConnectionId='1' HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="MainPanel">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:ConnectionId='2' IsHitTestVisible="False" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI Symbol" x:Name="StatusBlock"></TextBlock>
+        <TextBlock x:ConnectionId='3' IsHitTestVisible="False" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" FontSize="18" Margin="0,0,5,0" x:Name="RouteNameBlock">187</TextBlock>
+        <TextBlock x:ConnectionId='4' IsHitTestVisible="False" Grid.Column="3" VerticalAlignment="Center" TextTrimming="WordEllipsis" x:Name="RouteDescriptionBlock">Federal Way Transit Ct</TextBlock>
+        <CheckBox x:ConnectionId='5' IsChecked="{Binding IsChecked, Mode=TwoWay}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="MainCheckBox" Width="0" MinWidth="0"/>
+        <Button x:ConnectionId='6' Template="{StaticResource SimpleButtonTemplate}" Background="Transparent" Grid.Column="1" Grid.ColumnSpan="3"                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <Rectangle x:ConnectionId='7' Height="0" VerticalAlignment="Bottom" Grid.ColumnSpan="4" x:Name="MainProgressBar">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="{ThemeResource SystemColorControlAccentColor}" Offset="{Binding Progress}"/>
+                    <GradientStop Color="#444444" Offset="{Binding Progress}"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Grid>
+</UserControl>
+

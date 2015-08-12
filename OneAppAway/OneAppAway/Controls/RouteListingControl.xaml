@@ -16,8 +16,8 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock IsHitTestVisible="False" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI Symbol" x:Name="StatusBlock"></TextBlock>
-        <TextBlock IsHitTestVisible="False" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" FontSize="18" Margin="0,0,5,0" x:Name="RouteNameBlock">187</TextBlock>
+        <TextBlock IsHitTestVisible="False" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI Symbol" x:Name="DownloadStatusBlock"></TextBlock>
+        <TextBlock IsHitTestVisible="False" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" FontSize="19" Margin="0,0,5,0" x:Name="RouteNameBlock">187</TextBlock>
         <TextBlock IsHitTestVisible="False" Grid.Column="3" VerticalAlignment="Center" TextTrimming="WordEllipsis" x:Name="RouteDescriptionBlock">Federal Way Transit Ct</TextBlock>
         <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="MainCheckBox" Width="0" MinWidth="0"/>
         <Button Template="{StaticResource SimpleButtonTemplate}" Background="Transparent" Grid.Column="1" Grid.ColumnSpan="3" Click="Button_Click" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>

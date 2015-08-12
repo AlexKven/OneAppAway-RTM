@@ -43,7 +43,7 @@
             <ItemsControl x:Name="MainList" Tag="100">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:RouteListingControl Route="{Binding Route}" ShowCheckBox="{Binding ElementName=CheckToggle, Path=IsChecked}" ShowProgress="{Binding Path=ShowProgress}" Progress="{Binding Path=Progress}" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" Click="Route_Clicked"/>
+                        <local:RouteListingControl Route="{Binding Route}" ShowCheckBox="{Binding ElementName=CheckToggle, Path=IsChecked}" ShowProgress="{Binding Path=ShowProgress}" Progress="{Binding Path=Progress}" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" IsDownloaded="{Binding Path=IsDownloaded}" Click="Route_Clicked"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
@@ -53,16 +53,17 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
-        <ProgressRing Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" x:Name="MainProgressRing"/>
         <RelativePanel Grid.Row="2" x:Name="MainStatusBar" Background="#202020" Visibility="Collapsed">
             <TextBlock x:Name="StatusBlock"/>
             <ProgressBar x:Name="MasterProgressBar" Minimum="0" Maximum="1" RelativePanel.Below="StatusBlock" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
         </RelativePanel>
+        <Rectangle Fill="#44000000" Grid.RowSpan="4" Visibility="Collapsed" x:Name="LoadingRect"/>
+        <ProgressRing Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" x:Name="MainProgressRing" IsHitTestVisible="False"/>
         <CommandBar Grid.Row="3">
             <AppBarToggleButton Icon="List" Label="Select Routes" x:Name="CheckToggle" Checked="CheckToggle_Checked" Unchecked="CheckToggle_Unchecked"/>
             <AppBarButton Icon="SelectAll" Label="Select All Routes" Click="SelectAllButton_Click" x:Name="SelectAllButton"/>
             <AppBarButton Icon="Download" Label="Download Selected Routes" Click="DownloadButton_Click" Visibility="Collapsed" x:Name="DownloadButton"/>
-            <AppBarButton Icon="Delete" Label="Delete Selected Routes" Click="DownloadButton_Click" Visibility="Collapsed" x:Name="DeleteButton"/>
+            <AppBarButton Icon="Delete" Label="Delete Selected Routes" Click="DeleteButton_Click" Visibility="Collapsed" x:Name="DeleteButton"/>
             <AppBarButton Icon="Cancel" Label="Cancel Download" Visibility="Collapsed" x:Name="CancelButton" Click="CancelButton_Click"/>
         </CommandBar>
     </Grid>

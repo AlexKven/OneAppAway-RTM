@@ -218,5 +218,7 @@ namespace OneAppAway
             }
             return null;
         }
+
+        public static bool ContainsPoint(this GeoboundingBox box, BasicGeoposition point) => point.Latitude < box.NorthwestCorner.Latitude && point.Latitude >= box.SoutheastCorner.Latitude && point.Longitude < box.SoutheastCorner.Longitude && point.Longitude >= box.NorthwestCorner.Longitude;
     }
 }

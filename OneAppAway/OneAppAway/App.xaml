@@ -7,7 +7,7 @@
     xmlns:converters="using:OneAppAway.Converters"
     RequestedTheme="Light">
     <Application.Resources>
-        <local:ApplicationSettings x:Key="Settings" BandwidthSetting="Auto"/>
+        <local:ApplicationSettings x:Key="Settings"/>
         <converters:ValueConverterGroup x:Key="ThemeBrushConverters">
             <converters:LightenColorConverter/>
             <converters:ColorToBrushConverter/>
