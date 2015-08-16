@@ -6,11 +6,12 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="Background" />
+    <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="BandwidthSetting" />
     <RootPropertyPathName Name="Progress" />
-    <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Route" />
     <RootPropertyPathName Name="ShowProgress" />
+    <RootPropertyPathName Name="IsDownloaded" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="RouteId" />
     <RootPropertyPathName Name="Agency" />
@@ -21,9 +22,7 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Resources" />
     </RootType>
-    <RootType FullName="OneAppAway.ApplicationSettings">
-      <RootProperty Name="BandwidthSetting" />
-    </RootType>
+    <RootType FullName="OneAppAway.ApplicationSettings" />
     <RootType FullName="OneAppAway.Converters.ValueConverterGroup" />
     <RootType FullName="OneAppAway.Converters.MinutesUntilArrivalConverter" />
     <RootType FullName="OneAppAway.Converters.MaxConverter" />
@@ -103,6 +102,7 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="IsHitTestVisible" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
     <RootType FullName="OneAppAway.Converters.LightenColorConverter" />
     <RootType FullName="OneAppAway.Converters.ColorToBrushConverter" />
@@ -144,13 +144,13 @@
       <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="OneAppAway.BusArrivalBox" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
       <RootProperty Name="TransitFeaturesVisible" />
       <RootProperty Name="PedestrianFeaturesVisible" />
       <RootProperty Name="TiltInteractionMode" />
       <RootProperty Name="RotateInteractionMode" />
+      <RootProperty Name="ZoomInteractionMode" />
       <RootEvent Name="MapElementClick" />
       <RootEvent Name="SizeChanged" />
       <RootEvent Name="ZoomLevelChanged" />
@@ -213,6 +213,20 @@
       <RootProperty Name="Tag" />
       <RootEvent Name="Click" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="Template" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="IsChecked" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
+      <RootEvent Name="Checked" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
@@ -270,6 +284,7 @@
       <RootProperty Name="ShowProgress" />
       <RootProperty Name="Progress" />
       <RootProperty Name="IsChecked" />
+      <RootProperty Name="IsDownloaded" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
@@ -357,9 +372,9 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="SecondaryCommands" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="ClosedDisplayMode" />
-      <RootProperty Name="SecondaryCommands" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
       <RootProperty Name="Icon" />
@@ -384,15 +399,11 @@
     </RootType>
     <RootType FullName="OneAppAway.RoutesPage" />
     <RootType FullName="OneAppAway.RouteViewPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
-      <RootProperty Name="IsChecked" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
       <RootProperty Name="Margin" />
       <RootProperty Name="OffContent" />
       <RootProperty Name="OnContent" />
+      <RootEvent Name="Toggled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />

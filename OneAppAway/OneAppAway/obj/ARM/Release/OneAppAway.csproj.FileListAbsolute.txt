@@ -493,3 +493,4 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\ilc\intermediate\TransformedCoreLib\System.Private.CoreLib.pdb
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\ilc\intermediate\TransformedCoreLib\System.Runtime.dll
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\ilc\intermediate\TransformedCoreLib\System.Runtime.Implementation.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\OneAppAway.csprojResolveAssemblyReference.cache

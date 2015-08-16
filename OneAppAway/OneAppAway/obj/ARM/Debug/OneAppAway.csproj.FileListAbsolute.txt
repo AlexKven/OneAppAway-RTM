@@ -558,3 +558,9 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Core\OneAppAway.xr.xml
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Core\WinMetadata\Windows.winmd
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Core\resources.pri
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\OneAppAway.csprojResolveAssemblyReference.cache
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Controls\PopupStopArrivalsBox.xbf
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Controls\PopupStopArrivalsBox.g.i.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Controls\PopupStopArrivalsBox.g.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Controls\PopupStopArrivalsBox.xaml
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Controls\PopupStopArrivalsBox.xbf

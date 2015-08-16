@@ -126,7 +126,7 @@ namespace OneAppAway
         private async Task RefreshArrivals()
         {
             ArrivalsProgressIndicator.IsActive = true;
-            var arrivals = await ApiLayer.GetBusArrivals(Stop.ID, MasterCancellationTokenSource.Token);
+            var arrivals = await Data.GetArrivals(Stop.ID, MasterCancellationTokenSource.Token);
             var removals = ArrivalsStackPanel.Children.Where(child => !arrivals.Contains(((BusArrivalBox)child).Arrival));
             foreach (var item in removals)
                 ArrivalsStackPanel.Children.Remove(item);

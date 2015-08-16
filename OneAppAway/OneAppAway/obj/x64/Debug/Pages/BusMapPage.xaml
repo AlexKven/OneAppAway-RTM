@@ -58,15 +58,18 @@
             <RepeatButton x:ConnectionId='15' Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333"                            >
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Foreground="White">-</TextBlock>
             </RepeatButton>
-            <Button Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333">
+            <Button x:ConnectionId='16' Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333"                           >
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17" Foreground="White" FontFamily="Segoe UI Symbol"></TextBlock>
+            </Button>
+            <Button x:ConnectionId='17' Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" x:Name="RefreshButton" Visibility="Collapsed"                            >
                 <BitmapIcon Foreground="White" UriSource="/Assets/Icons/RefreshStopsIcon.png" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
         </StackPanel>
-        <local:MultiStopArrivalsBox x:ConnectionId='11' x:Name="StopArrivalBox"                                                Opacity="0" Maps:MapControl.NormalizedAnchorPoint="0.5, 1">
-            <local:MultiStopArrivalsBox.RenderTransform>
+        <local:PopupStopArrivalsBox x:ConnectionId='11' x:Name="StopArrivalBox"                                                Opacity="0" Maps:MapControl.NormalizedAnchorPoint="0.5, 1">
+            <local:PopupStopArrivalsBox.RenderTransform>
                 <CompositeTransform x:ConnectionId='13' TranslateY="25" x:Name="StopArrivalBoxTranslation"/>
-            </local:MultiStopArrivalsBox.RenderTransform>
-        </local:MultiStopArrivalsBox>
+            </local:PopupStopArrivalsBox.RenderTransform>
+        </local:PopupStopArrivalsBox>
         <ProgressBar x:ConnectionId='12' HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="Collapsed" x:Name="LoadingIndicator"/>
     </Grid>
 </local:NavigationFriendlyPage>

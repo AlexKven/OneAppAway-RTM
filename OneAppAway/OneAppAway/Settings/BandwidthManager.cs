@@ -48,7 +48,7 @@ namespace OneAppAway
                 _AutoBandwidthOptions = BandwidthOptions.Low;
         }
 
-        private static void OnEffectiveBandwidthOptionsChanged()
+        internal static void OnEffectiveBandwidthOptionsChanged()
         {
             if (EffectiveBandwidthOptionsChanged != null)
                 EffectiveBandwidthOptionsChanged(null, new EventArgs());

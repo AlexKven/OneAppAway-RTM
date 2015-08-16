@@ -69,18 +69,24 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,15,0,0" Grid.Row="3" FontSize="8">AUTO</TextBlock>
                             </Grid>
                         </Button> 
-                        <Button RequestedTheme="Dark" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Width="50" Click="CenterOnLocationButton_Click">
+                        <RadioButton RequestedTheme="Dark" MinWidth="0" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Width="50" IsChecked="{Binding ElementName=MapButton, Path=IsChecked, Mode=TwoWay}">
                             <Grid>
                                 <Rectangle Fill="#33000000"/>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
                             </Grid>
-                        </Button>
-                        <Button RequestedTheme="Dark" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Width="50" Click="SettingsButton_Click">
+                        </RadioButton>
+                        <RadioButton RequestedTheme="Dark" MinWidth="0" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Width="50" IsChecked="{Binding ElementName=RoutesButton, Path=IsChecked, Mode=TwoWay}">
+                            <Grid>
+                                <Rectangle Fill="#33000000"/>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+                            </Grid>
+                        </RadioButton>
+                        <RadioButton RequestedTheme="Dark" MinWidth="0" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Width="50" IsChecked="{Binding ElementName=SettingsButton, Path=IsChecked, Mode=TwoWay}">
                             <Grid>
                                 <Rectangle Fill="#33000000"/>
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
                             </Grid>
-                        </Button>
+                        </RadioButton>
                     </StackPanel>
                     <ContentPresenter Grid.Row="1"/>
                 </Grid>
@@ -124,18 +130,29 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,15,0,0" Grid.Row="3" FontSize="8">AUTO</TextBlock>
                             </Grid>
                         </Button>
-                        <Button RequestedTheme="Dark" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Click="CenterOnLocationButton_Click">
+                        <RadioButton RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="MapButton" Checked="MapButton_Checked">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Rectangle Fill="#33000000"/>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Show Your Location</TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Show Map</TextBlock>
                             </Grid>
-                        </Button>
-                        <Button RequestedTheme="Dark" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Click="SettingsButton_Click">
+                        </RadioButton>
+                        <RadioButton RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="RoutesButton" Checked="RoutesButton_Checked">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Fill="#33000000"/>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">View and Download Routes</TextBlock>
+                            </Grid>
+                        </RadioButton>
+                        <RadioButton RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="SettingsButton" Checked="SettingsButton_Checked">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
@@ -143,9 +160,9 @@
                                 </Grid.ColumnDefinitions>
                                 <Rectangle Fill="#33000000"/>
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Settings</TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Show Settings</TextBlock>
                             </Grid>
-                        </Button>
+                        </RadioButton>
                     </StackPanel>
                 </SplitView.Pane>
             </SplitView>

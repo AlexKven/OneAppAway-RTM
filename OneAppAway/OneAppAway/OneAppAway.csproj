@@ -102,6 +102,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PopupStopArrivalsBox.xaml.cs">
+      <DependentUpon>PopupStopArrivalsBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Settings\BandwidthManager.cs" />
     <Compile Include="ComboBoxIconAndText.cs" />
@@ -264,6 +267,10 @@
     <Page Include="Pages\TestPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PopupStopArrivalsBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

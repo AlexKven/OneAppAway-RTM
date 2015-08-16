@@ -62,9 +62,16 @@
         <CommandBar Grid.Row="3">
             <AppBarToggleButton Icon="List" Label="Select Routes" x:Name="CheckToggle" Checked="CheckToggle_Checked" Unchecked="CheckToggle_Unchecked"/>
             <AppBarButton Icon="SelectAll" Label="Select All Routes" Click="SelectAllButton_Click" x:Name="SelectAllButton"/>
-            <AppBarButton Icon="Download" Label="Download Selected Routes" Click="DownloadButton_Click" Visibility="Collapsed" x:Name="DownloadButton"/>
+            <AppBarButton Icon="Download" Label="Download/Update Selected Routes" Click="DownloadButton_Click" Visibility="Collapsed" x:Name="DownloadButton"/>
             <AppBarButton Icon="Delete" Label="Delete Selected Routes" Click="DeleteButton_Click" Visibility="Collapsed" x:Name="DeleteButton"/>
+            <AppBarButton Icon="Pause" Label="Pause Download" Visibility="Collapsed" x:Name="PauseButton" Click="PauseButton_Click"/>
             <AppBarButton Icon="Cancel" Label="Cancel Download" Visibility="Collapsed" x:Name="CancelButton" Click="CancelButton_Click"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Invert Selection" x:Name="InvertSelectionButton" Click="InvertSelectionButton_Click"/>
+                <AppBarButton Label="Select Downloaded Routes" x:Name="SelectDownloadedButton" Click="SelectDownloadedButton_Click"/>
+                <AppBarButton Label="Select Non-Downloaded Routes" x:Name="SelectNotDownloadedButton" Click="SelectNotDownloadedButton_Click"/>
+                <AppBarButton Label="Select Download-Paused Routes" x:Name="SelectDownloadingButton" Click="SelectDownloadingButton_Click"/>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Grid>
 </local:NavigationFriendlyPage>

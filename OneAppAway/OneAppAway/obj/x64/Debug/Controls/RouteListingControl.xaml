@@ -9,7 +9,7 @@
     d:DesignHeight="30"
     d:DesignWidth="400">
 
-    <Grid x:ConnectionId='1' HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="MainPanel">
+    <Grid x:ConnectionId='1' HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="MainPanel" Margin="1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
@@ -20,8 +20,7 @@
         <TextBlock x:ConnectionId='3' IsHitTestVisible="False" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" FontSize="19" Margin="0,0,5,0" x:Name="RouteNameBlock">187</TextBlock>
         <TextBlock x:ConnectionId='4' IsHitTestVisible="False" Grid.Column="3" VerticalAlignment="Center" TextTrimming="WordEllipsis" x:Name="RouteDescriptionBlock">Federal Way Transit Ct</TextBlock>
         <CheckBox x:ConnectionId='5' IsChecked="{Binding IsChecked, Mode=TwoWay}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="MainCheckBox" Width="0" MinWidth="0"/>
-        <Button x:ConnectionId='6' Template="{StaticResource SimpleButtonTemplate}" Background="Transparent" Grid.Column="1" Grid.ColumnSpan="3"                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        <Rectangle x:ConnectionId='7' Height="0" VerticalAlignment="Bottom" Grid.ColumnSpan="4" x:Name="MainProgressBar">
+        <Rectangle x:ConnectionId='6' Height="0" VerticalAlignment="Bottom" Grid.ColumnSpan="4" x:Name="MainProgressBar">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="1,0">
                     <GradientStop Color="{ThemeResource SystemColorControlAccentColor}" Offset="{Binding Progress}"/>
@@ -29,6 +28,7 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
+        <Button x:ConnectionId='7' Template="{StaticResource SimpleButtonTemplate}" Background="Transparent" Grid.Column="1" Grid.ColumnSpan="3"                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
     </Grid>
 </UserControl>
 

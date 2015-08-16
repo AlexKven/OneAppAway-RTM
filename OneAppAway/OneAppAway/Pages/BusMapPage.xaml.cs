@@ -44,7 +44,15 @@ namespace OneAppAway
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            BandwidthManager.EffectiveBandwidthOptionsChanged += BandwidthManager_EffectiveBandwidthOptionsChanged;
             WindowStateChanging();
+            RefreshDelayDownloadingStops();
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+            BandwidthManager.EffectiveBandwidthOptionsChanged += BandwidthManager_EffectiveBandwidthOptionsChanged;
         }
 
         public async void CenterOnCurrentLocation()
@@ -84,10 +92,11 @@ namespace OneAppAway
         private Task<BusStop[]> GetStopsTask;
         private CancellationTokenSource GetStopsCancellationTokenSource;
         private CancellationTokenSource MasterCancellationTokenSource = new CancellationTokenSource();
+        private bool DelayDownloadingStops = false;
         #endregion
 
         #region Methods
-        private void AddStopsInBounds(GeoboundingBox bounds)
+        private void AddStopsInBounds(GeoboundingBox bounds, bool forceDownload)
         {
             Action<BusStop[], GeoboundingBox> stopsLoadedCallback = delegate (BusStop[] stops, GeoboundingBox bnd)
             {
@@ -103,7 +112,26 @@ namespace OneAppAway
                 //await GetStopsTask;
             }
             GetStopsCancellationTokenSource = new CancellationTokenSource();
-            GetStopsTask = Data.GetBusStopsForArea(bounds, stopsLoadedCallback, GetStopsCancellationTokenSource.Token, true);
+            GetStopsTask = Data.GetBusStopsForArea(bounds, stopsLoadedCallback, GetStopsCancellationTokenSource.Token, DelayDownloadingStops && !forceDownload);
+        }
+
+        private void RefreshDelayDownloadingStops()
+        {
+            switch (BandwidthManager.EffectiveBandwidthOptions)
+            {
+                case BandwidthOptions.Normal:
+                    DelayDownloadingStops = SettingsManager.GetSetting<bool>("NormalBandwidth.ManuallyDownloadStops", false, false);
+                    break;
+                case BandwidthOptions.Low:
+                    DelayDownloadingStops = SettingsManager.GetSetting<bool>("LowBandwidth.ManuallyDownloadStops", false, false);
+                    break;
+                case BandwidthOptions.None:
+                    DelayDownloadingStops = true;
+                    break;
+            }
+
+            RefreshButton.Visibility = (DelayDownloadingStops) ? Visibility.Visible : Visibility.Collapsed;
+            RefreshButton.IsEnabled = BandwidthManager.EffectiveBandwidthOptions != BandwidthOptions.None;
         }
         #endregion
 
@@ -125,6 +153,8 @@ namespace OneAppAway
             GeoboundingBox bounds;
             try
             {
+                var downloader = new Windows.Networking.BackgroundTransfer.BackgroundDownloader();
+                
                 bounds = new GeoboundingBox(MainMap.TopLeft, MainMap.BottomRight);
             }
             catch (Exception) { return; }
@@ -136,7 +166,7 @@ namespace OneAppAway
                 if (MainMap.ZoomLevel < MainMap.StopVisibilityThreshold) return;
                 try
                 {
-                    AddStopsInBounds(bounds);
+                    AddStopsInBounds(bounds, false);
                 }
                 catch (TaskCanceledException) { }
             }
@@ -207,9 +237,14 @@ namespace OneAppAway
                     var location = new BasicGeoposition() { Latitude = (double)state["StopsLat"], Longitude = (double)state["StopsLon"] };
                     var stopIds = (string[])state["Stops"];
                     BusStop[] stops = new BusStop[stopIds.Length];
-                    for (int i = 0; i < stopIds.Length; i++)
-                        stops[i] = await Data.GetBusStop(stopIds[i], MasterCancellationTokenSource.Token);
-                    OnStopsClicked(stops, location);
+                    try
+                    {
+                        for (int i = 0; i < stopIds.Length; i++)
+                            stops[i] = await Data.GetBusStop(stopIds[i], MasterCancellationTokenSource.Token);
+                        await Task.Delay(250);
+                        OnStopsClicked(stops, location);
+                    }
+                    catch (OperationCanceledException) { }
                     CanGoBack = true;
                 }
             }
@@ -254,8 +289,11 @@ namespace OneAppAway
             newCenter.Latitude = location.Latitude + (MainMap.TopLeft.Latitude - MainMap.BottomRight.Latitude) / 2 - 50 * MainMap.LatitudePerPixel;
             double halfLatSpan = (MainMap.TopLeft.Latitude - MainMap.BottomRight.Latitude) / 2.5;
             double halfLonSpan = (MainMap.BottomRight.Longitude - MainMap.TopLeft.Longitude) / 2.5;
-            await MainMap.MapControl.TrySetViewBoundsAsync(new GeoboundingBox(new BasicGeoposition() { Latitude = newCenter.Latitude + halfLatSpan, Longitude = newCenter.Longitude - halfLonSpan },
-                new BasicGeoposition() { Latitude = newCenter.Latitude - halfLatSpan, Longitude = newCenter.Longitude + halfLonSpan }), null, MapAnimationKind.Linear);
+            if (halfLatSpan > 0 && halfLonSpan > 0)
+            {
+                await MainMap.MapControl.TrySetViewBoundsAsync(new GeoboundingBox(new BasicGeoposition() { Latitude = newCenter.Latitude + halfLatSpan, Longitude = newCenter.Longitude - halfLonSpan },
+                    new BasicGeoposition() { Latitude = newCenter.Latitude - halfLatSpan, Longitude = newCenter.Longitude + halfLonSpan }), null, MapAnimationKind.Linear);
+            }
 
             MapControl.SetLocation(StopArrivalBoxGrid, new Geopoint(location));
             StopArrivalBox.SetStops(stops);
@@ -276,6 +314,11 @@ namespace OneAppAway
             sb.Begin();
         }
 
+        private void BandwidthManager_EffectiveBandwidthOptionsChanged(object sender, EventArgs e)
+        {
+            RefreshDelayDownloadingStops();
+        }
+
         private async void ZoomInButton_Click(object sender, RoutedEventArgs e)
         {
             await MainMap.MapControl.TryZoomToAsync(MainMap.ZoomLevel + .5);
@@ -284,6 +327,21 @@ namespace OneAppAway
         private async void ZoomOutButton_Click(object sender, RoutedEventArgs e)
         {
             await MainMap.MapControl.TryZoomToAsync(MainMap.ZoomLevel - .5);
+        }
+
+        private void CenterButton_Click(object sender, RoutedEventArgs e)
+        {
+            CenterOnCurrentLocation();
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            var bounds = new GeoboundingBox(MainMap.TopLeft, MainMap.BottomRight);
+            try
+            {
+                AddStopsInBounds(bounds, true);
+            }
+            catch (TaskCanceledException) { }
         }
     }
 }

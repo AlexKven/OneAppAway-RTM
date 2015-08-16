@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Windows.Foundation;
 using Windows.Storage;
 using Windows.Storage.Search;
 using static OneAppAway.CompactFormatter;
@@ -19,6 +20,8 @@ namespace OneAppAway
             for (int i = 0; i < 17; i++)
                 SavedStopCache[i] = new WeakReference<List<BusStop>>(null);
         }
+
+        private static GeoboundingBox DowntownSeattleZone = new GeoboundingBox(new BasicGeoposition() { Latitude = 47.628, Longitude = -122.374 }, new BasicGeoposition() { Latitude = 47.589, Longitude = -122.300 });
 
         #region Cached Objects
         private static WeakReference<List<BusStop>>[] SavedStopCache = new WeakReference<List<BusStop>>[17];
@@ -116,16 +119,16 @@ namespace OneAppAway
         #region Public Methods
         public static async Task SaveScheduleAsync(WeekSchedule schedule, BusStop stop)
         {
-            WeekSchedule baseSchedule = (await LoadSchedule(stop)) ?? new WeekSchedule();
+            WeekSchedule baseSchedule = (await LoadSchedule(stop.ID)) ?? new WeekSchedule();
             baseSchedule.RemoveRoutes(schedule.Routes);
             baseSchedule.MergeByRoute(schedule);
             await OverwriteScheduleAsync(baseSchedule, stop);
         }
 
-        public static async Task<WeekSchedule> LoadSchedule(BusStop stop)
+        public static async Task<WeekSchedule> LoadSchedule(string stopId)
         {
             WeekSchedule result = new WeekSchedule();
-            var file = (await (await ApplicationData.Current.LocalCacheFolder.GetFolderAsync("SavedSchedules")).GetFilesAsync()).FirstOrDefault(item => item.Name == stop.ID.ToString() + ".txt");
+            var file = (await (await ApplicationData.Current.LocalCacheFolder.GetFolderAsync("SavedSchedules")).GetFilesAsync()).FirstOrDefault(item => item.Name == stopId + ".txt");
             if (file != null)
             {
                 string text = await FileIO.ReadTextAsync(file);
@@ -137,25 +140,42 @@ namespace OneAppAway
                 return null;
         }
 
-        public static async Task DeleteSchedule(BusStop stop, params string[] routes)
+        private static async Task DeleteSchedule(BusStop stop, StorageFile file, params string[] routes)
         {
             if (routes == null || routes.Length == 0)
             {
-                var file = (await (await ApplicationData.Current.LocalCacheFolder.GetFolderAsync("SavedSchedules")).GetFilesAsync()).FirstOrDefault(item => item.Name == stop.ID.ToString() + ".txt");
-                if (file != null)
-                    await file.DeleteAsync();
-
-                //file could be null
-                await file?.DeleteAsync();
+                await file.DeleteAsync();
             }
             else
             {
-                WeekSchedule baseSchedule = (await LoadSchedule(stop)) ?? new WeekSchedule();
+                WeekSchedule baseSchedule = (await LoadSchedule(stop.ID)) ?? new WeekSchedule();
                 baseSchedule.RemoveRoutes(routes);
                 if (baseSchedule.IsEmpty)
-                    await DeleteSchedule(stop);
+                    await DeleteSchedule(stop, file);
                 else
                     await OverwriteScheduleAsync(baseSchedule, stop);
+            }
+        }
+
+        public static async Task DeleteSchedules(BusStop[] stops, params string[] routes)
+        {
+            Dictionary<string, StorageFile> files = new Dictionary<string, StorageFile>();
+            var allFiles = await (await ApplicationData.Current.LocalCacheFolder.GetFolderAsync("SavedSchedules")).GetFilesAsync();
+            foreach (var file in allFiles)
+            {
+                if (stops.Any(stop => stop.Name + ".txt" == file.Name))
+                {
+                    var curStop = stops.First(stop => stop.Name + ".txt" == file.Name);
+                    files.Add(curStop.ID, file);
+                }
+            }
+            foreach (var stop in stops)
+            {
+                if (files.Any(kvp => kvp.Key == stop.ID))
+                {
+                    var file = files.First(kvp => kvp.Key == stop.ID).Value;
+                    await DeleteSchedule(stop, file, routes);
+                }
             }
         }
 
@@ -218,7 +238,7 @@ namespace OneAppAway
 
         public static int HashLocation(double latitude, double longitude)
         {
-            if (latitude > 47.589 && latitude < 47.628 && longitude > -122.374 && longitude < -122.300)
+            if (DowntownSeattleZone.ContainsPoint(new BasicGeoposition() { Latitude = latitude, Longitude = longitude }))
                 return 16;
             int latHash = (int)(Abs(latitude) / 0.1) % 4;
             int lonHash = (int)(Abs(longitude) / 0.2) % 4;
@@ -312,28 +332,35 @@ namespace OneAppAway
         public static async Task<BusStop[]> GetStopsForArea(BasicGeoposition topLeft, BasicGeoposition bottomRight, CancellationToken cancellationToken)
         {
             List<int> hashes = new List<int>();
-            double minLat = bottomRight.Latitude;
-            double minLon = topLeft.Longitude;
-            double maxLat = topLeft.Latitude;
-            double maxLon = bottomRight.Longitude;
-            for (double lat = minLat; lat < maxLat + 0.1; lat += 0.1)
+            GeoboundingBox box = new GeoboundingBox(topLeft, bottomRight);
+            Rect intersection = box.ToRect();
+            intersection.Intersect(DowntownSeattleZone.ToRect());
+            if (intersection.Width > 0 && intersection.Height > 0)
+                hashes.Add(16);
+            if (intersection != box.ToRect())
             {
-                if (lat > maxLat)
-                    lat = maxLat;
-                for (double lon = minLon; lon < maxLon + 0.2; lon += 0.2)
+                double minLat = bottomRight.Latitude;
+                double minLon = topLeft.Longitude;
+                double maxLat = topLeft.Latitude;
+                double maxLon = bottomRight.Longitude;
+                for (double lat = minLat; lat < maxLat + 0.1; lat += 0.1)
                 {
-                    if (lon > maxLon)
-                        lon = maxLon;
-                    int hash = HashLocation(lat, lon);
-                    if (!hashes.Contains(hash))
-                        hashes.Add(hash);
+                    if (lat > maxLat)
+                        lat = maxLat;
+                    for (double lon = minLon; lon < maxLon + 0.2; lon += 0.2)
+                    {
+                        if (lon > maxLon)
+                            lon = maxLon;
+                        int hash = HashLocation(lat, lon);
+                        if (!hashes.Contains(hash))
+                            hashes.Add(hash);
+                    }
                 }
             }
             cancellationToken.ThrowIfCancellationRequested();
 
             List<BusStop> result = new List<BusStop>();
 
-            GeoboundingBox box = new GeoboundingBox(topLeft, bottomRight);
             foreach (var hash in hashes)
             {
                 await AccessStopCache(hash, delegate (List<BusStop> stops)
@@ -348,6 +375,37 @@ namespace OneAppAway
                 cancellationToken.ThrowIfCancellationRequested();
             }
 
+            return result.ToArray();
+        }
+
+        public static async Task<RealtimeArrival[]> GetScheduledArrivals(string stopId)
+        {
+            DateTime minTime = DateTime.Now - TimeSpan.FromMinutes(4);
+            DateTime maxTime = DateTime.Now + TimeSpan.FromMinutes(30);
+            ServiceDay day = DateTime.Now.GetServiceDay();
+            var weekSched = await LoadSchedule(stopId);
+            if (weekSched == null)
+                return new RealtimeArrival[0];
+            var daySched = weekSched[day];
+            SortedSet<RealtimeArrival> result = new SortedSet<RealtimeArrival>(Comparer<RealtimeArrival>.Create((sa1, sa2) => sa1.ScheduledArrivalTime < sa2.ScheduledArrivalTime ? -1 : sa1.ScheduledArrivalTime > sa2.ScheduledArrivalTime ? 1 : 0));
+            string curRouteId = null;
+            string curRouteName = "";
+            if (daySched == null || daySched.IsEmpty)
+                return result.ToArray();
+            foreach (var item in daySched)
+            {
+                if (curRouteId != item.Route)
+                {
+                    curRouteId = item.Route;
+                    await AccessRouteCache(delegate (List<Tuple<BusRoute, string[], string[]>> routes)
+                    {
+                        curRouteName = routes.First(rte => rte.Item1.ID == item.Route).Item1.Name;
+                        return false;
+                    });
+                }
+                if (item.ScheduledArrivalTime >= minTime && item.ScheduledArrivalTime < maxTime)
+                    result.Add(new RealtimeArrival() { Route = item.Route, RouteName = curRouteName, Destination = item.Destination, LastUpdateTime = DateTime.Now, PredictedArrivalTime = null, ScheduledArrivalTime = item.ScheduledArrivalTime, Stop = item.Stop, Trip = item.Trip });
+            }
             return result.ToArray();
         }
         #endregion

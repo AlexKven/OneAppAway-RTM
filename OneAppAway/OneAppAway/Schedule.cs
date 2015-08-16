@@ -69,7 +69,7 @@ namespace OneAppAway
             {
                 for (int i = 0; i < TechnicalDays.Count; i++)
                 {
-                    if (TechnicalDays[i].HasFlag(day))
+                    if (TechnicalDays[i].HasFlag(day) || day.HasFlag(TechnicalDays[i]))
                         return DaySchedules[i];
                 }
                 return null;

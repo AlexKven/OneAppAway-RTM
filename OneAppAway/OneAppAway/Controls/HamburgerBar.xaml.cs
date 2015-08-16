@@ -20,11 +20,14 @@ namespace OneAppAway
     public sealed partial class HamburgerBar : ContentControl
     {
         private SplitView MainSplitView = new SplitView();
+        private RadioButton MapButton = new RadioButton();
+        private RadioButton RoutesButton = new RadioButton();
+        private RadioButton SettingsButton = new RadioButton();
+        private Frame RootFrame;
 
         public HamburgerBar()
         {
             this.InitializeComponent();
-            
         }
 
         protected override void OnApplyTemplate()
@@ -32,19 +35,21 @@ namespace OneAppAway
             base.OnApplyTemplate();
             if (Template == null) return;
             MainSplitView = HelperFunctions.FindControl<SplitView>(this, "MainSplitView");
+            MapButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "MapButton");
+            SettingsButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "SettingsButton");
+            RoutesButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "RoutesButton");
+            CheckCorrectButton();
         }
 
-#pragma warning disable CS1998
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void EnsureNavigation<T>()
         {
-
+            if (RootFrame?.CurrentSourcePageType != typeof(T))
+                RootFrame?.Navigate(typeof(T));
         }
-#pragma warning restore CS1998
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
-            
         }
 
         private void BandwidthButton_Click(object sender, RoutedEventArgs e)
@@ -54,21 +59,47 @@ namespace OneAppAway
             App.Current.Resources["Settings"] = settings;
         }
 
-        private void CenterOnLocationButton_Click(object sender, RoutedEventArgs e)
+        private void MapButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (((App)(App.Current)).RootFrame.Content is BusMapPage)
-            {
-                ((BusMapPage)((App)(App.Current)).RootFrame.Content).CenterOnCurrentLocation();
-            }
+            EnsureNavigation<BusMapPage>();
+        }
+
+        private void RoutesButton_Checked(object sender, RoutedEventArgs e)
+        {
+            EnsureNavigation<RoutesPage>();
+        }
+
+        private void SettingsButton_Checked(object sender, RoutedEventArgs e)
+        {
+            EnsureNavigation<SettingsPage>();
+        }
+
+        public void SetRootFrame(Frame rootFrame)
+        {
+            RootFrame = rootFrame;
+            RootFrame.Navigated += RootFrame_Navigated;
+            CheckCorrectButton();
+        }
+
+        private void CheckCorrectButton()
+        {
+            if (RootFrame?.CurrentSourcePageType == typeof(BusMapPage))
+                MapButton.IsChecked = true;
+            else if (RootFrame?.CurrentSourcePageType == typeof(RoutesPage))
+                RoutesButton.IsChecked = true;
+            else if (RootFrame?.CurrentSourcePageType == typeof(SettingsPage))
+                SettingsButton.IsChecked = true;
             else
             {
-                ((App)(App.Current)).RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
+                MapButton.IsChecked = false;
+                RoutesButton.IsChecked = false;
+                SettingsButton.IsChecked = false;
             }
         }
 
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
         {
-            ((App)(App.Current)).RootFrame.Navigate(typeof(SettingsPage));
+            CheckCorrectButton();
         }
     }
 }

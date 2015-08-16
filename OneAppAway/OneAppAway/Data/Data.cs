@@ -65,6 +65,14 @@ namespace OneAppAway
             return totalFoundStops.ToArray();
         }
 
+        public static async Task<RealtimeArrival[]> GetArrivals(string stopId, CancellationToken cancellationToken)
+        {
+            if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.None)
+                return (await FileManager.GetScheduledArrivals(stopId)).ToArray();
+            else
+                return await ApiLayer.GetBusArrivals(stopId, cancellationToken);
+        }
+
         public static async Task<WeekSchedule> GetScheduleForStop(string id, CancellationToken cancellationToken)
         {
             WeekSchedule result = new WeekSchedule();
@@ -103,7 +111,7 @@ namespace OneAppAway
         {
             if (CachedTransitAgencies.ContainsKey(id))
                 return CachedTransitAgencies[id];
-            var result = await ApiLayer.GetTransitAgency(id, cancellationToken);
+            var result = (await ApiLayer.GetTransitAgencies(cancellationToken)).First(agency => agency.ID == id);
             if (!CachedTransitAgencies.ContainsKey(id))
                 CachedTransitAgencies.Add(id, result);
             return result;

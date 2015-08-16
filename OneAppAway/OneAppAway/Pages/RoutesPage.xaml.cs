@@ -30,6 +30,7 @@ namespace OneAppAway
     {
         private bool CanNavigateAway = true;
         private bool IsPhoneProgressBarShown = false;
+        private Task<RouteListing[]> DownloadsTask;
 
         public RoutesPage()
         {
@@ -56,7 +57,7 @@ namespace OneAppAway
             if (!CanNavigateAway)
             {
                 e.Cancel = true;
-                MessageDialog dialog = new MessageDialog("If you leave this page, the downloads will stop. Are you sure you want to leave?", "Downloads in Progress");
+                MessageDialog dialog = new MessageDialog("If you leave this page, the downloads will pause. You can resume them later. Are you sure you want to leave?", "Downloads in Progress");
                 dialog.Commands.Add(new UICommand("Yes", new UICommandInvokedHandler((cmd) => CanNavigateAway = true)));
                 dialog.Commands.Add(new UICommand("No", new UICommandInvokedHandler((cmd) => CanNavigateAway = false)));
                 await dialog.ShowAsync();
@@ -151,7 +152,8 @@ namespace OneAppAway
             var cancellationToken = DownloadsCancellationTokenSource.Token;
             VisualStateManager.GoToState(this, "DownloadingState", true);
             var items = MainList.Items.Where(item => ((item as RouteListing)?.IsChecked).GetValueOrDefault(false)).Select(item => (RouteListing)item).ToArray();
-            var errors = await DownloadManager.DownloadAll(async (p, m) => await SetProgress(p, m), cancellationToken, items);
+            DownloadsTask = DownloadManager.DownloadAll(async (p, m) => await SetProgress(p, m), cancellationToken, items);
+            var errors = await DownloadsTask;
             if (cancellationToken.IsCancellationRequested)
             {
                 await SetProgress(1, "Cancelled");
@@ -167,8 +169,14 @@ namespace OneAppAway
             }
             else
             {
+                bool checkMode = false;
                 foreach (RouteListing listing in MainList.Items)
-                    listing.IsChecked = false;
+                    checkMode = checkMode || (listing.IsChecked = listing.IsDownloaded == DownloadStatus.Downloading);
+                if (checkMode)
+                    VisualStateManager.GoToState(this, "SelectingState", true);
+                else
+                    VisualStateManager.GoToState(this, "NotSelectingState", true);
+
             }
         }
 
@@ -219,13 +227,32 @@ namespace OneAppAway
         {
             DeleteButton.Visibility = DownloadButton.Visibility = (SelectionStates.CurrentState?.Name == "SelectingState" && !(DownloadingStates.CurrentState?.Name == "DownloadingState")) ? Visibility.Visible : Visibility.Collapsed;
             AgencyBar.Visibility = (SelectionStates.CurrentState?.Name == "SelectingState" || DownloadingStates.CurrentState?.Name == "DownloadingState") ? Visibility.Collapsed : Visibility.Visible;
-            CheckToggle.Visibility = SelectAllButton.Visibility = (DownloadingStates.CurrentState?.Name == "DownloadingState") ? Visibility.Collapsed : Visibility.Visible;
-            CancelButton.Visibility = (DownloadingStates.CurrentState?.Name == "DownloadingState") ? Visibility.Visible : Visibility.Collapsed;
+            InvertSelectionButton.Visibility = SelectDownloadedButton.Visibility = SelectNotDownloadedButton.Visibility = SelectDownloadingButton.Visibility = CheckToggle.Visibility = SelectAllButton.Visibility = (DownloadingStates.CurrentState?.Name == "DownloadingState") ? Visibility.Collapsed : Visibility.Visible;
+            PauseButton.Visibility = CancelButton.Visibility = (DownloadingStates.CurrentState?.Name == "DownloadingState") ? Visibility.Visible : Visibility.Collapsed;
             CheckToggle.IsChecked = SelectionStates.CurrentState?.Name == "SelectingState";
             CanNavigateAway = (DownloadingStates.CurrentState?.Name != "DownloadingState");
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private async void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            var cancel = true;
+            MessageDialog dialog = new MessageDialog("This will stop downloading and delete what was downloaded of the selected routes. Are you sure?", "Cancel Downloads?");
+            dialog.Commands.Add(new UICommand("Yes", new UICommandInvokedHandler((cmd) => cancel = false)));
+            dialog.Commands.Add(new UICommand("No", new UICommandInvokedHandler((cmd) => cancel = true)));
+            await dialog.ShowAsync();
+            if (cancel) return;
+            LoadingRect.Visibility = Visibility.Visible;
+            MainProgressRing.IsActive = true;
+            DownloadsCancellationTokenSource.Cancel();
+            DownloadsCancellationTokenSource = new CancellationTokenSource();
+            await DownloadsTask;
+            var items = MainList.Items.Where(item => ((item as RouteListing)?.IsChecked).GetValueOrDefault(false)).Select(item => (RouteListing)item).ToArray();
+            await DownloadManager.DeleteRoutes(items);
+            MainProgressRing.IsActive = false;
+            LoadingRect.Visibility = Visibility.Collapsed;
+        }
+
+        private void PauseButton_Click(object sender, RoutedEventArgs e)
         {
             DownloadsCancellationTokenSource.Cancel();
             DownloadsCancellationTokenSource = new CancellationTokenSource();
@@ -245,6 +272,38 @@ namespace OneAppAway
                 await DownloadManager.DeleteRoutes(items);
             MainProgressRing.IsActive = false;
             LoadingRect.Visibility = Visibility.Collapsed;
+        }
+
+        private void InvertSelectionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckToggle.IsChecked.Value)
+                CheckToggle.IsChecked = true;
+            foreach (RouteListing listing in MainList.Items)
+                listing.IsChecked = !listing.IsChecked;
+        }
+
+        private void SelectDownloadedButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckToggle.IsChecked.Value)
+                CheckToggle.IsChecked = true;
+            foreach (RouteListing listing in MainList.Items)
+                listing.IsChecked = listing.IsDownloaded == DownloadStatus.Downloaded;
+        }
+
+        private void SelectNotDownloadedButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckToggle.IsChecked.Value)
+                CheckToggle.IsChecked = true;
+            foreach (RouteListing listing in MainList.Items)
+                listing.IsChecked = listing.IsDownloaded == DownloadStatus.NotDownloaded;
+        }
+
+        private void SelectDownloadingButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckToggle.IsChecked.Value)
+                CheckToggle.IsChecked = true;
+            foreach (RouteListing listing in MainList.Items)
+                listing.IsChecked = listing.IsDownloaded == DownloadStatus.Downloading;
         }
     }
 }

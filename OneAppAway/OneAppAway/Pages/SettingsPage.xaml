@@ -30,8 +30,8 @@
                 <Rectangle Fill="DarkGray" Height="2" Margin="5"/>
 
                 <TextBlock FontSize="16" Margin="5">On the map page...</TextBlock>
-                <ToggleSwitch Margin="30,5,5,5" OffContent="Manually scan map for stops" OnContent="Automatically scan map for stops"/>
-                <TextBlock TextWrapping="WrapWholeWords" Margin="5,5,5,5">When this is off, a button to scan map for stops will be shown on the map.</TextBlock>
+                <ToggleSwitch x:Name="DelayDownloadingStopsNormalBandwidthSwitch" Margin="30,5,5,5" OffContent="Manually download stop list" OnContent="Automatically download stop list" Toggled="DelayDownloadingStopsNormalBandwidthSwitch_Toggled"/>
+                <TextBlock TextWrapping="WrapWholeWords" Margin="5,5,5,5">When this is off, a button to scan map for stops will be shown on the map. Stops for routes that you downloaded will always automatically show up.</TextBlock>
 
                 <Rectangle Fill="DarkGray" Height="2" Margin="5"/>
 
@@ -62,8 +62,8 @@
                 <Rectangle Fill="DarkGray" Height="2" Margin="5"/>
 
                 <TextBlock FontSize="16" Margin="5">On the map page...</TextBlock>
-                <ToggleSwitch Margin="30,5,5,5" OffContent="Manually scan map for stops" OnContent="Automatically scan map for stops"/>
-                <TextBlock TextWrapping="WrapWholeWords" Margin="5,5,5,5">When this is off, a button to scan map for stops will be shown on the map.</TextBlock>
+                <ToggleSwitch x:Name="DelayDownloadingStopsLowBandwidthSwitch" Margin="30,5,5,5" OffContent="Manually download stop list" OnContent="Automatically download stop list" Toggled="DelayDownloadingStopsLowBandwidthSwitch_Toggled"/>
+                <TextBlock TextWrapping="WrapWholeWords" Margin="5,5,5,5">When this is off, a button to scan map for stops will be shown on the map. Stops for routes that you downloaded will always automatically show up.</TextBlock>
             </StackPanel>
         </ItemsControl>
     </ScrollViewer>

@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="16469AlexKven.14062E657A0DF" Publisher="CN=81569EFF-4F9B-4E3C-ABA4-C4271AC0D1B2" Version="0.1.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="16469AlexKven.14062E657A0DF" Publisher="CN=81569EFF-4F9B-4E3C-ABA4-C4271AC0D1B2" Version="0.2.0.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="07febcd3-a852-488d-8b77-9d59c779fab6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>OneAppAway</DisplayName>

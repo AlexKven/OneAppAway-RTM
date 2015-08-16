@@ -26,5 +26,32 @@ namespace OneAppAway
         {
             this.InitializeComponent();
         }
+
+        private bool IsLoading = true;
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            IsLoading = true;
+            DelayDownloadingStopsNormalBandwidthSwitch.IsOn = !SettingsManager.GetSetting<bool>("NormalBandwidth.ManuallyDownloadStops", false, false);
+            DelayDownloadingStopsLowBandwidthSwitch.IsOn = !SettingsManager.GetSetting<bool>("LowBandwidth.ManuallyDownloadStops", false, false);
+            IsLoading = false;
+        }
+
+        private void DelayDownloadingStopsNormalBandwidthSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoading)
+            {
+                SettingsManager.SetSetting<bool>("NormalBandwidth.ManuallyDownloadStops", false, !DelayDownloadingStopsNormalBandwidthSwitch.IsOn);
+            }
+        }
+
+        private void DelayDownloadingStopsLowBandwidthSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoading)
+            {
+                SettingsManager.SetSetting<bool>("LowBandwidth.ManuallyDownloadStops", false, !DelayDownloadingStopsLowBandwidthSwitch.IsOn);
+            }
+        }
     }
 }

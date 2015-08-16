@@ -47,7 +47,11 @@ namespace OneAppAway
         public static BandwidthOptions BandwidthSettingStatic
         {
             get { return (BandwidthOptions)SettingsManager.GetSetting<int>("BandwidthOptions", false); }
-            set { SettingsManager.SetSetting<int>("BandwidthOptions", false, (int)(value)); }
+            set
+            {
+                SettingsManager.SetSetting<int>("BandwidthOptions", false, (int)(value));
+                BandwidthManager.OnEffectiveBandwidthOptionsChanged();
+            }
         }
 
         public static event EventHandler BandwidthSettingsChanged;

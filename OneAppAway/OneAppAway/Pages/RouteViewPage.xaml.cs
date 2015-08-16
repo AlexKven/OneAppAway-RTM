@@ -29,6 +29,7 @@ namespace OneAppAway
         public RouteViewPage()
         {
             this.InitializeComponent();
+            MainMap.MapControl.ZoomInteractionMode = MapInteractionMode.GestureAndControl;
         }
 
         private CancellationTokenSource MasterCancellationTokenSource = new CancellationTokenSource();

@@ -124,18 +124,21 @@ namespace OneAppAway
         {
             FileManager.PendingDownloads.RemoveAll(item => routeListings.Select(listing => listing.Route.ID).Contains(item.FirstOrDefault()));
             await FileManager.SavePendingDownloads();
-            List<string> stops = new List<string>();
+            List<string> stopIds = new List<string>();
             foreach (var listing in routeListings)
             {
-                stops.AddRange(await FileManager.GetCachedStopIdsForRoute(listing.Route));
+                stopIds.AddRange(await FileManager.GetCachedStopIdsForRoute(listing.Route));
             }
             var routes = routeListings.Select(rl => rl.Route.ID).ToArray();
-            foreach (var stopId in stops)
+            List<BusStop> stops = new List<BusStop>();
+            foreach (var stopId in stopIds)
             {
                 BusStop? stop = await FileManager.GetStopFromCache(stopId);
                 if (stop != null)
-                    await FileManager.DeleteSchedule(stop.Value, routes);
+                    stops.Add(stop.Value);
             }
+            await FileManager.DeleteSchedules(stops.ToArray(), routes);
+
             await FileManager.RemoveRoutesFromCache(routes);
             foreach (var listing in routeListings)
                 await listing.RefreshIsDownloaded();

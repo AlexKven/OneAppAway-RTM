@@ -6,9 +6,9 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="Background" />
+    <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="BandwidthSetting" />
     <RootPropertyPathName Name="Progress" />
-    <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Route" />
     <RootPropertyPathName Name="ShowProgress" />
     <RootPropertyPathName Name="IsDownloaded" />
@@ -102,6 +102,7 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="IsHitTestVisible" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
     <RootType FullName="OneAppAway.Converters.LightenColorConverter" />
     <RootType FullName="OneAppAway.Converters.ColorToBrushConverter" />
@@ -143,13 +144,13 @@
       <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="OneAppAway.BusArrivalBox" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
       <RootProperty Name="TransitFeaturesVisible" />
       <RootProperty Name="PedestrianFeaturesVisible" />
       <RootProperty Name="TiltInteractionMode" />
       <RootProperty Name="RotateInteractionMode" />
+      <RootProperty Name="ZoomInteractionMode" />
       <RootEvent Name="MapElementClick" />
       <RootEvent Name="SizeChanged" />
       <RootEvent Name="ZoomLevelChanged" />
@@ -212,6 +213,20 @@
       <RootProperty Name="Tag" />
       <RootEvent Name="Click" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="Template" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="IsChecked" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
+      <RootEvent Name="Checked" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
@@ -222,10 +237,29 @@
       <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="OneAppAway.HamburgerBar" />
+    <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Visibility" />
+      <RootMethod Name="GetAlignRightWithPanel" />
+      <RootMethod Name="SetAlignRightWithPanel" />
+      <RootMethod Name="GetAlignTopWithPanel" />
+      <RootMethod Name="SetAlignTopWithPanel" />
+      <RootMethod Name="GetLeftOf" />
+      <RootMethod Name="SetLeftOf" />
+      <RootMethod Name="GetAlignBottomWith" />
+      <RootMethod Name="SetAlignBottomWith" />
+      <RootMethod Name="GetAlignLeftWithPanel" />
+      <RootMethod Name="SetAlignLeftWithPanel" />
+      <RootMethod Name="GetBelow" />
+      <RootMethod Name="SetBelow" />
+      <RootMethod Name="GetAlignBottomWithPanel" />
+      <RootMethod Name="SetAlignBottomWithPanel" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="Background" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalScrollMode" />
       <RootProperty Name="HorizontalScrollMode" />
       <RootProperty Name="HorizontalScrollBarVisibility" />
@@ -237,15 +271,7 @@
       <RootMethod Name="GetSnapInterval" />
       <RootMethod Name="SetSnapInterval" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
-      <RootProperty Name="Points" />
-      <RootProperty Name="Fill" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
     <RootType FullName="OneAppAway.MultiStopArrivalsBox">
-      <RootProperty Name="Opacity" />
-      <RootProperty Name="RenderTransform" />
       <RootEvent Name="CloseRequested" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
@@ -316,6 +342,11 @@
       <RootProperty Name="RequestedTheme" />
       <RootEvent Name="SizeChanged" />
     </RootType>
+    <RootType FullName="OneAppAway.PopupStopArrivalsBox">
+      <RootProperty Name="Opacity" />
+      <RootProperty Name="RenderTransform" />
+      <RootEvent Name="CloseRequested" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
@@ -344,22 +375,11 @@
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="OneAppAway.BusMapPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
-      <RootProperty Name="Background" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Children" />
-      <RootMethod Name="GetBelow" />
-      <RootMethod Name="SetBelow" />
-      <RootMethod Name="GetAlignLeftWithPanel" />
-      <RootMethod Name="SetAlignLeftWithPanel" />
-      <RootMethod Name="GetAlignRightWithPanel" />
-      <RootMethod Name="SetAlignRightWithPanel" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="SecondaryCommands" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="ClosedDisplayMode" />
-      <RootProperty Name="SecondaryCommands" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
       <RootProperty Name="Icon" />
@@ -384,15 +404,11 @@
     </RootType>
     <RootType FullName="OneAppAway.RoutesPage" />
     <RootType FullName="OneAppAway.RouteViewPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
-      <RootProperty Name="IsChecked" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
       <RootProperty Name="Margin" />
       <RootProperty Name="OffContent" />
       <RootProperty Name="OnContent" />
+      <RootEvent Name="Toggled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />
@@ -421,5 +437,11 @@
     </RootType>
     <RootType FullName="OneAppAway.StopViewPage" />
     <RootType FullName="OneAppAway.TestPage" />
+    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
+      <RootProperty Name="Points" />
+      <RootProperty Name="Fill" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
   </Roots.RootTypes>
 </Roots>

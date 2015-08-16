@@ -87,6 +87,7 @@ namespace OneAppAway
 
                 // Place the frame in the current Window
                 MainHamburgerBar.Content = RootFrame;
+                MainHamburgerBar.SetRootFrame(RootFrame);
             }
 
             if (RootFrame.Content == null)

@@ -11,6 +11,6 @@
     d:DesignWidth="500">
 
     <Grid x:Name="MainGrid">
-        <Maps:MapControl Grid.RowSpan="2" TransitFeaturesVisible="False" PedestrianFeaturesVisible="True" TiltInteractionMode="Disabled" MapElementClick="MainMap_MapElementClick" SizeChanged="MainMap_SizeChanged" ZoomLevelChanged="MainMap_ZoomLevelChanged" CenterChanged="MainMap_CenterChanged" RotateInteractionMode="Disabled" x:Name="MainMap"/>
+        <Maps:MapControl Grid.RowSpan="2" TransitFeaturesVisible="False" PedestrianFeaturesVisible="True" TiltInteractionMode="Disabled" MapElementClick="MainMap_MapElementClick" SizeChanged="MainMap_SizeChanged" ZoomLevelChanged="MainMap_ZoomLevelChanged" CenterChanged="MainMap_CenterChanged" RotateInteractionMode="Disabled" ZoomInteractionMode="GestureOnly" x:Name="MainMap"/>
     </Grid>
 </UserControl>
