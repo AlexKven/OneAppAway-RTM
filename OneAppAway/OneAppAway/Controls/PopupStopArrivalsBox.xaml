@@ -9,12 +9,19 @@
     d:DesignHeight="300"
     d:DesignWidth="400" RequestedTheme="Dark">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Rectangle Fill="#EE333333"/>
-        <local:MultiStopArrivalsBox x:Name="ArrivalsBox" CloseRequested="ArrivalsBox_CloseRequested"/>
-        <Polygon Grid.Row="1" Points="0, 0, 30, 30, 60, 0" Fill="#EE333333" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Rectangle Fill="#EE333333" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="CloseButton"  RequestedTheme="Dark" Background="Red" Foreground="White" Width="35" Height="35" FontFamily="Segoe UI Symbol" FontSize="16" Click="CloseButton_Click" Grid.Column="1">❌</Button>
+        <TextBlock x:Name="CaptionBox" VerticalAlignment="Center" FontSize="16" Margin="2" />
+        <local:MultiStopArrivalsBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="ArrivalsBox"/>
+        <Polygon Grid.Row="2" Grid.ColumnSpan="2" Points="0, 0, 30, 30, 60, 0" Fill="#EE333333" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>

@@ -46,7 +46,7 @@ namespace OneAppAway
                 {
                     lastRoute = item.Route;
                     lastDestination = item.Destination;
-                    typedSender.MainStackPanel.Children.Add(new TextBlock() { Text = (await Data.GetRoute(lastRoute, typedSender.MasterCancellationTokenSource.Token)).Name + " to " + lastDestination, FontSize = 18, Foreground = new SolidColorBrush(lighten(accentColor)), TextWrapping = TextWrapping.WrapWholeWords });
+                    typedSender.MainStackPanel.Children.Add(new TextBlock() { Text = (await Data.GetRoute(lastRoute, typedSender.MasterCancellationTokenSource.Token)).Value.Name + " to " + lastDestination, FontSize = 18, Foreground = new SolidColorBrush(lighten(accentColor)), TextWrapping = TextWrapping.WrapWholeWords });
                     timesControl = new ItemsControl();
                     typedSender.MainStackPanel.Children.Add(timesControl);
                 }

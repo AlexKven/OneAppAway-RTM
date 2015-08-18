@@ -602,7 +602,6 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             case 36:   //  OneAppAway.MultiStopArrivalsBox
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
                 userType.Activator = Activate_36_MultiStopArrivalsBox;
-                userType.AddMemberName("Caption");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -659,6 +658,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
                 userType.Activator = Activate_43_StopArrivalsBox;
                 userType.AddMemberName("Stop");
+                userType.AddMemberName("HideTitle");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -962,95 +962,95 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
         {
             global::OneAppAway.ScrollViewerSnapping.SetSnapInterval((global::Windows.UI.Xaml.Controls.ScrollViewer)instance, (global::System.Double)Value);
         }
-        private object get_23_MultiStopArrivalsBox_Caption(object instance)
-        {
-            var that = (global::OneAppAway.MultiStopArrivalsBox)instance;
-            return that.Caption;
-        }
-        private void set_23_MultiStopArrivalsBox_Caption(object instance, object Value)
-        {
-            var that = (global::OneAppAway.MultiStopArrivalsBox)instance;
-            that.Caption = (global::System.String)Value;
-        }
-        private object get_24_RouteListingControl_IsChecked(object instance)
+        private object get_23_RouteListingControl_IsChecked(object instance)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             return that.IsChecked;
         }
-        private void set_24_RouteListingControl_IsChecked(object instance, object Value)
+        private void set_23_RouteListingControl_IsChecked(object instance, object Value)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             that.IsChecked = (global::System.Boolean)Value;
         }
-        private object get_25_RouteListingControl_Route(object instance)
+        private object get_24_RouteListingControl_Route(object instance)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             return that.Route;
         }
-        private void set_25_RouteListingControl_Route(object instance, object Value)
+        private void set_24_RouteListingControl_Route(object instance, object Value)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             that.Route = (global::OneAppAway.BusRoute)Value;
         }
-        private object get_26_RouteListingControl_Progress(object instance)
+        private object get_25_RouteListingControl_Progress(object instance)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             return that.Progress;
         }
-        private void set_26_RouteListingControl_Progress(object instance, object Value)
+        private void set_25_RouteListingControl_Progress(object instance, object Value)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             that.Progress = (global::System.Double)Value;
         }
-        private object get_27_RouteListingControl_ShowCheckBox(object instance)
+        private object get_26_RouteListingControl_ShowCheckBox(object instance)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             return that.ShowCheckBox;
         }
-        private void set_27_RouteListingControl_ShowCheckBox(object instance, object Value)
+        private void set_26_RouteListingControl_ShowCheckBox(object instance, object Value)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             that.ShowCheckBox = (global::System.Boolean)Value;
         }
-        private object get_28_RouteListingControl_ShowProgress(object instance)
+        private object get_27_RouteListingControl_ShowProgress(object instance)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             return that.ShowProgress;
         }
-        private void set_28_RouteListingControl_ShowProgress(object instance, object Value)
+        private void set_27_RouteListingControl_ShowProgress(object instance, object Value)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             that.ShowProgress = (global::System.Boolean)Value;
         }
-        private object get_29_RouteListingControl_IsDownloaded(object instance)
+        private object get_28_RouteListingControl_IsDownloaded(object instance)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             return that.IsDownloaded;
         }
-        private void set_29_RouteListingControl_IsDownloaded(object instance, object Value)
+        private void set_28_RouteListingControl_IsDownloaded(object instance, object Value)
         {
             var that = (global::OneAppAway.RouteListingControl)instance;
             that.IsDownloaded = (global::OneAppAway.DownloadStatus)Value;
         }
-        private object get_30_ScheduleBrowser_Schedule(object instance)
+        private object get_29_ScheduleBrowser_Schedule(object instance)
         {
             var that = (global::OneAppAway.ScheduleBrowser)instance;
             return that.Schedule;
         }
-        private void set_30_ScheduleBrowser_Schedule(object instance, object Value)
+        private void set_29_ScheduleBrowser_Schedule(object instance, object Value)
         {
             var that = (global::OneAppAway.ScheduleBrowser)instance;
             that.Schedule = (global::OneAppAway.DaySchedule)Value;
         }
-        private object get_31_StopArrivalsBox_Stop(object instance)
+        private object get_30_StopArrivalsBox_Stop(object instance)
         {
             var that = (global::OneAppAway.StopArrivalsBox)instance;
             return that.Stop;
         }
-        private void set_31_StopArrivalsBox_Stop(object instance, object Value)
+        private void set_30_StopArrivalsBox_Stop(object instance, object Value)
         {
             var that = (global::OneAppAway.StopArrivalsBox)instance;
             that.Stop = (global::OneAppAway.BusStop)Value;
+        }
+        private object get_31_StopArrivalsBox_HideTitle(object instance)
+        {
+            var that = (global::OneAppAway.StopArrivalsBox)instance;
+            return that.HideTitle;
+        }
+        private void set_31_StopArrivalsBox_HideTitle(object instance, object Value)
+        {
+            var that = (global::OneAppAway.StopArrivalsBox)instance;
+            that.HideTitle = (global::System.Boolean)Value;
         }
         private object get_32_NavigationFriendlyPage_NavigationHelper(object instance)
         {
@@ -1242,67 +1242,67 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlMember.Getter = get_22_ScrollViewerSnapping_SnapInterval;
                 xamlMember.Setter = set_22_ScrollViewerSnapping_SnapInterval;
                 break;
-            case "OneAppAway.MultiStopArrivalsBox.Caption":
-                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.MultiStopArrivalsBox");
-                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "Caption", "String");
-                xamlMember.Getter = get_23_MultiStopArrivalsBox_Caption;
-                xamlMember.Setter = set_23_MultiStopArrivalsBox_Caption;
-                break;
             case "OneAppAway.RouteListingControl.IsChecked":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.RouteListingControl");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "IsChecked", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_24_RouteListingControl_IsChecked;
-                xamlMember.Setter = set_24_RouteListingControl_IsChecked;
+                xamlMember.Getter = get_23_RouteListingControl_IsChecked;
+                xamlMember.Setter = set_23_RouteListingControl_IsChecked;
                 break;
             case "OneAppAway.RouteListingControl.Route":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.RouteListingControl");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "Route", "OneAppAway.BusRoute");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_25_RouteListingControl_Route;
-                xamlMember.Setter = set_25_RouteListingControl_Route;
+                xamlMember.Getter = get_24_RouteListingControl_Route;
+                xamlMember.Setter = set_24_RouteListingControl_Route;
                 break;
             case "OneAppAway.RouteListingControl.Progress":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.RouteListingControl");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "Progress", "Double");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_26_RouteListingControl_Progress;
-                xamlMember.Setter = set_26_RouteListingControl_Progress;
+                xamlMember.Getter = get_25_RouteListingControl_Progress;
+                xamlMember.Setter = set_25_RouteListingControl_Progress;
                 break;
             case "OneAppAway.RouteListingControl.ShowCheckBox":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.RouteListingControl");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "ShowCheckBox", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_27_RouteListingControl_ShowCheckBox;
-                xamlMember.Setter = set_27_RouteListingControl_ShowCheckBox;
+                xamlMember.Getter = get_26_RouteListingControl_ShowCheckBox;
+                xamlMember.Setter = set_26_RouteListingControl_ShowCheckBox;
                 break;
             case "OneAppAway.RouteListingControl.ShowProgress":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.RouteListingControl");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "ShowProgress", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_28_RouteListingControl_ShowProgress;
-                xamlMember.Setter = set_28_RouteListingControl_ShowProgress;
+                xamlMember.Getter = get_27_RouteListingControl_ShowProgress;
+                xamlMember.Setter = set_27_RouteListingControl_ShowProgress;
                 break;
             case "OneAppAway.RouteListingControl.IsDownloaded":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.RouteListingControl");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "IsDownloaded", "OneAppAway.DownloadStatus");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_29_RouteListingControl_IsDownloaded;
-                xamlMember.Setter = set_29_RouteListingControl_IsDownloaded;
+                xamlMember.Getter = get_28_RouteListingControl_IsDownloaded;
+                xamlMember.Setter = set_28_RouteListingControl_IsDownloaded;
                 break;
             case "OneAppAway.ScheduleBrowser.Schedule":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.ScheduleBrowser");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "Schedule", "OneAppAway.DaySchedule");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_30_ScheduleBrowser_Schedule;
-                xamlMember.Setter = set_30_ScheduleBrowser_Schedule;
+                xamlMember.Getter = get_29_ScheduleBrowser_Schedule;
+                xamlMember.Setter = set_29_ScheduleBrowser_Schedule;
                 break;
             case "OneAppAway.StopArrivalsBox.Stop":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.StopArrivalsBox");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "Stop", "OneAppAway.BusStop");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_31_StopArrivalsBox_Stop;
-                xamlMember.Setter = set_31_StopArrivalsBox_Stop;
+                xamlMember.Getter = get_30_StopArrivalsBox_Stop;
+                xamlMember.Setter = set_30_StopArrivalsBox_Stop;
+                break;
+            case "OneAppAway.StopArrivalsBox.HideTitle":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.StopArrivalsBox");
+                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "HideTitle", "Boolean");
+                xamlMember.Getter = get_31_StopArrivalsBox_HideTitle;
+                xamlMember.Setter = set_31_StopArrivalsBox_HideTitle;
                 break;
             case "OneAppAway.NavigationFriendlyPage.NavigationHelper":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.NavigationFriendlyPage");

@@ -46,6 +46,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" x:Name="CompactHamburgerBar" Height="0" Background="{Binding ElementName=HamburgerBar, Path=Background}">
                         <Button Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50" Click="HamburgerButton_Click"/>
@@ -89,6 +90,8 @@
                         </RadioButton>
                     </StackPanel>
                     <ContentPresenter Grid.Row="1"/>
+                    <Rectangle Grid.Row="2" Fill="{Binding ElementName=HamburgerBar, Path=Background}"/>
+                    <TextBlock RequestedTheme="Dark" Grid.Row="2" TextWrapping="WrapWholeWords">Public transit data powered by OneBusAway.</TextBlock>
                 </Grid>
                 <SplitView.Pane>
                     <StackPanel Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">

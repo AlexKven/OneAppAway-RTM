@@ -242,7 +242,7 @@ namespace OneAppAway
                 var route = routes[i];
                 writer.WriteString(route.Item1.ID);
                 writer.WriteQuotedString(route.Item1.Name);
-                writer.WriteString(route.Item1.ID);
+                writer.WriteString(route.Item1.Description);
                 writer.WriteString(route.Item1.Agency);
                 writer.OpenParens();
                 foreach (var stop in route.Item2)

@@ -46,23 +46,17 @@ namespace OneAppAway
             if (e.Parameter != null && e.Parameter is string)
             {
                 SetPage((string)e.Parameter);
-                RoutesToggle.IsChecked = SettingsManager.GetSetting<bool>("StopViewPage.RoutesToggleChecked", false, true);
-                ArrivalsToggle.IsChecked = SettingsManager.GetSetting<bool>("StopViewPage.ArrivalsToggleChecked", false, true);
-                ScheduleToggle.IsChecked = SettingsManager.GetSetting<bool>("StopViewPage.ScheduleToggleChecked", false, false);
             }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            SettingsManager.SetSetting<bool>("StopViewPage.RoutesToggleChecked", false, RoutesToggle.IsChecked.Value);
-            SettingsManager.SetSetting<bool>("StopViewPage.ArrivalsToggleChecked", false, ArrivalsToggle.IsChecked.Value);
-            SettingsManager.SetSetting<bool>("StopViewPage.ScheduleToggleChecked", false, ScheduleToggle.IsChecked.Value);
         }
 
         private async void SetPage(string stopId)
         {
-            Stop = await Data.GetBusStop(stopId, MasterCancellationTokenSource.Token);
+            Stop = (await Data.GetBusStop(stopId, MasterCancellationTokenSource.Token)).Value;
             TitleBlock.Text = Stop.Name;
             Uri imageUri = new Uri(Stop.Direction == StopDirection.Unspecified ? "ms-appx:///Assets/Icons/BusBase40.png" : "ms-appx:///Assets/Icons/BusDirection" + Stop.Direction.ToString() + "40.png");
             DirectionImage.Source = new BitmapImage(imageUri);
@@ -76,8 +70,8 @@ namespace OneAppAway
             MainMap.ShownStops.Add(Stop);
 #pragma warning disable CS4014
             RefreshRoutes();
-            RefreshArrivals();
-            if (ScheduleToggle.IsChecked.Value && !ScheduleLoaded && BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Normal)
+            ArrivalsBox.Stop = Stop;
+            if (!ScheduleLoaded && BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Normal)
                 GetSchedule();
             else
                 LoadSchedulesButton.Visibility = Visibility.Visible;
@@ -117,28 +111,7 @@ namespace OneAppAway
 
         private void SetColumns()
         {
-            ArrivalsColumn.Width = ArrivalsToggle.IsChecked.Value ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
-            ScheduleColumn.Width = ScheduleToggle.IsChecked.Value ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
-            RoutesColumn.Width = RoutesToggle.IsChecked.Value ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
             SetInnerGridSize();
-        }
-
-        private async Task RefreshArrivals()
-        {
-            ArrivalsProgressIndicator.IsActive = true;
-            var arrivals = await Data.GetArrivals(Stop.ID, MasterCancellationTokenSource.Token);
-            var removals = ArrivalsStackPanel.Children.Where(child => !arrivals.Contains(((BusArrivalBox)child).Arrival));
-            foreach (var item in removals)
-                ArrivalsStackPanel.Children.Remove(item);
-            foreach (var item in arrivals)
-            {
-                if (ArrivalsStackPanel.Children.Any(child => ((BusArrivalBox)child).Arrival == item))
-                    ((BusArrivalBox)ArrivalsStackPanel.Children.First(child => ((BusArrivalBox)child).Arrival == item)).Arrival = item;
-                else
-                    ArrivalsStackPanel.Children.Add(new BusArrivalBox() { Arrival = item });
-            }
-            LastRefreshBox.Text = "Last update: " + DateTime.Now.ToString("h:mm:ss");
-            ArrivalsProgressIndicator.IsActive = false;
         }
 
         private async Task GetSchedule()
@@ -184,8 +157,9 @@ namespace OneAppAway
             RoutesControl.Items.Clear();
             foreach (string rte in Stop.Routes)
             {
-                BusRoute route = await Data.GetRoute(rte, MasterCancellationTokenSource.Token);
-                RoutesControl.Items.Add(new RouteListingTemplateSelector.RouteListing() { Name = route.Name, Description = route.Description, Agency = (await Data.GetTransitAgency(route.Agency, MasterCancellationTokenSource.Token)).Name, RouteId = route.ID });
+                BusRoute? route = await Data.GetRoute(rte, MasterCancellationTokenSource.Token);
+                if (route != null)
+                    RoutesControl.Items.Add(new RouteListingTemplateSelector.RouteListing() { Name = route.Value.Name, Description = route.Value.Description, Agency = (await Data.GetTransitAgency(route.Value.Agency, MasterCancellationTokenSource.Token)).Value.Name, RouteId = route.Value.ID });
             }
             RoutesProgressIndicator.IsActive = false;
         }
@@ -193,22 +167,6 @@ namespace OneAppAway
         private void InnerGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             SetMapCenter();
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-#pragma warning disable CS4014
-            RefreshArrivals();
-            RefreshRoutes();
-#pragma warning restore CS4014
-        }
-
-        private void AppBarToggleButton_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            if (!(ArrivalsToggle.IsChecked.Value || ScheduleToggle.IsChecked.Value || RoutesToggle.IsChecked.Value))
-                ArrivalsToggle.IsChecked = true;
-            else
-                SetColumns();
         }
 
         private async void LoadSchedulesButton_Click(object sender, RoutedEventArgs e)
@@ -219,6 +177,11 @@ namespace OneAppAway
         private void RouteButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(RouteViewPage), ((Button)sender).Tag.ToString());
+        }
+
+        private async void RefreshArrivalsButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ArrivalsBox.RefreshArrivals(true);
         }
     }
 }

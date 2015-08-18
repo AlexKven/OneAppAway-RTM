@@ -22,6 +22,21 @@ namespace OneAppAway
     {
         private BusStop[] Stops = new BusStop[0];
 
+        private void LoadInnerGrid()
+        {
+            if (SingleStopControl == null)
+                SingleStopControl = (Grid)MainGrid.FindName("SingleStopControl");
+        }
+
+        private void LoadInnerScrollViewer()
+        {
+            if (scrollViewer == null)
+            {
+                scrollViewer = (ScrollViewer)MainGrid.FindName("scrollViewer");
+                //ItemsPanel = (StackPanel)scrollViewer.FindName("ItemsPanel");
+            }
+        }
+
         public MultiStopArrivalsBox()
         {
             this.InitializeComponent();
@@ -35,48 +50,29 @@ namespace OneAppAway
         public void SetStops(params BusStop[] stops)
         {
             Stops = stops.ToArray();
-            ItemsPanel.Children.Clear();
-            SingleStopControl.Children.Clear();
-            scrollViewer.HorizontalScrollBarVisibility = stops.Length == 1 ? ScrollBarVisibility.Hidden : ScrollBarVisibility.Auto;
-            scrollViewer.HorizontalScrollMode = stops.Length == 1 ? ScrollMode.Disabled : ScrollMode.Enabled;
+            //scrollViewer.HorizontalScrollBarVisibility = stops.Length == 1 ? ScrollBarVisibility.Hidden : ScrollBarVisibility.Auto;
+            //scrollViewer.HorizontalScrollMode = stops.Length == 1 ? ScrollMode.Disabled : ScrollMode.Enabled;
             foreach (BusStop stop in stops)
             {
                 StopArrivalsBox box = new StopArrivalsBox() { Stop = stop };
+                if (SingleStopControl != null)
+                    SingleStopControl.Children.Clear();
+                if (ItemsPanel != null)
+                    ItemsPanel.Children.Clear();
                 if (stops.Length == 1)
                 {
                     //Binding sizeBinding = new Binding() { Source = SingleStopControl, Path = new PropertyPath("ActualWidth"), Mode = BindingMode.OneWay };
                     //box.SetBinding(FrameworkElement.WidthProperty, sizeBinding);
+                    LoadInnerGrid();
                     SingleStopControl.Children.Add(box);
                 }
                 else
                 {
                     box.Width = 285;
+                    LoadInnerScrollViewer();
                     ItemsPanel.Children.Add(box);
                 }
             }
-            if (_Caption == null)
-                CaptionBox.Text = Stops.Length.ToString() + (Stops.Length == 1 ? " Stop" : " Stops");
         }
-
-        private string _Caption = null;
-        public string Caption
-        {
-            get { return _Caption; }
-            set
-            {
-                _Caption = value;
-                if (_Caption == null)
-                    CaptionBox.Text = Stops.Length.ToString() + (Stops.Length == 1 ? " Stop" : " Stops");
-                else
-                    CaptionBox.Text = _Caption;
-            }
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (CloseRequested != null) CloseRequested(this, new EventArgs());
-        }
-
-        public event EventHandler CloseRequested;
     }
 }

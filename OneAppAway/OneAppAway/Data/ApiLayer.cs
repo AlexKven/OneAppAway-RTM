@@ -31,10 +31,10 @@ namespace OneAppAway
             return new BusStop() { Position = new BasicGeoposition() { Latitude = double.Parse(lat), Longitude = double.Parse(lon) }, Direction = direction == null ? StopDirection.Unspecified : (StopDirection)Enum.Parse(typeof(StopDirection), direction), Name = name, ID = id, Code = code, LocationType = int.Parse(locationType), Routes = routeIds.ToArray() };
         }
 
-        public static async Task<string> SendRequest(string compactRequest, Dictionary<string, string> parameters, CancellationToken cancellationToken)
+        public static async Task<string> SendRequest(string compactRequest, Dictionary<string, string> parameters, bool includeReferences, CancellationToken cancellationToken)
         {
             HttpClient client = new HttpClient();
-            string request = "http://api.pugetsound.onebusaway.org/api/where/" + compactRequest + ".xml?key=" + Keys.ObaKey + parameters?.Aggregate("", (acc, item) => acc + "&" + item.Key + "=" + item.Value) ?? "";
+            string request = "http://api.pugetsound.onebusaway.org/api/where/" + compactRequest + ".xml?key=" + Keys.ObaKey + parameters?.Aggregate("", (acc, item) => acc + "&" + item.Key + "=" + item.Value) ?? "" + "includeReferences=" + (includeReferences ? "true" : "false");
             var resp = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, request), cancellationToken);
             if (cancellationToken.IsCancellationRequested) return null;
             return await resp.Content.ReadAsStringAsync();
@@ -43,7 +43,7 @@ namespace OneAppAway
         public static async Task<BusStop[]> GetBusStopsForArea(BasicGeoposition center, double latSpan, double lonSpan, CancellationToken cancellationToken)
         {
             List<BusStop> result = new List<BusStop>();
-            var responseString = await SendRequest("stops-for-location", new Dictionary<string, string>() { ["lat"] = center.Latitude.ToString(), ["lon"] = center.Longitude.ToString(), ["latSpan"] = latSpan.ToString(), ["lonSpan"] = lonSpan.ToString() }, cancellationToken);
+            var responseString = await SendRequest("stops-for-location", new Dictionary<string, string>() { ["lat"] = center.Latitude.ToString(), ["lon"] = center.Longitude.ToString(), ["latSpan"] = latSpan.ToString(), ["lonSpan"] = lonSpan.ToString() }, false, cancellationToken);
             if (cancellationToken.IsCancellationRequested)
                 return null;
 
@@ -58,15 +58,13 @@ namespace OneAppAway
             {
                 result.Add(ParseBusStop(el1));
             }
-
-            XElement elRoutes = el.Element("references").Element("routes");
             return result.ToArray();
         }
 
         public static async Task<RealtimeArrival[]> GetBusArrivals(string id, CancellationToken cancellationToken)
         {
             List<RealtimeArrival> result = new List<RealtimeArrival>();
-            StringReader reader = new StringReader(await SendRequest("arrivals-and-departures-for-stop/" + id, null, cancellationToken));
+            StringReader reader = new StringReader(await SendRequest("arrivals-and-departures-for-stop/" + id, null, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
                 return null;
 
@@ -100,9 +98,9 @@ namespace OneAppAway
             return result.ToArray();
         }
 
-        public static async Task<BusStop> GetBusStop(string id, CancellationToken cancellationToken)
+        public static async Task<BusStop?> GetBusStop(string id, CancellationToken cancellationToken)
         {
-            StringReader reader = new StringReader(await SendRequest("stop/" + id, null, cancellationToken));
+            StringReader reader = new StringReader(await SendRequest("stop/" + id, null, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
                 return new BusStop();
 
@@ -124,9 +122,9 @@ namespace OneAppAway
             return new BusStop() { Position = new BasicGeoposition() { Latitude = double.Parse(lat), Longitude = double.Parse(lon) }, Direction = direction == null ? StopDirection.Unspecified : (StopDirection)Enum.Parse(typeof(StopDirection), direction), Name = name, ID = id, Code = code, LocationType = int.Parse(locationType), Routes = routeIds.ToArray() };
         }
 
-        public static async Task<BusRoute> GetBusRoute(string id, CancellationToken cancellationToken)
+        public static async Task<BusRoute?> GetBusRoute(string id, CancellationToken cancellationToken)
         {
-            StringReader reader = new StringReader(await SendRequest("route/" + id, null, cancellationToken));
+            StringReader reader = new StringReader(await SendRequest("route/" + id, null, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
                 return new BusRoute();
 
@@ -146,7 +144,7 @@ namespace OneAppAway
         public static async Task<BusRoute[]> GetBusRoutes(string agencyId, CancellationToken cancellationToken)
         {
             List<BusRoute> result = new List<BusRoute>();
-            StringReader reader = new StringReader(await SendRequest("routes-for-agency/" + agencyId, null, cancellationToken));
+            StringReader reader = new StringReader(await SendRequest("routes-for-agency/" + agencyId, null, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
                 return null;
 
@@ -166,24 +164,15 @@ namespace OneAppAway
             return result.ToArray();
         }
 
-        public static async Task<TransitAgency> GetTransitAgency(string id, CancellationToken cancellationToken)
+        public static async Task<TransitAgency?> GetTransitAgency(string id, CancellationToken cancellationToken)
         {
-            StringReader reader = new StringReader(await SendRequest("agency/" + id, null, cancellationToken));
-            if (cancellationToken.IsCancellationRequested)
-                return new TransitAgency();
-
-            XDocument xDoc = XDocument.Load(reader);
-
-            XElement el = xDoc.Element("response").Element("data").Element("entry");
-            string agencyName = el.Element("name")?.Value;
-            string agencyUrl = el.Element("url")?.Value;
-            return new TransitAgency() { ID = id, Name = agencyName, Url = agencyUrl};
+            return (await ApiLayer.GetTransitAgencies(cancellationToken)).First(agency => agency.ID == id);
         }
 
         public static async Task<TransitAgency[]> GetTransitAgencies(CancellationToken cancellationToken)
         {
             List<TransitAgency> result = new List<TransitAgency>();
-            StringReader reader = new StringReader(await SendRequest("agencies-with-coverage", null, cancellationToken));
+            StringReader reader = new StringReader(await SendRequest("agencies-with-coverage", null, true, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
                 return null;
 
@@ -200,12 +189,12 @@ namespace OneAppAway
             return result.ToArray();
         }
 
-        public static async Task<Tuple<BusStop[], string[]>> GetStopsForRoute(string route, CancellationToken cancellationToken)
+        public static async Task<Tuple<BusStop[], string[]>> GetStopsAndShapesForRoute(string route, CancellationToken cancellationToken)
         {
             List<BusStop> result = new List<BusStop>();
             List<string> shapeResult = new List<string>();
 
-            string responseString = await SendRequest("stops-for-route/" + route, null, cancellationToken);
+            string responseString = await SendRequest("stops-for-route/" + route, null, true, cancellationToken);
             if (cancellationToken.IsCancellationRequested)
                 return null;
 
@@ -226,7 +215,7 @@ namespace OneAppAway
 
         public static async Task<string> GetShape(string id, CancellationToken cancellationToken)
         {
-            StringReader reader = new StringReader(await SendRequest("shape/" + id, null, cancellationToken));
+            StringReader reader = new StringReader(await SendRequest("shape/" + id, null, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
                 return null;
 

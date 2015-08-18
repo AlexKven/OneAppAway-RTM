@@ -101,8 +101,8 @@ namespace OneAppAway
             // Ensure the current window is active
             Window.Current.Content = MainHamburgerBar;
             Window.Current.Activate();
+            BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             SetTitleBar();
-            var opts = BandwidthManager.EffectiveBandwidthOptions;
         }
 
         /// <summary>

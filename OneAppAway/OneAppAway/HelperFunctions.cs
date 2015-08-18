@@ -224,6 +224,11 @@ namespace OneAppAway
             return (ServiceDay)Enum.Parse(typeof(ServiceDay), date.DayOfWeek.ToString());
         }
 
+        public static DataSourceDescriptor Invert(this DataSourceDescriptor original)
+        {
+            return original == DataSourceDescriptor.Cloud ? DataSourceDescriptor.Local : DataSourceDescriptor.Cloud;
+        }
+
         public static bool ContainsPoint(this GeoboundingBox box, BasicGeoposition point) => point.Latitude < box.NorthwestCorner.Latitude && point.Latitude >= box.SoutheastCorner.Latitude && point.Longitude < box.SoutheastCorner.Longitude && point.Longitude >= box.NorthwestCorner.Longitude;
     }
 }

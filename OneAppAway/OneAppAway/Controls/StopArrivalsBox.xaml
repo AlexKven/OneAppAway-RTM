@@ -9,10 +9,11 @@
     d:DesignHeight="300"
     d:DesignWidth="200">
     
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" x:Name="TitleRow"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -26,9 +27,12 @@
         </Button>
         <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Click="RefreshButton_Click" FontFamily="Segoe UI Symbol"></Button>
         <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3">
-            <StackPanel x:Name="MainStackPanel"/>
+            <Canvas x:Name="IntermediateCanvas" SizeChanged="IntermediateCanvas_SizeChanged" VerticalAlignment="Top">
+                <StackPanel x:Name="MainStackPanel" SizeChanged="MainStackPanel_SizeChanged"/>
+            </Canvas>
         </ScrollViewer>
         <ProgressRing Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" x:Name="ProgressIndicator" IsHitTestVisible="False"/>
-        <TextBlock Grid.ColumnSpan="3" Grid.Row="2" x:Name="LastRefreshBox"/>
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="3" x:Name="MessageBlock" FontSize="12" Visibility="Collapsed" TextWrapping="WrapWholeWords"/>
+        <TextBlock Grid.ColumnSpan="3" Grid.Row="3" x:Name="LastRefreshBox"/>
     </Grid>
 </UserControl>

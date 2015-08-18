@@ -10,12 +10,10 @@
     d:DesignHeight="450"
     d:DesignWidth="300" RequestedTheme="Dark">
 
-    <RelativePanel Margin="0,0,0,5" x:Name="MainGrid">
-        <Button x:Name="CloseButton"  RequestedTheme="Dark" Background="Red" Foreground="White" Width="35" Height="35" FontFamily="Segoe UI Symbol" FontSize="16" Click="CloseButton_Click" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True">❌</Button>
-        <TextBlock x:Name="CaptionBox" VerticalAlignment="Center" RelativePanel.AlignTopWithPanel="True" RelativePanel.LeftOf="CloseButton" RelativePanel.AlignBottomWith="CloseButton" FontSize="16" Margin="2" RelativePanel.AlignLeftWithPanel="True" />
-        <ScrollViewer RelativePanel.Below="CaptionBox" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Background="Transparent" Margin="5" x:Name="scrollViewer" Grid.Row="1" VerticalScrollMode="Disabled" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" Tag="0" VerticalScrollBarVisibility="Disabled" local:ScrollViewerSnapping.SnapInterval="285">
+    <Grid Margin="0,0,0,5" x:Name="MainGrid">
+        <ScrollViewer x:DeferLoadStrategy="Lazy" Background="Transparent" Margin="5" x:Name="scrollViewer" VerticalScrollMode="Disabled" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" Tag="0" VerticalScrollBarVisibility="Disabled" local:ScrollViewerSnapping.SnapInterval="285">
             <StackPanel Orientation="Horizontal" x:Name="ItemsPanel" HorizontalAlignment="Left"/>
         </ScrollViewer>
-        <Grid x:Name="SingleStopControl" RelativePanel.Below="CaptionBox" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Grid.Row="1" Margin="5" HorizontalAlignment="Stretch"/>
-    </RelativePanel>
+        <Grid x:DeferLoadStrategy="Lazy" x:Name="SingleStopControl" Margin="5" HorizontalAlignment="Stretch"/>
+    </Grid>
 </UserControl>

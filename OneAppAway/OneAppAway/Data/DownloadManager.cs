@@ -22,7 +22,7 @@ namespace OneAppAway
             DownloadManager result = new DownloadManager();
             result.Listing = listing;
             result._Route = result.Listing.Route;
-            var stopsAndShapes = await ApiLayer.GetStopsForRoute(result.Listing.Route.ID, cancellationToken);
+            var stopsAndShapes = await ApiLayer.GetStopsAndShapesForRoute(result.Listing.Route.ID, cancellationToken);
             result._Shapes = stopsAndShapes.Item2;
             result._StopsPending = new ObservableCollection<BusStop>(stopsAndShapes.Item1);
             if (cancellationToken.IsCancellationRequested)

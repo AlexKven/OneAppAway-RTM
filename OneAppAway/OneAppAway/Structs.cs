@@ -179,7 +179,7 @@ namespace OneAppAway
     public struct BusTrip
     {
         public string Route { get; set; }
-        
+
         public string Shape { get; set; }
 
         public string Destination { get; set; }
@@ -217,4 +217,47 @@ namespace OneAppAway
     }
 
     public enum BandwidthOptions { Normal, Low, None, Auto }
+
+    public enum DataSourceDescriptor : byte { Local, Cloud }
+
+    public struct DataRetrievalMessage
+    {
+        public DataSourceDescriptor AttemptedSource { get; set; }
+
+        public bool AttemptSucceeded { get; set; }
+
+        public bool FallbackAttempted { get; set; }
+
+        public bool FallbackSucceeded { get; set; }
+
+        public DataSourceDescriptor? FinalSource
+        {
+            get
+            {
+                if (AttemptSucceeded)
+                    return AttemptedSource;
+                else if (FallbackAttempted && FallbackSucceeded)
+                    return AttemptedSource.Invert();
+                else
+                    return null;
+            }
+        }
+    }
+
+    public struct DataRetrievalOptions
+    {
+        public DataRetrievalOptions(DataSourceDescriptor preferredSource, bool allowFallback)
+        {
+            PreferredSource = preferredSource;
+            AllowFallback = allowFallback;
+        }
+
+        public DataRetrievalOptions(DataSourceDescriptor preferredSource)
+            : this(preferredSource, true)
+        { }
+
+        public DataSourceDescriptor PreferredSource { get; set; }
+
+        public bool AllowFallback { get; set; }
+    }
 }

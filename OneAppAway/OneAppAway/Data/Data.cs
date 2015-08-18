@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Storage;
+using static OneAppAway.DataSourceDescriptor;
 
 namespace OneAppAway
 {
@@ -65,12 +66,54 @@ namespace OneAppAway
             return totalFoundStops.ToArray();
         }
 
-        public static async Task<RealtimeArrival[]> GetArrivals(string stopId, CancellationToken cancellationToken)
+        private static async Task<Tuple<T, DataRetrievalMessage>> CloudOrLocal<T>(Func<Task<T>> cloudCallback, Func<Task<T>> localCallback, DataRetrievalOptions options, params Type[] dontCatch)
         {
-            if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.None)
-                return (await FileManager.GetScheduledArrivals(stopId)).ToArray();
-            else
-                return await ApiLayer.GetBusArrivals(stopId, cancellationToken);
+            T result = default(T);
+            bool attempted = false;
+            bool successful = false;
+            bool fallbackAttempted = false;
+            bool fallbackSuccessful = false;
+            while (!attempted || (attempted && !successful && options.AllowFallback && !fallbackAttempted))
+            {
+                Action<bool> setSuccessful = (s) =>
+                {
+                    if (fallbackAttempted)
+                        fallbackSuccessful = s;
+                    else
+                        successful = s;
+                };
+                try
+                {
+                    if (attempted)
+                        fallbackAttempted = true;
+                    else
+                        attempted = true;
+                    if (((options.PreferredSource == Cloud) ^ fallbackAttempted) && BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.None)
+                        setSuccessful(false);
+                    else
+                    {
+                        result = await (((options.PreferredSource == Cloud) ^ fallbackAttempted) ? cloudCallback() : localCallback());
+                        setSuccessful(result != null);
+                    }
+                }
+                catch (Exception ex) when (!dontCatch.Contains(ex.GetType()))
+                {
+                    setSuccessful(false);
+                }
+            }
+            return new Tuple<T, DataRetrievalMessage>(result, new DataRetrievalMessage() { AttemptedSource = options.PreferredSource, AttemptSucceeded = successful, FallbackAttempted = fallbackAttempted, FallbackSucceeded = fallbackSuccessful });
+        }
+
+        public static async Task<Tuple<RealtimeArrival[], DataRetrievalMessage>> GetArrivals(string stopId, DataRetrievalOptions options, CancellationToken cancellationToken)
+        {
+            return await CloudOrLocal(
+                () => ApiLayer.GetBusArrivals(stopId, cancellationToken)
+                ,
+                () => FileManager.GetScheduledArrivals(stopId)
+                ,
+                options,
+                typeof(OperationCanceledException)
+                );
         }
 
         public static async Task<WeekSchedule> GetScheduleForStop(string id, CancellationToken cancellationToken)
@@ -83,11 +126,16 @@ namespace OneAppAway
                 DateTime? date = HelperFunctions.DateForServiceDay(day);
                 if (date.HasValue)
                 {
-                    daySched.LoadFromVerboseString(await ApiLayer.SendRequest("schedule-for-stop/" + id, new Dictionary<string, string>() {["date"] = date.Value.ToString("yyyy-MM-dd") }, cancellationToken));
+                    daySched.LoadFromVerboseString(await ApiLayer.SendRequest("schedule-for-stop/" + id, new Dictionary<string, string>() {["date"] = date.Value.ToString("yyyy-MM-dd") }, false, cancellationToken));
                     result.AddServiceDay(day, daySched);
                 }
             }
             return result;
+        }
+
+        public static async Task<Tuple<Tuple<BusStop[], string[]>, DataRetrievalMessage>> GetStopsAndShapesForRoute(string routeId, DataRetrievalOptions options, CancellationToken cancellationToken)
+        {
+            return await CloudOrLocal(() => ApiLayer.GetStopsAndShapesForRoute(routeId, cancellationToken), () => FileManager.GetStopsAndShapesForRouteFromCache(routeId), options, typeof(OperationCanceledException));
         }
 
         #region Cached Objects
@@ -97,34 +145,34 @@ namespace OneAppAway
         #endregion
 
         #region Get Objects By ID
-        public static async Task<BusStop> GetBusStop(string id, CancellationToken cancellationToken)
+        public static async Task<BusStop?> GetBusStop(string id, CancellationToken cancellationToken)
         {
             if (CachedStops.ContainsKey(id))
                 return CachedStops[id];
-            var result = await ApiLayer.GetBusStop(id, cancellationToken);
-            if (CachedStops.ContainsKey(id))
-                CachedStops.Add(id, result);
-            return result;
+            var result = await CloudOrLocal(() => ApiLayer.GetBusStop(id, cancellationToken), () => FileManager.GetStopFromCache(id), new DataRetrievalOptions(DataSourceDescriptor.Local), typeof(OperationCanceledException));
+            if (!CachedStops.ContainsKey(id) && result.Item2.FinalSource != null)
+                CachedStops.Add(id, result.Item1.Value);
+            return result.Item1;
         }
 
-        public static async Task<TransitAgency> GetTransitAgency(string id, CancellationToken cancellationToken)
+        public static async Task<TransitAgency?> GetTransitAgency(string id, CancellationToken cancellationToken)
         {
             if (CachedTransitAgencies.ContainsKey(id))
                 return CachedTransitAgencies[id];
-            var result = (await ApiLayer.GetTransitAgencies(cancellationToken)).First(agency => agency.ID == id);
-            if (!CachedTransitAgencies.ContainsKey(id))
-                CachedTransitAgencies.Add(id, result);
-            return result;
+            var result = await CloudOrLocal(() => ApiLayer.GetTransitAgency(id, cancellationToken), () => FileManager.GetAgencyFromCache(id), new DataRetrievalOptions(DataSourceDescriptor.Local), typeof(OperationCanceledException));
+            if (!CachedTransitAgencies.ContainsKey(id) && result.Item2.FinalSource != null)
+                CachedTransitAgencies.Add(id, result.Item1.Value);
+            return result.Item1;
         }
 
-        public static async Task<BusRoute> GetRoute(string id, CancellationToken cancellationToken)
+        public static async Task<BusRoute?> GetRoute(string id, CancellationToken cancellationToken)
         {
             if (CachedRoutes.ContainsKey(id))
                 return CachedRoutes[id];
-            var result = await ApiLayer.GetBusRoute(id, cancellationToken);
-            if (!CachedRoutes.ContainsKey(id))
-                CachedRoutes.Add(id, result);
-            return result;
+            var result = await CloudOrLocal(() => ApiLayer.GetBusRoute(id, cancellationToken), () => FileManager.GetRouteFromCache(id), new DataRetrievalOptions(DataSourceDescriptor.Local), typeof(OperationCanceledException));
+            if (!CachedRoutes.ContainsKey(id) && result.Item2.FinalSource != null)
+                CachedRoutes.Add(id, result.Item1.Value);
+            return result.Item1;
         }
         #endregion
 

@@ -9,10 +9,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid Background="Black" RequestedTheme="Dark" x:Name="MainGrid" SizeChanged="MainGrid_SizeChanged">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
         <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto" local:ScrollViewerSnapping.SnapInterval="285">
             <Grid x:Name="InnerGrid" SizeChanged="InnerGrid_SizeChanged">
                 <Grid.RowDefinitions>
@@ -33,11 +29,11 @@
                     <Image x:Name="DirectionImage" Margin="5"/>
                     <TextBlock FontSize="24" Margin="10" x:Name="TitleBlock"/>
                 </StackPanel>
-                <TextBlock FontSize="24" Margin="5" Grid.Row="1" HorizontalAlignment="Center">Arrivals</TextBlock>
-                <ScrollViewer Grid.Row="2">
-                    <StackPanel x:Name="ArrivalsStackPanel"/>
-                </ScrollViewer>
-                <TextBlock Margin="1" FontSize="18" Grid.Row="3" x:Name="LastRefreshBox"/>
+                <RelativePanel Grid.Row="1">
+                    <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" x:Name="RefreshArrivalsButton" Click="RefreshArrivalsButton_Click"></Button>
+                    <TextBlock FontSize="24" Margin="5" Grid.Row="1" HorizontalAlignment="Center" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.LeftOf="RefreshArrivalsButton">Arrivals</TextBlock>
+                </RelativePanel>
+                <local:StopArrivalsBox HideTitle="True" x:Name="ArrivalsBox" Grid.Row="2" Grid.RowSpan="2"/>
                 <ProgressRing Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" x:Name="ArrivalsProgressIndicator" IsHitTestVisible="False"/>
                 <TextBlock FontSize="24" Margin="5" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">Schedule</TextBlock>
                 <local:ScheduleBrowser Grid.Row="2" Grid.Column="1" Grid.RowSpan="1" x:Name="MainScheduleBrowser"/>
@@ -97,30 +93,5 @@
                 <Rectangle Grid.RowSpan="4" Grid.Column="3" Fill="#01000000"/>
             </Grid>
         </ScrollViewer>
-        <CommandBar Grid.Row="1" VerticalAlignment="Top" ClosedDisplayMode="Compact" x:Name="MainAppBar">
-            <CommandBar.SecondaryCommands>
-                <AppBarButton Label="Service Analysis">
-                    <AppBarButton.Icon>
-                        <BitmapIcon UriSource="/Assets/Icons/BusAnalyticsIcon.png" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-            </CommandBar.SecondaryCommands>
-            <AppBarButton Icon="Refresh" Label="Refresh" Click="RefreshButton_Click"/>
-            <AppBarToggleButton Label="Real-Time Arrivals" x:Name="ArrivalsToggle" Checked="AppBarToggleButton_CheckedChanged" Unchecked="AppBarToggleButton_CheckedChanged">
-                <AppBarToggleButton.Icon>
-                    <FontIcon FontFamily="Segoe UI Symbol" Glyph="⏰"/>
-                </AppBarToggleButton.Icon>
-            </AppBarToggleButton>
-            <AppBarToggleButton Label="View Schedule" x:Name="ScheduleToggle" Checked="AppBarToggleButton_CheckedChanged" Unchecked="AppBarToggleButton_CheckedChanged">
-                <AppBarToggleButton.Icon>
-                    <SymbolIcon Symbol="List"/>
-                </AppBarToggleButton.Icon>
-            </AppBarToggleButton>
-            <AppBarToggleButton Label="Show Routes" x:Name="RoutesToggle" Checked="AppBarToggleButton_CheckedChanged" Unchecked="AppBarToggleButton_CheckedChanged">
-                <AppBarToggleButton.Icon>
-                    <BitmapIcon UriSource="/Assets/Icons/BusRoutesIcon.png" />
-                </AppBarToggleButton.Icon>
-            </AppBarToggleButton>
-        </CommandBar>
     </Grid>
 </local:NavigationFriendlyPage>

@@ -240,7 +240,7 @@ namespace OneAppAway
                     try
                     {
                         for (int i = 0; i < stopIds.Length; i++)
-                            stops[i] = await Data.GetBusStop(stopIds[i], MasterCancellationTokenSource.Token);
+                            stops[i] = (await Data.GetBusStop(stopIds[i], MasterCancellationTokenSource.Token)).Value;
                         await Task.Delay(250);
                         OnStopsClicked(stops, location);
                     }

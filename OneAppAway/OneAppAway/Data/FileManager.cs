@@ -303,20 +303,71 @@ namespace OneAppAway
             return result ?? new string[0];
         }
 
+        public static async Task<Tuple<BusStop[], string[]>> GetStopsAndShapesForRouteFromCache(string id)
+        {
+            //Tuple<BusStop[], string[]> result = null;
+            Tuple<BusRoute, string[], string[]> route = null;
+            await AccessRouteCache(delegate (List<Tuple<BusRoute, string[], string[]>> rtes)
+            {
+                route = rtes.FirstOrDefault(rte => rte.Item1.ID == id);
+                return false;
+            });
+            if (route != null)
+            {
+                List<BusStop> stops = new List<BusStop>();
+                foreach (var stp in route.Item2)
+                {
+                    BusStop? stop;
+                    if ((stop = await Data.GetBusStop(stp, new CancellationToken())) != null)
+                        stops.Add(stop.Value);
+                }
+                return new Tuple<BusStop[], string[]>(stops.ToArray(), route.Item3);
+            }
+            return null;
+        }
+
         public static async Task<BusStop?> GetStopFromCache(string id)
         {
             BusStop? result = null;
             for (int i = 0; i < 17; i++)
             {
-                await AccessStopCache(i, delegate (List<BusStop> routes)
+                await AccessStopCache(i, delegate (List<BusStop> stops)
                 {
-                    if (routes.Any(route => route.ID == id))
+                    if (stops.Any(route => route.ID == id))
                     {
-                        result = routes.First(route => route.ID == id);
+                        result = stops.First(route => route.ID == id);
                     }
                     return false;
                 });
             }
+            return result;
+        }
+
+        public static async Task<BusRoute?> GetRouteFromCache(string id)
+        {
+            BusRoute? result = null;
+            await AccessRouteCache(delegate (List<Tuple<BusRoute, string[], string[]>> routes)
+            {
+                if (routes.Any(route => route.Item1.ID == id))
+                {
+                    result = routes.First(route => route.Item1.ID == id).Item1;
+                }
+                return false;
+            });
+            return result;
+        }
+
+        public static async Task<TransitAgency?> GetAgencyFromCache(string id)
+        {
+            TransitAgency? result = null;
+            await AccessAgencyCache(delegate (List<Tuple<TransitAgency, string[]>> agencies)
+            {
+                if (agencies.Any(route => route.Item1.ID == id))
+                {
+                    result = agencies.First(route => route.Item1.ID == id).Item1;
+                }
+                return false;
+            });
             return result;
         }
 
@@ -380,12 +431,12 @@ namespace OneAppAway
 
         public static async Task<RealtimeArrival[]> GetScheduledArrivals(string stopId)
         {
-            DateTime minTime = DateTime.Now - TimeSpan.FromMinutes(4);
-            DateTime maxTime = DateTime.Now + TimeSpan.FromMinutes(30);
+            DateTime minTime = DateTime.Now - TimeSpan.FromMinutes(5);
+            DateTime maxTime = DateTime.Now + TimeSpan.FromMinutes(45);
             ServiceDay day = DateTime.Now.GetServiceDay();
             var weekSched = await LoadSchedule(stopId);
             if (weekSched == null)
-                return new RealtimeArrival[0];
+                return null;
             var daySched = weekSched[day];
             SortedSet<RealtimeArrival> result = new SortedSet<RealtimeArrival>(Comparer<RealtimeArrival>.Create((sa1, sa2) => sa1.ScheduledArrivalTime < sa2.ScheduledArrivalTime ? -1 : sa1.ScheduledArrivalTime > sa2.ScheduledArrivalTime ? 1 : 0));
             string curRouteId = null;

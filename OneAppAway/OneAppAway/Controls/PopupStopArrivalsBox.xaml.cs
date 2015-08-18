@@ -32,25 +32,29 @@ namespace OneAppAway
         public void SetStops(params BusStop[] stops)
         {
             ArrivalsBox.SetStops(stops);
+            if (_Caption == null)
+                CaptionBox.Text = ArrivalsBox.GetStops().Length.ToString() + (ArrivalsBox.GetStops().Length == 1 ? " Stop" : " Stops");
         }
 
         private string _Caption = null;
         public string Caption
         {
-            get { return ArrivalsBox.Caption; }
-            set { ArrivalsBox.Caption = value; }
+            get { return _Caption; }
+            set
+            {
+                _Caption = value;
+                if (_Caption == null)
+                    CaptionBox.Text = ArrivalsBox.GetStops().Length.ToString() + (ArrivalsBox.GetStops().Length == 1 ? " Stop" : " Stops");
+                else
+                    CaptionBox.Text = _Caption;
+            }
         }
 
-        private void OnCloseRequested()
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             if (CloseRequested != null) CloseRequested(this, new EventArgs());
         }
 
         public event EventHandler CloseRequested;
-
-        private void ArrivalsBox_CloseRequested(object sender, EventArgs e)
-        {
-            OnCloseRequested();
-        }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
 
 namespace OneAppAway
 {
@@ -30,11 +33,15 @@ namespace OneAppAway
             OnEffectiveBandwidthOptionsChanged();
         }
 
-        private static void NetworkInformation_NetworkStatusChanged(object sender)
+        private static async void NetworkInformation_NetworkStatusChanged(object sender)
         {
-            GetNetworkInfo();
-            if (ApplicationSettings.BandwidthSettingStatic == BandwidthOptions.Auto)
-                OnEffectiveBandwidthOptionsChanged();
+            if (Dispatcher == null) return;
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+            {
+                GetNetworkInfo();
+                if (ApplicationSettings.BandwidthSettingStatic == BandwidthOptions.Auto)
+                    OnEffectiveBandwidthOptionsChanged();
+            });
         }
 
         private static void GetNetworkInfo()
@@ -55,5 +62,7 @@ namespace OneAppAway
         }
 
         public static event EventHandler EffectiveBandwidthOptionsChanged;
+
+        public static CoreDispatcher Dispatcher { set; private get; }
     }
 }
