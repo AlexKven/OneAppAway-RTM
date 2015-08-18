@@ -141,7 +141,7 @@ namespace OneAppAway
             return new BusRoute() { ID = routeId, Name = routeName, Description = routeDescription, Agency = routeAgency };
         }
 
-        public static async Task<BusRoute[]> GetBusRoutes(string agencyId, CancellationToken cancellationToken)
+        public static async Task<BusRoute[]> GetBusRoutesForAgency(string agencyId, CancellationToken cancellationToken)
         {
             List<BusRoute> result = new List<BusRoute>();
             StringReader reader = new StringReader(await SendRequest("routes-for-agency/" + agencyId, null, false, cancellationToken));

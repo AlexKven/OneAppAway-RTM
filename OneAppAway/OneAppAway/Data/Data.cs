@@ -138,6 +138,16 @@ namespace OneAppAway
             return await CloudOrLocal(() => ApiLayer.GetStopsAndShapesForRoute(routeId, cancellationToken), () => FileManager.GetStopsAndShapesForRouteFromCache(routeId), options, typeof(OperationCanceledException));
         }
 
+        public static async Task<Tuple<TransitAgency[], DataRetrievalMessage>> GetTransitAgencies(DataRetrievalOptions options, CancellationToken cancellationToken)
+        {
+            return await CloudOrLocal(() => ApiLayer.GetTransitAgencies(cancellationToken), () => FileManager.GetAgenciesFromCache(), options, typeof(OperationCanceledException));
+        }
+
+        public static async Task<Tuple<BusRoute[], DataRetrievalMessage>> GetBusRoutesForAgency(string agencyId, DataRetrievalOptions options, CancellationToken cancellationToken)
+        {
+            return await CloudOrLocal(() => ApiLayer.GetBusRoutesForAgency(agencyId, cancellationToken), () => FileManager.GetBusRoutesForAgencyFromCache(agencyId), options, typeof(OperationCanceledException));
+        }
+
         #region Cached Objects
         private static Dictionary<string, BusStop> CachedStops = new Dictionary<string, BusStop>();
         private static Dictionary<string, BusRoute> CachedRoutes = new Dictionary<string, BusRoute>();

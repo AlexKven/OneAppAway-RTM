@@ -37,6 +37,34 @@ namespace OneAppAway
             this.InitializeComponent();
         }
 
+        private bool _AgenciesWarning = false;
+        private bool _RoutesWarning = false;
+
+        public bool AgenciesWarning
+        {
+            get { return _AgenciesWarning; }
+            set
+            {
+                _AgenciesWarning = value;
+                SetWarningLabel();
+            }
+        }
+
+        public bool RoutesWarning
+        {
+            get { return _RoutesWarning; }
+            set
+            {
+                _RoutesWarning = value;
+                SetWarningLabel();
+            }
+        }
+
+        private void SetWarningLabel()
+        {
+            WarningBlock.Visibility = (AgenciesWarning || RoutesWarning) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
         private CancellationTokenSource MasterCancellationTokenSource = new CancellationTokenSource();
         private CancellationTokenSource DownloadsCancellationTokenSource = new CancellationTokenSource();
 
@@ -44,10 +72,15 @@ namespace OneAppAway
         {
             base.OnNavigatedTo(e);
             await FileManager.LoadPendingDownloads();
-            foreach (var agency in await ApiLayer.GetTransitAgencies(MasterCancellationTokenSource.Token))
+            var agencies = await Data.GetTransitAgencies(new DataRetrievalOptions(DataSourceDescriptor.Cloud), MasterCancellationTokenSource.Token);
+            AgenciesWarning = agencies.Item2.FinalSource != DataSourceDescriptor.Cloud;
+            if (agencies.Item1 != null)
             {
-                AgenciesListView.Items.Add(agency);
-                AgenciesListView.SelectedIndex = 0;
+                foreach (var agency in (agencies.Item1))
+                {
+                    AgenciesListView.Items.Add(agency);
+                    AgenciesListView.SelectedIndex = 0;
+                }
             }
         }
 
@@ -98,15 +131,20 @@ namespace OneAppAway
             MainList.Items.Clear();
             var agency = (TransitAgency)AgenciesListView.SelectedItem;
             SortedSet<RouteListing> routesList = new SortedSet<RouteListing>(Comparer<RouteListing>.Create(new Comparison<RouteListing>((rt1, rt2) => inOrder(rt1, rt2) ? -1 : 1)));
-            foreach (var rte in await ApiLayer.GetBusRoutes(agency.ID, MasterCancellationTokenSource.Token))
+            var routes = await Data.GetBusRoutesForAgency(agency.ID, new DataRetrievalOptions(DataSourceDescriptor.Cloud), MasterCancellationTokenSource.Token);
+            RoutesWarning = routes.Item2.FinalSource != DataSourceDescriptor.Cloud;
+            if (routes.Item1 != null)
             {
-                var listing = new RouteListing(rte);
-                await listing.RefreshIsDownloaded();
-                routesList.Add(listing);
+                foreach (var rte in routes.Item1)
+                {
+                    var listing = new RouteListing(rte);
+                    await listing.RefreshIsDownloaded();
+                    routesList.Add(listing);
+                }
+                foreach (var rte in routesList)
+                    MainList.Items.Add(rte);
+                await FileManager.SaveAgency(agency, routesList.Select(item => item.Route.ID).ToArray());
             }
-            foreach (var rte in routesList)
-                MainList.Items.Add(rte);
-            await FileManager.SaveAgency(agency, routesList.Select(item => item.Route.ID).ToArray());
             MainProgressRing.IsActive = false;
             LoadingRect.Visibility = Visibility.Collapsed;
         }

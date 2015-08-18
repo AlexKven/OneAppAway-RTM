@@ -65,11 +65,11 @@
                 <BitmapIcon Foreground="White" UriSource="/Assets/Icons/RefreshStopsIcon.png" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
         </StackPanel>
-        <local:MultiStopArrivalsBox x:ConnectionId='11' x:Name="StopArrivalBox"                                                Opacity="0" Maps:MapControl.NormalizedAnchorPoint="0.5, 1">
-            <local:MultiStopArrivalsBox.RenderTransform>
+        <local:PopupStopArrivalsBox x:ConnectionId='11' x:Name="StopArrivalBox"                                                Opacity="0" Maps:MapControl.NormalizedAnchorPoint="0.5, 1">
+            <local:PopupStopArrivalsBox.RenderTransform>
                 <CompositeTransform x:ConnectionId='13' TranslateY="25" x:Name="StopArrivalBoxTranslation"/>
-            </local:MultiStopArrivalsBox.RenderTransform>
-        </local:MultiStopArrivalsBox>
+            </local:PopupStopArrivalsBox.RenderTransform>
+        </local:PopupStopArrivalsBox>
         <ProgressBar x:ConnectionId='12' HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="Collapsed" x:Name="LoadingIndicator"/>
     </Grid>
 </local:NavigationFriendlyPage>

@@ -494,3 +494,8 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\ilc\intermediate\TransformedCoreLib\System.Runtime.dll
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\ilc\intermediate\TransformedCoreLib\System.Runtime.Implementation.dll
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\OneAppAway.csprojResolveAssemblyReference.cache
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Release\Controls\PopupStopArrivalsBox.xbf
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\Controls\PopupStopArrivalsBox.g.i.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\Controls\PopupStopArrivalsBox.g.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\Controls\PopupStopArrivalsBox.xaml
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\Controls\PopupStopArrivalsBox.xbf

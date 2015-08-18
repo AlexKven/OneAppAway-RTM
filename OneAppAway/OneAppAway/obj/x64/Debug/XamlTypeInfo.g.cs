@@ -716,6 +716,8 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             case 51:   //  OneAppAway.RoutesPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
                 userType.Activator = Activate_51_RoutesPage;
+                userType.AddMemberName("AgenciesWarning");
+                userType.AddMemberName("RoutesWarning");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -1072,22 +1074,42 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             var that = (global::OneAppAway.PopupStopArrivalsBox)instance;
             that.Caption = (global::System.String)Value;
         }
-        private object get_35_RouteListingTemplateSelector_ShortFormTemplate(object instance)
+        private object get_35_RoutesPage_AgenciesWarning(object instance)
+        {
+            var that = (global::OneAppAway.RoutesPage)instance;
+            return that.AgenciesWarning;
+        }
+        private void set_35_RoutesPage_AgenciesWarning(object instance, object Value)
+        {
+            var that = (global::OneAppAway.RoutesPage)instance;
+            that.AgenciesWarning = (global::System.Boolean)Value;
+        }
+        private object get_36_RoutesPage_RoutesWarning(object instance)
+        {
+            var that = (global::OneAppAway.RoutesPage)instance;
+            return that.RoutesWarning;
+        }
+        private void set_36_RoutesPage_RoutesWarning(object instance, object Value)
+        {
+            var that = (global::OneAppAway.RoutesPage)instance;
+            that.RoutesWarning = (global::System.Boolean)Value;
+        }
+        private object get_37_RouteListingTemplateSelector_ShortFormTemplate(object instance)
         {
             var that = (global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector)instance;
             return that.ShortFormTemplate;
         }
-        private void set_35_RouteListingTemplateSelector_ShortFormTemplate(object instance, object Value)
+        private void set_37_RouteListingTemplateSelector_ShortFormTemplate(object instance, object Value)
         {
             var that = (global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector)instance;
             that.ShortFormTemplate = (global::Windows.UI.Xaml.DataTemplate)Value;
         }
-        private object get_36_RouteListingTemplateSelector_LongFormTemplate(object instance)
+        private object get_38_RouteListingTemplateSelector_LongFormTemplate(object instance)
         {
             var that = (global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector)instance;
             return that.LongFormTemplate;
         }
-        private void set_36_RouteListingTemplateSelector_LongFormTemplate(object instance, object Value)
+        private void set_38_RouteListingTemplateSelector_LongFormTemplate(object instance, object Value)
         {
             var that = (global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector)instance;
             that.LongFormTemplate = (global::Windows.UI.Xaml.DataTemplate)Value;
@@ -1322,17 +1344,29 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlMember.Getter = get_34_PopupStopArrivalsBox_Caption;
                 xamlMember.Setter = set_34_PopupStopArrivalsBox_Caption;
                 break;
+            case "OneAppAway.RoutesPage.AgenciesWarning":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.RoutesPage");
+                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "AgenciesWarning", "Boolean");
+                xamlMember.Getter = get_35_RoutesPage_AgenciesWarning;
+                xamlMember.Setter = set_35_RoutesPage_AgenciesWarning;
+                break;
+            case "OneAppAway.RoutesPage.RoutesWarning":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.RoutesPage");
+                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "RoutesWarning", "Boolean");
+                xamlMember.Getter = get_36_RoutesPage_RoutesWarning;
+                xamlMember.Setter = set_36_RoutesPage_RoutesWarning;
+                break;
             case "OneAppAway.TemplateSelectors.RouteListingTemplateSelector.ShortFormTemplate":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.TemplateSelectors.RouteListingTemplateSelector");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "ShortFormTemplate", "Windows.UI.Xaml.DataTemplate");
-                xamlMember.Getter = get_35_RouteListingTemplateSelector_ShortFormTemplate;
-                xamlMember.Setter = set_35_RouteListingTemplateSelector_ShortFormTemplate;
+                xamlMember.Getter = get_37_RouteListingTemplateSelector_ShortFormTemplate;
+                xamlMember.Setter = set_37_RouteListingTemplateSelector_ShortFormTemplate;
                 break;
             case "OneAppAway.TemplateSelectors.RouteListingTemplateSelector.LongFormTemplate":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.TemplateSelectors.RouteListingTemplateSelector");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "LongFormTemplate", "Windows.UI.Xaml.DataTemplate");
-                xamlMember.Getter = get_36_RouteListingTemplateSelector_LongFormTemplate;
-                xamlMember.Setter = set_36_RouteListingTemplateSelector_LongFormTemplate;
+                xamlMember.Getter = get_38_RouteListingTemplateSelector_LongFormTemplate;
+                xamlMember.Setter = set_38_RouteListingTemplateSelector_LongFormTemplate;
                 break;
             }
             return xamlMember;

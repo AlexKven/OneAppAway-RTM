@@ -30,7 +30,7 @@ namespace OneAppAway
         private static List<List<string>> PendingDownloadsCache = new List<List<string>>();
         #endregion
 
-        #region Private Methods
+        #region Private/Internal Methods
         public static async Task EnsureFolders()
         {
             if (!(await ApplicationData.Current.LocalCacheFolder.GetFoldersAsync()).Any(folder => folder.Name == "SavedSchedules"))
@@ -58,7 +58,7 @@ namespace OneAppAway
             }
         }
 
-        private static async Task AccessStopCache(int hash, Func<List<BusStop>, bool> action)
+        internal static async Task AccessStopCache(int hash, Func<List<BusStop>, bool> action)
         {
             List<BusStop> stops;
             var file = await ApplicationData.Current.LocalCacheFolder.GetFileAsync("StopCache" + hash.ToString() + ".txt");
@@ -77,7 +77,7 @@ namespace OneAppAway
             }
         }
 
-        private static async Task AccessRouteCache(Func<List<Tuple<BusRoute, string[], string[]>>, bool> action)
+        internal static async Task AccessRouteCache(Func<List<Tuple<BusRoute, string[], string[]>>, bool> action)
         {
             List<Tuple<BusRoute, string[], string[]>> routes;
             var file = await ApplicationData.Current.LocalCacheFolder.GetFileAsync("RouteCache.txt");
@@ -96,7 +96,7 @@ namespace OneAppAway
             }
         }
 
-        private static async Task AccessAgencyCache(Func<List<Tuple<TransitAgency, string[]>>, bool> action)
+        internal static async Task AccessAgencyCache(Func<List<Tuple<TransitAgency, string[]>>, bool> action)
         {
             List<Tuple<TransitAgency, string[]>> agencies;
             var file = await ApplicationData.Current.LocalCacheFolder.GetFileAsync("AgencyCache.txt");
@@ -355,6 +355,40 @@ namespace OneAppAway
                 return false;
             });
             return result;
+        }
+
+        public static async Task<TransitAgency[]> GetAgenciesFromCache()
+        {
+            TransitAgency[] result = null;
+            await AccessAgencyCache(delegate (List<Tuple<TransitAgency, string[]>> agencies)
+            {
+                if (agencies.Count > 0)
+                    result = (from agency in agencies select agency.Item1).ToArray();
+                return false;
+            });
+            return result;
+        }
+
+        public static async Task<BusRoute[]> GetBusRoutesForAgencyFromCache(string agencyId)
+        {
+            string[] routeIds = null;
+            await AccessAgencyCache(delegate (List<Tuple<TransitAgency, string[]>> agencies)
+            {
+                routeIds = agencies.FirstOrDefault(agency => agency.Item1.ID == agencyId)?.Item2;
+                return false;
+            });
+            if (routeIds != null)
+            {
+                List<BusRoute> result = new List<BusRoute>();
+                BusRoute? route;
+                foreach (var str in routeIds)
+                {
+                    if ((route = await Data.GetRoute(str, new CancellationToken())) != null)
+                        result.Add(route.Value);
+                }
+                return result.ToArray();
+            }
+            return null;
         }
 
         public static async Task<TransitAgency?> GetAgencyFromCache(string id)

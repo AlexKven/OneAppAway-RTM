@@ -52,13 +52,13 @@ namespace OneAppAway
             Stops = stops.ToArray();
             //scrollViewer.HorizontalScrollBarVisibility = stops.Length == 1 ? ScrollBarVisibility.Hidden : ScrollBarVisibility.Auto;
             //scrollViewer.HorizontalScrollMode = stops.Length == 1 ? ScrollMode.Disabled : ScrollMode.Enabled;
+            if (SingleStopControl != null)
+                SingleStopControl.Children.Clear();
+            if (ItemsPanel != null)
+                ItemsPanel.Children.Clear();
             foreach (BusStop stop in stops)
             {
                 StopArrivalsBox box = new StopArrivalsBox() { Stop = stop };
-                if (SingleStopControl != null)
-                    SingleStopControl.Children.Clear();
-                if (ItemsPanel != null)
-                    ItemsPanel.Children.Clear();
                 if (stops.Length == 1)
                 {
                     //Binding sizeBinding = new Binding() { Source = SingleStopControl, Path = new PropertyPath("ActualWidth"), Mode = BindingMode.OneWay };

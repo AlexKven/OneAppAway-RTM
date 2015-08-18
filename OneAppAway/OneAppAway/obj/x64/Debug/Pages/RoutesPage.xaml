@@ -19,12 +19,13 @@
         </VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <ScrollViewer x:ConnectionId='9' local:ScrollViewerSnapping.SnapInterval="140" Background="#555555" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled" x:Name="AgencyBar">
-            <ListView x:ConnectionId='27' x:Name="AgenciesListView" SelectionMode="Single"                                                     >
+            <ListView x:ConnectionId='28' x:Name="AgenciesListView" SelectionMode="Single"                                                     >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapGrid ItemWidth="140" ItemHeight="60" Orientation="Horizontal"/>
@@ -39,11 +40,11 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
-            <ItemsControl x:ConnectionId='25' x:Name="MainList" Tag="100">
+        <ScrollViewer Grid.Row="2" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:ConnectionId='26' x:Name="MainList" Tag="100">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:RouteListingControl x:ConnectionId='26' Route="{Binding Route}" ShowCheckBox="{Binding ElementName=CheckToggle, Path=IsChecked}" ShowProgress="{Binding Path=ShowProgress}" Progress="{Binding Path=Progress}" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" IsDownloaded="{Binding Path=IsDownloaded}"                      />
+                        <local:RouteListingControl x:ConnectionId='27' Route="{Binding Route}" ShowCheckBox="{Binding ElementName=CheckToggle, Path=IsChecked}" ShowProgress="{Binding Path=ShowProgress}" Progress="{Binding Path=Progress}" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" IsDownloaded="{Binding Path=IsDownloaded}"                      />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
@@ -53,24 +54,25 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
-        <RelativePanel x:ConnectionId='10' Grid.Row="2" x:Name="MainStatusBar" Background="#202020" Visibility="Collapsed">
-            <TextBlock x:ConnectionId='23' x:Name="StatusBlock"/>
-            <ProgressBar x:ConnectionId='24' x:Name="MasterProgressBar" Minimum="0" Maximum="1" RelativePanel.Below="StatusBlock" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+        <TextBlock x:ConnectionId='10' Grid.Row="1" TextWrapping="WrapWholeWords" FontSize="14" x:Name="WarningBlock" Visibility="Collapsed">Could not get agencies and routes from the web. Showing downloaded routes and agencies only.</TextBlock>
+        <RelativePanel x:ConnectionId='11' Grid.Row="3" x:Name="MainStatusBar" Background="#202020" Visibility="Collapsed">
+            <TextBlock x:ConnectionId='24' x:Name="StatusBlock"/>
+            <ProgressBar x:ConnectionId='25' x:Name="MasterProgressBar" Minimum="0" Maximum="1" RelativePanel.Below="StatusBlock" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
         </RelativePanel>
-        <Rectangle x:ConnectionId='11' Fill="#44000000" Grid.RowSpan="4" Visibility="Collapsed" x:Name="LoadingRect"/>
-        <ProgressRing x:ConnectionId='12' Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" x:Name="MainProgressRing" IsHitTestVisible="False"/>
-        <CommandBar Grid.Row="3">
-            <AppBarToggleButton x:ConnectionId='13' Icon="List" Label="Select Routes" x:Name="CheckToggle"                                                                />
-            <AppBarButton x:ConnectionId='14' Icon="SelectAll" Label="Select All Routes"                               x:Name="SelectAllButton"/>
-            <AppBarButton x:ConnectionId='15' Icon="Download" Label="Download/Update Selected Routes"                              Visibility="Collapsed" x:Name="DownloadButton"/>
-            <AppBarButton x:ConnectionId='16' Icon="Delete" Label="Delete Selected Routes"                            Visibility="Collapsed" x:Name="DeleteButton"/>
-            <AppBarButton x:ConnectionId='17' Icon="Pause" Label="Pause Download" Visibility="Collapsed" x:Name="PauseButton"                          />
-            <AppBarButton x:ConnectionId='18' Icon="Cancel" Label="Cancel Download" Visibility="Collapsed" x:Name="CancelButton"                           />
+        <Rectangle x:ConnectionId='12' Fill="#44000000" Grid.RowSpan="5" Visibility="Collapsed" x:Name="LoadingRect"/>
+        <ProgressRing x:ConnectionId='13' Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" x:Name="MainProgressRing" IsHitTestVisible="False"/>
+        <CommandBar Grid.Row="4">
+            <AppBarToggleButton x:ConnectionId='14' Icon="List" Label="Select Routes" x:Name="CheckToggle"                                                                />
+            <AppBarButton x:ConnectionId='15' Icon="SelectAll" Label="Select All Routes"                               x:Name="SelectAllButton"/>
+            <AppBarButton x:ConnectionId='16' Icon="Download" Label="Download/Update Selected Routes"                              Visibility="Collapsed" x:Name="DownloadButton"/>
+            <AppBarButton x:ConnectionId='17' Icon="Delete" Label="Delete Selected Routes"                            Visibility="Collapsed" x:Name="DeleteButton"/>
+            <AppBarButton x:ConnectionId='18' Icon="Pause" Label="Pause Download" Visibility="Collapsed" x:Name="PauseButton"                          />
+            <AppBarButton x:ConnectionId='19' Icon="Cancel" Label="Cancel Download" Visibility="Collapsed" x:Name="CancelButton"                           />
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='19' Label="Invert Selection" x:Name="InvertSelectionButton"                                    />
-                <AppBarButton x:ConnectionId='20' Label="Select Downloaded Routes" x:Name="SelectDownloadedButton"                                     />
-                <AppBarButton x:ConnectionId='21' Label="Select Non-Downloaded Routes" x:Name="SelectNotDownloadedButton"                                        />
-                <AppBarButton x:ConnectionId='22' Label="Select Download-Paused Routes" x:Name="SelectDownloadingButton"                                      />
+                <AppBarButton x:ConnectionId='20' Label="Invert Selection" x:Name="InvertSelectionButton"                                    />
+                <AppBarButton x:ConnectionId='21' Label="Select Downloaded Routes" x:Name="SelectDownloadedButton"                                     />
+                <AppBarButton x:ConnectionId='22' Label="Select Non-Downloaded Routes" x:Name="SelectNotDownloadedButton"                                        />
+                <AppBarButton x:ConnectionId='23' Label="Select Download-Paused Routes" x:Name="SelectDownloadingButton"                                      />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Grid>

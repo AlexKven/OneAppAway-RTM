@@ -19,6 +19,7 @@
         </VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -39,7 +40,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="2" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="MainList" Tag="100">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -53,13 +54,14 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
-        <RelativePanel Grid.Row="2" x:Name="MainStatusBar" Background="#202020" Visibility="Collapsed">
+        <TextBlock Grid.Row="1" TextWrapping="WrapWholeWords" FontSize="14" x:Name="WarningBlock" Visibility="Collapsed">Could not get agencies and routes from the web. Showing downloaded routes and agencies only.</TextBlock>
+        <RelativePanel Grid.Row="3" x:Name="MainStatusBar" Background="#202020" Visibility="Collapsed">
             <TextBlock x:Name="StatusBlock"/>
             <ProgressBar x:Name="MasterProgressBar" Minimum="0" Maximum="1" RelativePanel.Below="StatusBlock" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
         </RelativePanel>
-        <Rectangle Fill="#44000000" Grid.RowSpan="4" Visibility="Collapsed" x:Name="LoadingRect"/>
-        <ProgressRing Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" x:Name="MainProgressRing" IsHitTestVisible="False"/>
-        <CommandBar Grid.Row="3">
+        <Rectangle Fill="#44000000" Grid.RowSpan="5" Visibility="Collapsed" x:Name="LoadingRect"/>
+        <ProgressRing Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" x:Name="MainProgressRing" IsHitTestVisible="False"/>
+        <CommandBar Grid.Row="4">
             <AppBarToggleButton Icon="List" Label="Select Routes" x:Name="CheckToggle" Checked="CheckToggle_Checked" Unchecked="CheckToggle_Unchecked"/>
             <AppBarButton Icon="SelectAll" Label="Select All Routes" Click="SelectAllButton_Click" x:Name="SelectAllButton"/>
             <AppBarButton Icon="Download" Label="Download/Update Selected Routes" Click="DownloadButton_Click" Visibility="Collapsed" x:Name="DownloadButton"/>
