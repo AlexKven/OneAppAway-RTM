@@ -95,6 +95,8 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="BorderThickness" />
@@ -296,10 +298,9 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
       <RootProperty Name="Template" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.WrapGrid">
+    <RootType FullName="Windows.UI.Xaml.Controls.VariableSizedWrapGrid">
       <RootProperty Name="ItemWidth" />
       <RootProperty Name="Orientation" />
-      <RootProperty Name="ItemHeight" />
     </RootType>
     <RootType FullName="OneAppAway.ScheduleBrowser">
       <RootProperty Name="HorizontalAlignment" />
@@ -397,6 +398,11 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.WrapGrid">
+      <RootProperty Name="ItemWidth" />
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="ItemHeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="SelectionMode" />

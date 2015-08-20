@@ -126,7 +126,7 @@ namespace OneAppAway
                 DateTime? date = HelperFunctions.DateForServiceDay(day);
                 if (date.HasValue)
                 {
-                    daySched.LoadFromVerboseString(await ApiLayer.SendRequest("schedule-for-stop/" + id, new Dictionary<string, string>() {["date"] = date.Value.ToString("yyyy-MM-dd") }, false, cancellationToken));
+                    daySched.LoadFromVerboseString(await ApiLayer.SendRequest("schedule-for-stop/" + id, new Dictionary<string, string>() {["date"] = date.Value.ToString("yyyy-MM-dd") }, false, cancellationToken), id);
                     result.AddServiceDay(day, daySched);
                 }
             }

@@ -1,3 +1,3 @@
-MainPackage=C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Release\Upload\OneAppAway_0.2.0.0_ARM.appx
-SymbolPackage=C:\AppPackages\OneAppAway\OneAppAway_0.2.0.0\OneAppAway_0.2.0.0_ARM.appxsym
+MainPackage=C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Release\Upload\OneAppAway_0.3.0.0_ARM.appx
+SymbolPackage=C:\AppPackages\OneAppAway\OneAppAway_0.3.0.0\OneAppAway_0.3.0.0_ARM.appxsym
 ResourcePack=C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\_scale-100.appx

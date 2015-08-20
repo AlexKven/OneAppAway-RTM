@@ -15,14 +15,20 @@
                 <Setter Property="ItemsPanel">
                     <Setter.Value>
                         <ItemsPanelTemplate>
-                            <WrapGrid ItemWidth="50" Orientation="Horizontal"/>
+                            <VariableSizedWrapGrid ItemWidth="50" Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
             <Style TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="Template" Value="{StaticResource SimpleButtonTemplate}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>

@@ -116,13 +116,14 @@ namespace OneAppAway
 
         private async Task GetSchedule()
         {
+            bool technicalMode = SettingsManager.GetSetting("TechnicalMode", false, true);
             ScheduleProgressIndicator.IsActive = true;
             ScheduleNotAvailableBlock.Visibility = Visibility.Collapsed;
             LoadSchedulesButton.Visibility = Visibility.Collapsed;
             Schedule = await Data.GetScheduleForStop(Stop.ID, MasterCancellationTokenSource.Token);
             DayScheduleSelector.Items.Clear();
             DayScheduleSelector.SelectedIndex = -1;
-            foreach (var day in Schedule.DayGroups)
+            foreach (var day in technicalMode ? Schedule.TechnicalDayGroups : Schedule.DayGroups)
             {
                 DayScheduleSelector.Items.Add(new ComboBoxItem() { Content = day.GetFriendlyName(), Tag = day });
             }

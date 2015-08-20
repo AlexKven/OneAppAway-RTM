@@ -105,6 +105,7 @@
     <Compile Include="Controls\PopupStopArrivalsBox.xaml.cs">
       <DependentUpon>PopupStopArrivalsBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Correction.cs" />
     <Compile Include="Data\Corrections.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Settings\BandwidthManager.cs" />

@@ -3,6 +3,7 @@ Controls\BusArrivalBox.xbf
 Controls\BusMap.xbf
 Controls\HamburgerBar.xbf
 Controls\MultiStopArrivalsBox.xbf
+Controls\PopupStopArrivalsBox.xbf
 Controls\RouteListingControl.xbf
 Controls\ScheduleBrowser.xbf
 Controls\StopArrivalsBox.xbf

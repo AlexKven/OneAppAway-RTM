@@ -232,6 +232,11 @@
 						<Base64Value>[Embedded Binary Data]</Base64Value>
 					</Candidate>
 				</NamedResource>
+				<NamedResource name="PopupStopArrivalsBox.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Controls/PopupStopArrivalsBox.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
 				<NamedResource name="RouteListingControl.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Controls/RouteListingControl.xbf">
 					<Candidate type="EmbeddedData">
 						<Base64Value>[Embedded Binary Data]</Base64Value>

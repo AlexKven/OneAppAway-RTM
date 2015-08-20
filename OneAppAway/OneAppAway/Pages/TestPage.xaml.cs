@@ -39,7 +39,7 @@ namespace OneAppAway
             stream.AsStreamForRead().Read(buffer, 0, buffer.Length);
             string str = new string(buffer.Select(bte => (char)bte).ToArray());
             DaySchedule schedule = new DaySchedule();
-            schedule.LoadFromVerboseString(str);
+            //schedule.LoadFromVerboseString(str);
             MainScheduleBrowser.Schedule = schedule;
         }
     }

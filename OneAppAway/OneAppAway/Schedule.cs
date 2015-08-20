@@ -214,35 +214,70 @@ namespace OneAppAway
             get { return Data == null || Data.Length == 0; }
         }
 
-        public void LoadFromVerboseString(string str)
+        public void LoadFromVerboseString(string str, string stop)
         {
+            Stop = stop;
             TripIds = null;
             NamesAndTimes = null;
+            List<string> routesInOrder = new List<string>();
+            Func<ScheduledArrival, ScheduledArrival, int> comparison = (left, right) =>
+            {
+                int result;
+                if (routesInOrder.IndexOf(left.Route) < routesInOrder.IndexOf(right.Route))
+                    return -1;
+                else if (routesInOrder.IndexOf(left.Route) > routesInOrder.IndexOf(right.Route))
+                    return 1;
+                else if ((result = string.CompareOrdinal(left.Destination, right.Destination)) != 0)
+                    return result;
+                else if (left.ScheduledArrivalTime < right.ScheduledArrivalTime)
+                    return -1;
+                else if (left.ScheduledArrivalTime > right.ScheduledArrivalTime)
+                    return 1;
+                return 0;
+            };
+            SortedSet<ScheduledArrival> sortedArrivals = new SortedSet<ScheduledArrival>(Comparer<ScheduledArrival>.Create(new Comparison<ScheduledArrival>(comparison)));
             try
             {
                 StringReader reader = new StringReader(str);
                 XDocument xDoc = XDocument.Load(reader);
 
                 XElement el = xDoc.Element("response").Element("data").Element("entry").Element("stopRouteSchedules");
-
-                List<Tuple<string, string, Tuple<short, string>[]>> data = new List<Tuple<string, string, Tuple<short, string>[]>>();
                 foreach (var el2 in el.Elements("stopRouteSchedule"))
                 {
                     string route = el2.Element("routeId")?.Value;
+                    routesInOrder.Add(route);
                     foreach (var el3 in el2.Element("stopRouteDirectionSchedules").Elements("stopRouteDirectionSchedule"))
                     {
                         string sign = el3.Element("tripHeadsign")?.Value;
-                        List<Tuple<short, string>> trips = new List<Tuple<short, string>>();
                         foreach (var el4 in el3.Element("scheduleStopTimes")?.Elements("scheduleStopTime"))
                         {
                             string arrivalTime = el4.Element("arrivalTime")?.Value;
                             string tripId = el4.Element("tripId")?.Value;
                             DateTime time = (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(long.Parse(arrivalTime))).ToLocalTime();
-                            trips.Add(new Tuple<short, string>((short)(time.Hour * 60 + time.Minute), tripId));
+                            sortedArrivals.Add(Correction.Correct(new ScheduledArrival() { Route = route, Stop = this.Stop, Trip = tripId, Destination = sign, ScheduledArrivalTime = time }));
                         }
-                        data.Add(new Tuple<string, string, Tuple<short, string>[]>(route, sign, trips.ToArray()));
                     }
                 }
+
+                List<Tuple<string, string, Tuple<short, string>[]>> data = new List<Tuple<string, string, Tuple<short, string>[]>>();
+                string lastRoute = null;
+                string lastDestination = null;
+                List<Tuple<short, string>> trips = null;
+                foreach (var item in sortedArrivals)
+                {
+                    if (item.Destination != lastDestination || item.Route != lastRoute)
+                    {
+                        if (trips != null)
+                            data.Add(new Tuple<string, string, Tuple<short, string>[]>(lastRoute, lastDestination, trips.ToArray()));
+                        lastRoute = item.Route;
+                        lastDestination = item.Destination;
+                        trips = new List<Tuple<short, string>>();
+                    }
+                    trips.Add(new Tuple<short, string>((short)(item.ScheduledArrivalTime.Hour * 60 + item.ScheduledArrivalTime.Minute), item.Trip));
+                }
+                if (trips != null)
+                    data.Add(new Tuple<string, string, Tuple<short, string>[]>(lastRoute, lastDestination, trips.ToArray()));
+                
                 Data = data.ToArray();
             }
             catch (Exception) { }
@@ -462,7 +497,7 @@ namespace OneAppAway
                 var item2 = item1.Item3[curTrip];
                 DateTime time = DateTime.Now;
                 time = new DateTime(time.Year, time.Month, time.Day, item2.Item1 / 60, item2.Item1 % 60, 0);
-                return new ScheduledArrival() { Destination = item1.Item2, Route = item1.Item1, ScheduledArrivalTime = time, Stop = Stop, Trip = item2.Item2 };
+                return new ScheduledArrival() { Destination = item1.Item2, Route = item1.Item1, ScheduledArrivalTime = time, Stop = this.Stop, Trip = item2.Item2 };
             }
         }
 
