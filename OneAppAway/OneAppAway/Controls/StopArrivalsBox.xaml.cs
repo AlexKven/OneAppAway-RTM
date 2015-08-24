@@ -64,7 +64,7 @@ namespace OneAppAway
         public async Task RefreshArrivals(bool forceOnline)
         {
             ProgressIndicator.IsActive = true;
-            bool checkOnline = false; //#
+            bool checkOnline = !SettingsManager.GetSetting("LimitedData.DelayDownloadingArrivals", false, false); //#
             DataSourceDescriptor preferredSource = forceOnline ? DataSourceDescriptor.Cloud : (!checkOnline && BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Low) ? DataSourceDescriptor.Local : DataSourceDescriptor.Cloud;
             var arrivals = await Data.GetArrivals(Stop.ID, new DataRetrievalOptions(preferredSource), MasterCancellationTokenSource.Token);
             var removals = MainStackPanel.Children.Where(child => !arrivals.Item1.Contains(((BusArrivalBox)child).Arrival));

@@ -42,7 +42,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Grid>
+                <Grid x:Name="InnerGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
@@ -92,6 +92,14 @@
                     <ContentPresenter Grid.Row="1"/>
                     <Rectangle Grid.Row="2" Fill="{Binding ElementName=HamburgerBar, Path=Background}"/>
                     <TextBlock RequestedTheme="Dark" Grid.Row="2" TextWrapping="WrapWholeWords">Public transit data powered by OneBusAway.</TextBlock>
+                    <Popup Opacity="0" Grid.RowSpan="3" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True" Opened="PopupControl_Opened" Closed="PopupControl_Closed">
+                        <Popup.Transitions>
+                            <TransitionCollection>
+                                <PopupThemeTransition FromHorizontalOffset="20"/>
+                            </TransitionCollection>
+                        </Popup.Transitions>
+                        <Frame/>
+                    </Popup>
                 </Grid>
                 <SplitView.Pane>
                     <StackPanel Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">

@@ -116,7 +116,9 @@ namespace OneAppAway
 
         public string Stop { get; set; }
 
-        public DateTime ScheduledArrivalTime { get; set; }
+        public DateTime ScheduledDepartureTime { get; set; }
+
+        public DateTime? ScheduledArrivalTime { get; set; }
 
         public string Destination { get; set; }
 

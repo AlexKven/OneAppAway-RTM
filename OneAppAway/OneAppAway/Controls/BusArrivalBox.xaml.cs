@@ -93,5 +93,10 @@ namespace OneAppAway
                 DestinationBlock.Text = value.Destination;
             }
         }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+           await  ((App)App.Current).MainHamburgerBar.ShowPopup(this, 300, 350, typeof(AddToFavoritesPage), new string[] { Arrival.Stop, Arrival.Route, Arrival.Destination });
+        }
     }
 }

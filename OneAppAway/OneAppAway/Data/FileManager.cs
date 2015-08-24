@@ -488,8 +488,8 @@ namespace OneAppAway
                         return false;
                     });
                 }
-                if (item.ScheduledArrivalTime >= minTime && item.ScheduledArrivalTime < maxTime)
-                    result.Add(new RealtimeArrival() { Route = item.Route, RouteName = curRouteName, Destination = item.Destination, LastUpdateTime = DateTime.Now, PredictedArrivalTime = null, ScheduledArrivalTime = item.ScheduledArrivalTime, Stop = item.Stop, Trip = item.Trip });
+                if (item.ScheduledDepartureTime >= minTime && item.ScheduledDepartureTime < maxTime)
+                    result.Add(new RealtimeArrival() { Route = item.Route, RouteName = curRouteName, Destination = item.Destination, LastUpdateTime = DateTime.Now, PredictedArrivalTime = null, ScheduledArrivalTime = item.ScheduledDepartureTime, Stop = item.Stop, Trip = item.Trip });
             }
             return result.ToArray();
         }

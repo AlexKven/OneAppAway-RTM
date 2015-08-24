@@ -197,7 +197,7 @@ namespace OneAppAway
 
     public class DaySchedule : IEnumerable<ScheduledArrival>
     {
-        private Tuple<string, string, Tuple<short, string>[]>[] Data;
+        private Tuple<string, string, Tuple<short, string, short?>[]>[] Data;
         private string[] TripIds;
         private string[] NamesAndTimes;
         public string Stop { get; set; }
@@ -229,9 +229,9 @@ namespace OneAppAway
                     return 1;
                 else if ((result = string.CompareOrdinal(left.Destination, right.Destination)) != 0)
                     return result;
-                else if (left.ScheduledArrivalTime < right.ScheduledArrivalTime)
+                else if (left.ScheduledDepartureTime < right.ScheduledDepartureTime)
                     return -1;
-                else if (left.ScheduledArrivalTime > right.ScheduledArrivalTime)
+                else if (left.ScheduledDepartureTime > right.ScheduledDepartureTime)
                     return 1;
                 return 0;
             };
@@ -251,32 +251,43 @@ namespace OneAppAway
                         string sign = el3.Element("tripHeadsign")?.Value;
                         foreach (var el4 in el3.Element("scheduleStopTimes")?.Elements("scheduleStopTime"))
                         {
-                            string arrivalTime = el4.Element("arrivalTime")?.Value;
+                            string arrivalTimeStr = (el4.Element("arrivalEnabled")?.Value == "true") ? el4.Element("arrivalTime")?.Value : null;
+                            string departureTimeStr = (el4.Element("departureEnabled")?.Value == "true") ? el4.Element("departureTime")?.Value : null;
+                            if (arrivalTimeStr == departureTimeStr)
+                                arrivalTimeStr = null;
+                            if (departureTimeStr == null && arrivalTimeStr != null)
+                            {
+                                departureTimeStr = arrivalTimeStr;
+                                arrivalTimeStr = null;
+                            }
                             string tripId = el4.Element("tripId")?.Value;
-                            DateTime time = (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(long.Parse(arrivalTime))).ToLocalTime();
-                            sortedArrivals.Add(Correction.Correct(new ScheduledArrival() { Route = route, Stop = this.Stop, Trip = tripId, Destination = sign, ScheduledArrivalTime = time }));
+                            //DateTime time = (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(long.Parse(arrivalTimeStr))).ToLocalTime();
+                            var arrivalTime = arrivalTimeStr.GetDateTimeFromEpochTime();
+                            var departureTime = departureTimeStr.GetDateTimeFromEpochTime();
+                            if (departureTime.HasValue)
+                                sortedArrivals.Add(Correction.Correct(new ScheduledArrival() { Route = route, Stop = this.Stop, Trip = tripId, Destination = sign, ScheduledDepartureTime = departureTime.Value, ScheduledArrivalTime = arrivalTime }));
                         }
                     }
                 }
 
-                List<Tuple<string, string, Tuple<short, string>[]>> data = new List<Tuple<string, string, Tuple<short, string>[]>>();
+                List<Tuple<string, string, Tuple<short, string, short?>[]>> data = new List<Tuple<string, string, Tuple<short, string, short?>[]>>();
                 string lastRoute = null;
                 string lastDestination = null;
-                List<Tuple<short, string>> trips = null;
+                List<Tuple<short, string, short?>> trips = null;
                 foreach (var item in sortedArrivals)
                 {
                     if (item.Destination != lastDestination || item.Route != lastRoute)
                     {
                         if (trips != null)
-                            data.Add(new Tuple<string, string, Tuple<short, string>[]>(lastRoute, lastDestination, trips.ToArray()));
+                            data.Add(new Tuple<string, string, Tuple<short, string, short?>[]>(lastRoute, lastDestination, trips.ToArray()));
                         lastRoute = item.Route;
                         lastDestination = item.Destination;
-                        trips = new List<Tuple<short, string>>();
+                        trips = new List<Tuple<short, string, short?>>();
                     }
-                    trips.Add(new Tuple<short, string>((short)(item.ScheduledArrivalTime.Hour * 60 + item.ScheduledArrivalTime.Minute), item.Trip));
+                    trips.Add(new Tuple<short, string, short?>(item.ScheduledDepartureTime.GetShortTime(), item.Trip, item.ScheduledArrivalTime?.GetShortTime()));
                 }
                 if (trips != null)
-                    data.Add(new Tuple<string, string, Tuple<short, string>[]>(lastRoute, lastDestination, trips.ToArray()));
+                    data.Add(new Tuple<string, string, Tuple<short, string, short?>[]>(lastRoute, lastDestination, trips.ToArray()));
                 
                 Data = data.ToArray();
             }
@@ -402,6 +413,8 @@ namespace OneAppAway
                 {
                     formatter.WriteInt(subItem.Item1);
                     formatter.WriteString(subItem.Item2);
+                    if (subItem.Item3 != null)
+                        formatter.WriteInt(subItem.Item3.Value);
                     formatter.NextItem();
                 }
                 formatter.CloseParens();
@@ -412,7 +425,7 @@ namespace OneAppAway
 
         public void Deformat(CompactFormatReader reader)
         {
-            List<Tuple<string, string, Tuple<short, string>[]>> data = new List<Tuple<string, string, Tuple<short, string>[]>>();
+            List<Tuple<string, string, Tuple<short, string, short?>[]>> data = new List<Tuple<string, string, Tuple<short, string, short?>[]>>();
 
             CompactFormatReader[] curRouteReader;
             while ((curRouteReader = reader.Next()) != null)
@@ -422,13 +435,14 @@ namespace OneAppAway
                 while ((curDirectionReader = curRouteReader[1].Next()) != null)
                 {
                     string sign = curDirectionReader[0].ReadString();
-                    List<Tuple<short, string>> trips = new List<Tuple<short, string>>();
+                    List<Tuple<short, string, short?>> trips = new List<Tuple<short, string, short?>>();
                     CompactFormatReader[] curTripReader;
                     while ((curTripReader = curDirectionReader[1].Next()) != null)
                     {
-                        trips.Add(new Tuple<short, string>((short)curTripReader[0].ReadInt(), curTripReader[1].ReadString()));
+                        
+                        trips.Add(new Tuple<short, string, short?>((short)curTripReader[0].ReadInt(), curTripReader[1].ReadString(), (curTripReader.Length > 2) ? new short?((short)curTripReader[2].ReadInt()) : null));
                     }
-                    data.Add(new Tuple<string, string, Tuple<short, string>[]>(curRoute, sign, trips.ToArray()));
+                    data.Add(new Tuple<string, string, Tuple<short, string, short?>[]>(curRoute, sign, trips.ToArray()));
                 }
             }
             Data = data.ToArray();
@@ -438,7 +452,7 @@ namespace OneAppAway
         {
             var newData = Data?.ToList();
             if (newData == null)
-                newData = new List<Tuple<string, string, Tuple<short, string>[]>>();
+                newData = new List<Tuple<string, string, Tuple<short, string, short?>[]>>();
             foreach (var item in other.Data)
             {
                 if (!newData.Any(itm => itm.Item1 == item.Item1 && itm.Item2 == item.Item2))
@@ -474,12 +488,12 @@ namespace OneAppAway
 
     public class ScheduleEnumerator : IEnumerator<ScheduledArrival>
     {
-        private Tuple<string, string, Tuple<short, string>[]>[] Data;
+        private Tuple<string, string, Tuple<short, string, short?>[]>[] Data;
         private string Stop;
         private int curRouteDirection = -1;
         private int curTrip = -1;
 
-        public ScheduleEnumerator(string stop, Tuple<string, string, Tuple<short, string>[]>[] data)
+        public ScheduleEnumerator(string stop, Tuple<string, string, Tuple<short, string, short?>[]>[] data)
         {
             Data = data;
             Stop = stop;
@@ -495,9 +509,11 @@ namespace OneAppAway
                     throw new IndexOutOfRangeException("You have moved past the last element.");
                 var item1 = Data[curRouteDirection];
                 var item2 = item1.Item3[curTrip];
-                DateTime time = DateTime.Now;
-                time = new DateTime(time.Year, time.Month, time.Day, item2.Item1 / 60, item2.Item1 % 60, 0);
-                return new ScheduledArrival() { Destination = item1.Item2, Route = item1.Item1, ScheduledArrivalTime = time, Stop = this.Stop, Trip = item2.Item2 };
+                DateTime departureTime = DateTime.Now;
+                departureTime = new DateTime(departureTime.Year, departureTime.Month, departureTime.Day, item2.Item1 / 60, item2.Item1 % 60, 0);
+                DateTime? arrivalTime = DateTime.Now;
+                arrivalTime = item2.Item3 == null ? null : new DateTime?(new DateTime(arrivalTime.Value.Year, arrivalTime.Value.Month, arrivalTime.Value.Day, item2.Item3.Value / 60, item2.Item3.Value % 60, 0));
+                return new ScheduledArrival() { Destination = item1.Item2, Route = item1.Item1, ScheduledDepartureTime = departureTime, Stop = this.Stop, Trip = item2.Item2, ScheduledArrivalTime = arrivalTime };
             }
         }
 

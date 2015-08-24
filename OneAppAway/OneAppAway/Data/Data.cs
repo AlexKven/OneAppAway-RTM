@@ -116,21 +116,9 @@ namespace OneAppAway
                 );
         }
 
-        public static async Task<WeekSchedule> GetScheduleForStop(string id, CancellationToken cancellationToken)
+        public static async Task<Tuple<WeekSchedule, DataRetrievalMessage>> GetScheduleForStop(string id, DataRetrievalOptions options, CancellationToken cancellationToken)
         {
-            WeekSchedule result = new WeekSchedule();
-            for (int i = 0; i < 8; i++)
-            {
-                DaySchedule daySched = new DaySchedule();
-                ServiceDay day = (ServiceDay)(int)Math.Pow(2, i);
-                DateTime? date = HelperFunctions.DateForServiceDay(day);
-                if (date.HasValue)
-                {
-                    daySched.LoadFromVerboseString(await ApiLayer.SendRequest("schedule-for-stop/" + id, new Dictionary<string, string>() {["date"] = date.Value.ToString("yyyy-MM-dd") }, false, cancellationToken), id);
-                    result.AddServiceDay(day, daySched);
-                }
-            }
-            return result;
+            return await CloudOrLocal(() => ApiLayer.GetScheduleForStop(id, cancellationToken), () => FileManager.LoadSchedule(id), options, typeof(OperationCanceledException));
         }
 
         public static async Task<Tuple<Tuple<BusStop[], string[]>, DataRetrievalMessage>> GetStopsAndShapesForRoute(string routeId, DataRetrievalOptions options, CancellationToken cancellationToken)

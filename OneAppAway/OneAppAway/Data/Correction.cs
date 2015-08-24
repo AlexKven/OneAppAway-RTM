@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace OneAppAway
 {
@@ -46,7 +47,7 @@ namespace OneAppAway
             foreach (var correction in corrections)
             {
                 if (correction.Item1 == arrival.Route && correction.Item2 == arrival.Trip)
-                    return new ScheduledArrival() { Destination = correction.Item3, Route = arrival.Route, Trip = arrival.Trip, ScheduledArrivalTime = arrival.ScheduledArrivalTime, Stop = arrival.Stop };
+                    return new ScheduledArrival() { Destination = correction.Item3, Route = arrival.Route, Trip = arrival.Trip, ScheduledDepartureTime = arrival.ScheduledDepartureTime, Stop = arrival.Stop };
             }
             return arrival;
         }

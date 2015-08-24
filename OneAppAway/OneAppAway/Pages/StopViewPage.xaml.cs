@@ -60,6 +60,7 @@ namespace OneAppAway
             TitleBlock.Text = Stop.Name;
             Uri imageUri = new Uri(Stop.Direction == StopDirection.Unspecified ? "ms-appx:///Assets/Icons/BusBase40.png" : "ms-appx:///Assets/Icons/BusDirection" + Stop.Direction.ToString() + "40.png");
             DirectionImage.Source = new BitmapImage(imageUri);
+            MainScheduleBrowser.Stop = Stop;
             //MapIcon mico = new MapIcon();
             //mico.Location = new Geopoint(Stop.Position);
             //mico.Image = RandomAccessStreamReference.CreateFromUri(imageUri);
@@ -71,10 +72,7 @@ namespace OneAppAway
 #pragma warning disable CS4014
             RefreshRoutes();
             ArrivalsBox.Stop = Stop;
-            if (!ScheduleLoaded && BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Normal)
-                GetSchedule();
-            else
-                LoadSchedulesButton.Visibility = Visibility.Visible;
+            MainScheduleBrowser.LoadSchedule(false);
 #pragma warning restore CS4014
             SetMapCenter();
         }
@@ -114,44 +112,6 @@ namespace OneAppAway
             SetInnerGridSize();
         }
 
-        private async Task GetSchedule()
-        {
-            bool technicalMode = SettingsManager.GetSetting("TechnicalMode", false, true);
-            ScheduleProgressIndicator.IsActive = true;
-            ScheduleNotAvailableBlock.Visibility = Visibility.Collapsed;
-            LoadSchedulesButton.Visibility = Visibility.Collapsed;
-            Schedule = await Data.GetScheduleForStop(Stop.ID, MasterCancellationTokenSource.Token);
-            DayScheduleSelector.Items.Clear();
-            DayScheduleSelector.SelectedIndex = -1;
-            foreach (var day in technicalMode ? Schedule.TechnicalDayGroups : Schedule.DayGroups)
-            {
-                DayScheduleSelector.Items.Add(new ComboBoxItem() { Content = day.GetFriendlyName(), Tag = day });
-            }
-            if (DayScheduleSelector.Items.Count == 0)
-            {
-                DayScheduleSelector.IsEnabled = false;
-                DayScheduleSelector.Items.Add("No Schedules Available");
-                ScheduleNotAvailableBlock.Visibility = Visibility.Visible;
-                DayScheduleSelector.SelectedIndex = 0;
-            }
-            else
-            {
-                DayScheduleSelector.IsEnabled = true;
-                DayScheduleSelector.SelectionChanged += DayScheduleSelector_SelectionChanged;
-                DayScheduleSelector.SelectedIndex = 0;
-            }
-            ScheduleLoaded = true;
-            ScheduleProgressIndicator.IsActive = false;
-            //var saved = formatter.ToString();
-        }
-
-        private void DayScheduleSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MainScheduleBrowser.Schedule = Schedule[(ServiceDay)((ComboBoxItem)DayScheduleSelector.SelectedItem).Tag];
-        }
-
-        private WeekSchedule Schedule;
-
         private async Task RefreshRoutes()
         {
             RoutesProgressIndicator.IsActive = true;
@@ -168,11 +128,6 @@ namespace OneAppAway
         private void InnerGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             SetMapCenter();
-        }
-
-        private async void LoadSchedulesButton_Click(object sender, RoutedEventArgs e)
-        {
-            await GetSchedule();
         }
 
         private void RouteButton_Click(object sender, RoutedEventArgs e)

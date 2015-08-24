@@ -260,6 +260,69 @@
                 <Border BorderThickness="4" BorderBrush="#66FFFFFF" x:Name="SelectedBorder" Visibility="Collapsed" IsHitTestVisible="False"/>
             </Grid>
         </ControlTemplate>
+        <ControlTemplate x:Key="ShadowTemplate" TargetType="ContentControl">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Assets/ShadowCorner.png" Stretch="Fill"/>
+                <Image Source="/Assets/ShadowCorner.png" Stretch="Fill" Grid.Column="2" RenderTransformOrigin="0.5, 0.5">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1"/>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="/Assets/ShadowCorner.png" Stretch="Fill" Grid.Row="2" RenderTransformOrigin="0.5, 0.5">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleY="-1"/>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="/Assets/ShadowCorner.png" Stretch="Fill" Grid.Column="2" Grid.Row="2" RenderTransformOrigin="0.5, 0.5">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                    </Image.RenderTransform>
+                </Image>
+                <Rectangle Grid.Row="1">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="1,0">
+                            <GradientStop Color="#00000000"/>
+                            <GradientStop Color="#20000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Grid.Row="1" Grid.Column="2">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="1,0">
+                            <GradientStop Color="#20000000"/>
+                            <GradientStop Color="#00000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Grid.Column="1">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#00000000"/>
+                            <GradientStop Color="#20000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Grid.Column="1" Grid.Row="2">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#20000000"/>
+                            <GradientStop Color="#00000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <ContentPresenter Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </ControlTemplate>
     </Application.Resources>
 </Application>
 

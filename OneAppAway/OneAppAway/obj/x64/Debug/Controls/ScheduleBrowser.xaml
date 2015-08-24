@@ -15,23 +15,14 @@
                 <Setter Property="ItemsPanel">
                     <Setter.Value>
                         <ItemsPanelTemplate>
-                            <VariableSizedWrapGrid ItemWidth="50" Orientation="Horizontal"/>
+                            <VariableSizedWrapGrid ItemWidth="20" ItemHeight="20" Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style TargetType="Button">
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <ContentPresenter HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"/>
-                        </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -41,7 +32,8 @@
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Center">AM = Normal</TextBlock>
         <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Grid.Column="1">PM = Bold</TextBlock>
-        <ScrollViewer Grid.ColumnSpan="2" Grid.Row="1">
+        <TextBlock HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Opacity="0.5" FontSize="12">(#) = minutes before departure vehicle arrives</TextBlock>
+        <ScrollViewer Grid.ColumnSpan="2" Grid.Row="2">
             <StackPanel x:ConnectionId='1' x:Name="MainStackPanel">
                 
             </StackPanel>

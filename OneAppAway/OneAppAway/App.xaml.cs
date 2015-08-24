@@ -34,7 +34,7 @@ namespace OneAppAway
         /// <summary>
         /// Allows tracking page views, exceptions and other telemetry through the Microsoft Application Insights service.
         /// </summary>
-        private HamburgerBar MainHamburgerBar = new HamburgerBar();
+        public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
         public Frame RootFrame;
 
         /// <summary>

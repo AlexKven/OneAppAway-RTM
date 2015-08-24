@@ -35,7 +35,7 @@ namespace OneAppAway
             return new GeoboundingBox(new BasicGeoposition() { Latitude = bounds.Bottom, Longitude = bounds.Left }, new BasicGeoposition() { Latitude = bounds.Top, Longitude = bounds.Right });
         }
         
-        public static List<T> AllChildrenOfType<T>(DependencyObject parent) where T : DependencyObject
+        public static List<T> AllChildrenOfType<T>(DependencyObject parent) where T : FrameworkElement
         {
             var _List = new List<T>();
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
@@ -50,10 +50,10 @@ namespace OneAppAway
             return _List;
         }
 
-        public static T FindControl<T>(DependencyObject parentContainer, string controlName) where T : DependencyObject
+        public static T FindControl<T>(DependencyObject parentContainer, string controlName) where T : FrameworkElement
         {
             var childControls = AllChildrenOfType<T>(parentContainer);
-            var control = childControls.OfType<Control>().Where(x => x.Name.Equals(controlName)).Cast<T>().First();
+            var control = childControls.Where(x => x.Name.Equals(controlName)).Cast<T>().First();
             return control;
         }
 
@@ -200,9 +200,9 @@ namespace OneAppAway
 
         public static DateTime? DateForServiceDay(ServiceDay day)
         {
-            DateTime baseDate = DateTime.Today - TimeSpan.FromDays(7);
+            DateTime baseDate = DateTime.Today;// - TimeSpan.FromDays(7);
             while (baseDate.DayOfWeek != DayOfWeek.Monday)
-                baseDate -= TimeSpan.FromDays(1);
+                baseDate += TimeSpan.FromDays(1);
             if (day == ServiceDay.ReducedWeekday)
                 return baseDate;
             double div = (double)(int)day;
@@ -230,5 +230,19 @@ namespace OneAppAway
         }
 
         public static bool ContainsPoint(this GeoboundingBox box, BasicGeoposition point) => point.Latitude < box.NorthwestCorner.Latitude && point.Latitude >= box.SoutheastCorner.Latitude && point.Longitude < box.SoutheastCorner.Longitude && point.Longitude >= box.NorthwestCorner.Longitude;
+
+        public static DateTime? GetDateTimeFromEpochTime(this string epochTime)
+        {
+            if (epochTime == null) return null;
+            long milliseconds;
+            if (!long.TryParse(epochTime, out milliseconds))
+                return null;
+            return (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(milliseconds)).ToLocalTime();
+        }
+
+        public static short GetShortTime(this DateTime time)
+        {
+            return (short)(60 * time.Hour + time.Minute);
+        }
     }
 }

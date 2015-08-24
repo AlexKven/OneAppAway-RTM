@@ -120,10 +120,10 @@ namespace OneAppAway
             switch (BandwidthManager.EffectiveBandwidthOptions)
             {
                 case BandwidthOptions.Normal:
-                    DelayDownloadingStops = SettingsManager.GetSetting<bool>("NormalBandwidth.ManuallyDownloadStops", false, false);
+                    DelayDownloadingStops = false;
                     break;
                 case BandwidthOptions.Low:
-                    DelayDownloadingStops = SettingsManager.GetSetting<bool>("LowBandwidth.ManuallyDownloadStops", false, false);
+                    DelayDownloadingStops = SettingsManager.GetSetting<bool>("LimitedData.ManuallyDownloadStops", false, false);
                     break;
                 case BandwidthOptions.None:
                     DelayDownloadingStops = true;

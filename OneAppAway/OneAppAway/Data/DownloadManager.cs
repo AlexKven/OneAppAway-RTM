@@ -80,7 +80,7 @@ namespace OneAppAway
                         var pend = FileManager.PendingDownloads.Where(item => routeFilters.Contains(item.First())).ToArray();
                         if (pend.Any(item => item.Contains(allStops[i].ID)))
                         {
-                            schedule = await Data.GetScheduleForStop(allStops[i].ID, cancellationToken);
+                            schedule = await ApiLayer.GetScheduleForStop(allStops[i].ID, cancellationToken);
                             schedule.FilterByRoutes(routeFilters);
                             await FileManager.SaveScheduleAsync(schedule, allStops[i]);
                             foreach (var item in pend)

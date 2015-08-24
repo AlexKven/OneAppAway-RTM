@@ -55,16 +55,39 @@ namespace OneAppAway
                 {
                     lastRoute = item.Route;
                     lastDestination = item.Destination;
-                    typedSender.MainStackPanel.Children.Add(new TextBlock() { Text = (await Data.GetRoute(lastRoute, typedSender.MasterCancellationTokenSource.Token)).Value.Name + " to " + lastDestination, FontSize = 18, Foreground = new SolidColorBrush(lighten(accentColor)), TextWrapping = TextWrapping.WrapWholeWords });
+                    Grid panel = new Grid();
+                    panel.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                    panel.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                    TextBlock block = new TextBlock() { Margin = new Thickness(2), VerticalAlignment = VerticalAlignment.Center, Text = (await Data.GetRoute(lastRoute, typedSender.MasterCancellationTokenSource.Token)).Value.Name + " to " + lastDestination, FontSize = 16, Foreground = new SolidColorBrush(lighten(accentColor)), TextWrapping = TextWrapping.WrapWholeWords };
+                    Button favoriteButton = new Button() { Foreground = new SolidColorBrush(Colors.Yellow), Margin = new Thickness(5), VerticalAlignment = VerticalAlignment.Center, Content = "", FontFamily = new FontFamily("Segoe MDL2 Assets"), Tag = new string[] { typedSender.Schedule.Stop, lastRoute, lastDestination } };
+                    favoriteButton.Click += FavoriteButton_Click;
+                    Grid.SetColumn(favoriteButton, 1);
+                    panel.Children.Add(block);
+                    panel.Children.Add(favoriteButton);
+                    typedSender.MainStackPanel.Children.Add(panel);
                     timesControl = new ItemsControl();
                     typedSender.MainStackPanel.Children.Add(timesControl);
                 }
                 //Button label = new Button() { Content = (item.ScheduledArrivalTime - TimeSpan.FromMinutes(4)).ToString("h:mm") + "" + item.ScheduledArrivalTime.ToString("h:mm"), HorizontalAlignment = HorizontalAlignment.Center, FontWeight = item.ScheduledArrivalTime.Hour >= 12 ? Windows.UI.Text.FontWeights.Bold : Windows.UI.Text.FontWeights.Normal, Tag = item.Trip, FontFamily = new FontFamily("Segoe UI Symbol") };
-                Button label = new Button() { Content = item.ScheduledArrivalTime.ToString("h:mm"), HorizontalAlignment = HorizontalAlignment.Center, FontWeight = item.ScheduledArrivalTime.Hour >= 12 ? Windows.UI.Text.FontWeights.ExtraBold : Windows.UI.Text.FontWeights.Normal, Tag = item.Trip, FontFamily = new FontFamily("Segoe UI Symbol") };
+                Button label = new Button() { HorizontalAlignment = HorizontalAlignment.Center, FontWeight = item.ScheduledDepartureTime.Hour >= 12 ? Windows.UI.Text.FontWeights.Bold : Windows.UI.Text.FontWeights.Normal, Tag = item.Trip, Background = new SolidColorBrush(Colors.Transparent), Template = (ControlTemplate)App.Current.Resources["SimpleButtonTemplate"] };
                 label.Foreground = HighlightedTrips.Contains(item.Trip) ? new SolidColorBrush(lighten(accentColor)) : new SolidColorBrush(Colors.White);
                 typedSender.ShownLabels.Add(label);
                 label.Click += Label_Click;
-                VariableSizedWrapGrid.SetColumnSpan(label, 1);
+                if (item.ScheduledArrivalTime == null)
+                {
+                    label.Content = item.ScheduledDepartureTime.ToString("h:mm");
+                    VariableSizedWrapGrid.SetColumnSpan(label, 2);
+                }
+                else
+                {
+                    StackPanel panel = new StackPanel() { Orientation = Orientation.Horizontal };
+                    string text1 = "(" + (item.ScheduledDepartureTime - item.ScheduledArrivalTime.Value).TotalMinutes.ToString() + ")";
+                    string text2 = item.ScheduledDepartureTime.ToString("h:mm");
+                    panel.Children.Add(new TextBlock() { Text = text1, Opacity = 0.5, FontWeight = Windows.UI.Text.FontWeights.Normal, VerticalAlignment = VerticalAlignment.Center, FontSize = ((text1.Length + text2.Length) > 7) ? 13 : 15 });
+                    panel.Children.Add(new TextBlock() { Text = text2, VerticalAlignment = VerticalAlignment.Center, FontSize = ((text1.Length + text2.Length) > 7) ? 14 : 16 });
+                    label.Content = panel;
+                    VariableSizedWrapGrid.SetColumnSpan(label, 3);
+                }
                 if (technicalMode)
                 {
                     ToolTip toolTip = new ToolTip() { Content = "Trip=" + item.Trip + ", Route=" + item.Route + ", Stop=" + item.Stop };
@@ -72,6 +95,11 @@ namespace OneAppAway
                 }
                 timesControl.Items.Add(label);
             }
+        }
+
+        private static async void FavoriteButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ((App)App.Current).MainHamburgerBar.ShowPopup((UIElement)((Button)sender).Parent, 300, 350, typeof(AddToFavoritesPage), ((Button)sender).Tag);
         }
 
         private static void Label_Click(object sender, RoutedEventArgs e)
