@@ -132,7 +132,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[61];
+            _typeNameTable = new string[62];
             _typeNameTable[0] = "OneAppAway.ApplicationSettings";
             _typeNameTable[1] = "Windows.UI.Xaml.DependencyObject";
             _typeNameTable[2] = "OneAppAway.BandwidthOptions";
@@ -194,8 +194,9 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeNameTable[58] = "Windows.UI.Xaml.DataTemplate";
             _typeNameTable[59] = "OneAppAway.StopViewPage";
             _typeNameTable[60] = "OneAppAway.TestPage";
+            _typeNameTable[61] = "OneAppAway.ReminderPopupPage";
 
-            _typeTable = new global::System.Type[61];
+            _typeTable = new global::System.Type[62];
             _typeTable[0] = typeof(global::OneAppAway.ApplicationSettings);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.DependencyObject);
             _typeTable[2] = typeof(global::OneAppAway.BandwidthOptions);
@@ -257,6 +258,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeTable[58] = typeof(global::Windows.UI.Xaml.DataTemplate);
             _typeTable[59] = typeof(global::OneAppAway.StopViewPage);
             _typeTable[60] = typeof(global::OneAppAway.TestPage);
+            _typeTable[61] = typeof(global::OneAppAway.ReminderPopupPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -323,6 +325,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
         private object Activate_56_RouteListingTemplateSelector() { return new global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector(); }
         private object Activate_59_StopViewPage() { return new global::OneAppAway.StopViewPage(); }
         private object Activate_60_TestPage() { return new global::OneAppAway.TestPage(); }
+        private object Activate_61_ReminderPopupPage() { return new global::OneAppAway.ReminderPopupPage(); }
         private void VectorAdd_7_ValueConverterGroup(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.Data.IValueConverter>)instance;
@@ -784,6 +787,13 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             case 60:   //  OneAppAway.TestPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
                 userType.Activator = Activate_60_TestPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 61:   //  OneAppAway.ReminderPopupPage
+                userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_61_ReminderPopupPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

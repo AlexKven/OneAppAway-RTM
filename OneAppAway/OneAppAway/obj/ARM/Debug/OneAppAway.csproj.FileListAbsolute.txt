@@ -576,3 +576,8 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Pages\AddToFavoritesPage.xbf
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Core\Assets\ShadowCorner.png
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Core\Assets\ShadowCorner.png
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Pages\ReminderPopupPage.xbf
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Pages\ReminderPopupPage.g.i.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Pages\ReminderPopupPage.g.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Pages\ReminderPopupPage.xaml
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Pages\ReminderPopupPage.xbf

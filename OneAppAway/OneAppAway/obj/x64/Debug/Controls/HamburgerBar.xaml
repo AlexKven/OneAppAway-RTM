@@ -5,6 +5,7 @@
     xmlns:local="using:OneAppAway"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:OneAppAway.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -42,11 +43,17 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Grid x:Name="InnerGrid">
+                <Grid x:Name="InnerGrid" Tag="{ThemeResource SystemColorControlAccentColor}">
+                    <Grid.Resources>
+                        <converters:ValueConverterGroup x:Name="ReminderSizeConverter">
+                            <converters:MinConverter/>
+                            <converters:AddSubtractConverter Amount="-85" UseParameter="False"/>
+                        </converters:ValueConverterGroup>
+                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" x:Name="CompactHamburgerBar" Height="0" Background="{Binding ElementName=HamburgerBar, Path=Background}">
                         <Button x:ConnectionId='2' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
@@ -89,9 +96,30 @@
                             </Grid>
                         </RadioButton>
                     </StackPanel>
-                    <ContentPresenter Grid.Row="1"/>
-                    <Rectangle Grid.Row="2" Fill="{Binding ElementName=HamburgerBar, Path=Background}"/>
-                    <TextBlock RequestedTheme="Dark" Grid.Row="2" TextWrapping="WrapWholeWords">Public transit data powered by OneBusAway.</TextBlock>
+                    <ContentPresenter Grid.Row="2"/>
+                    <Rectangle Fill="{Binding ElementName=InnerGrid, Path=Tag, Converter={ThemeResource ThemeBrushConverters}, ConverterParameter=0.7}" Grid.Row="1"/>
+                    <ItemsControl Grid.Row="1" x:Name="RemindersList" RequestedTheme="Dark">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="1" BorderBrush="LightGray">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="85"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="152"/>
+                                            <ColumnDefinition Width="37"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Template="{ThemeResource SimpleButtonTemplate}" Background="Transparent"/>
+                                        <TextBlock IsHitTestVisible="False" Width="{Binding Mode=OneWay, ElementName=InnerGrid, Path=ActualWidth, Converter={StaticResource ReminderSizeConverter}, ConverterParameter=215}" FontSize="12" Text="{Binding ShortSummary}" VerticalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                                        <TextBlock IsHitTestVisible="False" FontSize="12" Grid.Column="1" Foreground="#808080" VerticalAlignment="Center" Margin="3,0,0,0">Tap for more...</TextBlock>
+                                        <Button Grid.Column="3" Width="150" Margin="1">Don't show again</Button>
+                                        <Button Grid.Column="4" FontFamily="Segoe UI Symbol" Width="35" Margin="1"></Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                     <Popup x:ConnectionId='1' Opacity="0" Grid.RowSpan="3" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True"                                                          >
                         <Popup.Transitions>
                             <TransitionCollection>

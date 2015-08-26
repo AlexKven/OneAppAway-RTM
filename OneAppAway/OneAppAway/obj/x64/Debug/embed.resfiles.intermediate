@@ -11,6 +11,7 @@ Controls\WeekScheduleBrowser.xbf
 MainPage.xbf
 Pages\AddToFavoritesPage.xbf
 Pages\BusMapPage.xbf
+Pages\ReminderPopupPage.xbf
 Pages\RoutesPage.xbf
 Pages\RouteViewPage.xbf
 Pages\SettingsPage.xbf

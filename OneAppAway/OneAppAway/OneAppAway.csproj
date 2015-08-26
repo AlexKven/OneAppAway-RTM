@@ -99,6 +99,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Reminder.cs" />
     <Compile Include="Pages\AddToFavoritesPage.xaml.cs">
       <DependentUpon>AddToFavoritesPage.xaml</DependentUpon>
     </Compile>
@@ -111,6 +112,9 @@
     </Compile>
     <Compile Include="Data\Correction.cs" />
     <Compile Include="Data\Corrections.cs" />
+    <Compile Include="Pages\ReminderPopupPage.xaml.cs">
+      <DependentUpon>ReminderPopupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Settings\BandwidthManager.cs" />
     <Compile Include="ComboBoxIconAndText.cs" />
@@ -287,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\WeekScheduleBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReminderPopupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

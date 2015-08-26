@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="OneAppAway.ReminderPopupPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Dark">
+
+    <ContentControl Template="{ThemeResource ShadowTemplate}">
+        <ScrollViewer Background="#505050">
+            <TextBlock x:ConnectionId='1' x:Name="MainTextblock"/>
+        </ScrollViewer>
+    </ContentControl>
+</Page>
+

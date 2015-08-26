@@ -15,6 +15,7 @@
         <converters:MinutesUntilArrivalConverter x:Key="MinutesUntilArrivalConverter"/>
         <converters:MaxConverter x:Key="MaxConverter"/>
         <converters:MinConverter x:Key="MinConverter"/>
+        <converters:AddSubtractConverter x:Key="AddSubtractConverter"/>
         <converters:BasicGeopositionToStringConverter x:Key="BasicGeopositionStringConverter"/>
         <converters:BandwidthOptionsRowHeightConverter x:Key="BandwidthButtonConverter"/>
         <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
