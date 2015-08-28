@@ -100,7 +100,7 @@ namespace OneAppAway
         {
             Action<BusStop[], GeoboundingBox> stopsLoadedCallback = delegate (BusStop[] stops, GeoboundingBox bnd)
             {
-                foreach (var stop in stops)
+                foreach (var stop in stops ?? new BusStop[0])
                 {
                     if (!MainMap.ShownStops.Contains(stop))
                         MainMap.ShownStops.Add(stop);

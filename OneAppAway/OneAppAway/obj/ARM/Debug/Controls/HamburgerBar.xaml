@@ -5,6 +5,7 @@
     xmlns:local="using:OneAppAway"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:OneAppAway.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -44,7 +45,6 @@
                 </VisualStateManager.VisualStateGroups>
                 <Grid x:Name="InnerGrid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
@@ -89,26 +89,8 @@
                             </Grid>
                         </RadioButton>
                     </StackPanel>
-                    <ContentPresenter Grid.Row="2"/>
-                    <ItemsControl Background="{Binding ElementName=HamburgerBar, Path=Background}" Grid.Row="1" x:Name="RemindersList">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding ShortSummary}"/>
-                                    <TextBlock Grid.Column="1" Foreground="#303030">Tap for more info...</TextBlock>
-                                    <Button Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="2">Don't show again</Button>
-                                    <Button Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="2" FontFamily="Segoe UI Symbol"></Button>
-                                </Grid>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    <Popup x:ConnectionId='1' Opacity="0" Grid.RowSpan="3" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True"                                                          >
+                    <ContentPresenter Grid.Row="1"/>
+                    <Popup x:ConnectionId='1' Opacity="0" Grid.RowSpan="2" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True"                                                          >
                         <Popup.Transitions>
                             <TransitionCollection>
                                 <PopupThemeTransition FromHorizontalOffset="20"/>

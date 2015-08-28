@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
@@ -261,5 +262,10 @@ namespace OneAppAway
         public DataSourceDescriptor PreferredSource { get; set; }
 
         public bool AllowFallback { get; set; }
+    }
+
+    public enum CardinalDirection : byte
+    {
+        North, East, South, West
     }
 }

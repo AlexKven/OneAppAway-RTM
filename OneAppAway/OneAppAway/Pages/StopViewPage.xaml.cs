@@ -37,12 +37,12 @@ namespace OneAppAway
         }
 
         private double? lonPP;
-        private bool ScheduleLoaded = false;
         private CancellationTokenSource MasterCancellationTokenSource = new CancellationTokenSource();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            Message.ShowMessage(new Message() { ShortSummary = "Scheduled times are approximate.", Caption = "Schedules Warning", FullText = "Transit schedules are approximate, and not adjusted when the bus is running late. Please arrive at least 5 minutes early to avoid missing the bus. In addition, some express routes are known to arrive at freeway stops early. At these stops, you should come at least 10 minutes early. If you downloaded schedules, remember to update them after each service change.", Id = 3 });
             if (e.Parameter != null && e.Parameter is string)
             {
                 SetPage((string)e.Parameter);

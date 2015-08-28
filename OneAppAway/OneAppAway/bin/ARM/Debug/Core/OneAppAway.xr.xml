@@ -7,7 +7,6 @@
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="Background" />
-    <RootPropertyPathName Name="ShortSummary" />
     <RootPropertyPathName Name="BandwidthSetting" />
     <RootPropertyPathName Name="Progress" />
     <RootPropertyPathName Name="Visibility" />
@@ -29,6 +28,7 @@
     <RootType FullName="OneAppAway.Converters.MinutesUntilArrivalConverter" />
     <RootType FullName="OneAppAway.Converters.MaxConverter" />
     <RootType FullName="OneAppAway.Converters.MinConverter" />
+    <RootType FullName="OneAppAway.Converters.AddSubtractConverter" />
     <RootType FullName="OneAppAway.Converters.BasicGeopositionToStringConverter" />
     <RootType FullName="OneAppAway.Converters.BandwidthOptionsRowHeightConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
@@ -163,13 +163,13 @@
       <RootProperty Name="Tag" />
       <RootProperty Name="MaxHeight" />
       <RootProperty Name="TextTrimming" />
-      <RootProperty Name="Text" />
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Opacity" />
       <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="VerticalScrollMode" />
@@ -193,8 +193,8 @@
       <RootProperty Name="Template" />
       <RootProperty Name="Background" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="FontFamily" />
       <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
@@ -295,14 +295,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.SplitViewDisplayMode" />
     <RootType FullName="System.Double" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
-      <RootProperty Name="Background" />
-      <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="ItemsPanel" />
-      <RootProperty Name="Tag" />
-      <RootProperty Name="Items" />
-      <RootProperty Name="ItemTemplateSelector" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Primitives.Popup">
       <RootProperty Name="Opacity" />
       <RootProperty Name="Width" />
@@ -320,9 +312,6 @@
       <RootProperty Name="FromHorizontalOffset" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame" />
-    <RootType FullName="Windows.UI.Xaml.DataTemplate">
-      <RootProperty Name="Template" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="MinWidth" />
@@ -351,6 +340,13 @@
       <RootProperty Name="IsChecked" />
       <RootProperty Name="IsDownloaded" />
       <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
+      <RootProperty Name="ItemsPanel" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Items" />
+      <RootProperty Name="ItemTemplateSelector" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Setter">
       <RootProperty Name="Property" />
@@ -457,6 +453,9 @@
       <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.DataTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.WrapGrid">
       <RootProperty Name="ItemWidth" />
       <RootProperty Name="Orientation" />
@@ -493,6 +492,6 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
-    <RootType FullName="OneAppAway.ReminderPopupPage" />
+    <RootType FullName="OneAppAway.MessagePopupPage" />
   </Roots.RootTypes>
 </Roots>

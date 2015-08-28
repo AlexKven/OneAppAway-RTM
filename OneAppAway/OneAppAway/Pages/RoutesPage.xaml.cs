@@ -71,6 +71,7 @@ namespace OneAppAway
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            Message.ShowMessage(new Message() { ShortSummary = "Keep your downloads updated.", Caption = "Downloads Warning", FullText = "Most transit agencies adjust route schedules 3 times a year. In addition, King County Metro cancels some route trips during the UW break periods. It is your responsibility to update your downloaded schedules when these changes occur.", Id = 2 });
             await FileManager.LoadPendingDownloads();
             var agencies = await Data.GetTransitAgencies(new DataRetrievalOptions(DataSourceDescriptor.Cloud), MasterCancellationTokenSource.Token);
             AgenciesWarning = agencies.Item2.FinalSource != DataSourceDescriptor.Cloud;

@@ -96,7 +96,7 @@ namespace OneAppAway
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-           await  ((App)App.Current).MainHamburgerBar.ShowPopup(this, 300, 350, typeof(AddToFavoritesPage), new string[] { Arrival.Stop, Arrival.Route, Arrival.Destination });
+            await FavoritesManager.ShowAddOrRemoveFavorite(this, Arrival.Route, Arrival.Stop, Arrival.Destination);
         }
     }
 }

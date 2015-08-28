@@ -28,7 +28,7 @@
             <ScrollViewer Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="5">
                     <TextBlock>(Optional) Select one or more contexts:</TextBlock>
-                    <CheckBox x:ConnectionId='6' x:Name="CityContextBox" IsEnabled="False">(Loading city)</CheckBox>
+                    <CheckBox x:ConnectionId='6' x:Name="CityContextBox" IsEnabled="False"                                                                      >(Loading city)</CheckBox>
                     <CheckBox x:ConnectionId='7' HorizontalAlignment="Stretch" x:Name="MileContextBox">
                         <StackPanel>
                             <TextBlock x:ConnectionId='9' x:Name="MileContextDescription">Within 1 miles</TextBlock>

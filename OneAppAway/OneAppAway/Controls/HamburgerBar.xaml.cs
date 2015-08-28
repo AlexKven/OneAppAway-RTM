@@ -30,7 +30,6 @@ namespace OneAppAway
         private Grid InnerGrid = new Grid();
         private Popup PopupControl = new Popup();
         private Frame RootFrame;
-        private ItemsControl RemindersList = new ItemsControl();
 
         Queue<Tuple<UIElement, double, double, Type, object, AutoResetEvent>> PopupQueue = new Queue<Tuple<UIElement, double, double, Type, object, AutoResetEvent>>();
 
@@ -49,7 +48,6 @@ namespace OneAppAway
             RoutesButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "RoutesButton");
             InnerGrid = (Grid)MainSplitView.Content;
             PopupControl = HelperFunctions.FindControl<Popup>(InnerGrid, "PopupControl");
-            RemindersList = HelperFunctions.FindControl<ItemsControl>(InnerGrid, "RemindersList");
             CheckCorrectButton();
         }
 
@@ -112,7 +110,6 @@ namespace OneAppAway
         private void RootFrame_Navigated(object sender, NavigationEventArgs e)
         {
             CheckCorrectButton();
-            RemindersList.Items.Add(new Reminder() { ShortSummary = "Public transit data powered by OneBusAway, yeah! OneBusAway is awesome!." });
         }
 
         public async Task ShowPopup(UIElement element, double width, double height, Type sourcePageType, object parameter = null)
@@ -140,16 +137,16 @@ namespace OneAppAway
         private void OnShowPopup(UIElement element, double width, double height, Type sourcePageType, object parameter)
         {
             Frame popupFrame = ((Frame)PopupControl.Child);
-            popupFrame.Width = Min(width, this.ActualWidth);
-            popupFrame.Height = Min(height, this.ActualHeight);
-            var centerTop = element.TransformToVisual(InnerGrid).TransformPoint(new Point(element.RenderSize.Width / 2, element.RenderSize.Height));
+            popupFrame.Width = Min(width, InnerGrid.ActualWidth);
+            popupFrame.Height = Min(height, InnerGrid.ActualHeight);
+            var centerTop = element == null ? new Point(InnerGrid.ActualWidth / 2, 0) : element.TransformToVisual(InnerGrid).TransformPoint(new Point(element.RenderSize.Width / 2, element.RenderSize.Height));
             centerTop = new Point(centerTop.X - popupFrame.Width / 2, centerTop.Y);
-            if (centerTop.X + popupFrame.Width > this.ActualWidth)
-                centerTop = new Point(this.ActualWidth - popupFrame.Width, centerTop.Y);
+            if (centerTop.X + popupFrame.Width > InnerGrid.ActualWidth)
+                centerTop = new Point(InnerGrid.ActualWidth - popupFrame.Width, centerTop.Y);
             else if (centerTop.X < 0)
                 centerTop = new Point(0, centerTop.Y);
-            if (centerTop.Y + popupFrame.Height > this.ActualHeight)
-                centerTop = new Point(centerTop.X, this.ActualHeight - popupFrame.Height);
+            if (centerTop.Y + popupFrame.Height > InnerGrid.ActualHeight)
+                centerTop = new Point(centerTop.X, InnerGrid.ActualHeight - popupFrame.Height);
             else if (centerTop.Y < 0)
                 centerTop = new Point(centerTop.X, 0);
             PopupControl.Tag = centerTop;

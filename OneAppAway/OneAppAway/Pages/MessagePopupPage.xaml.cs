@@ -20,9 +20,9 @@ namespace OneAppAway
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ReminderPopupPage : Page
+    public sealed partial class MessagePopupPage : Page
     {
-        public ReminderPopupPage()
+        public MessagePopupPage()
         {
             this.InitializeComponent();
         }

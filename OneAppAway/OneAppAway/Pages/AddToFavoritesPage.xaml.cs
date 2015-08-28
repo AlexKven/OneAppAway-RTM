@@ -29,6 +29,9 @@ namespace OneAppAway
             this.InitializeComponent();
         }
 
+        private ContextLocation location;
+        private FavoriteArrival favorite;
+
         private CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -36,8 +39,8 @@ namespace OneAppAway
             base.OnNavigatedTo(e);
             if (e.Parameter is string[])
             {
-                var stop = await Data.GetBusStop(((string[])e.Parameter)[0], CancellationTokenSource.Token);
-                var route = await Data.GetRoute(((string[])e.Parameter)[1], CancellationTokenSource.Token);
+                var stop = await Data.GetBusStop(((string[])e.Parameter)[1], CancellationTokenSource.Token);
+                var route = await Data.GetRoute(((string[])e.Parameter)[0], CancellationTokenSource.Token);
                 string destination = ((string[])e.Parameter)[2];
                 DescriptionBlock.Text = route.Value.Name + " to " + destination + " at " + stop.Value.Name;
                 Windows.Devices.Geolocation.Geolocator locator = new Windows.Devices.Geolocation.Geolocator();
@@ -61,6 +64,8 @@ namespace OneAppAway
                 {
                     CityContextBox.Content = "(Could not get city)";
                 }
+                location = new ContextLocation() { Latitude = stop.Value.Position.Latitude, Longitude = stop.Value.Position.Longitude, City = city };
+                favorite = new FavoriteArrival() { Contexts = new LocationContext[0], Route = route.Value.ID, Stop = stop.Value.ID, Destination = destination };
             }
         }
 
@@ -71,12 +76,30 @@ namespace OneAppAway
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            FavoritesManager.FavoriteArrivals.Add(favorite);
             ((App)App.Current).MainHamburgerBar.DismissPopup();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             ((App)App.Current).MainHamburgerBar.DismissPopup();
+        }
+
+        private void CityContextBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (favorite.Contexts.All(ctxt => !(ctxt is CityContext)))
+            {
+                var list = favorite.Contexts.ToList();
+                list.Add(new CityContext() { RelativeLocation = location });
+                favorite.Contexts = list.ToArray();
+            }
+        }
+
+        private void CityContextBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var list = favorite.Contexts.ToList();
+            list.RemoveAll(ctxt => ctxt is CityContext);
+            favorite.Contexts = list.ToArray();
         }
     }
 }

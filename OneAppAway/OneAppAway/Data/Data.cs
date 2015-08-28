@@ -47,7 +47,7 @@ namespace OneAppAway
                         for (int j = 0; j < lonPieces; j++)
                         {
                             BusStop[] foundStops = await ApiLayer.GetBusStopsForArea(new BasicGeoposition() { Latitude = bounds.SoutheastCorner.Latitude + (i + .5) * smallLatRange, Longitude = bounds.NorthwestCorner.Longitude + (j + .5) * smallLonRange }, smallLatRange, smallLonRange, cancellationToken);
-                            foreach (var item in foundStops)
+                            foreach (var item in foundStops ?? new BusStop[0])
                             {
                                 if (!totalFoundStops.Contains(item))
                                     totalFoundStops.Add(item);

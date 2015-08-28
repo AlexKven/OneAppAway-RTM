@@ -103,6 +103,7 @@ namespace OneAppAway
             Window.Current.Activate();
             BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             SetTitleBar();
+            Message.ShowMessage(new Message() { ShortSummary = "Public transit data powered by OneBusAway.", Caption = "Welcome!", FullText="This app uses data provided by the OneBusAway api. OneBusAway also provides its own app for this platform, and is available for free. This app builds on the functions of the official app, and provides additional functionality not available in OneBusAway's own app.", Id = 1 });
         }
 
         /// <summary>
@@ -167,6 +168,23 @@ namespace OneAppAway
                 statusBar.ForegroundColor = foreground;
                 setOcclusion();
                 ApplicationView.GetForCurrentView().VisibleBoundsChanged += (sender, e) => setOcclusion();
+            }
+        }
+
+        protected override async void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+            if (args.Kind == ActivationKind.ToastNotification)
+            {
+                var toastArgs = args as ToastNotificationActivatedEventArgs;
+                if (toastArgs.Argument.StartsWith("messageTapped"))
+                {
+                    await MainHamburgerBar.ShowPopup(null, Window.Current.Bounds.Width * 0.9, 100 + 30000 / Window.Current.Bounds.Width, typeof(MessagePopupPage), SettingsManager.GetSetting<string>("Message" + toastArgs.Argument.Substring(13), false));
+                }
+                if (toastArgs.Argument.StartsWith("suppressMessage"))
+                {
+                    SettingsManager.SetSetting("SuppressMessage" + toastArgs.Argument.Substring(15), true, true);
+                }
             }
         }
 

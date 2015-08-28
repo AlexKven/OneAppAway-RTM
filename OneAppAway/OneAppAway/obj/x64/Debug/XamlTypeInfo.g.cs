@@ -195,7 +195,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeNameTable[59] = "Windows.UI.Xaml.DataTemplate";
             _typeNameTable[60] = "OneAppAway.StopViewPage";
             _typeNameTable[61] = "OneAppAway.TestPage";
-            _typeNameTable[62] = "OneAppAway.ReminderPopupPage";
+            _typeNameTable[62] = "OneAppAway.MessagePopupPage";
 
             _typeTable = new global::System.Type[63];
             _typeTable[0] = typeof(global::OneAppAway.ApplicationSettings);
@@ -260,7 +260,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeTable[59] = typeof(global::Windows.UI.Xaml.DataTemplate);
             _typeTable[60] = typeof(global::OneAppAway.StopViewPage);
             _typeTable[61] = typeof(global::OneAppAway.TestPage);
-            _typeTable[62] = typeof(global::OneAppAway.ReminderPopupPage);
+            _typeTable[62] = typeof(global::OneAppAway.MessagePopupPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -328,7 +328,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
         private object Activate_57_RouteListingTemplateSelector() { return new global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector(); }
         private object Activate_60_StopViewPage() { return new global::OneAppAway.StopViewPage(); }
         private object Activate_61_TestPage() { return new global::OneAppAway.TestPage(); }
-        private object Activate_62_ReminderPopupPage() { return new global::OneAppAway.ReminderPopupPage(); }
+        private object Activate_62_MessagePopupPage() { return new global::OneAppAway.MessagePopupPage(); }
         private void VectorAdd_7_ValueConverterGroup(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.Data.IValueConverter>)instance;
@@ -803,9 +803,9 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 62:   //  OneAppAway.ReminderPopupPage
+            case 62:   //  OneAppAway.MessagePopupPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_62_ReminderPopupPage;
+                userType.Activator = Activate_62_MessagePopupPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

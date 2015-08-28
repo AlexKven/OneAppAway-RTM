@@ -40,6 +40,7 @@ namespace OneAppAway
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            Message.ShowMessage(new Message() { ShortSummary = "Not every trip serves every stop.", Caption = "Route Map Warning", FullText = "The path shown on the map is every path driven by this route in any circumstance. While sometimes every trip serves every stop, often times trips terminate earlier than others. Also, some routes have special extended trips that aren't normally served by the route, and this map shows all of them. A future update will allow you to more easily see which trips serve which stops.", Id = 4 });
             MainMap.Background = new SolidColorBrush(Colors.Black);
             if (e.Parameter is string)
             {

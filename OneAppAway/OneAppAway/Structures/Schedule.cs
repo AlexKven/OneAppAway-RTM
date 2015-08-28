@@ -120,8 +120,9 @@ namespace OneAppAway
             }
         }
 
-        public void Deformat(CompactFormatReader reader)
+        public void Deformat(CompactFormatReader reader, string stopId)
         {
+            Stop = stopId;
             Days.Clear();
             TechnicalDays.Clear();
             DaySchedules.Clear();
@@ -130,7 +131,7 @@ namespace OneAppAway
             {
                 ServiceDay nextDay = (ServiceDay)items[0].ReadInt();
                 ServiceDay nextTechnicalDay = (ServiceDay)items[1].ReadInt();
-                DaySchedule schedule = new DaySchedule();
+                DaySchedule schedule = new DaySchedule() { Stop = stopId };
                 schedule.Deformat(items[2]);
                 Days.Add(nextDay);
                 TechnicalDays.Add(nextTechnicalDay);

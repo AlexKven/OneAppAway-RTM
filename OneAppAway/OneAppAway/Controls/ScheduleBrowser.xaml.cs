@@ -59,7 +59,7 @@ namespace OneAppAway
                     panel.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
                     panel.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
                     TextBlock block = new TextBlock() { Margin = new Thickness(2), VerticalAlignment = VerticalAlignment.Center, Text = (await Data.GetRoute(lastRoute, typedSender.MasterCancellationTokenSource.Token)).Value.Name + " to " + lastDestination, FontSize = 16, Foreground = new SolidColorBrush(lighten(accentColor)), TextWrapping = TextWrapping.WrapWholeWords };
-                    Button favoriteButton = new Button() { Foreground = new SolidColorBrush(Colors.Yellow), Margin = new Thickness(5), VerticalAlignment = VerticalAlignment.Center, Content = "", FontFamily = new FontFamily("Segoe MDL2 Assets"), Tag = new string[] { typedSender.Schedule.Stop, lastRoute, lastDestination } };
+                    Button favoriteButton = new Button() { Foreground = new SolidColorBrush(Colors.Yellow), Margin = new Thickness(5), VerticalAlignment = VerticalAlignment.Center, Content = "", FontFamily = new FontFamily("Segoe MDL2 Assets"), Tag = new string[] { lastRoute, typedSender.Schedule.Stop, lastDestination } };
                     favoriteButton.Click += FavoriteButton_Click;
                     Grid.SetColumn(favoriteButton, 1);
                     panel.Children.Add(block);
@@ -99,7 +99,7 @@ namespace OneAppAway
 
         private static async void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
-            await ((App)App.Current).MainHamburgerBar.ShowPopup((UIElement)((Button)sender).Parent, 300, 350, typeof(AddToFavoritesPage), ((Button)sender).Tag);
+            await FavoritesManager.ShowAddOrRemoveFavorite((UIElement)((Button)sender).Parent, ((string[])((Button)sender).Tag)[0], ((string[])((Button)sender).Tag)[1], ((string[])((Button)sender).Tag)[2]);
         }
 
         private static void Label_Click(object sender, RoutedEventArgs e)

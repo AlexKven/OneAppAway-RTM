@@ -133,7 +133,7 @@ namespace OneAppAway
             {
                 string text = await FileIO.ReadTextAsync(file);
                 CompactFormatReader reader = new CompactFormatReader(text);
-                result.Deformat(reader);
+                result.Deformat(reader, stopId);
                 return result;
             }
             else
