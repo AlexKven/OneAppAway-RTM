@@ -13,6 +13,7 @@ using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Streams;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -22,6 +23,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Shapes;
+using static System.Math;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -35,6 +38,8 @@ namespace OneAppAway
         private List<MapIcon> BusStopIcons = new List<MapIcon>();
         private Dictionary<MapIcon, BusStop> Stops = new Dictionary<MapIcon, BusStop>();
         private double PreviousZoomLevel;
+
+        private Polygon MyLocationIcon = new Polygon();
         #endregion 
 
         public BusMap()
@@ -42,6 +47,22 @@ namespace OneAppAway
             this.InitializeComponent();
             _ShownStops.CollectionChanged += _ShownStops_CollectionChanged;
             MainMap.MapServiceToken = Keys.BingMapKey;
+            MyLocationIcon.Stroke = new SolidColorBrush(((Color)App.Current.Resources["SystemColorControlAccentColor"]));
+            MyLocationIcon.StrokeThickness = 2;
+            MyLocationIcon.Visibility = Visibility.Collapsed;
+            MyLocationIcon.Fill = new SolidColorBrush(Colors.White);
+            PointCollection circlePoints = new PointCollection() { new Point(10, 0), new Point(3, 3), new Point(0, 10), new Point(-3, 3), new Point(-10, 0), new Point(-3, -3), new Point(0, -10), new Point(3, -3) };
+            //for (double theta = 0; theta < 2 * PI; theta += PI / 16.0)
+            //{
+            //    double r = 8.0;
+            //    if (theta >= PI / 4.0 && theta <= PI / 2.0)
+            //        r = r / Cos(theta - PI / 4.0);
+            //    else if (theta > PI / 2.0 && theta <= 3.0 * PI / 2.0)
+            //        r = r / Cos(theta - 3.0 * PI / 4.0);
+            //    circlePoints.Add(new Point(r * Cos(theta), r * Sin(theta)));
+            //}
+            MyLocationIcon.Points = circlePoints;
+            MainMap.Children.Add(MyLocationIcon);
         }
 
         private ObservableCollection<BusStop> _ShownStops = new ObservableCollection<BusStop>();
@@ -283,6 +304,34 @@ namespace OneAppAway
                 stops[i] = Stops[(MapIcon)mapIcons.ElementAt(i)];
             }
             OnStopsClicked(stops, args.Location.Position);
+        }
+
+        public void HookLocationEvents()
+        {
+            LocationManager.LocationChanged += LocationManager_LocationChanged;
+            RefreshMyLocation();
+        }
+
+        public void UnhookLocationEvents()
+        {
+            LocationManager.LocationChanged -= LocationManager_LocationChanged;
+        }
+
+        private void LocationManager_LocationChanged(object sender, EventArgs e)
+        {
+            RefreshMyLocation();
+        }
+
+        private async void RefreshMyLocation()
+        {
+            var loc = await LocationManager.GetPosition();
+            if (loc == null)
+                MyLocationIcon.Visibility = Visibility.Collapsed;
+            else
+            {
+                MapControl.SetLocation(MyLocationIcon, new Geopoint(loc.Value));
+                MyLocationIcon.Visibility = Visibility.Visible;
+            }
         }
     }
 

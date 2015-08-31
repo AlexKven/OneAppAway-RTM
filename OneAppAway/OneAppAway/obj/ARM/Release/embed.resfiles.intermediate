@@ -7,8 +7,12 @@ Controls\PopupStopArrivalsBox.xbf
 Controls\RouteListingControl.xbf
 Controls\ScheduleBrowser.xbf
 Controls\StopArrivalsBox.xbf
+Controls\WeekScheduleBrowser.xbf
 MainPage.xbf
+Pages\AddToFavoritesPage.xbf
 Pages\BusMapPage.xbf
+Pages\MessagePopupPage.xbf
+Pages\RemoveFromFavoritesPage.xbf
 Pages\RoutesPage.xbf
 Pages\RouteViewPage.xbf
 Pages\SettingsPage.xbf

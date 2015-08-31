@@ -75,7 +75,7 @@ namespace OneAppAway
     }
 
     [DataContract]
-    public class CardninalDirectionContext : LocationContext
+    public class CardinalDirectionContext : LocationContext
     {
         [DataMember]
         public CardinalDirection Direction { get; set; }

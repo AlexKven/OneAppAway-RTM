@@ -29,19 +29,39 @@
                 <StackPanel Margin="5">
                     <TextBlock>(Optional) Select one or more contexts:</TextBlock>
                     <CheckBox x:Name="CityContextBox" IsEnabled="False" Checked="CityContextBox_Checked" Unchecked="CityContextBox_Unchecked">(Loading city)</CheckBox>
-                    <CheckBox HorizontalAlignment="Stretch" x:Name="MileContextBox">
+                    <CheckBox HorizontalAlignment="Stretch" x:Name="MileContextBox" Checked="MileContextBox_Checked" Unchecked="MileContextBox_Unchecked">
                         <StackPanel>
                             <TextBlock x:Name="MileContextDescription">Within 1 miles</TextBlock>
                             <Slider IsEnabled="{Binding ElementName=MileContextBox, Path=IsChecked}" Minimum="0.25" Value="2" SnapsTo="StepValues" StepFrequency="0.25" Maximum="15" x:Name="MileSlider" ValueChanged="MileSlider_ValueChanged"/>
                         </StackPanel>
                     </CheckBox>
-                    <CheckBox x:Name="DirectionContextBox">
+                    <CheckBox x:Name="DirectionContextBox" Checked="DirectionContextBox_Checked" Unchecked="DirectionContextBox_Unchecked">
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox Width="100" SelectedIndex="0" IsEnabled="{Binding ElementName=DirectionContextBox, Path=IsChecked}">
-                                <ComboBoxItem>North</ComboBoxItem>
-                                <ComboBoxItem>South</ComboBoxItem>
-                                <ComboBoxItem>East</ComboBoxItem>
-                                <ComboBoxItem>West</ComboBoxItem>
+                            <ComboBox x:Name="CardinalDirectionSelector" Width="100" SelectedIndex="0" IsEnabled="{Binding ElementName=DirectionContextBox, Path=IsChecked}" SelectionChanged="CardinalDirectionSelector_SelectionChanged">
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>North</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    North
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>South</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    South
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>East</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    East
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>West</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    West
+                                </ComboBoxItem>
                             </ComboBox>
                             <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">of this stop.</TextBlock>
                         </StackPanel>

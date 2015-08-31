@@ -72,10 +72,15 @@ namespace OneAppAway
         private void MileSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             MileContextDescription.Text = "Within " + MileSlider.Value.ToString("F2") + " miles of this stop";
+            if (favorite == null) return;
+            var list = favorite.Contexts.ToList();
+            list.Where(ctxt => ctxt is DistanceContext).Select(ctxt => ((DistanceContext)ctxt).Distance = MileSlider.Value);
+            favorite.Contexts = list.ToArray();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            favorite.CustomName = TitleBox.Text;
             FavoritesManager.FavoriteArrivals.Add(favorite);
             ((App)App.Current).MainHamburgerBar.DismissPopup();
         }
@@ -87,6 +92,7 @@ namespace OneAppAway
 
         private void CityContextBox_Checked(object sender, RoutedEventArgs e)
         {
+            if (favorite == null) return;
             if (favorite.Contexts.All(ctxt => !(ctxt is CityContext)))
             {
                 var list = favorite.Contexts.ToList();
@@ -97,8 +103,55 @@ namespace OneAppAway
 
         private void CityContextBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (favorite == null) return;
             var list = favorite.Contexts.ToList();
             list.RemoveAll(ctxt => ctxt is CityContext);
+            favorite.Contexts = list.ToArray();
+        }
+
+        private void MileContextBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (favorite == null) return;
+            if (favorite.Contexts.All(ctxt => !(ctxt is DistanceContext)))
+            {
+                var list = favorite.Contexts.ToList();
+                list.Add(new DistanceContext() { RelativeLocation = location, Distance = MileSlider.Value });
+                favorite.Contexts = list.ToArray();
+            }
+        }
+
+        private void MileContextBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (favorite == null) return;
+            var list = favorite.Contexts.ToList();
+            list.RemoveAll(ctxt => ctxt is DistanceContext);
+            favorite.Contexts = list.ToArray();
+        }
+
+        private void DirectionContextBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (favorite == null) return;
+            if (favorite.Contexts.All(ctxt => !(ctxt is CardinalDirectionContext)))
+            {
+                var list = favorite.Contexts.ToList();
+                list.Add(new CardinalDirectionContext() { RelativeLocation = location, Direction = (CardinalDirection)Enum.Parse(typeof(CardinalDirection), ((ComboBoxItem)CardinalDirectionSelector.SelectedValue).Content.ToString()) });
+                favorite.Contexts = list.ToArray();
+            }
+        }
+
+        private void DirectionContextBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (favorite == null) return;
+            var list = favorite.Contexts.ToList();
+            list.RemoveAll(ctxt => ctxt is CardinalDirectionContext);
+            favorite.Contexts = list.ToArray();
+        }
+
+        private void CardinalDirectionSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (favorite == null) return;
+            var list = favorite.Contexts.ToList();
+            list.Where(ctxt => ctxt is CardinalDirectionContext).Select(ctxt => ((CardinalDirectionContext)ctxt).Direction = (CardinalDirection)Enum.Parse(typeof(CardinalDirection), ((ComboBoxItem)CardinalDirectionSelector.SelectedValue).Content.ToString()));
             favorite.Contexts = list.ToArray();
         }
     }

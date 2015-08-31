@@ -100,6 +100,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\FavoritesManager.cs" />
+    <Compile Include="FavoritesPage.xaml.cs">
+      <DependentUpon>FavoritesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LocationManager.cs" />
+    <Compile Include="Pages\RemoveFromFavoritesPage.xaml.cs">
+      <DependentUpon>RemoveFromFavoritesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Structures\ContextLocation.cs" />
     <Compile Include="Structures\FavoriteArrival.cs" />
     <Compile Include="Structures\Message.cs" />
@@ -209,6 +216,8 @@
     <Content Include="Assets\Icons\BusRoutesIcon.png" />
     <Content Include="Assets\Icons\LogoBase.png" />
     <Content Include="Assets\Icons\MeIcon.png" />
+    <Content Include="Assets\Icons\MyLocationIcon256.png" />
+    <Content Include="Assets\Icons\MyLocationIcon32.png" />
     <Content Include="Assets\Icons\RefreshStopsIcon.png" />
     <Content Include="Assets\Icons\SmallLogo.scale-100.png" />
     <Content Include="Assets\Logo.scale-100.png" />
@@ -229,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="FavoritesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddToFavoritesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -298,6 +311,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MessagePopupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RemoveFromFavoritesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

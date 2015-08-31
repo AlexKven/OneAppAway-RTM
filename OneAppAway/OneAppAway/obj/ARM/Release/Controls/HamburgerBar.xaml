@@ -5,6 +5,7 @@
     xmlns:local="using:OneAppAway"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:OneAppAway.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -42,15 +43,14 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Grid>
+                <Grid x:Name="InnerGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" x:Name="CompactHamburgerBar" Height="0" Background="{Binding ElementName=HamburgerBar, Path=Background}">
-                        <Button x:ConnectionId='1' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
-                        <Button x:ConnectionId='2' Width="50" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" RequestedTheme="Dark" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"                              >
+                        <Button x:ConnectionId='2' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
+                        <Button x:ConnectionId='3' Width="50" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" RequestedTheme="Dark" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"                              >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
@@ -90,8 +90,14 @@
                         </RadioButton>
                     </StackPanel>
                     <ContentPresenter Grid.Row="1"/>
-                    <Rectangle Grid.Row="2" Fill="{Binding ElementName=HamburgerBar, Path=Background}"/>
-                    <TextBlock RequestedTheme="Dark" Grid.Row="2" TextWrapping="WrapWholeWords">Public transit data powered by OneBusAway.</TextBlock>
+                    <Popup x:ConnectionId='1' Opacity="0" Grid.RowSpan="2" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True"                                                          >
+                        <Popup.Transitions>
+                            <TransitionCollection>
+                                <PopupThemeTransition FromHorizontalOffset="20"/>
+                            </TransitionCollection>
+                        </Popup.Transitions>
+                        <Frame/>
+                    </Popup>
                 </Grid>
                 <SplitView.Pane>
                     <StackPanel Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
@@ -100,7 +106,7 @@
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:ConnectionId='7' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
+                            <Button x:ConnectionId='8' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
                             <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" x:Name="MainPanel" Tag="{ThemeResource SystemColorControlAccentColor}">
                                 <Image Width="40" Height="40" Source="Assets/Icons/LogoBase.png" Stretch="Uniform" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="28" VerticalAlignment="Center" Foreground="White">One</TextBlock>
@@ -108,7 +114,7 @@
                                 <TextBlock FontSize="28" VerticalAlignment="Center" Foreground="White">Away</TextBlock>
                             </StackPanel>
                         </Grid>
-                        <Button x:ConnectionId='3' Template="{StaticResource SimpleButtonTemplate}" Background="#303030" RequestedTheme="Dark" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"                              >
+                        <Button x:ConnectionId='4' Template="{StaticResource SimpleButtonTemplate}" Background="#303030" RequestedTheme="Dark" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"                              >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
@@ -133,7 +139,7 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,15,0,0" Grid.Row="3" FontSize="8">AUTO</TextBlock>
                             </Grid>
                         </Button>
-                        <RadioButton x:ConnectionId='4' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="MapButton"                            >
+                        <RadioButton x:ConnectionId='5' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="MapButton"                            >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
@@ -144,7 +150,7 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Show Map</TextBlock>
                             </Grid>
                         </RadioButton>
-                        <RadioButton x:ConnectionId='5' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="RoutesButton"                               >
+                        <RadioButton x:ConnectionId='6' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="RoutesButton"                               >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
@@ -155,7 +161,7 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">View and Download Routes</TextBlock>
                             </Grid>
                         </RadioButton>
-                        <RadioButton x:ConnectionId='6' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="SettingsButton"                                 >
+                        <RadioButton x:ConnectionId='7' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="SettingsButton"                                 >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>

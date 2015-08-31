@@ -223,6 +223,8 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="MinWidth" />
+      <RootEvent Name="Checked" />
+      <RootEvent Name="Unchecked" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="Width" />
@@ -493,5 +495,6 @@
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="OneAppAway.MessagePopupPage" />
+    <RootType FullName="OneAppAway.RemoveFromFavoritesPage" />
   </Roots.RootTypes>
 </Roots>

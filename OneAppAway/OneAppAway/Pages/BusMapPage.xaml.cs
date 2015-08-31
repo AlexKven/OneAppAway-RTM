@@ -47,12 +47,14 @@ namespace OneAppAway
             BandwidthManager.EffectiveBandwidthOptionsChanged += BandwidthManager_EffectiveBandwidthOptionsChanged;
             WindowStateChanging();
             RefreshDelayDownloadingStops();
+            MainMap.HookLocationEvents();
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
             BandwidthManager.EffectiveBandwidthOptionsChanged += BandwidthManager_EffectiveBandwidthOptionsChanged;
+            MainMap.UnhookLocationEvents();
         }
 
         public async void CenterOnCurrentLocation()
