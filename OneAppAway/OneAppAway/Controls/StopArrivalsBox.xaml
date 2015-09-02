@@ -22,7 +22,7 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Image Margin="2" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="DirectionImage"/>
-        <Button Background="#22444444" Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="1" Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="18" Click="StopButton_Click">
+        <Button x:Name="StopButton" Background="#22444444" Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="1" Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="18" Click="StopButton_Click">
             <TextBlock x:Name="NameBlock" TextWrapping="WrapWholeWords" HorizontalAlignment="Left" VerticalAlignment="Stretch"></TextBlock>
         </Button>
         <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Click="RefreshButton_Click" FontFamily="Segoe UI Symbol"></Button>

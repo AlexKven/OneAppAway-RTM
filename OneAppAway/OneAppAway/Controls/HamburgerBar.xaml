@@ -76,7 +76,7 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
                             </Grid>
                         </RadioButton>
-                        <RadioButton RequestedTheme="Dark" MinWidth="0" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Width="50" IsChecked="{Binding ElementName=RoutesButton, Path=IsChecked, Mode=TwoWay}">
+                        <RadioButton RequestedTheme="Dark" MinWidth="0" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Width="50" IsChecked="{Binding ElementName=RoutesButton, Path=IsChecked, Mode=TwoWay}" x:Name="CompactRoutesButton">
                             <Grid>
                                 <Rectangle Fill="#33000000"/>
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
@@ -96,7 +96,6 @@
                                 <PopupThemeTransition FromHorizontalOffset="20"/>
                             </TransitionCollection>
                         </Popup.Transitions>
-                        <Frame/>
                     </Popup>
                 </Grid>
                 <SplitView.Pane>

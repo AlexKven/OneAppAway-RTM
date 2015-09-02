@@ -136,6 +136,8 @@
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Background" />
       <RootProperty Name="Child" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
@@ -200,10 +202,10 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Inlines" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Tag" />
       <RootProperty Name="MaxHeight" />
       <RootProperty Name="TextTrimming" />
@@ -218,11 +220,20 @@
     <RootType FullName="OneAppAway.FavoritesPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="Template" />
-      <RootProperty Name="Background" />
       <RootProperty Name="Content" />
+      <RootProperty Name="Background" />
       <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="VerticalContentAlignment" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
+      <RootProperty Name="Stroke" />
+      <RootProperty Name="StrokeThickness" />
+      <RootProperty Name="Fill" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Points" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="OneAppAway.HelpTip" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
@@ -240,6 +251,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="ClickMode" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Foreground" />
@@ -337,7 +349,6 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="IsLightDismissEnabled" />
       <RootProperty Name="Transitions" />
-      <RootProperty Name="Child" />
       <RootEvent Name="Opened" />
       <RootEvent Name="Closed" />
     </RootType>
@@ -345,7 +356,6 @@
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopupThemeTransition">
       <RootProperty Name="FromHorizontalOffset" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Frame" />
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="MinWidth" />
@@ -430,14 +440,6 @@
     <RootType FullName="Windows.UI.Xaml.Media.CompositeTransform">
       <RootProperty Name="TranslateY" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.RepeatButton">
-      <RootProperty Name="Template" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="Content" />
-      <RootEvent Name="Click" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.BitmapIcon">
       <RootProperty Name="Foreground" />
       <RootProperty Name="UriSource" />
@@ -496,12 +498,6 @@
     </RootType>
     <RootType FullName="OneAppAway.StopViewPage" />
     <RootType FullName="OneAppAway.TestPage" />
-    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
-      <RootProperty Name="Points" />
-      <RootProperty Name="Fill" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
     <RootType FullName="OneAppAway.MessagePopupPage" />
     <RootType FullName="OneAppAway.RemoveFromFavoritesPage" />
   </Roots.RootTypes>

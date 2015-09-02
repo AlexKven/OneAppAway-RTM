@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -72,6 +73,18 @@ namespace OneAppAway
                     LoadInnerScrollViewer();
                     ItemsPanel.Children.Add(box);
                 }
+            }
+        }
+
+        public async Task ShowHelpTip()
+        {
+            if (SingleStopControl != null && SingleStopControl.Children.Count > 0)
+            {
+                await ((StopArrivalsBox)SingleStopControl.Children[0]).ShowHelpTip();
+            }
+            else if (ItemsPanel != null && ItemsPanel.Children.Count > 0)
+            {
+                await ((StopArrivalsBox)ItemsPanel.Children[0]).ShowHelpTip();
             }
         }
     }

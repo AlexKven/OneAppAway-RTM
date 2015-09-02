@@ -51,13 +51,22 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <local:BusMap x:Name="MainMap" StopsClicked="MainMap_StopsClicked" PropertyChanged="BusMap_PropertyChanged" Grid.RowSpan="2"/>
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" IsHitTestVisible="False">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Transparent"/>
+                    <GradientStop Color="#88333333" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock IsHitTestVisible="False" Margin="0,20,0,0" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Foreground="White">Public transit data powered by OneBusAway.</TextBlock>
+        </Border>
         <StackPanel Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" x:Name="ButtonsPanel">
-            <RepeatButton Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" Click="ZoomInButton_Click">
+            <Button ClickMode="Press" x:Name="ZoomInButton" Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" Click="ZoomInButton_Click">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Foreground="White">+</TextBlock>
-            </RepeatButton>
-            <RepeatButton Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" Click="ZoomOutButton_Click">
+            </Button>
+            <Button ClickMode="Press" x:Name="ZoomOutButton" Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" Click="ZoomOutButton_Click">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Foreground="White">-</TextBlock>
-            </RepeatButton>
+            </Button>
             <Button Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" Click="CenterButton_Click">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17" Foreground="White" FontFamily="Segoe UI Symbol"></TextBlock>
             </Button>

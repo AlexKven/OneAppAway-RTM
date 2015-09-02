@@ -180,7 +180,7 @@ namespace OneAppAway
                 var toastArgs = args as ToastNotificationActivatedEventArgs;
                 if (toastArgs.Argument.StartsWith("messageTapped"))
                 {
-                    await MainHamburgerBar.ShowPopup(null, Window.Current.Bounds.Width * 0.9, 100 + 30000 / Window.Current.Bounds.Width, typeof(MessagePopupPage), SettingsManager.GetSetting<string>("Message" + toastArgs.Argument.Substring(13), false));
+                    await MainHamburgerBar.ShowPopup(null, AnimationDirection.Bottom, Window.Current.Bounds.Width * 0.9, 100 + 30000 / Window.Current.Bounds.Width, typeof(MessagePopupPage), SettingsManager.GetSetting<string>("Message" + toastArgs.Argument.Substring(13), false));
                 }
                 if (toastArgs.Argument.StartsWith("suppressMessage"))
                 {

@@ -104,6 +104,9 @@
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\LocationManager.cs" />
+    <Compile Include="Pages\HelpTip.xaml.cs">
+      <DependentUpon>HelpTip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RemoveFromFavoritesPage.xaml.cs">
       <DependentUpon>RemoveFromFavoritesPage.xaml</DependentUpon>
     </Compile>
@@ -239,6 +242,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="FavoritesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HelpTip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

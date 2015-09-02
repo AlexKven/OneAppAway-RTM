@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -53,6 +54,11 @@ namespace OneAppAway
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             if (CloseRequested != null) CloseRequested(this, new EventArgs());
+        }
+
+        public async Task ShowHelpTip()
+        {
+            await ArrivalsBox.ShowHelpTip();
         }
 
         public event EventHandler CloseRequested;

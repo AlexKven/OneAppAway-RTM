@@ -99,7 +99,7 @@ namespace OneAppAway
 
         private static async void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
-            await FavoritesManager.ShowAddOrRemoveFavorite((UIElement)((Button)sender).Parent, ((string[])((Button)sender).Tag)[0], ((string[])((Button)sender).Tag)[1], ((string[])((Button)sender).Tag)[2]);
+            //await FavoritesManager.ShowAddOrRemoveFavorite((UIElement)((Button)sender).Parent, ((string[])((Button)sender).Tag)[0], ((string[])((Button)sender).Tag)[1], ((string[])((Button)sender).Tag)[2]);
         }
 
         private static void Label_Click(object sender, RoutedEventArgs e)

@@ -29,19 +29,39 @@
                 <StackPanel Margin="5">
                     <TextBlock>(Optional) Select one or more contexts:</TextBlock>
                     <CheckBox x:ConnectionId='6' x:Name="CityContextBox" IsEnabled="False"                                                                      >(Loading city)</CheckBox>
-                    <CheckBox x:ConnectionId='7' HorizontalAlignment="Stretch" x:Name="MileContextBox">
+                    <CheckBox x:ConnectionId='7' HorizontalAlignment="Stretch" x:Name="MileContextBox"                                                                      >
                         <StackPanel>
-                            <TextBlock x:ConnectionId='9' x:Name="MileContextDescription">Within 1 miles</TextBlock>
-                            <Slider x:ConnectionId='10' IsEnabled="{Binding ElementName=MileContextBox, Path=IsChecked}" Minimum="0.25" Value="2" SnapsTo="StepValues" StepFrequency="0.25" Maximum="15" x:Name="MileSlider"                                       />
+                            <TextBlock x:ConnectionId='10' x:Name="MileContextDescription">Within 1 miles</TextBlock>
+                            <Slider x:ConnectionId='11' IsEnabled="{Binding ElementName=MileContextBox, Path=IsChecked}" Minimum="0.25" Value="2" SnapsTo="StepValues" StepFrequency="0.25" Maximum="15" x:Name="MileSlider"                                       />
                         </StackPanel>
                     </CheckBox>
-                    <CheckBox x:ConnectionId='8' x:Name="DirectionContextBox">
+                    <CheckBox x:ConnectionId='8' x:Name="DirectionContextBox"                                                                                >
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox Width="100" SelectedIndex="0" IsEnabled="{Binding ElementName=DirectionContextBox, Path=IsChecked}">
-                                <ComboBoxItem>North</ComboBoxItem>
-                                <ComboBoxItem>South</ComboBoxItem>
-                                <ComboBoxItem>East</ComboBoxItem>
-                                <ComboBoxItem>West</ComboBoxItem>
+                            <ComboBox x:ConnectionId='9' x:Name="CardinalDirectionSelector" Width="100" SelectedIndex="0" IsEnabled="{Binding ElementName=DirectionContextBox, Path=IsChecked}"                                                              >
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>North</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    North
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>South</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    South
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>East</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    East
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>West</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    West
+                                </ComboBoxItem>
                             </ComboBox>
                             <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">of this stop.</TextBlock>
                         </StackPanel>

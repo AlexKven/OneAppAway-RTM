@@ -26,12 +26,13 @@ namespace OneAppAway
         private SplitView MainSplitView = new SplitView();
         private RadioButton MapButton = new RadioButton();
         private RadioButton RoutesButton = new RadioButton();
+        private RadioButton CompactRoutesButton = new RadioButton();
         private RadioButton SettingsButton = new RadioButton();
         private Grid InnerGrid = new Grid();
         private Popup PopupControl = new Popup();
         private Frame RootFrame;
 
-        Queue<Tuple<UIElement, double, double, Type, object, AutoResetEvent>> PopupQueue = new Queue<Tuple<UIElement, double, double, Type, object, AutoResetEvent>>();
+        Queue<Tuple<UIElement, AnimationDirection, double, double, Type, object, AutoResetEvent>> PopupQueue = new Queue<Tuple<UIElement, AnimationDirection, double, double, Type, object, AutoResetEvent>>();
 
         public HamburgerBar()
         {
@@ -46,6 +47,7 @@ namespace OneAppAway
             MapButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "MapButton");
             SettingsButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "SettingsButton");
             RoutesButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "RoutesButton");
+            CompactRoutesButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Content, "CompactRoutesButton");
             InnerGrid = (Grid)MainSplitView.Content;
             PopupControl = HelperFunctions.FindControl<Popup>(InnerGrid, "PopupControl");
             CheckCorrectButton();
@@ -107,15 +109,24 @@ namespace OneAppAway
             }
         }
 
-        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
+        private async void RootFrame_Navigated(object sender, NavigationEventArgs e)
         {
             CheckCorrectButton();
+            await Task.Delay(1000);
+            if (ActualWidth < 500)
+            {
+                if (!SettingsManager.GetSetting("DownloadRoutesTipShown", true, false) && (new Random()).NextDouble() < 0.05)
+                {
+                    SettingsManager.SetSetting("DownloadRoutesTipShown", true, true);
+                    await ShowPopup(CompactRoutesButton, AnimationDirection.Bottom, 250, 135, typeof(HelpTip), new Tuple<AnimationDirection, Thickness, string>(AnimationDirection.Top, new Thickness(0), "Tap here to download route schedules for offline viewing."));
+                }
+            }
         }
 
-        public async Task ShowPopup(UIElement element, double width, double height, Type sourcePageType, object parameter = null)
+        public async Task ShowPopup(UIElement element, AnimationDirection position, double width, double height, Type sourcePageType, object parameter = null)
         {
             AutoResetEvent are = new AutoResetEvent(false);
-            PopupQueue.Enqueue(new Tuple<UIElement, double, double, Type, object, AutoResetEvent>(element, width, height, sourcePageType, parameter, are));
+            PopupQueue.Enqueue(new Tuple<UIElement, AnimationDirection, double, double, Type, object, AutoResetEvent>(element, position, width, height, sourcePageType, parameter, are));
             if (!PopupControl.IsOpen)
                 ShowNextPopup();
             await Task.Run(() => are.WaitOne());
@@ -130,26 +141,49 @@ namespace OneAppAway
         {
             if (PopupQueue.Count == 0) return;
             var next = PopupQueue.Dequeue();
-            OnShowPopup(next.Item1, next.Item2, next.Item3, next.Item4, next.Item5);
-            next.Item6.Set();
+            OnShowPopup(next.Item1, next.Item2, next.Item3, next.Item4, next.Item5, next.Item6);
+            next.Item7.Set();
         }
 
-        private void OnShowPopup(UIElement element, double width, double height, Type sourcePageType, object parameter)
+        private void OnShowPopup(UIElement element, AnimationDirection position, double width, double height, Type sourcePageType, object parameter)
         {
-            Frame popupFrame = ((Frame)PopupControl.Child);
+            Frame popupFrame = ((Frame)PopupControl?.Child);
+            if (popupFrame == null)
+            {
+                popupFrame = new Frame();
+                PopupControl.Child = popupFrame;
+            }
             popupFrame.Width = Min(width, InnerGrid.ActualWidth);
             popupFrame.Height = Min(height, InnerGrid.ActualHeight);
-            var centerTop = element == null ? new Point(InnerGrid.ActualWidth / 2, 0) : element.TransformToVisual(InnerGrid).TransformPoint(new Point(element.RenderSize.Width / 2, element.RenderSize.Height));
-            centerTop = new Point(centerTop.X - popupFrame.Width / 2, centerTop.Y);
-            if (centerTop.X + popupFrame.Width > InnerGrid.ActualWidth)
-                centerTop = new Point(InnerGrid.ActualWidth - popupFrame.Width, centerTop.Y);
-            else if (centerTop.X < 0)
-                centerTop = new Point(0, centerTop.Y);
-            if (centerTop.Y + popupFrame.Height > InnerGrid.ActualHeight)
-                centerTop = new Point(centerTop.X, InnerGrid.ActualHeight - popupFrame.Height);
-            else if (centerTop.Y < 0)
-                centerTop = new Point(centerTop.X, 0);
-            PopupControl.Tag = centerTop;
+            var point = new Point();
+            switch (position)
+            {
+                case AnimationDirection.Top:
+                    point = element == null ? new Point(InnerGrid.ActualWidth / 2, InnerGrid.ActualHeight) : element.TransformToVisual(InnerGrid).TransformPoint(new Point(element.RenderSize.Width / 2, 0));
+                    point = new Point(point.X - popupFrame.Width / 2, point.Y - popupFrame.Height);
+                    break;
+                case AnimationDirection.Bottom:
+                    point = element == null ? new Point(InnerGrid.ActualWidth / 2, 0) : element.TransformToVisual(InnerGrid).TransformPoint(new Point(element.RenderSize.Width / 2, element.RenderSize.Height));
+                    point = new Point(point.X - popupFrame.Width / 2, point.Y);
+                    break;
+                case AnimationDirection.Left:
+                    point = element == null ? new Point(InnerGrid.ActualWidth, InnerGrid.ActualHeight / 2) : element.TransformToVisual(InnerGrid).TransformPoint(new Point(0, element.RenderSize.Height / 2));
+                    point = new Point(point.X - popupFrame.Width, point.Y - popupFrame.Height / 2);
+                    break;
+                case AnimationDirection.Right:
+                    point = element == null ? new Point(0, InnerGrid.ActualHeight / 2) : element.TransformToVisual(InnerGrid).TransformPoint(new Point(element.RenderSize.Width, element.RenderSize.Height / 2));
+                    point = new Point(point.X, point.Y - popupFrame.Height / 2);
+                    break;
+            }
+            if (point.X + popupFrame.Width > InnerGrid.ActualWidth)
+                point = new Point(InnerGrid.ActualWidth - popupFrame.Width, point.Y);
+            else if (point.X < 0)
+                point = new Point(0, point.Y);
+            if (point.Y + popupFrame.Height > InnerGrid.ActualHeight)
+                point = new Point(point.X, InnerGrid.ActualHeight - popupFrame.Height);
+            else if (point.Y < 0)
+                point = new Point(point.X, 0);
+            PopupControl.Tag = new Tuple<Point, AnimationDirection>(point, position);
             popupFrame.Navigate(sourcePageType, parameter);
             PopupControl.IsOpen = true;
         }
@@ -157,18 +191,23 @@ namespace OneAppAway
         private void PopupControl_Opened(object sender, object e)
         {
             TranslateTransform translation;
-            Point relativePoint = PopupControl.Tag is Point ? (Point)PopupControl.Tag : new Point();
-            PopupControl.RenderTransform = new TranslateTransform() { X = relativePoint.X };
+            Tuple<Point, AnimationDirection> relativePoint = PopupControl.Tag as Tuple<Point, AnimationDirection> ?? new Tuple<Point, AnimationDirection>(new Point(), AnimationDirection.Top);
+            PopupControl.RenderTransform = new TranslateTransform() { X = relativePoint.Item1.X, Y = relativePoint.Item1.Y };
             translation = (TranslateTransform)PopupControl.RenderTransform;
             DoubleAnimation fadeIn = new DoubleAnimation() { To = 1, From = 0, Duration = TimeSpan.FromSeconds(0.15) };
-            DoubleAnimation slideDown = new DoubleAnimation() { To = relativePoint.Y, From = relativePoint.Y - 20, Duration = TimeSpan.FromSeconds(0.15) };
+            double aniTo = (relativePoint.Item2 == AnimationDirection.Top || relativePoint.Item2 == AnimationDirection.Bottom) ? relativePoint.Item1.Y : relativePoint.Item1.X;
+            double aniFrom = (relativePoint.Item2 == AnimationDirection.Bottom || relativePoint.Item2 == AnimationDirection.Right) ? aniTo - 20 : aniTo + 20;
+            DoubleAnimation slide = new DoubleAnimation() { To = aniTo, From = aniFrom, Duration = TimeSpan.FromSeconds(0.15) };
             Storyboard storyboard = new Storyboard();
             Storyboard.SetTarget(fadeIn, PopupControl);
             Storyboard.SetTargetProperty(fadeIn, "Opacity");
-            Storyboard.SetTarget(slideDown, translation);
-            Storyboard.SetTargetProperty(slideDown, "Y");
+            Storyboard.SetTarget(slide, translation);
+            if (relativePoint.Item2 == AnimationDirection.Top || relativePoint.Item2 == AnimationDirection.Bottom)
+                Storyboard.SetTargetProperty(slide, "Y");
+            else
+                Storyboard.SetTargetProperty(slide, "X");
             storyboard.Children.Add(fadeIn);
-            storyboard.Children.Add(slideDown);
+            storyboard.Children.Add(slide);
             storyboard.Begin();
         }
 

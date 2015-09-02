@@ -96,7 +96,7 @@ namespace OneAppAway
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            await FavoritesManager.ShowAddOrRemoveFavorite(this, Arrival.Route, Arrival.Stop, Arrival.Destination);
+            //await FavoritesManager.ShowAddOrRemoveFavorite(this, Arrival.Route, Arrival.Stop, Arrival.Destination);
         }
     }
 }

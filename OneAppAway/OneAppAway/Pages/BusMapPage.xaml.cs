@@ -300,6 +300,12 @@ namespace OneAppAway
             MapControl.SetLocation(StopArrivalBoxGrid, new Geopoint(location));
             StopArrivalBox.SetStops(stops);
             VisualStateManager.GoToState(this, "ArrivalBoxShown", true);
+            if (!SettingsManager.GetSetting("ShowStopPageTipShown", true, false) && (new Random()).NextDouble() < 0.05)
+            {
+                SettingsManager.SetSetting("ShowStopPageTipShown", true, true);
+                await Task.Delay(1000);
+                await StopArrivalBox.ShowHelpTip();
+            }
         }
 
         private void ArrivalBoxVisualStates_CurrentStateChanging(object sender, VisualStateChangedEventArgs e)
@@ -323,12 +329,24 @@ namespace OneAppAway
 
         private async void ZoomInButton_Click(object sender, RoutedEventArgs e)
         {
-            await MainMap.MapControl.TryZoomToAsync(MainMap.ZoomLevel + .5);
+            MainMap.MapControl.StartContinuousZoom(2);
+            await Task.Delay(250);
+            while (ZoomInButton.IsPressed)
+            {
+                await Task.Delay(10);
+            }
+            MainMap.MapControl.StopContinuousZoom();
         }
 
         private async void ZoomOutButton_Click(object sender, RoutedEventArgs e)
         {
-            await MainMap.MapControl.TryZoomToAsync(MainMap.ZoomLevel - .5);
+            MainMap.MapControl.StartContinuousZoom(-2);
+            await Task.Delay(250);
+            while (ZoomOutButton.IsPressed)
+            {
+                await Task.Delay(10);
+            }
+            MainMap.MapControl.StopContinuousZoom();
         }
 
         private void CenterButton_Click(object sender, RoutedEventArgs e)
