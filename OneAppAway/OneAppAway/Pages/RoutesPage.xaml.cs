@@ -30,6 +30,7 @@ namespace OneAppAway
     {
         private bool CanNavigateAway = true;
         private bool IsPhoneProgressBarShown = false;
+        private bool DownloadLimitedData = false;
         private Task<RouteListing[]> DownloadsTask;
 
         public RoutesPage()
@@ -73,6 +74,7 @@ namespace OneAppAway
             base.OnNavigatedTo(e);
             Message.ShowMessage(new Message() { ShortSummary = "Keep your downloads updated.", Caption = "Downloads Warning", FullText = "Most transit agencies adjust route schedules 3 times a year. In addition, King County Metro cancels some route trips during the UW break periods. It is your responsibility to update your downloaded schedules when these changes occur.", Id = 2 });
             await FileManager.LoadPendingDownloads();
+            BandwidthManager.EffectiveBandwidthOptionsChanged += BandwidthManager_EffectiveBandwidthOptionsChanged;
             var agencies = await Data.GetTransitAgencies(new DataRetrievalOptions(DataSourceDescriptor.Cloud), MasterCancellationTokenSource.Token);
             AgenciesWarning = agencies.Item2.FinalSource != DataSourceDescriptor.Cloud;
             if (agencies.Item1 != null)
@@ -82,6 +84,17 @@ namespace OneAppAway
                     AgenciesListView.Items.Add(agency);
                     AgenciesListView.SelectedIndex = 0;
                 }
+            }
+        }
+
+        private async void BandwidthManager_EffectiveBandwidthOptionsChanged(object sender, EventArgs e)
+        {
+            if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Low && SettingsManager.GetSetting("CancelDownloadsOnBandwidthChanged", false, true) && !DownloadLimitedData)
+            {
+                DownloadsCancellationTokenSource.Cancel();
+                DownloadsCancellationTokenSource = new CancellationTokenSource();
+                MessageDialog dialog = new MessageDialog("Downloads were cancelled because you switched from an unlimited connection to a limited data plan. (You can turn this off in settings)", "Downloads Paused");
+                await dialog.ShowAsync();
             }
         }
 
@@ -103,6 +116,7 @@ namespace OneAppAway
             {
                 MasterCancellationTokenSource.Cancel();
                 DownloadsCancellationTokenSource.Cancel();
+                BandwidthManager.EffectiveBandwidthOptionsChanged -= BandwidthManager_EffectiveBandwidthOptionsChanged;
             }
         }
 
@@ -188,6 +202,22 @@ namespace OneAppAway
 
         private async void DownloadButton_Click(object sender, RoutedEventArgs e)
         {
+            if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Low)
+            {
+                if (SettingsManager.GetSetting("LimitedData.WarnOnDownload", false, true))
+                {
+                    MessageDialog dialog = new MessageDialog("You are on a limited data plan and not on wifi. Are you sure you want to download these routes over this data?", "Limited Data");
+                    dialog.Commands.Add(new UICommand("Yes", new UICommandInvokedHandler((cmd) => DownloadLimitedData = true)));
+                    dialog.Commands.Add(new UICommand("No", new UICommandInvokedHandler((cmd) => DownloadLimitedData = false)));
+                    await dialog.ShowAsync();
+                    if (!DownloadLimitedData)
+                        return;
+                }
+                else
+                    DownloadLimitedData = true;
+            }
+            else
+                DownloadLimitedData = false;
             var cancellationToken = DownloadsCancellationTokenSource.Token;
             VisualStateManager.GoToState(this, "DownloadingState", true);
             var items = MainList.Items.Where(item => ((item as RouteListing)?.IsChecked).GetValueOrDefault(false)).Select(item => (RouteListing)item).ToArray();

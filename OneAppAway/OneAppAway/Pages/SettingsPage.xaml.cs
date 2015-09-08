@@ -52,7 +52,7 @@ namespace OneAppAway
                     RoutesRadioButton.IsChecked = true;
                     break;
             }
-            switch (SettingsManager.GetSetting("LimitedData.LaunchPage", false, 1))
+            switch (SettingsManager.GetSetting("LimitedData.LaunchPage", false, 0))
             {
                 case 0:
                     LimitedDataMapRadioButton.IsChecked = true;

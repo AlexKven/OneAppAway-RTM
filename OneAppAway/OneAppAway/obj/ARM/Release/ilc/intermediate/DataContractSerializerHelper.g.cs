@@ -35,11 +35,11 @@ namespace System.Runtime.Serialization.Generated
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 5, // array length: 5
-                712, // index: 712, string: "Contexts"
-                721, // index: 721, string: "CustomName"
-                732, // index: 732, string: "Destination"
-                744, // index: 744, string: "Route"
-                750, // index: 750, string: "Stop"
+                711, // index: 711, string: "Contexts"
+                720, // index: 720, string: "CustomName"
+                731, // index: 731, string: "Destination"
+                743, // index: 743, string: "Route"
+                749, // index: 749, string: "Stop"
                 5, // array length: 5
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
@@ -51,7 +51,7 @@ namespace System.Runtime.Serialization.Generated
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 1, // array length: 1
-                755, // index: 755, string: "RelativeLocation"
+                754, // index: 754, string: "RelativeLocation"
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 3, // array length: 3
@@ -61,9 +61,9 @@ namespace System.Runtime.Serialization.Generated
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 3, // array length: 3
-                772, // index: 772, string: "City"
-                777, // index: 777, string: "Latitude"
-                786, // index: 786, string: "Longitude"
+                771, // index: 771, string: "City"
+                776, // index: 776, string: "Latitude"
+                785, // index: 785, string: "Longitude"
                 3, // array length: 3
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
@@ -74,7 +74,7 @@ namespace System.Runtime.Serialization.Generated
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 1, // array length: 1
-                755, // index: 755, string: "RelativeLocation"
+                754, // index: 754, string: "RelativeLocation"
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 2, // array length: 2
@@ -84,8 +84,8 @@ namespace System.Runtime.Serialization.Generated
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 2, // array length: 2
-                755, // index: 755, string: "RelativeLocation"
-                796, // index: 796, string: "Distance"
+                754, // index: 754, string: "RelativeLocation"
+                795, // index: 795, string: "Distance"
                 2, // array length: 2
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
@@ -96,58 +96,58 @@ namespace System.Runtime.Serialization.Generated
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 2, // array length: 2
-                755, // index: 755, string: "RelativeLocation"
-                805, // index: 805, string: "Direction"
+                754, // index: 754, string: "RelativeLocation"
+                804, // index: 804, string: "Direction"
                 2, // array length: 2
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 4, // array length: 4
-                472, // index: 472, string: "North"
-                478, // index: 478, string: "East"
-                483, // index: 483, string: "South"
-                489, // index: 489, string: "West"
+                471, // index: 471, string: "North"
+                477, // index: 477, string: "East"
+                482, // index: 482, string: "South"
+                488, // index: 488, string: "West"
                 2, // array length: 2
                 -1, // string: null
                 -1, // string: null
                 1, // array length: 1
-                525, // index: 525, string: "http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+                524, // index: 524, string: "http://schemas.microsoft.com/2003/10/Serialization/Arrays"
                 2, // array length: 2
-                607, // index: 607, string: "Key"
-                611, // index: 611, string: "Value"
+                606, // index: 606, string: "Key"
+                610, // index: 610, string: "Value"
                 2, // array length: 2
-                525, // index: 525, string: "http://schemas.microsoft.com/2003/10/Serialization/Arrays"
-                525, // index: 525, string: "http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+                524, // index: 524, string: "http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+                524, // index: 524, string: "http://schemas.microsoft.com/2003/10/Serialization/Arrays"
                 2, // array length: 2
                 -1, // string: null
                 -1, // string: null
                 1, // array length: 1
-                645, // index: 645, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
+                644, // index: 644, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
                 2, // array length: 2
-                815, // index: 815, string: "key"
-                819, // index: 819, string: "value"
+                814, // index: 814, string: "key"
+                818, // index: 818, string: "value"
                 2, // array length: 2
-                645, // index: 645, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
-                645  // index: 645, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
+                644, // index: 644, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
+                644  // index: 644, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
         };
         // Count = 4
         static global::MemberEntry[] s_dataMemberLists = new global::MemberEntry[] {
                 new global::MemberEntry() {
                     EmitDefaultValue = true,
-                    NameIndex = 472, // North
+                    NameIndex = 471, // North
                 }, 
                 new global::MemberEntry() {
                     EmitDefaultValue = true,
-                    NameIndex = 478, // East
+                    NameIndex = 477, // East
                     Value = 1,
                 }, 
                 new global::MemberEntry() {
                     EmitDefaultValue = true,
-                    NameIndex = 483, // South
+                    NameIndex = 482, // South
                     Value = 2,
                 }, 
                 new global::MemberEntry() {
                     EmitDefaultValue = true,
-                    NameIndex = 489, // West
+                    NameIndex = 488, // West
                     Value = 3,
                 }
         };
@@ -355,7 +355,7 @@ namespace System.Runtime.Serialization.Generated
                     TableIndex = 65, // 0x41
                 }, 
                 new global::DataContractMapEntry() {
-                    UserCodeType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("OneAppAway.CardninalDirectionContext, OneAppAway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")),
+                    UserCodeType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("OneAppAway.CardinalDirectionContext, OneAppAway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")),
                     TableIndex = 81, // 0x51
                 }, 
                 new global::DataContractMapEntry() {
@@ -836,18 +836,18 @@ namespace System.Runtime.Serialization.Generated
                 new global::ClassDataContractEntry() {
                     Common = new global::CommonContractEntry() {
                         HasRoot = true,
-                        NameIndex = 428, // CardninalDirectionContext
+                        NameIndex = 428, // CardinalDirectionContext
                         NamespaceIndex = 278, // http://schemas.datacontract.org/2004/07/OneAppAway
-                        StableNameIndex = 428, // CardninalDirectionContext
+                        StableNameIndex = 428, // CardinalDirectionContext
                         StableNameNamespaceIndex = 278, // http://schemas.datacontract.org/2004/07/OneAppAway
-                        TopLevelElementNameIndex = 428, // CardninalDirectionContext
+                        TopLevelElementNameIndex = 428, // CardinalDirectionContext
                         TopLevelElementNamespaceIndex = 278, // http://schemas.datacontract.org/2004/07/OneAppAway
-                        OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("OneAppAway.CardninalDirectionContext, OneAppAway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")),
-                        UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("OneAppAway.CardninalDirectionContext, OneAppAway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")),
+                        OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("OneAppAway.CardinalDirectionContext, OneAppAway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")),
+                        UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("OneAppAway.CardinalDirectionContext, OneAppAway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")),
                     },
                     HasDataContract = true,
-                    XmlFormatReaderDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.XmlFormatClassReaderDelegate>(global::Type16.ReadCardninalDirectionContextFromXml),
-                    XmlFormatWriterDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.XmlFormatClassWriterDelegate>(global::Type17.WriteCardninalDirectionContextToXml),
+                    XmlFormatReaderDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.XmlFormatClassReaderDelegate>(global::Type16.ReadCardinalDirectionContextFromXml),
+                    XmlFormatWriterDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.XmlFormatClassWriterDelegate>(global::Type17.WriteCardinalDirectionContextToXml),
                     ChildElementNamespacesListIndex = 64,
                     ContractNamespacesListIndex = 67,
                     MemberNamesListIndex = 70,
@@ -857,12 +857,12 @@ namespace System.Runtime.Serialization.Generated
                     Common = new global::CommonContractEntry() {
                         HasRoot = true,
                         IsValueType = true,
-                        NameIndex = 583, // KeyValueOfstringanyType
-                        NamespaceIndex = 525, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
-                        StableNameIndex = 583, // KeyValueOfstringanyType
-                        StableNameNamespaceIndex = 525, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
-                        TopLevelElementNameIndex = 583, // KeyValueOfstringanyType
-                        TopLevelElementNamespaceIndex = 525, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        NameIndex = 582, // KeyValueOfstringanyType
+                        NamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        StableNameIndex = 582, // KeyValueOfstringanyType
+                        StableNameNamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        TopLevelElementNameIndex = 582, // KeyValueOfstringanyType
+                        TopLevelElementNamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
                         OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Runtime.Serialization.KeyValue`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.DataContractSerialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
                         UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Runtime.Serialization.KeyValue`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.DataContractSerialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
                         GenericTypeDefinition = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("System.Runtime.Serialization.KeyValue`2, System.Private.DataContractSerialization, Version=4.0.0.0, Culture=neut" +
@@ -880,12 +880,12 @@ namespace System.Runtime.Serialization.Generated
                     Common = new global::CommonContractEntry() {
                         HasRoot = true,
                         IsValueType = true,
-                        NameIndex = 617, // KeyValuePairOfstringanyType
-                        NamespaceIndex = 645, // http://schemas.datacontract.org/2004/07/System.Collections.Generic
-                        StableNameIndex = 617, // KeyValuePairOfstringanyType
-                        StableNameNamespaceIndex = 645, // http://schemas.datacontract.org/2004/07/System.Collections.Generic
-                        TopLevelElementNameIndex = 617, // KeyValuePairOfstringanyType
-                        TopLevelElementNamespaceIndex = 645, // http://schemas.datacontract.org/2004/07/System.Collections.Generic
+                        NameIndex = 616, // KeyValuePairOfstringanyType
+                        NamespaceIndex = 644, // http://schemas.datacontract.org/2004/07/System.Collections.Generic
+                        StableNameIndex = 616, // KeyValuePairOfstringanyType
+                        StableNameNamespaceIndex = 644, // http://schemas.datacontract.org/2004/07/System.Collections.Generic
+                        TopLevelElementNameIndex = 616, // KeyValuePairOfstringanyType
+                        TopLevelElementNamespaceIndex = 644, // http://schemas.datacontract.org/2004/07/System.Collections.Generic
                         OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
                         UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
                         GenericTypeDefinition = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("System.Collections.Generic.KeyValuePair`2, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyTo" +
@@ -951,12 +951,12 @@ namespace System.Runtime.Serialization.Generated
                 new global::CollectionDataContractEntry() {
                     Common = new global::CommonContractEntry() {
                         HasRoot = true,
-                        NameIndex = 494, // ArrayOfKeyValueOfstringanyType
-                        NamespaceIndex = 525, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
-                        StableNameIndex = 494, // ArrayOfKeyValueOfstringanyType
-                        StableNameNamespaceIndex = 525, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
-                        TopLevelElementNameIndex = 494, // ArrayOfKeyValueOfstringanyType
-                        TopLevelElementNamespaceIndex = 525, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        NameIndex = 493, // ArrayOfKeyValueOfstringanyType
+                        NamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        StableNameIndex = 493, // ArrayOfKeyValueOfstringanyType
+                        StableNameNamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        TopLevelElementNameIndex = 493, // ArrayOfKeyValueOfstringanyType
+                        TopLevelElementNamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
                         OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Collections, Version=4.0.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
                         UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Collections, Version=4.0.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
                         GenericTypeDefinition = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("System.Collections.Generic.Dictionary`2, System.Collections, Version=4.0.10.0, Culture=neutral, PublicKeyToken=b" +
@@ -965,10 +965,10 @@ namespace System.Runtime.Serialization.Generated
                     XmlFormatReaderDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.XmlFormatCollectionReaderDelegate>(global::Type18.ReadArrayOfKeyValueOfstringanyTypeFromXml),
                     XmlFormatWriterDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.XmlFormatCollectionWriterDelegate>(global::Type19.WriteArrayOfKeyValueOfstringanyTypeToXml),
                     XmlFormatGetOnlyCollectionReaderDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.XmlFormatGetOnlyCollectionReaderDelegate>(global::Type20.ReadArrayOfKeyValueOfstringanyTypeFromXmlIsGetOnly),
-                    CollectionItemNameIndex = 583, // KeyValueOfstringanyType
-                    KeyNameIndex = 607, // Key
-                    ItemNameIndex = 583, // KeyValueOfstringanyType
-                    ValueNameIndex = 611, // Value
+                    CollectionItemNameIndex = 582, // KeyValueOfstringanyType
+                    KeyNameIndex = 606, // Key
+                    ItemNameIndex = 582, // KeyValueOfstringanyType
+                    ValueNameIndex = 610, // Value
                     CollectionContractKind = global::System.Runtime.Serialization.CollectionKind.GenericDictionary,
                     ItemType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Runtime.Serialization.KeyValue`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.DataContractSerialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
                 }
@@ -982,11 +982,11 @@ namespace System.Runtime.Serialization.Generated
                     Common = new global::CommonContractEntry() {
                         HasRoot = true,
                         IsValueType = true,
-                        NameIndex = 454, // CardinalDirection
+                        NameIndex = 453, // CardinalDirection
                         NamespaceIndex = 278, // http://schemas.datacontract.org/2004/07/OneAppAway
-                        StableNameIndex = 454, // CardinalDirection
+                        StableNameIndex = 453, // CardinalDirection
                         StableNameNamespaceIndex = 278, // http://schemas.datacontract.org/2004/07/OneAppAway
-                        TopLevelElementNameIndex = 454, // CardinalDirection
+                        TopLevelElementNameIndex = 453, // CardinalDirection
                         TopLevelElementNamespaceIndex = 278, // http://schemas.datacontract.org/2004/07/OneAppAway
                         OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("OneAppAway.CardinalDirection, OneAppAway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")),
                         UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("OneAppAway.CardinalDirection, OneAppAway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")),
@@ -1017,19 +1017,19 @@ namespace System.Runtime.Serialization.Generated
             'a','v','o','r','i','t','e','A','r','r','i','v','a','l','\0','A','r','r','a','y','O','f','L','o','c','a','t','i','o','n',
             'C','o','n','t','e','x','t','\0','L','o','c','a','t','i','o','n','C','o','n','t','e','x','t','\0','C','o','n','t','e','x',
             't','L','o','c','a','t','i','o','n','\0','C','i','t','y','C','o','n','t','e','x','t','\0','D','i','s','t','a','n','c','e',
-            'C','o','n','t','e','x','t','\0','C','a','r','d','n','i','n','a','l','D','i','r','e','c','t','i','o','n','C','o','n','t',
-            'e','x','t','\0','C','a','r','d','i','n','a','l','D','i','r','e','c','t','i','o','n','\0','N','o','r','t','h','\0','E','a',
-            's','t','\0','S','o','u','t','h','\0','W','e','s','t','\0','A','r','r','a','y','O','f','K','e','y','V','a','l','u','e','O',
-            'f','s','t','r','i','n','g','a','n','y','T','y','p','e','\0','h','t','t','p',':','/','/','s','c','h','e','m','a','s','.',
-            'm','i','c','r','o','s','o','f','t','.','c','o','m','/','2','0','0','3','/','1','0','/','S','e','r','i','a','l','i','z',
-            'a','t','i','o','n','/','A','r','r','a','y','s','\0','K','e','y','V','a','l','u','e','O','f','s','t','r','i','n','g','a',
-            'n','y','T','y','p','e','\0','K','e','y','\0','V','a','l','u','e','\0','K','e','y','V','a','l','u','e','P','a','i','r','O',
-            'f','s','t','r','i','n','g','a','n','y','T','y','p','e','\0','h','t','t','p',':','/','/','s','c','h','e','m','a','s','.',
-            'd','a','t','a','c','o','n','t','r','a','c','t','.','o','r','g','/','2','0','0','4','/','0','7','/','S','y','s','t','e',
-            'm','.','C','o','l','l','e','c','t','i','o','n','s','.','G','e','n','e','r','i','c','\0','C','o','n','t','e','x','t','s',
-            '\0','C','u','s','t','o','m','N','a','m','e','\0','D','e','s','t','i','n','a','t','i','o','n','\0','R','o','u','t','e','\0',
-            'S','t','o','p','\0','R','e','l','a','t','i','v','e','L','o','c','a','t','i','o','n','\0','C','i','t','y','\0','L','a','t',
-            'i','t','u','d','e','\0','L','o','n','g','i','t','u','d','e','\0','D','i','s','t','a','n','c','e','\0','D','i','r','e','c',
-            't','i','o','n','\0','k','e','y','\0','v','a','l','u','e','\0'};
+            'C','o','n','t','e','x','t','\0','C','a','r','d','i','n','a','l','D','i','r','e','c','t','i','o','n','C','o','n','t','e',
+            'x','t','\0','C','a','r','d','i','n','a','l','D','i','r','e','c','t','i','o','n','\0','N','o','r','t','h','\0','E','a','s',
+            't','\0','S','o','u','t','h','\0','W','e','s','t','\0','A','r','r','a','y','O','f','K','e','y','V','a','l','u','e','O','f',
+            's','t','r','i','n','g','a','n','y','T','y','p','e','\0','h','t','t','p',':','/','/','s','c','h','e','m','a','s','.','m',
+            'i','c','r','o','s','o','f','t','.','c','o','m','/','2','0','0','3','/','1','0','/','S','e','r','i','a','l','i','z','a',
+            't','i','o','n','/','A','r','r','a','y','s','\0','K','e','y','V','a','l','u','e','O','f','s','t','r','i','n','g','a','n',
+            'y','T','y','p','e','\0','K','e','y','\0','V','a','l','u','e','\0','K','e','y','V','a','l','u','e','P','a','i','r','O','f',
+            's','t','r','i','n','g','a','n','y','T','y','p','e','\0','h','t','t','p',':','/','/','s','c','h','e','m','a','s','.','d',
+            'a','t','a','c','o','n','t','r','a','c','t','.','o','r','g','/','2','0','0','4','/','0','7','/','S','y','s','t','e','m',
+            '.','C','o','l','l','e','c','t','i','o','n','s','.','G','e','n','e','r','i','c','\0','C','o','n','t','e','x','t','s','\0',
+            'C','u','s','t','o','m','N','a','m','e','\0','D','e','s','t','i','n','a','t','i','o','n','\0','R','o','u','t','e','\0','S',
+            't','o','p','\0','R','e','l','a','t','i','v','e','L','o','c','a','t','i','o','n','\0','C','i','t','y','\0','L','a','t','i',
+            't','u','d','e','\0','L','o','n','g','i','t','u','d','e','\0','D','i','s','t','a','n','c','e','\0','D','i','r','e','c','t',
+            'i','o','n','\0','k','e','y','\0','v','a','l','u','e','\0'};
     }
 }

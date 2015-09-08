@@ -4,7 +4,7 @@
 "/t:OneAppAway.LocationContext,OneAppAway,dcs"
 "/t:OneAppAway.CityContext,OneAppAway,dcs"
 "/t:OneAppAway.DistanceContext,OneAppAway,dcs"
-"/t:OneAppAway.CardninalDirectionContext,OneAppAway,dcs"
+"/t:OneAppAway.CardinalDirectionContext,OneAppAway,dcs"
 "/t:OneAppAway.CardinalDirection,OneAppAway,dcs"
 "/t:System.Double,System.Runtime,dcs"
 "/t:System.String,System.Runtime,dcs"

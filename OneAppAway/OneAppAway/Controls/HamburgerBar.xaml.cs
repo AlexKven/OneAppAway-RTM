@@ -28,6 +28,7 @@ namespace OneAppAway
         private RadioButton RoutesButton = new RadioButton();
         private RadioButton CompactRoutesButton = new RadioButton();
         private RadioButton SettingsButton = new RadioButton();
+        private RadioButton AboutButton = new RadioButton();
         private Grid InnerGrid = new Grid();
         private Popup PopupControl = new Popup();
         private Frame RootFrame;
@@ -46,6 +47,7 @@ namespace OneAppAway
             MainSplitView = HelperFunctions.FindControl<SplitView>(this, "MainSplitView");
             MapButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "MapButton");
             SettingsButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "SettingsButton");
+            AboutButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "AboutButton");
             RoutesButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Pane, "RoutesButton");
             CompactRoutesButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Content, "CompactRoutesButton");
             InnerGrid = (Grid)MainSplitView.Content;
@@ -53,10 +55,15 @@ namespace OneAppAway
             CheckCorrectButton();
         }
 
-        private void EnsureNavigation<T>()
+        private void EnsureNavigation<T>(object param)
         {
             if (RootFrame?.CurrentSourcePageType != typeof(T))
-                RootFrame?.Navigate(typeof(T));
+                RootFrame?.Navigate(typeof(T), param);
+        }
+
+        private void EnsureNavigation<T>()
+        {
+            EnsureNavigation<T>(null);
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -73,7 +80,7 @@ namespace OneAppAway
 
         private void MapButton_Checked(object sender, RoutedEventArgs e)
         {
-            EnsureNavigation<BusMapPage>();
+            EnsureNavigation<BusMapPage>("CurrentLocation");
         }
 
         private void RoutesButton_Checked(object sender, RoutedEventArgs e)
@@ -84,6 +91,11 @@ namespace OneAppAway
         private void SettingsButton_Checked(object sender, RoutedEventArgs e)
         {
             EnsureNavigation<SettingsPage>();
+        }
+
+        private void AboutButton_Checked(object sender, RoutedEventArgs e)
+        {
+            EnsureNavigation<AboutPage>();
         }
 
         public void SetRootFrame(Frame rootFrame)
@@ -101,6 +113,8 @@ namespace OneAppAway
                 RoutesButton.IsChecked = true;
             else if (RootFrame?.CurrentSourcePageType == typeof(SettingsPage))
                 SettingsButton.IsChecked = true;
+            else if (RootFrame?.CurrentSourcePageType == typeof(AboutPage))
+                AboutButton.IsChecked = true;
             else
             {
                 MapButton.IsChecked = false;

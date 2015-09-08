@@ -268,4 +268,9 @@ namespace OneAppAway
     {
         North, East, South, West
     }
+
+    public enum ObservedHoliday
+    {
+        LaborDay, Thankgiving, Christmas, NewYears
+    }
 }

@@ -8,9 +8,11 @@ Controls\RouteListingControl.xbf
 Controls\ScheduleBrowser.xbf
 Controls\StopArrivalsBox.xbf
 Controls\WeekScheduleBrowser.xbf
+FavoritesPage.xbf
 MainPage.xbf
 Pages\AddToFavoritesPage.xbf
 Pages\BusMapPage.xbf
+Pages\HelpTip.xbf
 Pages\MessagePopupPage.xbf
 Pages\RemoveFromFavoritesPage.xbf
 Pages\RoutesPage.xbf

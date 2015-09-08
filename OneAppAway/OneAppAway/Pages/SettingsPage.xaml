@@ -24,7 +24,7 @@
 
                     <TextBlock FontSize="16" Margin="5,5,5,5">When I start the app, go to...</TextBlock>
                     <RadioButton x:Name="MapRadioButton" Margin="30,5,5,5" Checked="MapRadioButton_Checked">The map</RadioButton>
-                    <RadioButton x:Name="FavoritesRadioButton" Margin="30,5,5,5" Checked="FavoritesRadioButton_Checked">My favorites</RadioButton>
+                    <RadioButton Visibility="Collapsed" x:Name="FavoritesRadioButton" Margin="30,5,5,5" Checked="FavoritesRadioButton_Checked">My favorites</RadioButton>
                     <RadioButton x:Name="RoutesRadioButton" Margin="30,5,5,5" Checked="RoutesRadioButton_Checked">The routes page</RadioButton>
 
                     <Rectangle Fill="DarkGray" Height="2" Margin="5"/>
@@ -44,7 +44,7 @@
 
                     <TextBlock FontSize="16" Margin="5,5,5,5">When I start the app, go to...</TextBlock>
                     <RadioButton x:Name="LimitedDataMapRadioButton" IsChecked="True" Margin="30,5,5,5" Checked="LimitedDataMapRadioButton_Checked">The map</RadioButton>
-                    <RadioButton x:Name="LimitedDataFavoritesRadioButton" Margin="30,5,5,5" Checked="LimitedDataFavoritesRadioButton_Checked">My favorites</RadioButton>
+                    <RadioButton Visibility="Collapsed" x:Name="LimitedDataFavoritesRadioButton" Margin="30,5,5,5" Checked="LimitedDataFavoritesRadioButton_Checked">My favorites</RadioButton>
                     <RadioButton x:Name="LimitedDataRoutesRadioButton" Margin="30,5,5,5" Checked="LimitedDataRoutesRadioButton_Checked">The routes page</RadioButton>
                     <TextBlock TextWrapping="WrapWholeWords" Margin="5,5,5,5">Showing a different page by default may be beneficial on limited data networks.</TextBlock>
                 </StackPanel>

@@ -116,11 +116,17 @@ namespace OneAppAway
         {
             RoutesProgressIndicator.IsActive = true;
             RoutesControl.Items.Clear();
+            bool intercityReminder = false;
             foreach (string rte in Stop.Routes)
             {
                 BusRoute? route = await Data.GetRoute(rte, MasterCancellationTokenSource.Token);
                 if (route != null)
                     RoutesControl.Items.Add(new RouteListingTemplateSelector.RouteListing() { Name = route.Value.Name, Description = route.Value.Description, Agency = (await Data.GetTransitAgency(route.Value.Agency, MasterCancellationTokenSource.Token)).Value.Name, RouteId = route.Value.ID });
+                if (route.Value.Agency == "19" && !intercityReminder)
+                {
+                    intercityReminder = true;
+                    Message.ShowMessage(new Message() { Caption = "Intercity Transit Warning", ShortSummary = "Schedules and arrivals may appear incorrectly for Intercity Transit.", FullText = "Because of the data provided by Intercity Transit, all of Intercity Transit's routes (including Olympia Express) display either \"Inbound\" or \"Outbound\" as the destination, usually relative to Olympia but not always. IT also sometimes lumps two directions together as one, and for loop routes doesn't distinguish between an arrival and departure at Olympia TC. Thus, data for IT routes in this app is uncertain and risky, and it's recommended that you pick up a paper IT schedule avilable on IT buses.", Id = 5 });
+                }
             }
             RoutesProgressIndicator.IsActive = false;
         }

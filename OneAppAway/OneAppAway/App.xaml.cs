@@ -95,7 +95,36 @@ namespace OneAppAway
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
+                if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Low)
+                {
+                    switch (SettingsManager.GetSetting<int>("LimitedData.LaunchPage", false, 0))
+                    {
+                        case 0:
+                            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
+                            break;
+                        case 1:
+                            RootFrame.Navigate(typeof(FavoritesPage));
+                            break;
+                        case 2:
+                            RootFrame.Navigate(typeof(RoutesPage));
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (SettingsManager.GetSetting<int>("LaunchPage", false, 0))
+                    {
+                        case 0:
+                            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
+                            break;
+                        case 1:
+                            RootFrame.Navigate(typeof(FavoritesPage));
+                            break;
+                        case 2:
+                            RootFrame.Navigate(typeof(RoutesPage));
+                            break;
+                    }
+                }
                 //RootFrame.Navigate(typeof(RoutesPage));
             }
             // Ensure the current window is active

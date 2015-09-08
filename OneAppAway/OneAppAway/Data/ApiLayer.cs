@@ -71,9 +71,11 @@ namespace OneAppAway
             XDocument xDoc = XDocument.Load(reader);
 
             XElement el = xDoc.Element("response");
-            el = el.Element("data");
-            el = el.Element("entry");
-            el = el.Element("arrivalsAndDepartures");
+            el = el?.Element("data");
+            el = el?.Element("entry");
+            el = el?.Element("arrivalsAndDepartures");
+
+            if (el == null) return null;
 
             foreach (XElement el1 in el.Elements("arrivalAndDeparture"))
             {

@@ -12,6 +12,11 @@
 					<Base64Value>[Embedded Binary Data]</Base64Value>
 				</Candidate>
 			</NamedResource>
+			<NamedResource name="FavoritesPage.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/FavoritesPage.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
 			<NamedResource name="MainPage.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/MainPage.xbf">
 				<Candidate type="EmbeddedData">
 					<Base64Value>[Embedded Binary Data]</Base64Value>
@@ -24,6 +29,11 @@
 			</NamedResource>
 			<ResourceMapSubtree name="Assets">
 				<NamedResource name="Logo.png" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Assets/Logo.png"/>
+				<NamedResource name="ShadowCorner.png" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Assets/ShadowCorner.png">
+					<Candidate type="Path">
+						<Value>Assets\ShadowCorner.png</Value>
+					</Candidate>
+				</NamedResource>
 				<NamedResource name="SmallLogo.png" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Assets/SmallLogo.png">
 					<Candidate qualifiers="TargetSize-48, AlternateForm-UNPLATED" type="Path">
 						<Value>Assets\SmallLogo.targetsize-48_altform-unplated.png</Value>
@@ -203,6 +213,16 @@
 							<Value>Assets\Icons\MeIcon.png</Value>
 						</Candidate>
 					</NamedResource>
+					<NamedResource name="MyLocationIcon256.png" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Assets/Icons/MyLocationIcon256.png">
+						<Candidate type="Path">
+							<Value>Assets\Icons\MyLocationIcon256.png</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="MyLocationIcon32.png" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Assets/Icons/MyLocationIcon32.png">
+						<Candidate type="Path">
+							<Value>Assets\Icons\MyLocationIcon32.png</Value>
+						</Candidate>
+					</NamedResource>
 					<NamedResource name="RefreshStopsIcon.png" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Assets/Icons/RefreshStopsIcon.png">
 						<Candidate type="Path">
 							<Value>Assets\Icons\RefreshStopsIcon.png</Value>
@@ -252,9 +272,34 @@
 						<Base64Value>[Embedded Binary Data]</Base64Value>
 					</Candidate>
 				</NamedResource>
+				<NamedResource name="WeekScheduleBrowser.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Controls/WeekScheduleBrowser.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
 			</ResourceMapSubtree>
 			<ResourceMapSubtree name="Pages">
+				<NamedResource name="AddToFavoritesPage.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Pages/AddToFavoritesPage.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
 				<NamedResource name="BusMapPage.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Pages/BusMapPage.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="HelpTip.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Pages/HelpTip.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="MessagePopupPage.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Pages/MessagePopupPage.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="RemoveFromFavoritesPage.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Pages/RemoveFromFavoritesPage.xbf">
 					<Candidate type="EmbeddedData">
 						<Base64Value>[Embedded Binary Data]</Base64Value>
 					</Candidate>

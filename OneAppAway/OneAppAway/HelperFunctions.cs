@@ -182,7 +182,7 @@ namespace OneAppAway
             int shift = 0;
             int result = 0;
 
-            //magic google algorithm, see http://code.google.com/apis/maps/documentation/polylinealgorithm.html
+            //magic google algorithm, see http://code.google.com/apis/maps/documentation/polylinealgorithm.html #credit
             do
             {
                 b = Convert.ToInt32(encoded[startindex++]) - 63;
@@ -204,7 +204,7 @@ namespace OneAppAway
             while (baseDate.DayOfWeek != DayOfWeek.Monday)
                 baseDate += TimeSpan.FromDays(1);
             if (day == ServiceDay.ReducedWeekday)
-                return baseDate;
+                return baseDate.SkipWeekIfHoliday();
             double div = (double)(int)day;
             int log = 0;
             while (div > 1)
@@ -214,7 +214,7 @@ namespace OneAppAway
             }
             if (div == 1)
             {
-                return baseDate + TimeSpan.FromDays(log);
+                return (baseDate + TimeSpan.FromDays(log)).SkipWeekIfHoliday();
             }
             return null;
         }
@@ -247,7 +247,7 @@ namespace OneAppAway
 
         public static double GetDistanceBetweenPoints(double lat1, double long1, double lat2, double long2)
         {
-            //Code by beachwalker on StackOverflow
+            //Code by beachwalker on StackOverflow #credit
             //http://stackoverflow.com/questions/10175724/calculate-distance-between-two-points-in-bing-maps
             double distance = 0;
 
@@ -274,6 +274,49 @@ namespace OneAppAway
             //Calculate distance in meters.
             distance = radius * c;
             return distance; // distance in meters
+        }
+
+        public static DateTime FindHolidayForYear(ObservedHoliday holiday, int year)
+        {
+            DateTime result;
+            switch (holiday)
+            {
+                case ObservedHoliday.LaborDay:
+                    result = new DateTime(year, 9, 1);
+                    while (result.DayOfWeek != DayOfWeek.Monday)
+                        result += TimeSpan.FromDays(1);
+                    return result;
+                case ObservedHoliday.Thankgiving:
+                    result = new DateTime(year, 11, 1);
+                    while (result.DayOfWeek != DayOfWeek.Thursday)
+                        result += TimeSpan.FromDays(1);
+                    result += TimeSpan.FromDays(21);
+                    return result;
+                case ObservedHoliday.Christmas:
+                    return new DateTime(year, 12, 25);
+                case ObservedHoliday.NewYears:
+                    return new DateTime(year, 1, 1);
+            }
+            throw new ArgumentException("Bad holiday.", "holiday");
+        }
+
+        public static bool IsKnownHoliday(this DateTime date)
+        {
+            var holidays = Enum.GetValues(typeof(ObservedHoliday)).OfType<ObservedHoliday>();
+            foreach (var holiday in holidays)
+            {
+                if (date == FindHolidayForYear(holiday, date.Year))
+                    return true;
+            }
+            return false;
+        }
+
+        public static DateTime SkipWeekIfHoliday(this DateTime date)
+        {
+            DateTime result = date;
+            while (result.IsKnownHoliday())
+                result += TimeSpan.FromDays(7);
+            return result;
         }
     }
 }

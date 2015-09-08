@@ -59,7 +59,7 @@ namespace OneAppAway
                     panel.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
                     panel.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
                     TextBlock block = new TextBlock() { Margin = new Thickness(2), VerticalAlignment = VerticalAlignment.Center, Text = (await Data.GetRoute(lastRoute, typedSender.MasterCancellationTokenSource.Token)).Value.Name + " to " + lastDestination, FontSize = 16, Foreground = new SolidColorBrush(lighten(accentColor)), TextWrapping = TextWrapping.WrapWholeWords };
-                    Button favoriteButton = new Button() { Foreground = new SolidColorBrush(Colors.Yellow), Margin = new Thickness(5), VerticalAlignment = VerticalAlignment.Center, Content = "", FontFamily = new FontFamily("Segoe MDL2 Assets"), Tag = new string[] { lastRoute, typedSender.Schedule.Stop, lastDestination } };
+                    Button favoriteButton = new Button() { Foreground = new SolidColorBrush(Colors.Yellow), Margin = new Thickness(5), VerticalAlignment = VerticalAlignment.Center, Content = "", FontFamily = new FontFamily("Segoe MDL2 Assets"), Tag = new string[] { lastRoute, typedSender.Schedule.Stop, lastDestination }, Visibility = Visibility.Collapsed };
                     favoriteButton.Click += FavoriteButton_Click;
                     Grid.SetColumn(favoriteButton, 1);
                     panel.Children.Add(block);

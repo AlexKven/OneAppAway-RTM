@@ -426,6 +426,12 @@
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\MeIcon.png">
       <PackagePath>Assets\Icons\MeIcon.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\MyLocationIcon256.png">
+      <PackagePath>Assets\Icons\MyLocationIcon256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\MyLocationIcon32.png">
+      <PackagePath>Assets\Icons\MyLocationIcon32.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\RefreshStopsIcon.png">
       <PackagePath>Assets\Icons\RefreshStopsIcon.png</PackagePath>
     </AppxPackagedFile>
