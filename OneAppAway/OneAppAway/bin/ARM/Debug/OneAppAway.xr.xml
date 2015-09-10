@@ -277,9 +277,9 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="ClickMode" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Foreground" />
       <RootEvent Name="Click" />
@@ -382,6 +382,7 @@
       <RootProperty Name="IsChecked" />
       <RootProperty Name="Content" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Visibility" />
       <RootEvent Name="Checked" />
     </RootType>
     <RootType FullName="OneAppAway.HamburgerBar" />
@@ -491,6 +492,7 @@
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="OneAppAway.RoutesPage" />
+    <RootType FullName="Windows.UI.Xaml.GridLength" />
     <RootType FullName="OneAppAway.RouteViewPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
       <RootProperty Name="Margin" />

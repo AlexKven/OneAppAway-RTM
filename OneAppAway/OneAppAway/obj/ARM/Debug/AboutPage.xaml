@@ -54,6 +54,9 @@
                 <HyperlinkButton FontSize="16" NavigateUri="http://onebusaway.org/">Transit data provided by OneBusAway</HyperlinkButton>
                 <TextBlock TextWrapping="WrapWholeWords">OneAppAway is an unofficial OneBusAway app built and maintained by AlexKven. Although I use data from OneBusAway, I do so with their permission and I am not in any way affiliated with OneBusAway. OneBusAway also makes their own first-party apps available on this platform for free, but has fewer features than OneAppAway.</TextBlock>
                 <TextBlock TextWrapping="WrapWholeWords" FontSize="16">If you are having a problem with the app, please don't hesitate to contact me through email or Twitter. I'll do my best to help solve your problem.</TextBlock>
+                <TextBlock TextWrapping="WrapWholeWords" FontSize="20" HorizontalAlignment="Center">Other Credits:</TextBlock>
+                <HyperlinkButton NavigateUri="http://stackoverflow.com/questions/10175724/calculate-distance-between-two-points-in-bing-maps">Code to find distance between points by beachwalker on StackOverflow</HyperlinkButton>
+                <HyperlinkButton NavigateUri="http://code.google.com/apis/maps/documentation/polylinealgorithm.html">Google's map polyline algorithm</HyperlinkButton>
             </StackPanel>
         </ScrollViewer>
         <ScrollViewer x:ConnectionId='7' HorizontalContentAlignment="Stretch" x:Name="RightScrollViewer" Grid.Column="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Hidden">

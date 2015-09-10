@@ -7,20 +7,52 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" RequestedTheme="Dark">
-    <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
-        <Grid Background="#505050">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="MapColumn" Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock FontSize="36" x:Name="RouteNameBlock" Margin="10,10,10,0"/>
-                <local:BusMap StopVisibilityThreshold="10" x:Name="MainMap" Margin="10" Grid.Row="1"/>
-            </Grid>
+    <Grid x:Name="MainGrid" Background="#505050" SizeChanged="MainGrid_SizeChanged">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="DisplayStates" CurrentStateChanged="DisplayStates_CurrentStateChanged">
+                <VisualState x:Name="MapState"/>
+                <VisualState x:Name="ArrivalsStateNormal">
+                    <VisualState.Setters>
+                        <Setter Target="ArrivalsColumn.(ColumnDefinition.Width)">
+                            <Setter.Value>
+                                <GridLength>300</GridLength>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="ArrivalsStateThin">
+                    <VisualState.Setters>
+                        <Setter Target="MapColumn.(ColumnDefinition.Width)">
+                            <Setter.Value>
+                                <GridLength>0</GridLength>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="MapGrid.(FrameworkElement.Visibility)">
+                            <Setter.Value>
+                                <Visibility>Collapsed</Visibility>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="ArrivalsColumn.(ColumnDefinition.Width)">
+                            <Setter.Value>
+                                <GridLength>*</GridLength>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="MapColumn" Width="*"/>
+            <ColumnDefinition x:Name="ArrivalsColumn" Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="MapGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="36" x:Name="RouteNameBlock" Margin="10,10,10,0"/>
+            <local:BusMap StopVisibilityThreshold="10" x:Name="MainMap" Margin="10" Grid.Row="1" StopsClicked="MainMap_StopsClicked"/>
         </Grid>
-    </ScrollViewer>
+        <local:MultiStopArrivalsBox x:Name="ArrivalsBox" Grid.Column="1"/>
+    </Grid>
 </local:NavigationFriendlyPage>

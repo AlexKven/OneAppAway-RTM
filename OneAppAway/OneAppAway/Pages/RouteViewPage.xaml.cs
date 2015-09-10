@@ -31,6 +31,7 @@ namespace OneAppAway
         {
             this.InitializeComponent();
             MainMap.MapControl.ZoomInteractionMode = MapInteractionMode.GestureAndControl;
+            VisualStateManager.GoToState(this, "MapState", false);
         }
 
         private CancellationTokenSource MasterCancellationTokenSource = new CancellationTokenSource();
@@ -69,6 +70,43 @@ namespace OneAppAway
                     await new MessageDialog("We could not download the data for the selected route, and you don't have that route downloaded.", "Error getting route").ShowAsync();
                 }
             }
+        }
+
+        private void MainMap_StopsClicked(object sender, StopClickedEventArgs e)
+        {
+            ArrivalsBox.SetStops(e.Stops);
+            RefreshState(true);
+        }
+
+        private void DisplayStates_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
+        {
+            CanGoBack = (e.NewState?.Name != "MapState");
+        }
+
+        protected override void OnGoBack(ref bool handled)
+        {
+            base.OnGoBack(ref handled);
+            if (DisplayStates.CurrentState?.Name != "MapState")
+            {
+                VisualStateManager.GoToState(this, "MapState", false);
+                handled = true;
+            }
+        }
+
+        private void RefreshState(bool forceArrivalState = false)
+        {
+            if ((DisplayStates.CurrentState?.Name != "MapState" && DisplayStates.CurrentState?.Name != null) || forceArrivalState)
+            {
+                if (ActualWidth < 500 && DisplayStates.CurrentState?.Name != "ArrivalsStateThin")
+                    VisualStateManager.GoToState(this, "ArrivalsStateThin", false);
+                else if (ActualWidth >= 600 && DisplayStates.CurrentState?.Name != "ArrivalsStateNormal")
+                    VisualStateManager.GoToState(this, "ArrivalsStateNormal", false);
+            }
+        }
+
+        private void MainGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            RefreshState();
         }
     }
 }

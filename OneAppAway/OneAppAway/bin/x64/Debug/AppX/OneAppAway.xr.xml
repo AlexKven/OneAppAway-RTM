@@ -492,6 +492,7 @@
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="OneAppAway.RoutesPage" />
+    <RootType FullName="Windows.UI.Xaml.GridLength" />
     <RootType FullName="OneAppAway.RouteViewPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
       <RootProperty Name="Margin" />
