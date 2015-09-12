@@ -74,7 +74,7 @@
                 <BitmapIcon Foreground="White" UriSource="/Assets/Icons/RefreshStopsIcon.png" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
         </StackPanel>
-        <local:PopupStopArrivalsBox x:ConnectionId='11' x:Name="StopArrivalBox"                                                Opacity="0" Maps:MapControl.NormalizedAnchorPoint="0.5, 1">
+        <local:PopupStopArrivalsBox x:ConnectionId='11' x:Name="StopArrivalBox"                                                Opacity="0" Maps:MapControl.NormalizedAnchorPoint="0.5, 1" Visibility="Collapsed">
             <local:PopupStopArrivalsBox.RenderTransform>
                 <CompositeTransform x:ConnectionId='13' TranslateY="25" x:Name="StopArrivalBoxTranslation"/>
             </local:PopupStopArrivalsBox.RenderTransform>

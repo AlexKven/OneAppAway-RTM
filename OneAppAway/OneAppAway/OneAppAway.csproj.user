@@ -7,9 +7,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
-    <UseEmulator>false</UseEmulator>
+    <UseEmulator>true</UseEmulator>
     <RemoteDebugMachine>10.122.61.9</RemoteDebugMachine>
-    <RemoteDebugEnabled>true</RemoteDebugEnabled>
+    <RemoteDebugEnabled>false</RemoteDebugEnabled>
     <UseAuthentication>false</UseAuthentication>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -18,5 +18,9 @@
     <RemoteDebugMachine>variablecn</RemoteDebugMachine>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
     <UseAuthentication>false</UseAuthentication>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <DebugEngines>{3B476D35-A401-11D2-AAD4-00C04F990171}</DebugEngines>
   </PropertyGroup>
 </Project>

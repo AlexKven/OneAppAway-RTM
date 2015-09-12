@@ -9,3 +9,5 @@
 "/t:System.Double,System.Runtime,dcs"
 "/t:System.String,System.Runtime,dcs"
 "/t:System.Collections.Generic.Dictionary`2[[System.String,System.Runtime],[System.Object,System.Runtime]],System.Collections,dcs"
+"/t:AdDuplex.Interstitials.Models.InterstitialAdInfo,AdDuplex,json"
+"/t:AdDuplex.Banners.Models.BannerAdInfo,AdDuplex,json"

@@ -47,3 +47,4 @@
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\Icons\BusBase20.png"			"Assets\Icons\BusBase20.png"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\Icons\BusBase.png"			"Assets\Icons\BusBase.png"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\Icons\BusAnalyticsIcon.png"			"Assets\Icons\BusAnalyticsIcon.png"
+"C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\AdDuplex\Windows 10 SDK.xr.xml"			"AdDuplex\Windows 10 SDK.xr.xml"

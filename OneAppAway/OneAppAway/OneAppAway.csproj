@@ -102,6 +102,9 @@
     <Compile Include="AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AdRow.xaml.cs">
+      <DependentUpon>AdRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data\FavoritesManager.cs" />
     <Compile Include="FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
@@ -248,6 +251,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\AdRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FavoritesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -334,6 +341,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="AdDuplex.Windows10, Version=10.0.0.2">
+      <Name>AdDuplex SDK for Windows 10 %28XAML%29</Name>
+    </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>

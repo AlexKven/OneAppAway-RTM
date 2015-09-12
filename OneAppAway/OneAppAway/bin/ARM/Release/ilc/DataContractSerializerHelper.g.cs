@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Threading;
 using System.Xml;
 
@@ -19,11 +20,16 @@ namespace System.Runtime.Serialization.Generated
         {
             global::System.Collections.Generic.Dictionary<global::System.Type, global::System.Runtime.Serialization.DataContract> dataContracts = global::System.Runtime.Serialization.DataContract.GetDataContracts();
             PopulateContractDictionary(dataContracts);
+            global::System.Collections.Generic.Dictionary<global::System.Runtime.Serialization.DataContract, global::System.Runtime.Serialization.Json.JsonReadWriteDelegates> jsonDelegates = global::System.Runtime.Serialization.Json.JsonReadWriteDelegates.GetJsonDelegates();
+            PopulateJsonDelegateDictionary(
+                                dataContracts, 
+                                jsonDelegates
+                            );
         }
         static int[] s_knownContractsLists = new int[] {
               -1, }
         ;
-        // Count = 103
+        // Count = 176
         static int[] s_xmlDictionaryStrings = new int[] {
                 0, // array length: 0
                 5, // array length: 5
@@ -35,11 +41,11 @@ namespace System.Runtime.Serialization.Generated
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 5, // array length: 5
-                711, // index: 711, string: "Contexts"
-                720, // index: 720, string: "CustomName"
-                731, // index: 731, string: "Destination"
-                743, // index: 743, string: "Route"
-                749, // index: 749, string: "Stop"
+                892, // index: 892, string: "Contexts"
+                901, // index: 901, string: "CustomName"
+                912, // index: 912, string: "Destination"
+                924, // index: 924, string: "Route"
+                930, // index: 930, string: "Stop"
                 5, // array length: 5
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
@@ -51,7 +57,7 @@ namespace System.Runtime.Serialization.Generated
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 1, // array length: 1
-                754, // index: 754, string: "RelativeLocation"
+                935, // index: 935, string: "RelativeLocation"
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 3, // array length: 3
@@ -61,9 +67,9 @@ namespace System.Runtime.Serialization.Generated
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 3, // array length: 3
-                771, // index: 771, string: "City"
-                776, // index: 776, string: "Latitude"
-                785, // index: 785, string: "Longitude"
+                952, // index: 952, string: "City"
+                957, // index: 957, string: "Latitude"
+                966, // index: 966, string: "Longitude"
                 3, // array length: 3
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
@@ -74,7 +80,7 @@ namespace System.Runtime.Serialization.Generated
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 1, // array length: 1
-                754, // index: 754, string: "RelativeLocation"
+                935, // index: 935, string: "RelativeLocation"
                 1, // array length: 1
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 2, // array length: 2
@@ -84,8 +90,8 @@ namespace System.Runtime.Serialization.Generated
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 2, // array length: 2
-                754, // index: 754, string: "RelativeLocation"
-                795, // index: 795, string: "Distance"
+                935, // index: 935, string: "RelativeLocation"
+                976, // index: 976, string: "Distance"
                 2, // array length: 2
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
@@ -96,8 +102,8 @@ namespace System.Runtime.Serialization.Generated
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 2, // array length: 2
-                754, // index: 754, string: "RelativeLocation"
-                804, // index: 804, string: "Direction"
+                935, // index: 935, string: "RelativeLocation"
+                985, // index: 985, string: "Direction"
                 2, // array length: 2
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
                 278, // index: 278, string: "http://schemas.datacontract.org/2004/07/OneAppAway"
@@ -123,11 +129,84 @@ namespace System.Runtime.Serialization.Generated
                 1, // array length: 1
                 644, // index: 644, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
                 2, // array length: 2
-                814, // index: 814, string: "key"
-                818, // index: 818, string: "value"
+                995, // index: 995, string: "key"
+                999, // index: 999, string: "value"
                 2, // array length: 2
                 644, // index: 644, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
-                644  // index: 644, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
+                644, // index: 644, string: "http://schemas.datacontract.org/2004/07/System.Collections.Generic"
+                7, // array length: 7
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                1, // array length: 1
+                730, // index: 730, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models"
+                7, // array length: 7
+                1005, // index: 1005, string: "Hash"
+                1010, // index: 1010, string: "ImageURL"
+                1019, // index: 1019, string: "MarketplaceAppId"
+                1036, // index: 1036, string: "SizedAdId"
+                1046, // index: 1046, string: "Time"
+                1051, // index: 1051, string: "UpdatedOn"
+                1061, // index: 1061, string: "Url"
+                7, // array length: 7
+                730, // index: 730, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models"
+                730, // index: 730, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models"
+                730, // index: 730, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models"
+                730, // index: 730, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models"
+                730, // index: 730, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models"
+                730, // index: 730, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models"
+                730, // index: 730, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models"
+                14, // array length: 14
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                -1, // string: null
+                1, // array length: 1
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                14, // array length: 14
+                1065, // index: 1065, string: "AdType"
+                1005, // index: 1005, string: "Hash"
+                1010, // index: 1010, string: "ImageURL"
+                1072, // index: 1072, string: "Line1"
+                1078, // index: 1078, string: "Line2"
+                1084, // index: 1084, string: "Line3"
+                1090, // index: 1090, string: "Line4"
+                1019, // index: 1019, string: "MarketplaceAppId"
+                1096, // index: 1096, string: "PhoneNumber"
+                1108, // index: 1108, string: "ShowLogo"
+                1036, // index: 1036, string: "SizedAdId"
+                1117, // index: 1117, string: "Status"
+                1046, // index: 1046, string: "Time"
+                1061, // index: 1061, string: "Url"
+                14, // array length: 14
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813, // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
+                813  // index: 813, string: "http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models"
         };
         // Count = 4
         static global::MemberEntry[] s_dataMemberLists = new global::MemberEntry[] {
@@ -153,7 +232,7 @@ namespace System.Runtime.Serialization.Generated
         };
         [global::System.Runtime.CompilerServices.PreInitialized]
         static readonly byte[] s_dataContractMap_Hashtable = new byte[0];
-        // Count=53
+        // Count=56
         [global::System.Runtime.CompilerServices.PreInitialized]
         static readonly global::DataContractMapEntry[] s_dataContractMap = new global::DataContractMapEntry[] {
                 new global::DataContractMapEntry() {
@@ -386,6 +465,19 @@ namespace System.Runtime.Serialization.Generated
                 new global::DataContractMapEntry() {
                     UserCodeType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Nullable`1[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")),
                     TableIndex = 113, // 0x71
+                }, 
+                new global::DataContractMapEntry() {
+                    UserCodeType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("AdDuplex.Interstitials.Models.InterstitialAdInfo, AdDuplex, Version=10.0.0.2, Culture=neutral, PublicKeyToken=nu" +
+                                "ll")),
+                    TableIndex = 129, // 0x81
+                }, 
+                new global::DataContractMapEntry() {
+                    UserCodeType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("AdDuplex.Banners.Models.BannerAdInfo, AdDuplex, Version=10.0.0.2, Culture=neutral, PublicKeyToken=null")),
+                    TableIndex = 145, // 0x91
+                }, 
+                new global::DataContractMapEntry() {
+                    UserCodeType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("System.Object[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
+                    TableIndex = 50, // 0x32
                 }
         };
         [global::System.Runtime.CompilerServices.PreInitialized]
@@ -729,7 +821,7 @@ namespace System.Runtime.Serialization.Generated
         };
         [global::System.Runtime.CompilerServices.PreInitialized]
         static readonly byte[] s_classDataContracts_Hashtable = new byte[0];
-        // Count=8
+        // Count=10
         [global::System.Runtime.CompilerServices.PreInitialized]
         static readonly global::ClassDataContractEntry[] s_classDataContracts = new global::ClassDataContractEntry[] {
                 new global::ClassDataContractEntry() {
@@ -897,11 +989,47 @@ namespace System.Runtime.Serialization.Generated
                     ContractNamespacesListIndex = 95,
                     MemberNamesListIndex = 97,
                     MemberNamespacesListIndex = 100,
+                }, 
+                new global::ClassDataContractEntry() {
+                    Common = new global::CommonContractEntry() {
+                        HasRoot = true,
+                        NameIndex = 711, // InterstitialAdInfo
+                        NamespaceIndex = 730, // http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models
+                        StableNameIndex = 711, // InterstitialAdInfo
+                        StableNameNamespaceIndex = 730, // http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models
+                        TopLevelElementNameIndex = 711, // InterstitialAdInfo
+                        TopLevelElementNamespaceIndex = 730, // http://schemas.datacontract.org/2004/07/AdDuplex.Interstitials.Models
+                        OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("AdDuplex.Interstitials.Models.InterstitialAdInfo, AdDuplex, Version=10.0.0.2, Culture=neutral, PublicKeyToken=nu" +
+                                    "ll")),
+                        UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("AdDuplex.Interstitials.Models.InterstitialAdInfo, AdDuplex, Version=10.0.0.2, Culture=neutral, PublicKeyToken=nu" +
+                                    "ll")),
+                    },
+                    ChildElementNamespacesListIndex = 103,
+                    ContractNamespacesListIndex = 111,
+                    MemberNamesListIndex = 113,
+                    MemberNamespacesListIndex = 121,
+                }, 
+                new global::ClassDataContractEntry() {
+                    Common = new global::CommonContractEntry() {
+                        HasRoot = true,
+                        NameIndex = 800, // BannerAdInfo
+                        NamespaceIndex = 813, // http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models
+                        StableNameIndex = 800, // BannerAdInfo
+                        StableNameNamespaceIndex = 813, // http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models
+                        TopLevelElementNameIndex = 800, // BannerAdInfo
+                        TopLevelElementNamespaceIndex = 813, // http://schemas.datacontract.org/2004/07/AdDuplex.Banners.Models
+                        OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("AdDuplex.Banners.Models.BannerAdInfo, AdDuplex, Version=10.0.0.2, Culture=neutral, PublicKeyToken=null")),
+                        UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("AdDuplex.Banners.Models.BannerAdInfo, AdDuplex, Version=10.0.0.2, Culture=neutral, PublicKeyToken=null")),
+                    },
+                    ChildElementNamespacesListIndex = 129,
+                    ContractNamespacesListIndex = 144,
+                    MemberNamesListIndex = 146,
+                    MemberNamespacesListIndex = 161,
                 }
         };
         [global::System.Runtime.CompilerServices.PreInitialized]
         static readonly byte[] s_collectionDataContracts_Hashtable = new byte[0];
-        // Count=3
+        // Count=4
         [global::System.Runtime.CompilerServices.PreInitialized]
         static readonly global::CollectionDataContractEntry[] s_collectionDataContracts = new global::CollectionDataContractEntry[] {
                 new global::CollectionDataContractEntry() {
@@ -971,6 +1099,25 @@ namespace System.Runtime.Serialization.Generated
                     ValueNameIndex = 610, // Value
                     CollectionContractKind = global::System.Runtime.Serialization.CollectionKind.GenericDictionary,
                     ItemType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"System.Runtime.Serialization.KeyValue`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.DataContractSerialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
+                }, 
+                new global::CollectionDataContractEntry() {
+                    Common = new global::CommonContractEntry() {
+                        HasRoot = true,
+                        NameIndex = 877, // ArrayOfanyType
+                        NamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        StableNameIndex = 877, // ArrayOfanyType
+                        StableNameNamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        TopLevelElementNameIndex = 877, // ArrayOfanyType
+                        TopLevelElementNamespaceIndex = 524, // http://schemas.microsoft.com/2003/10/Serialization/Arrays
+                        OriginalUnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("System.Object[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
+                        UnderlyingType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("System.Object[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
+                    },
+                    CollectionItemNameIndex = 155, // anyType
+                    KeyNameIndex = -1,
+                    ItemNameIndex = 155, // anyType
+                    ValueNameIndex = -1,
+                    CollectionContractKind = global::System.Runtime.Serialization.CollectionKind.Array,
+                    ItemType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
                 }
         };
         [global::System.Runtime.CompilerServices.PreInitialized]
@@ -1002,6 +1149,29 @@ namespace System.Runtime.Serialization.Generated
         // Count=0
         [global::System.Runtime.CompilerServices.PreInitialized]
         static readonly global::XmlDataContractEntry[] s_xmlDataContracts = new global::XmlDataContractEntry[0];
+        [global::System.Runtime.CompilerServices.PreInitialized]
+        static readonly byte[] s_jsonDelegatesList_Hashtable = new byte[0];
+        // Count=3
+        [global::System.Runtime.CompilerServices.PreInitialized]
+        static readonly global::JsonDelegateEntry[] s_jsonDelegatesList = new global::JsonDelegateEntry[] {
+                new global::JsonDelegateEntry() {
+                    DataContractMapIndex = 53,
+                    WriterDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.Json.JsonFormatClassWriterDelegate>(global::Type28.WriteInterstitialAdInfoToJson),
+                    ReaderDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.Json.JsonFormatClassReaderDelegate>(global::Type27.ReadInterstitialAdInfoFromJson),
+                }, 
+                new global::JsonDelegateEntry() {
+                    DataContractMapIndex = 54,
+                    WriterDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.Json.JsonFormatClassWriterDelegate>(global::Type32.WriteBannerAdInfoToJson),
+                    ReaderDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.Json.JsonFormatClassReaderDelegate>(global::Type31.ReadBannerAdInfoFromJson),
+                }, 
+                new global::JsonDelegateEntry() {
+                    DataContractMapIndex = 55,
+                    IsCollection = true,
+                    WriterDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.Json.JsonFormatCollectionWriterDelegate>(global::Type37.WriteArrayOfanyTypeToJson),
+                    ReaderDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.Json.JsonFormatCollectionReaderDelegate>(global::Type36.ReadArrayOfanyTypeFromJson),
+                    GetOnlyReaderDelegate = global::SgIntrinsics.AddrOf<global::System.Runtime.Serialization.Json.JsonFormatGetOnlyCollectionReaderDelegate>(global::Type38.ReadArrayOfanyTypeFromJsonIsGetOnly),
+                }
+        };
         static char[] s_stringPool = new char[] {
             'b','o','o','l','e','a','n','\0','h','t','t','p',':','/','/','w','w','w','.','w','3','.','o','r','g','/','2','0','0','1',
             '/','X','M','L','S','c','h','e','m','a','\0','h','t','t','p',':','/','/','s','c','h','e','m','a','s','.','m','i','c','r',
@@ -1026,10 +1196,20 @@ namespace System.Runtime.Serialization.Generated
             'y','T','y','p','e','\0','K','e','y','\0','V','a','l','u','e','\0','K','e','y','V','a','l','u','e','P','a','i','r','O','f',
             's','t','r','i','n','g','a','n','y','T','y','p','e','\0','h','t','t','p',':','/','/','s','c','h','e','m','a','s','.','d',
             'a','t','a','c','o','n','t','r','a','c','t','.','o','r','g','/','2','0','0','4','/','0','7','/','S','y','s','t','e','m',
-            '.','C','o','l','l','e','c','t','i','o','n','s','.','G','e','n','e','r','i','c','\0','C','o','n','t','e','x','t','s','\0',
-            'C','u','s','t','o','m','N','a','m','e','\0','D','e','s','t','i','n','a','t','i','o','n','\0','R','o','u','t','e','\0','S',
-            't','o','p','\0','R','e','l','a','t','i','v','e','L','o','c','a','t','i','o','n','\0','C','i','t','y','\0','L','a','t','i',
-            't','u','d','e','\0','L','o','n','g','i','t','u','d','e','\0','D','i','s','t','a','n','c','e','\0','D','i','r','e','c','t',
-            'i','o','n','\0','k','e','y','\0','v','a','l','u','e','\0'};
+            '.','C','o','l','l','e','c','t','i','o','n','s','.','G','e','n','e','r','i','c','\0','I','n','t','e','r','s','t','i','t',
+            'i','a','l','A','d','I','n','f','o','\0','h','t','t','p',':','/','/','s','c','h','e','m','a','s','.','d','a','t','a','c',
+            'o','n','t','r','a','c','t','.','o','r','g','/','2','0','0','4','/','0','7','/','A','d','D','u','p','l','e','x','.','I',
+            'n','t','e','r','s','t','i','t','i','a','l','s','.','M','o','d','e','l','s','\0','B','a','n','n','e','r','A','d','I','n',
+            'f','o','\0','h','t','t','p',':','/','/','s','c','h','e','m','a','s','.','d','a','t','a','c','o','n','t','r','a','c','t',
+            '.','o','r','g','/','2','0','0','4','/','0','7','/','A','d','D','u','p','l','e','x','.','B','a','n','n','e','r','s','.',
+            'M','o','d','e','l','s','\0','A','r','r','a','y','O','f','a','n','y','T','y','p','e','\0','C','o','n','t','e','x','t','s',
+            '\0','C','u','s','t','o','m','N','a','m','e','\0','D','e','s','t','i','n','a','t','i','o','n','\0','R','o','u','t','e','\0',
+            'S','t','o','p','\0','R','e','l','a','t','i','v','e','L','o','c','a','t','i','o','n','\0','C','i','t','y','\0','L','a','t',
+            'i','t','u','d','e','\0','L','o','n','g','i','t','u','d','e','\0','D','i','s','t','a','n','c','e','\0','D','i','r','e','c',
+            't','i','o','n','\0','k','e','y','\0','v','a','l','u','e','\0','H','a','s','h','\0','I','m','a','g','e','U','R','L','\0','M',
+            'a','r','k','e','t','p','l','a','c','e','A','p','p','I','d','\0','S','i','z','e','d','A','d','I','d','\0','T','i','m','e',
+            '\0','U','p','d','a','t','e','d','O','n','\0','U','r','l','\0','A','d','T','y','p','e','\0','L','i','n','e','1','\0','L','i',
+            'n','e','2','\0','L','i','n','e','3','\0','L','i','n','e','4','\0','P','h','o','n','e','N','u','m','b','e','r','\0','S','h',
+            'o','w','L','o','g','o','\0','S','t','a','t','u','s','\0'};
     }
 }

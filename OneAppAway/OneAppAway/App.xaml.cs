@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Store;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -36,6 +38,7 @@ namespace OneAppAway
         /// </summary>
         public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
         public Frame RootFrame;
+        private AdDuplex.InterstitialAd interstitialAd;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -56,6 +59,7 @@ namespace OneAppAway
         {
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 320));
             await FileManager.EnsureFolders();
+            AdDuplex.AdDuplexClient.Initialize("bef2bb37-a5ad-49d7-9ba6-b1ccaf4be44b");
             Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -133,7 +137,10 @@ namespace OneAppAway
             BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             LocationManager.Dispatcher = RootFrame.Dispatcher;
             SetTitleBar();
+
             Message.ShowMessage(new Message() { ShortSummary = "Public transit data powered by OneBusAway.", Caption = "Welcome!", FullText="This app uses data provided by the OneBusAway api. OneBusAway also provides its own app for this platform, and is available for free. This app builds on the functions of the official app, and provides additional functionality not available in OneBusAway's own app.", Id = 1 });
+            if (CurrentApp.LicenseInformation.IsTrial)
+                MainHamburgerBar.ShowAds = true;
         }
 
         /// <summary>

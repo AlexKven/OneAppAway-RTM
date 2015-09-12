@@ -1,5 +1,5 @@
 FullName=Microsoft.Build.ILTasks.ILTransformTask
-InputAssembly=C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\ilc\in\OneAppAway.exe
+InputAssembly=C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\ilc\in\OneAppAway.exe;C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\ilc\in\AdDuplex.winmd
 OutputAssembly=C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\ilc\intermediate\PreMergeILTransformed\
 UseILOutputPrefix=False
 LibPathsCount=3

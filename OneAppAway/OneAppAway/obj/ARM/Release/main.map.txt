@@ -8,6 +8,7 @@
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\OneAppAway.exe"			"OneAppAway.exe"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\OneAppAway.dll"			"OneAppAway.dll"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\ClrCompression.dll"			"ClrCompression.dll"
+"C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\AdDuplex.winmd"			"AdDuplex.winmd"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\StoreLogo.scale-200.png"			"Assets\StoreLogo.scale-200.png"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\SmallLogo.targetsize-48_altform-unplated.png"			"Assets\SmallLogo.targetsize-48_altform-unplated.png"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\SmallLogo.targetsize-48.png"			"Assets\SmallLogo.targetsize-48.png"
@@ -48,3 +49,5 @@
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\Icons\BusBase20.png"			"Assets\Icons\BusBase20.png"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\Icons\BusBase.png"			"Assets\Icons\BusBase.png"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\Assets\Icons\BusAnalyticsIcon.png"			"Assets\Icons\BusAnalyticsIcon.png"
+"C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\AdDuplex\InterstitialUserControl.xbf"			"AdDuplex\InterstitialUserControl.xbf"
+"C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Release\PackageLayout\AdDuplex\Themes\Generic.xbf"			"AdDuplex\Themes\Generic.xbf"

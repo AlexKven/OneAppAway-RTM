@@ -110,6 +110,7 @@
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\Microsoft.VisualBasic.dll"			"Microsoft.VisualBasic.dll"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\Microsoft.CSharp.dll"			"Microsoft.CSharp.dll"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\ClrCompression.dll"			"ClrCompression.dll"
+"C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\AdDuplex.winmd"			"AdDuplex.winmd"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\WinMetadata\Windows.winmd"			"WinMetadata\Windows.winmd"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\Properties\Default.rd.xml"			"Properties\Default.rd.xml"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\Assets\StoreLogo.scale-200.png"			"Assets\StoreLogo.scale-200.png"
@@ -152,3 +153,5 @@
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\Assets\Icons\BusBase20.png"			"Assets\Icons\BusBase20.png"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\Assets\Icons\BusBase.png"			"Assets\Icons\BusBase.png"
 "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\Assets\Icons\BusAnalyticsIcon.png"			"Assets\Icons\BusAnalyticsIcon.png"
+"C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\AdDuplex\InterstitialUserControl.xbf"			"AdDuplex\InterstitialUserControl.xbf"
+"C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\PackageUploadLayout\AdDuplex\Themes\Generic.xbf"			"AdDuplex\Themes\Generic.xbf"

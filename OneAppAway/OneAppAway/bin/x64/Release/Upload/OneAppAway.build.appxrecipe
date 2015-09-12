@@ -21,6 +21,9 @@
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Release\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.0.2\References\CommonConfiguration\neutral\AdDuplex.winmd">
+      <PackagePath>AdDuplex.winmd</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
     </AppxPackagedFile>
@@ -329,6 +332,12 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\.nuget\packages\System.Xml.XmlSerializer\4.0.10\runtimes\win8-aot\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.0.2\Redist\CommonConfiguration\neutral\AdDuplex\Themes\Generic.xbf">
+      <PackagePath>AdDuplex\Themes\Generic.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.0.2\Redist\CommonConfiguration\neutral\AdDuplex\InterstitialUserControl.xbf">
+      <PackagePath>AdDuplex\InterstitialUserControl.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAnalyticsIcon.png">
       <PackagePath>Assets\Icons\BusAnalyticsIcon.png</PackagePath>

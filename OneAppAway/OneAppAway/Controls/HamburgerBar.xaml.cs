@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdDuplex;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,9 +30,23 @@ namespace OneAppAway
         private RadioButton CompactRoutesButton = new RadioButton();
         private RadioButton SettingsButton = new RadioButton();
         private RadioButton AboutButton = new RadioButton();
+        private AdRow MainAdRow = null;
         private Grid InnerGrid = new Grid();
         private Popup PopupControl = new Popup();
         private Frame RootFrame;
+        
+        private bool _ShowAds = false;
+
+        public bool ShowAds
+        {
+            get { return _ShowAds; }
+            set
+            {
+                _ShowAds = value;
+                if (MainAdRow != null)
+                    MainAdRow.ShowAds = ShowAds;
+            }
+        }
 
         Queue<Tuple<UIElement, AnimationDirection, double, double, Type, object, AutoResetEvent>> PopupQueue = new Queue<Tuple<UIElement, AnimationDirection, double, double, Type, object, AutoResetEvent>>();
 
@@ -52,6 +67,8 @@ namespace OneAppAway
             CompactRoutesButton = HelperFunctions.FindControl<RadioButton>(MainSplitView.Content, "CompactRoutesButton");
             InnerGrid = (Grid)MainSplitView.Content;
             PopupControl = HelperFunctions.FindControl<Popup>(InnerGrid, "PopupControl");
+            MainAdRow = HelperFunctions.FindControl<AdRow>(InnerGrid, "MainAdRow");
+            MainAdRow.ShowAds = ShowAds;
             CheckCorrectButton();
         }
 

@@ -6,9 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:OneAppAway.Converters"
+    xmlns:adduplex="using:AdDuplex"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    <ContentControl.Resources>
+    </ContentControl.Resources>
     <ContentControl.Template>
         <ControlTemplate>
             <SplitView CompactPaneLength="50" DisplayMode="CompactOverlay" x:Name="MainSplitView" OpenPaneLength="300">
@@ -47,10 +50,11 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" x:Name="CompactHamburgerBar" Height="0" Background="{Binding ElementName=HamburgerBar, Path=Background}">
                         <Button x:ConnectionId='2' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
-                        <Button x:ConnectionId='3' Width="50" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" RequestedTheme="Dark" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"                              >
+                        <Button x:ConnectionId='3' Visibility="Collapsed" Width="50" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" RequestedTheme="Dark" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"                              >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
@@ -88,15 +92,22 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
                             </Grid>
                         </RadioButton>
+                        <RadioButton RequestedTheme="Dark" MinWidth="0" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" Width="50" IsChecked="{Binding ElementName=AboutButton, Path=IsChecked, Mode=TwoWay}">
+                            <Grid>
+                                <Rectangle Fill="#33000000"/>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+                            </Grid>
+                        </RadioButton>
                     </StackPanel>
                     <ContentPresenter Grid.Row="1"/>
-                    <Popup x:ConnectionId='1' Opacity="0" Grid.RowSpan="2" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True"                                                          >
+                    <Popup x:ConnectionId='1' Opacity="0" Grid.RowSpan="3" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True"                                                          >
                         <Popup.Transitions>
                             <TransitionCollection>
                                 <PopupThemeTransition FromHorizontalOffset="20"/>
                             </TransitionCollection>
                         </Popup.Transitions>
                     </Popup>
+                    <local:AdRow Grid.Row="2" x:Name="MainAdRow"/>
                 </Grid>
                 <SplitView.Pane>
                     <StackPanel Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
@@ -105,15 +116,14 @@
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:ConnectionId='8' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
+                            <Button x:ConnectionId='9' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
                             <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" x:Name="MainPanel" Tag="{ThemeResource SystemColorControlAccentColor}">
-                                <Image Width="40" Height="40" Source="Assets/Icons/LogoBase.png" Stretch="Uniform" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="28" VerticalAlignment="Center" Foreground="White">One</TextBlock>
                                 <TextBlock FontSize="28" VerticalAlignment="Center" Foreground="{Binding ElementName=MainPanel, Path=Tag, Converter={StaticResource ThemeBrushConverters}, ConverterParameter=1.2}">App</TextBlock>
                                 <TextBlock FontSize="28" VerticalAlignment="Center" Foreground="White">Away</TextBlock>
                             </StackPanel>
                         </Grid>
-                        <Button x:ConnectionId='4' Template="{StaticResource SimpleButtonTemplate}" Background="#303030" RequestedTheme="Dark" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"                              >
+                        <Button x:ConnectionId='4' Visibility="Collapsed" Template="{StaticResource SimpleButtonTemplate}" Background="#303030" RequestedTheme="Dark" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"                              >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
@@ -168,7 +178,18 @@
                                 </Grid.ColumnDefinitions>
                                 <Rectangle Fill="#33000000"/>
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Show Settings</TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Settings</TextBlock>
+                            </Grid>
+                        </RadioButton>
+                        <RadioButton x:ConnectionId='8' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="AboutButton"                              >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Fill="#33000000"/>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Help / About</TextBlock>
                             </Grid>
                         </RadioButton>
                     </StackPanel>

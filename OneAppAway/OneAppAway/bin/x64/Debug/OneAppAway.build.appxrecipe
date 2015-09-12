@@ -18,6 +18,15 @@
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\AdDuplex.winmd">
+      <PackagePath>AdDuplex.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\AdDuplex\InterstitialUserControl.xbf">
+      <PackagePath>AdDuplex\InterstitialUserControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\AdDuplex\Themes\Generic.xbf">
+      <PackagePath>AdDuplex\Themes\Generic.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\Assets\Icons\BusAnalyticsIcon.png">
       <PackagePath>Assets\Icons\BusAnalyticsIcon.png</PackagePath>
     </AppxPackagedFile>

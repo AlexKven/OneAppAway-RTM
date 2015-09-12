@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="16469AlexKven.14062E657A0DF" Publisher="CN=81569EFF-4F9B-4E3C-ABA4-C4271AC0D1B2" Version="0.8.0.0" ProcessorArchitecture="x86" />
+  <Identity Name="16469AlexKven.14062E657A0DF" Publisher="CN=81569EFF-4F9B-4E3C-ABA4-C4271AC0D1B2" Version="1.0.6.0" ProcessorArchitecture="x86" />
   <mp:PhoneIdentity PhoneProductId="07febcd3-a852-488d-8b77-9d59c779fab6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>OneAppAway</DisplayName>
@@ -31,6 +31,28 @@
     <Capability Name="internetClient" />
     <DeviceCapability Name="location" />
   </Capabilities>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>CLRHost.dll</Path>
+        <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdLoadedEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdInfo" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdClickEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Core.AdCoveredEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.BannerAdInfo" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.BannerAdLoadedEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.AdClickEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Common.Core.InstallationState" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.ImageLoadedEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.NoAdEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.AdLoadingErrorEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.AdControl" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.AdDuplexClient" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Windows_10_SDK_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.InterstitialAd" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
   <build:Metadata>
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="14.0" />
@@ -41,6 +63,7 @@
     <build:Item Name="ilc.exe" Version="1.0.23117.00 built by: PROJECTNREL" />
     <build:Item Name="OptimizingToolset" Value="ilc.exe" />
     <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.23121.0" />
+    <build:Item Name="AdDuplex.Windows10" Version="10.0.0.2" />
     <build:Item Name="WindowsMobile" Version="10.0.10240.0" />
     <build:Item Name="MakePri.exe" Version="10.0.10240.16384 (th1.150709-1700)" />
   </build:Metadata>

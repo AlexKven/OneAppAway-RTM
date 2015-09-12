@@ -7,6 +7,11 @@
 			<TargetSize>24,48</TargetSize>
 		</Qualifiers>
 		<ResourceMapSubtree name="Files">
+			<NamedResource name="AboutPage.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/AboutPage.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
 			<NamedResource name="App.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/App.xbf">
 				<Candidate type="EmbeddedData">
 					<Base64Value>[Embedded Binary Data]</Base64Value>
@@ -27,6 +32,25 @@
 					<Value>OneAppAway.xr.xml</Value>
 				</Candidate>
 			</NamedResource>
+			<ResourceMapSubtree name="AdDuplex">
+				<NamedResource name="InterstitialUserControl.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/AdDuplex/InterstitialUserControl.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Windows 10 SDK.xr.xml" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/AdDuplex/Windows 10 SDK.xr.xml">
+					<Candidate type="Path">
+						<Value>AdDuplex\Windows 10 SDK.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/AdDuplex/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
 			<ResourceMapSubtree name="Assets">
 				<NamedResource name="Logo.png" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Assets/Logo.png"/>
 				<NamedResource name="ShadowCorner.png" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Assets/ShadowCorner.png">
@@ -232,6 +256,11 @@
 				</ResourceMapSubtree>
 			</ResourceMapSubtree>
 			<ResourceMapSubtree name="Controls">
+				<NamedResource name="AdRow.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Controls/AdRow.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
 				<NamedResource name="BusArrivalBox.xbf" uri="ms-resource://16469AlexKven.14062E657A0DF/Files/Controls/BusArrivalBox.xbf">
 					<Candidate type="EmbeddedData">
 						<Base64Value>[Embedded Binary Data]</Base64Value>
