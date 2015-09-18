@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="OneAppAway.AddToFavoritesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Dark">
+    <ContentControl Template="{ThemeResource ShadowTemplate}" Background="Transparent">
+        <Grid x:ConnectionId='1' x:Name="MainGrid" Tag="{ThemeResource SystemColorControlAccentColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.RowSpan="8" Grid.ColumnSpan="2" Fill="{Binding ElementName=MainGrid, Path=Tag, Converter={ThemeResource ThemeBrushConverters}, ConverterParameter=0.5}" Opacity="0.95"/>
+            <TextBlock Margin="0,1,0,0" Grid.ColumnSpan="2" FontSize="24" HorizontalAlignment="Center">Add arrival to favorites</TextBlock>
+            <TextBlock x:ConnectionId='2' Margin="2" Grid.ColumnSpan="2" FontSize="12" HorizontalAlignment="Center" Grid.Row="1" x:Name="DescriptionBlock" TextWrapping="WrapWholeWords" Foreground="{Binding ElementName=MainGrid, Path=Tag, Converter={ThemeResource ThemeBrushConverters}, ConverterParameter=3}"/>
+            <ScrollViewer Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="5">
+                    <TextBlock>(Optional) Select one or more contexts:</TextBlock>
+                    <CheckBox x:ConnectionId='6' x:Name="CityContextBox" IsEnabled="False"                                                                      >(Loading city)</CheckBox>
+                    <CheckBox x:ConnectionId='7' HorizontalAlignment="Stretch" x:Name="MileContextBox"                                                                      >
+                        <StackPanel>
+                            <TextBlock x:ConnectionId='10' x:Name="MileContextDescription">Within 1 miles</TextBlock>
+                            <Slider x:ConnectionId='11' IsEnabled="{Binding ElementName=MileContextBox, Path=IsChecked}" Minimum="0.25" Value="2" SnapsTo="StepValues" StepFrequency="0.25" Maximum="15" x:Name="MileSlider"                                       />
+                        </StackPanel>
+                    </CheckBox>
+                    <CheckBox x:ConnectionId='8' x:Name="DirectionContextBox"                                                                                >
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox x:ConnectionId='9' x:Name="CardinalDirectionSelector" Width="100" SelectedIndex="0" IsEnabled="{Binding ElementName=DirectionContextBox, Path=IsChecked}"                                                              >
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>North</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    North
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>South</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    South
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>East</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    East
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Tag>
+                                        <local:CardinalDirection>West</local:CardinalDirection>
+                                    </ComboBoxItem.Tag>
+                                    West
+                                </ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">of this stop.</TextBlock>
+                        </StackPanel>
+                    </CheckBox>
+                </StackPanel>
+            </ScrollViewer>
+            <Rectangle Grid.ColumnSpan="2" Grid.Row="2" Margin="5,0,5,0" Fill="#222222"/>
+            <Rectangle Grid.ColumnSpan="2" Grid.Row="4" Margin="5,0,5,0" Fill="#222222"/>
+            <TextBlock Grid.Row="5" Grid.ColumnSpan="2">(Optional) Change the title:</TextBlock>
+            <TextBox x:ConnectionId='3' Grid.ColumnSpan="2" x:Name="TitleBox" Grid.Row="6" HorizontalAlignment="Stretch" Margin="4,0,4,0"/>
+            <Button x:ConnectionId='4' HorizontalAlignment="Stretch" Grid.Row="7" Grid.Column="0" Margin="4,4,2,4"                         >Save</Button>
+            <Button x:ConnectionId='5' HorizontalAlignment="Stretch" Grid.Row="7" Grid.Column="1" Margin="2,4,4,4"                           >Cancel</Button>
+        </Grid>
+    </ContentControl>
+</Page>
+

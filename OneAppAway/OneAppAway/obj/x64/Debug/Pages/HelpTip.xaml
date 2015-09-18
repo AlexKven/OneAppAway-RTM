@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="OneAppAway.HelpTip"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Dark">
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition x:ConnectionId='1' Height="50" x:Name="TopMargin"/>
+            <RowDefinition x:ConnectionId='2' Height="30" x:Name="TopOverlap"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition x:ConnectionId='3' Height="30" x:Name="BottomOverlap"/>
+            <RowDefinition x:ConnectionId='4' Height="50" x:Name="BottomMargin"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:ConnectionId='5' Width="50" x:Name="LeftMargin"/>
+            <ColumnDefinition x:ConnectionId='6' Width="30" x:Name="LeftOverlap"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition x:ConnectionId='7' Width="30" x:Name="RightOverlap"/>
+            <ColumnDefinition x:ConnectionId='8' Width="50" x:Name="RightMargin"/>
+        </Grid.ColumnDefinitions>
+        <ContentControl Template="{ThemeResource ShadowTemplate}" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3">
+            <Border Background="#505050">
+                <TextBlock x:ConnectionId='13' Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainText" Grid.Row="2" Grid.Column="2" TextWrapping="WrapWholeWords"/>
+            </Border>
+        </ContentControl>
+        <Polygon x:ConnectionId='9' x:Name="TopArrow" Grid.Column="2" Grid.RowSpan="2" Stroke="White" StrokeThickness="3" Fill="Red" HorizontalAlignment="Center" Points="40,0, 80,40, 60,40, 60,80, 20,80, 20,40, 0,40"/>
+        <Polygon x:ConnectionId='10' x:Name="BottomArrow" Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" Stroke="White" StrokeThickness="3" Fill="Red" HorizontalAlignment="Center" Points="40,80, 80,40, 60,40, 60,0, 20,0, 20,40, 0,40"/>
+        <Polygon x:ConnectionId='11' x:Name="LeftArrow" Grid.Row="2" Grid.ColumnSpan="2" Stroke="White" StrokeThickness="3" Fill="Red" VerticalAlignment="Center" Points="0,30 30,60, 30,50, 80,50, 80,10, 30,10, 30,0"/>
+        <Polygon x:ConnectionId='12' x:Name="RightArrow" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Stroke="White" StrokeThickness="3" Fill="Red" VerticalAlignment="Center" Points="80,40 40,80, 40,60, 0,60, 0,20, 40,20, 40,0"/>
+    </Grid>
+</Page>
+
