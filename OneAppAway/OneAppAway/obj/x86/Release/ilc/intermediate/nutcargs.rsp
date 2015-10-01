@@ -1,6 +1,6 @@
 /ignoreAccessChecks
 /metadataFile "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\ilc\intermediate\ILTransformed\OneAppAway.metadata"
-/reflectionMetadataAssemblyName "System.Private.CoreLib"
+/gvmAssemblyName "System.Private.CoreLib"
 /o
 /sharedGenerics
 /ilmergeinfo "C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Release\ilc\intermediate\ILTransformed\OneAppAway.csv"

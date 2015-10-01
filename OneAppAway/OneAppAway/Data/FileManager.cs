@@ -128,7 +128,8 @@ namespace OneAppAway
         public static async Task<WeekSchedule> LoadSchedule(string stopId)
         {
             WeekSchedule result = new WeekSchedule();
-            var file = (await (await ApplicationData.Current.LocalCacheFolder.GetFolderAsync("SavedSchedules")).GetFilesAsync()).FirstOrDefault(item => item.Name == stopId + ".txt");
+            //var file = (await (await ApplicationData.Current.LocalCacheFolder.GetFolderAsync("SavedSchedules")).GetFilesAsync()).FirstOrDefault(item => item.Name == stopId + ".txt");
+            var file = await (await ApplicationData.Current.LocalCacheFolder.GetFolderAsync("SavedSchedules")).TryGetItemAsync(stopId + ".txt") as StorageFile;
             if (file != null)
             {
                 string text = await FileIO.ReadTextAsync(file);

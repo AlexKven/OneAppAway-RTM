@@ -215,6 +215,12 @@
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="OneAppAway.AboutPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
+      <RootProperty Name="Content" />
+      <RootProperty Name="RequestedTheme" />
+      <RootEvent Name="SizeChanged" />
+    </RootType>
+    <RootType FullName="OneAppAway.AdRow" />
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
       <RootProperty Name="Children" />
       <RootProperty Name="Background" />
@@ -249,6 +255,7 @@
       <RootProperty Name="Template" />
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Resources" />
       <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="VerticalContentAlignment" />
     </RootType>
@@ -319,10 +326,6 @@
       <RootEvent Name="ValueChanged" />
     </RootType>
     <RootType FullName="OneAppAway.AddToFavoritesPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
-      <RootProperty Name="RequestedTheme" />
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="OneAppAway.Converters.RandomConverter" />
     <RootType FullName="OneAppAway.BusArrivalBox" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">

@@ -7,10 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="#444444">
-        <local:ScheduleBrowser x:Name="MainScheduleBrowser" HorizontalAlignment="Center" Width="500">
-
-        </local:ScheduleBrowser>
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click">Button</Button>
+    <Grid>
+        <local:TripGrid VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainTripGrid" Background="Red"/>
     </Grid>
 </local:NavigationFriendlyPage>

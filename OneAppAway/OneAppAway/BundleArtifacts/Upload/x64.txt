@@ -1,2 +1,2 @@
-MainPackage=C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Release\Upload\OneAppAway_1.0.6.0_x64.appx
-SymbolPackage=C:\AppPackages\OneAppAway\OneAppAway_1.0.6.0\OneAppAway_1.0.6.0_x64.appxsym
+MainPackage=C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Release\Upload\OneAppAway_1.0.7.0_x64.appx
+SymbolPackage=C:\AppPackages\OneAppAway\OneAppAway_1.0.7.0\OneAppAway_1.0.7.0_x64.appxsym

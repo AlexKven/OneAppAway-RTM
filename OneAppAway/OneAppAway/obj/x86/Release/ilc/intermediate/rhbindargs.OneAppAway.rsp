@@ -13,3 +13,4 @@
 /shimexe
 "/nativelink:C:\Program Files (x86)\MSBuild\Microsoft\.NetNative\x86\ilc\lib\Native\Interop.Native.lib"
 "/nativelink:C:\Program Files (x86)\MSBuild\Microsoft\.NetNative\x86\ilc\lib\Native\corelib.native.lib"
+"/nativelink:C:\Program Files (x86)\MSBuild\Microsoft\.NetNative\x86\ilc\lib\Native\TypeLoader.Native.lib"

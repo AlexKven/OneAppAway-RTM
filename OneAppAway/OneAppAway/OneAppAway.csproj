@@ -22,6 +22,7 @@
     <AppxPackageDir>C:\AppPackages\OneAppAway\</AppxPackageDir>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <PackageCertificateThumbprint>4C9398A8DE465CD0BB8CAB66C3EEA638F9F59404</PackageCertificateThumbprint>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -104,6 +105,9 @@
     </Compile>
     <Compile Include="Controls\AdRow.xaml.cs">
       <DependentUpon>AdRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TripGrid.xaml.cs">
+      <DependentUpon>TripGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\FavoritesManager.cs" />
     <Compile Include="FavoritesPage.xaml.cs">
@@ -229,13 +233,13 @@
     <Content Include="Assets\Icons\MyLocationIcon32.png" />
     <Content Include="Assets\Icons\RefreshStopsIcon.png" />
     <Content Include="Assets\Icons\SmallLogo.scale-100.png" />
-    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\Logo.png" />
     <Content Include="Assets\ShadowCorner.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SmallLogo.targetsize-24.png" />
     <Content Include="Assets\SmallLogo.targetsize-48.png" />
     <Content Include="Assets\SmallLogo.targetsize-48_altform-unplated.png" />
-    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\WideLogo.scale-100.png" />
@@ -252,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\AdRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TripGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -347,6 +355,9 @@
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxSystemBinary Include="OneAppAway.dll" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
