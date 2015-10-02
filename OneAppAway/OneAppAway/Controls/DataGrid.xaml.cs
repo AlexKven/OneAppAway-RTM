@@ -20,31 +20,32 @@ using Windows.UI.Xaml.Shapes;
 
 namespace OneAppAway
 {
-    public sealed partial class TripGrid : UserControl
+    public sealed partial class DataGrid : UserControl
     {
-        public TripGrid()
+        public DataGrid()
         {
             this.InitializeComponent();
-            Routes.CollectionChanged += Routes_CollectionChanged;
-            Stops.CollectionChanged += Stops_CollectionChanged;
+            Rows.CollectionChanged += Routes_CollectionChanged;
+            Columns.CollectionChanged += Stops_CollectionChanged;
         }
 
         private double CellWidth = 60;
         private double CellHeight = 30;
         private double CellMargin = 1;
+        private List<Rectangle> RowRects = new List<Rectangle>();
 
         #region Properties
-        private ObservableCollection<string> _Stops = new ObservableCollection<string>();
-        private ObservableCollection<string> _Routes = new ObservableCollection<string>();
+        private ObservableCollection<string> _Columns = new ObservableCollection<string>();
+        private ObservableCollection<string> _Rows = new ObservableCollection<string>();
 
-        public ObservableCollection<string> Stops
+        public ObservableCollection<string> Columns
         {
-            get { return _Stops; }
+            get { return _Columns; }
         }
 
-        public ObservableCollection<string> Routes
+        public ObservableCollection<string> Rows
         {
-            get { return _Routes; }
+            get { return _Rows; }
         }
         #endregion
 
@@ -68,11 +69,11 @@ namespace OneAppAway
             MainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(CellWidth) });
             MainGrid.RowDefinitions.Add(new RowDefinition());
             TextBlock block = null;
-            for (int x = 0; x < Stops.Count + 1; x++)
+            for (int x = 0; x < Columns.Count + 1; x++)
             {
-                for (int y = 0; y < Routes.Count + 1; y++)
+                for (int y = 0; y < Rows.Count + 1; y++)
                 {
-                    Rectangle rect = new Rectangle() { Fill = ((x + y) / 2 == (double)(x + y) / 2.0) ? new SolidColorBrush(Color.FromArgb(255, 48, 48, 48)) : new SolidColorBrush(Color.FromArgb(255, 64, 64, 64)) };
+                    Rectangle rect = new Rectangle() { Fill = ((y) / 2 == (double)(y) / 2.0) ? new SolidColorBrush(Color.FromArgb(255, 56, 56, 56)) : new SolidColorBrush(Color.FromArgb(255, 64, 64, 64)), Margin = new Thickness(0,0,1,0) };
                     Grid.SetColumn(rect, x);
                     Grid.SetRow(rect, y);
                     MainGrid.Children.Add(rect);
@@ -80,14 +81,14 @@ namespace OneAppAway
                     {
                         if (y > 0)
                         {
-                            string route = Routes[y - 1];
+                            string rowTitle = Rows[y - 1];
                             MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(CellHeight) });
                             bool sizeFound = false;
                             double candidateWidth = MainGrid.ColumnDefinitions[0].Width.Value;
                             double candidateHeight;
                             while (!sizeFound)
                             {
-                                block = new TextBlock() { Text = route, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.WrapWholeWords, FontSize = 8, Margin = new Thickness(CellMargin) };
+                                block = new TextBlock() { Text = rowTitle, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.WrapWholeWords, FontSize = 8, Margin = new Thickness(CellMargin) };
                                 block.Measure(new Size(candidateWidth - CellMargin * 2, CellHeight * 2));
                                 candidateHeight = block.ActualHeight;
                                 block.Width = CellWidth;
@@ -96,7 +97,7 @@ namespace OneAppAway
                                 else
                                     candidateWidth += 5;
                             }
-                            block = new TextBlock() { Text = route, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.WrapWholeWords, FontSize = 8, Margin = new Thickness(CellMargin) };
+                            block = new TextBlock() { Text = rowTitle, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.WrapWholeWords, FontSize = 8, Margin = new Thickness(CellMargin) };
                             MainGrid.ColumnDefinitions[0].Width = new GridLength(candidateWidth);
                             Grid.SetRow(block, y);
                             MainGrid.Children.Add(block);
@@ -105,9 +106,9 @@ namespace OneAppAway
                 }
                 if (x > 0)
                 {
-                    string stop = Stops[x - 1];
+                    string columnTitle = Columns[x - 1];
                     MainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(CellWidth) });
-                    block = new TextBlock() { Text = stop, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.WrapWholeWords, FontSize = 8, Margin = new Thickness(CellMargin) };
+                    block = new TextBlock() { Text = columnTitle, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.WrapWholeWords, FontSize = 8, Margin = new Thickness(CellMargin) };
                     Grid.SetColumn(block, x);
                     MainGrid.Children.Add(block);
                 }

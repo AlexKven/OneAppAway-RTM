@@ -3,13 +3,13 @@ App.xbf
 Controls\AdRow.xbf
 Controls\BusArrivalBox.xbf
 Controls\BusMap.xbf
+Controls\DataGrid.xbf
 Controls\HamburgerBar.xbf
 Controls\MultiStopArrivalsBox.xbf
 Controls\PopupStopArrivalsBox.xbf
 Controls\RouteListingControl.xbf
 Controls\ScheduleBrowser.xbf
 Controls\StopArrivalsBox.xbf
-Controls\TripGrid.xbf
 Controls\WeekScheduleBrowser.xbf
 FavoritesPage.xbf
 MainPage.xbf

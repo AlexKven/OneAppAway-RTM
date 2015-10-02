@@ -8,7 +8,8 @@
     mc:Ignorable="d">
 
     <Grid>
-        <local:TripGrid x:ConnectionId='1' VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainTripGrid" Background="Red"/>
+        
+        <local:DataGrid x:ConnectionId='1' VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainTripGrid" Background="Red"/>
     </Grid>
 </local:NavigationFriendlyPage>
 

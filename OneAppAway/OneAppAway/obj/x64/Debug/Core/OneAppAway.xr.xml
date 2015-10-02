@@ -221,7 +221,7 @@
       <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="OneAppAway.AdRow" />
-    <RootType FullName="OneAppAway.TripGrid">
+    <RootType FullName="OneAppAway.DataGrid">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Background" />

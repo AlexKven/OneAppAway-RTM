@@ -106,8 +106,8 @@
     <Compile Include="Controls\AdRow.xaml.cs">
       <DependentUpon>AdRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TripGrid.xaml.cs">
-      <DependentUpon>TripGrid.xaml</DependentUpon>
+    <Compile Include="Controls\DataGrid.xaml.cs">
+      <DependentUpon>DataGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\FavoritesManager.cs" />
     <Compile Include="FavoritesPage.xaml.cs">
@@ -259,7 +259,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\TripGrid.xaml">
+    <Page Include="Controls\DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
