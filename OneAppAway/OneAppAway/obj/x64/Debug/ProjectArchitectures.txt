@@ -1,1 +1,1 @@
-C:\Users\kvenvold\Desktop\Watt Crunchers\Alex\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\OneAppAway.csproj;x64
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\OneAppAway.csproj;x64

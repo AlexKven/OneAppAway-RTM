@@ -619,11 +619,6 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\Assets\SplashScreen.png
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Core\Assets\Logo.png
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Core\Assets\SplashScreen.png
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Controls\TripGrid.xbf
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\TripGrid.g.i.cs
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\TripGrid.g.cs
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\TripGrid.xaml
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\TripGrid.xbf
 C:\Users\kvenvold\Desktop\Watt Crunchers\Alex\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\OneAppAway.exe
 C:\Users\kvenvold\Desktop\Watt Crunchers\Alex\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\OneAppAway.pdb
 C:\Users\kvenvold\Desktop\Watt Crunchers\Alex\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\App.xbf
@@ -1251,3 +1246,8 @@ C:\Users\kvenvold\Desktop\Watt Crunchers\Alex\GitHub\OneAppAway-RTM\OneAppAway\O
 C:\Users\kvenvold\Desktop\Watt Crunchers\Alex\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\DataGrid.g.cs
 C:\Users\kvenvold\Desktop\Watt Crunchers\Alex\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\DataGrid.xaml
 C:\Users\kvenvold\Desktop\Watt Crunchers\Alex\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\DataGrid.xbf
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Controls\DataGrid.xbf
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\DataGrid.g.i.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\DataGrid.g.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\DataGrid.xaml
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\DataGrid.xbf

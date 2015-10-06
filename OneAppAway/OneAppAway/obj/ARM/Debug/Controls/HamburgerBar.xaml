@@ -50,6 +50,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="0"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" x:Name="CompactHamburgerBar" Height="0" Background="{Binding ElementName=HamburgerBar, Path=Background}">
@@ -100,14 +101,31 @@
                         </RadioButton>
                     </StackPanel>
                     <ContentPresenter Grid.Row="1"/>
-                    <Popup x:ConnectionId='1' Opacity="0" Grid.RowSpan="3" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True"                                                          >
+                    <ContentControl Template="{ThemeResource ShadowTemplate}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,-5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="15"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Border Background="{ThemeResource SystemColorControlAccentColor}">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Rectangle Fill="White" Width="20" Height="2" Margin="1"/>
+                                    <Rectangle Fill="White" Width="20" Height="2" Margin="1"/>
+                                </StackPanel>
+                            </Border>
+                            <ScrollViewer Grid.Row="1" Background="#303030" Height="150" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                <local:DataGrid/>
+                            </ScrollViewer>
+                        </Grid>
+                    </ContentControl>
+                    <Popup x:ConnectionId='1' Opacity="0" Grid.RowSpan="4" Width="100" Height="60" x:Name="PopupControl" VerticalAlignment="Top" HorizontalAlignment="Left" IsLightDismissEnabled="True"                                                          >
                         <Popup.Transitions>
                             <TransitionCollection>
                                 <PopupThemeTransition FromHorizontalOffset="20"/>
                             </TransitionCollection>
                         </Popup.Transitions>
                     </Popup>
-                    <local:AdRow Grid.Row="2" x:Name="MainAdRow"/>
+                    <local:AdRow Grid.Row="3" x:Name="MainAdRow"/>
                 </Grid>
                 <SplitView.Pane>
                     <StackPanel Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
