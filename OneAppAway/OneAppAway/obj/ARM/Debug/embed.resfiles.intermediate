@@ -3,7 +3,6 @@ App.xbf
 Controls\AdRow.xbf
 Controls\BusArrivalBox.xbf
 Controls\BusMap.xbf
-Controls\DataGrid.xbf
 Controls\HamburgerBar.xbf
 Controls\MultiStopArrivalsBox.xbf
 Controls\PopupStopArrivalsBox.xbf

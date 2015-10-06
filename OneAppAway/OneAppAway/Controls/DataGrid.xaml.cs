@@ -27,21 +27,6 @@ namespace OneAppAway
             this.InitializeComponent();
             Rows.CollectionChanged += Routes_CollectionChanged;
             Columns.CollectionChanged += Stops_CollectionChanged;
-
-            this.Columns.Add("35th Ave SW and SW 332nd Pl");
-            this.Columns.Add("21st Ave SW and SW 320th St");
-            this.Columns.Add("1 Ave S and SW 332nd Pl");
-            this.Columns.Add("Fed Way S 320th St P&R");
-            this.Columns.Add("5th Ave and Seneca St");
-            this.Columns.Add("4th Ave and University St");
-            this.Columns.Add("2nd Ave Ext S and S Jackson St");
-            this.Columns.Add("Federal Way Transit Center");
-            this.Rows.Add("187 to Federal Way TC");
-            this.Rows.Add("176 to Downtown Seattle via Fed Way TC");
-            this.Rows.Add("903 to Federal Way TC");
-            this.Rows.Add("181 to Green River College via Auburn Station");
-            this.Rows.Add("179 to Downtown Seattle via Fed Way TC");
-            this.Rows.Add("197 to University District via Fed Way TC");
         }
 
         private double CellWidth = 60;

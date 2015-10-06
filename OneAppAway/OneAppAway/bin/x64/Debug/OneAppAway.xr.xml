@@ -79,7 +79,6 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="Opacity" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
@@ -167,7 +166,6 @@
       <RootProperty Name="HorizontalScrollBarVisibility" />
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
-      <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Tag" />
       <RootProperty Name="HorizontalAlignment" />
@@ -263,9 +261,6 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
       <RootProperty Name="Resources" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="VerticalContentAlignment" />
     </RootType>
