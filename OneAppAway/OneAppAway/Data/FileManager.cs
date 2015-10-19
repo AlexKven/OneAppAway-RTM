@@ -1,5 +1,8 @@
-﻿using System;
+﻿using SQLite.Net;
+using SQLite.Net.Platform.WinRT;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -495,5 +498,12 @@ namespace OneAppAway
             return result.ToArray();
         }
         #endregion
+
+        public static SQLiteConnection GetDatabase()
+        {
+            return new SQLiteConnection(
+            new SQLitePlatformWinRT(),
+            Path.Combine(ApplicationData.Current.LocalFolder.Path, "Storage.sqlite"));
+        }
     }
 }
