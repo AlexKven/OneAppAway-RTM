@@ -8,6 +8,18 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="QueryBox" HorizontalAlignment="Stretch" Margin="5"/>
+        <Button x:Name="GoButton" Content="Go" Grid.Column="1" Margin="5" Click="GoButton_Click"/>
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+            <TextBlock x:Name="ResponseBlock"/>
+        </ScrollViewer>
     </Grid>
 </Page>

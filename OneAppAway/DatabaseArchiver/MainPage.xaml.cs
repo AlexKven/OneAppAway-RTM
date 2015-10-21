@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite.Net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace DatabaseArchiver
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        SQLiteConnection connection = new SQLiteConnection(Archiver.Platform, Archiver.DBPath);
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -30,7 +33,17 @@ namespace DatabaseArchiver
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            Archiver.Begin();
+            Archiver.Begin(connection);
+        }
+
+        private void GoButton_Click(object sender, RoutedEventArgs e)
+        {
+            string res = "";
+            foreach (var item in connection.Query<Agency>(QueryBox.Text))
+            {
+                res += item.ToString() + "\n";
+            }
+            ResponseBlock.Text = res;
         }
     }
 }

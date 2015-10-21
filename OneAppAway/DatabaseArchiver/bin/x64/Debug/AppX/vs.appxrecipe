@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>d8fce4bb-be8b-4df6-aac5-3df0c31f3f9e</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>1AA0DB0EBBC0DCD8243D450C30402BF62BD0E8A307737D644E44A62463131B04</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>0FFEB096E60F3D49575CE6F40E2650748DE935C4EFF13507803DE0FDF6B159B7</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>d8fce4bb-be8b-4df6-aac5-3df0c31f3f9e_1.0.0.0_x64__1fadp56eckdn0</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>d8fce4bb-be8b-4df6-aac5-3df0c31f3f9e_1fadp56eckdn0!App</RegisteredUserModeAppID>
     <RegisteredPackageID>d8fce4bb-be8b-4df6-aac5-3df0c31f3f9e</RegisteredPackageID>
@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-10-14T21:22:21.075</Modified>
+      <Modified>2015-10-21T18:43:02.311</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -74,15 +74,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\DatabaseArchiver.exe">
       <PackagePath>DatabaseArchiver.exe</PackagePath>
-      <Modified>2015-10-14T21:22:21.073</Modified>
+      <Modified>2015-10-21T18:43:02.311</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\DatabaseArchiver.xr.xml">
       <PackagePath>DatabaseArchiver.xr.xml</PackagePath>
-      <Modified>2015-10-14T20:56:37.844</Modified>
+      <Modified>2015-10-21T18:32:12.139</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\entrypoint\DatabaseArchiver.exe">
       <PackagePath>entrypoint\DatabaseArchiver.exe</PackagePath>
-      <Modified>2015-10-14T21:22:20.263</Modified>
+      <Modified>2015-10-21T18:43:00.741</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -114,7 +114,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-10-14T20:56:39.853</Modified>
+      <Modified>2015-10-21T18:32:13.796</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\SQLite.Net.dll">
       <PackagePath>SQLite.Net.dll</PackagePath>
