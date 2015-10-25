@@ -96,6 +96,12 @@
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\sqlite3.dll">
       <PackagePath>sqlite3.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\SQLitePCL.dll">
+      <PackagePath>SQLitePCL.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\SQLitePCL.Ext.dll">
+      <PackagePath>SQLitePCL.Ext.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
     </AppxPackagedFile>

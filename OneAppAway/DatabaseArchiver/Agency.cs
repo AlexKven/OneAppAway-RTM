@@ -9,6 +9,14 @@ namespace DatabaseArchiver
 {
     public class Agency
     {
+        public Agency() { }
+        public Agency(string agencyID, string name, string url)
+        {
+            AgencyID = agencyID;
+            Name = name;
+            URL = url;
+        }
+
         [PrimaryKey][NotNull]
         public string AgencyID { get; set; }
 

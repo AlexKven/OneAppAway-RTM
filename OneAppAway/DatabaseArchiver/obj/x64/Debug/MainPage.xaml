@@ -9,17 +9,21 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBox x:ConnectionId='1' x:Name="QueryBox" HorizontalAlignment="Stretch" Margin="5"/>
-        <Button x:ConnectionId='2' x:Name="GoButton" Content="Go" Grid.Column="1" Margin="5"                       />
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
-            <TextBlock x:ConnectionId='3' x:Name="ResponseBlock"/>
+        <ProgressBar x:ConnectionId='1' Grid.ColumnSpan="3" Height="5" x:Name="ProgressIndicator"/>
+        <Button x:ConnectionId='2' Grid.Row="1" x:Name="ArchiveButton" HorizontalAlignment="Stretch" Margin="5"                            >Archive</Button>
+        <TextBox x:ConnectionId='3' Grid.Row="1" Grid.Column="1" x:Name="QueryBox" HorizontalAlignment="Stretch" Margin="5" AcceptsReturn="True" IsSpellCheckEnabled="False"/>
+        <Button x:ConnectionId='4' Grid.Row="1" x:Name="GoButton" Content="Go" Grid.Column="2" Margin="5"                       />
+        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+            <Grid x:ConnectionId='5' x:Name="DataGrid"/>
         </ScrollViewer>
     </Grid>
 </Page>

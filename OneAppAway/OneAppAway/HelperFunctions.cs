@@ -5,9 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.Graphics.Imaging;
+using Windows.Storage;
+using Windows.Storage.Streams;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using static OneAppAway.ServiceDay;
 using static System.Math;
 
@@ -316,6 +321,55 @@ namespace OneAppAway
             DateTime result = date;
             while (result.IsKnownHoliday())
                 result += TimeSpan.FromDays(7);
+            return result;
+        }
+
+        private static WriteableBitmap VehicleBaseImage = null;
+
+        public static Color SetByteBrightness(Color color, byte brightness)
+        {
+            double rDouble = color.R / 255.0;
+            double gDouble = color.G / 255.0;
+            double bDouble = color.B / 255.0;
+            double aDouble = brightness / 255.0;
+            return Color.FromArgb(color.A, (byte)(color.R + (255 - color.R) * aDouble), (byte)(color.G + (255 - color.G) * aDouble), (byte)(color.B + (255 - color.B) * aDouble));
+        }
+
+        public static async Task<WriteableBitmap> GetBusSprite(string text, double angle)
+        {
+            Rect[] nonColoredRegions = new Rect[] { new Rect(0, 1, 1, 41), new Rect(4, 2, 3, 39), new Rect(12, 8, 73, 27), new Rect(95, 11, 11, 22), new Rect(125, 0, 0, 43) };
+            WriteableBitmap result;
+            if (VehicleBaseImage == null)
+            {
+                result = await WriteableBitmapExtensions.FromContent(null, new Uri("ms-appx:///Assets/Icons/VehicleBase.png"));
+                Color accentColor = ((Color)App.Current.Resources["SystemColorControlAccentColor"]);
+                Func<Color, Color> darken = clr => Color.FromArgb(clr.A, (byte)(clr.R / 2), (byte)(clr.G / 2), (byte)(clr.B / 2));
+                int innerWidth = 126;
+                int innerHeight = 44;
+                result.ForEach((x, y, oldCol) =>
+                {
+                    Color newColor = oldCol;
+                    double relX = x - (result.PixelWidth - innerWidth) / 2;
+                    double relY = y - (result.PixelHeight - innerHeight) / 2;
+                    if (!nonColoredRegions.Any(rect => rect.Contains(new Point(relX, relY))) && relX >= 0 && relY >= 0 && relX < innerWidth && relY < innerHeight)
+                    {
+                        newColor = SetByteBrightness(darken(accentColor), newColor.R);
+                        //newColor = Color.FromArgb(newColor.A, (byte)(accentColor.R + ), (byte)((double)newColor.G * (double)accentColor.G / 256.0), (byte)((double)newColor.B * (double)accentColor.B / 256.0));
+                    }
+                    return newColor;
+                });
+                VehicleBaseImage = result;
+            }
+            else
+                result = VehicleBaseImage;
+            result = result.RotateFree(angle);
+            //result.ForEach((x, y, oldCol) =>
+            //{
+            //    Color newColor = oldCol;
+            //    if (newColor.A == 0)
+            //        newColor = Colors.Black;
+            //    return newColor;
+            //});
             return result;
         }
     }

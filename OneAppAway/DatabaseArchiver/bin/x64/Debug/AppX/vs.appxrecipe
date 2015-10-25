@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>d8fce4bb-be8b-4df6-aac5-3df0c31f3f9e</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>0FFEB096E60F3D49575CE6F40E2650748DE935C4EFF13507803DE0FDF6B159B7</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>12B6C3BDDF0E732F3BB6C65EA43D92ECC6FB4D4BE479E1B23268DECDD03EDB05</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>d8fce4bb-be8b-4df6-aac5-3df0c31f3f9e_1.0.0.0_x64__1fadp56eckdn0</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>d8fce4bb-be8b-4df6-aac5-3df0c31f3f9e_1fadp56eckdn0!App</RegisteredUserModeAppID>
     <RegisteredPackageID>d8fce4bb-be8b-4df6-aac5-3df0c31f3f9e</RegisteredPackageID>
@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-10-21T18:43:02.311</Modified>
+      <Modified>2015-10-24T18:25:42.778</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -74,15 +74,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\DatabaseArchiver.exe">
       <PackagePath>DatabaseArchiver.exe</PackagePath>
-      <Modified>2015-10-21T18:43:02.311</Modified>
+      <Modified>2015-10-24T18:25:42.776</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\DatabaseArchiver.xr.xml">
       <PackagePath>DatabaseArchiver.xr.xml</PackagePath>
-      <Modified>2015-10-21T18:32:12.139</Modified>
+      <Modified>2015-10-24T06:30:30.142</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\entrypoint\DatabaseArchiver.exe">
       <PackagePath>entrypoint\DatabaseArchiver.exe</PackagePath>
-      <Modified>2015-10-21T18:43:00.741</Modified>
+      <Modified>2015-10-24T18:25:41.753</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -114,7 +114,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-10-21T18:32:13.796</Modified>
+      <Modified>2015-10-24T18:19:10.215</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\SQLite.Net.dll">
       <PackagePath>SQLite.Net.dll</PackagePath>
@@ -127,6 +127,14 @@
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\sqlite3.dll">
       <PackagePath>sqlite3.dll</PackagePath>
       <Modified>2015-10-06T16:41:08.187</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\SQLitePCL.dll">
+      <PackagePath>SQLitePCL.dll</PackagePath>
+      <Modified>2015-10-24T15:50:31.188</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\SQLitePCL.Ext.dll">
+      <PackagePath>SQLitePCL.Ext.dll</PackagePath>
+      <Modified>2015-10-24T15:50:30.817</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>

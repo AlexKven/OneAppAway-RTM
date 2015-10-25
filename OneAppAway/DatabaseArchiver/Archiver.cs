@@ -17,9 +17,10 @@ namespace DatabaseArchiver
         public static readonly SQLite.Net.Platform.WinRT.SQLitePlatformWinRT Platform = new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT();
         public static readonly string DBPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Database.sqlite");
 
-        public static async void Begin(SQLiteConnection connection)
+        public static async Task Begin(SQLiteConnection connection)
         {
             connection.CreateTable<Agency>(SQLite.Net.Interop.CreateFlags.None);
+            connection.CreateTable<Bus_Route>(SQLite.Net.Interop.CreateFlags.None);
             //var res = connection.Query<Test1>("SELECT * FROM Test1;");
             //string str = "";
             //foreach (Test1 tst in res)
@@ -28,9 +29,14 @@ namespace DatabaseArchiver
             ////}
             //MessageDialog dialog = new MessageDialog(str);
             //dialog.ShowAsync();
+
             foreach (var agency in await ApiLayer.GetTransitAgencies(new System.Threading.CancellationToken()))
             {
                 connection.InsertOrReplace(agency);
+                foreach (var route in await ApiLayer.GetBusRoutesForAgency(agency.AgencyID, new System.Threading.CancellationToken()))
+                {
+                    connection.InsertOrReplace(route);
+                }
             }
         }
     }

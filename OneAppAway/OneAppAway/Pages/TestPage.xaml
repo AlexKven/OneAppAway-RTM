@@ -9,6 +9,8 @@
 
     <Grid>
         
-        <local:DataGrid VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainTripGrid" Background="Red"/>
+        <local:DataGrid Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainTripGrid" Background="Red"/>
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="Image" Stretch="None"/>
+        <Slider VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" Minimum="0" Maximum="360" ValueChanged="Slider_ValueChanged"/>
     </Grid>
 </local:NavigationFriendlyPage>

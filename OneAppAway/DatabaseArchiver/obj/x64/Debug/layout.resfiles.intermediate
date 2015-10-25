@@ -1,4 +1,6 @@
 WinMetadata\Windows.winmd
+SQLitePCL.Ext.dll
+SQLitePCL.Ext.pri
 ApplicationInsights.config
 Assets\LockScreenLogo.scale-200.png
 Assets\SplashScreen.scale-200.png

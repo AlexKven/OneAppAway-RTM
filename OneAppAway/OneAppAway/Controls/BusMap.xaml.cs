@@ -37,6 +37,7 @@ namespace OneAppAway
 
         private List<MapIcon> BusStopIcons = new List<MapIcon>();
         private Dictionary<MapIcon, BusStop> Stops = new Dictionary<MapIcon, BusStop>();
+        private Dictionary<MapIcon, string> Buses = new Dictionary<MapIcon, string>();
         private double PreviousZoomLevel;
 
         private Polygon MyLocationIcon = new Polygon();
@@ -184,6 +185,7 @@ namespace OneAppAway
             mico.CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible;
             string size = ZoomLevel < StopSizeThreshold ? "20" : "40";
             bool visibility = ZoomLevel >= StopVisibilityThreshold;
+            
             mico.Image = RandomAccessStreamReference.CreateFromUri(new Uri(stop.Direction == StopDirection.Unspecified ? "ms-appx:///Assets/Icons/BusBase" + size + ".png" : "ms-appx:///Assets/Icons/BusDirection" + stop.Direction.ToString() + size + ".png"));
             mico.NormalizedAnchorPoint = new Point(0.5, 0.5);
             mico.Visible = visibility;
@@ -332,6 +334,9 @@ namespace OneAppAway
                 MapControl.SetLocation(MyLocationIcon, new Geopoint(loc.Value));
                 MyLocationIcon.Visibility = Visibility.Visible;
             }
+            WriteableBitmap bmp = new WriteableBitmap(96, 96);
+            
+
         }
     }
 

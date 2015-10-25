@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,6 +41,18 @@ namespace OneAppAway
             MainTripGrid.Rows.Add("181 to Green River College via Auburn Station");
             MainTripGrid.Rows.Add("179 to Downtown Seattle via Fed Way TC");
             MainTripGrid.Rows.Add("197 to University District via Fed Way TC");
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            Image.Source = await HelperFunctions.GetBusSprite("187", 0);
+        }
+
+        private async void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            Image.Source = await HelperFunctions.GetBusSprite("187", e.NewValue);
         }
     }
 }

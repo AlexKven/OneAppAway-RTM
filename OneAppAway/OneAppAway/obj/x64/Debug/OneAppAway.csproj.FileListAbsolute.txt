@@ -1264,3 +1264,8 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Core\SQLite.Net.dll
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Core\SQLite.Net.Platform.WinRT.dll
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Core\SQLite.Net.Async.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\Assets\Icons\VehicleBase.png
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\WriteableBitmapEx.WinRT.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\WriteableBitmapEx.WinRT.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Core\WriteableBitmapEx.WinRT.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Core\Assets\Icons\VehicleBase.png

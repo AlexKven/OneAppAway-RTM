@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>07febcd3-a852-488d-8b77-9d59c779fab6</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>896B169308E6CE6B6A1BEB0E2E84BE3AB3169FF12DDCD0DE58DE9EDB4EA77767</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>6D1990BAFAA5B14C430345CCCD57C47CDCE6B55FA7892DE30069C9847BB8478C</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>16469AlexKven.14062E657A0DF_1.0.7.0_x64__yke5jzwbk3qzj</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>16469AlexKven.14062E657A0DF_yke5jzwbk3qzj!App</RegisteredUserModeAppID>
     <RegisteredPackageID>16469AlexKven.14062E657A0DF</RegisteredPackageID>
@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-10-06T17:03:33.196</Modified>
+      <Modified>2015-10-24T00:15:15.756</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +182,10 @@
       <PackagePath>Assets\Icons\SmallLogo.scale-100.png</PackagePath>
       <Modified>2015-10-06T04:23:25.150</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\Assets\Icons\VehicleBase.png">
+      <PackagePath>Assets\Icons\VehicleBase.png</PackagePath>
+      <Modified>2015-10-23T00:56:50.510</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
@@ -246,7 +250,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\entrypoint\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2015-10-06T17:03:31.547</Modified>
+      <Modified>2015-10-24T00:15:13.212</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -262,11 +266,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2015-10-06T17:03:33.185</Modified>
+      <Modified>2015-10-24T00:15:15.752</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\OneAppAway.xr.xml">
       <PackagePath>OneAppAway.xr.xml</PackagePath>
-      <Modified>2015-10-06T04:23:37.481</Modified>
+      <Modified>2015-10-23T01:48:18.582</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
@@ -274,7 +278,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-10-06T16:44:38.934</Modified>
+      <Modified>2015-10-23T01:48:20.637</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\SQLite.Net.Async.dll">
       <PackagePath>SQLite.Net.Async.dll</PackagePath>
@@ -691,6 +695,10 @@
     <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\WinMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2015-10-06T04:23:26.953</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\WriteableBitmapEx.WinRT.dll">
+      <PackagePath>WriteableBitmapEx.WinRT.dll</PackagePath>
+      <Modified>2015-10-23T00:27:51.083</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

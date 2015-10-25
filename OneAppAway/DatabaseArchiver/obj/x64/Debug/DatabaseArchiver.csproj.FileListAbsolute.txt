@@ -447,3 +447,13 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\o
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Core\DatabaseArchiver.xr.xml
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Core\WinMetadata\Windows.winmd
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Core\resources.pri
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCL.Ext.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCL.Ext.pri
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\SQLitePCL.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Core\SQLitePCL.Ext.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCL.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\SQLitePCL\en\SQLitePCL.Resources.resw
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\DatabaseArchiver.csproj.GenerateResource.Cache
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\SQLitePCL.Ext.pri.xml
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Core\SQLitePCL.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Core\SQLitePCL.Ext.dll

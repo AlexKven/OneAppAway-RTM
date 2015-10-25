@@ -96,6 +96,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="Assets\Icons\VehicleBase.pdn" />
     <None Include="OneAppAway_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
@@ -233,6 +234,7 @@
     <Content Include="Assets\Icons\MyLocationIcon32.png" />
     <Content Include="Assets\Icons\RefreshStopsIcon.png" />
     <Content Include="Assets\Icons\SmallLogo.scale-100.png" />
+    <Content Include="Assets\Icons\VehicleBase.png" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\ShadowCorner.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
