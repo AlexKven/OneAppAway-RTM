@@ -19,7 +19,8 @@ namespace DatabaseArchiver
             HttpClient client = new HttpClient();
             string request = "http://api.pugetsound.onebusaway.org/api/where/" + compactRequest + ".xml?key=" + Keys.ObaKey + parameters?.Aggregate("", (acc, item) => acc + "&" + item.Key + "=" + item.Value) ?? "" + "includeReferences=" + (includeReferences ? "true" : "false");
             var resp = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, request), cancellationToken);
-            if (cancellationToken.IsCancellationRequested) return null;
+            if (cancellationToken.IsCancellationRequested)
+                throw new OperationCanceledException();
             return await resp.Content.ReadAsStringAsync();
         }
 
@@ -28,7 +29,7 @@ namespace DatabaseArchiver
             List<Agency> result = new List<Agency>();
             StringReader reader = new StringReader(await SendRequest("agencies-with-coverage", null, true, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
-                return null;
+                throw new OperationCanceledException();
 
             XDocument xDoc = XDocument.Load(reader);
             
@@ -48,7 +49,7 @@ namespace DatabaseArchiver
             List<string> result = new List<string>();
             StringReader reader = new StringReader(await SendRequest("route-ids-for-agency/" + agencyID, null, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
-                return null;
+                throw new OperationCanceledException();
 
             XDocument xDoc = XDocument.Load(reader);
 
@@ -60,12 +61,12 @@ namespace DatabaseArchiver
             return result.ToArray();
         }
 
-        public static async Task<Bus_Route[]> GetBusRoutesForAgency(string agencyId, CancellationToken cancellationToken)
+        public static async Task<Route[]> GetBusRoutesForAgency(string agencyId, CancellationToken cancellationToken)
         {
-            List<Bus_Route> result = new List<Bus_Route>();
+            List<Route> result = new List<Route>();
             StringReader reader = new StringReader(await SendRequest("routes-for-agency/" + agencyId, null, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
-                return null;
+                throw new OperationCanceledException();
 
             XDocument xDoc = XDocument.Load(reader);
 
@@ -78,9 +79,45 @@ namespace DatabaseArchiver
                 string routeName = elShortName == null ? elLongName == null ? "(No Name)" : elLongName.Value : elShortName.Value;
                 string routeDescription = elDescription == null ? elLongName == null ? elShortName == null ? "No Description" : elShortName.Value : elLongName.Value : elDescription.Value;
                 string routeAgency = el.Element("agencyId")?.Value;
-                result.Add(new Bus_Route() { RouteID = routeId, Name = routeName, Description = routeDescription, AgencyID = routeAgency });
+                result.Add(new Route() { RouteID = routeId, Name = routeName, Description = routeDescription, AgencyID = routeAgency });
             }
             return result.ToArray();
+        }
+
+        public static async Task<string[]> GetBusStop(string stopID, CancellationToken cancellationToken)
+        {
+            StringReader reader = new StringReader(await SendRequest("stop/" + stopID, new Dictionary<string, string>() {["includeReferences"] = "false" }, false, cancellationToken));
+            if (cancellationToken.IsCancellationRequested)
+                throw new OperationCanceledException();
+
+            XDocument xDoc = XDocument.Load(reader);
+
+            var el = xDoc.Element("response").Element("data").Element("entry");
+            return new string[] { stopID, el.Element("code").Value, el.Element("name").Value, el.Element("lat").Value, el.Element("lon").Value, el.Element("direction")?.Value, el.Element("locationType")?.Value };
+        }
+        
+        public static async Task<Tuple<string[], Tuple<string, int>[]>> GetStopIDsAndShapesForRoute(string route, CancellationToken cancellationToken)
+        {
+            var stopResult = new List<string>();
+            var shapeResult = new List<Tuple<string, int>>();
+
+            string responseString = await SendRequest("stops-for-route/" + route, new Dictionary<string, string>() { ["includeReferences"] = "false" }, true, cancellationToken);
+            if (cancellationToken.IsCancellationRequested)
+                throw new OperationCanceledException();
+
+            StringReader reader = new StringReader(responseString);
+            XDocument xDoc = XDocument.Load(reader);
+            foreach (XElement el in xDoc.Element("response")?.Element("data")?.Element("entry")?.Element("stopIds")?.Elements("string"))
+            {
+                stopResult.Add(el.Value);
+            }
+
+            foreach (XElement el in xDoc.Element("response")?.Element("data").Element("entry").Element("polylines").Elements("encodedPolyline"))
+            {
+                shapeResult.Add(new Tuple<string, int>(el.Element("points").Value, int.Parse(el.Element("length").Value)));
+            }
+
+            return new Tuple<string[], Tuple<string, int>[]>(stopResult.ToArray(), shapeResult.ToArray());
         }
     }
 }

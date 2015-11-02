@@ -9,7 +9,9 @@
 
     <Grid>
         
-        <local:DataGrid x:ConnectionId='1' VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainTripGrid" Background="Red"/>
+        <local:DataGrid x:ConnectionId='1' Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainTripGrid" Background="Red"/>
+        <Image x:ConnectionId='2' VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="Image" Stretch="None"/>
+        <Slider x:ConnectionId='3' VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" Minimum="0" Maximum="360"                                   />
     </Grid>
 </local:NavigationFriendlyPage>
 

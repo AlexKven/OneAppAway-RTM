@@ -10,6 +10,8 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
@@ -18,11 +20,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ProgressBar Grid.ColumnSpan="3" Height="5" x:Name="ProgressIndicator"/>
-        <Button Grid.Row="1" x:Name="ArchiveButton" HorizontalAlignment="Stretch" Margin="5" Click="ArchiveButton_Click">Archive</Button>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="QueryBox" HorizontalAlignment="Stretch" Margin="5" AcceptsReturn="True" IsSpellCheckEnabled="False"/>
-        <Button Grid.Row="1" x:Name="GoButton" Content="Go" Grid.Column="2" Margin="5" Click="GoButton_Click"/>
-        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+        <ProgressBar Grid.ColumnSpan="5" Height="5" x:Name="ProgressIndicator"/>
+        <Button Grid.Row="1" x:Name="DeleteDatabaseButton" HorizontalAlignment="Stretch" Margin="5" Click="DeleteDatabaseButton_Click">Delete DB</Button>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="ArchiveButton" HorizontalAlignment="Stretch" Margin="5" Click="ArchiveButton_Click">Archive</Button>
+        <Button Grid.Row="1" Grid.Column="2" x:Name="DatabaseSizeButton" HorizontalAlignment="Stretch" Margin="5" Click="DatabaseSizeButton_Click">DB Size</Button>
+        <TextBox Grid.Row="1" Grid.Column="3" x:Name="QueryBox" HorizontalAlignment="Stretch" Margin="5" AcceptsReturn="True" IsSpellCheckEnabled="False"/>
+        <Button Grid.Row="1" x:Name="GoButton" Content="Go" Grid.Column="4" Margin="5" Click="GoButton_Click"/>
+        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="5" HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
             <Grid x:Name="DataGrid"/>
         </ScrollViewer>
     </Grid>

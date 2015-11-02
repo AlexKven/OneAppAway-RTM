@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace DatabaseArchiver
 {
-    public class Bus_Route
+    public class Route
     {
-        public Bus_Route() { }
-        public Bus_Route(string routeID, string name, string description, string agencyID, string shapeID)
+        public Route() { }
+        public Route(string routeID, string name, string description, string agencyID, string shapeID)
         {
             RouteID = routeID;
             Name = name;
@@ -32,7 +32,7 @@ namespace DatabaseArchiver
 
         public override string ToString()
         {
-            return "Bus_Route(" + RouteID + ", " + Name + ", " + Description + ", " + AgencyID + ", " + ShapeID + ")";
+            return "Route(" + RouteID + ", " + Name + ", " + Description + ", " + AgencyID + ", " + ShapeID + ")";
         }
     }
 }

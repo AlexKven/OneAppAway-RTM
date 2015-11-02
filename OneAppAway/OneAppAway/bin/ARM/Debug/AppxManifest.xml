@@ -36,21 +36,21 @@
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>CLRHost.dll</Path>
-        <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdLoadedEventArgs" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdInfo" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdClickEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Core.AdCoveredEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.BannerAdInfo" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.BannerAdLoadedEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.AdClickEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Common.Core.InstallationState" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.ImageLoadedEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.NoAdEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.AdLoadingErrorEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.AdControl" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdLoadedEventArgs" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="AdDuplex.AdDuplexClient" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.AdControl" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="AdDuplex.Windows_10_SDK_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="AdDuplex.InterstitialAd" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Common.Core.InstallationState" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.ImageLoadedEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.AdLoadingErrorEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.NoAdEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Core.AdCoveredEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.BannerAdLoadedEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.AdClickEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.BannerAdInfo" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>
@@ -58,7 +58,7 @@
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="14.0" />
     <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2015" />
-    <build:Item Name="OperatingSystem" Version="10.0.10240.16384 (th1.150709-1700)" />
+    <build:Item Name="OperatingSystem" Version="10.0.10565.0 (th2_release.151006-2014)" />
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.23311.4" />
     <build:Item Name="ProjectGUID" Value="{20C382CE-9305-462A-803B-26710F88748F}" />
     <build:Item Name="OptimizingToolset" Value="None" />

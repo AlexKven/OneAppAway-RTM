@@ -23,7 +23,7 @@ namespace DatabaseArchiver
         public object ConvertToSpecificObject()
         {
             if (RouteID != null)
-                return new Bus_Route(RouteID, Name, Description, AgencyID, ShapeID);
+                return new Route(RouteID, Name, Description, AgencyID, ShapeID);
             else if (AgencyID != null)
                 return new Agency(AgencyID, Name, URL);
             else

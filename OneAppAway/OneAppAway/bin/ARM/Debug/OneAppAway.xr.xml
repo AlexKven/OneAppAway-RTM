@@ -222,6 +222,7 @@
     </RootType>
     <RootType FullName="OneAppAway.AdRow" />
     <RootType FullName="OneAppAway.DataGrid">
+      <RootProperty Name="Visibility" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Background" />
@@ -328,6 +329,9 @@
       <RootProperty Name="SnapsTo" />
       <RootProperty Name="StepFrequency" />
       <RootProperty Name="Maximum" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
       <RootEvent Name="ValueChanged" />
     </RootType>
     <RootType FullName="OneAppAway.AddToFavoritesPage" />
