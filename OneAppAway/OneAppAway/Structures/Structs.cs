@@ -271,6 +271,6 @@ namespace OneAppAway
 
     public enum ObservedHoliday
     {
-        LaborDay, Thankgiving, Christmas, NewYears
+        LaborDay, Thankgiving, Christmas, NewYears, VeteransDay
     }
 }

@@ -94,7 +94,7 @@ namespace OneAppAway
                 else
                     return "Sun, " + others.GetFriendlyName(true);
             }
-            else  if (day.HasFlag(Weekdays))
+            else if (day.HasFlag(Weekdays))
             {
                 string result = "Weekdays";
                 ServiceDay others = day & ~Weekdays;
@@ -149,6 +149,10 @@ namespace OneAppAway
                     return rec ? "Fri" : "Friday";
                 else
                     return "Fri, " + others.GetFriendlyName(true);
+            }
+            else if (day.HasFlag(ReducedWeekday))
+            {
+                return "Reduced Weekday";
             }
             else
             {
@@ -209,7 +213,8 @@ namespace OneAppAway
             while (baseDate.DayOfWeek != DayOfWeek.Monday)
                 baseDate += TimeSpan.FromDays(1);
             if (day == ServiceDay.ReducedWeekday)
-                return baseDate.SkipWeekIfHoliday();
+                //return baseDate.SkipWeekIfHoliday();
+                return new DateTime(2015, 11, 11);
             double div = (double)(int)day;
             int log = 0;
             while (div > 1)
@@ -301,6 +306,8 @@ namespace OneAppAway
                     return new DateTime(year, 12, 25);
                 case ObservedHoliday.NewYears:
                     return new DateTime(year, 1, 1);
+                case ObservedHoliday.VeteransDay:
+                    return new DateTime(year, 11, 11);
             }
             throw new ArgumentException("Bad holiday.", "holiday");
         }
