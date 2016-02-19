@@ -48,6 +48,7 @@ namespace OneAppAway
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            
         }
 
         /// <summary>
@@ -130,7 +131,7 @@ namespace OneAppAway
                             break;
                     }
                 }
-                RootFrame.Navigate(typeof(TestPage));
+                //RootFrame.Navigate(typeof(TestPage));
             }
             // Ensure the current window is active
             Window.Current.Content = MainHamburgerBar;
@@ -143,11 +144,11 @@ namespace OneAppAway
             if (CurrentApp.LicenseInformation.IsTrial)
                 MainHamburgerBar.ShowAds = true;
 
-            using (var db = FileManager.GetDatabase())
-            {
-                db.CreateTable<BusTrip>();
-                db.Insert(new BusTrip() { Destination = "Federal Way", Route = "187", Shape = "Square" });
-            }
+            //using (var db = FileManager.GetDatabase())
+            //{
+            //    db.CreateTable<BusTrip>();
+            //    db.Insert(new BusTrip() { Destination = "Federal Way", Route = "187", Shape = "Square" });
+            //}
         }
 
         /// <summary>
@@ -192,6 +193,8 @@ namespace OneAppAway
             titleBar.ButtonInactiveForegroundColor = titleBar.InactiveForegroundColor;
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
 
+            ApplicationView.GetForCurrentView().ExitFullScreenMode();
+
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 Action setOcclusion = () =>
@@ -204,7 +207,7 @@ namespace OneAppAway
                         MainHamburgerBar.Margin = new Thickness(occlusion.Width, 0, 0, 0);
                     else
                         MainHamburgerBar.Margin = new Thickness(0, 0, occlusion.Width, 0);
-
+                
                 };
                 var statusBar = StatusBar.GetForCurrentView();
                 statusBar.BackgroundColor = background;

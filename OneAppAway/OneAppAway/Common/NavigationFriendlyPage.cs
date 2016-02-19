@@ -1,16 +1,22 @@
 ﻿using OneAppAway.Common;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace OneAppAway
 {
+    public delegate Task OperationCallback(CancellationToken token);
+
     public class NavigationFriendlyPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private bool _CanGoBack = false;
+        private Dictionary<int, Task> _RunningTasks = new Dictionary<int, Task>();
+        private Dictionary<int, CancellationTokenSource> _CancellationTokenSources = new Dictionary<int, CancellationTokenSource>();
 
         public NavigationFriendlyPage()
         {
@@ -93,6 +99,11 @@ namespace OneAppAway
         {
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                 (CanGoBack || NavigationHelper.CanGoBack()) ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+        }
+
+        public int StartOperation(OperationCallback operation, int opID)
+        {
+            return 0;
         }
     }
 }

@@ -144,9 +144,10 @@
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
     <RootType FullName="OneAppAway.Converters.LightenColorConverter" />
     <RootType FullName="OneAppAway.Converters.ColorToBrushConverter" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Page">
+    <RootType FullName="OneAppAway.NavigationFriendlyPage">
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Content" />
+      <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
       <RootProperty Name="MinWindowWidth" />
@@ -226,6 +227,10 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Background" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Page">
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
       <RootProperty Name="Children" />
@@ -439,11 +444,6 @@
       <RootProperty Name="HideTitle" />
     </RootType>
     <RootType FullName="OneAppAway.MainPage" />
-    <RootType FullName="OneAppAway.NavigationFriendlyPage">
-      <RootProperty Name="Content" />
-      <RootProperty Name="RequestedTheme" />
-      <RootEvent Name="SizeChanged" />
-    </RootType>
     <RootType FullName="OneAppAway.PopupStopArrivalsBox">
       <RootProperty Name="Opacity" />
       <RootProperty Name="Visibility" />

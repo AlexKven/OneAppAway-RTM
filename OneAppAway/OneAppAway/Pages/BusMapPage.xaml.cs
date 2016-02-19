@@ -19,6 +19,7 @@ using System.Text;
 using System.Diagnostics;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Data;
+using Windows.System.UserProfile;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -114,6 +115,7 @@ namespace OneAppAway
                 //await GetStopsTask;
             }
             GetStopsCancellationTokenSource = new CancellationTokenSource();
+            
             GetStopsTask = Data.GetBusStopsForArea(bounds, stopsLoadedCallback, GetStopsCancellationTokenSource.Token, DelayDownloadingStops && !forceDownload);
         }
 
