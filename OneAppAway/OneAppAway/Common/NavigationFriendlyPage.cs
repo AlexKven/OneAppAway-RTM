@@ -105,5 +105,10 @@ namespace OneAppAway
         {
             return 0;
         }
+
+        internal virtual void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
+        {
+
+        }
     }
 }

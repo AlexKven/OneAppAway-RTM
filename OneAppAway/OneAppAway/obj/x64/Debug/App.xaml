@@ -18,6 +18,7 @@
         <converters:AddSubtractConverter x:Key="AddSubtractConverter"/>
         <converters:BasicGeopositionToStringConverter x:Key="BasicGeopositionStringConverter"/>
         <converters:BandwidthOptionsRowHeightConverter x:Key="BandwidthButtonConverter"/>
+        <converters:DoubleToGridlengthConverter x:Key="GridLengthConverter"/>
         <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
             <Grid>
                 <VisualStateManager.VisualStateGroups>

@@ -49,8 +49,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
+            <RowDefinition x:ConnectionId='9' Height="auto" x:Name="ControlsRow"/>
         </Grid.RowDefinitions>
-        <local:BusMap x:ConnectionId='9' x:Name="MainMap"                                                                              Grid.RowSpan="2"/>
+        <local:BusMap x:ConnectionId='10' x:Name="MainMap"                                                                              Grid.RowSpan="2"/>
         <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" IsHitTestVisible="False">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0,1">
@@ -60,26 +61,22 @@
             </Border.Background>
             <TextBlock IsHitTestVisible="False" Margin="0,20,0,0" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Foreground="White">Public transit data powered by OneBusAway.</TextBlock>
         </Border>
-        <StackPanel x:ConnectionId='10' Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" x:Name="ButtonsPanel">
-            <Button x:ConnectionId='14' ClickMode="Press" x:Name="ZoomInButton" Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333"                           >
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Foreground="White">+</TextBlock>
-            </Button>
-            <Button x:ConnectionId='15' ClickMode="Press" x:Name="ZoomOutButton" Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333"                            >
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Foreground="White">-</TextBlock>
-            </Button>
-            <Button x:ConnectionId='16' Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333"                           >
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17" Foreground="White" FontFamily="Segoe UI Symbol"></TextBlock>
-            </Button>
-            <Button x:ConnectionId='17' Template="{StaticResource SimpleButtonTemplate}" Width="35" Height="35" Background="#99333333" x:Name="RefreshButton" Visibility="Collapsed"                            >
-                <BitmapIcon Foreground="White" UriSource="/Assets/Icons/RefreshStopsIcon.png" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Button>
-        </StackPanel>
         <local:PopupStopArrivalsBox x:ConnectionId='11' x:Name="StopArrivalBox"                                                Opacity="0" Maps:MapControl.NormalizedAnchorPoint="0.5, 1" Visibility="Collapsed">
             <local:PopupStopArrivalsBox.RenderTransform>
-                <CompositeTransform x:ConnectionId='13' TranslateY="25" x:Name="StopArrivalBoxTranslation"/>
+                <CompositeTransform x:ConnectionId='18' TranslateY="25" x:Name="StopArrivalBoxTranslation"/>
             </local:PopupStopArrivalsBox.RenderTransform>
         </local:PopupStopArrivalsBox>
         <ProgressBar x:ConnectionId='12' HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="Collapsed" x:Name="LoadingIndicator"/>
+        <CommandBar x:ConnectionId='13' x:Name="MainControlBar" RequestedTheme="Dark" Background="#303030" Grid.Row="2" BorderBrush="#303030">
+            <AppBarButton x:ConnectionId='14' x:Name="RegionViewButton" Icon="Globe" Label="Region View"                               />
+            <AppBarButton x:ConnectionId='15' x:Name="ZoomInButton" Icon="ZoomIn" Label="Zoom In"                            ClickMode="Press"/>
+            <AppBarButton x:ConnectionId='16' x:Name="ZoomOutButton" Icon="ZoomOut" Label="Zoom Out"                             ClickMode="Press"/>
+            <AppBarButton x:ConnectionId='17' x:Name="RefreshButton" Label="Find Stops"                            >
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
     </Grid>
 </local:NavigationFriendlyPage>
 

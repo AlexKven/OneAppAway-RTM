@@ -36,6 +36,10 @@ namespace OneAppAway
             this.InitializeComponent();
         }
 
+        private Image DirectionImage = new Image() { VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(2) };
+        private TextBlock TitleBlock = new TextBlock() { FontSize = 28, VerticalAlignment = VerticalAlignment.Center, RequestedTheme = ElementTheme.Dark, Margin = new Thickness(2) };
+        private StackPanel TitlePanel = new StackPanel() { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Stretch };
+
         private double? lonPP;
         private CancellationTokenSource MasterCancellationTokenSource = new CancellationTokenSource();
 
@@ -47,6 +51,15 @@ namespace OneAppAway
             {
                 SetPage((string)e.Parameter);
             }
+
+            TitlePanel.Children.Add(DirectionImage);
+            TitlePanel.Children.Add(TitleBlock);
+        }
+
+        internal override void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
+        {
+            if (mainFrame.TitleContent.Content == null)
+                mainFrame.TitleContent.Content = TitlePanel;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

@@ -5,6 +5,7 @@ Controls\BusMap.xbf
 Controls\DataGrid.xbf
 Controls\HamburgerBar.xbf
 Controls\MultiStopArrivalsBox.xbf
+Controls\OuterFrame.xbf
 Controls\PopupStopArrivalsBox.xbf
 Controls\RouteListingControl.xbf
 Controls\ScheduleBrowser.xbf

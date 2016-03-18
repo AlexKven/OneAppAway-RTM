@@ -162,5 +162,11 @@ namespace OneAppAway
                 SettingsManager.SetSetting("LimitedData.WarnOnDownload", false, WarnOnDownloadLowBandwidthSwitch.IsOn);
             }
         }
+
+        internal override void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
+        {
+            if (mainFrame.TitleContent.Content == null)
+                mainFrame.TitleContent.Content = new TextBlock() { RequestedTheme = ElementTheme.Dark, VerticalAlignment = VerticalAlignment.Center, FontSize = 32, Text = "Settings" };
+        }
     }
 }

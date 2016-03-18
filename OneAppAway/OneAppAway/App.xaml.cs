@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Store;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -37,8 +38,9 @@ namespace OneAppAway
         /// Allows tracking page views, exceptions and other telemetry through the Microsoft Application Insights service.
         /// </summary>
         public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
+        public OuterFrame MainOuterFrame;
         public Frame RootFrame;
-        private AdDuplex.InterstitialAd interstitialAd;
+        private bool NoTitleBar = false;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -68,15 +70,14 @@ namespace OneAppAway
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-
-            RootFrame = MainHamburgerBar.Content as Frame;
+            MainOuterFrame = new OuterFrame();
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (RootFrame == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
-                RootFrame = new Frame();
+                RootFrame = MainOuterFrame.MainFrame;
                 Common.SuspensionManager.RegisterFrame(RootFrame, "appFrame");
 
                 RootFrame.NavigationFailed += OnNavigationFailed;
@@ -91,8 +92,8 @@ namespace OneAppAway
                 }
 
                 // Place the frame in the current Window
-                MainHamburgerBar.Content = RootFrame;
-                MainHamburgerBar.SetRootFrame(RootFrame);
+                //MainHamburgerBar.Content = RootFrame;
+                //MainHamburgerBar.SetRootFrame(RootFrame);
             }
 
             if (RootFrame.Content == null)
@@ -134,7 +135,9 @@ namespace OneAppAway
                 //RootFrame.Navigate(typeof(TestPage));
             }
             // Ensure the current window is active
-            Window.Current.Content = MainHamburgerBar;
+            Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
+            Window.Current.SizeChanged += Current_SizeChanged;
+            Window.Current.CoreWindow.SizeChanged += CoreWindow_SizeChanged;
             Window.Current.Activate();
             BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             LocationManager.Dispatcher = RootFrame.Dispatcher;
@@ -149,6 +152,14 @@ namespace OneAppAway
             //    db.CreateTable<BusTrip>();
             //    db.Insert(new BusTrip() { Destination = "Federal Way", Route = "187", Shape = "Square" });
             //}
+        }
+
+        private void CoreWindow_SizeChanged(CoreWindow sender, WindowSizeChangedEventArgs args)
+        {
+        }
+
+        private void Current_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+        {
         }
 
         /// <summary>
@@ -192,11 +203,20 @@ namespace OneAppAway
             titleBar.ButtonInactiveBackgroundColor = titleBar.InactiveBackgroundColor;
             titleBar.ButtonInactiveForegroundColor = titleBar.InactiveForegroundColor;
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+            
+
+            //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.Core.CoreApplicationViewTitleBar"))
+            CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
+            coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
+            
 
             ApplicationView.GetForCurrentView().ExitFullScreenMode();
 
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
+                NoTitleBar = true;
+                MainOuterFrame.SystemButtonsWidth = 0;
                 Action setOcclusion = () =>
                 {
                     var bar = StatusBar.GetForCurrentView();
@@ -218,6 +238,11 @@ namespace OneAppAway
             }
         }
 
+        private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        {
+            MainOuterFrame.SystemButtonsWidth = NoTitleBar ? 0 : sender.SystemOverlayRightInset;
+        }
+
         protected override async void OnActivated(IActivatedEventArgs args)
         {
             base.OnActivated(args);
@@ -237,10 +262,16 @@ namespace OneAppAway
 
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {
+            e.Handled = GoBack();
+        }
+
+        internal bool GoBack()
+        {
             if (RootFrame.Content is NavigationFriendlyPage)
             {
-                e.Handled = ((NavigationFriendlyPage)RootFrame.Content).GoBack();
+                return ((NavigationFriendlyPage)RootFrame.Content).GoBack();
             }
+            return false;
         }
     }
 }
