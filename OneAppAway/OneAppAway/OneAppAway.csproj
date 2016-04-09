@@ -101,6 +101,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1_1\Agency.cs" />
+    <Compile Include="1_1\DatabaseManager.cs" />
+    <Compile Include="1_1\Route.cs" />
     <Compile Include="Controls\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,7 @@
     <Compile Include="ScrollViewerSnapping.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Structures\Structs.cs" />
+    <Compile Include="TaskManager.cs" />
     <Compile Include="TemplateSelectors\RouteListingTemplateSelector.cs" />
     <Compile Include="Controls\WeekScheduleBrowser.xaml.cs">
       <DependentUpon>WeekScheduleBrowser.xaml</DependentUpon>
@@ -373,6 +377,9 @@
   </ItemGroup>
   <ItemGroup>
     <AppxSystemBinary Include="OneAppAway.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Visuals\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -68,7 +68,7 @@
         </local:PopupStopArrivalsBox>
         <ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="Collapsed" x:Name="LoadingIndicator"/>
         <CommandBar x:Name="MainControlBar" RequestedTheme="Dark" Background="#303030" Grid.Row="2" BorderBrush="#303030">
-            <AppBarButton x:Name="RegionViewButton" Icon="Globe" Label="Region View" Click="RegionViewButton_Click"/>
+            <AppBarButton x:Name="CurrentLocationButton" Icon="MapPin" Label="Current Location" Click="CurrentLocationButton_Click"/>
             <AppBarButton x:Name="ZoomInButton" Icon="ZoomIn" Label="Zoom In" Click="ZoomInButton_Click" ClickMode="Press"/>
             <AppBarButton x:Name="ZoomOutButton" Icon="ZoomOut" Label="Zoom Out" Click="ZoomOutButton_Click" ClickMode="Press"/>
             <AppBarButton x:Name="RefreshButton" Label="Find Stops" Click="RefreshButton_Click">

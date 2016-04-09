@@ -64,6 +64,7 @@ namespace OneAppAway
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
+            TaskManager.CancelPage(this);
             this.navigationHelper.GoBackCommand.CanExecuteChanged -= GoBackCommand_CanExecuteChanged;
         }
 

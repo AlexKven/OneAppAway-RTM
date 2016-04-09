@@ -405,9 +405,9 @@ namespace OneAppAway
             catch (TaskCanceledException) { }
         }
 
-        private void RegionViewButton_Click(object sender, RoutedEventArgs e)
+        private void CurrentLocationButton_Click(object sender, RoutedEventArgs e)
         {
-
+            CenterOnCurrentLocation();
         }
     }
 }
