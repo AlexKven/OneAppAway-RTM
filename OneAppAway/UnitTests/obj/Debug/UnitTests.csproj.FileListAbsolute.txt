@@ -1,0 +1,8 @@
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\UnitTests.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\UnitTests.pdb
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.pdb
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\ClassLibrary1.dll
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\ClassLibrary1.pdb

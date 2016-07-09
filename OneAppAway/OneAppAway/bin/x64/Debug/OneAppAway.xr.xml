@@ -149,6 +149,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="RequestedTheme" />
     </RootType>
+    <RootType FullName="OneAppAway._1_1.Pages.BusMapPage" />
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
       <RootProperty Name="MinWindowWidth" />
       <RootProperty Name="MinWindowHeight" />

@@ -156,7 +156,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[74];
+            _typeNameTable = new string[75];
             _typeNameTable[0] = "OneAppAway.ApplicationSettings";
             _typeNameTable[1] = "Windows.UI.Xaml.DependencyObject";
             _typeNameTable[2] = "OneAppAway.BandwidthOptions";
@@ -179,60 +179,61 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeNameTable[19] = "OneAppAway.Converters.DoubleToGridlengthConverter";
             _typeNameTable[20] = "OneAppAway.Converters.LightenColorConverter";
             _typeNameTable[21] = "OneAppAway.Converters.ColorToBrushConverter";
-            _typeNameTable[22] = "OneAppAway.OuterFrame";
+            _typeNameTable[22] = "OneAppAway._1_1.Pages.BusMapPage";
             _typeNameTable[23] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[24] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[25] = "OneAppAway.NavigationFriendlyPage";
-            _typeNameTable[26] = "OneAppAway.Common.NavigationHelper";
-            _typeNameTable[27] = "OneAppAway.Common.ObservableDictionary";
-            _typeNameTable[28] = "String";
-            _typeNameTable[29] = "OneAppAway.AboutPage";
-            _typeNameTable[30] = "OneAppAway.AdRow";
-            _typeNameTable[31] = "OneAppAway.DataGrid";
-            _typeNameTable[32] = "System.Collections.ObjectModel.ObservableCollection`1<String>";
-            _typeNameTable[33] = "System.Collections.ObjectModel.Collection`1<String>";
-            _typeNameTable[34] = "OneAppAway.FavoritesPage";
-            _typeNameTable[35] = "OneAppAway.HelpTip";
-            _typeNameTable[36] = "OneAppAway.CardinalDirection";
-            _typeNameTable[37] = "OneAppAway.AddToFavoritesPage";
-            _typeNameTable[38] = "OneAppAway.Converters.RandomConverter";
-            _typeNameTable[39] = "OneAppAway.BusArrivalBox";
-            _typeNameTable[40] = "OneAppAway.RealtimeArrival";
-            _typeNameTable[41] = "OneAppAway.BusMap";
-            _typeNameTable[42] = "System.Collections.Generic.ICollection`1<OneAppAway.BusStop>";
-            _typeNameTable[43] = "OneAppAway.BusStop";
-            _typeNameTable[44] = "OneAppAway.StopDirection";
-            _typeNameTable[45] = "Windows.Devices.Geolocation.BasicGeoposition";
-            _typeNameTable[46] = "String[]";
-            _typeNameTable[47] = "System.Array";
-            _typeNameTable[48] = "Windows.UI.Xaml.Controls.Maps.MapControl";
-            _typeNameTable[49] = "OneAppAway.HamburgerBar";
-            _typeNameTable[50] = "Windows.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[51] = "OneAppAway.ScrollViewerSnapping";
-            _typeNameTable[52] = "Windows.UI.Xaml.Controls.ScrollViewer";
-            _typeNameTable[53] = "OneAppAway.MultiStopArrivalsBox";
-            _typeNameTable[54] = "OneAppAway.RouteListingControl";
-            _typeNameTable[55] = "OneAppAway.BusRoute";
-            _typeNameTable[56] = "OneAppAway.DownloadStatus";
-            _typeNameTable[57] = "OneAppAway.ScheduleBrowser";
-            _typeNameTable[58] = "OneAppAway.DaySchedule";
-            _typeNameTable[59] = "OneAppAway.StopArrivalsBox";
-            _typeNameTable[60] = "OneAppAway.MainPage";
-            _typeNameTable[61] = "OneAppAway.PopupStopArrivalsBox";
-            _typeNameTable[62] = "OneAppAway.BusMapPage";
-            _typeNameTable[63] = "OneAppAway.RoutesPage";
-            _typeNameTable[64] = "OneAppAway.RouteViewPage";
-            _typeNameTable[65] = "OneAppAway.SettingsPage";
-            _typeNameTable[66] = "OneAppAway.WeekScheduleBrowser";
-            _typeNameTable[67] = "OneAppAway.TemplateSelectors.RouteListingTemplateSelector";
-            _typeNameTable[68] = "Windows.UI.Xaml.Controls.DataTemplateSelector";
-            _typeNameTable[69] = "Windows.UI.Xaml.DataTemplate";
-            _typeNameTable[70] = "OneAppAway.StopViewPage";
-            _typeNameTable[71] = "OneAppAway.TestPage";
-            _typeNameTable[72] = "OneAppAway.MessagePopupPage";
-            _typeNameTable[73] = "OneAppAway.RemoveFromFavoritesPage";
+            _typeNameTable[25] = "OneAppAway.OuterFrame";
+            _typeNameTable[26] = "OneAppAway.NavigationFriendlyPage";
+            _typeNameTable[27] = "OneAppAway.Common.NavigationHelper";
+            _typeNameTable[28] = "OneAppAway.Common.ObservableDictionary";
+            _typeNameTable[29] = "String";
+            _typeNameTable[30] = "OneAppAway.AboutPage";
+            _typeNameTable[31] = "OneAppAway.AdRow";
+            _typeNameTable[32] = "OneAppAway.DataGrid";
+            _typeNameTable[33] = "System.Collections.ObjectModel.ObservableCollection`1<String>";
+            _typeNameTable[34] = "System.Collections.ObjectModel.Collection`1<String>";
+            _typeNameTable[35] = "OneAppAway.FavoritesPage";
+            _typeNameTable[36] = "OneAppAway.HelpTip";
+            _typeNameTable[37] = "OneAppAway.CardinalDirection";
+            _typeNameTable[38] = "OneAppAway.AddToFavoritesPage";
+            _typeNameTable[39] = "OneAppAway.Converters.RandomConverter";
+            _typeNameTable[40] = "OneAppAway.BusArrivalBox";
+            _typeNameTable[41] = "OneAppAway.RealtimeArrival";
+            _typeNameTable[42] = "OneAppAway.BusMap";
+            _typeNameTable[43] = "System.Collections.Generic.ICollection`1<OneAppAway.BusStop>";
+            _typeNameTable[44] = "OneAppAway.BusStop";
+            _typeNameTable[45] = "OneAppAway.StopDirection";
+            _typeNameTable[46] = "Windows.Devices.Geolocation.BasicGeoposition";
+            _typeNameTable[47] = "String[]";
+            _typeNameTable[48] = "System.Array";
+            _typeNameTable[49] = "Windows.UI.Xaml.Controls.Maps.MapControl";
+            _typeNameTable[50] = "OneAppAway.HamburgerBar";
+            _typeNameTable[51] = "Windows.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[52] = "OneAppAway.ScrollViewerSnapping";
+            _typeNameTable[53] = "Windows.UI.Xaml.Controls.ScrollViewer";
+            _typeNameTable[54] = "OneAppAway.MultiStopArrivalsBox";
+            _typeNameTable[55] = "OneAppAway.RouteListingControl";
+            _typeNameTable[56] = "OneAppAway.BusRoute";
+            _typeNameTable[57] = "OneAppAway.DownloadStatus";
+            _typeNameTable[58] = "OneAppAway.ScheduleBrowser";
+            _typeNameTable[59] = "OneAppAway.DaySchedule";
+            _typeNameTable[60] = "OneAppAway.StopArrivalsBox";
+            _typeNameTable[61] = "OneAppAway.MainPage";
+            _typeNameTable[62] = "OneAppAway.PopupStopArrivalsBox";
+            _typeNameTable[63] = "OneAppAway.BusMapPage";
+            _typeNameTable[64] = "OneAppAway.RoutesPage";
+            _typeNameTable[65] = "OneAppAway.RouteViewPage";
+            _typeNameTable[66] = "OneAppAway.SettingsPage";
+            _typeNameTable[67] = "OneAppAway.WeekScheduleBrowser";
+            _typeNameTable[68] = "OneAppAway.TemplateSelectors.RouteListingTemplateSelector";
+            _typeNameTable[69] = "Windows.UI.Xaml.Controls.DataTemplateSelector";
+            _typeNameTable[70] = "Windows.UI.Xaml.DataTemplate";
+            _typeNameTable[71] = "OneAppAway.StopViewPage";
+            _typeNameTable[72] = "OneAppAway.TestPage";
+            _typeNameTable[73] = "OneAppAway.MessagePopupPage";
+            _typeNameTable[74] = "OneAppAway.RemoveFromFavoritesPage";
 
-            _typeTable = new global::System.Type[74];
+            _typeTable = new global::System.Type[75];
             _typeTable[0] = typeof(global::OneAppAway.ApplicationSettings);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.DependencyObject);
             _typeTable[2] = typeof(global::OneAppAway.BandwidthOptions);
@@ -255,58 +256,59 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeTable[19] = typeof(global::OneAppAway.Converters.DoubleToGridlengthConverter);
             _typeTable[20] = typeof(global::OneAppAway.Converters.LightenColorConverter);
             _typeTable[21] = typeof(global::OneAppAway.Converters.ColorToBrushConverter);
-            _typeTable[22] = typeof(global::OneAppAway.OuterFrame);
+            _typeTable[22] = typeof(global::OneAppAway._1_1.Pages.BusMapPage);
             _typeTable[23] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[24] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[25] = typeof(global::OneAppAway.NavigationFriendlyPage);
-            _typeTable[26] = typeof(global::OneAppAway.Common.NavigationHelper);
-            _typeTable[27] = typeof(global::OneAppAway.Common.ObservableDictionary);
-            _typeTable[28] = typeof(global::System.String);
-            _typeTable[29] = typeof(global::OneAppAway.AboutPage);
-            _typeTable[30] = typeof(global::OneAppAway.AdRow);
-            _typeTable[31] = typeof(global::OneAppAway.DataGrid);
-            _typeTable[32] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.String>);
-            _typeTable[33] = typeof(global::System.Collections.ObjectModel.Collection<global::System.String>);
-            _typeTable[34] = typeof(global::OneAppAway.FavoritesPage);
-            _typeTable[35] = typeof(global::OneAppAway.HelpTip);
-            _typeTable[36] = typeof(global::OneAppAway.CardinalDirection);
-            _typeTable[37] = typeof(global::OneAppAway.AddToFavoritesPage);
-            _typeTable[38] = typeof(global::OneAppAway.Converters.RandomConverter);
-            _typeTable[39] = typeof(global::OneAppAway.BusArrivalBox);
-            _typeTable[40] = typeof(global::OneAppAway.RealtimeArrival);
-            _typeTable[41] = typeof(global::OneAppAway.BusMap);
-            _typeTable[42] = typeof(global::System.Collections.Generic.ICollection<global::OneAppAway.BusStop>);
-            _typeTable[43] = typeof(global::OneAppAway.BusStop);
-            _typeTable[44] = typeof(global::OneAppAway.StopDirection);
-            _typeTable[45] = typeof(global::Windows.Devices.Geolocation.BasicGeoposition);
-            _typeTable[46] = typeof(global::System.String[]);
-            _typeTable[47] = typeof(global::System.Array);
-            _typeTable[48] = typeof(global::Windows.UI.Xaml.Controls.Maps.MapControl);
-            _typeTable[49] = typeof(global::OneAppAway.HamburgerBar);
-            _typeTable[50] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
-            _typeTable[51] = typeof(global::OneAppAway.ScrollViewerSnapping);
-            _typeTable[52] = typeof(global::Windows.UI.Xaml.Controls.ScrollViewer);
-            _typeTable[53] = typeof(global::OneAppAway.MultiStopArrivalsBox);
-            _typeTable[54] = typeof(global::OneAppAway.RouteListingControl);
-            _typeTable[55] = typeof(global::OneAppAway.BusRoute);
-            _typeTable[56] = typeof(global::OneAppAway.DownloadStatus);
-            _typeTable[57] = typeof(global::OneAppAway.ScheduleBrowser);
-            _typeTable[58] = typeof(global::OneAppAway.DaySchedule);
-            _typeTable[59] = typeof(global::OneAppAway.StopArrivalsBox);
-            _typeTable[60] = typeof(global::OneAppAway.MainPage);
-            _typeTable[61] = typeof(global::OneAppAway.PopupStopArrivalsBox);
-            _typeTable[62] = typeof(global::OneAppAway.BusMapPage);
-            _typeTable[63] = typeof(global::OneAppAway.RoutesPage);
-            _typeTable[64] = typeof(global::OneAppAway.RouteViewPage);
-            _typeTable[65] = typeof(global::OneAppAway.SettingsPage);
-            _typeTable[66] = typeof(global::OneAppAway.WeekScheduleBrowser);
-            _typeTable[67] = typeof(global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector);
-            _typeTable[68] = typeof(global::Windows.UI.Xaml.Controls.DataTemplateSelector);
-            _typeTable[69] = typeof(global::Windows.UI.Xaml.DataTemplate);
-            _typeTable[70] = typeof(global::OneAppAway.StopViewPage);
-            _typeTable[71] = typeof(global::OneAppAway.TestPage);
-            _typeTable[72] = typeof(global::OneAppAway.MessagePopupPage);
-            _typeTable[73] = typeof(global::OneAppAway.RemoveFromFavoritesPage);
+            _typeTable[25] = typeof(global::OneAppAway.OuterFrame);
+            _typeTable[26] = typeof(global::OneAppAway.NavigationFriendlyPage);
+            _typeTable[27] = typeof(global::OneAppAway.Common.NavigationHelper);
+            _typeTable[28] = typeof(global::OneAppAway.Common.ObservableDictionary);
+            _typeTable[29] = typeof(global::System.String);
+            _typeTable[30] = typeof(global::OneAppAway.AboutPage);
+            _typeTable[31] = typeof(global::OneAppAway.AdRow);
+            _typeTable[32] = typeof(global::OneAppAway.DataGrid);
+            _typeTable[33] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.String>);
+            _typeTable[34] = typeof(global::System.Collections.ObjectModel.Collection<global::System.String>);
+            _typeTable[35] = typeof(global::OneAppAway.FavoritesPage);
+            _typeTable[36] = typeof(global::OneAppAway.HelpTip);
+            _typeTable[37] = typeof(global::OneAppAway.CardinalDirection);
+            _typeTable[38] = typeof(global::OneAppAway.AddToFavoritesPage);
+            _typeTable[39] = typeof(global::OneAppAway.Converters.RandomConverter);
+            _typeTable[40] = typeof(global::OneAppAway.BusArrivalBox);
+            _typeTable[41] = typeof(global::OneAppAway.RealtimeArrival);
+            _typeTable[42] = typeof(global::OneAppAway.BusMap);
+            _typeTable[43] = typeof(global::System.Collections.Generic.ICollection<global::OneAppAway.BusStop>);
+            _typeTable[44] = typeof(global::OneAppAway.BusStop);
+            _typeTable[45] = typeof(global::OneAppAway.StopDirection);
+            _typeTable[46] = typeof(global::Windows.Devices.Geolocation.BasicGeoposition);
+            _typeTable[47] = typeof(global::System.String[]);
+            _typeTable[48] = typeof(global::System.Array);
+            _typeTable[49] = typeof(global::Windows.UI.Xaml.Controls.Maps.MapControl);
+            _typeTable[50] = typeof(global::OneAppAway.HamburgerBar);
+            _typeTable[51] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
+            _typeTable[52] = typeof(global::OneAppAway.ScrollViewerSnapping);
+            _typeTable[53] = typeof(global::Windows.UI.Xaml.Controls.ScrollViewer);
+            _typeTable[54] = typeof(global::OneAppAway.MultiStopArrivalsBox);
+            _typeTable[55] = typeof(global::OneAppAway.RouteListingControl);
+            _typeTable[56] = typeof(global::OneAppAway.BusRoute);
+            _typeTable[57] = typeof(global::OneAppAway.DownloadStatus);
+            _typeTable[58] = typeof(global::OneAppAway.ScheduleBrowser);
+            _typeTable[59] = typeof(global::OneAppAway.DaySchedule);
+            _typeTable[60] = typeof(global::OneAppAway.StopArrivalsBox);
+            _typeTable[61] = typeof(global::OneAppAway.MainPage);
+            _typeTable[62] = typeof(global::OneAppAway.PopupStopArrivalsBox);
+            _typeTable[63] = typeof(global::OneAppAway.BusMapPage);
+            _typeTable[64] = typeof(global::OneAppAway.RoutesPage);
+            _typeTable[65] = typeof(global::OneAppAway.RouteViewPage);
+            _typeTable[66] = typeof(global::OneAppAway.SettingsPage);
+            _typeTable[67] = typeof(global::OneAppAway.WeekScheduleBrowser);
+            _typeTable[68] = typeof(global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector);
+            _typeTable[69] = typeof(global::Windows.UI.Xaml.Controls.DataTemplateSelector);
+            _typeTable[70] = typeof(global::Windows.UI.Xaml.DataTemplate);
+            _typeTable[71] = typeof(global::OneAppAway.StopViewPage);
+            _typeTable[72] = typeof(global::OneAppAway.TestPage);
+            _typeTable[73] = typeof(global::OneAppAway.MessagePopupPage);
+            _typeTable[74] = typeof(global::OneAppAway.RemoveFromFavoritesPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -353,38 +355,39 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
         private object Activate_19_DoubleToGridlengthConverter() { return new global::OneAppAway.Converters.DoubleToGridlengthConverter(); }
         private object Activate_20_LightenColorConverter() { return new global::OneAppAway.Converters.LightenColorConverter(); }
         private object Activate_21_ColorToBrushConverter() { return new global::OneAppAway.Converters.ColorToBrushConverter(); }
-        private object Activate_22_OuterFrame() { return new global::OneAppAway.OuterFrame(); }
-        private object Activate_25_NavigationFriendlyPage() { return new global::OneAppAway.NavigationFriendlyPage(); }
-        private object Activate_27_ObservableDictionary() { return new global::OneAppAway.Common.ObservableDictionary(); }
-        private object Activate_29_AboutPage() { return new global::OneAppAway.AboutPage(); }
-        private object Activate_30_AdRow() { return new global::OneAppAway.AdRow(); }
-        private object Activate_31_DataGrid() { return new global::OneAppAway.DataGrid(); }
-        private object Activate_32_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::System.String>(); }
-        private object Activate_33_Collection() { return new global::System.Collections.ObjectModel.Collection<global::System.String>(); }
-        private object Activate_34_FavoritesPage() { return new global::OneAppAway.FavoritesPage(); }
-        private object Activate_35_HelpTip() { return new global::OneAppAway.HelpTip(); }
-        private object Activate_37_AddToFavoritesPage() { return new global::OneAppAway.AddToFavoritesPage(); }
-        private object Activate_38_RandomConverter() { return new global::OneAppAway.Converters.RandomConverter(); }
-        private object Activate_39_BusArrivalBox() { return new global::OneAppAway.BusArrivalBox(); }
-        private object Activate_41_BusMap() { return new global::OneAppAway.BusMap(); }
-        private object Activate_49_HamburgerBar() { return new global::OneAppAway.HamburgerBar(); }
-        private object Activate_53_MultiStopArrivalsBox() { return new global::OneAppAway.MultiStopArrivalsBox(); }
-        private object Activate_54_RouteListingControl() { return new global::OneAppAway.RouteListingControl(); }
-        private object Activate_57_ScheduleBrowser() { return new global::OneAppAway.ScheduleBrowser(); }
-        private object Activate_58_DaySchedule() { return new global::OneAppAway.DaySchedule(); }
-        private object Activate_59_StopArrivalsBox() { return new global::OneAppAway.StopArrivalsBox(); }
-        private object Activate_60_MainPage() { return new global::OneAppAway.MainPage(); }
-        private object Activate_61_PopupStopArrivalsBox() { return new global::OneAppAway.PopupStopArrivalsBox(); }
-        private object Activate_62_BusMapPage() { return new global::OneAppAway.BusMapPage(); }
-        private object Activate_63_RoutesPage() { return new global::OneAppAway.RoutesPage(); }
-        private object Activate_64_RouteViewPage() { return new global::OneAppAway.RouteViewPage(); }
-        private object Activate_65_SettingsPage() { return new global::OneAppAway.SettingsPage(); }
-        private object Activate_66_WeekScheduleBrowser() { return new global::OneAppAway.WeekScheduleBrowser(); }
-        private object Activate_67_RouteListingTemplateSelector() { return new global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector(); }
-        private object Activate_70_StopViewPage() { return new global::OneAppAway.StopViewPage(); }
-        private object Activate_71_TestPage() { return new global::OneAppAway.TestPage(); }
-        private object Activate_72_MessagePopupPage() { return new global::OneAppAway.MessagePopupPage(); }
-        private object Activate_73_RemoveFromFavoritesPage() { return new global::OneAppAway.RemoveFromFavoritesPage(); }
+        private object Activate_22_BusMapPage() { return new global::OneAppAway._1_1.Pages.BusMapPage(); }
+        private object Activate_25_OuterFrame() { return new global::OneAppAway.OuterFrame(); }
+        private object Activate_26_NavigationFriendlyPage() { return new global::OneAppAway.NavigationFriendlyPage(); }
+        private object Activate_28_ObservableDictionary() { return new global::OneAppAway.Common.ObservableDictionary(); }
+        private object Activate_30_AboutPage() { return new global::OneAppAway.AboutPage(); }
+        private object Activate_31_AdRow() { return new global::OneAppAway.AdRow(); }
+        private object Activate_32_DataGrid() { return new global::OneAppAway.DataGrid(); }
+        private object Activate_33_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::System.String>(); }
+        private object Activate_34_Collection() { return new global::System.Collections.ObjectModel.Collection<global::System.String>(); }
+        private object Activate_35_FavoritesPage() { return new global::OneAppAway.FavoritesPage(); }
+        private object Activate_36_HelpTip() { return new global::OneAppAway.HelpTip(); }
+        private object Activate_38_AddToFavoritesPage() { return new global::OneAppAway.AddToFavoritesPage(); }
+        private object Activate_39_RandomConverter() { return new global::OneAppAway.Converters.RandomConverter(); }
+        private object Activate_40_BusArrivalBox() { return new global::OneAppAway.BusArrivalBox(); }
+        private object Activate_42_BusMap() { return new global::OneAppAway.BusMap(); }
+        private object Activate_50_HamburgerBar() { return new global::OneAppAway.HamburgerBar(); }
+        private object Activate_54_MultiStopArrivalsBox() { return new global::OneAppAway.MultiStopArrivalsBox(); }
+        private object Activate_55_RouteListingControl() { return new global::OneAppAway.RouteListingControl(); }
+        private object Activate_58_ScheduleBrowser() { return new global::OneAppAway.ScheduleBrowser(); }
+        private object Activate_59_DaySchedule() { return new global::OneAppAway.DaySchedule(); }
+        private object Activate_60_StopArrivalsBox() { return new global::OneAppAway.StopArrivalsBox(); }
+        private object Activate_61_MainPage() { return new global::OneAppAway.MainPage(); }
+        private object Activate_62_PopupStopArrivalsBox() { return new global::OneAppAway.PopupStopArrivalsBox(); }
+        private object Activate_63_BusMapPage() { return new global::OneAppAway.BusMapPage(); }
+        private object Activate_64_RoutesPage() { return new global::OneAppAway.RoutesPage(); }
+        private object Activate_65_RouteViewPage() { return new global::OneAppAway.RouteViewPage(); }
+        private object Activate_66_SettingsPage() { return new global::OneAppAway.SettingsPage(); }
+        private object Activate_67_WeekScheduleBrowser() { return new global::OneAppAway.WeekScheduleBrowser(); }
+        private object Activate_68_RouteListingTemplateSelector() { return new global::OneAppAway.TemplateSelectors.RouteListingTemplateSelector(); }
+        private object Activate_71_StopViewPage() { return new global::OneAppAway.StopViewPage(); }
+        private object Activate_72_TestPage() { return new global::OneAppAway.TestPage(); }
+        private object Activate_73_MessagePopupPage() { return new global::OneAppAway.MessagePopupPage(); }
+        private object Activate_74_RemoveFromFavoritesPage() { return new global::OneAppAway.RemoveFromFavoritesPage(); }
         private void VectorAdd_7_ValueConverterGroup(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.Data.IValueConverter>)instance;
@@ -397,26 +400,26 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             var newItem = (global::Windows.UI.Xaml.Data.IValueConverter)item;
             collection.Add(newItem);
         }
-        private void MapAdd_27_ObservableDictionary(object instance, object key, object item)
+        private void MapAdd_28_ObservableDictionary(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.String, global::System.Object>)instance;
             var newKey = (global::System.String)key;
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
         }
-        private void VectorAdd_32_ObservableCollection(object instance, object item)
+        private void VectorAdd_33_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.String>)instance;
             var newItem = (global::System.String)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_33_Collection(object instance, object item)
+        private void VectorAdd_34_Collection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.String>)instance;
             var newItem = (global::System.String)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_42_ICollection(object instance, object item)
+        private void VectorAdd_43_ICollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::OneAppAway.BusStop>)instance;
             var newItem = (global::OneAppAway.BusStop)item;
@@ -574,10 +577,9 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 22:   //  OneAppAway.OuterFrame
+            case 22:   //  OneAppAway._1_1.Pages.BusMapPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_22_OuterFrame;
-                userType.AddMemberName("SystemButtonsWidth");
+                userType.Activator = Activate_22_BusMapPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -590,87 +592,95 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 25:   //  OneAppAway.NavigationFriendlyPage
+            case 25:   //  OneAppAway.OuterFrame
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_25_NavigationFriendlyPage;
+                userType.Activator = Activate_25_OuterFrame;
+                userType.AddMemberName("SystemButtonsWidth");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 26:   //  OneAppAway.NavigationFriendlyPage
+                userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_26_NavigationFriendlyPage;
                 userType.AddMemberName("NavigationHelper");
                 userType.AddMemberName("DefaultViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 26:   //  OneAppAway.Common.NavigationHelper
+            case 27:   //  OneAppAway.Common.NavigationHelper
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 27:   //  OneAppAway.Common.ObservableDictionary
+            case 28:   //  OneAppAway.Common.ObservableDictionary
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.DictionaryAdd = MapAdd_27_ObservableDictionary;
+                userType.DictionaryAdd = MapAdd_28_ObservableDictionary;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 28:   //  String
+            case 29:   //  String
                 xamlType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 29:   //  OneAppAway.AboutPage
+            case 30:   //  OneAppAway.AboutPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
-                userType.Activator = Activate_29_AboutPage;
+                userType.Activator = Activate_30_AboutPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 30:   //  OneAppAway.AdRow
+            case 31:   //  OneAppAway.AdRow
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_30_AdRow;
+                userType.Activator = Activate_31_AdRow;
                 userType.AddMemberName("ShowAds");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 31:   //  OneAppAway.DataGrid
+            case 32:   //  OneAppAway.DataGrid
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_31_DataGrid;
+                userType.Activator = Activate_32_DataGrid;
                 userType.AddMemberName("Columns");
                 userType.AddMemberName("Rows");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 32:   //  System.Collections.ObjectModel.ObservableCollection`1<String>
+            case 33:   //  System.Collections.ObjectModel.ObservableCollection`1<String>
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<String>"));
-                userType.CollectionAdd = VectorAdd_32_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_33_ObservableCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 33:   //  System.Collections.ObjectModel.Collection`1<String>
+            case 34:   //  System.Collections.ObjectModel.Collection`1<String>
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_33_Collection;
-                userType.CollectionAdd = VectorAdd_33_Collection;
+                userType.Activator = Activate_34_Collection;
+                userType.CollectionAdd = VectorAdd_34_Collection;
                 xamlType = userType;
                 break;
 
-            case 34:   //  OneAppAway.FavoritesPage
+            case 35:   //  OneAppAway.FavoritesPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_34_FavoritesPage;
+                userType.Activator = Activate_35_FavoritesPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 35:   //  OneAppAway.HelpTip
+            case 36:   //  OneAppAway.HelpTip
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_35_HelpTip;
+                userType.Activator = Activate_36_HelpTip;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 36:   //  OneAppAway.CardinalDirection
+            case 37:   //  OneAppAway.CardinalDirection
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("North", global::OneAppAway.CardinalDirection.North);
                 userType.AddEnumValue("East", global::OneAppAway.CardinalDirection.East);
@@ -680,38 +690,38 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 37:   //  OneAppAway.AddToFavoritesPage
+            case 38:   //  OneAppAway.AddToFavoritesPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_37_AddToFavoritesPage;
+                userType.Activator = Activate_38_AddToFavoritesPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 38:   //  OneAppAway.Converters.RandomConverter
+            case 39:   //  OneAppAway.Converters.RandomConverter
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_38_RandomConverter;
+                userType.Activator = Activate_39_RandomConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 39:   //  OneAppAway.BusArrivalBox
+            case 40:   //  OneAppAway.BusArrivalBox
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_39_BusArrivalBox;
+                userType.Activator = Activate_40_BusArrivalBox;
                 userType.AddMemberName("Arrival");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 40:   //  OneAppAway.RealtimeArrival
+            case 41:   //  OneAppAway.RealtimeArrival
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 41:   //  OneAppAway.BusMap
+            case 42:   //  OneAppAway.BusMap
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_41_BusMap;
+                userType.Activator = Activate_42_BusMap;
                 userType.AddMemberName("ShownStops");
                 userType.AddMemberName("Center");
                 userType.AddMemberName("TopLeft");
@@ -726,14 +736,14 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 42:   //  System.Collections.Generic.ICollection`1<OneAppAway.BusStop>
+            case 43:   //  System.Collections.Generic.ICollection`1<OneAppAway.BusStop>
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.CollectionAdd = VectorAdd_42_ICollection;
+                userType.CollectionAdd = VectorAdd_43_ICollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 43:   //  OneAppAway.BusStop
+            case 44:   //  OneAppAway.BusStop
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("Direction");
                 userType.AddMemberName("Position");
@@ -746,7 +756,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 44:   //  OneAppAway.StopDirection
+            case 45:   //  OneAppAway.StopDirection
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Unspecified", global::OneAppAway.StopDirection.Unspecified);
                 userType.AddEnumValue("N", global::OneAppAway.StopDirection.N);
@@ -761,60 +771,60 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 45:   //  Windows.Devices.Geolocation.BasicGeoposition
+            case 46:   //  Windows.Devices.Geolocation.BasicGeoposition
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 46:   //  String[]
+            case 47:   //  String[]
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Array"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 47:   //  System.Array
+            case 48:   //  System.Array
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 48:   //  Windows.UI.Xaml.Controls.Maps.MapControl
+            case 49:   //  Windows.UI.Xaml.Controls.Maps.MapControl
                 xamlType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 49:   //  OneAppAway.HamburgerBar
+            case 50:   //  OneAppAway.HamburgerBar
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentControl"));
-                userType.Activator = Activate_49_HamburgerBar;
+                userType.Activator = Activate_50_HamburgerBar;
                 userType.AddMemberName("ShowAds");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 50:   //  Windows.UI.Xaml.Controls.ContentControl
+            case 51:   //  Windows.UI.Xaml.Controls.ContentControl
                 xamlType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 51:   //  OneAppAway.ScrollViewerSnapping
+            case 52:   //  OneAppAway.ScrollViewerSnapping
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("SnapInterval");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 52:   //  Windows.UI.Xaml.Controls.ScrollViewer
+            case 53:   //  Windows.UI.Xaml.Controls.ScrollViewer
                 xamlType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 53:   //  OneAppAway.MultiStopArrivalsBox
+            case 54:   //  OneAppAway.MultiStopArrivalsBox
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_53_MultiStopArrivalsBox;
+                userType.Activator = Activate_54_MultiStopArrivalsBox;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 54:   //  OneAppAway.RouteListingControl
+            case 55:   //  OneAppAway.RouteListingControl
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_54_RouteListingControl;
+                userType.Activator = Activate_55_RouteListingControl;
                 userType.AddMemberName("IsChecked");
                 userType.AddMemberName("Route");
                 userType.AddMemberName("Progress");
@@ -825,14 +835,14 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 55:   //  OneAppAway.BusRoute
+            case 56:   //  OneAppAway.BusRoute
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 56:   //  OneAppAway.DownloadStatus
+            case 57:   //  OneAppAway.DownloadStatus
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("NotDownloaded", global::OneAppAway.DownloadStatus.NotDownloaded);
                 userType.AddEnumValue("Downloaded", global::OneAppAway.DownloadStatus.Downloaded);
@@ -841,124 +851,124 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 57:   //  OneAppAway.ScheduleBrowser
+            case 58:   //  OneAppAway.ScheduleBrowser
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_57_ScheduleBrowser;
+                userType.Activator = Activate_58_ScheduleBrowser;
                 userType.AddMemberName("Schedule");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 58:   //  OneAppAway.DaySchedule
+            case 59:   //  OneAppAway.DaySchedule
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 59:   //  OneAppAway.StopArrivalsBox
+            case 60:   //  OneAppAway.StopArrivalsBox
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_59_StopArrivalsBox;
+                userType.Activator = Activate_60_StopArrivalsBox;
                 userType.AddMemberName("Stop");
                 userType.AddMemberName("HideTitle");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 60:   //  OneAppAway.MainPage
+            case 61:   //  OneAppAway.MainPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_60_MainPage;
+                userType.Activator = Activate_61_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 61:   //  OneAppAway.PopupStopArrivalsBox
+            case 62:   //  OneAppAway.PopupStopArrivalsBox
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_61_PopupStopArrivalsBox;
+                userType.Activator = Activate_62_PopupStopArrivalsBox;
                 userType.AddMemberName("Caption");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 62:   //  OneAppAway.BusMapPage
+            case 63:   //  OneAppAway.BusMapPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
-                userType.Activator = Activate_62_BusMapPage;
+                userType.Activator = Activate_63_BusMapPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 63:   //  OneAppAway.RoutesPage
+            case 64:   //  OneAppAway.RoutesPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
-                userType.Activator = Activate_63_RoutesPage;
+                userType.Activator = Activate_64_RoutesPage;
                 userType.AddMemberName("AgenciesWarning");
                 userType.AddMemberName("RoutesWarning");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 64:   //  OneAppAway.RouteViewPage
+            case 65:   //  OneAppAway.RouteViewPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
-                userType.Activator = Activate_64_RouteViewPage;
+                userType.Activator = Activate_65_RouteViewPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 65:   //  OneAppAway.SettingsPage
+            case 66:   //  OneAppAway.SettingsPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
-                userType.Activator = Activate_65_SettingsPage;
+                userType.Activator = Activate_66_SettingsPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 66:   //  OneAppAway.WeekScheduleBrowser
+            case 67:   //  OneAppAway.WeekScheduleBrowser
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_66_WeekScheduleBrowser;
+                userType.Activator = Activate_67_WeekScheduleBrowser;
                 userType.AddMemberName("Stop");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 67:   //  OneAppAway.TemplateSelectors.RouteListingTemplateSelector
+            case 68:   //  OneAppAway.TemplateSelectors.RouteListingTemplateSelector
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.DataTemplateSelector"));
-                userType.Activator = Activate_67_RouteListingTemplateSelector;
+                userType.Activator = Activate_68_RouteListingTemplateSelector;
                 userType.AddMemberName("ShortFormTemplate");
                 userType.AddMemberName("LongFormTemplate");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 68:   //  Windows.UI.Xaml.Controls.DataTemplateSelector
+            case 69:   //  Windows.UI.Xaml.Controls.DataTemplateSelector
                 xamlType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 69:   //  Windows.UI.Xaml.DataTemplate
+            case 70:   //  Windows.UI.Xaml.DataTemplate
                 xamlType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 70:   //  OneAppAway.StopViewPage
+            case 71:   //  OneAppAway.StopViewPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
-                userType.Activator = Activate_70_StopViewPage;
+                userType.Activator = Activate_71_StopViewPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 71:   //  OneAppAway.TestPage
+            case 72:   //  OneAppAway.TestPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("OneAppAway.NavigationFriendlyPage"));
-                userType.Activator = Activate_71_TestPage;
+                userType.Activator = Activate_72_TestPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 72:   //  OneAppAway.MessagePopupPage
+            case 73:   //  OneAppAway.MessagePopupPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_72_MessagePopupPage;
+                userType.Activator = Activate_73_MessagePopupPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 73:   //  OneAppAway.RemoveFromFavoritesPage
+            case 74:   //  OneAppAway.RemoveFromFavoritesPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_73_RemoveFromFavoritesPage;
+                userType.Activator = Activate_74_RemoveFromFavoritesPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

@@ -103,6 +103,10 @@
   <ItemGroup>
     <Compile Include="1_1\Agency.cs" />
     <Compile Include="1_1\DatabaseManager.cs" />
+    <Compile Include="1_1\Pages\ApplicationPage.cs" />
+    <Compile Include="1_1\Pages\BusMapPage.xaml.cs">
+      <DependentUpon>BusMapPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="1_1\Route.cs" />
     <Compile Include="Controls\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
@@ -260,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="1_1\Pages\BusMapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\OuterFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -379,6 +387,7 @@
     <AppxSystemBinary Include="OneAppAway.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="1_1\Data\" />
     <Folder Include="Visuals\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

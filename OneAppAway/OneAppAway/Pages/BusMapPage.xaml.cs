@@ -67,7 +67,8 @@ namespace OneAppAway
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
-            BandwidthManager.EffectiveBandwidthOptionsChanged += BandwidthManager_EffectiveBandwidthOptionsChanged;
+            MainMap.MapControl.ActualCameraChanged -= MainMap_ActualCameraChanged;
+            BandwidthManager.EffectiveBandwidthOptionsChanged -= BandwidthManager_EffectiveBandwidthOptionsChanged;
             MainMap.UnhookLocationEvents();
         }
 
@@ -359,8 +360,14 @@ namespace OneAppAway
             if (e.NewState.Name == "ArrivalBoxShown")
                 StopArrivalBox.Visibility = Visibility.Visible;
             else
-                ani.Completed += (s, ev) => StopArrivalBox.Visibility = Visibility.Collapsed;
+                ani.Completed += _Ani_Completed; //Done
             sb.Begin();
+        }
+
+        private void _Ani_Completed(object sender, object e)
+        {
+            StopArrivalBox.Visibility = Visibility.Collapsed;
+            ((DoubleAnimation)sender).Completed -= _Ani_Completed;
         }
 
         private void BandwidthManager_EffectiveBandwidthOptionsChanged(object sender, EventArgs e)

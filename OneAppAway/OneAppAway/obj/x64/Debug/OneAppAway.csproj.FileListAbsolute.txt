@@ -1109,3 +1109,8 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\OuterFrame.xaml
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Controls\OuterFrame.xbf
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Controls\OuterFrame.xbf
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Pages\BusMapPage.xbf
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Pages\BusMapPage.g.i.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Pages\BusMapPage.g.cs
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Pages\BusMapPage.xaml
+C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Pages\BusMapPage.xbf
