@@ -1,4 +1,6 @@
-1_1\Pages\BusMapPage.xbf
+1_1\BusMap.xbf
+1_1\Views\Controls\BusMap.xbf
+1_1\Views\Pages\BusMapPage.xbf
 App.xbf
 Controls\AdRow.xbf
 Controls\BusArrivalBox.xbf

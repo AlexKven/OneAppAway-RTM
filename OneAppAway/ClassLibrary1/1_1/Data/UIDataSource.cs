@@ -13,14 +13,12 @@ namespace OneAppAway._1_1.Data
 
         protected virtual void OnDataChanged()
         {
-            if (DataChanged != null)
-                DataChanged(this, new EventArgs());
+            DataChanged?.Invoke(this, new EventArgs());
         }
 
         public void Decommission()
         {
-            if (Decommissioned != null)
-                Decommissioned(this, new EventArgs());
+            Decommissioned?.Invoke(this, new EventArgs());
         }
         #endregion
 

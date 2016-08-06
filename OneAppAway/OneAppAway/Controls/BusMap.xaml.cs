@@ -184,12 +184,12 @@ namespace OneAppAway
         private void AddStopToMap(BusStop stop)
         {
             MapIcon mico = new MapIcon();
+            
             mico.ZIndex = 10;
             mico.Location = new Geopoint(stop.Position);
             mico.CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible;
             string size = ZoomLevel < StopSizeThreshold ? "20" : "40";
             bool visibility = ZoomLevel >= StopVisibilityThreshold;
-            
             mico.Image = RandomAccessStreamReference.CreateFromUri(new Uri(stop.Direction == StopDirection.Unspecified ? "ms-appx:///Assets/Icons/BusBase" + size + ".png" : "ms-appx:///Assets/Icons/BusDirection" + stop.Direction.ToString() + size + ".png"));
             mico.NormalizedAnchorPoint = new Point(0.5, 0.5);
             mico.Visible = visibility;
@@ -274,6 +274,7 @@ namespace OneAppAway
                 foreach (var item in BusStopIcons)
                     MainMap.Children.Remove(item);
                 BusStopIcons.Clear();
+
             }
             if (e.NewItems != null)
             {

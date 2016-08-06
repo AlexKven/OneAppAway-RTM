@@ -145,6 +145,27 @@
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
     <RootType FullName="OneAppAway.Converters.LightenColorConverter" />
     <RootType FullName="OneAppAway.Converters.ColorToBrushConverter" />
+    <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
+      <RootProperty Name="Content" />
+      <RootProperty Name="RequestedTheme" />
+      <RootEvent Name="Unloaded" />
+      <RootEvent Name="SizeChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
+      <RootProperty Name="TransitFeaturesVisible" />
+      <RootProperty Name="PedestrianFeaturesVisible" />
+      <RootProperty Name="TiltInteractionMode" />
+      <RootProperty Name="RotateInteractionMode" />
+      <RootProperty Name="ZoomInteractionMode" />
+      <RootEvent Name="MapElementClick" />
+      <RootEvent Name="SizeChanged" />
+      <RootEvent Name="ZoomLevelChanged" />
+      <RootEvent Name="CenterChanged" />
+      <RootMethod Name="GetNormalizedAnchorPoint" />
+      <RootMethod Name="SetNormalizedAnchorPoint" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.BusMap" />
+    <RootType FullName="OneAppAway._1_1.Views.Controls.BusMap" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
       <RootProperty Name="RequestedTheme" />
@@ -279,11 +300,6 @@
       <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="OneAppAway.AboutPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
-      <RootProperty Name="Content" />
-      <RootProperty Name="RequestedTheme" />
-      <RootEvent Name="SizeChanged" />
-    </RootType>
     <RootType FullName="OneAppAway.AdRow" />
     <RootType FullName="OneAppAway.DataGrid">
       <RootProperty Name="Visibility" />
@@ -374,19 +390,6 @@
     <RootType FullName="OneAppAway.AddToFavoritesPage" />
     <RootType FullName="OneAppAway.Converters.RandomConverter" />
     <RootType FullName="OneAppAway.BusArrivalBox" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
-      <RootProperty Name="TransitFeaturesVisible" />
-      <RootProperty Name="PedestrianFeaturesVisible" />
-      <RootProperty Name="TiltInteractionMode" />
-      <RootProperty Name="RotateInteractionMode" />
-      <RootProperty Name="ZoomInteractionMode" />
-      <RootEvent Name="MapElementClick" />
-      <RootEvent Name="SizeChanged" />
-      <RootEvent Name="ZoomLevelChanged" />
-      <RootEvent Name="CenterChanged" />
-      <RootMethod Name="GetNormalizedAnchorPoint" />
-      <RootMethod Name="SetNormalizedAnchorPoint" />
-    </RootType>
     <RootType FullName="OneAppAway.BusMap">
       <RootProperty Name="StopVisibilityThreshold" />
       <RootProperty Name="Margin" />

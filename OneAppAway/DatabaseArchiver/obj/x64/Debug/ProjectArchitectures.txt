@@ -1,1 +1,1 @@
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\DatabaseArchiver.csproj;x64
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\DatabaseArchiver.csproj;x64

@@ -51,6 +51,7 @@ namespace OneAppAway
             {
                 SettingsManager.SetSetting<int>("BandwidthOptions", false, (int)(value));
                 BandwidthManager.OnEffectiveBandwidthOptionsChanged();
+                FrameworkElement fe;
             }
         }
 

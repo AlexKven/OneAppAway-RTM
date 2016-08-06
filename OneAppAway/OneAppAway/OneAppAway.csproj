@@ -102,9 +102,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1_1\Agency.cs" />
+    <Compile Include="1_1\AttachedProperties.cs" />
+    <Compile Include="1_1\BusMap.xaml.cs">
+      <DependentUpon>BusMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Converters\LatLonToGeopointConverter.cs" />
+    <Compile Include="1_1\Converters\LatLonTransformConverter.cs" />
+    <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
+    <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
     <Compile Include="1_1\DatabaseManager.cs" />
-    <Compile Include="1_1\Pages\ApplicationPage.cs" />
-    <Compile Include="1_1\Pages\BusMapPage.xaml.cs">
+    <Compile Include="1_1\Helpers.cs" />
+    <Compile Include="1_1\ViewModels\BusMapViewModel.cs" />
+    <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
+    <Compile Include="1_1\ViewModels\StopViewModel_BusMap.cs" />
+    <Compile Include="1_1\Views\Controls\BusMap.xaml.cs">
+      <DependentUpon>BusMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\BusStopIconWrapper.cs" />
+    <Compile Include="1_1\Views\Pages\ApplicationPage.cs" />
+    <Compile Include="1_1\Views\Pages\BusMapPage.xaml.cs">
       <DependentUpon>BusMapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Route.cs" />
@@ -264,7 +280,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="1_1\Pages\BusMapPage.xaml">
+    <Page Include="1_1\BusMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\BusMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\BusMapPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -370,14 +394,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="AdDuplex.Windows10, Version=10.0.1.2">
+    <SDKReference Include="AdDuplex.Windows10, Version=10.0.1.5">
       <Name>AdDuplex SDK for Windows 10 %28XAML%29</Name>
     </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
-    </SDKReference>
-    <SDKReference Include="SQLite.UAP.2015, Version=3.9.2">
-      <Name>SQLite for Universal App Platform</Name>
     </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
@@ -389,6 +410,12 @@
   <ItemGroup>
     <Folder Include="1_1\Data\" />
     <Folder Include="Visuals\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\CommonClasses.csproj">
+      <Project>{24eec194-2107-40a6-b5a4-57083e05131d}</Project>
+      <Name>CommonClasses</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

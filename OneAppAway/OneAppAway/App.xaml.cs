@@ -132,7 +132,9 @@ namespace OneAppAway
                             break;
                     }
                 }
-                //RootFrame.Navigate(typeof(TestPage));
+
+                //Test Page
+                RootFrame.Navigate(typeof(_1_1.Pages.BusMapPage));
             }
             // Ensure the current window is active
             Window.Current.Content = MainOuterFrame;// MainHamburgerBar;

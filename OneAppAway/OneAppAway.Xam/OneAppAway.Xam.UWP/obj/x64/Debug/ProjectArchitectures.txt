@@ -1,0 +1,1 @@
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Xam\OneAppAway.Xam.UWP\OneAppAway.Xam.UWP.csproj;x64
