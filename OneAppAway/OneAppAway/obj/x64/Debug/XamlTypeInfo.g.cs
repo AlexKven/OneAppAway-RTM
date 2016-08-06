@@ -181,7 +181,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeNameTable[21] = "OneAppAway.Converters.ColorToBrushConverter";
             _typeNameTable[22] = "OneAppAway._1_1.BusMap";
             _typeNameTable[23] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[24] = "OneAppAway._1_1.Views.Controls.BusMap";
+            _typeNameTable[24] = "OneAppAway._1_1.Views.Controls.TransitMap";
             _typeNameTable[25] = "OneAppAway._1_1.Data.LatLon";
             _typeNameTable[26] = "OneAppAway._1_1.Data.RectSubset";
             _typeNameTable[27] = "OneAppAway._1_1.Pages.BusMapPage";
@@ -262,7 +262,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeTable[21] = typeof(global::OneAppAway.Converters.ColorToBrushConverter);
             _typeTable[22] = typeof(global::OneAppAway._1_1.BusMap);
             _typeTable[23] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[24] = typeof(global::OneAppAway._1_1.Views.Controls.BusMap);
+            _typeTable[24] = typeof(global::OneAppAway._1_1.Views.Controls.TransitMap);
             _typeTable[25] = typeof(global::OneAppAway._1_1.Data.LatLon);
             _typeTable[26] = typeof(global::OneAppAway._1_1.Data.RectSubset);
             _typeTable[27] = typeof(global::OneAppAway._1_1.Pages.BusMapPage);
@@ -364,7 +364,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
         private object Activate_20_LightenColorConverter() { return new global::OneAppAway.Converters.LightenColorConverter(); }
         private object Activate_21_ColorToBrushConverter() { return new global::OneAppAway.Converters.ColorToBrushConverter(); }
         private object Activate_22_BusMap() { return new global::OneAppAway._1_1.BusMap(); }
-        private object Activate_24_BusMap() { return new global::OneAppAway._1_1.Views.Controls.BusMap(); }
+        private object Activate_24_TransitMap() { return new global::OneAppAway._1_1.Views.Controls.TransitMap(); }
         private object Activate_27_BusMapPage() { return new global::OneAppAway._1_1.Pages.BusMapPage(); }
         private object Activate_29_OuterFrame() { return new global::OneAppAway.OuterFrame(); }
         private object Activate_30_NavigationFriendlyPage() { return new global::OneAppAway.NavigationFriendlyPage(); }
@@ -598,9 +598,9 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 24:   //  OneAppAway._1_1.Views.Controls.BusMap
+            case 24:   //  OneAppAway._1_1.Views.Controls.TransitMap
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_24_BusMap;
+                userType.Activator = Activate_24_TransitMap;
                 userType.AddMemberName("Center");
                 userType.AddMemberName("ZoomLevel");
                 userType.AddMemberName("CenterRegion");
@@ -1127,54 +1127,54 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             var that = (global::OneAppAway.Converters.AddSubtractConverter)instance;
             that.UseParameter = (global::System.Boolean)Value;
         }
-        private object get_6_BusMap_Center(object instance)
+        private object get_6_TransitMap_Center(object instance)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             return that.Center;
         }
-        private void set_6_BusMap_Center(object instance, object Value)
+        private void set_6_TransitMap_Center(object instance, object Value)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             that.Center = (global::OneAppAway._1_1.Data.LatLon)Value;
         }
-        private object get_7_BusMap_ZoomLevel(object instance)
+        private object get_7_TransitMap_ZoomLevel(object instance)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             return that.ZoomLevel;
         }
-        private void set_7_BusMap_ZoomLevel(object instance, object Value)
+        private void set_7_TransitMap_ZoomLevel(object instance, object Value)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             that.ZoomLevel = (global::System.Double)Value;
         }
-        private object get_8_BusMap_CenterRegion(object instance)
+        private object get_8_TransitMap_CenterRegion(object instance)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             return that.CenterRegion;
         }
-        private void set_8_BusMap_CenterRegion(object instance, object Value)
+        private void set_8_TransitMap_CenterRegion(object instance, object Value)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             that.CenterRegion = (global::OneAppAway._1_1.Data.RectSubset)Value;
         }
-        private object get_9_BusMap_LatitudePerPixel(object instance)
+        private object get_9_TransitMap_LatitudePerPixel(object instance)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             return that.LatitudePerPixel;
         }
-        private void set_9_BusMap_LatitudePerPixel(object instance, object Value)
+        private void set_9_TransitMap_LatitudePerPixel(object instance, object Value)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             that.LatitudePerPixel = (global::System.Double)Value;
         }
-        private object get_10_BusMap_LongitudePerPixel(object instance)
+        private object get_10_TransitMap_LongitudePerPixel(object instance)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             return that.LongitudePerPixel;
         }
-        private void set_10_BusMap_LongitudePerPixel(object instance, object Value)
+        private void set_10_TransitMap_LongitudePerPixel(object instance, object Value)
         {
-            var that = (global::OneAppAway._1_1.Views.Controls.BusMap)instance;
+            var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             that.LongitudePerPixel = (global::System.Double)Value;
         }
         private object get_11_OuterFrame_SystemButtonsWidth(object instance)
@@ -1581,38 +1581,38 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlMember.Getter = get_5_AddSubtractConverter_UseParameter;
                 xamlMember.Setter = set_5_AddSubtractConverter_UseParameter;
                 break;
-            case "OneAppAway._1_1.Views.Controls.BusMap.Center":
-                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.BusMap");
+            case "OneAppAway._1_1.Views.Controls.TransitMap.Center":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.TransitMap");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "Center", "OneAppAway._1_1.Data.LatLon");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_6_BusMap_Center;
-                xamlMember.Setter = set_6_BusMap_Center;
+                xamlMember.Getter = get_6_TransitMap_Center;
+                xamlMember.Setter = set_6_TransitMap_Center;
                 break;
-            case "OneAppAway._1_1.Views.Controls.BusMap.ZoomLevel":
-                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.BusMap");
+            case "OneAppAway._1_1.Views.Controls.TransitMap.ZoomLevel":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.TransitMap");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "ZoomLevel", "Double");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_7_BusMap_ZoomLevel;
-                xamlMember.Setter = set_7_BusMap_ZoomLevel;
+                xamlMember.Getter = get_7_TransitMap_ZoomLevel;
+                xamlMember.Setter = set_7_TransitMap_ZoomLevel;
                 break;
-            case "OneAppAway._1_1.Views.Controls.BusMap.CenterRegion":
-                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.BusMap");
+            case "OneAppAway._1_1.Views.Controls.TransitMap.CenterRegion":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.TransitMap");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "CenterRegion", "OneAppAway._1_1.Data.RectSubset");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_8_BusMap_CenterRegion;
-                xamlMember.Setter = set_8_BusMap_CenterRegion;
+                xamlMember.Getter = get_8_TransitMap_CenterRegion;
+                xamlMember.Setter = set_8_TransitMap_CenterRegion;
                 break;
-            case "OneAppAway._1_1.Views.Controls.BusMap.LatitudePerPixel":
-                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.BusMap");
+            case "OneAppAway._1_1.Views.Controls.TransitMap.LatitudePerPixel":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.TransitMap");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "LatitudePerPixel", "Double");
-                xamlMember.Getter = get_9_BusMap_LatitudePerPixel;
-                xamlMember.Setter = set_9_BusMap_LatitudePerPixel;
+                xamlMember.Getter = get_9_TransitMap_LatitudePerPixel;
+                xamlMember.Setter = set_9_TransitMap_LatitudePerPixel;
                 break;
-            case "OneAppAway._1_1.Views.Controls.BusMap.LongitudePerPixel":
-                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.BusMap");
+            case "OneAppAway._1_1.Views.Controls.TransitMap.LongitudePerPixel":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.TransitMap");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "LongitudePerPixel", "Double");
-                xamlMember.Getter = get_10_BusMap_LongitudePerPixel;
-                xamlMember.Setter = set_10_BusMap_LongitudePerPixel;
+                xamlMember.Getter = get_10_TransitMap_LongitudePerPixel;
+                xamlMember.Setter = set_10_TransitMap_LongitudePerPixel;
                 break;
             case "OneAppAway.OuterFrame.SystemButtonsWidth":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway.OuterFrame");

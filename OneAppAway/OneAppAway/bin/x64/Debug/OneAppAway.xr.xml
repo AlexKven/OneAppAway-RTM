@@ -165,7 +165,7 @@
       <RootMethod Name="SetNormalizedAnchorPoint" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.BusMap" />
-    <RootType FullName="OneAppAway._1_1.Views.Controls.BusMap" />
+    <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
       <RootProperty Name="RequestedTheme" />

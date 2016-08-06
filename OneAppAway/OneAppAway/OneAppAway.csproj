@@ -114,11 +114,10 @@
     <Compile Include="1_1\Helpers.cs" />
     <Compile Include="1_1\ViewModels\BusMapViewModel.cs" />
     <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
-    <Compile Include="1_1\ViewModels\StopViewModel_BusMap.cs" />
-    <Compile Include="1_1\Views\Controls\BusMap.xaml.cs">
-      <DependentUpon>BusMap.xaml</DependentUpon>
+    <Compile Include="1_1\Views\Controls\TransitMap.xaml.cs">
+      <DependentUpon>TransitMap.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1_1\Views\Controls\BusStopIconWrapper.cs" />
+    <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
     <Compile Include="1_1\Views\Pages\ApplicationPage.cs" />
     <Compile Include="1_1\Views\Pages\BusMapPage.xaml.cs">
       <DependentUpon>BusMapPage.xaml</DependentUpon>
@@ -284,7 +283,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="1_1\Views\Controls\BusMap.xaml">
+    <Page Include="1_1\Views\Controls\TransitMap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

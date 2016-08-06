@@ -35,13 +35,16 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <Folder Include="1_1\Enums\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1_1\Data\BusStop.cs" />
     <Compile Include="1_1\Data\LatLon.cs" />
     <Compile Include="1_1\Data\RectSubset.cs" />
+    <Compile Include="1_1\Data\StopDirection.cs" />
     <Compile Include="1_1\Data\UIDataSource.cs" />
     <Compile Include="1_1\Data\UITaskWrapper.cs" />
-    <Compile Include="1_1\Enums\MapStopSize.cs" />
+    <Compile Include="1_1\Data\MapStopSize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="1_1\Data\UIDataSourceGroup.cs" />
   </ItemGroup>

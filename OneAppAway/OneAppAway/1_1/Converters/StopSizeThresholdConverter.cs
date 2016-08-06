@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
-using OneAppAway._1_1.Enums;
+using OneAppAway._1_1.Data;
 
 namespace OneAppAway._1_1.Converters
 {
@@ -14,7 +14,7 @@ namespace OneAppAway._1_1.Converters
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if ((double)value < 10)
+            if ((double)value > Threshold)
             {
                 System.Diagnostics.Debug.WriteLine("Medium");
                 return MapStopSize.Medium;
