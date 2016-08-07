@@ -18,6 +18,8 @@ using OneAppAway._1_1.Data;
 using OneAppAway._1_1.Converters;
 using Windows.Devices.Geolocation;
 using System.ComponentModel;
+using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -27,34 +29,28 @@ namespace OneAppAway._1_1.Views.Controls
     {
         #region Fields
         private LatLon CenterOffset = new LatLon();
-        private LatLonTransformConverter OffsetConverter;
-        private StopSizeThresholdConverter StopSizeConverter = new StopSizeThresholdConverter() { Threshold = 17 };
-        TransitStopIconWrapper[] icons = new TransitStopIconWrapper[8 * 8];
+        private ValueConverterGroup CenterConverter = new ValueConverterGroup();
+        
+        private StopSizeThresholdConverter StopSizeConverter = new StopSizeThresholdConverter() { LargeThreshold = 17, MediumThreshold = 16, SmallThreshold = 14 };
+        //TransitStopIconWrapper[] icons = new TransitStopIconWrapper[15 * 15];
+
+        private bool? User_CenterChanged = null;
+        private bool? User_ZoomLevelChanged = null;
         #endregion
 
         public TransitMap()
         {
             this.InitializeComponent();
             MainMap.MapServiceToken = Keys.BingMapKey;
-            OffsetConverter = new LatLonTransformConverter() { Transform = ll => ll + CenterOffset, ReverseTransform = ll => ll - CenterOffset };
-            ValueConverterGroup centerConverters = new ValueConverterGroup() { OffsetConverter, LatLonToGeopointConverter.Instance };
-            MainMap.SetBinding(MapControl.CenterProperty, new Binding() { Converter = centerConverters, Source = this, Path = new PropertyPath("Center"), Mode = BindingMode.TwoWay });
-            MainMap.SetBinding(MapControl.ZoomLevelProperty, new Binding() { Source = this, Path = new PropertyPath("ZoomLevel"), Mode = BindingMode.TwoWay });
+            CenterConverter.Add(new LatLonTransformConverter() { Transform = ll => CenterOffset.IsNotALocation ? ll : ll + CenterOffset, ReverseTransform = ll => CenterOffset.IsNotALocation ? ll : ll - CenterOffset });
+            CenterConverter.Add(LatLonToGeopointConverter.Instance);
+
+            //MainMap.SetBinding(MapControl.CenterProperty, new Binding() { Converter = CenterConverters, Source = this, Path = new PropertyPath("Center"), Mode = BindingMode.TwoWay });
+            //MainMap.SetBinding(MapControl.ZoomLevelProperty, new Binding() { Source = this, Path = new PropertyPath("ZoomLevel"), Mode = BindingMode.TwoWay });
 
             MapIcon centerIndicator = new MapIcon() { NormalizedAnchorPoint = new Point(0.5, 1) };
             BindingOperations.SetBinding(centerIndicator, MapIcon.LocationProperty, new Binding() { Source = this, Path = new PropertyPath("Center"), Converter = LatLonToGeopointConverter.Instance });
             MainMap.MapElements.Add(centerIndicator);
-
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    TransitStop seattle = new TransitStop() { Direction = Data.StopDirection.NE, Position = LatLon.Seattle + new LatLon(0.001 * i, 0.001 * j) };
-                    icons[j * 8 + i] = new TransitStopIconWrapper(seattle);
-                    BindingOperations.SetBinding(icons[j * 8 + i], TransitStopIconWrapper.StopSizeProperty, new Binding() { Source = MainMap, Path = new PropertyPath("ZoomLevel"), Converter = StopSizeConverter, Mode = BindingMode.OneWay });
-                    MainMap.MapElements.Add(icons[j * 8 + i].Icon);
-                }
-            }
         }
 
         #region Properties
@@ -64,7 +60,11 @@ namespace OneAppAway._1_1.Views.Controls
             set { SetValue(CenterProperty, value); }
         }
         public static readonly DependencyProperty CenterProperty =
-            DependencyProperty.Register("Center", typeof(LatLon), typeof(TransitMap), new PropertyMetadata(LatLon.Seattle));
+            DependencyProperty.Register("Center", typeof(LatLon), typeof(TransitMap), new PropertyMetadata(LatLon.Seattle, OnCenterChangedStatic));
+        static void OnCenterChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as TransitMap)?.OnCenterChanged();
+        }
 
         public double ZoomLevel
         {
@@ -75,9 +75,25 @@ namespace OneAppAway._1_1.Views.Controls
             DependencyProperty.Register("ZoomLevel", typeof(double), typeof(TransitMap), new PropertyMetadata(10.0, OnZoomLevelChangedStatic));
         static void OnZoomLevelChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            (sender as TransitMap)?.RecalculateCenterOffset();
+            (sender as TransitMap)?.OnZoomLevelChanged();
         }
 
+        public LatLon CenterDelay
+        {
+            get { return (LatLon)GetValue(CenterDelayProperty); }
+            private set { SetValue(CenterDelayProperty, value); }
+        }
+        public static readonly DependencyProperty CenterDelayProperty =
+            DependencyProperty.Register("CenterDelay", typeof(LatLon), typeof(TransitMap), new PropertyMetadata(LatLon.Seattle));
+        
+        public double ZoomLevelDelay
+        {
+            get { return (double)GetValue(ZoomLevelDelayProperty); }
+            private set { SetValue(ZoomLevelDelayProperty, value); }
+        }
+        public static readonly DependencyProperty ZoomLevelDelayProperty =
+            DependencyProperty.Register("ZoomLevelDelay", typeof(double), typeof(TransitMap), new PropertyMetadata(10.0));
+        
         public RectSubset CenterRegion
         {
             get { return (RectSubset)GetValue(CenterRegionProperty); }
@@ -87,12 +103,11 @@ namespace OneAppAway._1_1.Views.Controls
             DependencyProperty.Register("CenterRegion", typeof(RectSubset), typeof(TransitMap), new PropertyMetadata(new RectSubset(), OnCenterRegionChangedStatic));
         static void OnCenterRegionChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            (sender as TransitMap)?.RecalculateCenterOffset();
+            (sender as TransitMap)?.OnCenterRegionChanged();
         }
 
         private double _LatitudePerPixel = double.NaN;
         private double _LongitudePerPixel = double.NaN;
-
         public double LatitudePerPixel
         {
             get { return _LatitudePerPixel; }
@@ -110,6 +125,20 @@ namespace OneAppAway._1_1.Views.Controls
                 _LongitudePerPixel = value;
                 OnPropertyChanged("LongitudePerPixel");
             }
+        }
+
+        private TimeSpan DelayedPropertyWait { get; set; } = TimeSpan.FromMilliseconds(100);
+
+        public object StopsSource
+        {
+            get { return (object)GetValue(StopsSourceProperty); }
+            set { SetValue(StopsSourceProperty, value); }
+        }
+        public static readonly DependencyProperty StopsSourceProperty =
+            DependencyProperty.Register("StopsSource", typeof(object), typeof(TransitMap), new PropertyMetadata(null, OnStopsSourceChangedStatic));
+        static void OnStopsSourceChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            ((TransitMap)sender).OnStopsSourceChanged(e.OldValue, e.NewValue);
         }
         #endregion
 
@@ -142,19 +171,15 @@ namespace OneAppAway._1_1.Views.Controls
             }
         }
 
-        private void RecalculateCenterOffset()
+        private bool RecalculateCenterOffset()
         {
             SetLatLonDensities();
-            bool changed = false;
+            LatLon oldOffset = CenterOffset;
             if (LatitudePerPixel != double.NaN && LongitudePerPixel != double.NaN)
             {
-                if (CenterRegion.DoesNothing)
+                if (CenterRegion.DoesNothing || LatitudePerPixel == double.NaN || LongitudePerPixel == double.NaN)
                 {
-                    if (!CenterOffset.IsZero)
-                    {
-                        CenterOffset = new LatLon();
-                        changed = true;
-                    }
+                    CenterOffset = new LatLon();
                 }
                 else
                 {
@@ -170,11 +195,120 @@ namespace OneAppAway._1_1.Views.Controls
                     double pixelOffsetX = newWidthCenter - widthCenter;
                     double pixelOffsetY = newHeightCenter - heightCenter;
                     CenterOffset = new LatLon(pixelOffsetY * LatitudePerPixel, pixelOffsetX * LongitudePerPixel);
-                    changed = true;
                 }
             }
-            //if (changed)
-            //    Center = LatLon.Seattle;
+            return (oldOffset != CenterOffset);
+        }
+
+        private void SetProperZoomLevel()
+        {
+            if (!User_ZoomLevelChanged.HasValue)
+                return;
+            if (User_ZoomLevelChanged.Value)
+                ZoomLevel = MainMap.ZoomLevel;
+            else
+                MainMap.ZoomLevel = ZoomLevel;
+            User_ZoomLevelChanged = null;
+        }
+
+        private void SetProperCenter()
+        {
+            if (!User_CenterChanged.HasValue)
+                return;
+            if (User_CenterChanged.Value)
+                Center = (LatLon)CenterConverter.ConvertBack(MainMap.Center, typeof(LatLon), null, null);
+            else
+                MainMap.Center = (Geopoint)CenterConverter.Convert(Center, typeof(Geopoint), null, null);
+            User_CenterChanged = null;
+        }
+
+        private void OnZoomLevelChanged()
+        {
+            if (!User_ZoomLevelChanged.HasValue)
+            {
+                User_ZoomLevelChanged = false;
+                SetProperZoomLevel();
+                if (RecalculateCenterOffset())
+                {
+                    User_CenterChanged = false;
+                    SetProperCenter();
+                }
+            }
+            DelaySetZoomLevel();
+
+            ZoomLevelBlock.Text = $"ZoomLevel: {ZoomLevel}";
+        }
+
+        private void OnCenterChanged()
+        {
+            if (!User_CenterChanged.HasValue)
+            {
+                User_CenterChanged = false;
+                SetProperCenter();
+            }
+            DelaySetCenter();
+
+            CoordsBlock.Text = Center.ToString();
+        }
+
+        private void OnCenterRegionChanged()
+        {
+            if (RecalculateCenterOffset())
+                OnCenterChanged();
+        }
+
+        void OnStopsSourceChanged(object oldValue, object newValue)
+        {
+            if (oldValue is ObservableCollection<TransitStop>)
+                UnregisterStopsSourceHandlers((ObservableCollection<TransitStop>)oldValue);
+            ClearStops();
+            if (newValue is ObservableCollection<TransitStop>)
+                RegisterStopsSourceHandlers((ObservableCollection<TransitStop>)newValue);
+            else if (newValue is IEnumerable<TransitStop>)
+            {
+                foreach (var stop in (IEnumerable<TransitStop>)newValue)
+                    AddStopsToMap(stop);
+            }
+            else if (newValue is TransitStop)
+                AddStopsToMap((TransitStop)newValue);
+        }
+
+        private void RegisterStopsSourceHandlers(ObservableCollection<TransitStop> collection)
+        {
+            collection.CollectionChanged += StopsSource_CollectionChanged;
+        }
+
+        private void UnregisterStopsSourceHandlers(ObservableCollection<TransitStop> collection)
+        {
+            collection.CollectionChanged -= StopsSource_CollectionChanged;
+        }
+
+        private void AddStopsToMap(params TransitStop[] stops)
+        {
+            foreach (var stop in stops)
+            {
+                TransitStopIconWrapper wrapper = new TransitStopIconWrapper(stop);
+                BindingOperations.SetBinding(wrapper, TransitStopIconWrapper.StopSizeProperty, new Binding() { Source = this, Path = new PropertyPath("ZoomLevelDelay"), Mode = BindingMode.OneWay, Converter = StopSizeConverter });
+                MainMap.MapElements.Add(wrapper.Icon);
+            }
+        }
+
+        private void ClearStops()
+        {
+            foreach (var item in MainMap.MapElements.ToArray().Where(me => (me is MapIcon) && AttachedProperties.GetElementType((MapIcon)me) == "TransitStop"))
+                MainMap.MapElements.Remove(item);
+        }
+
+        private void RemoveStopsFromMap(params TransitStop[] stops)
+        {
+            foreach (var item in MainMap.MapElements.ToArray())
+            {
+                if ((item is MapIcon) && AttachedProperties.GetElementType((MapIcon)item) == "TransitStop")
+                {
+                    if (stops.Any(stop => stop.ID == AttachedProperties.GetElementID((MapIcon)item)))
+                        MainMap.MapElements.Remove(item);
+                }
+            }
         }
         #endregion
 
@@ -186,21 +320,63 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void MainMap_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            RecalculateCenterOffset();
+            if (RecalculateCenterOffset())
+                OnCenterChanged();
         }
 
         private void MainMap_ZoomLevelChanged(Windows.UI.Xaml.Controls.Maps.MapControl sender, object args)
         {
-
+            if (!User_ZoomLevelChanged.HasValue)
+            {
+                User_ZoomLevelChanged = true;
+                SetProperZoomLevel();
+                if (RecalculateCenterOffset())
+                {
+                    User_CenterChanged = true;
+                    SetProperCenter();
+                }
+            }
         }
 
         private void MainMap_CenterChanged(Windows.UI.Xaml.Controls.Maps.MapControl sender, object args)
         {
+            if (!User_CenterChanged.HasValue)
+            {
+                User_CenterChanged = true;
+                SetProperCenter();
+            }
+        }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (StopsSource is ObservableCollection<TransitStop>)
+                RegisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            if (StopsSource is ObservableCollection<TransitStop>)
+                UnregisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
+        }
+
+        private void StopsSource_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Reset:
+                    ClearStops();
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
+                    AddStopsToMap(e.NewItems.Cast<TransitStop>().ToArray());
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
+                    RemoveStopsFromMap(e.OldItems.Cast<TransitStop>().ToArray());
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Replace:
+                    RemoveStopsFromMap(e.OldItems.Cast<TransitStop>().ToArray());
+                    AddStopsToMap(e.NewItems.Cast<TransitStop>().ToArray());
+                    break;
+            }
 
         }
         #endregion
@@ -211,6 +387,29 @@ namespace OneAppAway._1_1.Views.Controls
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+
+        #region Delayed Property Methods
+        private DateTime LastCenterLevelChange = DateTime.Now;
+        private DateTime LastZoomLevelChange = DateTime.Now;
+
+        private async void DelaySetCenter()
+        {
+            DateTime now = DateTime.Now;
+            LastCenterLevelChange = now;
+            await Task.Delay(DelayedPropertyWait);
+            if (LastCenterLevelChange == now)
+                CenterDelay = Center;
+        }
+
+        private async void DelaySetZoomLevel()
+        {
+            DateTime now = DateTime.Now;
+            LastZoomLevelChange = now;
+            await Task.Delay(DelayedPropertyWait);
+            if (LastZoomLevelChange == now)
+                ZoomLevelDelay = ZoomLevel;
         }
         #endregion
     }

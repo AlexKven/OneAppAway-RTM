@@ -10,6 +10,8 @@ using Windows.UI.Xaml.Controls.Maps;
 using OneAppAway._1_1.Data;
 using System.IO;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.Graphics.Imaging;
+using Windows.UI;
 
 namespace OneAppAway._1_1.Views.Controls
 {
@@ -20,30 +22,61 @@ namespace OneAppAway._1_1.Views.Controls
 
         private static IRandomAccessStream ImageS = null;
         private static IRandomAccessStream ImageM = null;
+        private static IRandomAccessStream ImageL = null;
+
+        private static IRandomAccessStream[] BusIconStreams = new IRandomAccessStream[27];
+
+        public static async Task LoadImages()
+        {
+            DateTime now = DateTime.Now;
+            for (int i = 0; i <= 2; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    string postfix = ((j == 0) ? "BusBase" : ("BusDirection" + ((StopDirection)j).ToString())) + (i == 0 ? "20" : "40");
+                    var bitmap = await WriteableBitmapExtensions.FromContent(null, new Uri($"ms-appx:///Assets/Icons/{postfix}.png"));
+                    InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream();
+                    await bitmap.ToStream(stream, BitmapEncoder.PngEncoderId);
+                    BusIconStreams[i * 9 + j] = stream;
+                }
+            }
+            System.Diagnostics.Debug.WriteLine((DateTime.Now - now).TotalMilliseconds);
+        }
+
+        public static async Task LoadImagesOld()
+        {
+            WriteableBitmap bmpL = new WriteableBitmap(60, 60);
+            WriteableBitmap bmpS = await bmpL.FromContent(new Uri("ms-appx:///Assets/Icons/BusBase20.png"));
+            WriteableBitmap bmpM = await bmpL.FromContent(new Uri("ms-appx:///Assets/Icons/BusBase40.png"));
+            
+            //bmpS.FillRectangle(0, 0, 19, 19, Colors.Black);
+            //bmpM.FillRectangle(0, 0, 39, 39, Colors.Black);
+            bmpL.FillRectangle(0, 0, 59, 59, Colors.Black);
+            //bmpS.FillRectangle(5, 5, 14, 14, Colors.LightGray);
+            //bmpM.FillRectangle(5, 5, 34, 34, Colors.LightGray);
+            bmpL.FillRectangle(5, 5, 54, 54, Colors.LightGray);
+            ImageS = new InMemoryRandomAccessStream();
+            ImageM = new InMemoryRandomAccessStream();
+            ImageL = new InMemoryRandomAccessStream();
+            await bmpS.ToStream(ImageS, BitmapEncoder.PngEncoderId);
+            await bmpM.ToStream(ImageM, BitmapEncoder.PngEncoderId);
+            await bmpL.ToStream(ImageL, BitmapEncoder.PngEncoderId);
+
+            //WriteableBitmap bmpL = new WriteableBitmap(60, 60);
+            //bmpL.FillRectangle(0, 0, 59, 59, Colors.Black);
+            //bmpL.FillRectangle(5, 5, 54, 54, Colors.LightGray);
+            //ImageL = new InMemoryRandomAccessStream();
+            //await bmpL.ToStreamAsJpeg(ImageL);
+        }
 
         public TransitStopIconWrapper(TransitStop stop)
         {
-            //if (ImageS == null)
-            //{
-            //    var imageS = new MemoryStream();
-            //    var imageM = new MemoryStream();
-            //    var bitmap = new BitmapImage(new Uri("ms-appx:///Assets/Icons/BusBase40.png"));
-            //    WriteableBitmap wb = new WriteableBitmap(bitmap.PixelWidth, bitmap.PixelHeight);
-            //    bitmap.
-            //    var sf = StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/Icons/BusBase40.png"));
-            //    sf.
-            //    str.CopyTo(imageS);
-            //    str.Dispose();
-            //    str = new FileStream(, FileMode.Open);
-            //    str.CopyTo(imageM);
-            //    str.Dispose();
-            //    ImageM = imageM.AsRandomAccessStream();
-            //    ImageS = imageS.AsRandomAccessStream();
-                
-            //}
-            Icon = new MapIcon() { Location = stop.Position.ToGeopoint() };
+            Icon = new MapIcon() { Location = stop.Position.ToGeopoint(), NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 0.5) };
+            AttachedProperties.SetElementType(Icon, "TransitStop");
+            AttachedProperties.SetElementID(Icon, stop.ID);
             Icon.CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible;
             Stop = stop;
+            SetStopSize();
         }
 
         public MapStopSize StopSize
@@ -59,19 +92,27 @@ namespace OneAppAway._1_1.Views.Controls
             MapStopSize oldVal = (MapStopSize)e.OldValue;
             if (newVal != oldVal)
             {
-                TransitStopIconWrapper instance = (TransitStopIconWrapper)sender;
-                StringBuilder uriBuilder = new StringBuilder("ms-appx:///Assets/Icons/");
-                if (instance.Stop.Direction == Data.StopDirection.Unspecified)
-                    uriBuilder.Append("BusBase");
-                else
-                {
-                    uriBuilder.Append("BusDirection");
-                    uriBuilder.Append(instance.Stop.Direction.ToString());
-                }
-                uriBuilder.Append(newVal == MapStopSize.Medium ? "40" : "20");
-                uriBuilder.Append(".png");
-                //instance.Icon.Image = newVal == MapStopSize.Medium ? RandomAccessStreamReference.CreateFromStream(ImageM) : RandomAccessStreamReference.CreateFromStream(ImageS);
-                instance.Icon.Image = RandomAccessStreamReference.CreateFromUri(new Uri(uriBuilder.ToString()));
+                (sender as TransitStopIconWrapper)?.SetStopSize();
+            }
+        }
+
+        private void SetStopSize()
+        {
+            if (Icon.Visible = (StopSize != MapStopSize.Invisible))
+            {
+                //StringBuilder uriBuilder = new StringBuilder("ms-appx:///Assets/Icons/");
+                //if (instance.Stop.Direction == Data.StopDirection.Unspecified)
+                //    uriBuilder.Append("BusBase");
+                //else
+                //{
+                //    uriBuilder.Append("BusDirection");
+                //    uriBuilder.Append(instance.Stop.Direction.ToString());
+                //}
+                //uriBuilder.Append(newVal == MapStopSize.Small ? "20" : "40");
+                //uriBuilder.Append(".png");
+                //instance.Icon.Image = RandomAccessStreamReference.CreateFromStream(newVal == MapStopSize.Medium ? ImageM : newVal == MapStopSize.Small ? ImageS : ImageM);
+                //instance.Icon.Image = RandomAccessStreamReference.CreateFromUri(new Uri(uriBuilder.ToString()));
+                Icon.Image = RandomAccessStreamReference.CreateFromStream(BusIconStreams[((int)StopSize - 1) * 9 + (int)Stop.Direction]);
             }
         }
 

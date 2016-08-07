@@ -42,5 +42,25 @@ namespace OneAppAway._1_1
         //{
         //    return element.GetValue(ImageStreamSourceProperty);
         //}
+
+        public static readonly DependencyProperty ElementIDProperty = DependencyProperty.RegisterAttached("ElementID", typeof(string), typeof(MapIcon), new PropertyMetadata(null));
+        public static string GetElementID(MapIcon element)
+        {
+            return (string)element.GetValue(ElementIDProperty);
+        }
+        public static void SetElementID(MapIcon element, string value)
+        {
+            element.SetValue(ElementIDProperty, value);
+        }
+
+        public static readonly DependencyProperty ElementTypeProperty = DependencyProperty.RegisterAttached("ElementType", typeof(string), typeof(MapIcon), new PropertyMetadata(null));
+        public static string GetElementType(MapIcon element)
+        {
+            return (string)element.GetValue(ElementTypeProperty);
+        }
+        public static void SetElementType(MapIcon element, string value)
+        {
+            element.SetValue(ElementTypeProperty, value);
+        }
     }
 }

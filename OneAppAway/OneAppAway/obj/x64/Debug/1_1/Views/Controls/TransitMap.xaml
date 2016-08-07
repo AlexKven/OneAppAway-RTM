@@ -9,9 +9,13 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
-                                   >
+                                                               >
     <Grid>
         <Maps:MapControl x:ConnectionId='2' Grid.RowSpan="2" TransitFeaturesVisible="False" PedestrianFeaturesVisible="True" TiltInteractionMode="Disabled"                                                                                                                                                               RotateInteractionMode="Disabled" ZoomInteractionMode="GestureOnly" x:Name="MainMap"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="#88FFFFFF">
+            <TextBlock x:ConnectionId='3' x:Name="CoordsBlock" Margin="2" Foreground="Black"/>
+            <TextBlock x:ConnectionId='4' x:Name="ZoomLevelBlock" Margin="2" Foreground="Black"/>
+        </StackPanel>
     </Grid>
 </UserControl>
 

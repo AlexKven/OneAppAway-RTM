@@ -9,8 +9,12 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
-    Unloaded="UserControl_Unloaded">
+    Unloaded="UserControl_Unloaded" Loaded="UserControl_Loaded">
     <Grid>
         <Maps:MapControl Grid.RowSpan="2" TransitFeaturesVisible="False" PedestrianFeaturesVisible="True" TiltInteractionMode="Disabled" MapElementClick="MainMap_MapElementClick" SizeChanged="MainMap_SizeChanged" ZoomLevelChanged="MainMap_ZoomLevelChanged" CenterChanged="MainMap_CenterChanged" RotateInteractionMode="Disabled" ZoomInteractionMode="GestureOnly" x:Name="MainMap"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="#88FFFFFF">
+            <TextBlock x:Name="CoordsBlock" Margin="2" Foreground="Black"/>
+            <TextBlock x:Name="ZoomLevelBlock" Margin="2" Foreground="Black"/>
+        </StackPanel>
     </Grid>
 </UserControl>

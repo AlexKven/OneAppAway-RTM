@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OneAppAway._1_1.Data
 {
-    public struct LatLon
+    public struct LatLon : IEquatable<LatLon>
     {
         public static LatLon Seattle => new LatLon(47.6062100, -122.3320700);
 
@@ -14,6 +14,13 @@ namespace OneAppAway._1_1.Data
         public double Longitude { get; }
 
         public bool IsZero => Latitude == 0 && Longitude == 0;
+        public bool IsNotALocation
+        {
+            get
+            {
+                return double.IsNaN(Latitude) || double.IsNaN(Longitude);
+            }
+        }
 
         public LatLon(double latitude, double longitude)
         {
@@ -52,6 +59,34 @@ namespace OneAppAway._1_1.Data
         public static LatLon operator -(LatLon left, LatLon right)
         {
             return left +-right;
+        }
+
+        public override string ToString()
+        {
+            return $"{Latitude}°, {Longitude}°";
+        }
+
+        public override bool Equals(Object obj)
+        {
+            return obj is LatLon && this == (LatLon)obj;
+        }
+        public override int GetHashCode()
+        {
+            return Latitude.GetHashCode() ^ Longitude.GetHashCode();
+        }
+
+        public bool Equals(LatLon other)
+        {
+            return this == other;
+        }
+
+        public static bool operator ==(LatLon left, LatLon right)
+        {
+            return left.Latitude == right.Latitude && left.Longitude == right.Longitude;
+        }
+        public static bool operator !=(LatLon x, LatLon y)
+        {
+            return !(x == y);
         }
     }
 }

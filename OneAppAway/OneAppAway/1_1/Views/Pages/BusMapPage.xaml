@@ -14,5 +14,6 @@
         <Rectangle IsHitTestVisible="False" Fill="#44000000" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="100"/>
         <Rectangle IsHitTestVisible="False" Fill="#44000000" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="150"/>
         <Rectangle IsHitTestVisible="False" Fill="#44000000" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="200"/>-->
+        <Rectangle IsHitTestVisible="False" Fill="#44000000" Margin="0,0,200,0"/>
     </Grid>
 </Page>

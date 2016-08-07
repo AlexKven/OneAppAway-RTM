@@ -8,6 +8,6 @@ namespace OneAppAway._1_1.Data
 {
     public enum MapStopSize
     {
-        Small, Medium
+        Invisible, Small, Medium, Large
     }
 }

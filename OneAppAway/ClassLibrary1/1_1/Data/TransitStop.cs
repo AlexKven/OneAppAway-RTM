@@ -10,12 +10,14 @@ namespace OneAppAway._1_1.Data
     {
         public StopDirection Direction { get; set; }
         public LatLon Position { get; set; }
-        public string GlobalID => $"{ProviderID}_{ProviderID}";
+        public string Path { get; set; }
+        public string ID { get; set; }
+        public string Provider { get; set; }
         public string ProviderID { get; set; }
-        public string LocalID { get; set; }
+        public string Parent { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
-        public int LocationType { get; set; }
+        //public int LocationType { get; set; }
         public string[] Routes { get; set; }
 
         //public static bool operator ==(BusStop lhs, BusStop rhs)

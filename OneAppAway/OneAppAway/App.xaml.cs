@@ -62,6 +62,7 @@ namespace OneAppAway
         {
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 320));
             await FileManager.EnsureFolders();
+            await OneAppAway._1_1.Views.Controls.TransitStopIconWrapper.LoadImages();
             AdDuplex.AdDuplexClient.Initialize("bef2bb37-a5ad-49d7-9ba6-b1ccaf4be44b");
             Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
 #if DEBUG

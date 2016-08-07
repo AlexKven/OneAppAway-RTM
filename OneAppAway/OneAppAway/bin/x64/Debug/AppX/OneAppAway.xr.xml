@@ -78,8 +78,9 @@
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Fill" />
       <RootProperty Name="Visibility" />
-      <RootProperty Name="Opacity" />
+      <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Opacity" />
       <RootProperty Name="Height" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
@@ -149,6 +150,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="RequestedTheme" />
       <RootEvent Name="Unloaded" />
+      <RootEvent Name="Loaded" />
       <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
@@ -165,6 +167,36 @@
       <RootMethod Name="SetNormalizedAnchorPoint" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.BusMap" />
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="Height" />
+      <RootEvent Name="SizeChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Inlines" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="MaxHeight" />
+      <RootProperty Name="TextTrimming" />
+      <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="Opacity" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Text" />
+    </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
@@ -196,17 +228,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootEvent Name="Navigated" />
       <RootEvent Name="Navigating" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Background" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Children" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="Tag" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="RequestedTheme" />
@@ -243,25 +264,6 @@
       <RootEvent Name="Checked" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="Inlines" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Tag" />
-      <RootProperty Name="MaxHeight" />
-      <RootProperty Name="TextTrimming" />
-      <RootProperty Name="IsHitTestVisible" />
-      <RootProperty Name="FontWeight" />
-      <RootProperty Name="Opacity" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Text" />
-    </RootType>
     <RootType FullName="OneAppAway.OuterFrame" />
     <RootType FullName="OneAppAway.NavigationFriendlyPage">
       <RootProperty Name="RequestedTheme" />

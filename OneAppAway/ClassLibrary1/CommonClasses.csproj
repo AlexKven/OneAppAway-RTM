@@ -38,7 +38,7 @@
     <Folder Include="1_1\Enums\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1_1\Data\BusStop.cs" />
+    <Compile Include="1_1\Data\TransitStop.cs" />
     <Compile Include="1_1\Data\LatLon.cs" />
     <Compile Include="1_1\Data\RectSubset.cs" />
     <Compile Include="1_1\Data\StopDirection.cs" />
