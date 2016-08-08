@@ -14,7 +14,7 @@ namespace DatabaseArchiver
 {
     public static class Archiver
     {
-        public static readonly SQLite.Net.Platform.WinRT.SQLitePlatformWinRT Platform = new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT();
+        //public static readonly SQLite.Net.Platform.WinRT.SQLitePlatformWinRT Platform = new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT();
         public static readonly string DBPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Database.db");
 
         public static async Task Begin(SQLiteConnection connection, CancellationToken token)
@@ -26,7 +26,7 @@ namespace DatabaseArchiver
                     ExecuteSQL(connection, string.Format($"insert or replace into Agency(AgencyID, Name, URL) values('{agency.AgencyID.Escape()}', '{agency.Name.Escape()}', '{agency.URL.Escape()}')"));
                 }
             }
-
+            
             foreach (string agencyID in ExecuteSQL(connection, "select AgencyID from PendingAgency"))
             {
                 foreach (var route in await ApiLayer.GetBusRoutesForAgency(agencyID, token))

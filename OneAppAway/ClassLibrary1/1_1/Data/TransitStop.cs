@@ -15,6 +15,7 @@ namespace OneAppAway._1_1.Data
         public string Provider { get; set; }
         public string ProviderID { get; set; }
         public string Parent { get; set; }
+        public string[] Children { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         //public int LocationType { get; set; }

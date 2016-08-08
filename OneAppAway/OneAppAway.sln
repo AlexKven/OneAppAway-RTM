@@ -15,11 +15,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xamarin Platforms", "Xamari
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UWP Apps", "UWP Apps", "{665C6778-9478-479F-AE01-E0BA0306B329}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared Code", "Shared Code", "{444736E4-3511-48F0-BD9B-CCB045B7C1E5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "All-Platform Code", "All-Platform Code", "{444736E4-3511-48F0-BD9B-CCB045B7C1E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B0E5D4CC-1694-460D-812E-B63B8F72EAC5}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UWPShared", "UWPShared\UWPShared.shproj", "{7ADC8FB2-42F2-4666-AA62-00A2942A2CF6}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		UWPShared\UWPShared.projitems*{0c05e78e-c056-4f36-ab2d-1ed9a65be017}*SharedItemsImports = 4
+		UWPShared\UWPShared.projitems*{20c382ce-9305-462a-803b-26710f88748f}*SharedItemsImports = 4
+		UWPShared\UWPShared.projitems*{7adc8fb2-42f2-4666-aa62-00a2942a2cf6}*SharedItemsImports = 13
+		UWPShared\UWPShared.projitems*{9f4d75fe-23db-4176-9a01-1937103f6270}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
 		Ad-Hoc|ARM = Ad-Hoc|ARM
@@ -272,5 +280,6 @@ Global
 		{0C05E78E-C056-4F36-AB2D-1ED9A65BE017} = {665C6778-9478-479F-AE01-E0BA0306B329}
 		{9F4D75FE-23DB-4176-9A01-1937103F6270} = {B0E5D4CC-1694-460D-812E-B63B8F72EAC5}
 		{24EEC194-2107-40A6-B5A4-57083E05131D} = {444736E4-3511-48F0-BD9B-CCB045B7C1E5}
+		{7ADC8FB2-42F2-4666-AA62-00A2942A2CF6} = {665C6778-9478-479F-AE01-E0BA0306B329}
 	EndGlobalSection
 EndGlobal

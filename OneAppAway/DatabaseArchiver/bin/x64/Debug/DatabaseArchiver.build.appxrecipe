@@ -79,17 +79,8 @@
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.Win32.Primitives\4.0.0\lib\dotnet\Microsoft.Win32.Primitives.dll">
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLite.Net-PCL\3.1.0\lib\Windows8\SQLite.Net.Platform.WinRT.dll">
-      <PackagePath>SQLite.Net.Platform.WinRT.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLite.Net.Core-PCL\3.1.0\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll">
-      <PackagePath>SQLite.Net.dll</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL\3.8.7.2\lib\netcore451\SQLitePCL.dll">
       <PackagePath>SQLitePCL.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLiteWrapperUWP-PCL\1.0.0.3\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BuiltToRoam.Data.SQLite.dll">
-      <PackagePath>BuiltToRoam.Data.SQLite.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\System.AppContext\4.0.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>

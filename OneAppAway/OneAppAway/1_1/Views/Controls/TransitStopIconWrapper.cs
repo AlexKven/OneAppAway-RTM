@@ -71,7 +71,7 @@ namespace OneAppAway._1_1.Views.Controls
 
         public TransitStopIconWrapper(TransitStop stop)
         {
-            Icon = new MapIcon() { Location = stop.Position.ToGeopoint(), NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 0.5) };
+            Icon = new MapIcon() { Location = stop.Position.ToGeopoint(), NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 0.5), ZIndex = 5 };
             AttachedProperties.SetElementType(Icon, "TransitStop");
             AttachedProperties.SetElementID(Icon, stop.ID);
             Icon.CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible;

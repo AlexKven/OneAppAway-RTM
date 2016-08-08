@@ -1,4 +1,4 @@
-﻿using SQLite.Net.Attributes;
+﻿//*dbusing SQLite.Net.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +17,8 @@ namespace OneAppAway._1_1
             URL = url;
         }
 
-        [PrimaryKey]
-        [NotNull]
+        //*db[PrimaryKey]
+        //*db[NotNull]
         public string AgencyID { get; set; }
 
         public string Name { get; set; }

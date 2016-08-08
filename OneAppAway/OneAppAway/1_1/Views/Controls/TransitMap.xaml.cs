@@ -36,6 +36,8 @@ namespace OneAppAway._1_1.Views.Controls
 
         private bool? User_CenterChanged = null;
         private bool? User_ZoomLevelChanged = null;
+
+        private List<string> HiddenStops = new List<string>();
         #endregion
 
         public TransitMap()
@@ -128,6 +130,7 @@ namespace OneAppAway._1_1.Views.Controls
         }
 
         private TimeSpan DelayedPropertyWait { get; set; } = TimeSpan.FromMilliseconds(100);
+        internal MapControl UnderlyingMapControl => MainMap;
 
         public object StopsSource
         {
@@ -287,9 +290,16 @@ namespace OneAppAway._1_1.Views.Controls
         {
             foreach (var stop in stops)
             {
+                if (HiddenStops.Contains(stop.ID))
+                    continue;
                 TransitStopIconWrapper wrapper = new TransitStopIconWrapper(stop);
                 BindingOperations.SetBinding(wrapper, TransitStopIconWrapper.StopSizeProperty, new Binding() { Source = this, Path = new PropertyPath("ZoomLevelDelay"), Mode = BindingMode.OneWay, Converter = StopSizeConverter });
                 MainMap.MapElements.Add(wrapper.Icon);
+                if (stop.Children != null)
+                {
+                    HiddenStops.AddRange(stop.Children);
+                    RemoveStopsFromMap(stop.Children);
+                }
             }
         }
 
@@ -299,13 +309,13 @@ namespace OneAppAway._1_1.Views.Controls
                 MainMap.MapElements.Remove(item);
         }
 
-        private void RemoveStopsFromMap(params TransitStop[] stops)
+        private void RemoveStopsFromMap(params string[] stops)
         {
             foreach (var item in MainMap.MapElements.ToArray())
             {
                 if ((item is MapIcon) && AttachedProperties.GetElementType((MapIcon)item) == "TransitStop")
                 {
-                    if (stops.Any(stop => stop.ID == AttachedProperties.GetElementID((MapIcon)item)))
+                    if (stops.Contains(AttachedProperties.GetElementID((MapIcon)item)))
                         MainMap.MapElements.Remove(item);
                 }
             }
@@ -315,7 +325,10 @@ namespace OneAppAway._1_1.Views.Controls
         #region Event Handlers
         private void MainMap_MapElementClick(Windows.UI.Xaml.Controls.Maps.MapControl sender, Windows.UI.Xaml.Controls.Maps.MapElementClickEventArgs args)
         {
-            
+            foreach (var el in args.MapElements)
+            {
+
+            }
         }
 
         private void MainMap_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -370,10 +383,10 @@ namespace OneAppAway._1_1.Views.Controls
                     AddStopsToMap(e.NewItems.Cast<TransitStop>().ToArray());
                     break;
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
-                    RemoveStopsFromMap(e.OldItems.Cast<TransitStop>().ToArray());
+                    RemoveStopsFromMap(e.OldItems.Cast<TransitStop>().Select(stop => stop.ID).ToArray());
                     break;
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Replace:
-                    RemoveStopsFromMap(e.OldItems.Cast<TransitStop>().ToArray());
+                    RemoveStopsFromMap(e.OldItems.Cast<TransitStop>().Select(stop => stop.ID).ToArray());
                     AddStopsToMap(e.NewItems.Cast<TransitStop>().ToArray());
                     break;
             }

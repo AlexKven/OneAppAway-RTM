@@ -48,3 +48,5 @@ Assets\WideLogo.scale-100.png
 OneAppAway.xr.xml
 Properties\Default.rd.xml
 WinMetadata\Windows.winmd
+SQLitePCL.Ext.dll
+SQLitePCL.Ext.pri

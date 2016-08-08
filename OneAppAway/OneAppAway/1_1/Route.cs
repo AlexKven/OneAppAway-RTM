@@ -1,4 +1,4 @@
-﻿using SQLite.Net.Attributes;
+﻿//*dbusing SQLite.Net.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace OneAppAway._1_1
             ShapeID = shapeID;
         }
 
-        [PrimaryKey, NotNull]
+        //*db[PrimaryKey, NotNull]
         public string RouteID { get; set; }
 
         public string Name { get; set; }

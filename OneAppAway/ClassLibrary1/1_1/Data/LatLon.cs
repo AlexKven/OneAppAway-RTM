@@ -66,6 +66,38 @@ namespace OneAppAway._1_1.Data
             return $"{Latitude}°, {Longitude}°";
         }
 
+        public string ToString(string format)
+        {
+            return $"{Latitude.ToString(format)}°, {Longitude.ToString(format)}°";
+        }
+
+        public static bool TryParse(string str, out LatLon result)
+        {
+            result = new LatLon();
+            if (str == null)
+                return false;
+            var parts = str.Split(',');
+            if (parts.Length != 2)
+                return false;
+            parts = parts.Select(part => part.Trim(' ', '°')).ToArray();
+            double lat;
+            double lon;
+            if (!double.TryParse(parts[0], out lat))
+                return false;
+            if (!double.TryParse(parts[1], out lon))
+                return false;
+            result = new LatLon(lat, lon);
+            return true;
+        }
+
+        public static LatLon Parse(string str)
+        {
+            LatLon result;
+            if (!TryParse(str, out result))
+                throw new ArgumentException($"{str} is not a valid LatLon.");
+            return result;
+        }
+
         public override bool Equals(Object obj)
         {
             return obj is LatLon && this == (LatLon)obj;

@@ -5,6 +5,6 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\ClassLibrary1.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
-C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\CommonClasses.csprojResolveAssemblyReference.cache
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\CommonClasses.csprojResolveAssemblyReference.cache
