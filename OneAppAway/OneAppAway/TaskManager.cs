@@ -106,7 +106,7 @@ namespace OneAppAway
     {
         public bool Success { get; private set; }
         public object Data { get; private set; }
-        public AppTaskResult? PreviousResult { get; private set; }
+        public object PreviousResult { get; private set; }
 
         public AppTaskResult(bool success, object data, AppTaskResult? previousResult)
         {
@@ -122,8 +122,8 @@ namespace OneAppAway
             AddResultDelegate = (atr) =>
             {
                 result.Insert(0, atr.Data);
-                if (atr.PreviousResult.HasValue)
-                    AddResultDelegate(atr.PreviousResult.Value);
+                if (atr.PreviousResult != null)
+                    AddResultDelegate((AppTaskResult)atr.PreviousResult);
             };
             AddResultDelegate(this);
             return result.ToArray();

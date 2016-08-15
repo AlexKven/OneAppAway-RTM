@@ -14,3 +14,4 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\ClassLibrary1.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
 C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.pdb
+C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\SQLitePCL.dll

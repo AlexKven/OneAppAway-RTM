@@ -20,6 +20,7 @@ using Windows.Devices.Geolocation;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Media.Animation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -31,13 +32,17 @@ namespace OneAppAway._1_1.Views.Controls
         private LatLon CenterOffset = new LatLon();
         private ValueConverterGroup CenterConverter = new ValueConverterGroup();
         
-        private StopSizeThresholdConverter StopSizeConverter = new StopSizeThresholdConverter() { LargeThreshold = 17, MediumThreshold = 16, SmallThreshold = 14 };
-        //TransitStopIconWrapper[] icons = new TransitStopIconWrapper[15 * 15];
+        private StopSizeThresholdConverter StopSizeConverter = new StopSizeThresholdConverter() { LargeThreshold = 18, MediumThreshold = 16.5, SmallThreshold = 14 };
 
         private bool? User_CenterChanged = null;
         private bool? User_ZoomLevelChanged = null;
 
         private List<string> HiddenStops = new List<string>();
+        private List<TransitStopIconWrapper> StopIconWrappers = new List<TransitStopIconWrapper>();
+
+        private ArrivalsControlInTransitPageViewModel ArrivalsViewModel;
+        private StopArrivalsControl ArrivalsPopup;
+        private TranslateTransform ArrivalsPopupTransform = new TranslateTransform();
         #endregion
 
         public TransitMap()
@@ -49,10 +54,10 @@ namespace OneAppAway._1_1.Views.Controls
 
             //MainMap.SetBinding(MapControl.CenterProperty, new Binding() { Converter = CenterConverters, Source = this, Path = new PropertyPath("Center"), Mode = BindingMode.TwoWay });
             //MainMap.SetBinding(MapControl.ZoomLevelProperty, new Binding() { Source = this, Path = new PropertyPath("ZoomLevel"), Mode = BindingMode.TwoWay });
-
-            MapIcon centerIndicator = new MapIcon() { NormalizedAnchorPoint = new Point(0.5, 1) };
-            BindingOperations.SetBinding(centerIndicator, MapIcon.LocationProperty, new Binding() { Source = this, Path = new PropertyPath("Center"), Converter = LatLonToGeopointConverter.Instance });
-            MainMap.MapElements.Add(centerIndicator);
+            
+            //MapIcon centerIndicator = new MapIcon() { NormalizedAnchorPoint = new Point(0.5, 1) };
+            //BindingOperations.SetBinding(centerIndicator, MapIcon.LocationProperty, new Binding() { Source = this, Path = new PropertyPath("Center"), Converter = LatLonToGeopointConverter.Instance });
+            //MainMap.MapElements.Add(centerIndicator);
         }
 
         #region Properties
@@ -108,6 +113,11 @@ namespace OneAppAway._1_1.Views.Controls
             (sender as TransitMap)?.OnCenterRegionChanged();
         }
 
+        public LatLon ActualCenter
+        {
+            get { return MainMap.Center.ToLatLon(); }
+        }
+
         private double _LatitudePerPixel = double.NaN;
         private double _LongitudePerPixel = double.NaN;
         public double LatitudePerPixel
@@ -129,6 +139,32 @@ namespace OneAppAway._1_1.Views.Controls
             }
         }
 
+        public LatLonRect Area
+        {
+            get
+            {
+                if (MainMap.ActualWidth > 0 && MainMap.ActualHeight > 0)
+                {
+                    try
+                    {
+                        double width = MainMap.ActualWidth;
+                        double height = MainMap.ActualHeight;
+                        Geopoint nw;
+                        Geopoint se;
+                        MainMap.GetLocationFromOffset(new Point(0, 0), out nw);
+                        MainMap.GetLocationFromOffset(new Point(width, height), out se);
+                        return LatLonRect.FromNWSE(nw.ToLatLon(), se.ToLatLon());
+                    }
+                    catch (ArgumentException)
+                    {
+                        return LatLonRect.NotAnArea;
+                    }
+                }
+                else
+                    return LatLonRect.NotAnArea;
+            }
+        }
+
         private TimeSpan DelayedPropertyWait { get; set; } = TimeSpan.FromMilliseconds(100);
         internal MapControl UnderlyingMapControl => MainMap;
 
@@ -142,6 +178,33 @@ namespace OneAppAway._1_1.Views.Controls
         static void OnStopsSourceChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             ((TransitMap)sender).OnStopsSourceChanged(e.OldValue, e.NewValue);
+        }
+
+        public TransitStop SelectedStop
+        {
+            get { return (TransitStop)GetValue(SelectedStopProperty); }
+            set { SetValue(SelectedStopProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedStop.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedStopProperty =
+            DependencyProperty.Register("SelectedStop", typeof(TransitStop), typeof(TransitMap), new PropertyMetadata(null, OnSelectedStopChangedStatic));
+        private static void OnSelectedStopChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as TransitMap)?.OnSelectedStopChanged();
+        }
+
+        public bool IsMapUpdatingSuspended
+        {
+            get { return (bool)GetValue(IsMapUpdatingSuspendedProperty); }
+            set { SetValue(IsMapUpdatingSuspendedProperty, value); }
+        }
+        public static readonly DependencyProperty IsMapUpdatingSuspendedProperty =
+            DependencyProperty.Register("IsMapUpdatingSuspended", typeof(bool), typeof(TransitMap), new PropertyMetadata(false));
+        private static void OnIsMapUpdatingSuspendedChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (!(bool)e.NewValue)
+                (sender as TransitMap)?.OnCenterChanged();
         }
         #endregion
 
@@ -239,11 +302,15 @@ namespace OneAppAway._1_1.Views.Controls
             }
             DelaySetZoomLevel();
 
-            ZoomLevelBlock.Text = $"ZoomLevel: {ZoomLevel}";
+            ZoomLevelBlock.Text = $"ZoomLevel: {ZoomLevel.ToString("#.00000")}";
+
+            ZoomLevelChanged?.Invoke(this, new EventArgs());
         }
 
         private void OnCenterChanged()
         {
+            if (IsMapUpdatingSuspended)
+                return;
             if (!User_CenterChanged.HasValue)
             {
                 User_CenterChanged = false;
@@ -251,13 +318,15 @@ namespace OneAppAway._1_1.Views.Controls
             }
             DelaySetCenter();
 
-            CoordsBlock.Text = Center.ToString();
+            CoordsBlock.Text = $"Center: {Center.ToString("#.00000")} Span: {Area.Span.ToString("#.00000")}";
+            CoordsBlock2.Text = $"Area: {Area.ToString("#.00000")}";
+            CenterChanged?.Invoke(this, new EventArgs());
         }
 
         private void OnCenterRegionChanged()
         {
             if (RecalculateCenterOffset())
-                OnCenterChanged();
+                MainMap_CenterChanged(MainMap, null);
         }
 
         void OnStopsSourceChanged(object oldValue, object newValue)
@@ -290,51 +359,95 @@ namespace OneAppAway._1_1.Views.Controls
         {
             foreach (var stop in stops)
             {
-                if (HiddenStops.Contains(stop.ID))
-                    continue;
                 TransitStopIconWrapper wrapper = new TransitStopIconWrapper(stop);
                 BindingOperations.SetBinding(wrapper, TransitStopIconWrapper.StopSizeProperty, new Binding() { Source = this, Path = new PropertyPath("ZoomLevelDelay"), Mode = BindingMode.OneWay, Converter = StopSizeConverter });
-                MainMap.MapElements.Add(wrapper.Icon);
                 if (stop.Children != null)
                 {
                     HiddenStops.AddRange(stop.Children);
                     RemoveStopsFromMap(stop.Children);
                 }
+                StopIconWrappers.Add(wrapper);
+                if (!HiddenStops.Contains(stop.ID))
+                    MainMap.MapElements.Add(wrapper.Element);
             }
         }
 
         private void ClearStops()
         {
-            foreach (var item in MainMap.MapElements.ToArray().Where(me => (me is MapIcon) && AttachedProperties.GetElementType((MapIcon)me) == "TransitStop"))
-                MainMap.MapElements.Remove(item);
+            foreach (var item in StopIconWrappers)
+                MainMap.MapElements.Remove(item.Element);
+            StopIconWrappers.Clear();
         }
 
         private void RemoveStopsFromMap(params string[] stops)
         {
-            foreach (var item in MainMap.MapElements.ToArray())
+            foreach (var item in StopIconWrappers.ToArray())
             {
-                if ((item is MapIcon) && AttachedProperties.GetElementType((MapIcon)item) == "TransitStop")
+                if (stops.Contains(AttachedProperties.GetElementID(item.Element)))
                 {
-                    if (stops.Contains(AttachedProperties.GetElementID((MapIcon)item)))
-                        MainMap.MapElements.Remove(item);
+                    MainMap.MapElements.Remove(item.Element);
+                    StopIconWrappers.Remove(item);
                 }
             }
+        }
+
+        private void OnSelectedStopChanged()
+        {
+
+        }
+
+        private void SetArrivalsViewModel()
+        {
+            ArrivalsPopup = new StopArrivalsControl() { RenderTransform = ArrivalsPopupTransform };
+            ArrivalsViewModel = new ArrivalsControlInTransitPageViewModel();
+            ArrivalsViewModel.VisibilityChangedCallback += async visible =>
+            {
+                DoubleAnimation opacityAnimation = new DoubleAnimation() { From = visible ? 0 : 1, To = visible ? 1 : 0, Duration = TimeSpan.FromMilliseconds(150) };
+                DoubleAnimation slideAnimation = new DoubleAnimation() { From = visible ? 10 : 0, To = visible ? 0 : 10, Duration = TimeSpan.FromMilliseconds(150) };
+                Storyboard.SetTarget(opacityAnimation, ArrivalsPopup);
+                Storyboard.SetTargetProperty(opacityAnimation, "Opacity");
+                Storyboard.SetTarget(slideAnimation, ArrivalsPopupTransform);
+                Storyboard.SetTargetProperty(slideAnimation, "Y");
+                Storyboard sb = new Storyboard();
+                sb.Children.Add(opacityAnimation);
+                sb.Children.Add(slideAnimation);
+                if (visible)
+                    ArrivalsViewModel.IsVisible = true;
+                await sb.BeginAsync();
+                if (!visible)
+                    ArrivalsViewModel.IsVisible = false;
+            };
+            ArrivalsViewModel.BindToControl(OnMapPopup, MapControl.LocationProperty, "MapLocation", false, LatLonToGeopointConverter.Instance, "UnsetNAL");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.WidthProperty, "Width");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.HeightProperty, "Height");
+            ArrivalsPopup.Visibility = Visibility.Visible;
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.VisibilityProperty, "IsVisible", false, BoolToVisibilityConverter.Instance);
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.IsExpandEnabledProperty, "IsExpandEnabled");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.IsCompressEnabledProperty, "IsCompressEnabled");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.DataContextProperty, "DataContext");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.ExpandCommandProperty, "ExpandCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.CompressCommandProperty, "CompressCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.CloseCommandProperty, "CloseCommand");
+            ArrivalsViewModel.BindToControl(this, TransitMap.CenterRegionProperty, "CenterRegion");
+            ArrivalsViewModel.PropertyChanged += ArrivalsViewModel_PropertyChanged;
+            OnMapPopup.Content = ArrivalsPopup;
+            ArrivalsViewModel.SetSize(MainMap.ActualWidth, MainMap.ActualHeight);
+        }
+
+        public async Task TrySetView(LatLon center, double? zoomLevel = null)
+        {
+            var adjustedCenter = (Geopoint)CenterConverter.Convert(center, typeof(Geopoint), null, null);
+            await MainMap.TrySetViewAsync(adjustedCenter, zoomLevel, null, null, MapAnimationKind.Bow);
         }
         #endregion
 
         #region Event Handlers
-        private void MainMap_MapElementClick(Windows.UI.Xaml.Controls.Maps.MapControl sender, Windows.UI.Xaml.Controls.Maps.MapElementClickEventArgs args)
-        {
-            foreach (var el in args.MapElements)
-            {
-
-            }
-        }
-
         private void MainMap_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (RecalculateCenterOffset())
                 OnCenterChanged();
+            if (ArrivalsViewModel != null)
+                ArrivalsViewModel.SetSize(e.NewSize.Width, e.NewSize.Height);
         }
 
         private void MainMap_ZoomLevelChanged(Windows.UI.Xaml.Controls.Maps.MapControl sender, object args)
@@ -362,14 +475,14 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (StopsSource is ObservableCollection<TransitStop>)
-                RegisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
+            //if (StopsSource is ObservableCollection<TransitStop>)
+            //    RegisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            if (StopsSource is ObservableCollection<TransitStop>)
-                UnregisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
+            //if (StopsSource is ObservableCollection<TransitStop>)
+            //    UnregisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
         }
 
         private void StopsSource_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -390,7 +503,57 @@ namespace OneAppAway._1_1.Views.Controls
                     AddStopsToMap(e.NewItems.Cast<TransitStop>().ToArray());
                     break;
             }
+        }
 
+        private async void MainMap_MapElementClick(MapControl sender, MapElementClickEventArgs args)
+        {
+            //foreach (var el in args.MapElements)
+            //{
+            //}
+            if (args.MapElements != null && args.MapElements.Count > 0)
+            {
+                if (ArrivalsViewModel == null)
+                    SetArrivalsViewModel();
+                TransitStop? stop = StopIconWrappers.First(w => w.Element == args.MapElements[0]).Stop;
+                ArrivalsViewModel.Stop = stop;
+                if (stop.HasValue)
+                {
+                    TrySetView(stop.Value.Position).ToString();
+                    await Task.Delay(150);
+                }
+                ArrivalsViewModel.SetVisibility();
+            }
+        }
+
+        private void MainMap_MapElementPointerEntered(MapControl sender, MapElementPointerEnteredEventArgs args)
+        {
+            var wrapper = StopIconWrappers.FirstOrDefault(w => w.Element == args.MapElement);
+            if (wrapper != null)
+                wrapper.Hovered = true;
+        }
+
+        private void MainMap_MapElementPointerExited(MapControl sender, MapElementPointerExitedEventArgs args)
+        {
+            var wrapper = StopIconWrappers.FirstOrDefault(w => w.Element == args.MapElement);
+            if (wrapper != null)
+                wrapper.Hovered = false;
+        }
+
+        private void ArrivalsViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsOnMap")
+            {
+                if (ArrivalsViewModel.IsOnMap && OffMapPopup.Content == ArrivalsPopup)
+                {
+                    OffMapPopup.Content = null;
+                    OnMapPopup.Content = ArrivalsPopup;
+                }
+                else if (!ArrivalsViewModel.IsOnMap && OnMapPopup.Content == ArrivalsPopup)
+                {
+                    OnMapPopup.Content = null;
+                    OffMapPopup.Content = ArrivalsPopup;
+                }
+            }
         }
         #endregion
 
@@ -424,6 +587,11 @@ namespace OneAppAway._1_1.Views.Controls
             if (LastZoomLevelChange == now)
                 ZoomLevelDelay = ZoomLevel;
         }
+        #endregion
+
+        #region Events
+        public event EventHandler CenterChanged;
+        public event EventHandler ZoomLevelChanged;
         #endregion
     }
 }

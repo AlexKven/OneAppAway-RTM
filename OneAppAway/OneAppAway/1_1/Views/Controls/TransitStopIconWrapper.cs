@@ -12,12 +12,13 @@ using System.IO;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Graphics.Imaging;
 using Windows.UI;
+using Windows.UI.Xaml.Controls;
 
 namespace OneAppAway._1_1.Views.Controls
 {
     public class TransitStopIconWrapper : DependencyObject
     {
-        public MapIcon Icon { get; }
+        public MapElement Element { get; }
         public TransitStop Stop { get; }
 
         private static IRandomAccessStream ImageS = null;
@@ -71,10 +72,16 @@ namespace OneAppAway._1_1.Views.Controls
 
         public TransitStopIconWrapper(TransitStop stop)
         {
-            Icon = new MapIcon() { Location = stop.Position.ToGeopoint(), NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 0.5), ZIndex = 5 };
-            AttachedProperties.SetElementType(Icon, "TransitStop");
-            AttachedProperties.SetElementID(Icon, stop.ID);
-            Icon.CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible;
+            if (stop.Path == null)
+            {
+                Element = new MapIcon() { Location = stop.Position.ToGeopoint(), NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 0.5), CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible, ZIndex = 5 };
+            }
+            else
+            {
+                Element = new MapPolygon() { Path = new Windows.Devices.Geolocation.Geopath(GooglePolylineConverter.Decode(stop.Path).Select(ll => ll.ToBasicGeoposition())), StrokeColor = Colors.Black, FillColor = Colors.DarkGray, StrokeThickness = 2, ZIndex = 4 };
+            }
+            AttachedProperties.SetElementType(Element, "TransitStop");
+            AttachedProperties.SetElementID(Element, stop.ID);
             Stop = stop;
             SetStopSize();
         }
@@ -90,29 +97,60 @@ namespace OneAppAway._1_1.Views.Controls
         {
             MapStopSize newVal = (MapStopSize)e.NewValue;
             MapStopSize oldVal = (MapStopSize)e.OldValue;
+            var typedSender = sender as TransitStopIconWrapper;
             if (newVal != oldVal)
             {
-                (sender as TransitStopIconWrapper)?.SetStopSize();
+                typedSender.SetCorrectStopSize();
             }
         }
 
-        private void SetStopSize()
+        private bool _Hovered = false;
+        public bool Hovered
         {
-            if (Icon.Visible = (StopSize != MapStopSize.Invisible))
+            get { return _Hovered; }
+            set
             {
-                //StringBuilder uriBuilder = new StringBuilder("ms-appx:///Assets/Icons/");
-                //if (instance.Stop.Direction == Data.StopDirection.Unspecified)
-                //    uriBuilder.Append("BusBase");
-                //else
-                //{
-                //    uriBuilder.Append("BusDirection");
-                //    uriBuilder.Append(instance.Stop.Direction.ToString());
-                //}
-                //uriBuilder.Append(newVal == MapStopSize.Small ? "20" : "40");
-                //uriBuilder.Append(".png");
-                //instance.Icon.Image = RandomAccessStreamReference.CreateFromStream(newVal == MapStopSize.Medium ? ImageM : newVal == MapStopSize.Small ? ImageS : ImageM);
-                //instance.Icon.Image = RandomAccessStreamReference.CreateFromUri(new Uri(uriBuilder.ToString()));
-                Icon.Image = RandomAccessStreamReference.CreateFromStream(BusIconStreams[((int)StopSize - 1) * 9 + (int)Stop.Direction]);
+                _Hovered = value;
+                SetCorrectStopSize();
+            }
+        }
+
+        private void SetStopSize() => SetStopSize(StopSize);
+
+        private void SetStopSize(MapStopSize size)
+        {
+            if (Element.Visible = (size != MapStopSize.Invisible))
+            {
+                if (Element is MapIcon)
+                {
+                    ((MapIcon)Element).Image = RandomAccessStreamReference.CreateFromStream(BusIconStreams[((int)size - 1) * 9 + (int)Stop.Direction]);
+                    ((MapIcon)Element).Title = size == MapStopSize.Large ? Stop.Name ?? "" : "";
+                }
+            }
+        }
+
+        private void SetCorrectStopSize()
+        {
+            if (Hovered)
+            {
+                if (Element is MapIcon)
+                    SetStopSize((MapStopSize)Math.Min((int)StopSize + 1, (int)MapStopSize.Large));
+                else if (Element is MapPolygon)
+                {
+                    ((MapPolygon)Element).FillColor = Colors.LightGray;
+                    //ToolTipService.SetToolTip(((MapPolygon)Element), new ToolTip() { Content = Stop.Name });
+                }
+            }
+            else
+            {
+                if (Element is MapIcon)
+                    SetStopSize();
+                else if (Element is MapPolygon)
+                {
+                    ((MapPolygon)Element).FillColor = Colors.DarkGray;
+                    
+                    //ToolTipService.SetToolTip(((MapPolygon)Element), DependencyProperty.UnsetValue);
+                }
             }
         }
 

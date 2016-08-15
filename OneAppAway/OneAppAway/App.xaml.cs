@@ -135,7 +135,7 @@ namespace OneAppAway
                 }
 
                 //Test Page
-                RootFrame.Navigate(typeof(_1_1.Pages.BusMapPage));
+                RootFrame.Navigate(typeof(_1_1.Views.Pages.TransitMapPage));
             }
             // Ensure the current window is active
             Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
@@ -145,6 +145,8 @@ namespace OneAppAway
             BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             LocationManager.Dispatcher = RootFrame.Dispatcher;
             SetTitleBar();
+            
+            
 
             Message.ShowMessage(new Message() { ShortSummary = "Public transit data powered by OneBusAway.", Caption = "Welcome!", FullText="This app uses data provided by the OneBusAway api. OneBusAway also provides its own app for this platform, and is available for free. This app builds on the functions of the official app, and provides additional functionality not available in OneBusAway's own app.", Id = 1 });
             //if (CurrentApp.LicenseInformation.IsTrial)

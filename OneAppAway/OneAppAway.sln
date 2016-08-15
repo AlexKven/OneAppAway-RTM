@@ -21,12 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B0E5D4CC
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UWPShared", "UWPShared\UWPShared.shproj", "{7ADC8FB2-42F2-4666-AA62-00A2942A2CF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneAppAwayAnalytics", "OneAppAwayAnalytics\OneAppAwayAnalytics.csproj", "{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		UWPShared\UWPShared.projitems*{0c05e78e-c056-4f36-ab2d-1ed9a65be017}*SharedItemsImports = 4
 		UWPShared\UWPShared.projitems*{20c382ce-9305-462a-803b-26710f88748f}*SharedItemsImports = 4
 		UWPShared\UWPShared.projitems*{7adc8fb2-42f2-4666-aa62-00a2942a2cf6}*SharedItemsImports = 13
-		UWPShared\UWPShared.projitems*{9f4d75fe-23db-4176-9a01-1937103f6270}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -91,7 +92,9 @@ Global
 		{20C382CE-9305-462A-803B-26710F88748F}.AppStore|x86.ActiveCfg = Release|x86
 		{20C382CE-9305-462A-803B-26710F88748F}.AppStore|x86.Build.0 = Release|x86
 		{20C382CE-9305-462A-803B-26710F88748F}.AppStore|x86.Deploy.0 = Release|x86
-		{20C382CE-9305-462A-803B-26710F88748F}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{20C382CE-9305-462A-803B-26710F88748F}.Debug|Any CPU.ActiveCfg = Debug|ARM
+		{20C382CE-9305-462A-803B-26710F88748F}.Debug|Any CPU.Build.0 = Debug|ARM
+		{20C382CE-9305-462A-803B-26710F88748F}.Debug|Any CPU.Deploy.0 = Debug|ARM
 		{20C382CE-9305-462A-803B-26710F88748F}.Debug|ARM.ActiveCfg = Debug|ARM
 		{20C382CE-9305-462A-803B-26710F88748F}.Debug|ARM.Build.0 = Debug|ARM
 		{20C382CE-9305-462A-803B-26710F88748F}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -271,6 +274,54 @@ Global
 		{24EEC194-2107-40A6-B5A4-57083E05131D}.Release|x64.Build.0 = Release|Any CPU
 		{24EEC194-2107-40A6-B5A4-57083E05131D}.Release|x86.ActiveCfg = Release|Any CPU
 		{24EEC194-2107-40A6-B5A4-57083E05131D}.Release|x86.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|ARM.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|x64.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|x64.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Ad-Hoc|x86.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|ARM.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|x64.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.AppStore|x86.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|x64.Build.0 = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Debug|x86.Build.0 = Debug|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|ARM.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|iPhone.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|x64.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|x64.Build.0 = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|x86.ActiveCfg = Release|Any CPU
+		{B7CB7A97-E7CA-47AD-A362-5438D357AC1A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

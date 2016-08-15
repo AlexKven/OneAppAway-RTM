@@ -55,7 +55,7 @@
     <Compile Include="RectSubsetTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UWp_DatabaseManagerTests.cs" />
+    <Compile Include="SqlProviderExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\CommonClasses.csproj">
@@ -63,7 +63,6 @@
       <Name>CommonClasses</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\UWPShared\UWPShared.projitems" Label="Shared" />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

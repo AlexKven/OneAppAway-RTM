@@ -255,7 +255,8 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "SQLitePCL/3.8.5": {
+      "sqlite-net/1.0.8": {},
+      "SQLitePCL/3.8.7.2": {
         "compile": {
           "lib/netcore451/SQLitePCL.dll": {}
         },
@@ -2051,7 +2052,8 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "SQLitePCL/3.8.5": {
+      "sqlite-net/1.0.8": {},
+      "SQLitePCL/3.8.7.2": {
         "compile": {
           "lib/netcore451/SQLitePCL.dll": {}
         },
@@ -3693,7 +3695,8 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "SQLitePCL/3.8.5": {
+      "sqlite-net/1.0.8": {},
+      "SQLitePCL/3.8.7.2": {
         "compile": {
           "lib/netcore451/SQLitePCL.dll": {}
         },
@@ -5333,7 +5336,8 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "SQLitePCL/3.8.5": {
+      "sqlite-net/1.0.8": {},
+      "SQLitePCL/3.8.7.2": {
         "compile": {
           "lib/netcore451/SQLitePCL.dll": {}
         },
@@ -6975,7 +6979,8 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "SQLitePCL/3.8.5": {
+      "sqlite-net/1.0.8": {},
+      "SQLitePCL/3.8.7.2": {
         "compile": {
           "lib/netcore451/SQLitePCL.dll": {}
         },
@@ -8615,7 +8620,8 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "SQLitePCL/3.8.5": {
+      "sqlite-net/1.0.8": {},
+      "SQLitePCL/3.8.7.2": {
         "compile": {
           "lib/netcore451/SQLitePCL.dll": {}
         },
@@ -10257,7 +10263,8 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "SQLitePCL/3.8.5": {
+      "sqlite-net/1.0.8": {},
+      "SQLitePCL/3.8.7.2": {
         "compile": {
           "lib/netcore451/SQLitePCL.dll": {}
         },
@@ -12300,14 +12307,25 @@
         "ref/xamarinmac20/_._"
       ]
     },
-    "SQLitePCL/3.8.5": {
-      "sha512": "Gp8l88qpLCcNtgDS9o97LnBeSm1pT3cTJLXnhyWyL80yxJoQxyJZ3fQScy/6p+E04LNIZBc0OI4Ze1iWRtT1Ow==",
+    "sqlite-net/1.0.8": {
+      "sha512": "gJXHCj1gSTPTYzL9oJevih+JwF9EUnt/EO2ccnTLDBtYeVDCIRXPdTSBokSWL7mjNIDnOcpB1zAuC9Qg9YAgAg==",
       "type": "package",
       "files": [
-        "SQLitePCL.3.8.5.nupkg.sha512",
+        "content/SQLite.cs",
+        "content/SQLiteAsync.cs",
+        "sqlite-net.1.0.8.nupkg.sha512",
+        "sqlite-net.nuspec"
+      ]
+    },
+    "SQLitePCL/3.8.7.2": {
+      "sha512": "Vi2/IJKPV4Web9GX+wn42foALVjFM68uTEoIOY6Ir8keF5OkniMB/iXCg3N2GWgj5ex7dCAsJmhv1sX84Fj9dQ==",
+      "type": "package",
+      "files": [
+        "SQLitePCL.3.8.7.2.nupkg.sha512",
         "SQLitePCL.nuspec",
         "build/MonoAndroid/_._",
         "build/MonoTouch/_._",
+        "build/Xamarin.iOS10/_._",
         "build/net45/SQLitePCL.Ext.dll",
         "build/net45/SQLitePCL.props",
         "build/net45/SQLitePCL.targets",
@@ -12319,7 +12337,7 @@
         "build/netcore451/SQLitePCL.Ext.pri",
         "build/netcore451/SQLitePCL.props",
         "build/netcore451/SQLitePCL.targets",
-        "build/portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10/_._",
+        "build/portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10/_._",
         "build/wp8/ARM/SQLitePCL.Ext.WindowsPhone8.RuntimeProxy.dll",
         "build/wp8/ARM/SQLitePCL.Ext.WindowsPhone8.RuntimeProxy.winmd",
         "build/wp8/ARM/SQLitePCL.Ext.dll",
@@ -12344,10 +12362,12 @@
         "lib/MonoAndroid/SQLitePCL.dll",
         "lib/MonoTouch/SQLitePCL.Ext.dll",
         "lib/MonoTouch/SQLitePCL.dll",
+        "lib/Xamarin.iOS10/SQLitePCL.Ext.dll",
+        "lib/Xamarin.iOS10/SQLitePCL.dll",
         "lib/net45/SQLitePCL.dll",
         "lib/netcore45/SQLitePCL.dll",
         "lib/netcore451/SQLitePCL.dll",
-        "lib/portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10/SQLitePCL.dll",
+        "lib/portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10/SQLitePCL.dll",
         "lib/wp8/SQLitePCL.Ext.WindowsPhone8.RuntimeProxy.dll",
         "lib/wp8/SQLitePCL.Ext.WindowsPhone8.RuntimeProxy.winmd",
         "lib/wp8/SQLitePCL.dll",
@@ -12358,12 +12378,13 @@
         "readme.txt",
         "tools/MonoAndroid/install.ps1",
         "tools/MonoTouch/install.ps1",
+        "tools/Xamarin.iOS10/install.ps1",
         "tools/net45/install.ps1",
         "tools/netcore45/install.ps1",
         "tools/netcore45/uninstall.ps1",
         "tools/netcore451/install.ps1",
         "tools/netcore451/uninstall.ps1",
-        "tools/portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10/install.ps1",
+        "tools/portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10/install.ps1",
         "tools/wp8/install.ps1",
         "tools/wp8/uninstall.ps1",
         "tools/wp81/install.ps1",
@@ -15105,8 +15126,9 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
-      "SQLitePCL >= 3.8.5",
-      "WriteableBitmapEx >= 1.5.0"
+      "SQLitePCL >= 3.8.7.2",
+      "WriteableBitmapEx >= 1.5.0",
+      "sqlite-net >= 1.0.8"
     ],
     "UAP,Version=v10.0": []
   }

@@ -1,7 +1,8 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "SQLitePCL": "3.8.5",
+    "sqlite-net": "1.0.8",
+    "SQLitePCL": "3.8.7.2",
     "WriteableBitmapEx": "1.5.0"
   },
   "frameworks": {

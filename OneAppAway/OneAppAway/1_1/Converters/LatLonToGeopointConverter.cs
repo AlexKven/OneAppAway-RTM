@@ -14,7 +14,11 @@ namespace OneAppAway._1_1.Converters
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (value is LatLon)
+            {
+                if (((LatLon)value).IsNotALocation && parameter?.ToString() == "UnsetNAL")
+                    return Windows.UI.Xaml.DependencyProperty.UnsetValue;
                 return ((LatLon)value).ToGeopoint();
+            }
             return null;
         }
 

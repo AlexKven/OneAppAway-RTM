@@ -83,5 +83,7 @@ namespace OneAppAway._1_1.Data
         protected abstract string GetColumn(T value, string columnName);
 
         protected abstract T ParseRow(string[] row);
+
+        public abstract IEnumerable<T> Select(Func<string, string[,]> queryCallback, string conditions = null);
     }
 }

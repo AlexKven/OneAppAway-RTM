@@ -106,14 +106,21 @@
     <Compile Include="1_1\BusMap.xaml.cs">
       <DependentUpon>BusMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="1_1\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="1_1\Converters\LatLonToGeopointConverter.cs" />
     <Compile Include="1_1\Converters\LatLonTransformConverter.cs" />
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
-    <Compile Include="1_1\DatabaseManager.cs" />
+    <Compile Include="1_1\Data\DatabaseRetriever.cs" />
+    <Compile Include="1_1\Data\ApiLayer.cs" />
     <Compile Include="1_1\Helpers.cs" />
-    <Compile Include="1_1\ViewModels\BusMapViewModel.cs" />
-    <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
+    <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
+      <DependentUpon>StopArrivalsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\StopArrivalsControlBase.cs" />
+    <Compile Include="1_1\Views\Controls\StopArrivalsSubControl.xaml.cs">
+      <DependentUpon>StopArrivalsSubControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="1_1\Views\Controls\TransitMap.xaml.cs">
       <DependentUpon>TransitMap.xaml</DependentUpon>
     </Compile>
@@ -123,6 +130,9 @@
       <DependentUpon>BusMapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Route.cs" />
+    <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
+      <DependentUpon>TransitMapPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>
@@ -164,7 +174,7 @@
     <Compile Include="Pages\MessagePopupPage.xaml.cs">
       <DependentUpon>MessagePopupPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="ApplicationSettings.cs" />
     <Compile Include="Settings\BandwidthManager.cs" />
     <Compile Include="ComboBoxIconAndText.cs" />
     <Compile Include="Common\NavigationFriendlyPage.cs" />
@@ -283,11 +293,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="1_1\Views\Controls\StopArrivalsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\StopArrivalsSubControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="1_1\Views\Controls\TransitMap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="1_1\Views\Pages\BusMapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TransitMapPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -396,6 +418,9 @@
     <SDKReference Include="AdDuplex.Windows10, Version=10.0.1.5">
       <Name>AdDuplex SDK for Windows 10 %28XAML%29</Name>
     </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
     <SDKReference Include="Microsoft.VCLibs.120, Version=14.0">
       <Name>Microsoft Visual C++ 2013 Runtime Package for Windows Universal</Name>
     </SDKReference>
@@ -410,7 +435,6 @@
     <AppxSystemBinary Include="OneAppAway.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="1_1\Data\" />
     <Folder Include="Visuals\" />
   </ItemGroup>
   <ItemGroup>

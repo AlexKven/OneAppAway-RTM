@@ -22,6 +22,8 @@ namespace OneAppAway._1_1.Data
             }
         }
 
+        public static LatLon NotALocation => new LatLon(double.NaN, double.NaN);
+
         public LatLon(double latitude, double longitude)
         {
             while (latitude < -180)
@@ -59,6 +61,18 @@ namespace OneAppAway._1_1.Data
         public static LatLon operator -(LatLon left, LatLon right)
         {
             return left +-right;
+        }
+
+        public static LatLon operator *(LatLon left, double right)
+        {
+            return new LatLon(left.Latitude * right, left.Longitude * right);
+        }
+
+        public static LatLon operator *(double left, LatLon right) => right * left;
+
+        public static LatLon operator /(LatLon left, double right)
+        {
+            return new LatLon(left.Latitude / right, left.Longitude / right);
         }
 
         public override string ToString()
