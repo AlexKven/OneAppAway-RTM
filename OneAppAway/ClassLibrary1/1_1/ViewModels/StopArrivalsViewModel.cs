@@ -16,7 +16,7 @@ namespace OneAppAway._1_1.ViewModels
             {
                 foreach (var childID in stop.Children)
                 {
-                    var child = new TransitStopSqlProvider().Select(query => DatabaseManager.ExecuteSQL(DatabaseManager.MemoryDatabase, query), $"ID = '{childID}'").FirstOrDefault();
+                    var child = TransitStop.SqlProvider.Select(query => DatabaseManager.ExecuteSQL(DatabaseManager.MemoryDatabase, query), $"ID = '{childID}'").FirstOrDefault();
                     ChildrenSource.Add(new StopArrivalsViewModel(child)); //Nested ViewModels!
                 }
             }

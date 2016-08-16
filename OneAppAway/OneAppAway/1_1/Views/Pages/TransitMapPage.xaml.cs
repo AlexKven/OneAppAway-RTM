@@ -26,14 +26,12 @@ namespace OneAppAway._1_1.Views.Pages
     public sealed partial class TransitMapPage : Page
     {
         private ObservableCollection<TransitStop> Stops = new ObservableCollection<TransitStop>();
-        private TransitStopSqlProvider provider;
 
         public TransitMapPage()
         {
             this.InitializeComponent();
-            provider = new TransitStopSqlProvider();
             DatabaseManager.Initialize(null);
-            DatabaseManager.ExecuteSQL(DatabaseManager.MemoryDatabase, provider.CreateTableQuery());
+            TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabaseQueryCallback, true);
             MainMap.StopsSource = Stops;
         }
 
@@ -50,13 +48,13 @@ namespace OneAppAway._1_1.Views.Pages
             var fwtc = new string[] { "1_80439", "1_80431", "1_80438", "1_80432", "1_80437", "1_80433", "3_27814", "3_29410" };
             var stops = await _1_1.Data.ApiLayer.GetTransitStopsForArea(MainMap.Area, new System.Threading.CancellationToken());
             var fwtcStop = new TransitStop() { ID = "FWTC", Position = new LatLon(47.31753, -122.30486), Path = "_vx_HlnniVF??LJ??MF??nIG??MK??LG?", Name = "Federal Way Transit Center" };
-            DatabaseManager.ExecuteSQL(DatabaseManager.MemoryDatabase, provider.InsertQuery(fwtcStop));
+            TransitStop.SqlProvider.Insert(fwtcStop, DatabaseManager.MemoryDatabaseQueryCallback);
             foreach (var stop in stops)
             {
                 var finalStop = stop;
                 if (fwtc.Contains(finalStop.ID))
                     finalStop.Parent = "FWTC";
-                DatabaseManager.ExecuteSQL(DatabaseManager.MemoryDatabase, provider.InsertQuery(finalStop));
+                TransitStop.SqlProvider.Insert(finalStop, DatabaseManager.MemoryDatabaseQueryCallback);
             }
             LoadFromDatabase();
             //MainGrid.Children.Add(new Controls.StopArrivalsControl() { DataContext = new StopArrivalsViewModel(new TransitStop() { Children = new string[] { "FWTC" }, Name = "Selected Stops" }), Margin = new Thickness(50) });

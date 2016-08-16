@@ -18,6 +18,7 @@ namespace OneAppAway._1_1
         private static SQLiteConnection _DiskDatabase;
 
         public static SQLiteConnection MemoryDatabase => _MemoryDatabase;
+        public static Func<string, string[,]> MemoryDatabaseQueryCallback => (query => ExecuteSQL(MemoryDatabase, query));
 
         public static void Initialize(string diskDBLocation)
         {

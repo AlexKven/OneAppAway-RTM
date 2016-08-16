@@ -4,7 +4,7 @@
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "sqlite-net": "1.0.8",
+    "sqlite-net-pcl": "1.1.2",
     "SQLitePCL": "3.8.7.2"
   },
   "frameworks": {

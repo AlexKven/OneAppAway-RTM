@@ -12,48 +12,7 @@ namespace OneAppAway._1_1.Data
         protected string[] ColumnNames;
         protected string[] ColumnDescriptors;
 
-        public string CreateTableQuery(bool ifNotExists = true)
-        {
-            StringBuilder queryBuilder = new StringBuilder("create table ");
-            if (ifNotExists)
-                queryBuilder.Append("if not exists ");
-            queryBuilder.Append(TableName);
-            queryBuilder.Append('(');
-            for (int i = 0; i < ColumnNames.Length; i++)
-            {
-                if (i > 0)
-                    queryBuilder.Append(", ");
-                queryBuilder.Append(ColumnNames[i]);
-                queryBuilder.Append(' ');
-                queryBuilder.Append(ColumnDescriptors[i]);
-            }
-            queryBuilder.Append(");");
-            return queryBuilder.ToString();
-        }
-
-        public string InsertQuery(T val)
-        {
-            StringBuilder queryBuilder = new StringBuilder("insert into ");
-            queryBuilder.Append(TableName);
-            queryBuilder.Append(" values(");
-            for (int i = 0; i < ColumnNames.Length; i++)
-            {
-                if (i > 0)
-                    queryBuilder.Append(", ");
-                var str = GetColumn(val, ColumnNames[i]);
-                if (str == null)
-                    queryBuilder.Append("null");
-                else
-                {
-                    queryBuilder.Append('\'');
-                    queryBuilder.Append(str);
-                    queryBuilder.Append('\'');
-                }
-            }
-            queryBuilder.Append(");");
-            return queryBuilder.ToString();
-        }
-
+        #region Public
         public IEnumerable<T> GetObjects(string[,] sqlResult, string[] columns)
         {
             int numRows = sqlResult.GetLength(1);
@@ -80,10 +39,72 @@ namespace OneAppAway._1_1.Data
             return GetObjects(sqlResult, ColumnNames);
         }
 
+        public virtual IEnumerable<T> Select(Func<string, string[,]> queryCallback, string conditions = null)
+        {
+            return GetObjects(queryCallback($"select * from {TableName}{(conditions == null ? "" : $" where {conditions}")};"));
+        }
+
+        public virtual void Insert(T value, Func<string, string[,]> queryCallback, bool replace = false)
+        {
+            queryCallback(InsertQuery(value, replace));
+        }
+
+        public virtual void CreateTable(Func<string, string[,]> queryCallback, bool ifNotExists = true)
+        {
+            queryCallback(CreateTableQuery(ifNotExists));
+        }
+        #endregion
+
+        #region Protected
+        protected string CreateTableQuery(bool ifNotExists)
+        {
+            StringBuilder queryBuilder = new StringBuilder("create table ");
+            if (ifNotExists)
+                queryBuilder.Append("if not exists ");
+            queryBuilder.Append(TableName);
+            queryBuilder.Append('(');
+            for (int i = 0; i < ColumnNames.Length; i++)
+            {
+                if (i > 0)
+                    queryBuilder.Append(", ");
+                queryBuilder.Append(ColumnNames[i]);
+                queryBuilder.Append(' ');
+                queryBuilder.Append(ColumnDescriptors[i]);
+            }
+            queryBuilder.Append(");");
+            return queryBuilder.ToString();
+        }
+
         protected abstract string GetColumn(T value, string columnName);
 
         protected abstract T ParseRow(string[] row);
 
-        public abstract IEnumerable<T> Select(Func<string, string[,]> queryCallback, string conditions = null);
+        public string InsertQuery(T val, bool replace)
+        {
+            StringBuilder queryBuilder;
+            if (replace)
+                queryBuilder = new StringBuilder("insert or replace into ");
+            else
+                queryBuilder = new StringBuilder("insert or ignore into ");
+            queryBuilder.Append(TableName);
+            queryBuilder.Append(" values(");
+            for (int i = 0; i < ColumnNames.Length; i++)
+            {
+                if (i > 0)
+                    queryBuilder.Append(", ");
+                var str = GetColumn(val, ColumnNames[i]);
+                if (str == null)
+                    queryBuilder.Append("null");
+                else
+                {
+                    queryBuilder.Append('\'');
+                    queryBuilder.Append(str);
+                    queryBuilder.Append('\'');
+                }
+            }
+            queryBuilder.Append(");");
+            return queryBuilder.ToString();
+        }
+        #endregion
     }
 }

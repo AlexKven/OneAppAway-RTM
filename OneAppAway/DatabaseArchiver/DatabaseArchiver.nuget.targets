@@ -5,5 +5,6 @@
   </PropertyGroup>
   <ImportGroup>
     <Import Project="$(NuGetPackageRoot)\SQLitePCL\3.8.7.2\build\netcore451\SQLitePCL.targets" Condition="Exists('$(NuGetPackageRoot)\SQLitePCL\3.8.7.2\build\netcore451\SQLitePCL.targets')" />
+    <Import Project="$(NuGetPackageRoot)\SQLitePCL.native.sqlite3.v140\0.9.2\build\SQLitePCL.native.sqlite3.v140.targets" Condition="Exists('$(NuGetPackageRoot)\SQLitePCL.native.sqlite3.v140\0.9.2\build\SQLitePCL.native.sqlite3.v140.targets')" />
   </ImportGroup>
 </Project>

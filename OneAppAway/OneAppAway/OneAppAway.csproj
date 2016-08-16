@@ -111,7 +111,6 @@
     <Compile Include="1_1\Converters\LatLonTransformConverter.cs" />
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
-    <Compile Include="1_1\Data\DatabaseRetriever.cs" />
     <Compile Include="1_1\Data\ApiLayer.cs" />
     <Compile Include="1_1\Helpers.cs" />
     <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
