@@ -248,6 +248,14 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp/1.0.0": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -284,6 +292,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Refractored.MvvmHelpers/1.0.1": {
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.2": {
@@ -2123,6 +2139,14 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp/1.0.0": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -2159,6 +2183,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Refractored.MvvmHelpers/1.0.1": {
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.2": {
@@ -3844,6 +3876,14 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp/1.0.0": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -3880,6 +3920,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Refractored.MvvmHelpers/1.0.1": {
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.2": {
@@ -5563,6 +5611,14 @@
           "runtimes/win10-x64/native/_._": {}
         }
       },
+      "Microsoft.Toolkit.Uwp/1.0.0": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -5599,6 +5655,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Refractored.MvvmHelpers/1.0.1": {
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.2": {
@@ -7284,6 +7348,14 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp/1.0.0": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -7320,6 +7392,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Refractored.MvvmHelpers/1.0.1": {
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.2": {
@@ -9003,6 +9083,14 @@
           "runtimes/win10-x86/native/_._": {}
         }
       },
+      "Microsoft.Toolkit.Uwp/1.0.0": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -9039,6 +9127,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Refractored.MvvmHelpers/1.0.1": {
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.2": {
@@ -10724,6 +10820,14 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp/1.0.0": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -10760,6 +10864,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Refractored.MvvmHelpers/1.0.1": {
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll": {}
         }
       },
       "sqlite-net-pcl/1.1.2": {
@@ -12838,6 +12950,18 @@
         "runtimes/win81-x86/native/api-ms-win-security-cpwl-l1-1-0.dll"
       ]
     },
+    "Microsoft.Toolkit.Uwp/1.0.0": {
+      "sha512": "beWPWTEv7eF+PhiH/a/I82U/K169rVPTPZQIE4s3xpSfmADAI+0jgK3N/SgOeY5AekwVVPLGBaHhpWDaPBvaDg==",
+      "type": "package",
+      "files": [
+        "Microsoft.Toolkit.Uwp.1.0.0.nupkg.sha512",
+        "Microsoft.Toolkit.Uwp.nuspec",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.dll",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.pdb",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.pri",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.xml"
+      ]
+    },
     "Microsoft.VisualBasic/10.0.0": {
       "sha512": "5BEm2/HAVd97whRlCChU7rmSh/9cwGlZ/NTNe3Jl07zuPWfKQq5TUvVNUmdvmEe8QRecJLZ4/e7WF1i1O8V42g==",
       "type": "Package",
@@ -12899,6 +13023,16 @@
         "ref/net46/Microsoft.Win32.Primitives.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._"
+      ]
+    },
+    "Refractored.MvvmHelpers/1.0.1": {
+      "sha512": "ZaQAQF+NqmOQC9jetZfKaafDgdu2pB+7E+hoaUjGDN5ydw+h0haxo5NPINr/zQ9+LOPiyIBZA0tcikiFp5kz0w==",
+      "type": "package",
+      "files": [
+        "Refractored.MvvmHelpers.1.0.1.nupkg.sha512",
+        "Refractored.MvvmHelpers.nuspec",
+        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.dll",
+        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/MvvmHelpers.xml"
       ]
     },
     "sqlite-net-pcl/1.1.2": {
@@ -15752,6 +15886,8 @@
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.0.0",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
+      "Microsoft.Toolkit.Uwp >= 1.0.0",
+      "Refractored.MvvmHelpers >= 1.0.1",
       "SQLitePCL >= 3.8.7.2",
       "sqlite-net-pcl >= 1.1.2"
     ],

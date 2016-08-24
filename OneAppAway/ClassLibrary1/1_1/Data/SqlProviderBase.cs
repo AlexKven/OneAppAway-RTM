@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SQLitePCL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
+using Windows.Data.Json;
+using Windows.Data.Xml.Dom;
 
 namespace OneAppAway._1_1.Data
 {
@@ -39,19 +45,19 @@ namespace OneAppAway._1_1.Data
             return GetObjects(sqlResult, ColumnNames);
         }
 
-        public virtual IEnumerable<T> Select(Func<string, string[,]> queryCallback, string conditions = null)
+        public virtual IEnumerable<T> Select(SQLiteConnection connection, string conditions = null)
         {
-            return GetObjects(queryCallback($"select * from {TableName}{(conditions == null ? "" : $" where {conditions}")};"));
+            return GetObjects(ExecuteSQL(connection, $"select * from {TableName}{(conditions == null ? "" : $" where {conditions}")};"));
         }
 
-        public virtual void Insert(T value, Func<string, string[,]> queryCallback, bool replace = false)
+        public virtual void Insert(T value, SQLiteConnection connection, bool replace = false)
         {
-            queryCallback(InsertQuery(value, replace));
+            ExecuteSQL(connection, InsertQuery(value, replace));
         }
 
-        public virtual void CreateTable(Func<string, string[,]> queryCallback, bool ifNotExists = true)
+        public virtual void CreateTable(SQLiteConnection connection, bool ifNotExists = true)
         {
-            queryCallback(CreateTableQuery(ifNotExists));
+            ExecuteSQL(connection, CreateTableQuery(ifNotExists));
         }
         #endregion
 
@@ -104,6 +110,62 @@ namespace OneAppAway._1_1.Data
             }
             queryBuilder.Append(");");
             return queryBuilder.ToString();
+        }
+        #endregion
+
+        #region Static
+        public static string[,] ExecuteSQL(SQLiteConnection conn, string line, out string[] columns, out int numRows)
+        {
+            List<string[]> rows = new List<string[]>();
+
+            using (var statement = conn.Prepare(line))
+            {
+                if (statement.ColumnCount == 0)
+                {
+                    statement.Step();
+                    columns = new string[0];
+                    numRows = 0;
+                    return null;
+                }
+                else
+                {
+                    columns = new string[statement.ColumnCount];
+                    for (int i = 0; i < statement.ColumnCount; i++)
+                        columns[i] = statement.ColumnName(i);
+
+                    while (statement.Step() != SQLiteResult.DONE)
+                    {
+                        string[] row = new string[statement.ColumnCount];
+                        for (int i = 0; i < statement.ColumnCount; i++)
+                        {
+                            row[i] = statement[i]?.ToString()?.SqlUnEscape();
+                        }
+                        rows.Add(row);
+                    }
+                }
+            }
+            numRows = rows.Count;
+            string[,] result = new string[columns.Length, numRows];
+            for (int y = 0; y < numRows; y++)
+            {
+                for (int x = 0; x < columns.Length; x++)
+                {
+                    result[x, y] = rows[y][x];
+                }
+            }
+            return result;
+        }
+
+        public static string[,] ExecuteSQL(SQLiteConnection conn, string line, out string[] columns)
+        {
+            int dummy;
+            return ExecuteSQL(conn, line, out columns, out dummy);
+        }
+
+        public static string[,] ExecuteSQL(SQLiteConnection conn, string line)
+        {
+            string[] dummy;
+            return ExecuteSQL(conn, line, out dummy);
         }
         #endregion
     }

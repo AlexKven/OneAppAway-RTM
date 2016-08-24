@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OneAppAway._1_1.ViewModels
 {
-    public class TransitMapStopBrowserViewModel : LightweightViewModelBase
-    {
+    //public class TransitMapStopBrowserViewModel : LightweightViewModelBase
+    //{
 
-    }
+    //}
 }

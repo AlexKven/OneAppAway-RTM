@@ -331,6 +331,7 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\o
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\DatabaseArchiver.csproj.GenerateResource.Cache
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\SQLitePCL.Ext.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\ApplicationInsights.config
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\esqlite3.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCL.Ext.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCL.Ext.pri
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\App.xbf
@@ -359,9 +360,16 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.Li
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.Serialization.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Microsoft.Toolkit.Uwp.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Microsoft.Toolkit.Uwp.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Microsoft.VisualBasic.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Microsoft.Win32.Primitives.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\MvvmHelpers.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLite-net.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCL.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCL.batteries.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCLPlugin_esqlite3.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\SQLitePCL.raw.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.AppContext.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Collections.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Collections.Concurrent.dll
@@ -450,6 +458,8 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.Re
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.XDocument.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.XmlDocument.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.XmlSerializer.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\ClassLibrary1.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\ClassLibrary1.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\DatabaseArchiver.csprojResolveAssemblyReference.cache
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\App.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\App.g.cs
@@ -532,5 +542,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\qualifiers.tx
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\resources.en.resfiles
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\resources.en.resfiles.intermediate
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Microsoft.Toolkit.Uwp.pri.xml
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\SQLitePCL.raw.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\SQLitePCL.Ext.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\ProjectArchitectures.txt

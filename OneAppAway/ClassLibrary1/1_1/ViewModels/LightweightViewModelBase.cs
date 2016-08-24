@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace OneAppAway._1_1.ViewModels
 {
-    public abstract class LightweightViewModelBase : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+    //public abstract class LightweightViewModelBase : INotifyPropertyChanged
+    //{
+    //    public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName]string propertyName = null)
-        {
-            var e = new PropertyChangedEventArgs(propertyName);
-            PropertyChanged?.Invoke(this, e);
-        }
-    }
+    //    protected void OnPropertyChanged([CallerMemberName]string propertyName = null)
+    //    {
+    //        var e = new PropertyChangedEventArgs(propertyName);
+    //        PropertyChanged?.Invoke(this, e);
+    //    }
+    //}
 }

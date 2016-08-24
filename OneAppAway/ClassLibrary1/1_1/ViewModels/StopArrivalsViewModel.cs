@@ -1,4 +1,5 @@
-﻿using OneAppAway._1_1.Data;
+﻿using MvvmHelpers;
+using OneAppAway._1_1.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OneAppAway._1_1.ViewModels
 {
-    public class StopArrivalsViewModel : LightweightViewModelBase
+    public class StopArrivalsViewModel : BaseViewModel
     {
         public StopArrivalsViewModel(TransitStop stop)
         {
@@ -16,7 +17,7 @@ namespace OneAppAway._1_1.ViewModels
             {
                 foreach (var childID in stop.Children)
                 {
-                    var child = TransitStop.SqlProvider.Select(query => DatabaseManager.ExecuteSQL(DatabaseManager.MemoryDatabase, query), $"ID = '{childID}'").FirstOrDefault();
+                    var child = TransitStop.SqlProvider.Select(DatabaseManager.MemoryDatabase, $"ID = '{childID}'").FirstOrDefault();
                     ChildrenSource.Add(new StopArrivalsViewModel(child)); //Nested ViewModels!
                 }
             }
@@ -37,8 +38,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _StopName; }
             set
             {
-                _StopName = value;
-                OnPropertyChanged();
+                SetProperty(ref _StopName, value);
             }
         }
 

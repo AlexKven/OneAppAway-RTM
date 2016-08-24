@@ -4,6 +4,8 @@
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.Toolkit.Uwp": "1.0.0",
+    "Refractored.MvvmHelpers": "1.0.1",
     "sqlite-net-pcl": "1.1.2",
     "SQLitePCL": "3.8.7.2"
   },

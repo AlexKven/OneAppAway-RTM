@@ -10,8 +10,27 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="MainGrid">
         <localC:TransitMap x:Name="MainMap">
-            
+
         </localC:TransitMap>
-        <Button Margin="5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click">Download</Button>
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" IsHitTestVisible="False">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Transparent"/>
+                    <GradientStop Color="#88333333" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock IsHitTestVisible="False" Margin="0,20,0,0" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Foreground="White">Public transit data powered by OneBusAway.</TextBlock>
+        </Border>
+        <ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="Collapsed" x:Name="LoadingIndicator"/>
+        <CommandBar x:Name="MainControlBar" RequestedTheme="Dark" Background="#303030" Grid.Row="2" BorderBrush="#303030">
+            <AppBarButton x:Name="CurrentLocationButton" Icon="MapPin" Label="Current Location" Click="CurrentLocationButton_Click"/>
+            <AppBarButton x:Name="ZoomInButton" Icon="ZoomIn" Label="Zoom In" Click="ZoomInButton_Click" ClickMode="Press"/>
+            <AppBarButton x:Name="ZoomOutButton" Icon="ZoomOut" Label="Zoom Out" Click="ZoomOutButton_Click" ClickMode="Press"/>
+            <AppBarButton x:Name="RefreshButton" Label="Find Stops" Click="RefreshButton_Click">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using OneAppAway._1_1.Data;
+﻿using MvvmHelpers;
+using OneAppAway._1_1.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 
 namespace OneAppAway._1_1.ViewModels
 {
-    public class ArrivalsControlInTransitPageViewModel : LightweightViewModelBase
+    public class ArrivalsControlInTransitPageViewModel : BaseViewModel
     {
         const double COLUMN_SIZE = 310;
         const double MAXIMIZED_MAP_MARGIN = 50;
@@ -96,8 +97,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _MapLocation; }
             set
             {
-                _MapLocation = value;
-                OnPropertyChanged();
+                SetProperty(ref _MapLocation, value);
             }
         }
 
@@ -124,8 +124,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _IsExpandEnabled; }
             set
             {
-                _IsExpandEnabled = value;
-                OnPropertyChanged();
+                SetProperty(ref _IsExpandEnabled, value);
                 (ExpandCommand as Command)?.ChangeCanExecute();
             }
         }
@@ -136,8 +135,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _IsCompressEnabled; }
             set
             {
-                _IsCompressEnabled = value;
-                OnPropertyChanged();
+                SetProperty(ref _IsCompressEnabled, value);
                 (CompressCommand as Command)?.ChangeCanExecute();
             }
         }
@@ -148,7 +146,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _IsVisible; }
             set
             {
-                _IsVisible = value;
+                SetProperty(ref _IsVisible, value);
                 OnPropertyChanged();
             }
         }
@@ -159,8 +157,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _Width; }
             set
             {
-                _Width = value;
-                OnPropertyChanged();
+                SetProperty(ref _Width, value);
             }
         }
 
@@ -170,8 +167,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _Height; }
             set
             {
-                _Height = value;
-                OnPropertyChanged();
+                SetProperty(ref _Height, value);
             }
         }
 
@@ -181,8 +177,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _Stop; }
             set
             {
-                _Stop = value;
-                OnPropertyChanged();
+                SetProperty(ref _Stop, value);
                 if (value.HasValue)
                 {
                     _DataContext = new StopArrivalsViewModel(value.Value);
@@ -207,8 +202,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _CenterRegion; }
             set
             {
-                _CenterRegion = value;
-                OnPropertyChanged();
+                SetProperty(ref _CenterRegion, value);
             }
         }
 
@@ -218,8 +212,7 @@ namespace OneAppAway._1_1.ViewModels
             get { return _IsOnMap; }
             set
             {
-                _IsOnMap = value;
-                OnPropertyChanged();
+                SetProperty(ref _IsOnMap, value);
             }
         }
     }

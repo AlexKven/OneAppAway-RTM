@@ -61,6 +61,24 @@ namespace OneAppAway._1_1.Views.Controls
         }
 
         #region Properties
+        public double SmallThreshold
+        {
+            get { return StopSizeConverter.SmallThreshold; }
+            set { StopSizeConverter.SmallThreshold = value; }
+        }
+
+        public double MediumThreshold
+        {
+            get { return StopSizeConverter.MediumThreshold; }
+            set { StopSizeConverter.MediumThreshold = value; }
+        }
+
+        public double LargeThreshold
+        {
+            get { return StopSizeConverter.LargeThreshold; }
+            set { StopSizeConverter.LargeThreshold = value; }
+        }
+
         public LatLon Center
         {
             get { return (LatLon)GetValue(CenterProperty); }
@@ -141,29 +159,25 @@ namespace OneAppAway._1_1.Views.Controls
 
         public LatLonRect Area
         {
-            get
-            {
-                if (MainMap.ActualWidth > 0 && MainMap.ActualHeight > 0)
-                {
-                    try
-                    {
-                        double width = MainMap.ActualWidth;
-                        double height = MainMap.ActualHeight;
-                        Geopoint nw;
-                        Geopoint se;
-                        MainMap.GetLocationFromOffset(new Point(0, 0), out nw);
-                        MainMap.GetLocationFromOffset(new Point(width, height), out se);
-                        return LatLonRect.FromNWSE(nw.ToLatLon(), se.ToLatLon());
-                    }
-                    catch (ArgumentException)
-                    {
-                        return LatLonRect.NotAnArea;
-                    }
-                }
-                else
-                    return LatLonRect.NotAnArea;
-            }
+            get { return (LatLonRect)GetValue(AreaProperty); }
+            set { SetValue(AreaProperty, value); }
         }
+        public static readonly DependencyProperty AreaProperty =
+            DependencyProperty.Register("Area", typeof(LatLonRect), typeof(TransitMap), new PropertyMetadata(new LatLonRect(), OnAreaChangedStatic));
+        static void OnAreaChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as TransitMap)?.OnAreaChanged();
+        }
+
+        public LatLonRect AreaDelay
+        {
+            get { return (LatLonRect)GetValue(AreaDelayProperty); }
+            set { SetValue(AreaDelayProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for AreaDelay.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AreaDelayProperty =
+            DependencyProperty.Register("AreaDelay", typeof(LatLonRect), typeof(TransitMap), new PropertyMetadata(new LatLonRect()));
 
         private TimeSpan DelayedPropertyWait { get; set; } = TimeSpan.FromMilliseconds(100);
         internal MapControl UnderlyingMapControl => MainMap;
@@ -290,6 +304,7 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void OnZoomLevelChanged()
         {
+            SetArea();
             if (!User_ZoomLevelChanged.HasValue)
             {
                 User_ZoomLevelChanged = false;
@@ -311,6 +326,7 @@ namespace OneAppAway._1_1.Views.Controls
         {
             if (IsMapUpdatingSuspended)
                 return;
+            SetArea();
             if (!User_CenterChanged.HasValue)
             {
                 User_CenterChanged = false;
@@ -439,6 +455,42 @@ namespace OneAppAway._1_1.Views.Controls
             var adjustedCenter = (Geopoint)CenterConverter.Convert(center, typeof(Geopoint), null, null);
             await MainMap.TrySetViewAsync(adjustedCenter, zoomLevel, null, null, MapAnimationKind.Bow);
         }
+
+        private void SetArea()
+        {
+            if (MainMap.ActualWidth > 0 && MainMap.ActualHeight > 0)
+            {
+                try
+                {
+                    double width = MainMap.ActualWidth;
+                    double height = MainMap.ActualHeight;
+                    Geopoint nw;
+                    Geopoint se;
+                    MainMap.GetLocationFromOffset(new Point(0, 0), out nw);
+                    MainMap.GetLocationFromOffset(new Point(width, height), out se);
+                    Area = LatLonRect.FromNWSE(nw.ToLatLon(), se.ToLatLon());
+                }
+                catch (ArgumentException)
+                {
+                    Area = LatLonRect.NotAnArea;
+                }
+            }
+            else
+                Area = LatLonRect.NotAnArea;
+        }
+
+        private void OnAreaChanged()
+        {
+            DelaySetArea();
+        }
+
+        //private void SetPropertyInternal(DependencyProperty property, object value)
+        //{
+        //    var binding = GetBindingExpression(property);
+        //    SetValue(property, value);
+        //    if (binding != null)
+        //        SetBinding(property, binding.ParentBinding);
+        //}
         #endregion
 
         #region Event Handlers
@@ -569,6 +621,7 @@ namespace OneAppAway._1_1.Views.Controls
         #region Delayed Property Methods
         private DateTime LastCenterLevelChange = DateTime.Now;
         private DateTime LastZoomLevelChange = DateTime.Now;
+        private DateTime LastAreaChange = DateTime.Now;
 
         private async void DelaySetCenter()
         {
@@ -586,6 +639,15 @@ namespace OneAppAway._1_1.Views.Controls
             await Task.Delay(DelayedPropertyWait);
             if (LastZoomLevelChange == now)
                 ZoomLevelDelay = ZoomLevel;
+        }
+
+        private async void DelaySetArea()
+        {
+            DateTime now = DateTime.Now;
+            LastAreaChange = now;
+            await Task.Delay(DelayedPropertyWait);
+            if (LastAreaChange == now)
+                AreaDelay = Area;
         }
         #endregion
 

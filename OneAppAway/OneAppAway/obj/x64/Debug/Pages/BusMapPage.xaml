@@ -51,7 +51,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition x:ConnectionId='9' Height="auto" x:Name="ControlsRow"/>
         </Grid.RowDefinitions>
-        <local:BusMap x:ConnectionId='10' x:Name="MainMap"                                                                              Grid.RowSpan="2"/>
+        <local:BusMap x:ConnectionId='10' x:Name="MainMap"                                          Grid.RowSpan="2"/>
         <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" IsHitTestVisible="False">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0,1">

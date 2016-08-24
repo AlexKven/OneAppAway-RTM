@@ -9,6 +9,7 @@ using OneAppAway._1_1.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media.Animation;
+using MvvmHelpers;
 
 namespace OneAppAway._1_1
 {
@@ -34,7 +35,12 @@ namespace OneAppAway._1_1
             return value.Position.ToLatLon();
         }
 
-        public static void BindToControl(this LightweightViewModelBase vm, FrameworkElement control, DependencyProperty propertyTo, string propertyFrom, bool twoWay = false, IValueConverter converter = null, object converterParam = null)
+        //public static void BindToControl(this LightweightViewModelBase vm, FrameworkElement control, DependencyProperty propertyTo, string propertyFrom, bool twoWay = false, IValueConverter converter = null, object converterParam = null)
+        //{
+        //    control.SetBinding(propertyTo, new Binding() { Source = vm, Path = new PropertyPath(propertyFrom), Converter = converter, ConverterParameter = converterParam, Mode = twoWay ? BindingMode.TwoWay : BindingMode.OneWay });
+        //}
+
+        public static void BindToControl(this BaseViewModel vm, FrameworkElement control, DependencyProperty propertyTo, string propertyFrom, bool twoWay = false, IValueConverter converter = null, object converterParam = null)
         {
             control.SetBinding(propertyTo, new Binding() { Source = vm, Path = new PropertyPath(propertyFrom), Converter = converter, ConverterParameter = converterParam, Mode = twoWay ? BindingMode.TwoWay : BindingMode.OneWay });
         }

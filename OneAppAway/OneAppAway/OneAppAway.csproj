@@ -111,7 +111,6 @@
     <Compile Include="1_1\Converters\LatLonTransformConverter.cs" />
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
-    <Compile Include="1_1\Data\ApiLayer.cs" />
     <Compile Include="1_1\Helpers.cs" />
     <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
       <DependentUpon>StopArrivalsControl.xaml</DependentUpon>
@@ -125,9 +124,6 @@
     </Compile>
     <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
     <Compile Include="1_1\Views\Pages\ApplicationPage.cs" />
-    <Compile Include="1_1\Views\Pages\BusMapPage.xaml.cs">
-      <DependentUpon>BusMapPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="1_1\Route.cs" />
     <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
       <DependentUpon>TransitMapPage.xaml</DependentUpon>
@@ -135,6 +131,7 @@
     <Compile Include="Controls\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Keys.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -205,7 +202,6 @@
     <Compile Include="Data\DownloadManager.cs" />
     <Compile Include="Data\FileManager.cs" />
     <Compile Include="HelperFunctions.cs" />
-    <Compile Include="Keys.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -301,10 +297,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="1_1\Views\Controls\TransitMap.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="1_1\Views\Pages\BusMapPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -434,6 +426,8 @@
     <AppxSystemBinary Include="OneAppAway.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="1_1\Data\" />
+    <Folder Include="1_1\ViewModels\" />
     <Folder Include="Visuals\" />
   </ItemGroup>
   <ItemGroup>

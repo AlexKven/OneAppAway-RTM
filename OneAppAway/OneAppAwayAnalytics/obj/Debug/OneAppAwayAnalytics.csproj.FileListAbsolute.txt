@@ -8,8 +8,10 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.Data
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.Data.Services.Client.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\MvvmHelpers.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Newtonsoft.Json.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\System.Spatial.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\MvvmHelpers.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\System.Spatial.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.Azure.WebJobs.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.Azure.WebJobs.Host.xml

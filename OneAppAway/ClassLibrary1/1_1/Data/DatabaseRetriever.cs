@@ -15,7 +15,7 @@ namespace OneAppAway._1_1.Data
         public static IEnumerable<TransitStop> RetrieveStops(params string[] ids)
         {
             if (ids.Length == 0)
-                return TransitStop.SqlProvider.Select(query => DatabaseManager.ExecuteSQL(DatabaseManager.MemoryDatabase, query));
+                return TransitStop.SqlProvider.Select(DatabaseManager.MemoryDatabase);
             else
             {
                 StringBuilder whereBuilder = new StringBuilder();
@@ -25,7 +25,7 @@ namespace OneAppAway._1_1.Data
                         whereBuilder.Append(" or ");
                     whereBuilder.Append($"ID = '{ids[i]}'");
                 }
-                return TransitStop.SqlProvider.Select(query => DatabaseManager.ExecuteSQL(DatabaseManager.MemoryDatabase, query), whereBuilder.ToString());
+                return TransitStop.SqlProvider.Select(DatabaseManager.MemoryDatabase, whereBuilder.ToString());
             }
         }
     }

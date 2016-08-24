@@ -73,14 +73,32 @@
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.NETCore.Portable.Compatibility\1.0.0\lib\netcore50\System.dll">
       <PackagePath>System.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.Toolkit.Uwp\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.VisualBasic\10.0.0\lib\netcore50\Microsoft.VisualBasic.dll">
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.Win32.Primitives\4.0.0\lib\dotnet\Microsoft.Win32.Primitives.dll">
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Refractored.MvvmHelpers\1.0.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\MvvmHelpers.dll">
+      <PackagePath>MvvmHelpers.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\sqlite-net-pcl\1.1.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll">
+      <PackagePath>SQLite-net.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL\3.8.7.2\lib\netcore451\SQLitePCL.dll">
       <PackagePath>SQLitePCL.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL.bundle_green\0.9.2\lib\uap10.0\SQLitePCL.batteries.dll">
+      <PackagePath>SQLitePCL.batteries.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL.plugin.sqlite3.uap10.0\0.9.2\lib\uap10.0\SQLitePCLPlugin_esqlite3.dll">
+      <PackagePath>SQLitePCLPlugin_esqlite3.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL.raw\0.9.2\lib\uap10.0\SQLitePCL.raw.dll">
+      <PackagePath>SQLitePCL.raw.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\System.AppContext\4.0.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
@@ -346,8 +364,14 @@
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\ClassLibrary1.dll">
+      <PackagePath>ClassLibrary1.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL\3.8.7.2\build\netcore451\SQLitePCL.Ext.dll">
       <PackagePath>SQLitePCL.Ext.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL.native.sqlite3.v140\0.9.2\build\native\sqlite3\v140\x64\esqlite3.dll">
+      <PackagePath>esqlite3.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
