@@ -131,6 +131,7 @@
     <Compile Include="Controls\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Keys.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
