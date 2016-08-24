@@ -60,7 +60,6 @@
     <Compile Include="1_1\ViewModels\StopArrivalsViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapStopBrowserViewModel.cs" />
-    <Compile Include="Keys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="1_1\Data\UIDataSourceGroup.cs" />
   </ItemGroup>
