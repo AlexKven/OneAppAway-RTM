@@ -354,3 +354,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\resources.en.resfil
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\SQLitePCL.raw.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\SQLitePCL.Ext.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\ProjectArchitectures.txt
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Microsoft.Toolkit.Uwp.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Microsoft.Toolkit.Uwp.pdb
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\MvvmHelpers.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Microsoft.Toolkit.Uwp.pri.xml
