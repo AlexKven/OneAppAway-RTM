@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OneAppAway"
+    xmlns:localC="using:OneAppAway._1_1.Views.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:converters="using:OneAppAway.Converters"
     xmlns:conv_1_1="using:OneAppAway._1_1.Converters"
@@ -327,5 +328,14 @@
             </Grid>
         </ControlTemplate>
         <conv_1_1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <Style TargetType="localC:ApplicationFrame">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="localC:ApplicationFrame">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

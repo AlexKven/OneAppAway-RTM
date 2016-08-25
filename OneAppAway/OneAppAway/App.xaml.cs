@@ -58,36 +58,42 @@ namespace OneAppAway
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override async void OnLaunched(LaunchActivatedEventArgs e)
+        protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 320));
-            await FileManager.EnsureFolders();
-            await OneAppAway._1_1.Views.Controls.TransitStopIconWrapper.LoadImages();
-            AdDuplex.AdDuplexClient.Initialize("bef2bb37-a5ad-49d7-9ba6-b1ccaf4be44b");
-            Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            MainOuterFrame = new _1_1.Views.OuterFrame();
+            if (e.PrelaunchActivated)
+                return;
+
+            StartApp(e.Arguments, e.PreviousExecutionState);
+        }
+
+        private async void StartApp(string args, ApplicationExecutionState previousState)
+        {
+            MainOuterFrame = Window.Current.Content as _1_1.Views.OuterFrame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
-            if (RootFrame == null)
+            if (MainOuterFrame == null)
             {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                RootFrame = MainOuterFrame.MainFrame;
-                Common.SuspensionManager.RegisterFrame(RootFrame, "appFrame");
-
+                RootFrame = new ApplicationFrame();
                 RootFrame.NavigationFailed += OnNavigationFailed;
+
+                MainOuterFrame = new _1_1.Views.OuterFrame(RootFrame);
+                Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
+                await Initialize();
+                // Create a Frame to act as the navigation context and navigate to the first page
+                Common.SuspensionManager.RegisterFrame(RootFrame, "appFrame");
 
                 TransitionCollection transitions = new TransitionCollection();
                 transitions.Add(new EntranceThemeTransition() { FromHorizontalOffset = 200 });
                 RootFrame.ContentTransitions = transitions;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (previousState == ApplicationExecutionState.Terminated)
                 {
                     await Common.SuspensionManager.RestoreAsync();
                 }
@@ -138,18 +144,9 @@ namespace OneAppAway
                 //RootFrame.Navigate(typeof(_1_1.Views.Pages.TransitMapPage));
                 RootFrame.Navigate(typeof(_1_1.Views.Pages.TestPage1));
             }
-            // Ensure the current window is active
-            Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
-            Window.Current.SizeChanged += Current_SizeChanged;
-            Window.Current.CoreWindow.SizeChanged += CoreWindow_SizeChanged;
             Window.Current.Activate();
-            BandwidthManager.Dispatcher = RootFrame.Dispatcher;
-            LocationManager.Dispatcher = RootFrame.Dispatcher;
-            SetTitleBar();
-            
-            
 
-            Message.ShowMessage(new Message() { ShortSummary = "Public transit data powered by OneBusAway.", Caption = "Welcome!", FullText="This app uses data provided by the OneBusAway api. OneBusAway also provides its own app for this platform, and is available for free. This app builds on the functions of the official app, and provides additional functionality not available in OneBusAway's own app.", Id = 1 });
+            Message.ShowMessage(new Message() { ShortSummary = "Public transit data powered by OneBusAway.", Caption = "Welcome!", FullText = "This app uses data provided by the OneBusAway api. OneBusAway also provides its own app for this platform, and is available for free. This app builds on the functions of the official app, and provides additional functionality not available in OneBusAway's own app.", Id = 1 });
             //if (CurrentApp.LicenseInformation.IsTrial)
             //    MainHamburgerBar.ShowAds = true;
 
@@ -158,6 +155,21 @@ namespace OneAppAway
             //    db.CreateTable<BusTrip>();
             //    db.Insert(new BusTrip() { Destination = "Federal Way", Route = "187", Shape = "Square" });
             //}
+        }
+
+        private async Task Initialize()
+        {
+            Window.Current.SizeChanged += Current_SizeChanged;
+            Window.Current.CoreWindow.SizeChanged += CoreWindow_SizeChanged;
+            //BandwidthManager.Dispatcher = RootFrame.Dispatcher;
+            //LocationManager.Dispatcher = RootFrame.Dispatcher;
+            SetTitleBar();
+
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 320));
+            await FileManager.EnsureFolders();
+            await OneAppAway._1_1.Views.Controls.TransitStopIconWrapper.LoadImages();
+            AdDuplex.AdDuplexClient.Initialize("bef2bb37-a5ad-49d7-9ba6-b1ccaf4be44b");
+            Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
         }
 
         private void CoreWindow_SizeChanged(CoreWindow sender, WindowSizeChangedEventArgs args)

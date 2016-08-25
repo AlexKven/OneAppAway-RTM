@@ -43,23 +43,22 @@
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:ConnectionId='16' x:Name="TitleBar" Grid.Column="1">
+            <Grid x:ConnectionId='15' x:Name="TitleBar" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition x:ConnectionId='18' x:Name="SystemButtonsColumn"/>
+                    <ColumnDefinition x:ConnectionId='17' x:Name="SystemButtonsColumn"/>
                 </Grid.ColumnDefinitions>
                 <Rectangle Fill="#01000000" Grid.ColumnSpan="5"/>
-                <ContentControl x:ConnectionId='19' x:Name="TitleContent" x:FieldModifier="internal">
-                    <TextBlock x:ConnectionId='20' FontSize="24" Margin="4" VerticalAlignment="Center" Foreground="White" x:Name="TitleElement">OneAppAway</TextBlock>
+                <ContentControl x:ConnectionId='18' x:Name="TitleContent" x:FieldModifier="internal">
+                    <TextBlock x:ConnectionId='19' FontSize="24" Margin="4" VerticalAlignment="Center" Foreground="White" x:Name="TitleElement">OneAppAway</TextBlock>
                 </ContentControl>
             </Grid>
-            <Button x:ConnectionId='17' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
+            <Button x:ConnectionId='16' Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50"                              />
         </Grid>
         <SplitView x:ConnectionId='6' Grid.Row="1" CompactPaneLength="50" DisplayMode="CompactOverlay" x:Name="MainSplitView" OpenPaneLength="300">
-            <localC:ApplicationFrame x:ConnectionId='10' x:Name="MainFrame" x:FieldModifier="internal"/>
             <SplitView.Pane>
-                <StackPanel x:ConnectionId='11' Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
+                <StackPanel x:ConnectionId='10' Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
                     <Grid Height="50">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -90,7 +89,7 @@
                             </Grid>
                         </Button>
                     </Grid>
-                    <RadioButton x:ConnectionId='12' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="MapButton"                            >
+                    <RadioButton x:ConnectionId='11' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="MapButton"                            >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -101,7 +100,7 @@
                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Show Map</TextBlock>
                         </Grid>
                     </RadioButton>
-                    <RadioButton x:ConnectionId='13' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="RoutesButton"                               >
+                    <RadioButton x:ConnectionId='12' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="RoutesButton"                               >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -112,7 +111,7 @@
                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">View and Download Routes</TextBlock>
                         </Grid>
                     </RadioButton>
-                    <RadioButton x:ConnectionId='14' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="SettingsButton"                                 >
+                    <RadioButton x:ConnectionId='13' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="SettingsButton"                                 >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -123,7 +122,7 @@
                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Settings</TextBlock>
                         </Grid>
                     </RadioButton>
-                    <RadioButton x:ConnectionId='15' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="AboutButton"                              >
+                    <RadioButton x:ConnectionId='14' RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="AboutButton"                              >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>

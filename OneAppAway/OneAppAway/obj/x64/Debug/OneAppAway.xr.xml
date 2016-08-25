@@ -44,6 +44,19 @@
       <RootProperty Name="Template" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Converters.BoolToVisibilityConverter" />
+    <RootType FullName="OneAppAway._1_1.Views.Controls.ApplicationFrame" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Control">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Setter">
+      <RootProperty Name="Property" />
+      <RootProperty Name="Value" />
+      <RootProperty Name="Target" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
@@ -90,10 +103,6 @@
       <RootProperty Name="Opacity" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
-      <RootProperty Name="VerticalAlignment" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">
@@ -310,10 +319,9 @@
       <RootProperty Name="CompactPaneLength" />
       <RootProperty Name="DisplayMode" />
       <RootProperty Name="OpenPaneLength" />
-      <RootProperty Name="Content" />
       <RootProperty Name="Pane" />
+      <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.ApplicationFrame" />
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Template" />
@@ -371,11 +379,6 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Content" />
       <RootEvent Name="SizeChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Setter">
-      <RootProperty Name="Target" />
-      <RootProperty Name="Value" />
-      <RootProperty Name="Property" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
       <RootProperty Name="FontSize" />

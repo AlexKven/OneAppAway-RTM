@@ -57,7 +57,6 @@
             <Button Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50" Click="HamburgerButton_Click"/>
         </Grid>
         <SplitView Grid.Row="1" CompactPaneLength="50" DisplayMode="CompactOverlay" x:Name="MainSplitView" OpenPaneLength="300">
-            <localC:ApplicationFrame x:Name="MainFrame" x:FieldModifier="internal"/>
             <SplitView.Pane>
                 <StackPanel Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
                     <Grid Height="50">

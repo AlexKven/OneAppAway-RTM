@@ -16,6 +16,11 @@ namespace OneAppAway._1_1.Views.Controls
             Navigated += ApplicationFrame_Navigated;
         }
 
+        protected override void OnContentChanged(object oldContent, object newContent)
+        {
+            base.OnContentChanged(oldContent, newContent);
+        }
+
         private void ApplicationFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
             if (e.Content is ApplicationPage)

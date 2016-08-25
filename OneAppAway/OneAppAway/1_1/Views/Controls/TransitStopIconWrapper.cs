@@ -41,7 +41,6 @@ namespace OneAppAway._1_1.Views.Controls
                     BusIconStreams[i * 9 + j] = stream;
                 }
             }
-            System.Diagnostics.Debug.WriteLine((DateTime.Now - now).TotalMilliseconds);
         }
 
         public static async Task LoadImagesOld()

@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OneAppAway._1_1.ViewModels;
+using OneAppAway._1_1.Views.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,10 +29,11 @@ namespace OneAppAway._1_1.Views
     {
         private OuterFrameViewModel VM;
 
-        public OuterFrame()
+        public OuterFrame(ApplicationFrame frame)
         {
             this.InitializeComponent();
-            VM = new OuterFrameViewModel((App)App.Current, MainFrame);
+            MainSplitView.Content = frame;
+            VM = new OuterFrameViewModel((App)App.Current, frame);
             this.DataContext = VM;
         }
 
@@ -90,10 +92,10 @@ namespace OneAppAway._1_1.Views
         {
             NavigationFriendlyPage page;
             double width = this.ActualWidth - 50 - SystemButtonsWidth;
-            if ((page = MainFrame.Content as NavigationFriendlyPage) != null && width > 0)
-            {
-                //page.OnRefreshTitleBarControls(this, width);
-            }
+            //if ((page = MainFrame.Content as NavigationFriendlyPage) != null && width > 0)
+            //{
+            //    //page.OnRefreshTitleBarControls(this, width);
+            //}
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

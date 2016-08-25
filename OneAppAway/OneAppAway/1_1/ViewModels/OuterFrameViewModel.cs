@@ -24,10 +24,16 @@ namespace OneAppAway._1_1.ViewModels
             GoBackCommand = new Command(obj => GoBack(), obj => Frame.CanGoBack || Frame.CanGoBackWithinPage);
             NavigateBackCommand = new Command(obj => Frame.GoBack(), obj => Frame.CanGoBack);
             NavigateForwardCommand = new Command(obj => Frame.GoForward(), obj => Frame.CanGoForward);
+            GoBackCommand.CanExecuteChanged += GoBackCommand_CanExecuteChanged;
             Frame = frame;
             Frame.Navigated += Frame_Navigated;
             Frame.CanGoBackWithinPageChanged += Frame_CanGoBackWithinPageChanged;
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += OuterFrameViewModel_BackRequested;
+        }
+
+        private void GoBackCommand_CanExecuteChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void GoBack()
@@ -43,11 +49,14 @@ namespace OneAppAway._1_1.ViewModels
             GoBackCommand.ChangeCanExecute();
         }
 
+        private object ContentReference;
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
+            ContentReference = Frame.Content;
             GoBackCommand.ChangeCanExecute();
             NavigateBackCommand.ChangeCanExecute();
             NavigateForwardCommand.ChangeCanExecute();
+            Windows.UI.Xaml.Controls.ContentPresenter p = null;
         }
 
         private void OuterFrameViewModel_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
