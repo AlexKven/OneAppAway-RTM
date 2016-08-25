@@ -112,6 +112,8 @@
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
     <Compile Include="1_1\Helpers.cs" />
+    <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
+    <Compile Include="1_1\Views\Controls\ApplicationFrame.cs" />
     <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
       <DependentUpon>StopArrivalsControl.xaml</DependentUpon>
     </Compile>
@@ -123,8 +125,17 @@
       <DependentUpon>TransitMap.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
+    <Compile Include="1_1\Views\OuterFrame.xaml.cs">
+      <DependentUpon>OuterFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="1_1\Views\Pages\ApplicationPage.cs" />
     <Compile Include="1_1\Route.cs" />
+    <Compile Include="1_1\Views\Pages\TestPage1.xaml.cs">
+      <DependentUpon>TestPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\TestPage2.xaml.cs">
+      <DependentUpon>TestPage2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
       <DependentUpon>TransitMapPage.xaml</DependentUpon>
     </Compile>
@@ -300,6 +311,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="1_1\Views\OuterFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TestPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TestPage2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="1_1\Views\Pages\TransitMapPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -427,7 +450,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="1_1\Data\" />
-    <Folder Include="1_1\ViewModels\" />
     <Folder Include="Visuals\" />
   </ItemGroup>
   <ItemGroup>

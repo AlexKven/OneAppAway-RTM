@@ -106,11 +106,6 @@ namespace OneAppAway
                 (CanGoBack || NavigationHelper.CanGoBack()) ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
 
-        public int StartOperation(OperationCallback operation, int opID)
-        {
-            return 0;
-        }
-
         internal virtual void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
         {
 

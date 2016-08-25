@@ -2,6 +2,9 @@
 1_1\Views\Controls\StopArrivalsControl.xbf
 1_1\Views\Controls\StopArrivalsSubControl.xbf
 1_1\Views\Controls\TransitMap.xbf
+1_1\Views\OuterFrame.xbf
+1_1\Views\Pages\TestPage1.xbf
+1_1\Views\Pages\TestPage2.xbf
 1_1\Views\Pages\TransitMapPage.xbf
 App.xbf
 Controls\AdRow.xbf

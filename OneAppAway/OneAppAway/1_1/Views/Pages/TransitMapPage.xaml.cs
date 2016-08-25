@@ -24,7 +24,7 @@ namespace OneAppAway._1_1.Views.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class TransitMapPage : Page
+    public sealed partial class TransitMapPage : ApplicationPage
     {
         private TransitMapPageViewModel VM = new TransitMapPageViewModel();
 
@@ -34,6 +34,7 @@ namespace OneAppAway._1_1.Views.Pages
             DatabaseManager.Initialize(null);
             TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabase, true);
             //MainMap.StopsSource = Stops;
+            DataContext = VM;
             MainMap.StopsSource = VM.ShownStops;
             MainMap.SmallThreshold = VM.SmallThreshold;
             MainMap.MediumThreshold = VM.MediumThreshold;

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OneAppAway._1_1;
+using OneAppAway._1_1.Views.Controls;
+using OneAppAway._1_1.Views.Pages;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -34,12 +37,9 @@ namespace OneAppAway
     /// </summary>
     sealed partial class App : Application
     {
-        /// <summary>
-        /// Allows tracking page views, exceptions and other telemetry through the Microsoft Application Insights service.
-        /// </summary>
         public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
-        public OuterFrame MainOuterFrame;
-        public Frame RootFrame;
+        public _1_1.Views.OuterFrame MainOuterFrame;
+        public ApplicationFrame RootFrame;
         private bool NoTitleBar = false;
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace OneAppAway
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            MainOuterFrame = new OuterFrame();
+            MainOuterFrame = new _1_1.Views.OuterFrame();
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
@@ -103,39 +103,40 @@ namespace OneAppAway
                 // configuring the new page by passing required information as a navigation
                 // parameter
 
-                if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Low)
-                {
-                    switch (SettingsManager.GetSetting<int>("LimitedData.LaunchPage", false, 0))
-                    {
-                        case 0:
-                            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
-                            break;
-                        case 1:
-                            RootFrame.Navigate(typeof(FavoritesPage));
-                            break;
-                        case 2:
-                            RootFrame.Navigate(typeof(RoutesPage));
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (SettingsManager.GetSetting<int>("LaunchPage", false, 0))
-                    {
-                        case 0:
-                            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
-                            break;
-                        case 1:
-                            RootFrame.Navigate(typeof(FavoritesPage));
-                            break;
-                        case 2:
-                            RootFrame.Navigate(typeof(RoutesPage));
-                            break;
-                    }
-                }
+                //if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Low)
+                //{
+                //    switch (SettingsManager.GetSetting<int>("LimitedData.LaunchPage", false, 0))
+                //    {
+                //        case 0:
+                //            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
+                //            break;
+                //        case 1:
+                //            RootFrame.Navigate(typeof(FavoritesPage));
+                //            break;
+                //        case 2:
+                //            RootFrame.Navigate(typeof(RoutesPage));
+                //            break;
+                //    }
+                //}
+                //else
+                //{
+                //    switch (SettingsManager.GetSetting<int>("LaunchPage", false, 0))
+                //    {
+                //        case 0:
+                //            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
+                //            break;
+                //        case 1:
+                //            RootFrame.Navigate(typeof(FavoritesPage));
+                //            break;
+                //        case 2:
+                //            RootFrame.Navigate(typeof(RoutesPage));
+                //            break;
+                //    }
+                //}
 
                 //Test Page
-                RootFrame.Navigate(typeof(_1_1.Views.Pages.TransitMapPage));
+                //RootFrame.Navigate(typeof(_1_1.Views.Pages.TransitMapPage));
+                RootFrame.Navigate(typeof(_1_1.Views.Pages.TestPage1));
             }
             // Ensure the current window is active
             Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
@@ -207,14 +208,15 @@ namespace OneAppAway
             titleBar.ButtonForegroundColor = titleBar.ForegroundColor;
             titleBar.ButtonInactiveBackgroundColor = titleBar.InactiveBackgroundColor;
             titleBar.ButtonInactiveForegroundColor = titleBar.InactiveForegroundColor;
-            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
-            
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
 
             //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.Core.CoreApplicationViewTitleBar"))
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
             coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
             
+
+
 
             ApplicationView.GetForCurrentView().ExitFullScreenMode();
 
@@ -265,16 +267,25 @@ namespace OneAppAway
             }
         }
 
-        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        public Command GoBackCommand { get; }
+
+        private bool _CanGoBack = false;
+        public bool CanGoBack
         {
-            e.Handled = GoBack();
+            get { return _CanGoBack; }
+            set
+            {
+                GoBackCommand.ChangeCanExecute();
+            }
         }
 
         internal bool GoBack()
         {
-            if (RootFrame.Content is NavigationFriendlyPage)
+            if (RootFrame.Content is ApplicationPage)
             {
-                return ((NavigationFriendlyPage)RootFrame.Content).GoBack();
+                //var result = ((ApplicationPage)RootFrame.Content).GoBack();
+                //return result;
+                return false;
             }
             return false;
         }

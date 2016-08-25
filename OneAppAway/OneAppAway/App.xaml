@@ -5,6 +5,7 @@
     xmlns:local="using:OneAppAway"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:converters="using:OneAppAway.Converters"
+    xmlns:conv_1_1="using:OneAppAway._1_1.Converters"
     RequestedTheme="Light">
     <Application.Resources>
         <local:ApplicationSettings x:Key="Settings"/>
@@ -325,5 +326,6 @@
                 <ContentPresenter Grid.Column="1" Grid.Row="1"/>
             </Grid>
         </ControlTemplate>
+        <conv_1_1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Application.Resources>
 </Application>

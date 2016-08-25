@@ -1,4 +1,4 @@
-﻿<Page
+﻿<localP:ApplicationPage
     x:Class="OneAppAway._1_1.Views.Pages.TransitMapPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,9 +7,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    
     <Grid x:ConnectionId='1' Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="MainGrid">
-        <localC:TransitMap x:ConnectionId='2' x:Name="MainMap">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <localC:TransitMap x:ConnectionId='2' x:Name="MainMap" Grid.Row="1">
 
         </localC:TransitMap>
         <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" IsHitTestVisible="False">
@@ -21,7 +26,7 @@
             </Border.Background>
             <TextBlock IsHitTestVisible="False" Margin="0,20,0,0" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Foreground="White">Public transit data powered by OneBusAway.</TextBlock>
         </Border>
-        <ProgressBar x:ConnectionId='3' HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="Collapsed" x:Name="LoadingIndicator"/>
+        <ProgressBar x:ConnectionId='3' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" x:Name="LoadingIndicator" IsIndeterminate="{Binding IsBusy}"/>
         <CommandBar x:ConnectionId='4' x:Name="MainControlBar" RequestedTheme="Dark" Background="#303030" Grid.Row="2" BorderBrush="#303030">
             <AppBarButton x:ConnectionId='5' x:Name="CurrentLocationButton" Icon="MapPin" Label="Current Location"                                    />
             <AppBarButton x:ConnectionId='6' x:Name="ZoomInButton" Icon="ZoomIn" Label="Zoom In"                            ClickMode="Press"/>
@@ -33,5 +38,5 @@
             </AppBarButton>
         </CommandBar>
     </Grid>
-</Page>
+</localP:ApplicationPage>
 

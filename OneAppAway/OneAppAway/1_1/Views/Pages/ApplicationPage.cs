@@ -9,16 +9,15 @@ using System.Threading;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
+using Windows.UI.Xaml;
 
-namespace OneAppAway._1_1.Pages
+namespace OneAppAway._1_1.Views.Pages
 {
-    class ApplicationPage : Page
+    public class ApplicationPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private bool _CanGoBack = false;
-        private Dictionary<int, Task> _RunningTasks = new Dictionary<int, Task>();
-        private Dictionary<int, CancellationTokenSource> _CancellationTokenSources = new Dictionary<int, CancellationTokenSource>();
 
         public ApplicationPage()
         {
@@ -54,67 +53,71 @@ namespace OneAppAway._1_1.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
-            this.navigationHelper.GoBackCommand.CanExecuteChanged += GoBackCommand_CanExecuteChanged; //Done
-            UpdateBackButtonVisibility();
-            GC.Collect();
-        }
-
-        private void GoBackCommand_CanExecuteChanged(object sender, System.EventArgs e)
-        {
-            UpdateBackButtonVisibility();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
-            //TaskManager.CancelPage(this);
             this.navigationHelper.LoadState -= this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState -= this.NavigationHelper_SaveState;
-            this.navigationHelper.GoBackCommand.CanExecuteChanged -= GoBackCommand_CanExecuteChanged;
         }
 
-        public bool GoBack()
+        public bool CanGoBack
         {
-            bool handled = false;
-            if (CanGoBack)
-                OnGoBack(ref handled);
-            if (!handled)
-            {
-                if (NavigationHelper.CanGoBack())
-                {
-                    NavigationHelper.GoBack();
-                    handled = true;
-                }
-            }
-            return handled;
+            get { return (bool)GetValue(CanGoBackProperty); }
+            set { SetValue(CanGoBackProperty, value); }
         }
-
-        protected virtual void OnGoBack(ref bool handled) { }
-
-        protected bool CanGoBack
+        public static readonly DependencyProperty CanGoBackProperty =
+            DependencyProperty.Register("CanGoBack", typeof(bool), typeof(ApplicationPage), new PropertyMetadata(false, OnCanGoBackChangedStatic));
+        static void OnCanGoBackChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            get { return _CanGoBack; }
-            set
-            {
-                _CanGoBack = value;
-                UpdateBackButtonVisibility();
-            }
+            (sender as ApplicationPage)?.CanGoBackChanged?.Invoke(sender, new EventArgs());
         }
+        public event EventHandler CanGoBackChanged;
+        public virtual void GoBack() { }
 
-        private void UpdateBackButtonVisibility()
-        {
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                (CanGoBack || NavigationHelper.CanGoBack()) ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
-        }
+        //public bool GoBack()
+        //{
+        //    bool handled = false;
+        //    if (CanGoBackLocal)
+        //        OnGoBackLocal(ref handled);
+        //    if (!handled)
+        //    {
+        //        if (NavigationHelper.CanGoBack())
+        //        {
+        //            NavigationHelper.GoBack();
+        //            handled = true;
+        //        }
+        //    }
+        //    return handled;
+        //}
 
-        public int StartOperation(OperationCallback operation, int opID)
-        {
-            return 0;
-        }
+        //protected virtual void OnGoBackLocal(ref bool handled) { }
 
-        internal virtual void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
-        {
+        //public bool CanGoBackLocal
+        //{
+        //    get { return _CanGoBack; }
+        //    private set
+        //    {
+        //        _CanGoBack = value;
+        //        UpdateBackButtonVisibility();
+        //    }
+        //}
 
-        }
+        //public bool CanGoBack()
+        //{
+        //    return CanGoBackLocal || NavigationHelper.CanGoBack();
+        //}
+
+        //private void UpdateBackButtonVisibility()
+        //{
+        //    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+        //        (CanGoBackLocal || NavigationHelper.CanGoBack()) ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+        //}
+
+        //internal virtual void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
+        //{
+
+        //}
     }
 }
