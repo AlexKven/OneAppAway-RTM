@@ -89,10 +89,6 @@ namespace OneAppAway
                 // Create a Frame to act as the navigation context and navigate to the first page
                 Common.SuspensionManager.RegisterFrame(RootFrame, "appFrame");
 
-                TransitionCollection transitions = new TransitionCollection();
-                transitions.Add(new EntranceThemeTransition() { FromHorizontalOffset = 200 });
-                RootFrame.ContentTransitions = transitions;
-
                 if (previousState == ApplicationExecutionState.Terminated)
                 {
                     await Common.SuspensionManager.RestoreAsync();

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media;
 
 namespace OneAppAway._1_1.ViewModels
 {
@@ -27,8 +28,16 @@ namespace OneAppAway._1_1.ViewModels
             GoBackCommand.CanExecuteChanged += GoBackCommand_CanExecuteChanged;
             Frame = frame;
             Frame.Navigated += Frame_Navigated;
+            Frame.TitleChanged += (s, e) => Title = Frame.Title ?? "OneAppAway";
             Frame.CanGoBackWithinPageChanged += Frame_CanGoBackWithinPageChanged;
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += OuterFrameViewModel_BackRequested;
+            this.PropertyChanged += OuterFrameViewModel_PropertyChanged;
+
+            PageEntries.Add(new HamburgerBarPageEntryViewModel(Frame, typeof(TransitMapPage), "Map", new FontFamily("Segoe UI Symbol"), 20, ""));
+        }
+
+        private void OuterFrameViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
         }
 
         private void GoBackCommand_CanExecuteChanged(object sender, EventArgs e)
@@ -66,6 +75,8 @@ namespace OneAppAway._1_1.ViewModels
                 e.Handled = true;
                 GoBackCommand.Execute(null);
             }
-        }
+        }//
+
+        public ObservableRangeCollection<HamburgerBarPageEntryViewModel> PageEntries { get; } = new ObservableRangeCollection<HamburgerBarPageEntryViewModel>();
     }
 }

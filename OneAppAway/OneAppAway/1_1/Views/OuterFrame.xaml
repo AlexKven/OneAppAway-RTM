@@ -51,15 +51,19 @@
                 </Grid.ColumnDefinitions>
                 <Rectangle Fill="#01000000" Grid.ColumnSpan="5"/>
                 <ContentControl x:Name="TitleContent" x:FieldModifier="internal">
-                    <TextBlock FontSize="24" Margin="4" VerticalAlignment="Center" Foreground="White" x:Name="TitleElement">OneAppAway</TextBlock>
+                    <TextBlock FontSize="24" Margin="4" VerticalAlignment="Center" Foreground="White" x:Name="TitleElement" Text="{Binding Title}"/>
                 </ContentControl>
             </Grid>
             <Button Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50" Click="HamburgerButton_Click"/>
         </Grid>
         <SplitView Grid.Row="1" CompactPaneLength="50" DisplayMode="CompactOverlay" x:Name="MainSplitView" OpenPaneLength="300">
             <SplitView.Pane>
-                <StackPanel Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
-                    <Grid Height="50">
+                <Grid Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="50"/>
@@ -89,7 +93,26 @@
                             </Grid>
                         </Button>
                     </Grid>
-                    <RadioButton RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="MapButton" Checked="MapButton_Checked">
+                    <ScrollViewer Grid.Row="1" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Hidden" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top">
+                        <ItemsControl ItemsSource="{Binding PageEntries}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" HorizontalAlignment="Stretch" Height="50" Command="{Binding NavigateCommand}" IsChecked="{Binding IsNavigated, Mode=TwoWay}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Rectangle Fill="#33000000"/>
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding IconFontSize}" FontFamily="{Binding IconFontFamily}" Text="{Binding Icon}"/>
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Title}"/>
+                                        </Grid>
+                                    </RadioButton>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <!--<RadioButton RequestedTheme="Dark" Template="{StaticResource SimpleRadioButtonTemplate}" Background="#303030" FontFamily="Segoe UI Symbol" HorizontalAlignment="Stretch" Height="50" x:Name="MapButton" Checked="MapButton_Checked">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -132,8 +155,8 @@
                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></TextBlock>
                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">Help / About</TextBlock>
                         </Grid>
-                    </RadioButton>
-                </StackPanel>
+                    </RadioButton>-->
+                </Grid>
             </SplitView.Pane>
         </SplitView>
         <Grid Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top">

@@ -76,6 +76,19 @@ namespace OneAppAway._1_1.Views.Pages
         public event EventHandler CanGoBackChanged;
         public virtual void GoBack() { }
 
+        public string Title
+        {
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
+        }
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(ApplicationPage), new PropertyMetadata(null, OnTitleChangedStatic));
+        static void OnTitleChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as ApplicationPage)?.TitleChanged?.Invoke(sender, new EventArgs());
+        }
+        public event EventHandler TitleChanged;
+
         //public bool GoBack()
         //{
         //    bool handled = false;

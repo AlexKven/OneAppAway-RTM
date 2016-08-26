@@ -31,6 +31,7 @@ namespace OneAppAway._1_1.Views.Pages
         {
             MainStackPanel.Children.Add(new Button() { HorizontalAlignment = HorizontalAlignment.Center, Content = "Button!" });
             CanGoBack = true;
+            RefreshTitle();
         }
 
         public override void GoBack()
@@ -40,6 +41,12 @@ namespace OneAppAway._1_1.Views.Pages
                 MainStackPanel.Children.RemoveAt(MainStackPanel.Children.Count - 1);
                 CanGoBack = MainStackPanel.Children.Count > 2;
             }
+            RefreshTitle();
+        }
+
+        void RefreshTitle()
+        {
+            Title = $"{MainStackPanel.Children.Count} buttons!";
         }
     }
 }

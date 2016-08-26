@@ -7,6 +7,13 @@
     <RootPropertyPathName Name="ChildrenSource" />
     <RootPropertyPathName Name="HasChildren" />
     <RootPropertyPathName Name="StopName" />
+    <RootPropertyPathName Name="PageEntries" />
+    <RootPropertyPathName Name="NavigateCommand" />
+    <RootPropertyPathName Name="IsNavigated" />
+    <RootPropertyPathName Name="Title" />
+    <RootPropertyPathName Name="IconFontSize" />
+    <RootPropertyPathName Name="IconFontFamily" />
+    <RootPropertyPathName Name="Icon" />
     <RootPropertyPathName Name="NavigateForwardCommand" />
     <RootPropertyPathName Name="NavigateBackCommand" />
     <RootPropertyPathName Name="GoBackCommand" />
@@ -64,9 +71,8 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="Background" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Tag" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Tag" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="RequestedTheme" />
       <RootEvent Name="SizeChanged" />
@@ -200,8 +206,8 @@
       <RootProperty Name="TextTrimming" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Inlines" />
       <RootProperty Name="FontFamily" />
+      <RootProperty Name="Inlines" />
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Tag" />
@@ -228,8 +234,9 @@
       <RootProperty Name="HorizontalScrollMode" />
       <RootProperty Name="HorizontalScrollBarVisibility" />
       <RootProperty Name="Content" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Background" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Tag" />
@@ -258,9 +265,9 @@
       <RootProperty Name="Path" />
       <RootProperty Name="Converter" />
       <RootProperty Name="ConverterParameter" />
+      <RootProperty Name="Mode" />
       <RootProperty Name="ElementName" />
       <RootProperty Name="Source" />
-      <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
       <RootProperty Name="Template" />
@@ -326,19 +333,21 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Template" />
       <RootProperty Name="Background" />
-      <RootProperty Name="FontFamily" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="IsChecked" />
       <RootProperty Name="Content" />
+      <RootProperty Name="FontFamily" />
       <RootProperty Name="MinWidth" />
       <RootProperty Name="Width" />
-      <RootProperty Name="IsChecked" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="Checked" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.OuterFrame" />
     <RootType FullName="OneAppAway._1_1.Views.Pages.ApplicationPage">
+      <RootProperty Name="Title" />
       <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage1" />

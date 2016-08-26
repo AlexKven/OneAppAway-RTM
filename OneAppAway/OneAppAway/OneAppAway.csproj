@@ -112,6 +112,7 @@
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
     <Compile Include="1_1\Helpers.cs" />
+    <Compile Include="1_1\ViewModels\HamburgerBarPageEntryViewModel.cs" />
     <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
     <Compile Include="1_1\Views\Controls\ApplicationFrame.cs" />
     <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
