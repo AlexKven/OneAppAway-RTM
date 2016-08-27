@@ -54,9 +54,9 @@
                     <TextBlock FontSize="24" Margin="4" VerticalAlignment="Center" Foreground="White" x:Name="TitleElement" Text="{Binding Title}"/>
                 </ContentControl>
             </Grid>
-            <Button Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50" Click="HamburgerButton_Click"/>
+            <Button Background="#303030" RequestedTheme="Dark" FontFamily="Segoe MDL2 Assets" FontSize="19" Content="&#xE700;" Width="50" Height="50" Command="{Binding ToggleMenuCommand}"/>
         </Grid>
-        <SplitView Grid.Row="1" CompactPaneLength="50" DisplayMode="CompactOverlay" x:Name="MainSplitView" OpenPaneLength="300">
+        <SplitView Grid.Row="1" CompactPaneLength="50" DisplayMode="CompactOverlay" x:Name="MainSplitView" OpenPaneLength="300" IsPaneOpen="{Binding IsMenuOpen, Mode=TwoWay}">
             <SplitView.Pane>
                 <Grid Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar">
                     <Grid.RowDefinitions>

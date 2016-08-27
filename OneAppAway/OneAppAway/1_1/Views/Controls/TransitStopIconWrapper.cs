@@ -21,10 +21,6 @@ namespace OneAppAway._1_1.Views.Controls
         public MapElement Element { get; }
         public TransitStop Stop { get; }
 
-        private static IRandomAccessStream ImageS = null;
-        private static IRandomAccessStream ImageM = null;
-        private static IRandomAccessStream ImageL = null;
-
         private static IRandomAccessStream[] BusIconStreams = new IRandomAccessStream[27];
 
         public static async Task LoadImages()
@@ -41,32 +37,6 @@ namespace OneAppAway._1_1.Views.Controls
                     BusIconStreams[i * 9 + j] = stream;
                 }
             }
-        }
-
-        public static async Task LoadImagesOld()
-        {
-            WriteableBitmap bmpL = new WriteableBitmap(60, 60);
-            WriteableBitmap bmpS = await bmpL.FromContent(new Uri("ms-appx:///Assets/Icons/BusBase20.png"));
-            WriteableBitmap bmpM = await bmpL.FromContent(new Uri("ms-appx:///Assets/Icons/BusBase40.png"));
-            
-            //bmpS.FillRectangle(0, 0, 19, 19, Colors.Black);
-            //bmpM.FillRectangle(0, 0, 39, 39, Colors.Black);
-            bmpL.FillRectangle(0, 0, 59, 59, Colors.Black);
-            //bmpS.FillRectangle(5, 5, 14, 14, Colors.LightGray);
-            //bmpM.FillRectangle(5, 5, 34, 34, Colors.LightGray);
-            bmpL.FillRectangle(5, 5, 54, 54, Colors.LightGray);
-            ImageS = new InMemoryRandomAccessStream();
-            ImageM = new InMemoryRandomAccessStream();
-            ImageL = new InMemoryRandomAccessStream();
-            await bmpS.ToStream(ImageS, BitmapEncoder.PngEncoderId);
-            await bmpM.ToStream(ImageM, BitmapEncoder.PngEncoderId);
-            await bmpL.ToStream(ImageL, BitmapEncoder.PngEncoderId);
-
-            //WriteableBitmap bmpL = new WriteableBitmap(60, 60);
-            //bmpL.FillRectangle(0, 0, 59, 59, Colors.Black);
-            //bmpL.FillRectangle(5, 5, 54, 54, Colors.LightGray);
-            //ImageL = new InMemoryRandomAccessStream();
-            //await bmpL.ToStreamAsJpeg(ImageL);
         }
 
         public TransitStopIconWrapper(TransitStop stop)

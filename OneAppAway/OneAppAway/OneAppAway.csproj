@@ -140,7 +140,7 @@
     <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
       <DependentUpon>TransitMapPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\OuterFrame.xaml.cs">
+    <Compile Include="Data\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Keys.cs" />
@@ -328,7 +328,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\OuterFrame.xaml">
+    <Page Include="Data\OuterFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

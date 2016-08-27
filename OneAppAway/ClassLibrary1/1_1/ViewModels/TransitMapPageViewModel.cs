@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MvvmHelpers;
 using OneAppAway._1_1.Data;
 using System.Threading;
+using System.Net.Http;
 
 namespace OneAppAway._1_1.ViewModels
 {
@@ -13,7 +14,20 @@ namespace OneAppAway._1_1.ViewModels
     {
         public ObservableRangeCollection<TransitStop> ShownStops { get; } = new ObservableRangeCollection<TransitStop>();
         private CancellationTokenSource TokenSource = new CancellationTokenSource();
+        private MemoryCache Cache;
         double lastZoomLevel = 0;
+
+        private void LoadSpecialStops()
+        {
+            var fwtc = new TransitStop() { ID = "FWTC", Position = new LatLon(47.31753, -122.30486), Path = "_vx_HlnniVF??LJ??MF??nIG??MK??LG?", Name = "Federal Way Transit Center", Children = new[] { "1_80439", "1_80431", "1_80438", "1_80432", "1_80437", "1_80433", "3_27814", "3_29410" } };
+            Cache.Add(fwtc);
+        }
+
+        public TransitMapPageViewModel(MemoryCache cache)
+        {
+            Cache = cache;
+            LoadSpecialStops();
+        }
 
         private LatLonRect _Area = LatLonRect.NotAnArea;
         public LatLonRect Area
@@ -71,42 +85,56 @@ namespace OneAppAway._1_1.ViewModels
         protected async void RefreshShownStops(CancellationToken token)
         {
             IsBusy = true;
-            //ShownStops.Add(new TransitStop() { ID = "FWTC", Position = new LatLon(47.31753, -122.30486), Direction = StopDirection.N /*Path = "_vx_HlnniVF??LJ??MF??nIG??MK??LG?"*/, Name = "Federal Way Transit Center" });
-            if (ZoomLevel < SmallThreshold)
+            try
             {
-                ShownStops.Clear();
-            }
-            else
-            {
-                //var toRemove = ShownStops.Where(stop => !Area.ContainsLatLon(stop.Position)).ToArray();
-                //ShownStops.RemoveRange(toRemove);
-                var area = Area;
-                for (int i = 0; i < ShownStops.Count; i++)
+                if (ZoomLevel < SmallThreshold)
                 {
-                    if (!area.ApplySubset(OuterStopCacheMargin).ContainsLatLon(ShownStops[i].Position))
+                    ShownStops.Clear();
+                }
+                else
+                {
+                    //var toRemove = ShownStops.Where(stop => !Area.ContainsLatLon(stop.Position)).ToArray();
+                    //ShownStops.RemoveRange(toRemove);
+                    var area = Area;
+                    for (int i = 0; i < ShownStops.Count; i++)
                     {
-                        ShownStops.RemoveAt(i);
-                        i--;
+                        if (!area.ApplySubset(OuterStopCacheMargin).ContainsLatLon(ShownStops[i].Position))
+                        {
+                            ShownStops.RemoveAt(i);
+                            i--;
+                        }
+                    }
+                    var fwtc = MemoryCache.GetStop("FWTC");
+                    if (fwtc.HasValue && area.ContainsLatLon(fwtc.Value.Position))
+                        ShownStops.Add(fwtc.Value);
+                    while (PendingRegions.Count > 0)
+                    {
+                        var region = PendingRegions.Dequeue();
+                        //var fwtc = new string[] { "1_80439", "1_80431", "1_80438", "1_80432", "1_80437", "1_80433", "3_27814", "3_29410" };
+                        var stops = (await _1_1.Data.ApiLayer.GetTransitStopsForArea(region, token))?.Where(stop => !ShownStops.Contains(stop));
+                        //var fwtcStop = new TransitStop() { ID = "FWTC", Position = new LatLon(47.31753, -122.30486), Path = "_vx_HlnniVF??LJ??MF??nIG??MK??LG?", Name = "Federal Way Transit Center" };
+                        //TransitStop.SqlProvider.Insert(fwtcStop, DatabaseManager.MemoryDatabase);
+                        if (stops == null)
+                            return;
+                        Cache.Add(stops.ToArray());
+                        ShownStops.AddRange(stops);
+                        //foreach (var stop in stops)
+                        //{
+                        //    if (!ShownStops.Any(stp => stp.ID == stop.ID))
+                        //        ShownStops.Add(stop);
+                        //}
                     }
                 }
-                while (PendingRegions.Count > 0)
-                {
-                    var region = PendingRegions.Dequeue();
-                    //var fwtc = new string[] { "1_80439", "1_80431", "1_80438", "1_80432", "1_80437", "1_80433", "3_27814", "3_29410" };
-                    var stops = (await _1_1.Data.ApiLayer.GetTransitStopsForArea(region, token))?.Where(stop => !ShownStops.Contains(stop));
-                    //var fwtcStop = new TransitStop() { ID = "FWTC", Position = new LatLon(47.31753, -122.30486), Path = "_vx_HlnniVF??LJ??MF??nIG??MK??LG?", Name = "Federal Way Transit Center" };
-                    //TransitStop.SqlProvider.Insert(fwtcStop, DatabaseManager.MemoryDatabase);
-                    if (stops == null)
-                        return;
-                    ShownStops.AddRange(stops);
-                    //foreach (var stop in stops)
-                    //{
-                    //    if (!ShownStops.Any(stp => stp.ID == stop.ID))
-                    //        ShownStops.Add(stop);
-                    //}
-                }
             }
-            IsBusy = false;
+            catch (HttpRequestException)
+            {
+                //No internet!
+                PendingRegions.Clear();
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
 

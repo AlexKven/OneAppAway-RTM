@@ -4,9 +4,13 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="ChildrenSource" />
     <RootPropertyPathName Name="HasChildren" />
+    <RootPropertyPathName Name="RouteNames" />
+    <RootPropertyPathName Name="IsBusy" />
+    <RootPropertyPathName Name="ChildrenSource" />
     <RootPropertyPathName Name="StopName" />
+    <RootPropertyPathName Name="IconUri" />
+    <RootPropertyPathName Name="IsMenuOpen" />
     <RootPropertyPathName Name="PageEntries" />
     <RootPropertyPathName Name="NavigateCommand" />
     <RootPropertyPathName Name="IsNavigated" />
@@ -17,7 +21,7 @@
     <RootPropertyPathName Name="NavigateForwardCommand" />
     <RootPropertyPathName Name="NavigateBackCommand" />
     <RootPropertyPathName Name="GoBackCommand" />
-    <RootPropertyPathName Name="IsBusy" />
+    <RootPropertyPathName Name="ToggleMenuCommand" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Background" />
@@ -68,6 +72,7 @@
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Children" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Resources" />
       <RootProperty Name="Background" />
       <RootProperty Name="VerticalAlignment" />
@@ -99,9 +104,9 @@
       <RootProperty Name="RenderTransform" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Fill" />
@@ -160,10 +165,12 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Child" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Background" />
-      <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
@@ -198,30 +205,31 @@
       <RootProperty Name="MinWidth" />
       <RootProperty Name="MinHeight" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="Text" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Background" />
+      <RootProperty Name="Template" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="FontSize" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="TextTrimming" />
-      <RootProperty Name="Foreground" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="Inlines" />
-      <RootProperty Name="IsHitTestVisible" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Tag" />
-      <RootProperty Name="MaxHeight" />
-      <RootProperty Name="FontWeight" />
-      <RootProperty Name="Opacity" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontSize" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Tag" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Orientation" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Children" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Background" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Tag" />
@@ -233,10 +241,10 @@
       <RootProperty Name="VerticalScrollBarVisibility" />
       <RootProperty Name="HorizontalScrollMode" />
       <RootProperty Name="HorizontalScrollBarVisibility" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="Background" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Tag" />
@@ -250,24 +258,35 @@
       <RootProperty Name="Stroke" />
       <RootProperty Name="StrokeThickness" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Converter" />
+      <RootProperty Name="ConverterParameter" />
+      <RootProperty Name="Path" />
+      <RootProperty Name="Mode" />
+      <RootProperty Name="ElementName" />
+      <RootProperty Name="Source" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="IsIndeterminate" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="Minimum" />
+      <RootProperty Name="Maximum" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="ItemsSource" />
-      <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="ItemsPanel" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Width" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Items" />
       <RootProperty Name="ItemTemplateSelector" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="Path" />
-      <RootProperty Name="Converter" />
-      <RootProperty Name="ConverterParameter" />
-      <RootProperty Name="Mode" />
-      <RootProperty Name="ElementName" />
-      <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
       <RootProperty Name="Template" />
@@ -275,30 +294,29 @@
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="TextTrimming" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Inlines" />
+      <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="MaxHeight" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="Opacity" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Visibility" />
+    </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsSubControl">
       <RootProperty Name="VerticalAlignment" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Button">
-      <RootProperty Name="RequestedTheme" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="Foreground" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="Template" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Command" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="IsHitTestVisible" />
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="Tag" />
-      <RootEvent Name="Click" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="VerticalAlignment" />
@@ -326,6 +344,7 @@
       <RootProperty Name="CompactPaneLength" />
       <RootProperty Name="DisplayMode" />
       <RootProperty Name="OpenPaneLength" />
+      <RootProperty Name="IsPaneOpen" />
       <RootProperty Name="Pane" />
       <RootProperty Name="Content" />
     </RootType>
@@ -347,19 +366,11 @@
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.OuterFrame" />
     <RootType FullName="OneAppAway._1_1.Views.Pages.ApplicationPage">
+      <RootProperty Name="Title" />
       <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage1" />
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage2" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="IsHitTestVisible" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="IsIndeterminate" />
-      <RootProperty Name="Minimum" />
-      <RootProperty Name="Maximum" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Background" />

@@ -41,6 +41,7 @@
     <Compile Include="1_1\Data\DatabaseManager.cs" />
     <Compile Include="1_1\Data\GooglePolylineConverter.cs" />
     <Compile Include="1_1\Data\LatLonRect.cs" />
+    <Compile Include="1_1\Data\MemoryCache.cs" />
     <Compile Include="1_1\Data\RealTimeArrival.cs" />
     <Compile Include="1_1\Data\SqlProvider.cs" />
     <Compile Include="1_1\Data\SqlProviderBase.cs" />

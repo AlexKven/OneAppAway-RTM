@@ -57,11 +57,6 @@ namespace OneAppAway._1_1.Views
         }
 
         #region Button Click/Check Events
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
-        }
-
         private void MapButton_Checked(object sender, RoutedEventArgs e)
         {
             //EnsureNavigation<BusMapPage>("CurrentLocation");

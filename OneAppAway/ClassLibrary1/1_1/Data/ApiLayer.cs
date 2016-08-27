@@ -79,5 +79,26 @@ namespace OneAppAway._1_1.Data
 
             return ParseTransitStop(el);
         }
+
+        public static async Task<TransitRoute?> GetTransitRoute(string id, CancellationToken cancellationToken)
+        {
+
+            StringReader reader = new StringReader(await SendRequest("route/" + id, null, false, cancellationToken));
+            if (cancellationToken.IsCancellationRequested)
+                return null;
+
+            XDocument xDoc = XDocument.Load(reader);
+
+            XElement el = xDoc.Element("response").Element("data").Element("entry");
+            string routeId = el.Element("id")?.Value;
+            var elDescription = el.Element("description");
+            var elShortName = el.Element("shortName");
+            var elLongName = el.Element("longName");
+            string routeName = elShortName == null ? elLongName == null ? "(No Name)" : elLongName.Value : elShortName.Value;
+            string routeDescription = elDescription == null ? elLongName == null ? elShortName == null ? "No Description" : elShortName.Value : elLongName.Value : elDescription.Value;
+            string routeAgency = el.Element("agencyId")?.Value;
+            return new TransitRoute() { ID = routeId, Name = routeName, Description = routeDescription, Agency = routeAgency };
+            
+        }
     }
 }

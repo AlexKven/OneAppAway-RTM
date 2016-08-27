@@ -26,11 +26,12 @@ namespace OneAppAway._1_1.Views.Pages
     /// </summary>
     public sealed partial class TransitMapPage : ApplicationPage
     {
-        private TransitMapPageViewModel VM = new TransitMapPageViewModel();
+        private TransitMapPageViewModel VM;
 
         public TransitMapPage()
         {
             this.InitializeComponent();
+            VM = new TransitMapPageViewModel(Cache);
             DatabaseManager.Initialize(null);
             TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabase, true);
             //MainMap.StopsSource = Stops;

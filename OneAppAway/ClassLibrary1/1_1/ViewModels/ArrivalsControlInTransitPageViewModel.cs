@@ -178,6 +178,7 @@ namespace OneAppAway._1_1.ViewModels
             set
             {
                 SetProperty(ref _Stop, value);
+                (_DataContext as IDisposable)?.Dispose();
                 if (value.HasValue)
                 {
                     _DataContext = new StopArrivalsViewModel(value.Value);

@@ -18,14 +18,15 @@ namespace OneAppAway._1_1.ViewModels
         public Command GoBackCommand { get; }
         public Command NavigateBackCommand { get; }
         public Command NavigateForwardCommand { get; }
+        public Command ToggleMenuCommand { get; }
 
         public OuterFrameViewModel(App currentApp, ApplicationFrame frame)
         {
             CurrentApp = currentApp;
             GoBackCommand = new Command(obj => GoBack(), obj => Frame.CanGoBack || Frame.CanGoBackWithinPage);
+            ToggleMenuCommand = new Command(obj => IsMenuOpen = !IsMenuOpen);
             NavigateBackCommand = new Command(obj => Frame.GoBack(), obj => Frame.CanGoBack);
             NavigateForwardCommand = new Command(obj => Frame.GoForward(), obj => Frame.CanGoForward);
-            GoBackCommand.CanExecuteChanged += GoBackCommand_CanExecuteChanged;
             Frame = frame;
             Frame.Navigated += Frame_Navigated;
             Frame.TitleChanged += (s, e) => Title = Frame.Title ?? "OneAppAway";
@@ -38,11 +39,6 @@ namespace OneAppAway._1_1.ViewModels
 
         private void OuterFrameViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-        }
-
-        private void GoBackCommand_CanExecuteChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void GoBack()
@@ -65,7 +61,6 @@ namespace OneAppAway._1_1.ViewModels
             GoBackCommand.ChangeCanExecute();
             NavigateBackCommand.ChangeCanExecute();
             NavigateForwardCommand.ChangeCanExecute();
-            Windows.UI.Xaml.Controls.ContentPresenter p = null;
         }
 
         private void OuterFrameViewModel_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
@@ -78,5 +73,15 @@ namespace OneAppAway._1_1.ViewModels
         }//
 
         public ObservableRangeCollection<HamburgerBarPageEntryViewModel> PageEntries { get; } = new ObservableRangeCollection<HamburgerBarPageEntryViewModel>();
+
+        private bool _IsMenuOpen = false;
+        public bool IsMenuOpen
+        {
+            get { return _IsMenuOpen; }
+            set
+            {
+                SetProperty(ref _IsMenuOpen, value);
+            }
+        }
     }
 }

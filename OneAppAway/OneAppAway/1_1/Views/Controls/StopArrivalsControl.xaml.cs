@@ -72,7 +72,5 @@ namespace OneAppAway._1_1.Views.Controls
         // Using a DependencyProperty as the backing store for CloseCommand.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CloseCommandProperty =
             DependencyProperty.Register("CloseCommand", typeof(ICommand), typeof(StopArrivalsControl), new PropertyMetadata(null));
-
-
     }
 }

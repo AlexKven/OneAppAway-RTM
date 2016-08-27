@@ -10,6 +10,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
+using OneAppAway._1_1.Data;
 
 namespace OneAppAway._1_1.Views.Pages
 {
@@ -17,14 +18,15 @@ namespace OneAppAway._1_1.Views.Pages
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-        private bool _CanGoBack = false;
+        protected MemoryCache Cache;
 
         public ApplicationPage()
         {
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState; //Done
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState; //Done
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Required;
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Disabled;
+            Cache = new MemoryCache();
         }
 
         public NavigationHelper NavigationHelper
@@ -60,6 +62,7 @@ namespace OneAppAway._1_1.Views.Pages
             this.navigationHelper.OnNavigatedFrom(e);
             this.navigationHelper.LoadState -= this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState -= this.NavigationHelper_SaveState;
+            Cache.Dispose();
         }
 
         public bool CanGoBack
@@ -132,5 +135,10 @@ namespace OneAppAway._1_1.Views.Pages
         //{
 
         //}
+
+        ~ApplicationPage()
+        {
+            Cache.Dispose();
+        }
     }
 }
