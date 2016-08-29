@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MvvmHelpers;
+using OneAppAway._1_1.Views.Structures;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,10 @@ namespace OneAppAway._1_1.Views.Pages
         public TestPage1()
         {
             this.InitializeComponent();
+            DataContext = new BaseViewModel() { Title = "Test Page 1" };
+            TitleSize = new TitleBarElementSize(1.0, 100, true);
+            TitleControlsSize = new TitleBarElementSize(1.0, 100);
+            TitleSpaceSize = new TitleBarElementSize(1.0, 100);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -140,6 +140,7 @@
     <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
       <DependentUpon>TransitMapPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="1_1\Views\Structures\TitleBarElementSize.cs" />
     <Compile Include="Data\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>

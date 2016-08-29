@@ -328,7 +328,7 @@
             </Grid>
         </ControlTemplate>
         <conv_1_1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-        <Style TargetType="localC:ApplicationFrame">
+        <!--<Style TargetType="localC:ApplicationFrame">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="localC:ApplicationFrame">
@@ -336,7 +336,10 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>-->
+        <DataTemplate x:Key="SimpleTitleTemplate">
+            <TextBlock FontSize="32" TextTrimming="WordEllipsis" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Title}"/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
 

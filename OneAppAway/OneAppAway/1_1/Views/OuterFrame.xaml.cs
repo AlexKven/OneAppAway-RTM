@@ -37,24 +37,24 @@ namespace OneAppAway._1_1.Views
             this.DataContext = VM;
         }
 
-        #region Properties
-        private double _SystemButtonsWidth;
+        //#region Properties
+        //private double _SystemButtonsWidth;
 
-        public double SystemButtonsWidth
-        {
-            get { return _SystemButtonsWidth; }
-            set
-            {
-                _SystemButtonsWidth = value;
-                RefreshTitleBarSizes();
-            }
-        }
-        #endregion
+        //public double SystemButtonsWidth
+        //{
+        //    get { return _SystemButtonsWidth; }
+        //    set
+        //    {
+        //        _SystemButtonsWidth = value;
+        //        RefreshTitleBarSizes();
+        //    }
+        //}
+        //#endregion
 
-        private void RefreshTitleBarSizes()
-        {
-            SystemButtonsColumn.Width = SystemButtonsColumn2.Width = new GridLength(SystemButtonsWidth);
-        }
+        //private void RefreshTitleBarSizes()
+        //{
+        //    SystemButtonsColumn.Width = SystemButtonsColumn2.Width = new GridLength(SystemButtonsWidth);
+        //}
 
         #region Button Click/Check Events
         private void MapButton_Checked(object sender, RoutedEventArgs e)
@@ -80,18 +80,18 @@ namespace OneAppAway._1_1.Views
 
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            RefreshTitleBarControls();
+            //RefreshTitleBarControls();
         }
 
-        private void RefreshTitleBarControls()
-        {
-            NavigationFriendlyPage page;
-            double width = this.ActualWidth - 50 - SystemButtonsWidth;
-            //if ((page = MainFrame.Content as NavigationFriendlyPage) != null && width > 0)
-            //{
-            //    //page.OnRefreshTitleBarControls(this, width);
-            //}
-        }
+        //private void RefreshTitleBarControls()
+        //{
+        //    NavigationFriendlyPage page;
+        //    double width = this.ActualWidth - 50 - SystemButtonsWidth;
+        //    //if ((page = MainFrame.Content as NavigationFriendlyPage) != null && width > 0)
+        //    //{
+        //    //    //page.OnRefreshTitleBarControls(this, width);
+        //    //}
+        //}
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

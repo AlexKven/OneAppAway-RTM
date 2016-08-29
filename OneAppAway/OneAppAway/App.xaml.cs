@@ -221,7 +221,7 @@ namespace OneAppAway
             //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.Core.CoreApplicationViewTitleBar"))
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
-            coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
+            //coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
             
 
 
@@ -231,7 +231,7 @@ namespace OneAppAway
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 NoTitleBar = true;
-                MainOuterFrame.SystemButtonsWidth = 0;
+                //MainOuterFrame.SystemButtonsWidth = 0;
                 Action setOcclusion = () =>
                 {
                     var bar = StatusBar.GetForCurrentView();
@@ -253,10 +253,10 @@ namespace OneAppAway
             }
         }
 
-        private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
-        {
-            MainOuterFrame.SystemButtonsWidth = NoTitleBar ? 0 : sender.SystemOverlayRightInset;
-        }
+        //private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        //{
+        //    MainOuterFrame.SystemButtonsWidth = NoTitleBar ? 0 : sender.SystemOverlayRightInset;
+        //}
 
         protected override async void OnActivated(IActivatedEventArgs args)
         {
@@ -275,27 +275,27 @@ namespace OneAppAway
             }
         }
 
-        public Command GoBackCommand { get; }
+        //public Command GoBackCommand { get; }
 
-        private bool _CanGoBack = false;
-        public bool CanGoBack
-        {
-            get { return _CanGoBack; }
-            set
-            {
-                GoBackCommand.ChangeCanExecute();
-            }
-        }
+        //private bool _CanGoBack = false;
+        //public bool CanGoBack
+        //{
+        //    get { return _CanGoBack; }
+        //    set
+        //    {
+        //        GoBackCommand.ChangeCanExecute();
+        //    }
+        //}
 
-        internal bool GoBack()
-        {
-            if (RootFrame.Content is ApplicationPage)
-            {
-                //var result = ((ApplicationPage)RootFrame.Content).GoBack();
-                //return result;
-                return false;
-            }
-            return false;
-        }
+        //internal bool GoBack()
+        //{
+        //    if (RootFrame.Content is ApplicationPage)
+        //    {
+        //        //var result = ((ApplicationPage)RootFrame.Content).GoBack();
+        //        //return result;
+        //        return false;
+        //    }
+        //    return false;
+        //}
     }
 }

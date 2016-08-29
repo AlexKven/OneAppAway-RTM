@@ -7,7 +7,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
+    <localP:ApplicationPage.TitleTemplate>
+        <DataTemplate>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Comic Sans MS" FontSize="32" Text="{Binding Title}"/>
+        </DataTemplate>
+    </localP:ApplicationPage.TitleTemplate>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

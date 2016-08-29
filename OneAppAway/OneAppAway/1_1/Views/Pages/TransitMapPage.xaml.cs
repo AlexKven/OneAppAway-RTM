@@ -27,15 +27,14 @@ namespace OneAppAway._1_1.Views.Pages
     public sealed partial class TransitMapPage : ApplicationPage
     {
         private TransitMapPageViewModel VM;
-
         public TransitMapPage()
         {
             this.InitializeComponent();
-            VM = new TransitMapPageViewModel(Cache);
+            VM = new TransitMapPageViewModel(Cache) { Title = "Transit Map" };
+            DataContext = VM;
             DatabaseManager.Initialize(null);
             TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabase, true);
             //MainMap.StopsSource = Stops;
-            DataContext = VM;
             MainMap.StopsSource = VM.ShownStops;
             MainMap.SmallThreshold = VM.SmallThreshold;
             MainMap.MediumThreshold = VM.MediumThreshold;

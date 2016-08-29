@@ -163,7 +163,7 @@ namespace OneAppAway
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            ((App)App.Current).GoBack();
+            //((App)App.Current).GoBack();
         }
     }
 }

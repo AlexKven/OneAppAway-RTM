@@ -5,8 +5,17 @@
     xmlns:local="using:OneAppAway._1_1.Views.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Title="TestPage1">
-
+    mc:Ignorable="d">
+    <local:ApplicationPage.TitleTemplate>
+        <DataTemplate>
+            <Rectangle Fill="Red"/>
+        </DataTemplate>
+    </local:ApplicationPage.TitleTemplate>
+    <local:ApplicationPage.TitleControlsTemplate>
+        <DataTemplate>
+            <Rectangle Fill="Green"/>
+        </DataTemplate>
+    </local:ApplicationPage.TitleControlsTemplate>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock VerticalAlignment="Top" FontSize="32">Test Page 1</TextBlock>
         <Button x:ConnectionId='1' HorizontalAlignment="Center"                     >Navigate</Button>

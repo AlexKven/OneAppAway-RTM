@@ -11,6 +11,8 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using OneAppAway._1_1.Data;
+using MvvmHelpers;
+using OneAppAway._1_1.Views.Structures;
 
 namespace OneAppAway._1_1.Views.Pages
 {
@@ -27,6 +29,7 @@ namespace OneAppAway._1_1.Views.Pages
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState; //Done
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Disabled;
             Cache = new MemoryCache();
+            TitleTemplate = App.Current.Resources["SimpleTitleTemplate"] as DataTemplate;
         }
 
         public NavigationHelper NavigationHelper
@@ -77,65 +80,76 @@ namespace OneAppAway._1_1.Views.Pages
             (sender as ApplicationPage)?.CanGoBackChanged?.Invoke(sender, new EventArgs());
         }
         public event EventHandler CanGoBackChanged;
-        public virtual void GoBack() { }
-
-        public string Title
+        public virtual void GoBack()
         {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
+            
         }
-        public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(ApplicationPage), new PropertyMetadata(null, OnTitleChangedStatic));
-        static void OnTitleChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+
+        public DataTemplate TitleTemplate
         {
-            (sender as ApplicationPage)?.TitleChanged?.Invoke(sender, new EventArgs());
+            get { return (DataTemplate)GetValue(TitleTemplateProperty); }
+            set { SetValue(TitleTemplateProperty, value); }
         }
-        public event EventHandler TitleChanged;
+        public static readonly DependencyProperty TitleTemplateProperty =
+            DependencyProperty.Register("TitleTemplate", typeof(DataTemplate), typeof(ApplicationPage), new PropertyMetadata(null, TitleTemplateChangedStatic));
+        static void TitleTemplateChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as ApplicationPage)?.TitleTemplateChanged?.Invoke(sender, EventArgs.Empty);
+        }
+        public event EventHandler TitleTemplateChanged;
 
-        //public bool GoBack()
-        //{
-        //    bool handled = false;
-        //    if (CanGoBackLocal)
-        //        OnGoBackLocal(ref handled);
-        //    if (!handled)
-        //    {
-        //        if (NavigationHelper.CanGoBack())
-        //        {
-        //            NavigationHelper.GoBack();
-        //            handled = true;
-        //        }
-        //    }
-        //    return handled;
-        //}
+        public DataTemplate TitleControlsTemplate
+        {
+            get { return (DataTemplate)GetValue(TitleControlsTemplateProperty); }
+            set { SetValue(TitleControlsTemplateProperty, value); }
+        }
+        public static readonly DependencyProperty TitleControlsTemplateProperty =
+            DependencyProperty.Register("TitleControlsTemplate", typeof(DataTemplate), typeof(ApplicationPage), new PropertyMetadata(null, TitleControlsTemplateChangedStatic));
+        static void TitleControlsTemplateChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as ApplicationPage)?.TitleControlsTemplateChanged?.Invoke(sender, EventArgs.Empty);
+        }
+        public event EventHandler TitleControlsTemplateChanged;
 
-        //protected virtual void OnGoBackLocal(ref bool handled) { }
+        public TitleBarElementSize TitleSize
+        {
+            get { return (TitleBarElementSize)GetValue(TitleSizeProperty); }
+            set { SetValue(TitleSizeProperty, value); }
+        }
+        public static readonly DependencyProperty TitleSizeProperty =
+            DependencyProperty.Register("TitleSize", typeof(TitleBarElementSize), typeof(ApplicationPage), new PropertyMetadata(new TitleBarElementSize(1, 0), TitleSizeChangedStatic));
+        static void TitleSizeChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as ApplicationPage)?.TitleSizeChanged?.Invoke(sender, EventArgs.Empty);
+        }
+        public event EventHandler TitleSizeChanged;
 
-        //public bool CanGoBackLocal
-        //{
-        //    get { return _CanGoBack; }
-        //    private set
-        //    {
-        //        _CanGoBack = value;
-        //        UpdateBackButtonVisibility();
-        //    }
-        //}
+        public TitleBarElementSize TitleControlsSize
+        {
+            get { return (TitleBarElementSize)GetValue(TitleControlsSizeProperty); }
+            set { SetValue(TitleControlsSizeProperty, value); }
+        }
+        public static readonly DependencyProperty TitleControlsSizeProperty =
+            DependencyProperty.Register("TitleControlsSize", typeof(TitleBarElementSize), typeof(ApplicationPage), new PropertyMetadata(new TitleBarElementSize(), TitleControlsSizeChangedStatic));
+        static void TitleControlsSizeChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as ApplicationPage)?.TitleControlsSizeChanged?.Invoke(sender, EventArgs.Empty);
+        }
+        public event EventHandler TitleControlsSizeChanged;
 
-        //public bool CanGoBack()
-        //{
-        //    return CanGoBackLocal || NavigationHelper.CanGoBack();
-        //}
-
-        //private void UpdateBackButtonVisibility()
-        //{
-        //    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-        //        (CanGoBackLocal || NavigationHelper.CanGoBack()) ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
-        //}
-
-        //internal virtual void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
-        //{
-
-        //}
-
+        public TitleBarElementSize TitleSpaceSize
+        {
+            get { return (TitleBarElementSize)GetValue(TitleSpaceSizeProperty); }
+            set { SetValue(TitleSpaceSizeProperty, value); }
+        }
+        public static readonly DependencyProperty TitleSpaceSizeProperty =
+            DependencyProperty.Register("TitleSpaceSize", typeof(TitleBarElementSize), typeof(ApplicationPage), new PropertyMetadata(new TitleBarElementSize(), TitleSpaceSizeChangedStatic));
+        static void TitleSpaceSizeChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as ApplicationPage)?.TitleSpaceSizeChanged?.Invoke(sender, EventArgs.Empty);
+        }
+        public event EventHandler TitleSpaceSizeChanged;
+        
         ~ApplicationPage()
         {
             Cache.Dispose();
