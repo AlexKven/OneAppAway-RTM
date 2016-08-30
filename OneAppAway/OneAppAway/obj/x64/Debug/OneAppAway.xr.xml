@@ -29,6 +29,8 @@
     <RootPropertyPathName Name="ToggleMenuCommand" />
     <RootPropertyPathName Name="TitleTemplate" />
     <RootPropertyPathName Name="TitleVisibility" />
+    <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
+    <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Background" />
@@ -57,6 +59,7 @@
     <RootType FullName="OneAppAway.Converters.BasicGeopositionToStringConverter" />
     <RootType FullName="OneAppAway.Converters.BandwidthOptionsRowHeightConverter" />
     <RootType FullName="OneAppAway.Converters.DoubleToGridlengthConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.NullZeroConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
@@ -66,15 +69,15 @@
       <RootProperty Name="Template" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="TextTrimming" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontSize" />
       <RootProperty Name="Text" />
+      <RootProperty Name="TextTrimming" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="TextWrapping" />
-      <RootProperty Name="FontFamily" />
       <RootProperty Name="Inlines" />
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Tag" />
@@ -150,6 +153,8 @@
       <RootProperty Name="DataContext" />
       <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">
       <RootProperty Name="EndPoint" />
@@ -371,29 +376,12 @@
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.OuterFrame" />
     <RootType FullName="OneAppAway._1_1.Views.Pages.ApplicationPage">
-      <RootProperty Name="TitleTemplate" />
-      <RootProperty Name="TitleControlsTemplate" />
       <RootProperty Name="Content" />
+      <RootProperty Name="TitleTemplateSelector" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage1" />
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage2" />
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="RequestedTheme" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="BorderBrush" />
-      <RootProperty Name="PrimaryCommands" />
-      <RootProperty Name="SecondaryCommands" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
-      <RootProperty Name="ClickMode" />
-      <RootProperty Name="Visibility" />
-      <RootEvent Name="Click" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.BitmapIcon">
-      <RootProperty Name="UriSource" />
-    </RootType>
+    <RootType FullName="OneAppAway._1_1.Selectors.TransitMapPageTitleBarTemplateSelector" />
     <RootType FullName="OneAppAway._1_1.Views.Pages.TransitMapPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootEvent Name="Navigated" />
@@ -554,6 +542,23 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="RenderTransform" />
       <RootEvent Name="CloseRequested" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="SecondaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="ClickMode" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.BitmapIcon">
+      <RootProperty Name="UriSource" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.CompositeTransform">
       <RootProperty Name="TranslateY" />

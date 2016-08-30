@@ -37,10 +37,9 @@ namespace OneAppAway
     /// </summary>
     sealed partial class App : Application
     {
-        public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
+        //public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
         public _1_1.Views.OuterFrame MainOuterFrame;
         public ApplicationFrame RootFrame;
-        private bool NoTitleBar = false;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -85,18 +84,22 @@ namespace OneAppAway
 
                 MainOuterFrame = new _1_1.Views.OuterFrame(RootFrame);
                 Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
+                MainOuterFrame.SizeChanged += (s, e) =>
+                {
+                    CurrentWidth = e.NewSize.Width;
+                    ContentWidthChanged?.Invoke(s, e);
+                };
                 await Initialize();
                 // Create a Frame to act as the navigation context and navigate to the first page
                 Common.SuspensionManager.RegisterFrame(RootFrame, "appFrame");
 
+                // Place the frame in the current Window
+                //MainHamburgerBar.Content = RootFrame;
+                //MainHamburgerBar.SetRootFrame(RootFrame);
                 if (previousState == ApplicationExecutionState.Terminated)
                 {
                     await Common.SuspensionManager.RestoreAsync();
                 }
-
-                // Place the frame in the current Window
-                //MainHamburgerBar.Content = RootFrame;
-                //MainHamburgerBar.SetRootFrame(RootFrame);
             }
 
             if (RootFrame.Content == null)
@@ -220,29 +223,24 @@ namespace OneAppAway
 
             //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.Core.CoreApplicationViewTitleBar"))
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitleBar.ExtendViewIntoTitleBar = true;
             //coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
-            
-
-
-
-            ApplicationView.GetForCurrentView().ExitFullScreenMode();
+            //ApplicationView.GetForCurrentView().ExitFullScreenMode();
+            coreTitleBar.ExtendViewIntoTitleBar = true;
 
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
-                NoTitleBar = true;
-                //MainOuterFrame.SystemButtonsWidth = 0;
                 Action setOcclusion = () =>
                 {
                     var bar = StatusBar.GetForCurrentView();
+                    var view = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
                     var occlusion = bar.OccludedRect;
                     if (occlusion.Width > occlusion.Height)
-                        MainHamburgerBar.Margin = new Thickness(0, occlusion.Height, 0, 0);
+                        MainOuterFrame.Margin = new Thickness(0, occlusion.Height, 0, Window.Current.Bounds.Height - view.VisibleBounds.Height - occlusion.Height);
                     else if (occlusion.X == 0)
-                        MainHamburgerBar.Margin = new Thickness(occlusion.Width, 0, 0, 0);
+                        MainOuterFrame.Margin = new Thickness(occlusion.Width, 0, Window.Current.Bounds.Width - view.VisibleBounds.Width - occlusion.Width, 0);
                     else
-                        MainHamburgerBar.Margin = new Thickness(0, 0, occlusion.Width, 0);
-                
+                        MainOuterFrame.Margin = new Thickness(Window.Current.Bounds.Width - view.VisibleBounds.Width - occlusion.Width, 0, occlusion.Width, 0);
+                    
                 };
                 var statusBar = StatusBar.GetForCurrentView();
                 statusBar.BackgroundColor = background;
@@ -251,6 +249,7 @@ namespace OneAppAway
                 setOcclusion();
                 ApplicationView.GetForCurrentView().VisibleBoundsChanged += (sender, e) => setOcclusion();
             }
+            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseVisible);
         }
 
         //private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
@@ -266,7 +265,7 @@ namespace OneAppAway
                 var toastArgs = args as ToastNotificationActivatedEventArgs;
                 if (toastArgs.Argument.StartsWith("messageTapped"))
                 {
-                    await MainHamburgerBar.ShowPopup(null, AnimationDirection.Bottom, Window.Current.Bounds.Width * 0.9, 100 + 30000 / Window.Current.Bounds.Width, typeof(MessagePopupPage), SettingsManager.GetSetting<string>("Message" + toastArgs.Argument.Substring(13), false));
+                    //await MainHamburgerBar.ShowPopup(null, AnimationDirection.Bottom, Window.Current.Bounds.Width * 0.9, 100 + 30000 / Window.Current.Bounds.Width, typeof(MessagePopupPage), SettingsManager.GetSetting<string>("Message" + toastArgs.Argument.Substring(13), false));
                 }
                 if (toastArgs.Argument.StartsWith("suppressMessage"))
                 {
@@ -274,6 +273,10 @@ namespace OneAppAway
                 }
             }
         }
+
+        public event SizeChangedEventHandler ContentWidthChanged;
+
+        public double CurrentWidth { get; private set; }
 
         //public Command GoBackCommand { get; }
 

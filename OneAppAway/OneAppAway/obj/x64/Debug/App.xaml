@@ -21,6 +21,7 @@
         <converters:BasicGeopositionToStringConverter x:Key="BasicGeopositionStringConverter"/>
         <converters:BandwidthOptionsRowHeightConverter x:Key="BandwidthButtonConverter"/>
         <converters:DoubleToGridlengthConverter x:Key="GridLengthConverter"/>
+        <conv_1_1:NullZeroConverter x:Key="NullZeroConverter"/>
         <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
             <Grid>
                 <VisualStateManager.VisualStateGroups>
@@ -338,7 +339,10 @@
             </Setter>
         </Style>-->
         <DataTemplate x:Key="SimpleTitleTemplate">
-            <TextBlock FontSize="32" TextTrimming="WordEllipsis" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Title}"/>
+            <TextBlock FontSize="32" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Title}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ComicSansTitleTemplate">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Comic Sans MS" FontSize="32" Text="{Binding Title}"/>
         </DataTemplate>
     </Application.Resources>
 </Application>

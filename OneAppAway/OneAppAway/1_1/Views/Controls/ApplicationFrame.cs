@@ -12,5 +12,12 @@ namespace OneAppAway._1_1.Views.Controls
 {
     public class ApplicationFrame : Frame
     {
+        protected override void OnContentChanged(object oldContent, object newContent)
+        {
+            base.OnContentChanged(oldContent, newContent);
+            ContentChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        public event EventHandler ContentChanged;
     }
 }

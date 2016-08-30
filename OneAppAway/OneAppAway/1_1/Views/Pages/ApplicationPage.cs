@@ -13,6 +13,7 @@ using Windows.UI.Xaml;
 using OneAppAway._1_1.Data;
 using MvvmHelpers;
 using OneAppAway._1_1.Views.Structures;
+using OneAppAway._1_1.Selectors;
 
 namespace OneAppAway._1_1.Views.Pages
 {
@@ -29,7 +30,7 @@ namespace OneAppAway._1_1.Views.Pages
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState; //Done
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Disabled;
             Cache = new MemoryCache();
-            TitleTemplate = App.Current.Resources["SimpleTitleTemplate"] as DataTemplate;
+            TitleTemplateSelector = new TitleOnlyTitleBarTemplateSelector();
         }
 
         public NavigationHelper NavigationHelper
@@ -84,72 +85,43 @@ namespace OneAppAway._1_1.Views.Pages
         {
             
         }
-
-        public DataTemplate TitleTemplate
-        {
-            get { return (DataTemplate)GetValue(TitleTemplateProperty); }
-            set { SetValue(TitleTemplateProperty, value); }
-        }
-        public static readonly DependencyProperty TitleTemplateProperty =
-            DependencyProperty.Register("TitleTemplate", typeof(DataTemplate), typeof(ApplicationPage), new PropertyMetadata(null, TitleTemplateChangedStatic));
-        static void TitleTemplateChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            (sender as ApplicationPage)?.TitleTemplateChanged?.Invoke(sender, EventArgs.Empty);
-        }
-        public event EventHandler TitleTemplateChanged;
-
-        public DataTemplate TitleControlsTemplate
-        {
-            get { return (DataTemplate)GetValue(TitleControlsTemplateProperty); }
-            set { SetValue(TitleControlsTemplateProperty, value); }
-        }
-        public static readonly DependencyProperty TitleControlsTemplateProperty =
-            DependencyProperty.Register("TitleControlsTemplate", typeof(DataTemplate), typeof(ApplicationPage), new PropertyMetadata(null, TitleControlsTemplateChangedStatic));
-        static void TitleControlsTemplateChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            (sender as ApplicationPage)?.TitleControlsTemplateChanged?.Invoke(sender, EventArgs.Empty);
-        }
-        public event EventHandler TitleControlsTemplateChanged;
-
-        public TitleBarElementSize TitleSize
-        {
-            get { return (TitleBarElementSize)GetValue(TitleSizeProperty); }
-            set { SetValue(TitleSizeProperty, value); }
-        }
-        public static readonly DependencyProperty TitleSizeProperty =
-            DependencyProperty.Register("TitleSize", typeof(TitleBarElementSize), typeof(ApplicationPage), new PropertyMetadata(new TitleBarElementSize(1, 0), TitleSizeChangedStatic));
-        static void TitleSizeChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            (sender as ApplicationPage)?.TitleSizeChanged?.Invoke(sender, EventArgs.Empty);
-        }
-        public event EventHandler TitleSizeChanged;
-
-        public TitleBarElementSize TitleControlsSize
-        {
-            get { return (TitleBarElementSize)GetValue(TitleControlsSizeProperty); }
-            set { SetValue(TitleControlsSizeProperty, value); }
-        }
-        public static readonly DependencyProperty TitleControlsSizeProperty =
-            DependencyProperty.Register("TitleControlsSize", typeof(TitleBarElementSize), typeof(ApplicationPage), new PropertyMetadata(new TitleBarElementSize(), TitleControlsSizeChangedStatic));
-        static void TitleControlsSizeChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            (sender as ApplicationPage)?.TitleControlsSizeChanged?.Invoke(sender, EventArgs.Empty);
-        }
-        public event EventHandler TitleControlsSizeChanged;
-
-        public TitleBarElementSize TitleSpaceSize
-        {
-            get { return (TitleBarElementSize)GetValue(TitleSpaceSizeProperty); }
-            set { SetValue(TitleSpaceSizeProperty, value); }
-        }
-        public static readonly DependencyProperty TitleSpaceSizeProperty =
-            DependencyProperty.Register("TitleSpaceSize", typeof(TitleBarElementSize), typeof(ApplicationPage), new PropertyMetadata(new TitleBarElementSize(), TitleSpaceSizeChangedStatic));
-        static void TitleSpaceSizeChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            (sender as ApplicationPage)?.TitleSpaceSizeChanged?.Invoke(sender, EventArgs.Empty);
-        }
-        public event EventHandler TitleSpaceSizeChanged;
         
+        public TitleBarTemplateSelectorBase TitleTemplateSelector
+        {
+            get { return (TitleBarTemplateSelectorBase)GetValue(TitleTemplateSelectorProperty); }
+            set { SetValue(TitleTemplateSelectorProperty, value); }
+        }
+        public static readonly DependencyProperty TitleTemplateSelectorProperty =
+            DependencyProperty.Register("TitleTemplateSelector", typeof(TitleBarTemplateSelectorBase), typeof(ApplicationPage), new PropertyMetadata(new TitleOnlyTitleBarTemplateSelector(), OnTitleTemplateSelectorChangedStatic));
+        static void OnTitleTemplateSelectorChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as ApplicationPage)?.TitleTemplateSelectorChanged?.Invoke(sender, EventArgs.Empty);
+            (sender as ApplicationPage)?.RefreshTitleTemplateBindings();
+        }
+        public event EventHandler TitleTemplateSelectorChanged;
+
+        private void RefreshTitleTemplateBindings()
+        {
+            SetBinding(TitleControlsOverflowTemplateProperty, new Windows.UI.Xaml.Data.Binding() { Source = TitleTemplateSelector, Path = new PropertyPath("OverflowControlsTemplate"), Mode = Windows.UI.Xaml.Data.BindingMode.OneWay });
+            SetBinding(TitleControlsOverflowWidthProperty, new Windows.UI.Xaml.Data.Binding() { Source = TitleTemplateSelector, Path = new PropertyPath("OverflowControlsWidth"), Mode = Windows.UI.Xaml.Data.BindingMode.OneWay });
+        }
+
+        public DataTemplate TitleControlsOverflowTemplate
+        {
+            get { return (DataTemplate)GetValue(TitleControlsOverflowTemplateProperty); }
+            set { SetValue(TitleControlsOverflowTemplateProperty, value); }
+        }
+        public static readonly DependencyProperty TitleControlsOverflowTemplateProperty =
+            DependencyProperty.Register("TitleControlsOverflowTemplate", typeof(DataTemplate), typeof(ApplicationPage), new PropertyMetadata(null));
+
+        public double TitleControlsOverflowWidth
+        {
+            get { return (double)GetValue(TitleControlsOverflowWidthProperty); }
+            set { SetValue(TitleControlsOverflowWidthProperty, value); }
+        }
+        public static readonly DependencyProperty TitleControlsOverflowWidthProperty =
+            DependencyProperty.Register("TitleControlsOverflowWidth", typeof(double), typeof(ApplicationPage), new PropertyMetadata(0));
+
         ~ApplicationPage()
         {
             Cache.Dispose();

@@ -28,9 +28,6 @@ namespace OneAppAway._1_1.Views.Pages
         {
             this.InitializeComponent();
             DataContext = new BaseViewModel() { Title = "Test Page 2" };
-            TitleSize = new TitleBarElementSize(.75, 100);
-            TitleControlsSize = new TitleBarElementSize(250);
-            TitleSpaceSize = new TitleBarElementSize(.25, 120);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

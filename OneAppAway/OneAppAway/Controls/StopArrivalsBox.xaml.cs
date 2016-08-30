@@ -147,7 +147,7 @@ namespace OneAppAway
 
         public async Task ShowHelpTip()
         {
-            await ((App)App.Current).MainHamburgerBar.ShowPopup(StopButton, AnimationDirection.Bottom, 250, 140, typeof(HelpTip), new Tuple<AnimationDirection, Thickness, string>(AnimationDirection.Top, new Thickness(0), "Tap here to show the information page for this stop."));
+            //await ((App)App.Current).MainHamburgerBar.ShowPopup(StopButton, AnimationDirection.Bottom, 250, 140, typeof(HelpTip), new Tuple<AnimationDirection, Thickness, string>(AnimationDirection.Top, new Thickness(0), "Tap here to show the information page for this stop."));
         }
     }
 }

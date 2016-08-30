@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel x:ConnectionId='1' x:Name="MainStackPanel">
             <TextBlock VerticalAlignment="Top" FontSize="32">Test Page 2</TextBlock>

@@ -109,9 +109,12 @@
     <Compile Include="1_1\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="1_1\Converters\LatLonToGeopointConverter.cs" />
     <Compile Include="1_1\Converters\LatLonTransformConverter.cs" />
+    <Compile Include="1_1\Converters\NullZeroConverter.cs" />
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
     <Compile Include="1_1\Helpers.cs" />
+    <Compile Include="1_1\Selectors\TitleOnlyTitleBarTemplateSelector.cs" />
+    <Compile Include="1_1\Selectors\TransitMapPageTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\ViewModels\HamburgerBarPageEntryViewModel.cs" />
     <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
     <Compile Include="1_1\Views\Controls\ApplicationFrame.cs" />
@@ -141,6 +144,7 @@
       <DependentUpon>TransitMapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Views\Structures\TitleBarElementSize.cs" />
+    <Compile Include="1_1\Selectors\TitleBarTemplateSelectorBase.cs" />
     <Compile Include="Data\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>

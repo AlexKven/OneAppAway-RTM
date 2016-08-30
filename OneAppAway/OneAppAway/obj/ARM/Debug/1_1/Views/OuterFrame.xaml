@@ -156,14 +156,14 @@
                 </Grid>
             </SplitView.Pane>
         </SplitView>
-        <Grid Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top">
+        <Grid Grid.RowSpan="2" MinHeight="50" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Rectangle Fill="Transparent" Grid.Column="1" Width="{Binding TitleActualWidth}"/>
-            <ContentPresenter Grid.Column="2" HorizontalAlignment="Left" ContentTemplate="{Binding TitleControlsTemplate}" DataContext="{Binding PageDataContext}" Width="{Binding TitleControlsActualWidth}" Visibility="{Binding TitleControlsVisibility}"/>
+            <Rectangle Height="1" VerticalAlignment="Top" Fill="Transparent" Grid.Column="1" Width="{Binding TitleActualWidth}" IsHitTestVisible="False"/>
+            <ContentPresenter VerticalAlignment="Stretch" Grid.Column="2" HorizontalAlignment="Left" ContentTemplate="{Binding TitleControlsTemplate}" DataContext="{Binding PageDataContext}" Width="{Binding TitleControlsActualWidth}" Visibility="{Binding TitleControlsVisibility}"/>
         </Grid>
     </Grid>
 </Page>
