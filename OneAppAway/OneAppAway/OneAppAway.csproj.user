@@ -18,6 +18,7 @@
     <RemoteDebugMachine>variablecn</RemoteDebugMachine>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
     <UseAuthentication>false</UseAuthentication>
+    <AuthenticationMode>Windows</AuthenticationMode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
@@ -28,5 +29,10 @@
     <DeviceId>30f105c9-681e-420b-a277-7c086ead8a4e</DeviceId>
     <RemoteDebugMachine>Bdellium</RemoteDebugMachine>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
+    <AuthenticationMode>Windows</AuthenticationMode>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
   </PropertyGroup>
 </Project>

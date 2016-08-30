@@ -379,5 +379,19 @@ namespace OneAppAway
             //});
             return result;
         }
+
+        public static double EstimateWidth(this CommandBar bar)
+        {
+            double res = 40;
+            foreach (var item in bar.PrimaryCommands)
+            {
+                if (item is Control)
+                {
+                    if (((Control)item).Visibility != Visibility.Collapsed)
+                        res += 70;
+                }
+            }
+            return res;
+        }
     }
 }

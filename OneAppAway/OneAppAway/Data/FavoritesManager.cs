@@ -61,11 +61,11 @@ namespace OneAppAway
         {
             if (FavoriteArrivals.Any(fav => fav.Route == route && fav.Stop == stop && fav.Destination == destination))
             {
-                await ((App)App.Current).MainHamburgerBar.ShowPopup(element, Windows.UI.Xaml.Controls.Primitives.AnimationDirection.Left, 300, 100, typeof(RemoveFromFavoritesPage), new string[] { route, stop, destination });
+                //await ((App)App.Current).MainHamburgerBar.ShowPopup(element, Windows.UI.Xaml.Controls.Primitives.AnimationDirection.Left, 300, 100, typeof(RemoveFromFavoritesPage), new string[] { route, stop, destination });
             }
             else
             {
-                await ((App)App.Current).MainHamburgerBar.ShowPopup(element, Windows.UI.Xaml.Controls.Primitives.AnimationDirection.Right, 300, 350, typeof(AddToFavoritesPage), new string[] { route, stop, destination });
+                //await ((App)App.Current).MainHamburgerBar.ShowPopup(element, Windows.UI.Xaml.Controls.Primitives.AnimationDirection.Right, 300, 350, typeof(AddToFavoritesPage), new string[] { route, stop, destination });
             }
         }
     }

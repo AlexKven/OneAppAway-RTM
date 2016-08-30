@@ -1,1 +1,4 @@
-C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.1.2\Redist\CommonConfiguration\neutral\AdDuplex\AdDuplex.pri
+C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0\ExtensionSDKs\AdDuplex.Windows10\10.0.1.5\Redist\CommonConfiguration\neutral\AdDuplex\AdDuplex.pri
+C:\Users\kvenc\.nuget\packages\Microsoft.Toolkit.Uwp\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.pri
+C:\Users\kvenc\.nuget\packages\SQLitePCL.raw\0.9.2\lib\uap10.0\SQLitePCL.raw.pri
+C:\Users\kvenc\.nuget\packages\SQLitePCL\3.8.7.2\build\netcore451\SQLitePCL.Ext.pri

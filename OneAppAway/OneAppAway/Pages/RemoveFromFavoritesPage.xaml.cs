@@ -45,12 +45,12 @@ namespace OneAppAway
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             FavoritesManager.FavoriteArrivals.Remove(new FavoriteArrival() { Route = this.Route, Stop = this.Stop, Destination = this.Destination });
-            ((App)App.Current).MainHamburgerBar.DismissPopup();
+            //((App)App.Current).MainHamburgerBar.DismissPopup();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ((App)App.Current).MainHamburgerBar.DismissPopup();
+            //((App)App.Current).MainHamburgerBar.DismissPopup();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace DatabaseArchiver
 {
     public static class Archiver
     {
-        public static readonly SQLite.Net.Platform.WinRT.SQLitePlatformWinRT Platform = new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT();
+        //public static readonly SQLite.Net.Platform.WinRT.SQLitePlatformWinRT Platform = new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT();
         public static readonly string DBPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Database.db");
 
         public static async Task Begin(SQLiteConnection connection, CancellationToken token)
@@ -26,7 +26,7 @@ namespace DatabaseArchiver
                     ExecuteSQL(connection, string.Format($"insert or replace into Agency(AgencyID, Name, URL) values('{agency.AgencyID.Escape()}', '{agency.Name.Escape()}', '{agency.URL.Escape()}')"));
                 }
             }
-
+            
             foreach (string agencyID in ExecuteSQL(connection, "select AgencyID from PendingAgency"))
             {
                 foreach (var route in await ApiLayer.GetBusRoutesForAgency(agencyID, token))
@@ -88,13 +88,6 @@ namespace DatabaseArchiver
                                 AgencyID varchar(15) primary key not null unique,
                                 Name varchar(64),
                                 URL varchar(140));");
-            ExecuteSQL(connection, @"create table if not exists Neighborhood(
-                                NeighborhoodID varchar(4) primary key not null unique,
-                                Name varchar(50),
-                                CityName varchar(50))");
-            ExecuteSQL(connection, @"create table if not exists StopGroup(
-                                StopGroupID varchar(4) primary key not null unique,
-                                Name varchar(50))");
             ExecuteSQL(connection, @"create table if not exists Route(
                                 RouteID varchar(15) primary key not null unique,
                                 Name varchar(64),
@@ -108,11 +101,7 @@ namespace DatabaseArchiver
                                 Latitude decimal(3,8) not null,
                                 Longitude decimal(3,8) not null,
                                 Direction tinyint,
-                                LocationType tinyint,
-                                NeighborhoodID varchar(4),
-                                StopGroupID varchar(4),
-                                foreign key(NeighborhoodID) references Neighborhood(NeighborhoodID),
-                                foreign key(StopGroupID) references StopGroup(StopGroupID))");
+                                LocationType tinyint,)");
             ExecuteSQL(connection, @"create table if not exists StopRouteLink(
                                 StopID varchar(15) not null,
                                 RouteID varchar(15) not null,
@@ -146,6 +135,9 @@ namespace DatabaseArchiver
                                 TripID varchar(15),
                                 foreign key(RouteID) references Route(RouteID)
                                 foreign key(TripID) references Trip(TripID))");
+            ExecuteSQL(connection, @"create index if not exists RouteIndex on Route(RouteID)");
+            ExecuteSQL(connection, @"create index if not exists StopIndex on Stop(StopID)");
+            ExecuteSQL(connection, @"create index if not exists StopRouteLinkIndex on StopRouteLink(RouteID, StopID)");
             #endregion
 
             #region Trigger Creation

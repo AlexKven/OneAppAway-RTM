@@ -1,4 +1,5 @@
 ﻿using OneAppAway.Common;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,9 +22,9 @@ namespace OneAppAway
         public NavigationFriendlyPage()
         {
             this.navigationHelper = new NavigationHelper(this);
-            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
-            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-            this.NavigationCacheMode = NavigationCacheMode.Disabled;
+            this.navigationHelper.LoadState += this.NavigationHelper_LoadState; //Done
+            this.navigationHelper.SaveState += this.NavigationHelper_SaveState; //Done
+            this.NavigationCacheMode = NavigationCacheMode.Required;
         }
         
         public NavigationHelper NavigationHelper
@@ -52,8 +53,9 @@ namespace OneAppAway
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
-            this.navigationHelper.GoBackCommand.CanExecuteChanged += GoBackCommand_CanExecuteChanged;
+            this.navigationHelper.GoBackCommand.CanExecuteChanged += GoBackCommand_CanExecuteChanged; //Done
             UpdateBackButtonVisibility();
+            GC.Collect();
         }
 
         private void GoBackCommand_CanExecuteChanged(object sender, System.EventArgs e)
@@ -64,6 +66,9 @@ namespace OneAppAway
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
+            TaskManager.CancelPage(this);
+            this.navigationHelper.LoadState -= this.NavigationHelper_LoadState;
+            this.navigationHelper.SaveState -= this.NavigationHelper_SaveState;
             this.navigationHelper.GoBackCommand.CanExecuteChanged -= GoBackCommand_CanExecuteChanged;
         }
 
@@ -101,9 +106,9 @@ namespace OneAppAway
                 (CanGoBack || NavigationHelper.CanGoBack()) ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
 
-        public int StartOperation(OperationCallback operation, int opID)
+        internal virtual void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
         {
-            return 0;
+
         }
     }
 }

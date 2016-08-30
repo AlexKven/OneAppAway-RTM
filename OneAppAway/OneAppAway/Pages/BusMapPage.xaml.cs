@@ -20,6 +20,9 @@ using System.Diagnostics;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Data;
 using Windows.System.UserProfile;
+using Windows.UI.Xaml.Media;
+using Windows.UI;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -31,6 +34,10 @@ namespace OneAppAway
     public sealed partial class BusMapPage : NavigationFriendlyPage
     {
         private Grid StopArrivalBoxGrid = new Grid() { Width = 350, Height = 400 };
+        private TextBlock TitleBlock = new TextBlock() { FontSize = 32, VerticalAlignment = VerticalAlignment.Center, RequestedTheme = ElementTheme.Dark, Text = "Bus Map" };
+        private StackPanel TitlePanel = new StackPanel() { Orientation = Orientation.Horizontal };
+        private TextBox SearchBox = new TextBox() { Background = new SolidColorBrush(Colors.White), BorderBrush = new SolidColorBrush(Colors.LightGray), Foreground = new SolidColorBrush(Colors.Black), PlaceholderText = "Search", VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(5, 9, 0, 9) };
+        private StackPanel TitleOverlayPanel = new StackPanel { Orientation = Orientation.Horizontal };
 
         public BusMapPage()
         {
@@ -40,6 +47,12 @@ namespace OneAppAway
             MapControl.SetNormalizedAnchorPoint(StopArrivalBoxGrid, new Point(0.5, 1));
             MainMap.MapControl.Children.Add(StopArrivalBoxGrid);
             WindowStateChanging();
+
+            Uri imageUri = new Uri("ms-appx:///Assets/Logo.png");
+            Image obaImage = new Image() { Source = new BitmapImage(imageUri), Width = 42, Height = 42, Stretch = Stretch.Uniform, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(4) };
+            TitlePanel.Children.Add(obaImage);
+            TitlePanel.Children.Add(TitleBlock);
+            TitleOverlayPanel.Children.Add(SearchBox);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -54,7 +67,8 @@ namespace OneAppAway
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
-            BandwidthManager.EffectiveBandwidthOptionsChanged += BandwidthManager_EffectiveBandwidthOptionsChanged;
+            MainMap.MapControl.ActualCameraChanged -= MainMap_ActualCameraChanged;
+            BandwidthManager.EffectiveBandwidthOptionsChanged -= BandwidthManager_EffectiveBandwidthOptionsChanged;
             MainMap.UnhookLocationEvents();
         }
 
@@ -70,24 +84,6 @@ namespace OneAppAway
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (Window.Current.Bounds.Height / Window.Current.Bounds.Width > 1.5)
-            {
-                if (ButtonsPanel.Orientation != Orientation.Horizontal)
-                {
-                    ButtonsPanel.Orientation = Orientation.Horizontal;
-                    ButtonsPanel.VerticalAlignment = VerticalAlignment.Bottom;
-                    ButtonsPanel.HorizontalAlignment = HorizontalAlignment.Center;
-                }
-            }
-            else
-            {
-                if (ButtonsPanel.Orientation != Orientation.Vertical)
-                {
-                    ButtonsPanel.Orientation = Orientation.Vertical;
-                    ButtonsPanel.VerticalAlignment = VerticalAlignment.Center;
-                    ButtonsPanel.HorizontalAlignment = HorizontalAlignment.Right;
-                }
-            }
         }
 
         #region Fields
@@ -258,6 +254,51 @@ namespace OneAppAway
             }
         }
 
+        internal override void OnRefreshTitleBarControls(OuterFrame mainFrame, double totalWidth)
+        {
+            bool draggable = mainFrame.SystemButtonsWidth > 0;
+            bool showTitle = draggable && totalWidth >= 500;
+            bool showControls = (draggable && totalWidth >= 750) || (!draggable && totalWidth >= 450);
+
+            if (totalWidth < 40)
+                return;
+
+            if (showTitle && mainFrame.TitleContent.Content != TitlePanel)
+            {
+                mainFrame.TitleContent.Content = TitlePanel;
+                SearchBox.Width = 250;
+                SearchBox.Margin = new Thickness(8, 9, 0, 9);
+            }
+            if (showControls && !TitleOverlayPanel.Children.Contains(MainControlBar))
+            {
+                MainGrid.Children.Remove(MainControlBar);
+                TitleOverlayPanel.Children.Add(MainControlBar);
+            }
+            if (!showControls && TitleOverlayPanel.Children.Contains(MainControlBar))
+            {
+                TitleOverlayPanel.Children.Remove(MainControlBar);
+                MainGrid.Children.Add(MainControlBar);
+            }
+            if (!showTitle)
+            {
+                if (mainFrame.TitleContent.Content != null)
+                    mainFrame.TitleContent.Content = null;
+                if (showControls)
+                {
+                    SearchBox.Width = totalWidth - 2 - MainControlBar.EstimateWidth();
+                }
+                else
+                {
+                    SearchBox.Width = totalWidth - 2;
+                }
+                SearchBox.Margin = new Thickness(0, 9, 2, 9);
+            }
+            if (mainFrame.TitleOverlay.Content != TitleOverlayPanel)
+            {
+                mainFrame.TitleOverlay.Content = TitleOverlayPanel;
+            }
+        }
+
         private async Task SetLoadingIndicator(bool value)
         {
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
@@ -319,8 +360,14 @@ namespace OneAppAway
             if (e.NewState.Name == "ArrivalBoxShown")
                 StopArrivalBox.Visibility = Visibility.Visible;
             else
-                ani.Completed += (s, ev) => StopArrivalBox.Visibility = Visibility.Collapsed;
+                ani.Completed += _Ani_Completed; //Done
             sb.Begin();
+        }
+
+        private void _Ani_Completed(object sender, object e)
+        {
+            StopArrivalBox.Visibility = Visibility.Collapsed;
+            ((DoubleAnimation)sender).Completed -= _Ani_Completed;
         }
 
         private void BandwidthManager_EffectiveBandwidthOptionsChanged(object sender, EventArgs e)
@@ -363,6 +410,11 @@ namespace OneAppAway
                 AddStopsInBounds(bounds, true);
             }
             catch (TaskCanceledException) { }
+        }
+
+        private void CurrentLocationButton_Click(object sender, RoutedEventArgs e)
+        {
+            CenterOnCurrentLocation();
         }
     }
 }

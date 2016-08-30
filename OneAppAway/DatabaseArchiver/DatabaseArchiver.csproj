@@ -117,6 +117,7 @@
     <None Include="DatabaseArchiver_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bfg-1.12.13.jar" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -140,10 +141,14 @@
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
-    <SDKReference Include="SQLite.UAP.2015, Version=3.9.2">
-      <Name>SQLite for Universal App Platform</Name>
-    </SDKReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\CommonClasses.csproj">
+      <Project>{24eec194-2107-40a6-b5a4-57083e05131d}</Project>
+      <Name>CommonClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\UWPShared\UWPShared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

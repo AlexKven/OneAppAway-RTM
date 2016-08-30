@@ -16,12 +16,11 @@
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10240.0" />
-    <PackageDependency Name="Microsoft.VCLibs.140.00.Debug" MinVersion="14.0.22929.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
-    <PackageDependency Name="Microsoft.NET.CoreRuntime.1.0" MinVersion="1.0.23430.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+    <PackageDependency Name="Microsoft.VCLibs.140.00.Debug" MinVersion="14.0.24210.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+    <PackageDependency Name="Microsoft.NET.CoreRuntime.1.0" MinVersion="1.0.23819.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
   </Dependencies>
   <Resources>
     <Resource Language="EN-US" />
-    <Resource Language="EN" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="DatabaseArchiver.exe" EntryPoint="DatabaseArchiver.App">
@@ -34,39 +33,18 @@
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>
-  <Extensions>
-    <Extension Category="windows.activatableClass.inProcessServer">
-      <InProcessServer>
-        <Path>DatabaseArchiver.exe</Path>
-        <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdInfo" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdClickEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Interstitials.Models.InterstitialAdLoadedEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.AdDuplexClient" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.AdControl" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Windows_10_SDK_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.InterstitialAd" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Common.Core.InstallationState" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.ImageLoadedEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.AdLoadingErrorEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Common.Models.NoAdEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Core.AdCoveredEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.BannerAdLoadedEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.AdClickEventArgs" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="AdDuplex.Banners.Models.BannerAdInfo" ThreadingModel="both" />
-      </InProcessServer>
-    </Extension>
-  </Extensions>
   <build:Metadata>
+    <build:Item Name="SharedGUID" Value="7adc8fb2-42f2-4666-aa62-00a2942a2cf6" />
+    <build:Item Name="CodeSharingProject" Value="248F659F-DAC5-46E8-AC09-60EC9FC95053" />
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="14.0" />
     <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2015" />
-    <build:Item Name="OperatingSystem" Version="10.0.10586.0 (th2_release.151029-1700)" />
-    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.24720.0" />
+    <build:Item Name="OperatingSystem" Version="10.0.14393.0 (rs1_release.160715-1616)" />
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.25420.1" />
     <build:Item Name="ProjectGUID" Value="{0C05E78E-C056-4F36-AB2D-1ED9A65BE017}" />
     <build:Item Name="OptimizingToolset" Value="None" />
     <build:Item Name="TargetRuntime" Value="Managed" />
-    <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.24720.0" />
-    <build:Item Name="SQLite.UAP.2015" Version="3.9.2" />
-    <build:Item Name="MakePri.exe" Version="10.0.10586.15 (th2_release.151119-1817)" />
+    <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.25420.1" />
+    <build:Item Name="MakePri.exe" Version="10.0.10586.212 (th2_release_sec.160328-1908)" />
   </build:Metadata>
 </Package>

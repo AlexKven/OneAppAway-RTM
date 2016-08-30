@@ -82,12 +82,12 @@ namespace OneAppAway
         {
             favorite.CustomName = TitleBox.Text;
             FavoritesManager.FavoriteArrivals.Add(favorite);
-            ((App)App.Current).MainHamburgerBar.DismissPopup();
+            //((App)App.Current).MainHamburgerBar.DismissPopup();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ((App)App.Current).MainHamburgerBar.DismissPopup();
+            //((App)App.Current).MainHamburgerBar.DismissPopup();
         }
 
         private void CityContextBox_Checked(object sender, RoutedEventArgs e)

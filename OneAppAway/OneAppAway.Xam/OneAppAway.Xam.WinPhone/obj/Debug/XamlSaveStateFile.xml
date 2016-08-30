@@ -1,0 +1,12 @@
+<XamlCompilerSaveState>
+  <ReferenceAssemblyList>
+    <LocalAssembly PathName="c:\github\oneappaway-rtm\oneappaway\oneappaway.xam\oneappaway.xam.winphone\obj\debug\intermediatexaml\oneappaway.xam.winphone.exe" HashGuid="d374e521-9ace-9f78-8b0d-a485b4eb7194" />
+    <ReferenceAssembly PathName="c:\github\oneappaway-rtm\oneappaway\packages\xamarin.forms.2.3.0.107\lib\wpa81\xamarin.forms.core.dll" HashGuid="c30391b9-f93a-55bc-3bed-bad91032c5ef" />
+    <ReferenceAssembly PathName="c:\github\oneappaway-rtm\oneappaway\packages\xamarin.forms.maps.2.3.0.107\lib\wpa81\xamarin.forms.maps.dll" HashGuid="ed9c28df-835e-9228-f013-bb1216e25d67" />
+    <ReferenceAssembly PathName="c:\github\oneappaway-rtm\oneappaway\packages\xamarin.forms.maps.2.3.0.107\lib\wpa81\xamarin.forms.maps.winrt.phone.dll" HashGuid="3135e740-c5f2-4d65-dc3f-ed8420117299" />
+    <ReferenceAssembly PathName="c:\github\oneappaway-rtm\oneappaway\packages\xamarin.forms.2.3.0.107\lib\wpa81\xamarin.forms.platform.dll" HashGuid="6b938cd4-44c0-2618-7eb6-4caa3f482076" />
+    <ReferenceAssembly PathName="c:\github\oneappaway-rtm\oneappaway\packages\xamarin.forms.2.3.0.107\lib\wpa81\xamarin.forms.platform.winrt.dll" HashGuid="0582f833-519c-0b5c-af4a-4e3bd65d7303" />
+    <ReferenceAssembly PathName="c:\github\oneappaway-rtm\oneappaway\packages\xamarin.forms.2.3.0.107\lib\wpa81\xamarin.forms.platform.winrt.phone.dll" HashGuid="ed0eb42c-d027-efc5-2897-d47071690c00" />
+    <ReferenceAssembly PathName="c:\github\oneappaway-rtm\oneappaway\packages\xamarin.forms.2.3.0.107\lib\wpa81\xamarin.forms.xaml.dll" HashGuid="68924db8-a65f-e414-d0af-af182cfb1786" />
+  </ReferenceAssemblyList>
+</XamlCompilerSaveState>

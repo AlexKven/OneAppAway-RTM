@@ -101,6 +101,54 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1_1\Agency.cs" />
+    <Compile Include="1_1\AttachedProperties.cs" />
+    <Compile Include="1_1\BusMap.xaml.cs">
+      <DependentUpon>BusMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="1_1\Converters\LatLonToGeopointConverter.cs" />
+    <Compile Include="1_1\Converters\LatLonTransformConverter.cs" />
+    <Compile Include="1_1\Converters\NullZeroConverter.cs" />
+    <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
+    <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
+    <Compile Include="1_1\Helpers.cs" />
+    <Compile Include="1_1\Selectors\TitleOnlyTitleBarTemplateSelector.cs" />
+    <Compile Include="1_1\Selectors\TransitMapPageTitleBarTemplateSelector.cs" />
+    <Compile Include="1_1\ViewModels\HamburgerBarPageEntryViewModel.cs" />
+    <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
+    <Compile Include="1_1\Views\Controls\ApplicationFrame.cs" />
+    <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
+      <DependentUpon>StopArrivalsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\StopArrivalsControlBase.cs" />
+    <Compile Include="1_1\Views\Controls\StopArrivalsSubControl.xaml.cs">
+      <DependentUpon>StopArrivalsSubControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\TransitMap.xaml.cs">
+      <DependentUpon>TransitMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
+    <Compile Include="1_1\Views\OuterFrame.xaml.cs">
+      <DependentUpon>OuterFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\ApplicationPage.cs" />
+    <Compile Include="1_1\Route.cs" />
+    <Compile Include="1_1\Views\Pages\TestPage1.xaml.cs">
+      <DependentUpon>TestPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\TestPage2.xaml.cs">
+      <DependentUpon>TestPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
+      <DependentUpon>TransitMapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Structures\TitleBarElementSize.cs" />
+    <Compile Include="1_1\Selectors\TitleBarTemplateSelectorBase.cs" />
+    <Compile Include="Data\OuterFrame.xaml.cs">
+      <DependentUpon>OuterFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keys.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -139,7 +187,7 @@
     <Compile Include="Pages\MessagePopupPage.xaml.cs">
       <DependentUpon>MessagePopupPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="ApplicationSettings.cs" />
     <Compile Include="Settings\BandwidthManager.cs" />
     <Compile Include="ComboBoxIconAndText.cs" />
     <Compile Include="Common\NavigationFriendlyPage.cs" />
@@ -171,7 +219,6 @@
     <Compile Include="Data\DownloadManager.cs" />
     <Compile Include="Data\FileManager.cs" />
     <Compile Include="HelperFunctions.cs" />
-    <Compile Include="Keys.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -186,6 +233,7 @@
     <Compile Include="ScrollViewerSnapping.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Structures\Structs.cs" />
+    <Compile Include="TaskManager.cs" />
     <Compile Include="TemplateSelectors\RouteListingTemplateSelector.cs" />
     <Compile Include="Controls\WeekScheduleBrowser.xaml.cs">
       <DependentUpon>WeekScheduleBrowser.xaml</DependentUpon>
@@ -253,6 +301,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="1_1\BusMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\StopArrivalsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\StopArrivalsSubControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\TransitMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\OuterFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TestPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TestPage2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TransitMapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Data\OuterFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -351,14 +435,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="AdDuplex.Windows10, Version=10.0.1.2">
+    <SDKReference Include="AdDuplex.Windows10, Version=10.0.1.5">
       <Name>AdDuplex SDK for Windows 10 %28XAML%29</Name>
     </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
-    <SDKReference Include="SQLite.UAP.2015, Version=3.9.2">
-      <Name>SQLite for Universal App Platform</Name>
+    <SDKReference Include="Microsoft.VCLibs.120, Version=14.0">
+      <Name>Microsoft Visual C++ 2013 Runtime Package for Windows Universal</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.13.0">
+      <Name>SQLite for Universal Windows Platform</Name>
     </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
@@ -367,6 +454,17 @@
   <ItemGroup>
     <AppxSystemBinary Include="OneAppAway.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="1_1\Data\" />
+    <Folder Include="Visuals\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\CommonClasses.csproj">
+      <Project>{24eec194-2107-40a6-b5a4-57083e05131d}</Project>
+      <Name>CommonClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\UWPShared\UWPShared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

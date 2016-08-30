@@ -1,4 +1,4 @@
-﻿using SQLite.Net.Attributes;
+﻿//*dbusing SQLite.Net.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace DatabaseArchiver
             URL = url;
         }
 
-        [PrimaryKey][NotNull]
+        //*db[PrimaryKey][NotNull]
         public string AgencyID { get; set; }
 
         public string Name { get; set; }

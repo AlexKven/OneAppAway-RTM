@@ -12,7 +12,7 @@
         <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto" local:ScrollViewerSnapping.SnapInterval="285">
             <Grid x:Name="InnerGrid" SizeChanged="InnerGrid_SizeChanged">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="0"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
@@ -25,10 +25,10 @@
                 </Grid.ColumnDefinitions>
                 <local:BusMap StopVisibilityThreshold="0" StopSizeThreshold="0" Grid.ColumnSpan="4" Grid.RowSpan="4" x:Name="MainMap" ZoomLevel="15"/>
                 <Rectangle Fill="#DD3D3D3D" Grid.RowSpan="4" Grid.ColumnSpan="3"/>
-                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="4">
+                <!--<StackPanel Orientation="Horizontal" Grid.ColumnSpan="4">
                     <Image x:Name="DirectionImage" Margin="5"/>
                     <TextBlock FontSize="24" Margin="10" x:Name="TitleBlock"/>
-                </StackPanel>
+                </StackPanel>-->
                 <RelativePanel Grid.Row="1">
                     <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" x:Name="RefreshArrivalsButton" Click="RefreshArrivalsButton_Click"></Button>
                     <TextBlock FontSize="24" Margin="5" Grid.Row="1" HorizontalAlignment="Center" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.LeftOf="RefreshArrivalsButton">Arrivals</TextBlock>

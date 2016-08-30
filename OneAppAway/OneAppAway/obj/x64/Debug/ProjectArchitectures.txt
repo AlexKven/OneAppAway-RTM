@@ -1,1 +1,2 @@
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\OneAppAway.csproj;x64
+C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\CommonClasses.csproj;neutral
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\OneAppAway.csproj;x64

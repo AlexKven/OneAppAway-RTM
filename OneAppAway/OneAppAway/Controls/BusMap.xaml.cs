@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Services.Maps;
 using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Xaml;
@@ -39,6 +40,8 @@ namespace OneAppAway
         private Dictionary<MapIcon, BusStop> Stops = new Dictionary<MapIcon, BusStop>();
         private Dictionary<MapIcon, string> Buses = new Dictionary<MapIcon, string>();
         private double PreviousZoomLevel;
+        private MapPolygon polyGon = new MapPolygon() { FillColor = Colors.Red, StrokeThickness = 0 };
+        BasicGeoposition polygonCenter = new BasicGeoposition();
 
         private Polygon MyLocationIcon = new Polygon();
         #endregion 
@@ -64,11 +67,12 @@ namespace OneAppAway
             //}
             MyLocationIcon.Points = circlePoints;
             MainMap.Children.Add(MyLocationIcon);
+            MainMap.MapElements.Add(polyGon);
         }
 
         private ObservableCollection<BusStop> _ShownStops = new ObservableCollection<BusStop>();
-        private double _StopSizeThreshold = 16;
-        private double _StopVisibilityThreshold = 14;
+        private double _StopSizeThreshold = 17;
+        private double _StopVisibilityThreshold = 16;
 
         public ICollection<BusStop> ShownStops
         {
@@ -180,18 +184,34 @@ namespace OneAppAway
         private void AddStopToMap(BusStop stop)
         {
             MapIcon mico = new MapIcon();
+            
             mico.ZIndex = 10;
             mico.Location = new Geopoint(stop.Position);
             mico.CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible;
             string size = ZoomLevel < StopSizeThreshold ? "20" : "40";
             bool visibility = ZoomLevel >= StopVisibilityThreshold;
-            
             mico.Image = RandomAccessStreamReference.CreateFromUri(new Uri(stop.Direction == StopDirection.Unspecified ? "ms-appx:///Assets/Icons/BusBase" + size + ".png" : "ms-appx:///Assets/Icons/BusDirection" + stop.Direction.ToString() + size + ".png"));
             mico.NormalizedAnchorPoint = new Point(0.5, 0.5);
             mico.Visible = visibility;
             MainMap.MapElements.Add(mico);
             Stops[mico] = stop;
             BusStopIcons.Add(mico);
+
+            
+
+            polygonCenter = stop.Position;
+            SetPolygonSize();
+        }
+
+        private void SetPolygonSize()
+        {
+            polyGon.Path = new Geopath(new BasicGeoposition[]
+            {
+                new BasicGeoposition() { Latitude = polygonCenter.Latitude - 25 * LatitudePerPixel, Longitude = polygonCenter.Longitude - 25 * LongitudePerPixel },
+                new BasicGeoposition() { Latitude = polygonCenter.Latitude + 25 * LatitudePerPixel, Longitude = polygonCenter.Longitude - 25 * LongitudePerPixel },
+                new BasicGeoposition() { Latitude = polygonCenter.Latitude + 25 * LatitudePerPixel, Longitude = polygonCenter.Longitude + 25 * LongitudePerPixel },
+                new BasicGeoposition() { Latitude = polygonCenter.Latitude - 25 * LatitudePerPixel, Longitude = polygonCenter.Longitude + 25 * LongitudePerPixel }
+            });
         }
 
         private void RemoveStopFromMap(BusStop stop)
@@ -254,6 +274,7 @@ namespace OneAppAway
                 foreach (var item in BusStopIcons)
                     MainMap.Children.Remove(item);
                 BusStopIcons.Clear();
+
             }
             if (e.NewItems != null)
             {
@@ -277,6 +298,7 @@ namespace OneAppAway
                 RefreshIconSizes();
             if ((ZoomLevel < StopVisibilityThreshold) != (PreviousZoomLevel < StopVisibilityThreshold))
                 RefreshIconVisibilities();
+            SetPolygonSize();
             OnPropertyChanged("ZoomLevel", "TopLeft", "BottomRight");
             PreviousZoomLevel = ZoomLevel;
         }

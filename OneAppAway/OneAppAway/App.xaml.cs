@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OneAppAway._1_1;
+using OneAppAway._1_1.Views.Controls;
+using OneAppAway._1_1.Views.Pages;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,6 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Store;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -33,12 +37,9 @@ namespace OneAppAway
     /// </summary>
     sealed partial class App : Application
     {
-        /// <summary>
-        /// Allows tracking page views, exceptions and other telemetry through the Microsoft Application Insights service.
-        /// </summary>
-        public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
-        public Frame RootFrame;
-        private AdDuplex.InterstitialAd interstitialAd;
+        //public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
+        public _1_1.Views.OuterFrame MainOuterFrame;
+        public ApplicationFrame RootFrame;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -56,43 +57,49 @@ namespace OneAppAway
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override async void OnLaunched(LaunchActivatedEventArgs e)
+        protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 320));
-            await FileManager.EnsureFolders();
-            AdDuplex.AdDuplexClient.Initialize("bef2bb37-a5ad-49d7-9ba6-b1ccaf4be44b");
-            Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            if (e.PrelaunchActivated)
+                return;
 
-            RootFrame = MainHamburgerBar.Content as Frame;
+            StartApp(e.Arguments, e.PreviousExecutionState);
+        }
+
+        private async void StartApp(string args, ApplicationExecutionState previousState)
+        {
+            MainOuterFrame = Window.Current.Content as _1_1.Views.OuterFrame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
-            if (RootFrame == null)
+            if (MainOuterFrame == null)
             {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                RootFrame = new Frame();
-                Common.SuspensionManager.RegisterFrame(RootFrame, "appFrame");
-
+                RootFrame = new ApplicationFrame();
                 RootFrame.NavigationFailed += OnNavigationFailed;
 
-                TransitionCollection transitions = new TransitionCollection();
-                transitions.Add(new EntranceThemeTransition() { FromHorizontalOffset = 200 });
-                RootFrame.ContentTransitions = transitions;
+                MainOuterFrame = new _1_1.Views.OuterFrame(RootFrame);
+                Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
+                MainOuterFrame.SizeChanged += (s, e) =>
+                {
+                    CurrentWidth = e.NewSize.Width;
+                    ContentWidthChanged?.Invoke(s, e);
+                };
+                await Initialize();
+                // Create a Frame to act as the navigation context and navigate to the first page
+                Common.SuspensionManager.RegisterFrame(RootFrame, "appFrame");
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                // Place the frame in the current Window
+                //MainHamburgerBar.Content = RootFrame;
+                //MainHamburgerBar.SetRootFrame(RootFrame);
+                if (previousState == ApplicationExecutionState.Terminated)
                 {
                     await Common.SuspensionManager.RestoreAsync();
                 }
-
-                // Place the frame in the current Window
-                MainHamburgerBar.Content = RootFrame;
-                MainHamburgerBar.SetRootFrame(RootFrame);
             }
 
             if (RootFrame.Content == null)
@@ -101,54 +108,75 @@ namespace OneAppAway
                 // configuring the new page by passing required information as a navigation
                 // parameter
 
-                if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Low)
-                {
-                    switch (SettingsManager.GetSetting<int>("LimitedData.LaunchPage", false, 0))
-                    {
-                        case 0:
-                            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
-                            break;
-                        case 1:
-                            RootFrame.Navigate(typeof(FavoritesPage));
-                            break;
-                        case 2:
-                            RootFrame.Navigate(typeof(RoutesPage));
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (SettingsManager.GetSetting<int>("LaunchPage", false, 0))
-                    {
-                        case 0:
-                            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
-                            break;
-                        case 1:
-                            RootFrame.Navigate(typeof(FavoritesPage));
-                            break;
-                        case 2:
-                            RootFrame.Navigate(typeof(RoutesPage));
-                            break;
-                    }
-                }
-                //RootFrame.Navigate(typeof(TestPage));
-            }
-            // Ensure the current window is active
-            Window.Current.Content = MainHamburgerBar;
-            Window.Current.Activate();
-            BandwidthManager.Dispatcher = RootFrame.Dispatcher;
-            LocationManager.Dispatcher = RootFrame.Dispatcher;
-            SetTitleBar();
+                //if (BandwidthManager.EffectiveBandwidthOptions == BandwidthOptions.Low)
+                //{
+                //    switch (SettingsManager.GetSetting<int>("LimitedData.LaunchPage", false, 0))
+                //    {
+                //        case 0:
+                //            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
+                //            break;
+                //        case 1:
+                //            RootFrame.Navigate(typeof(FavoritesPage));
+                //            break;
+                //        case 2:
+                //            RootFrame.Navigate(typeof(RoutesPage));
+                //            break;
+                //    }
+                //}
+                //else
+                //{
+                //    switch (SettingsManager.GetSetting<int>("LaunchPage", false, 0))
+                //    {
+                //        case 0:
+                //            RootFrame.Navigate(typeof(BusMapPage), "CurrentLocation");
+                //            break;
+                //        case 1:
+                //            RootFrame.Navigate(typeof(FavoritesPage));
+                //            break;
+                //        case 2:
+                //            RootFrame.Navigate(typeof(RoutesPage));
+                //            break;
+                //    }
+                //}
 
-            Message.ShowMessage(new Message() { ShortSummary = "Public transit data powered by OneBusAway.", Caption = "Welcome!", FullText="This app uses data provided by the OneBusAway api. OneBusAway also provides its own app for this platform, and is available for free. This app builds on the functions of the official app, and provides additional functionality not available in OneBusAway's own app.", Id = 1 });
-            if (CurrentApp.LicenseInformation.IsTrial)
-                MainHamburgerBar.ShowAds = true;
+                //Test Page
+                //RootFrame.Navigate(typeof(_1_1.Views.Pages.TransitMapPage));
+                RootFrame.Navigate(typeof(_1_1.Views.Pages.TestPage1));
+            }
+            Window.Current.Activate();
+
+            Message.ShowMessage(new Message() { ShortSummary = "Public transit data powered by OneBusAway.", Caption = "Welcome!", FullText = "This app uses data provided by the OneBusAway api. OneBusAway also provides its own app for this platform, and is available for free. This app builds on the functions of the official app, and provides additional functionality not available in OneBusAway's own app.", Id = 1 });
+            //if (CurrentApp.LicenseInformation.IsTrial)
+            //    MainHamburgerBar.ShowAds = true;
 
             //using (var db = FileManager.GetDatabase())
             //{
             //    db.CreateTable<BusTrip>();
             //    db.Insert(new BusTrip() { Destination = "Federal Way", Route = "187", Shape = "Square" });
             //}
+        }
+
+        private async Task Initialize()
+        {
+            Window.Current.SizeChanged += Current_SizeChanged;
+            Window.Current.CoreWindow.SizeChanged += CoreWindow_SizeChanged;
+            //BandwidthManager.Dispatcher = RootFrame.Dispatcher;
+            //LocationManager.Dispatcher = RootFrame.Dispatcher;
+            SetTitleBar();
+
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 320));
+            await FileManager.EnsureFolders();
+            await OneAppAway._1_1.Views.Controls.TransitStopIconWrapper.LoadImages();
+            AdDuplex.AdDuplexClient.Initialize("bef2bb37-a5ad-49d7-9ba6-b1ccaf4be44b");
+            Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
+        }
+
+        private void CoreWindow_SizeChanged(CoreWindow sender, WindowSizeChangedEventArgs args)
+        {
+        }
+
+        private void Current_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+        {
         }
 
         /// <summary>
@@ -191,23 +219,28 @@ namespace OneAppAway
             titleBar.ButtonForegroundColor = titleBar.ForegroundColor;
             titleBar.ButtonInactiveBackgroundColor = titleBar.InactiveBackgroundColor;
             titleBar.ButtonInactiveForegroundColor = titleBar.InactiveForegroundColor;
-            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
 
-            ApplicationView.GetForCurrentView().ExitFullScreenMode();
+            //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.Core.CoreApplicationViewTitleBar"))
+            CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            //coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
+            //ApplicationView.GetForCurrentView().ExitFullScreenMode();
+            coreTitleBar.ExtendViewIntoTitleBar = true;
 
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 Action setOcclusion = () =>
                 {
                     var bar = StatusBar.GetForCurrentView();
+                    var view = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
                     var occlusion = bar.OccludedRect;
                     if (occlusion.Width > occlusion.Height)
-                        MainHamburgerBar.Margin = new Thickness(0, occlusion.Height, 0, 0);
+                        MainOuterFrame.Margin = new Thickness(0, occlusion.Height, 0, Window.Current.Bounds.Height - view.VisibleBounds.Height - occlusion.Height);
                     else if (occlusion.X == 0)
-                        MainHamburgerBar.Margin = new Thickness(occlusion.Width, 0, 0, 0);
+                        MainOuterFrame.Margin = new Thickness(occlusion.Width, 0, Window.Current.Bounds.Width - view.VisibleBounds.Width - occlusion.Width, 0);
                     else
-                        MainHamburgerBar.Margin = new Thickness(0, 0, occlusion.Width, 0);
-                
+                        MainOuterFrame.Margin = new Thickness(Window.Current.Bounds.Width - view.VisibleBounds.Width - occlusion.Width, 0, occlusion.Width, 0);
+                    
                 };
                 var statusBar = StatusBar.GetForCurrentView();
                 statusBar.BackgroundColor = background;
@@ -216,7 +249,13 @@ namespace OneAppAway
                 setOcclusion();
                 ApplicationView.GetForCurrentView().VisibleBoundsChanged += (sender, e) => setOcclusion();
             }
+            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseVisible);
         }
+
+        //private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        //{
+        //    MainOuterFrame.SystemButtonsWidth = NoTitleBar ? 0 : sender.SystemOverlayRightInset;
+        //}
 
         protected override async void OnActivated(IActivatedEventArgs args)
         {
@@ -226,7 +265,7 @@ namespace OneAppAway
                 var toastArgs = args as ToastNotificationActivatedEventArgs;
                 if (toastArgs.Argument.StartsWith("messageTapped"))
                 {
-                    await MainHamburgerBar.ShowPopup(null, AnimationDirection.Bottom, Window.Current.Bounds.Width * 0.9, 100 + 30000 / Window.Current.Bounds.Width, typeof(MessagePopupPage), SettingsManager.GetSetting<string>("Message" + toastArgs.Argument.Substring(13), false));
+                    //await MainHamburgerBar.ShowPopup(null, AnimationDirection.Bottom, Window.Current.Bounds.Width * 0.9, 100 + 30000 / Window.Current.Bounds.Width, typeof(MessagePopupPage), SettingsManager.GetSetting<string>("Message" + toastArgs.Argument.Substring(13), false));
                 }
                 if (toastArgs.Argument.StartsWith("suppressMessage"))
                 {
@@ -235,12 +274,31 @@ namespace OneAppAway
             }
         }
 
-        private void App_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            if (RootFrame.Content is NavigationFriendlyPage)
-            {
-                e.Handled = ((NavigationFriendlyPage)RootFrame.Content).GoBack();
-            }
-        }
+        public event SizeChangedEventHandler ContentWidthChanged;
+
+        public double CurrentWidth { get; private set; }
+
+        //public Command GoBackCommand { get; }
+
+        //private bool _CanGoBack = false;
+        //public bool CanGoBack
+        //{
+        //    get { return _CanGoBack; }
+        //    set
+        //    {
+        //        GoBackCommand.ChangeCanExecute();
+        //    }
+        //}
+
+        //internal bool GoBack()
+        //{
+        //    if (RootFrame.Content is ApplicationPage)
+        //    {
+        //        //var result = ((ApplicationPage)RootFrame.Content).GoBack();
+        //        //return result;
+        //        return false;
+        //    }
+        //    return false;
+        //}
     }
 }
