@@ -62,6 +62,8 @@ namespace OneAppAway._1_1.Data
         public string[] Children { get; set; }
         //public int LocationType { get; set; }
         public string[] Routes { get; set; }
+        public string[] Alerts { get; set; }
+        public AlertStatus Status { get; set; }
 
         public static bool operator ==(TransitStop lhs, TransitStop rhs)
         {

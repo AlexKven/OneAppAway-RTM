@@ -118,6 +118,15 @@
     <Compile Include="1_1\ViewModels\HamburgerBarPageEntryViewModel.cs" />
     <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
     <Compile Include="1_1\Views\Controls\ApplicationFrame.cs" />
+    <Compile Include="1_1\Views\Controls\AutoFitTextBlock.xaml.cs">
+      <DependentUpon>AutoFitTextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\RealTimeArrivalControl.xaml.cs">
+      <DependentUpon>RealTimeArrivalControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\StopArrivalsBox.xaml.cs">
+      <DependentUpon>StopArrivalsBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
       <DependentUpon>StopArrivalsControl.xaml</DependentUpon>
     </Compile>
@@ -246,10 +255,16 @@
     <None Include="OneAppAway_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\BusAlert20.png" />
+    <Content Include="Assets\Icons\BusAlert40.png" />
+    <Content Include="Assets\Icons\BusAlert60.png" />
     <Content Include="Assets\Icons\BusAnalyticsIcon.png" />
     <Content Include="Assets\Icons\BusBase.png" />
     <Content Include="Assets\Icons\BusBase20.png" />
     <Content Include="Assets\Icons\BusBase40.png" />
+    <Content Include="Assets\Icons\BusClosed20.png" />
+    <Content Include="Assets\Icons\BusClosed40.png" />
+    <Content Include="Assets\Icons\BusClosed60.png" />
     <Content Include="Assets\Icons\BusDirectionE.png" />
     <Content Include="Assets\Icons\BusDirectionE20.png" />
     <Content Include="Assets\Icons\BusDirectionE40.png" />
@@ -302,6 +317,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="1_1\BusMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\AutoFitTextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\RealTimeArrivalControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\StopArrivalsBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

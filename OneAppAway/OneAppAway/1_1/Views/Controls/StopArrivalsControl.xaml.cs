@@ -23,11 +23,11 @@ namespace OneAppAway._1_1.Views.Controls
         public StopArrivalsControl()
         {
             this.InitializeComponent();
-            ExpandButton.SetBinding(Button.VisibilityProperty, new Binding() { Source = this, Path = new PropertyPath("IsExpandEnabled"), Converter = Converters.BoolToVisibilityConverter.Instance });
-            CompressButton.SetBinding(Button.VisibilityProperty, new Binding() { Source = this, Path = new PropertyPath("IsCompressEnabled"), Converter = Converters.BoolToVisibilityConverter.Instance });
-            ExpandButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("ExpandCommand") });
-            CompressButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("CompressCommand") });
-            CloseButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("CloseCommand") });
+            SubControl.SetBinding(StopArrivalsSubControl.IsExpandEnabledProperty, new Binding() { Source = this, Path = new PropertyPath("IsExpandEnabled") });
+            SubControl.SetBinding(StopArrivalsSubControl.IsCompressEnabledProperty, new Binding() { Source = this, Path = new PropertyPath("IsCompressEnabled") });
+            SubControl.SetBinding(StopArrivalsSubControl.ExpandCommandProperty, new Binding() { Source = this, Path = new PropertyPath("ExpandCommand") });
+            SubControl.SetBinding(StopArrivalsSubControl.CompressCommandProperty, new Binding() { Source = this, Path = new PropertyPath("CompressCommand") });
+            SubControl.SetBinding(StopArrivalsSubControl.CloseCommandProperty, new Binding() { Source = this, Path = new PropertyPath("CloseCommand") });
         }
         public bool IsExpandEnabled
         {

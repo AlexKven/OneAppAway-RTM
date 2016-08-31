@@ -20,21 +20,29 @@ namespace OneAppAway._1_1.Views.Controls
     {
         public MapElement Element { get; }
         public TransitStop Stop { get; }
+        const int NUM_ICON_TYPES = 11;
+        const int NUM_ICON_SIZES = 3;
 
-        private static IRandomAccessStream[] BusIconStreams = new IRandomAccessStream[27];
+        private static IRandomAccessStream[] BusIconStreams = new IRandomAccessStream[NUM_ICON_TYPES * NUM_ICON_SIZES];
 
         public static async Task LoadImages()
         {
-            DateTime now = DateTime.Now;
-            for (int i = 0; i <= 2; i++)
+            for (int i = 0; i < NUM_ICON_SIZES; i++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < NUM_ICON_TYPES; j++)
                 {
-                    string postfix = ((j == 0) ? "BusBase" : ("BusDirection" + ((StopDirection)j).ToString())) + (i == 0 ? "20" : "40");
+                    string postfix;
+                    if (j >= 1 && j <= 8)
+                        postfix = "BusDirection" + ((StopDirection)j).ToString();
+                    else if (j == 0)
+                        postfix = "BusBase";
+                    else
+                        postfix = j == 9 ? "BusAlert" : "BusClosed";
+                    postfix += (i == 0 ? "20" : "40");
                     var bitmap = await WriteableBitmapExtensions.FromContent(null, new Uri($"ms-appx:///Assets/Icons/{postfix}.png"));
                     InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream();
                     await bitmap.ToStream(stream, BitmapEncoder.PngEncoderId);
-                    BusIconStreams[i * 9 + j] = stream;
+                    BusIconStreams[i * NUM_ICON_TYPES + j] = stream;
                 }
             }
         }
@@ -92,7 +100,14 @@ namespace OneAppAway._1_1.Views.Controls
             {
                 if (Element is MapIcon)
                 {
-                    ((MapIcon)Element).Image = RandomAccessStreamReference.CreateFromStream(BusIconStreams[((int)size - 1) * 9 + (int)Stop.Direction]);
+                    int iconNumber;
+                    if (Stop.Status == AlertStatus.Alert)
+                        iconNumber = 9;
+                    else if (Stop.Status == AlertStatus.Cancelled)
+                        iconNumber = 10;
+                    else
+                        iconNumber = (int)Stop.Direction;
+                    ((MapIcon)Element).Image = RandomAccessStreamReference.CreateFromStream(BusIconStreams[((int)size - 1) * NUM_ICON_TYPES + iconNumber]);
                     ((MapIcon)Element).Title = size == MapStopSize.Large ? Stop.Name ?? "" : "";
                 }
             }
@@ -116,8 +131,13 @@ namespace OneAppAway._1_1.Views.Controls
                     SetStopSize();
                 else if (Element is MapPolygon)
                 {
-                    ((MapPolygon)Element).FillColor = Colors.DarkGray;
-                    
+                    if (Stop.Status == AlertStatus.Alert)
+                        ((MapPolygon)Element).FillColor = Colors.LightGoldenrodYellow;
+                    else if (Stop.Status == AlertStatus.Cancelled)
+                        ((MapPolygon)Element).FillColor = Colors.Red;
+                    else
+                        ((MapPolygon)Element).FillColor = Colors.DarkGray;
+
                     //ToolTipService.SetToolTip(((MapPolygon)Element), DependencyProperty.UnsetValue);
                 }
             }

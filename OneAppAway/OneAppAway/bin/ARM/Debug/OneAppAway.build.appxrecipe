@@ -382,6 +382,15 @@
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL.native.sqlite3.v140\0.9.2\build\native\sqlite3\v140\arm\esqlite3.dll">
       <PackagePath>esqlite3.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAlert20.png">
+      <PackagePath>Assets\Icons\BusAlert20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAlert40.png">
+      <PackagePath>Assets\Icons\BusAlert40.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAlert60.png">
+      <PackagePath>Assets\Icons\BusAlert60.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAnalyticsIcon.png">
       <PackagePath>Assets\Icons\BusAnalyticsIcon.png</PackagePath>
     </AppxPackagedFile>
@@ -393,6 +402,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusBase40.png">
       <PackagePath>Assets\Icons\BusBase40.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusClosed20.png">
+      <PackagePath>Assets\Icons\BusClosed20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusClosed40.png">
+      <PackagePath>Assets\Icons\BusClosed40.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusClosed60.png">
+      <PackagePath>Assets\Icons\BusClosed60.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionE.png">
       <PackagePath>Assets\Icons\BusDirectionE.png</PackagePath>

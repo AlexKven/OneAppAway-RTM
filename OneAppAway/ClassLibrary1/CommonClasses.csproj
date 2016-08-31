@@ -35,6 +35,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="1_1\Command.cs" />
+    <Compile Include="1_1\Converters\MinutesUntilArrivalConverter.cs" />
+    <Compile Include="1_1\Data\AlertStatus.cs" />
     <Compile Include="1_1\Data\ApiLayer.cs" />
     <Compile Include="1_1\Data\Cloud.cs" />
     <Compile Include="1_1\Data\DatabaseRetriever.cs" />
@@ -43,9 +45,11 @@
     <Compile Include="1_1\Data\LatLonRect.cs" />
     <Compile Include="1_1\Data\MemoryCache.cs" />
     <Compile Include="1_1\Data\RealTimeArrival.cs" />
+    <Compile Include="1_1\Data\ScheduledArrival.cs" />
     <Compile Include="1_1\Data\SqlProvider.cs" />
     <Compile Include="1_1\Data\SqlProviderBase.cs" />
     <Compile Include="1_1\Data\SqlProviderExtensions.cs" />
+    <Compile Include="1_1\Data\TimeDetails.cs" />
     <Compile Include="1_1\Data\TransitRoute.cs" />
     <Compile Include="1_1\Data\TransitRouteSqlProvider.cs" />
     <Compile Include="1_1\Data\TransitStop.cs" />
@@ -53,11 +57,14 @@
     <Compile Include="1_1\Data\RectSubset.cs" />
     <Compile Include="1_1\Data\StopDirection.cs" />
     <Compile Include="1_1\Data\TransitStopSqlProvider.cs" />
+    <Compile Include="1_1\Data\TransitTrip.cs" />
     <Compile Include="1_1\Data\UIDataSource.cs" />
     <Compile Include="1_1\Data\UITaskWrapper.cs" />
     <Compile Include="1_1\Data\MapStopSize.cs" />
     <Compile Include="1_1\ViewModels\ArrivalsControlInTransitPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
+    <Compile Include="1_1\ViewModels\RealTimeArrivalViewModel.cs" />
+    <Compile Include="1_1\ViewModels\StopArrivalsBoxViewModel.cs" />
     <Compile Include="1_1\ViewModels\StopArrivalsViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapStopBrowserViewModel.cs" />

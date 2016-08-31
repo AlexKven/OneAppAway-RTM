@@ -5,12 +5,18 @@
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Title" />
+    <RootPropertyPathName Name="DataContext" />
+    <RootPropertyPathName Name="FontFamily" />
+    <RootPropertyPathName Name="FontWeight" />
+    <RootPropertyPathName Name="FontStyle" />
+    <RootPropertyPathName Name="FontSize" />
     <RootPropertyPathName Name="HasChildren" />
     <RootPropertyPathName Name="RouteNames" />
     <RootPropertyPathName Name="IsBusy" />
     <RootPropertyPathName Name="ChildrenSource" />
     <RootPropertyPathName Name="StopName" />
     <RootPropertyPathName Name="IconUri" />
+    <RootPropertyPathName Name="IsTopLevel" />
     <RootPropertyPathName Name="TitleControlsTemplate" />
     <RootPropertyPathName Name="PageDataContext" />
     <RootPropertyPathName Name="TitleControlsActualWidth" />
@@ -30,7 +36,6 @@
     <RootPropertyPathName Name="TitleTemplate" />
     <RootPropertyPathName Name="TitleVisibility" />
     <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
-    <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Background" />
@@ -75,32 +80,35 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Text" />
       <RootProperty Name="TextTrimming" />
+      <RootProperty Name="DataContext" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="FontStyle" />
+      <RootProperty Name="TextWrapping" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="TextWrapping" />
       <RootProperty Name="Inlines" />
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Tag" />
       <RootProperty Name="MaxHeight" />
-      <RootProperty Name="FontWeight" />
       <RootProperty Name="Opacity" />
       <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
+      <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="Converter" />
-      <RootProperty Name="ConverterParameter" />
+      <RootProperty Name="ElementName" />
       <RootProperty Name="Path" />
       <RootProperty Name="Mode" />
-      <RootProperty Name="ElementName" />
+      <RootProperty Name="Converter" />
+      <RootProperty Name="ConverterParameter" />
       <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Children" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="Resources" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Background" />
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="MinHeight" />
@@ -218,10 +226,12 @@
     <RootType FullName="OneAppAway.Converters.ColorToBrushConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Content" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="RequestedTheme" />
+      <RootEvent Name="SizeChanged" />
       <RootEvent Name="Unloaded" />
       <RootEvent Name="Loaded" />
-      <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
       <RootProperty Name="TransitFeaturesVisible" />
@@ -240,12 +250,34 @@
       <RootMethod Name="SetNormalizedAnchorPoint" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.BusMap" />
+    <RootType FullName="OneAppAway._1_1.Views.Controls.AutoFitTextBlock">
+      <RootProperty Name="Text" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControlBase">
       <RootProperty Name="Content" />
       <RootProperty Name="MinWidth" />
       <RootProperty Name="MinHeight" />
+      <RootEvent Name="DataContextChanged" />
     </RootType>
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsSubControl">
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
+      <RootProperty Name="Points" />
+      <RootProperty Name="Fill" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Stroke" />
+      <RootProperty Name="StrokeThickness" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Height" />
       <RootProperty Name="Background" />
       <RootProperty Name="Template" />
       <RootProperty Name="Margin" />
@@ -255,7 +287,6 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Visibility" />
@@ -290,14 +321,6 @@
       <RootProperty Name="Tag" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
-      <RootProperty Name="Points" />
-      <RootProperty Name="Fill" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Stroke" />
-      <RootProperty Name="StrokeThickness" />
-    </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="VerticalAlignment" />
@@ -323,11 +346,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
       <RootProperty Name="Template" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsSubControl">
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
-    </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />

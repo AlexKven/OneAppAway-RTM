@@ -23,7 +23,7 @@ namespace OneAppAway._1_1.ViewModels
                     //var child = TransitStop.SqlProvider.Select(DatabaseManager.MemoryDatabase, $"ID = '{childID}'").FirstOrDefault();
                     var child = MemoryCache.GetStop(childID);
                     if (child.HasValue)
-                        ChildrenSource.Add(new StopArrivalsViewModel(child.Value)); //Nested ViewModels!
+                        ChildrenSource.Add(new StopArrivalsViewModel(child.Value) { IsTopLevel = false }); //Nested ViewModels!
                 }
             }
             StopName = stop.Name;
@@ -84,5 +84,7 @@ namespace OneAppAway._1_1.ViewModels
         {
             get { return _IconUri; }
         }
+
+        public bool IsTopLevel { get; private set; } = true;
     }
 }

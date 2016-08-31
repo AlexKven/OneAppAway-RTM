@@ -13,32 +13,34 @@ namespace OneAppAway._1_1.Data
         public string Stop { get; set; }
         public string RouteName { get; set; }
         //public string RouteLongName { get; set; }
-        public DateTime ScheduledArrivalTime { get; set; }
+        public DateTime? ScheduledArrivalTime { get; set; }
         public DateTime? PredictedArrivalTime { get; set; }
         public DateTime? LastUpdateTime { get; set; }
         public string Destination { get; set; }
+        public string[] Alerts { get; set; }
+        public AlertStatus Status { get; set; }
 
-        public int MinutesLate
-        {
-            get
-            {
-                return (int)(PredictedArrivalTime.Value - ScheduledArrivalTime).TotalMinutes;
-            }
-        }
+        //public int MinutesLate
+        //{
+        //    get
+        //    {
+        //        return (int)(PredictedArrivalTime.Value - ScheduledArrivalTime).TotalMinutes;
+        //    }
+        //}
 
-        public string TimelinessDescription
-        {
-            get
-            {
-                if (PredictedArrivalTime == null) return "Unknown";
-                int late = MinutesLate;
-                if (late == 0)
-                    return "On Time";
-                else if (late > 0)
-                    return late.ToString() + "m Late";
-                else
-                    return (-late).ToString() + "m Early";
-            }
-        }
+        //public string TimelinessDescription
+        //{
+        //    get
+        //    {
+        //        if (PredictedArrivalTime == null) return "Unknown";
+        //        int late = MinutesLate;
+        //        if (late == 0)
+        //            return "On Time";
+        //        else if (late > 0)
+        //            return late.ToString() + "m Late";
+        //        else
+        //            return (-late).ToString() + "m Early";
+        //    }
+        //}
     }
 }
