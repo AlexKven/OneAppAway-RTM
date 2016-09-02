@@ -378,3 +378,13 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\AutoFitTextBlock.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\AutoFitTextBlock.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\AutoFitTextBlock.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\1_1\Views\Controls\RealTimeArrivalControl.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\1_1\Views\Controls\StopArrivalsBox.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\RealTimeArrivalControl.g.i.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\RealTimeArrivalControl.g.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\StopArrivalsBox.g.i.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\StopArrivalsBox.g.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\RealTimeArrivalControl.xaml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\StopArrivalsBox.xaml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\RealTimeArrivalControl.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\StopArrivalsBox.xbf

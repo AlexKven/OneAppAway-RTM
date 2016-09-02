@@ -15,10 +15,14 @@ namespace OneAppAway._1_1.Data
         //public string RouteLongName { get; set; }
         public DateTime? ScheduledArrivalTime { get; set; }
         public DateTime? PredictedArrivalTime { get; set; }
-        public DateTime? LastUpdateTime { get; set; }
         public string Destination { get; set; }
         public string[] Alerts { get; set; }
         public AlertStatus Status { get; set; }
+        public double? FrequencyMinutes { get; set; }
+        public LatLon? PotentialVehicleLocation { get; set; }
+        public LatLon? KnownVehicleLocation { get; set; }
+        public double? Orientation { get; set; }
+        public double DegreeOfConfidence { get; set; }
 
         //public int MinutesLate
         //{

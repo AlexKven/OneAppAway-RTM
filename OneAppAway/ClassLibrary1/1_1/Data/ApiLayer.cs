@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Devices.Geolocation;
+using static System.Math;
 
 namespace OneAppAway._1_1.Data
 {
@@ -51,15 +52,34 @@ namespace OneAppAway._1_1.Data
             string stopId = element.Element("stopId")?.Value;
             string predictedArrivalTime = element.Element("predictedArrivalTime")?.Value;
             string scheduledArrivalTime = element.Element("scheduledArrivalTime")?.Value;
-            string lastUpdateTime = element.Element("lastUpdateTime")?.Value;
+            string lastUpdateTime = null;
             string destination = element.Element("tripHeadsign")?.Value;
             long predictedArrivalLong = long.Parse(predictedArrivalTime);
             long scheduledArrivalLong = long.Parse(scheduledArrivalTime);
-            long? lastUpdateLong = lastUpdateTime == null ? null : new long?(long.Parse(scheduledArrivalTime));
+            long? lastUpdateLong;
             DateTime? predictedArrival = predictedArrivalLong == 0 ? null : new DateTime?((new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(predictedArrivalLong)).ToLocalTime());
             DateTime scheduledArrival = (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(scheduledArrivalLong)).ToLocalTime();
-            DateTime? lastUpdate = lastUpdateLong == null ? null : new DateTime?((new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(lastUpdateLong.Value)).ToLocalTime());
-            return new RealTimeArrival() { RouteName = routeName, PredictedArrivalTime = predictedArrival, ScheduledArrivalTime = scheduledArrival, LastUpdateTime = lastUpdate, Route = routeId, Trip = tripId, Stop = stopId, Destination = destination };
+            DateTime? lastUpdate;
+            if ((element = element.Element("tripStatus")) != null)
+            {
+                if (element.Element("predicted")?.Value == "true")
+                    lastUpdateTime = element.Element("lastUpdateTime")?.Value;
+            }
+            lastUpdateLong = lastUpdateTime == null ? null : new long?(long.Parse(scheduledArrivalTime));
+            lastUpdate = lastUpdateLong == null ? null : new DateTime?((new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(lastUpdateLong.Value)).ToLocalTime());
+            double degreeOfConfidence = double.NaN;
+            if (lastUpdate.HasValue && predictedArrival.HasValue)
+            {
+                if (lastUpdate.Value <= predictedArrival.Value)
+                {
+                    double minutes = (predictedArrival.Value - lastUpdate.Value).TotalMinutes;
+                    degreeOfConfidence = 1.0 / (Pow(minutes + 1, 1.5) / 60 + 1);
+                }
+                else
+                    degreeOfConfidence = -1;
+            }
+            System.Diagnostics.Debug.WriteLine($"Degree of confidence for {routeName}: {degreeOfConfidence}");
+            return new RealTimeArrival() { RouteName = routeName, PredictedArrivalTime = predictedArrival, ScheduledArrivalTime = scheduledArrival, DegreeOfConfidence = degreeOfConfidence, Route = routeId, Trip = tripId, Stop = stopId, Destination = destination };
         }
 
         public static async Task<string> SendRequest(string compactRequest, Dictionary<string, string> parameters, bool includeReferences, CancellationToken cancellationToken)
@@ -124,10 +144,10 @@ namespace OneAppAway._1_1.Data
             return ParseTransitRoute(el);
         }
 
-        public static async Task<RealTimeArrival[]> GetBusArrivals(string id, CancellationToken cancellationToken)
+        public static async Task<RealTimeArrival[]> GetTransitArrivals(string id, int minsBefore, int minsAfter, CancellationToken cancellationToken)
         {
             List<RealTimeArrival> result = new List<RealTimeArrival>();
-            StringReader reader = new StringReader(await SendRequest("arrivals-and-departures-for-stop/" + id, null, false, cancellationToken));
+            StringReader reader = new StringReader(await SendRequest("arrivals-and-departures-for-stop/" + id, new Dictionary<string, string>() { ["minutesBefore"] = minsBefore.ToString(), ["minutesAfter"] = minsAfter.ToString() }, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)
                 return null;
 

@@ -11,7 +11,7 @@ namespace OneAppAway._1_1.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return ((DateTime)parameter - (DateTime)value).TotalMinutes.ToString("F0");
+            return (int)((DateTime)parameter - (DateTime)value).TotalMinutes;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

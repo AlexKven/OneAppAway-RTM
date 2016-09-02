@@ -8,7 +8,7 @@
     xmlns:conv="using:OneAppAway._1_1.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400" SizeChanged="StopArrivalsControlBase_SizeChanged" RequestedTheme="Dark">
 
     <Grid>
         <!--<Grid.Resources>

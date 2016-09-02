@@ -21,7 +21,11 @@
         <converters:BasicGeopositionToStringConverter x:Key="BasicGeopositionStringConverter"/>
         <converters:BandwidthOptionsRowHeightConverter x:Key="BandwidthButtonConverter"/>
         <converters:DoubleToGridlengthConverter x:Key="GridLengthConverter"/>
+        <conv_1_1:DegreeOfConfidenceToBackgroundConverter x:Key="DegreeOfConfidenceToBackgroundConverter"/>
+        <conv_1_1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <conv_1_1:NullZeroConverter x:Key="NullZeroConverter"/>
+        <conv_1_1:IsEarlyToForegroundConverter x:Key="IsEarlyToForegroundConverter"/>
+        <conv_1_1:IsPredictedToForegroundConverter x:Key="IsPredictedToForegroundConverter"/>
         <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
             <Grid>
                 <VisualStateManager.VisualStateGroups>
@@ -328,7 +332,6 @@
                 <ContentPresenter Grid.Column="1" Grid.Row="1"/>
             </Grid>
         </ControlTemplate>
-        <conv_1_1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <!--<Style TargetType="localC:ApplicationFrame">
             <Setter Property="Template">
                 <Setter.Value>

@@ -12,7 +12,7 @@ namespace OneAppAway._1_1.ViewModels
     public class StopArrivalsViewModel : BaseViewModel, IDisposable
     {
         private MemoryCache Cache = new MemoryCache();
-        private TransitStop Stop;
+        public TransitStop Stop { get; }
         public StopArrivalsViewModel(TransitStop stop)
         {
             Stop = stop;
@@ -26,6 +26,10 @@ namespace OneAppAway._1_1.ViewModels
                         ChildrenSource.Add(new StopArrivalsViewModel(child.Value) { IsTopLevel = false }); //Nested ViewModels!
                 }
             }
+            if (ChildrenSource != null && ChildrenSource.Count > 0)
+                Width = ChildrenSource[0].Width + 50;
+            else
+                Width = 290;
             StopName = stop.Name;
             if (ChildrenSource.Count > 0)
                 StopName += $" ({ChildrenSource.Count.ToString()} stops)";
@@ -84,6 +88,8 @@ namespace OneAppAway._1_1.ViewModels
         {
             get { return _IconUri; }
         }
+
+        public double Width { get; }
 
         public bool IsTopLevel { get; private set; } = true;
     }

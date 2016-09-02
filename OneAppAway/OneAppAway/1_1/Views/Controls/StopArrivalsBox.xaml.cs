@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OneAppAway._1_1.Data;
+using OneAppAway._1_1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,9 +21,32 @@ namespace OneAppAway._1_1.Views.Controls
 {
     public sealed partial class StopArrivalsBox : UserControl
     {
+        private StopArrivalsBoxViewModel VM
+        {
+            get { return DataContext as StopArrivalsBoxViewModel; }
+            set { DataContext = value; }
+        }
+
         public StopArrivalsBox()
         {
             this.InitializeComponent();
+            VM = new StopArrivalsBoxViewModel();
+        }
+        
+        public TransitStop Stop
+        {
+            get { return (TransitStop)GetValue(StopProperty); }
+            set { SetValue(StopProperty, value); }
+        }
+        public static readonly DependencyProperty StopProperty =
+            DependencyProperty.Register("Stop", typeof(TransitStop), typeof(StopArrivalsBox), new PropertyMetadata(new TransitStop(), (s, e) => ((StopArrivalsBox)s).VM.Stop = (TransitStop)e.NewValue));
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width > 0)
+                MainScrollViewer.Width = e.NewSize.Width;
+            if (e.NewSize.Height > 0)
+                MainScrollViewer.Height = e.NewSize.Height;
         }
     }
 }

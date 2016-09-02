@@ -10,11 +10,21 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media.Animation;
 using MvvmHelpers;
+using Windows.UI.Core;
 
 namespace OneAppAway._1_1
 {
     public static class Helpers
     {
+        private static DispatcherTimer Timer = new DispatcherTimer();
+
+        static Helpers()
+        {
+            Timer.Interval = TimeSpan.FromSeconds(10);
+            Timer.Tick += (s, e) => TimeDetails.Instance.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => TimeDetails.Instance.Refresh()).ToString();
+            Timer.Start();
+        }
+
         public static BasicGeoposition ToBasicGeoposition(this LatLon value)
         {
             return new BasicGeoposition() { Latitude = value.Latitude, Longitude = value.Longitude };

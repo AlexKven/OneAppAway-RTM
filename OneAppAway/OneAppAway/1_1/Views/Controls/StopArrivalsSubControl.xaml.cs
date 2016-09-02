@@ -89,6 +89,7 @@ namespace OneAppAway._1_1.Views.Controls
                 CompressButton.Visibility = Visibility.Collapsed;
                 CloseButton.Visibility = Visibility.Collapsed;
             }
+            ArrivalsBox.Stop = (DataContext as ViewModels.StopArrivalsViewModel)?.Stop ?? new Data.TransitStop();
         }
     }
 }

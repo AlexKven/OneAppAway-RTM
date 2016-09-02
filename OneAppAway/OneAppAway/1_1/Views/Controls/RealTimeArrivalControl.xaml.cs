@@ -25,9 +25,7 @@ namespace OneAppAway._1_1.Views.Controls
         {
             this.InitializeComponent();
         }
-
-
-
+        
         public RealTimeArrival Arrival
         {
             get { return (RealTimeArrival)GetValue(ArrivalProperty); }
