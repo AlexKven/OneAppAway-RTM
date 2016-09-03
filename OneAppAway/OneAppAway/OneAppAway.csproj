@@ -121,6 +121,7 @@
     <Compile Include="1_1\Selectors\TransitMapPageTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\ViewModels\HamburgerBarPageEntryViewModel.cs" />
     <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
+    <Compile Include="1_1\ViewModels\TransitMapPageCtrlViewModel.cs" />
     <Compile Include="1_1\Views\Controls\ApplicationFrame.cs" />
     <Compile Include="1_1\Views\Controls\AutoFitTextBlock.xaml.cs">
       <DependentUpon>AutoFitTextBlock.xaml</DependentUpon>

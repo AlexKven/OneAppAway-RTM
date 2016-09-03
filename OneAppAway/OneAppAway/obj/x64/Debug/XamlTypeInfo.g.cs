@@ -798,8 +798,8 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 userType.AddMemberName("Area");
                 userType.AddMemberName("AreaDelay");
                 userType.AddMemberName("StopsSource");
-                userType.AddMemberName("SelectedStop");
-                userType.AddMemberName("IsMapUpdatingSuspended");
+                userType.AddMemberName("SelectedStopsSource");
+                userType.AddMemberName("StopsClickedCommand");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -1630,25 +1630,25 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             that.StopsSource = (global::System.Object)Value;
         }
-        private object get_33_TransitMap_SelectedStop(object instance)
+        private object get_33_TransitMap_SelectedStopsSource(object instance)
         {
             var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
-            return that.SelectedStop;
+            return that.SelectedStopsSource;
         }
-        private void set_33_TransitMap_SelectedStop(object instance, object Value)
+        private void set_33_TransitMap_SelectedStopsSource(object instance, object Value)
         {
             var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
-            that.SelectedStop = (global::OneAppAway._1_1.Data.TransitStop)Value;
+            that.SelectedStopsSource = (global::System.Object)Value;
         }
-        private object get_34_TransitMap_IsMapUpdatingSuspended(object instance)
+        private object get_34_TransitMap_StopsClickedCommand(object instance)
         {
             var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
-            return that.IsMapUpdatingSuspended;
+            return that.StopsClickedCommand;
         }
-        private void set_34_TransitMap_IsMapUpdatingSuspended(object instance, object Value)
+        private void set_34_TransitMap_StopsClickedCommand(object instance, object Value)
         {
             var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
-            that.IsMapUpdatingSuspended = (global::System.Boolean)Value;
+            that.StopsClickedCommand = (global::System.Windows.Input.ICommand)Value;
         }
         private object get_35_ApplicationPage_NavigationHelper(object instance)
         {
@@ -2332,19 +2332,19 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlMember.Getter = get_32_TransitMap_StopsSource;
                 xamlMember.Setter = set_32_TransitMap_StopsSource;
                 break;
-            case "OneAppAway._1_1.Views.Controls.TransitMap.SelectedStop":
+            case "OneAppAway._1_1.Views.Controls.TransitMap.SelectedStopsSource":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.TransitMap");
-                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "SelectedStop", "OneAppAway._1_1.Data.TransitStop");
+                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "SelectedStopsSource", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_33_TransitMap_SelectedStop;
-                xamlMember.Setter = set_33_TransitMap_SelectedStop;
+                xamlMember.Getter = get_33_TransitMap_SelectedStopsSource;
+                xamlMember.Setter = set_33_TransitMap_SelectedStopsSource;
                 break;
-            case "OneAppAway._1_1.Views.Controls.TransitMap.IsMapUpdatingSuspended":
+            case "OneAppAway._1_1.Views.Controls.TransitMap.StopsClickedCommand":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Controls.TransitMap");
-                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "IsMapUpdatingSuspended", "Boolean");
+                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "StopsClickedCommand", "System.Windows.Input.ICommand");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_34_TransitMap_IsMapUpdatingSuspended;
-                xamlMember.Setter = set_34_TransitMap_IsMapUpdatingSuspended;
+                xamlMember.Getter = get_34_TransitMap_StopsClickedCommand;
+                xamlMember.Setter = set_34_TransitMap_StopsClickedCommand;
                 break;
             case "OneAppAway._1_1.Views.Pages.ApplicationPage.NavigationHelper":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Pages.ApplicationPage");

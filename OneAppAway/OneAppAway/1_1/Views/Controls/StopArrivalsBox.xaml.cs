@@ -32,6 +32,11 @@ namespace OneAppAway._1_1.Views.Controls
             this.InitializeComponent();
             VM = new StopArrivalsBoxViewModel();
         }
+
+        public void Refresh()
+        {
+            VM?.Refresh();
+        }
         
         public TransitStop Stop
         {

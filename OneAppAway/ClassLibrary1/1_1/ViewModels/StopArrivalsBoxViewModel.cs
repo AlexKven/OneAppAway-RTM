@@ -20,8 +20,10 @@ namespace OneAppAway._1_1.ViewModels
             get { return _Stop; }
             set
             {
+                var old = Stop;
                 SetProperty(ref _Stop, value);
-                Refresh();
+                if (Stop != old)
+                    Refresh();
             }
         }
 

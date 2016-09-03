@@ -336,8 +336,6 @@
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="ItemsPanel" />
       <RootProperty Name="VerticalContentAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="Width" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Items" />

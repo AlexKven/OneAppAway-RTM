@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -33,7 +34,7 @@ namespace OneAppAway._1_1.Views.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(TestPage2));
+            Frame.Navigate(typeof(TestPage2)); Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.Control);
         }
     }
 }

@@ -26,19 +26,21 @@ namespace OneAppAway._1_1.Views.Pages
     /// </summary>
     public sealed partial class TransitMapPage : ApplicationPage
     {
-        private TransitMapPageViewModel VM;
+        private TransitMapPageCtrlViewModel VM;
         public TransitMapPage()
         {
             this.InitializeComponent();
-            VM = new TransitMapPageViewModel(Cache) { Title = "Transit Map" };
+            VM = new TransitMapPageCtrlViewModel(Cache) { Title = "Transit Map" };
             DataContext = VM;
             DatabaseManager.Initialize(null);
             TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabase, true);
             //MainMap.StopsSource = Stops;
             MainMap.StopsSource = VM.ShownStops;
+            MainMap.SelectedStopsSource = VM.SelectedStops;
             MainMap.SmallThreshold = VM.SmallThreshold;
             MainMap.MediumThreshold = VM.MediumThreshold;
             MainMap.LargeThreshold = VM.LargeThreshold;
+            VM.BindToControl(MainMap, TransitMap.StopsClickedCommandProperty, "StopsClickedCommand");
             VM.BindToControl(MainMap, TransitMap.AreaDelayProperty, "Area", true);
             VM.BindToControl(MainMap, TransitMap.ZoomLevelDelayProperty, "ZoomLevel", true);
         }

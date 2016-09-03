@@ -7,15 +7,29 @@ using MvvmHelpers;
 using OneAppAway._1_1.Data;
 using System.Threading;
 using System.Net.Http;
+using System.Windows.Input;
 
 namespace OneAppAway._1_1.ViewModels
 {
     public class TransitMapPageViewModel : BaseViewModel
     {
+        private void StopsClickedCommand_Execute(object parameter)
+        {
+            if (MultiSelect)
+                SelectedStops.AddRange((IEnumerable<TransitStop>)parameter);
+            else
+                SelectedStops.ReplaceRange((IEnumerable<TransitStop>)parameter);
+        }
+
+        protected virtual bool MultiSelect => false;
+
         public ObservableRangeCollection<TransitStop> ShownStops { get; } = new ObservableRangeCollection<TransitStop>();
+        public ObservableRangeCollection<TransitStop> SelectedStops { get; } = new ObservableRangeCollection<TransitStop>();
         private CancellationTokenSource TokenSource = new CancellationTokenSource();
         private MemoryCache Cache;
         double lastZoomLevel = 0;
+
+        public ICommand StopsClickedCommand { get; }
 
         private void LoadSpecialStops()
         {
@@ -24,9 +38,15 @@ namespace OneAppAway._1_1.ViewModels
         }
 
         public TransitMapPageViewModel(MemoryCache cache)
+            :this()
         {
             Cache = cache;
             LoadSpecialStops();
+        }
+
+        public TransitMapPageViewModel()
+        {
+            StopsClickedCommand = new Command(StopsClickedCommand_Execute);
         }
 
         private LatLonRect _Area = LatLonRect.NotAnArea;

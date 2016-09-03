@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace OneAppAway._1_1.ViewModels
 {
@@ -27,7 +28,7 @@ namespace OneAppAway._1_1.ViewModels
                 }
             }
             if (ChildrenSource != null && ChildrenSource.Count > 0)
-                Width = ChildrenSource[0].Width + 50;
+                Width = ChildrenSource.Aggregate(0.0, (acc, child) => acc + child.Width);
             else
                 Width = 290;
             StopName = stop.Name;
@@ -92,5 +93,7 @@ namespace OneAppAway._1_1.ViewModels
         public double Width { get; }
 
         public bool IsTopLevel { get; private set; } = true;
+
+        public ICommand RefreshCommand { get; }
     }
 }

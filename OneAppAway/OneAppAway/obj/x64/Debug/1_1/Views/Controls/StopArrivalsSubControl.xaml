@@ -46,13 +46,14 @@
             <local:AutoFitTextBlock Text="{Binding StopName}" FontSize="18" Foreground="White" VerticalAlignment="Stretch"/>
         </Button>
         <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Top">
-            <Button RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" Visibility="{Binding Path=HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}"></Button>
-            <Button x:ConnectionId='3' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="CompressButton">&#xE73F;</Button>
-            <Button x:ConnectionId='4' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="ExpandButton">&#xE740;</Button>
-            <Button x:ConnectionId='5' RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton">❌</Button>
+            <Button x:ConnectionId='3' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" Visibility="{Binding Path=HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}" x:Name="RefreshButton"></Button>
+            <Button x:ConnectionId='4' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="CompressButton">&#xE73F;</Button>
+            <Button x:ConnectionId='5' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="ExpandButton">&#xE740;</Button>
+            <Button x:ConnectionId='6' RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton">❌</Button>
         </StackPanel>
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}">
-            <ItemsControl Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding ChildrenSource}" VerticalContentAlignment="Stretch" Margin="5" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}">
+
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding ChildrenSource}" VerticalContentAlignment="Stretch">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>

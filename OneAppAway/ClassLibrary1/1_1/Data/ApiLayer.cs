@@ -145,7 +145,7 @@ namespace OneAppAway._1_1.Data
         }
 
         public static async Task<RealTimeArrival[]> GetTransitArrivals(string id, int minsBefore, int minsAfter, CancellationToken cancellationToken)
-        {
+         {
             List<RealTimeArrival> result = new List<RealTimeArrival>();
             StringReader reader = new StringReader(await SendRequest("arrivals-and-departures-for-stop/" + id, new Dictionary<string, string>() { ["minutesBefore"] = minsBefore.ToString(), ["minutesAfter"] = minsAfter.ToString() }, false, cancellationToken));
             if (cancellationToken.IsCancellationRequested)

@@ -76,6 +76,7 @@ namespace OneAppAway._1_1.Views.Controls
                 ExpandButton.Visibility = Visibility.Visible;
                 CompressButton.Visibility = Visibility.Visible;
                 CloseButton.Visibility = Visibility.Visible;
+                
 
                 //ExpandButton.SetBinding(Button.VisibilityProperty, new Binding() { Source = this, Path = new PropertyPath("IsExpandEnabled"), Converter = Converters.BoolToVisibilityConverter.Instance });
                 //CompressButton.SetBinding(Button.VisibilityProperty, new Binding() { Source = this, Path = new PropertyPath("IsCompressEnabled"), Converter = Converters.BoolToVisibilityConverter.Instance });
@@ -89,6 +90,7 @@ namespace OneAppAway._1_1.Views.Controls
                 CompressButton.Visibility = Visibility.Collapsed;
                 CloseButton.Visibility = Visibility.Collapsed;
             }
+            RefreshButton.Command = new Command((obj) => ArrivalsBox.Refresh());
             ArrivalsBox.Stop = (DataContext as ViewModels.StopArrivalsViewModel)?.Stop ?? new Data.TransitStop();
         }
     }
