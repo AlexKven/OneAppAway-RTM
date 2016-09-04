@@ -35,6 +35,19 @@ namespace OneAppAway._1_1.Views
             MainSplitView.Content = frame;
             VM = new OuterFrameViewModel((App)App.Current, frame);
             this.DataContext = VM;
+            //VM.PropertyChanged += (s, e) =>
+            //{
+            //    if (e.PropertyName == "PageDataContext")
+            //    {
+            //        TitleBarContentPresenter.DataContext = VM.PageDataContext;
+            //    }
+            //};
+            //<ContentTemplate="{Binding TitleControlsTemplate}" TemplateDataContext="{Binding PageDataContext}" Width="{Binding TitleControlsActualWidth}" Visibility="{Binding TitleControlsVisibility}" x:Name="TitleBarContentPresenter"/>
+            //TitleBarContentPresenter.SetBinding(ContentPresenter.ContentTemplateProperty, new Binding() { Source = VM, Path = new PropertyPath("TitleControlsTemplate"), Mode = BindingMode.OneWay });
+            //TitleBarContentPresenter.DataContext = VM.PageDataContext;
+            //TitleBarContentPresenter.SetBinding(ContentPresenter.DataContextProperty, new Binding() { Source = VM, Path = new PropertyPath("PageDataContext"), Mode = BindingMode.OneWay });
+            //TitleBarContentPresenter.SetBinding(WidthProperty, new Binding() { Source = VM, Path = new PropertyPath("TitleControlsActualWidth"), Mode = BindingMode.OneWay });
+            //TitleBarContentPresenter.SetBinding(VisibilityProperty, new Binding() { Source = VM, Path = new PropertyPath("TitleControlsVisibility"), Mode = BindingMode.OneWay });
         }
 
         //#region Properties

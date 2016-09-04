@@ -49,7 +49,7 @@ namespace OneAppAway._1_1.Selectors
             if (large)
             {
                 builder.AppendLine("<CommandBar RequestedTheme=\"Dark\" Background=\"#303030\" Grid.Column=\"1\" BorderBrush=\"#303030\">");
-                builder.AppendLine("<AppBarButton Icon=\"MapPin\" Label=\"Current Location\" Click=\"CurrentLocationButton_Click\"/>");
+                builder.AppendLine("<AppBarButton Icon=\"MapPin\" Label=\"Current Location\" Command=\"{Binding CenterOnCurrentLocationCommand}\"/>");
                 builder.AppendLine("<AppBarButton Icon=\"ZoomIn\" Label=\"Zoom In\" Click=\"ZoomInButton_Click\" ClickMode=\"Press\"/>");
                 builder.AppendLine("<AppBarButton Icon=\"ZoomOut\" Label=\"Zoom Out\" Click=\"ZoomOutButton_Click\" ClickMode=\"Press\"/>");
                 builder.AppendLine("<AppBarButton Label=\"Find Stops\" Click=\"RefreshButton_Click\">");
@@ -72,7 +72,7 @@ namespace OneAppAway._1_1.Selectors
             builder.AppendLine("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" > ");
             builder.AppendLine("<Grid>");
             builder.AppendLine("<CommandBar RequestedTheme=\"Dark\" Background=\"#303030\" Grid.Column=\"1\" BorderBrush=\"#303030\">");
-            builder.AppendLine("<AppBarButton Icon=\"MapPin\" Label=\"Current Location\" Click=\"CurrentLocationButton_Click\"/>");
+            builder.AppendLine("<AppBarButton Icon=\"MapPin\" Label=\"Current Location\" Command=\"{Binding CenterOnCurrentLocationCommand}\"/>");
             builder.AppendLine("<AppBarButton Icon=\"ZoomIn\" Label=\"Zoom In\" Click=\"ZoomInButton_Click\" ClickMode=\"Press\"/>");
             builder.AppendLine("<AppBarButton Icon=\"ZoomOut\" Label=\"Zoom Out\" Click=\"ZoomOutButton_Click\" ClickMode=\"Press\"/>");
             builder.AppendLine("<AppBarButton Label=\"Find Stops\" Click=\"RefreshButton_Click\">");

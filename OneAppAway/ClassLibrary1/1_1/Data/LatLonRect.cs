@@ -124,9 +124,24 @@ namespace OneAppAway._1_1.Data
             return new LatLonRectMiniaturizationEnumerable(this, maxSpan);
         }
 
+        public bool Intersects(LatLonRect other)
+        {
+            if (IsNotAnArea || other.IsNotAnArea)
+                return false;
+            if (other.SW.Latitude > NE.Latitude)
+                return false;
+            if (other.SW.Longitude > NE.Longitude)
+                return false;
+            if (other.NE.Latitude < SW.Latitude)
+                return false;
+            if (other.NE.Longitude < NE.Longitude)
+                return false;
+            return true;
+        }
+
         public IEnumerable<LatLonRect> GetNewRegion(LatLonRect movedTo)
         {
-            if (IsNotAnArea)
+            if (!Intersects(movedTo))
             {
                 yield return movedTo;
                 yield break;

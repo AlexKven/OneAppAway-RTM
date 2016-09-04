@@ -16,6 +16,10 @@ namespace OneAppAway._1_1.ViewModels
 {
     class OuterFrameViewModel : BaseViewModel, IDisposable
     {
+        class CP : ContentPresenter
+        {
+        }
+
         private App CurrentApp;
         private ApplicationFrame Frame;
         private ApplicationPage Page;

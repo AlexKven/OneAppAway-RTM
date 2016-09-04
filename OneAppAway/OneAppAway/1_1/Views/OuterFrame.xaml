@@ -163,7 +163,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Rectangle Height="1" VerticalAlignment="Top" Fill="Transparent" Grid.Column="1" Width="{Binding TitleActualWidth}" IsHitTestVisible="False"/>
-            <ContentPresenter VerticalAlignment="Stretch" Grid.Column="2" HorizontalAlignment="Left" ContentTemplate="{Binding TitleControlsTemplate}" DataContext="{Binding PageDataContext}" Width="{Binding TitleControlsActualWidth}" Visibility="{Binding TitleControlsVisibility}"/>
+            <ContentPresenter x:Name="TitleBarContentPresenter" VerticalAlignment="Stretch" Grid.Column="2" HorizontalAlignment="Left" ContentTemplate="{Binding TitleControlsTemplate}" Width="{Binding TitleControlsActualWidth}" Visibility="{Binding TitleControlsVisibility}"/>
         </Grid>
     </Grid>
 </Page>

@@ -9,7 +9,52 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="Self">
     <localP:ApplicationPage.TitleTemplateSelector>
-        <localS:TransitMapPageTitleBarTemplateSelector/>
+        <localS:LargeAndSmallTitleBarTemplateSelector LargeTemplateThresholdWidth="650" LargeTemplateThresholdWidthMobile="400" PreferedLargeWidth="550" PreferedSmallWidth="300">
+            <localS:LargeAndSmallTitleBarTemplateSelector.LargeTemplate>
+                <DataTemplate>
+                    <Grid Loaded="Grid_Loaded">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <CommandBar RequestedTheme="Dark" Background="#303030" Grid.Column="1" BorderBrush="#303030">
+                            <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
+                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
+                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
+                            <AppBarButton Label="Find Stops">
+                                <AppBarButton.Icon>
+                                    <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                        </CommandBar>
+                    </Grid>
+                </DataTemplate>
+            </localS:LargeAndSmallTitleBarTemplateSelector.LargeTemplate>
+            <localS:LargeAndSmallTitleBarTemplateSelector.SmallTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    </Grid>
+                </DataTemplate>
+            </localS:LargeAndSmallTitleBarTemplateSelector.SmallTemplate>
+            <localS:LargeAndSmallTitleBarTemplateSelector.OverflowTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <CommandBar RequestedTheme="Dark" Background="#303030" BorderBrush="#303030">
+                            <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
+                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
+                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
+                            <AppBarButton Label="Find Stops">
+                                <AppBarButton.Icon>
+                                    <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                        </CommandBar>
+                    </Grid>
+                </DataTemplate>
+            </localS:LargeAndSmallTitleBarTemplateSelector.OverflowTemplate>
+        </localS:LargeAndSmallTitleBarTemplateSelector>
     </localP:ApplicationPage.TitleTemplateSelector>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="MainGrid">
         <Grid.RowDefinitions>

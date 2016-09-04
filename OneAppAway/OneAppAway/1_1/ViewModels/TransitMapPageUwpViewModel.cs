@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 using Windows.UI.Xaml;
 
 namespace OneAppAway._1_1.ViewModels
 {
-    class TransitMapPageCtrlViewModel : TransitMapPageViewModel
+    class TransitMapPageUwpViewModel : TransitMapPageViewModel
     {
-        public TransitMapPageCtrlViewModel(MemoryCache cache)
+        public TransitMapPageUwpViewModel(MemoryCache cache)
             : base(cache) { }
 
         protected override bool MultiSelect
@@ -19,6 +20,11 @@ namespace OneAppAway._1_1.ViewModels
             {
                 return (Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.Control) & Windows.UI.Core.CoreVirtualKeyStates.Down) == Windows.UI.Core.CoreVirtualKeyStates.Down;
             }
+        }
+
+        protected override async Task GetLocation(Action<LatLon> locationCallback)
+        {
+            await LocationHelper.ProgressivelyAcquireLocation(pos => locationCallback(pos.ToLatLon()));
         }
     }
 }

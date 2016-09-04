@@ -26,14 +26,14 @@ namespace OneAppAway._1_1.Views.Pages
     /// </summary>
     public sealed partial class TransitMapPage : ApplicationPage
     {
-        private TransitMapPageCtrlViewModel VM;
+        private TransitMapPageUwpViewModel VM;
         public TransitMapPage()
         {
             this.InitializeComponent();
-            VM = new TransitMapPageCtrlViewModel(Cache) { Title = "Transit Map" };
+            VM = new TransitMapPageUwpViewModel(Cache) { Title = "Transit Map" };
             DataContext = VM;
-            DatabaseManager.Initialize(null);
-            TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabase, true);
+            //DatabaseManager.Initialize(null);
+            //TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabase, true);
             //MainMap.StopsSource = Stops;
             MainMap.StopsSource = VM.ShownStops;
             MainMap.SelectedStopsSource = VM.SelectedStops;
@@ -43,6 +43,7 @@ namespace OneAppAway._1_1.Views.Pages
             VM.BindToControl(MainMap, TransitMap.StopsClickedCommandProperty, "StopsClickedCommand");
             VM.BindToControl(MainMap, TransitMap.AreaDelayProperty, "Area", true);
             VM.BindToControl(MainMap, TransitMap.ZoomLevelDelayProperty, "ZoomLevel", true);
+            SetBinding(CanGoBackProperty, new Binding() { Source = MainMap, Path = new PropertyPath("HasSelectedStops"), Mode = BindingMode.OneWay });
         }
 
         #region Methods
@@ -54,17 +55,32 @@ namespace OneAppAway._1_1.Views.Pages
             //        Stops.Add(stop);
         }
 
+        #endregion
 
-        public async void CenterOnCurrentLocation()
+        #region Overrides
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //await SetLoadingIndicator(true);
-            //await Data.ProgressivelyAcquireLocation(async delegate (BasicGeoposition pos)
-            //{
-            //    await MainMap.MapControl.TrySetViewAsync(new Geopoint(pos), 17, null, null, MapAnimationKind.Linear);
-            //});
-            //await SetLoadingIndicator(false);
+            base.OnNavigatedTo(e);
+            VM.ViewChangeRequested += VM_ViewChangeRequested;
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+            VM.ViewChangeRequested -= VM_ViewChangeRequested;
+        }
+
+        public override void GoBack()
+        {
+            VM.SelectedStops.Clear();
         }
         #endregion
+
+        #region Event Handlers
+        private async void VM_ViewChangeRequested(object sender, EventArgs<MapView> e)
+        {
+            await MainMap.TrySetView(e.Parameter);
+        }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -97,10 +113,12 @@ namespace OneAppAway._1_1.Views.Pages
         {
 
         }
+        #endregion
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-
+            ((Grid)sender).DataContext = VM;
+            ((Grid)sender).Loaded -= Grid_Loaded;
         }
     }
 }

@@ -43,7 +43,7 @@
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:ConnectionId='8' x:Name="TitleBar" Grid.Column="1">
+            <Grid x:ConnectionId='9' x:Name="TitleBar" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
@@ -55,7 +55,7 @@
         </Grid>
         <SplitView x:ConnectionId='6' Grid.Row="1" CompactPaneLength="50" DisplayMode="CompactOverlay" x:Name="MainSplitView" OpenPaneLength="300" IsPaneOpen="{Binding IsMenuOpen, Mode=TwoWay}">
             <SplitView.Pane>
-                <Grid x:ConnectionId='7' Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar" RequestedTheme="Dark">
+                <Grid x:ConnectionId='8' Background="#303030" Margin="0,0,0,0" x:Name="HamburgerBar" RequestedTheme="Dark">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="*"/>
@@ -163,7 +163,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Rectangle Height="1" VerticalAlignment="Top" Fill="Transparent" Grid.Column="1" Width="{Binding TitleActualWidth}" IsHitTestVisible="False"/>
-            <ContentPresenter VerticalAlignment="Stretch" Grid.Column="2" HorizontalAlignment="Left" ContentTemplate="{Binding TitleControlsTemplate}" DataContext="{Binding PageDataContext}" Width="{Binding TitleControlsActualWidth}" Visibility="{Binding TitleControlsVisibility}"/>
+            <ContentPresenter x:ConnectionId='7' x:Name="TitleBarContentPresenter" VerticalAlignment="Stretch" Grid.Column="2" HorizontalAlignment="Left" ContentTemplate="{Binding TitleControlsTemplate}" Width="{Binding TitleControlsActualWidth}" Visibility="{Binding TitleControlsVisibility}"/>
         </Grid>
     </Grid>
 </Page>

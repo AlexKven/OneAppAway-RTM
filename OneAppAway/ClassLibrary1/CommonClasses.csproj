@@ -43,6 +43,7 @@
     <Compile Include="1_1\Data\DatabaseManager.cs" />
     <Compile Include="1_1\Data\GooglePolylineConverter.cs" />
     <Compile Include="1_1\Data\LatLonRect.cs" />
+    <Compile Include="1_1\Data\MapView.cs" />
     <Compile Include="1_1\Data\MemoryCache.cs" />
     <Compile Include="1_1\Data\RealTimeArrival.cs" />
     <Compile Include="1_1\Data\ScheduledArrival.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="1_1\Data\UIDataSource.cs" />
     <Compile Include="1_1\Data\UITaskWrapper.cs" />
     <Compile Include="1_1\Data\MapStopSize.cs" />
+    <Compile Include="1_1\EventArgs.cs" />
     <Compile Include="1_1\ViewModels\ArrivalsControlInTransitPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
     <Compile Include="1_1\ViewModels\RealTimeArrivalViewModel.cs" />

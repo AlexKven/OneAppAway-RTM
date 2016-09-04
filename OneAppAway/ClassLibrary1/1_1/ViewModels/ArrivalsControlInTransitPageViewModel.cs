@@ -43,7 +43,11 @@ namespace OneAppAway._1_1.ViewModels
                 } while (NumColsRequested >= MaxColsVisible && NumColsRequested > 1);
                 SetSize(MapWidth, MapHeight);
             }, (obj) => IsCompressEnabled);
-            CloseCommand = new Command((obj) => { Stop = null; SetVisibility(); });
+            CloseCommand = new Command((obj) => {
+                Stop = null;
+                SetVisibility();
+                Closed?.Invoke(this, EventArgs.Empty);
+            });
         }
 
         public ICommand ExpandCommand { get; }
@@ -216,5 +220,7 @@ namespace OneAppAway._1_1.ViewModels
                 SetProperty(ref _IsOnMap, value);
             }
         }
+
+        public event EventHandler Closed;
     }
 }

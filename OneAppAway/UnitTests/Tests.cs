@@ -155,6 +155,22 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void LatLonRect_Intersects()
+        {
+            LatLonRect rect = new LatLonRect(8, 4, 2, -8);
+            LatLonRect other = new LatLonRect(4, 10, 0, 0);
+            AssertExpectedVsActual("intersects0", true, rect.Intersects(other));
+            other = new LatLonRect(4, 10, 0, 6);
+            AssertExpectedVsActual("intersects1", false, rect.Intersects(other));
+            other = new LatLonRect(1, 10, 0, 0);
+            AssertExpectedVsActual("intersects2", false, rect.Intersects(other));
+            other = new LatLonRect(12, 10, 10, 0);
+            AssertExpectedVsActual("intersects3", false, rect.Intersects(other));
+            other = new LatLonRect(4, -20, 0, -10);
+            AssertExpectedVsActual("intersects4", false, rect.Intersects(other));
+        }
+
+        [TestMethod]
         public void LatLonRect_GetNewRegionTests()
         {
             LatLonRect rect = new LatLonRect(8, 10, 4, 5);

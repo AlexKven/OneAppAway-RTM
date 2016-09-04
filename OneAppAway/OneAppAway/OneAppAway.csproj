@@ -116,12 +116,14 @@
     <Compile Include="1_1\Converters\NullZeroConverter.cs" />
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
+    <Compile Include="1_1\Data\LocationHelper.cs" />
     <Compile Include="1_1\Helpers.cs" />
+    <Compile Include="1_1\Selectors\LargeAndSmallTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\TitleOnlyTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\TransitMapPageTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\ViewModels\HamburgerBarPageEntryViewModel.cs" />
     <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
-    <Compile Include="1_1\ViewModels\TransitMapPageCtrlViewModel.cs" />
+    <Compile Include="1_1\ViewModels\TransitMapPageUwpViewModel.cs" />
     <Compile Include="1_1\Views\Controls\ApplicationFrame.cs" />
     <Compile Include="1_1\Views\Controls\AutoFitTextBlock.xaml.cs">
       <DependentUpon>AutoFitTextBlock.xaml</DependentUpon>
@@ -487,7 +489,6 @@
     <AppxSystemBinary Include="OneAppAway.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="1_1\Data\" />
     <Folder Include="Visuals\" />
   </ItemGroup>
   <ItemGroup>

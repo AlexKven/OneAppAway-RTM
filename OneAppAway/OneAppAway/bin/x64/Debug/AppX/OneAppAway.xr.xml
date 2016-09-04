@@ -27,10 +27,6 @@
     <RootPropertyPathName Name="StopName" />
     <RootPropertyPathName Name="IconUri" />
     <RootPropertyPathName Name="IsTopLevel" />
-    <RootPropertyPathName Name="TitleControlsTemplate" />
-    <RootPropertyPathName Name="PageDataContext" />
-    <RootPropertyPathName Name="TitleControlsActualWidth" />
-    <RootPropertyPathName Name="TitleControlsVisibility" />
     <RootPropertyPathName Name="TitleActualWidth" />
     <RootPropertyPathName Name="IsMenuOpen" />
     <RootPropertyPathName Name="PageEntries" />
@@ -44,7 +40,9 @@
     <RootPropertyPathName Name="GoBackCommand" />
     <RootPropertyPathName Name="ToggleMenuCommand" />
     <RootPropertyPathName Name="TitleTemplate" />
+    <RootPropertyPathName Name="PageDataContext" />
     <RootPropertyPathName Name="TitleVisibility" />
+    <RootPropertyPathName Name="CenterOnCurrentLocationCommand" />
     <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="IsChecked" />
@@ -131,6 +129,7 @@
       <RootProperty Name="Tag" />
       <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="SizeChanged" />
+      <RootEvent Name="Loaded" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
       <RootMethod Name="GetRow" />
@@ -171,9 +170,9 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Width" />
       <RootProperty Name="ContentTemplate" />
       <RootProperty Name="DataContext" />
-      <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="HorizontalContentAlignment" />
@@ -444,7 +443,39 @@
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage1" />
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage2" />
-    <RootType FullName="OneAppAway._1_1.Selectors.TransitMapPageTitleBarTemplateSelector" />
+    <RootType FullName="OneAppAway._1_1.Selectors.LargeAndSmallTitleBarTemplateSelector">
+      <RootProperty Name="LargeTemplateThresholdWidth" />
+      <RootProperty Name="LargeTemplateThresholdWidthMobile" />
+      <RootProperty Name="PreferedLargeWidth" />
+      <RootProperty Name="PreferedSmallWidth" />
+      <RootProperty Name="LargeTemplate" />
+      <RootProperty Name="SmallTemplate" />
+      <RootProperty Name="OverflowTemplate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="SecondaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="ClickMode" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.BitmapIcon">
+      <RootProperty Name="UriSource" />
+    </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TransitMapPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootEvent Name="Navigated" />
@@ -497,10 +528,6 @@
     </RootType>
     <RootType FullName="OneAppAway.FavoritesPage" />
     <RootType FullName="OneAppAway.HelpTip" />
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Content" />
@@ -593,23 +620,6 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="RenderTransform" />
       <RootEvent Name="CloseRequested" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="RequestedTheme" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="BorderBrush" />
-      <RootProperty Name="PrimaryCommands" />
-      <RootProperty Name="SecondaryCommands" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
-      <RootProperty Name="ClickMode" />
-      <RootProperty Name="Visibility" />
-      <RootEvent Name="Click" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.BitmapIcon">
-      <RootProperty Name="UriSource" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.CompositeTransform">
       <RootProperty Name="TranslateY" />

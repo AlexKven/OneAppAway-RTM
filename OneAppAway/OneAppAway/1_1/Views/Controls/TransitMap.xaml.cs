@@ -217,6 +217,14 @@ namespace OneAppAway._1_1.Views.Controls
         public static readonly DependencyProperty StopsClickedCommandProperty =
             DependencyProperty.Register("StopsClickedCommand", typeof(ICommand), typeof(TransitMap), new PropertyMetadata(null));
         
+        public bool HasSelectedStops
+        {
+            get { return (bool)GetValue(HasSelectedStopsProperty); }
+            private set { SetValue(HasSelectedStopsProperty, value); }
+        }
+        public static readonly DependencyProperty HasSelectedStopsProperty =
+            DependencyProperty.Register("HasSelectedStops", typeof(bool), typeof(TransitMap), new PropertyMetadata(false));
+        
         //public bool IsMapUpdatingSuspended
         //{
         //    get { return (bool)GetValue(IsMapUpdatingSuspendedProperty); }
@@ -232,27 +240,97 @@ namespace OneAppAway._1_1.Views.Controls
         #endregion
 
         #region Methods
-        private TransitStop CombineSeveralStops(LatLon? center, params TransitStop[] stops)
+        #region On___Changed
+        private void OnZoomLevelChanged()
         {
-            if (stops.Length == 1)
-                return stops[0];
-            TransitStop result = new TransitStop();
-            result.Name = $"Selected Stops";
-            result.Direction = Data.StopDirection.Unspecified;
-            result.ID = stops.Aggregate("", (acc, stop) => acc + "&" + stop.ID).Substring(1);
-            result.Position = center ?? stops[0].Position;
-            result.Children = stops.Select(stop => stop.ID).ToArray();
-            return result;
+            SetArea();
+            if (!User_ZoomLevelChanged.HasValue)
+            {
+                User_ZoomLevelChanged = false;
+                SetProperZoomLevel();
+                if (RecalculateCenterOffset())
+                {
+                    User_CenterChanged = false;
+                    SetProperCenter();
+                }
+            }
+            DelaySetZoomLevel();
+
+            ZoomLevelBlock.Text = $"ZoomLevel: {ZoomLevel.ToString("#.00000")}";
+
+            ZoomLevelChanged?.Invoke(this, new EventArgs());
         }
 
+        private void OnCenterChanged()
+        {
+            //if (IsMapUpdatingSuspended)
+            //    return;
+            SetArea();
+            if (!User_CenterChanged.HasValue)
+            {
+                User_CenterChanged = false;
+                SetProperCenter();
+            }
+            DelaySetCenter();
+
+            CoordsBlock.Text = $"Center: {Center.ToString("#.00000")} Span: {Area.Span.ToString("#.00000")}";
+            CoordsBlock2.Text = $"Area: {Area.ToString("#.00000")}";
+            CenterChanged?.Invoke(this, new EventArgs());
+        }
+
+        private void OnCenterRegionChanged()
+        {
+            if (RecalculateCenterOffset())
+                MainMap_CenterChanged(MainMap, null);
+        }
+
+        void OnStopsSourceChanged(object oldValue, object newValue)
+        {
+            if (oldValue is ObservableCollection<TransitStop>)
+                UnregisterStopsSourceHandlers((ObservableCollection<TransitStop>)oldValue);
+            ClearStops();
+            if (newValue is ObservableCollection<TransitStop>)
+                RegisterStopsSourceHandlers((ObservableCollection<TransitStop>)newValue);
+            else if (newValue is IEnumerable<TransitStop>)
+            {
+                foreach (var stop in (IEnumerable<TransitStop>)newValue)
+                    AddStopsToMap(stop);
+            }
+            else if (newValue is TransitStop)
+                AddStopsToMap((TransitStop)newValue);
+        }
+
+        void OnSelectedStopsSourceChanged(object oldValue, object newValue)
+        {
+            if (oldValue is ObservableCollection<TransitStop>)
+                UnregisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)oldValue);
+            if (newValue is ObservableCollection<TransitStop>)
+                RegisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)newValue);
+            else if (newValue is IEnumerable<TransitStop>)
+            {
+                SetStopArrivalsControl(CombineSeveralStops(null, ((IEnumerable<TransitStop>)newValue).ToArray()));
+            }
+            else if (newValue is TransitStop)
+                SetStopArrivalsControl((TransitStop)newValue);
+            else
+                ClearStopArrivalsControl();
+        }
+
+        private void OnAreaChanged()
+        {
+            DelaySetArea();
+        }
+        #endregion
+
+        #region Private Actions
         private async void SetStopArrivalsControl(TransitStop stop)
         {
             if (ArrivalsViewModel == null)
                 SetArrivalsViewModel();
             ArrivalsViewModel.Stop = stop;
-                TrySetView(stop.Position).ToString();
-                await Task.Delay(150);
-            
+            TrySetView(new MapView(stop.Position)).ToString();
+            await Task.Delay(150);
+
             ArrivalsViewModel.SetVisibility();
         }
 
@@ -341,101 +419,6 @@ namespace OneAppAway._1_1.Views.Controls
             User_CenterChanged = null;
         }
 
-        private void OnZoomLevelChanged()
-        {
-            SetArea();
-            if (!User_ZoomLevelChanged.HasValue)
-            {
-                User_ZoomLevelChanged = false;
-                SetProperZoomLevel();
-                if (RecalculateCenterOffset())
-                {
-                    User_CenterChanged = false;
-                    SetProperCenter();
-                }
-            }
-            DelaySetZoomLevel();
-
-            ZoomLevelBlock.Text = $"ZoomLevel: {ZoomLevel.ToString("#.00000")}";
-
-            ZoomLevelChanged?.Invoke(this, new EventArgs());
-        }
-
-        private void OnCenterChanged()
-        {
-            //if (IsMapUpdatingSuspended)
-            //    return;
-            SetArea();
-            if (!User_CenterChanged.HasValue)
-            {
-                User_CenterChanged = false;
-                SetProperCenter();
-            }
-            DelaySetCenter();
-
-            CoordsBlock.Text = $"Center: {Center.ToString("#.00000")} Span: {Area.Span.ToString("#.00000")}";
-            CoordsBlock2.Text = $"Area: {Area.ToString("#.00000")}";
-            CenterChanged?.Invoke(this, new EventArgs());
-        }
-
-        private void OnCenterRegionChanged()
-        {
-            if (RecalculateCenterOffset())
-                MainMap_CenterChanged(MainMap, null);
-        }
-
-        void OnStopsSourceChanged(object oldValue, object newValue)
-        {
-            if (oldValue is ObservableCollection<TransitStop>)
-                UnregisterStopsSourceHandlers((ObservableCollection<TransitStop>)oldValue);
-            ClearStops();
-            if (newValue is ObservableCollection<TransitStop>)
-                RegisterStopsSourceHandlers((ObservableCollection<TransitStop>)newValue);
-            else if (newValue is IEnumerable<TransitStop>)
-            {
-                foreach (var stop in (IEnumerable<TransitStop>)newValue)
-                    AddStopsToMap(stop);
-            }
-            else if (newValue is TransitStop)
-                AddStopsToMap((TransitStop)newValue);
-        }
-
-        void OnSelectedStopsSourceChanged(object oldValue, object newValue)
-        {
-            if (oldValue is ObservableCollection<TransitStop>)
-                UnregisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)oldValue);
-            if (newValue is ObservableCollection<TransitStop>)
-                RegisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)newValue);
-            else if (newValue is IEnumerable<TransitStop>)
-            {
-                SetStopArrivalsControl(CombineSeveralStops(null, ((IEnumerable<TransitStop>)newValue).ToArray()));
-            }
-            else if (newValue is TransitStop)
-                SetStopArrivalsControl((TransitStop)newValue);
-            else
-                ClearStopArrivalsControl();
-        }
-
-        private void RegisterStopsSourceHandlers(ObservableCollection<TransitStop> collection)
-        {
-            collection.CollectionChanged += StopsSource_CollectionChanged;
-        }
-
-        private void UnregisterStopsSourceHandlers(ObservableCollection<TransitStop> collection)
-        {
-            collection.CollectionChanged -= StopsSource_CollectionChanged;
-        }
-
-        private void RegisterSelectedStopsSourceHandlers(ObservableCollection<TransitStop> collection)
-        {
-            collection.CollectionChanged += SelectedStopsSource_CollectionChanged;
-        }
-
-        private void UnregisterSelectedStopsSourceHandlers(ObservableCollection<TransitStop> collection)
-        {
-            collection.CollectionChanged -= SelectedStopsSource_CollectionChanged;
-        }
-
         private void AddStopsToMap(params TransitStop[] stops)
         {
             foreach (var stop in stops)
@@ -510,12 +493,6 @@ namespace OneAppAway._1_1.Views.Controls
             ArrivalsViewModel.SetSize(MainMap.ActualWidth, MainMap.ActualHeight);
         }
 
-        public async Task TrySetView(LatLon center, double? zoomLevel = null)
-        {
-            var adjustedCenter = (Geopoint)CenterConverter.Convert(center, typeof(Geopoint), null, null);
-            await MainMap.TrySetViewAsync(adjustedCenter, zoomLevel, null, null, MapAnimationKind.Bow);
-        }
-
         private void SetArea()
         {
             if (MainMap.ActualWidth > 0 && MainMap.ActualHeight > 0)
@@ -538,11 +515,101 @@ namespace OneAppAway._1_1.Views.Controls
             else
                 Area = LatLonRect.NotAnArea;
         }
+        #endregion
 
-        private void OnAreaChanged()
+        #region Event Registration
+        private bool StopsSourceChangeHandled = false;
+        private bool SelectedStopsSourceChangeHandled = false;
+        private bool ArrivalsViewModelCloseEventHandled = false;
+
+        private void RegisterStopsSourceHandlers(ObservableCollection<TransitStop> collection)
         {
-            DelaySetArea();
+            if (!StopsSourceChangeHandled)
+            {
+                collection.CollectionChanged += StopsSource_CollectionChanged;
+                StopsSourceChangeHandled = true;
+            }
         }
+
+        private void UnregisterStopsSourceHandlers(ObservableCollection<TransitStop> collection)
+        {
+            if (StopsSourceChangeHandled)
+            {
+                collection.CollectionChanged -= StopsSource_CollectionChanged;
+                StopsSourceChangeHandled = false;
+            }
+        }
+
+        private void RegisterSelectedStopsSourceHandlers(ObservableCollection<TransitStop> collection)
+        {
+            if (!SelectedStopsSourceChangeHandled)
+            {
+                collection.CollectionChanged += SelectedStopsSource_CollectionChanged;
+                SelectedStopsSourceChangeHandled = true;
+            }
+        }
+
+        private void UnregisterSelectedStopsSourceHandlers(ObservableCollection<TransitStop> collection)
+        {
+            if (SelectedStopsSourceChangeHandled)
+            {
+                collection.CollectionChanged -= SelectedStopsSource_CollectionChanged;
+                SelectedStopsSourceChangeHandled = false;
+            }
+        }
+
+        private void RegisterArrivalsViewModelCloseEventHandler()
+        {
+            if (!ArrivalsViewModelCloseEventHandled && ArrivalsViewModel != null)
+            {
+                ArrivalsViewModel.Closed += ArrivalsViewModel_Closed;
+                ArrivalsViewModelCloseEventHandled = true;
+            }
+        }
+
+        private void UnregisterArrivalsViewModelCloseEventHandler()
+        {
+            if (ArrivalsViewModelCloseEventHandled)
+            {
+                ArrivalsViewModel.Closed -= ArrivalsViewModel_Closed;
+                ArrivalsViewModelCloseEventHandled = true;
+            }
+        }
+        #endregion
+
+        #region Functions
+        private static TransitStop CombineSeveralStops(LatLon? center, params TransitStop[] stops)
+        {
+            if (stops.Length == 0)
+                throw new ArgumentException("stops needs to contain at least one stop.", "stops");
+            if (stops.Length == 1)
+                return stops[0];
+            TransitStop result = new TransitStop();
+            result.Name = $"Selected Stops";
+            result.Direction = Data.StopDirection.Unspecified;
+            result.ID = stops.Aggregate("", (acc, stop) => acc + "&" + stop.ID).Substring(1);
+            result.Position = center ?? stops[0].Position;
+            result.Children = stops.Select(stop => stop.ID).ToArray();
+            return result;
+        }
+        #endregion
+
+        #region Public Methods
+        public async Task TrySetView(MapView view)
+        {
+            if (view.Area == null)
+            {
+                Geopoint adjustedCenter = null;
+                if (view.Center != null)
+                    adjustedCenter = (Geopoint)CenterConverter.Convert(view.Center.Value, typeof(Geopoint), null, null);
+                await MainMap.TrySetViewAsync(adjustedCenter, view.ZoomLevel, null, null, MapAnimationKind.Bow);
+            }
+            else
+            {
+                await MainMap.TrySetViewBoundsAsync(new GeoboundingBox(view.Area.Value.NW.ToBasicGeoposition(), view.Area.Value.SE.ToBasicGeoposition()), null, MapAnimationKind.Default);
+            }
+        }
+        #endregion
 
         //private void SetPropertyInternal(DependencyProperty property, object value)
         //{
@@ -587,14 +654,20 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //if (StopsSource is ObservableCollection<TransitStop>)
-            //    RegisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
+            if (StopsSource is ObservableCollection<TransitStop>)
+                RegisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
+            if (SelectedStopsSource is ObservableCollection<TransitStop>)
+                RegisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)SelectedStopsSource);
+            RegisterArrivalsViewModelCloseEventHandler();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            //if (StopsSource is ObservableCollection<TransitStop>)
-            //    UnregisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
+            if (StopsSource is ObservableCollection<TransitStop>)
+                UnregisterStopsSourceHandlers((ObservableCollection<TransitStop>)StopsSource);
+            if (SelectedStopsSource is ObservableCollection<TransitStop>)
+                UnregisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)SelectedStopsSource);
+            UnregisterArrivalsViewModelCloseEventHandler();
         }
 
         private void StopsSource_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -619,6 +692,16 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void SelectedStopsSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            
+            if (!(HasSelectedStops = !(((IEnumerable<TransitStop>)SelectedStopsSource).Count() == 0)))
+            {
+                if (ArrivalsViewModel.Stop.HasValue)
+                {
+                    ClearStopArrivalsControl();
+                }
+                return;
+            }
+
             LatLon? center = null;
             if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems.Count == 1)
             {
@@ -677,6 +760,14 @@ namespace OneAppAway._1_1.Views.Controls
                     OnMapPopup.Content = null;
                     OffMapPopup.Content = ArrivalsPopup;
                 }
+            }
+        }
+
+        private void ArrivalsViewModel_Closed(object sender, EventArgs e)
+        {
+            if (SelectedStopsSource is ObservableCollection<TransitStop>)
+            {
+                ((ObservableCollection<TransitStop>)SelectedStopsSource).Clear();
             }
         }
         #endregion

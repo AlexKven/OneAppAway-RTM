@@ -9,15 +9,60 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="Self">
     <localP:ApplicationPage.TitleTemplateSelector>
-        <localS:TransitMapPageTitleBarTemplateSelector/>
+        <localS:LargeAndSmallTitleBarTemplateSelector LargeTemplateThresholdWidth="650" LargeTemplateThresholdWidthMobile="400" PreferedLargeWidth="550" PreferedSmallWidth="300">
+            <localS:LargeAndSmallTitleBarTemplateSelector.LargeTemplate>
+                <DataTemplate>
+                    <Grid x:ConnectionId='2'                     >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <CommandBar RequestedTheme="Dark" Background="#303030" Grid.Column="1" BorderBrush="#303030">
+                            <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
+                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
+                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
+                            <AppBarButton Label="Find Stops">
+                                <AppBarButton.Icon>
+                                    <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                        </CommandBar>
+                    </Grid>
+                </DataTemplate>
+            </localS:LargeAndSmallTitleBarTemplateSelector.LargeTemplate>
+            <localS:LargeAndSmallTitleBarTemplateSelector.SmallTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    </Grid>
+                </DataTemplate>
+            </localS:LargeAndSmallTitleBarTemplateSelector.SmallTemplate>
+            <localS:LargeAndSmallTitleBarTemplateSelector.OverflowTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <CommandBar RequestedTheme="Dark" Background="#303030" BorderBrush="#303030">
+                            <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
+                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
+                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
+                            <AppBarButton Label="Find Stops">
+                                <AppBarButton.Icon>
+                                    <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                        </CommandBar>
+                    </Grid>
+                </DataTemplate>
+            </localS:LargeAndSmallTitleBarTemplateSelector.OverflowTemplate>
+        </localS:LargeAndSmallTitleBarTemplateSelector>
     </localP:ApplicationPage.TitleTemplateSelector>
-    <Grid x:ConnectionId='2' Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="MainGrid">
+    <Grid x:ConnectionId='3' Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <localC:TransitMap x:ConnectionId='3' x:Name="MainMap" Grid.Row="1">
+        <localC:TransitMap x:ConnectionId='4' x:Name="MainMap" Grid.Row="1">
 
         </localC:TransitMap>
         <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" IsHitTestVisible="False">
@@ -29,7 +74,7 @@
             </Border.Background>
             <TextBlock IsHitTestVisible="False" Margin="0,20,0,0" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Foreground="White">Public transit data powered by OneBusAway.</TextBlock>
         </Border>
-        <ProgressBar x:ConnectionId='4' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" x:Name="LoadingIndicator" IsIndeterminate="{Binding IsBusy}"/>
+        <ProgressBar x:ConnectionId='5' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" x:Name="LoadingIndicator" IsIndeterminate="{Binding IsBusy}"/>
         <ContentPresenter Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" ContentTemplate="{Binding ElementName=Self, Path=TitleControlsOverflowTemplate}" DataContext="{Binding ElementName=Self, Path=DataContext}"/>
         <!--<CommandBar x:Name="MainControlBar" RequestedTheme="Dark" Background="#303030" Grid.Row="2" BorderBrush="#303030">
             <AppBarButton x:Name="CurrentLocationButton" Icon="MapPin" Label="Current Location" Click="CurrentLocationButton_Click"/>
