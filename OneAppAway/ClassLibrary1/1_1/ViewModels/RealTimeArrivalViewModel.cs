@@ -18,7 +18,7 @@ namespace OneAppAway._1_1.ViewModels
 
         static RealTimeArrivalViewModel()
         {
-            TimeDetails.Instance.RegisterPropertyChangedCallback(TimeDetails.NowProperty, (s, e) =>
+            TimeDetails.Instance.RegisterTask(() =>
             {
                 for (int i = 0; i < Instances.Count; i++)
                 {
@@ -34,7 +34,7 @@ namespace OneAppAway._1_1.ViewModels
                         i--;
                     }
                 }
-            });
+            }, 1);
         }
 
         public RealTimeArrival Arrival { get; }

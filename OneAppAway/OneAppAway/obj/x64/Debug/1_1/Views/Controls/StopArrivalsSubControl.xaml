@@ -8,7 +8,7 @@
     xmlns:conv="using:OneAppAway._1_1.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400" MinHeight="200"                                                                >
+    d:DesignWidth="400" MinHeight="200"                                                                 x:Name="self">
 
     <Grid>
         <Grid.Resources>
@@ -61,18 +61,18 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:StopArrivalsSubControl VerticalAlignment="Stretch" Width="{Binding Width}"/>
+                        <local:StopArrivalsSubControl VerticalAlignment="Stretch" Width="{Binding Width}" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
         <Grid Grid.Row="1" Grid.ColumnSpan="3" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsIndeterminate="{Binding IsBusy}"/>
-            <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Height="45" HorizontalContentAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" Visibility="{Binding ElementName=self, Path=ShowRoutesList, Converter={StaticResource BoolToVisibilityConverter}}">
                 <ItemsControl ItemsSource="{Binding RouteNames}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

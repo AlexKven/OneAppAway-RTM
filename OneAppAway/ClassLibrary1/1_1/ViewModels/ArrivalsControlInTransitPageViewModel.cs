@@ -93,6 +93,8 @@ namespace OneAppAway._1_1.ViewModels
             IsExpandEnabled = NumColsRequested < MaxColsVisible;
             Width = Maximized ? MapWidth : NumColsRequested * COLUMN_SIZE;
             Height = Maximized ? MapHeight - MAXIMIZED_MAP_MARGIN + ARRIVALS_CONTROL_TRIANGLE_HEIGHT : Math.Min(NORMAL_HEIGHT, MapHeight - MAXIMIZED_MAP_MARGIN);
+            ShowBottomArrow = Height > 275;
+            ShowRoutesList = Height > 225;
         }
 
         private LatLon _MapLocation;
@@ -153,6 +155,20 @@ namespace OneAppAway._1_1.ViewModels
                 SetProperty(ref _IsVisible, value);
                 OnPropertyChanged();
             }
+        }
+
+        private bool _ShowBottomArrow = true;
+        public bool ShowBottomArrow
+        {
+            get { return _ShowBottomArrow; }
+            set { SetProperty(ref _ShowBottomArrow, value); }
+        }
+
+        private bool _ShowRoutesList = true;
+        public bool ShowRoutesList
+        {
+            get { return _ShowRoutesList; }
+            set { SetProperty(ref _ShowRoutesList, value); }
         }
 
         private double _Width;

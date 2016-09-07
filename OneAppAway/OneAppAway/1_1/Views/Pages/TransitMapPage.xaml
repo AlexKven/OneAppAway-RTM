@@ -20,6 +20,14 @@
                         </Grid.ColumnDefinitions>
                         <TextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0"/>
                         <CommandBar RequestedTheme="Dark" Background="#303030" Grid.Column="1" BorderBrush="#303030">
+                            <CommandBar.SecondaryCommands>
+                                <AppBarToggleButton Icon="ThreeBars" Label="Automatically Get All Stop Arrivals"/>
+                                <AppBarToggleButton Icon="TwoBars" Label="Manually Get Arrivals In Stop Groups"/>
+                                <AppBarToggleButton Icon="OneBar" Label="Manually Get All Stop Arrivals"/>
+                                <AppBarSeparator/>
+                                <AppBarToggleButton Icon="ThreeBars" Label="Automatically Download Stops"/>
+                                <AppBarToggleButton Icon="OneBar" Label="Manually Download Stops"/>
+                            </CommandBar.SecondaryCommands>
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
                             <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
                             <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
@@ -43,6 +51,14 @@
                 <DataTemplate>
                     <Grid>
                         <CommandBar RequestedTheme="Dark" Background="#303030" BorderBrush="#303030">
+                            <CommandBar.SecondaryCommands>
+                                <AppBarToggleButton Icon="ThreeBars"  Label="Automatically Get All Stop Arrivals"/>
+                                <AppBarToggleButton Icon="TwoBars" Label="Manually Get Arrivals In Stop Groups"/>
+                                <AppBarToggleButton Icon="OneBar" Label="Manually Get All Stop Arrivals"/>
+                                <AppBarSeparator/>
+                                <AppBarToggleButton Icon="ThreeBars" Label="Automatically Download Stops"/>
+                                <AppBarToggleButton Icon="OneBar" Label="Manually Download Stops"/>
+                            </CommandBar.SecondaryCommands>
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
                             <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
                             <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>

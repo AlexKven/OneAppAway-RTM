@@ -78,5 +78,13 @@ namespace OneAppAway._1_1.Views.Controls
             if (!double.IsNaN(e.NewSize.Width) && e.NewSize.Width > 0)
                 SubControl.Width = e.NewSize.Width;
         }
+
+        public bool ShowBottomArrow
+        {
+            get { return (bool)GetValue(ShowBottomArrowProperty); }
+            set { SetValue(ShowBottomArrowProperty, value); }
+        }
+        public static readonly DependencyProperty ShowBottomArrowProperty =
+            DependencyProperty.Register("ShowBottomArrow", typeof(bool), typeof(StopArrivalsControl), new PropertyMetadata(true));
     }
 }

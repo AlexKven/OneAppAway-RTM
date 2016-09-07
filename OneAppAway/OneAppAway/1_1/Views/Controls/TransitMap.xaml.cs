@@ -506,6 +506,8 @@ namespace OneAppAway._1_1.Views.Controls
             ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.ExpandCommandProperty, "ExpandCommand");
             ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.CompressCommandProperty, "CompressCommand");
             ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.CloseCommandProperty, "CloseCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.ShowBottomArrowProperty, "ShowBottomArrow");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.ShowRoutesListProperty, "ShowRoutesList");
             ArrivalsViewModel.BindToControl(this, TransitMap.CenterRegionProperty, "CenterRegion");
             ArrivalsViewModel.PropertyChanged += ArrivalsViewModel_PropertyChanged;
             OnMapPopup.Content = ArrivalsPopup;

@@ -21,7 +21,7 @@ namespace OneAppAway._1_1
         static Helpers()
         {
             Timer.Interval = TimeSpan.FromSeconds(10);
-            Timer.Tick += (s, e) => TimeDetails.Instance.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => TimeDetails.Instance.Refresh()).ToString();
+            Timer.Tick += (s, e) => TimeDetails.Instance.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => TimeDetails.Instance.Tick()).ToString();
             Timer.Start();
         }
 

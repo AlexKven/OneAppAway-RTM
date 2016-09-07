@@ -11,5 +11,12 @@ namespace OneAppAway._1_1.Views.Controls
 {
     public class StopArrivalsControlBase : UserControl
     {
+        public bool ShowRoutesList
+        {
+            get { return (bool)GetValue(ShowRoutesListProperty); }
+            set { SetValue(ShowRoutesListProperty, value); }
+        }
+        public static readonly DependencyProperty ShowRoutesListProperty =
+            DependencyProperty.Register("ShowRoutesList", typeof(bool), typeof(StopArrivalsControlBase), new PropertyMetadata(true));
     }
 }

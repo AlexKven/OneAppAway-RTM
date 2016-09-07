@@ -8,7 +8,7 @@
     xmlns:conv="using:OneAppAway._1_1.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400"                                                   RequestedTheme="Dark">
+    d:DesignWidth="400"                                                   RequestedTheme="Dark" x:Name="self">
 
     <Grid>
         <!--<Grid.Resources>
@@ -17,7 +17,7 @@
         <Grid.RowDefinitions>
             <!--<RowDefinition Height="Auto"/>-->
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -26,7 +26,7 @@
         </Grid.ColumnDefinitions>-->
         <Rectangle Fill="#EE333333"/>
         <!--<Rectangle Grid.ColumnSpan="3" Fill="#303030"/>-->
-        <local:StopArrivalsSubControl x:ConnectionId='2' x:Name="SubControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <local:StopArrivalsSubControl x:ConnectionId='2' x:Name="SubControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}"/>
         <!--<Rectangle>
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="1,0" StartPoint="0.5,0">
@@ -93,7 +93,7 @@
                 </ItemsControl>
             </ScrollViewer>
         </Grid>-->
-        <Polygon Grid.Row="1" Points="0, 0, 30, 30, 60, 0" Fill="#EE333333" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Polygon Grid.Row="1" Points="0, 0, 30, 30, 60, 0" Fill="#EE333333" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding ElementName=self, Path=ShowBottomArrow, Converter={StaticResource BoolToVisibilityConverter}}"/>
     </Grid>
 </local:StopArrivalsControlBase>
 

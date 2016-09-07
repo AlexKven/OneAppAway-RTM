@@ -11,8 +11,34 @@ namespace OneAppAway._1_1.ViewModels
 {
     public class StopArrivalsBoxViewModel : BaseViewModel
     {
+        private static List<WeakReference<StopArrivalsBoxViewModel>> Instances = new List<WeakReference<StopArrivalsBoxViewModel>>();
+
+        static StopArrivalsBoxViewModel()
+        {
+            TimeDetails.Instance.RegisterTask(() =>
+            {
+                for (int i = 0; i < Instances.Count; i++)
+                {
+                    var instance = Instances[i];
+                    StopArrivalsBoxViewModel reference;
+                    if (instance.TryGetTarget(out reference))
+                    {
+                        reference.Refresh();
+                    }
+                    else
+                    {
+                        Instances.Remove(instance);
+                        i--;
+                    }
+                }
+            }, 3);
+        }
+
         private CancellationTokenSource TokenSource = new CancellationTokenSource();
-        public StopArrivalsBoxViewModel() { }
+        public StopArrivalsBoxViewModel()
+        {
+            Instances.Add(new WeakReference<StopArrivalsBoxViewModel>(this));
+        }
 
         private TransitStop _Stop;
         public TransitStop Stop
