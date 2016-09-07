@@ -5,6 +5,7 @@
     xmlns:localP="using:OneAppAway._1_1.Views.Pages"
     xmlns:localC="using:OneAppAway._1_1.Views.Controls"
     xmlns:localS="using:OneAppAway._1_1.Selectors"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="Self">

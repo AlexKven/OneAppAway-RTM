@@ -29,7 +29,6 @@ namespace OneAppAway._1_1.Views.Pages
         {
             this.InitializeComponent();
             DataContext = new BaseViewModel() { Title = "Test Page 1" };
-            ArrivalControl.Arrival = new Data.RealTimeArrival() { RouteName = "193X", Destination = "Seattle University, First Hill", ScheduledArrivalTime = DateTime.Now - TimeSpan.FromMinutes(10), PredictedArrivalTime = DateTime.Now - TimeSpan.FromMinutes(5) };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

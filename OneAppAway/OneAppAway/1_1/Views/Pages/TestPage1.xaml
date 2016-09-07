@@ -10,6 +10,5 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock VerticalAlignment="Top" FontSize="32">Test Page 1</TextBlock>
         <Button HorizontalAlignment="Center" Click="Button_Click">Navigate</Button>
-        <localC:RealTimeArrivalControl HorizontalAlignment="Center" VerticalAlignment="Top" Width="400" x:Name="ArrivalControl"/>
     </Grid>
 </local:ApplicationPage>

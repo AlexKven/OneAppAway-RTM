@@ -225,6 +225,25 @@ namespace OneAppAway._1_1.Views.Controls
         public static readonly DependencyProperty HasSelectedStopsProperty =
             DependencyProperty.Register("HasSelectedStops", typeof(bool), typeof(TransitMap), new PropertyMetadata(false));
         
+        public double CurrentZoomRate
+        {
+            get { return (double)GetValue(CurrentZoomRateProperty); }
+            set { SetValue(CurrentZoomRateProperty, value); }
+        }
+        public static readonly DependencyProperty CurrentZoomRateProperty =
+            DependencyProperty.Register("CurrentZoomRate", typeof(double), typeof(TransitMap), new PropertyMetadata(0.0, OnCurretZoomRateChangedStatic));
+        static void OnCurretZoomRateChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            TransitMap map = sender as TransitMap;
+            if (map != null)
+            {
+                if ((double)e.OldValue != 0)
+                    map.MainMap.StopContinuousZoom();
+                if ((double)e.NewValue != 0)
+                    map.MainMap.StartContinuousZoom((double)e.NewValue);
+            }
+        }
+        
         //public bool IsMapUpdatingSuspended
         //{
         //    get { return (bool)GetValue(IsMapUpdatingSuspendedProperty); }

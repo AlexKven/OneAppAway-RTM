@@ -204,9 +204,9 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeNameTable[44] = "OneAppAway._1_1.Views.OuterFrame";
             _typeNameTable[45] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[46] = "OneAppAway._1_1.Views.Pages.ApplicationPage";
-            _typeNameTable[47] = "OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase";
-            _typeNameTable[48] = "OneAppAway.Common.NavigationHelper";
-            _typeNameTable[49] = "OneAppAway.Common.ObservableDictionary";
+            _typeNameTable[47] = "OneAppAway.Common.NavigationHelper";
+            _typeNameTable[48] = "OneAppAway.Common.ObservableDictionary";
+            _typeNameTable[49] = "OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase";
             _typeNameTable[50] = "Windows.UI.Xaml.DataTemplate";
             _typeNameTable[51] = "OneAppAway._1_1.Views.Pages.TestPage1";
             _typeNameTable[52] = "OneAppAway._1_1.Views.Pages.TestPage2";
@@ -307,9 +307,9 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeTable[44] = typeof(global::OneAppAway._1_1.Views.OuterFrame);
             _typeTable[45] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[46] = typeof(global::OneAppAway._1_1.Views.Pages.ApplicationPage);
-            _typeTable[47] = typeof(global::OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase);
-            _typeTable[48] = typeof(global::OneAppAway.Common.NavigationHelper);
-            _typeTable[49] = typeof(global::OneAppAway.Common.ObservableDictionary);
+            _typeTable[47] = typeof(global::OneAppAway.Common.NavigationHelper);
+            _typeTable[48] = typeof(global::OneAppAway.Common.ObservableDictionary);
+            _typeTable[49] = typeof(global::OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase);
             _typeTable[50] = typeof(global::Windows.UI.Xaml.DataTemplate);
             _typeTable[51] = typeof(global::OneAppAway._1_1.Views.Pages.TestPage1);
             _typeTable[52] = typeof(global::OneAppAway._1_1.Views.Pages.TestPage2);
@@ -421,7 +421,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
         private object Activate_38_StopArrivalsControl() { return new global::OneAppAway._1_1.Views.Controls.StopArrivalsControl(); }
         private object Activate_40_TransitMap() { return new global::OneAppAway._1_1.Views.Controls.TransitMap(); }
         private object Activate_46_ApplicationPage() { return new global::OneAppAway._1_1.Views.Pages.ApplicationPage(); }
-        private object Activate_49_ObservableDictionary() { return new global::OneAppAway.Common.ObservableDictionary(); }
+        private object Activate_48_ObservableDictionary() { return new global::OneAppAway.Common.ObservableDictionary(); }
         private object Activate_51_TestPage1() { return new global::OneAppAway._1_1.Views.Pages.TestPage1(); }
         private object Activate_52_TestPage2() { return new global::OneAppAway._1_1.Views.Pages.TestPage2(); }
         private object Activate_53_LargeAndSmallTitleBarTemplateSelector() { return new global::OneAppAway._1_1.Selectors.LargeAndSmallTitleBarTemplateSelector(); }
@@ -475,7 +475,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void MapAdd_49_ObservableDictionary(object instance, object key, object item)
+        private void MapAdd_48_ObservableDictionary(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.String, global::System.Object>)instance;
             var newKey = (global::System.String)key;
@@ -836,17 +836,32 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             case 46:   //  OneAppAway._1_1.Views.Pages.ApplicationPage
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_46_ApplicationPage;
-                userType.AddMemberName("TitleTemplateSelector");
                 userType.AddMemberName("NavigationHelper");
                 userType.AddMemberName("DefaultViewModel");
                 userType.AddMemberName("CanGoBack");
+                userType.AddMemberName("TitleTemplateSelector");
                 userType.AddMemberName("TitleControlsOverflowTemplate");
                 userType.AddMemberName("TitleControlsOverflowWidth");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 47:   //  OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase
+            case 47:   //  OneAppAway.Common.NavigationHelper
+                userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 48:   //  OneAppAway.Common.ObservableDictionary
+                userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.DictionaryAdd = MapAdd_48_ObservableDictionary;
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 49:   //  OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase
                 userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 userType.AddMemberName("TitleTemplate");
                 userType.AddMemberName("ControlsTemplate");
@@ -854,21 +869,6 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 userType.AddMemberName("TitleWidth");
                 userType.AddMemberName("ControlsWidth");
                 userType.AddMemberName("OverflowControlsWidth");
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 48:   //  OneAppAway.Common.NavigationHelper
-                userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.SetIsReturnTypeStub();
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 49:   //  OneAppAway.Common.ObservableDictionary
-                userType = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.DictionaryAdd = MapAdd_49_ObservableDictionary;
-                userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -1663,35 +1663,35 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             var that = (global::OneAppAway._1_1.Views.Controls.TransitMap)instance;
             return that.HasSelectedStops;
         }
-        private object get_36_ApplicationPage_TitleTemplateSelector(object instance)
-        {
-            var that = (global::OneAppAway._1_1.Views.Pages.ApplicationPage)instance;
-            return that.TitleTemplateSelector;
-        }
-        private void set_36_ApplicationPage_TitleTemplateSelector(object instance, object Value)
-        {
-            var that = (global::OneAppAway._1_1.Views.Pages.ApplicationPage)instance;
-            that.TitleTemplateSelector = (global::OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase)Value;
-        }
-        private object get_37_ApplicationPage_NavigationHelper(object instance)
+        private object get_36_ApplicationPage_NavigationHelper(object instance)
         {
             var that = (global::OneAppAway._1_1.Views.Pages.ApplicationPage)instance;
             return that.NavigationHelper;
         }
-        private object get_38_ApplicationPage_DefaultViewModel(object instance)
+        private object get_37_ApplicationPage_DefaultViewModel(object instance)
         {
             var that = (global::OneAppAway._1_1.Views.Pages.ApplicationPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_39_ApplicationPage_CanGoBack(object instance)
+        private object get_38_ApplicationPage_CanGoBack(object instance)
         {
             var that = (global::OneAppAway._1_1.Views.Pages.ApplicationPage)instance;
             return that.CanGoBack;
         }
-        private void set_39_ApplicationPage_CanGoBack(object instance, object Value)
+        private void set_38_ApplicationPage_CanGoBack(object instance, object Value)
         {
             var that = (global::OneAppAway._1_1.Views.Pages.ApplicationPage)instance;
             that.CanGoBack = (global::System.Boolean)Value;
+        }
+        private object get_39_ApplicationPage_TitleTemplateSelector(object instance)
+        {
+            var that = (global::OneAppAway._1_1.Views.Pages.ApplicationPage)instance;
+            return that.TitleTemplateSelector;
+        }
+        private void set_39_ApplicationPage_TitleTemplateSelector(object instance, object Value)
+        {
+            var that = (global::OneAppAway._1_1.Views.Pages.ApplicationPage)instance;
+            that.TitleTemplateSelector = (global::OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase)Value;
         }
         private object get_40_ApplicationPage_TitleControlsOverflowTemplate(object instance)
         {
@@ -2436,31 +2436,31 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
                 xamlMember.Getter = get_35_TransitMap_HasSelectedStops;
                 xamlMember.SetIsReadOnly();
                 break;
-            case "OneAppAway._1_1.Views.Pages.ApplicationPage.TitleTemplateSelector":
-                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Pages.ApplicationPage");
-                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "TitleTemplateSelector", "OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase");
-                xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_36_ApplicationPage_TitleTemplateSelector;
-                xamlMember.Setter = set_36_ApplicationPage_TitleTemplateSelector;
-                break;
             case "OneAppAway._1_1.Views.Pages.ApplicationPage.NavigationHelper":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Pages.ApplicationPage");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "NavigationHelper", "OneAppAway.Common.NavigationHelper");
-                xamlMember.Getter = get_37_ApplicationPage_NavigationHelper;
+                xamlMember.Getter = get_36_ApplicationPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             case "OneAppAway._1_1.Views.Pages.ApplicationPage.DefaultViewModel":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Pages.ApplicationPage");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "OneAppAway.Common.ObservableDictionary");
-                xamlMember.Getter = get_38_ApplicationPage_DefaultViewModel;
+                xamlMember.Getter = get_37_ApplicationPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "OneAppAway._1_1.Views.Pages.ApplicationPage.CanGoBack":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Pages.ApplicationPage");
                 xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "CanGoBack", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_39_ApplicationPage_CanGoBack;
-                xamlMember.Setter = set_39_ApplicationPage_CanGoBack;
+                xamlMember.Getter = get_38_ApplicationPage_CanGoBack;
+                xamlMember.Setter = set_38_ApplicationPage_CanGoBack;
+                break;
+            case "OneAppAway._1_1.Views.Pages.ApplicationPage.TitleTemplateSelector":
+                userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Pages.ApplicationPage");
+                xamlMember = new global::OneAppAway.OneAppAway_XamlTypeInfo.XamlMember(this, "TitleTemplateSelector", "OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_39_ApplicationPage_TitleTemplateSelector;
+                xamlMember.Setter = set_39_ApplicationPage_TitleTemplateSelector;
                 break;
             case "OneAppAway._1_1.Views.Pages.ApplicationPage.TitleControlsOverflowTemplate":
                 userType = (global::OneAppAway.OneAppAway_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OneAppAway._1_1.Views.Pages.ApplicationPage");

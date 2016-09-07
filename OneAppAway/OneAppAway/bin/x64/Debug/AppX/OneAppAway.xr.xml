@@ -27,6 +27,9 @@
     <RootPropertyPathName Name="StopName" />
     <RootPropertyPathName Name="IconUri" />
     <RootPropertyPathName Name="IsTopLevel" />
+    <RootPropertyPathName Name="TitleControlsTemplate" />
+    <RootPropertyPathName Name="TitleControlsActualWidth" />
+    <RootPropertyPathName Name="TitleControlsVisibility" />
     <RootPropertyPathName Name="TitleActualWidth" />
     <RootPropertyPathName Name="IsMenuOpen" />
     <RootPropertyPathName Name="PageEntries" />
@@ -170,10 +173,10 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
       <RootProperty Name="ContentTemplate" />
-      <RootProperty Name="DataContext" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="DataContext" />
       <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="HorizontalContentAlignment" />
     </RootType>
@@ -296,8 +299,6 @@
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="OneAppAway._1_1.Views.Controls.RealTimeArrivalControl">
       <RootProperty Name="Width" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
       <RootProperty Name="Children" />

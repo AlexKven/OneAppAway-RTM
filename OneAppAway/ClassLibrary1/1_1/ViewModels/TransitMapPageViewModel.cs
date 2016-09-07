@@ -74,6 +74,37 @@ namespace OneAppAway._1_1.ViewModels
                 OnAreaChanged(old, value);
             }
         }
+
+        private double _CurrentZoomRate = 0;
+        public double CurrentZoomRate
+        {
+            get { return _CurrentZoomRate; }
+            set { SetProperty(ref _CurrentZoomRate, value); }
+        }
+
+        private bool _ZoomInButtonPressed = false;
+        public bool ZoomInButtonPressed
+        {
+            get { return _ZoomInButtonPressed; }
+            set
+            {
+                SetProperty(ref _ZoomInButtonPressed, value);
+                if (value)
+                    CurrentZoomRate = 1;
+            }
+        }
+
+        private bool _ZoomOutButtonPressed = false;
+        public bool ZoomOutButtonPressed
+        {
+            get { return _ZoomOutButtonPressed; }
+            set
+            {
+                SetProperty(ref _ZoomOutButtonPressed, value);
+                if (value)
+                    CurrentZoomRate = -1;
+            }
+        }
         #endregion
 
         #region Methods
@@ -192,7 +223,7 @@ namespace OneAppAway._1_1.ViewModels
                 await GetLocation((pos) =>
                 {
                     if (ZoomLevel < 14)
-                        ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos, 17.5)));
+                        ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos, 16.75)));
                     else
                         ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos)));
                 });
