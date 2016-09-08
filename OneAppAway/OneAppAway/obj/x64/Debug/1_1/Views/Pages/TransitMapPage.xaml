@@ -31,7 +31,7 @@
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
                             <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
                             <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
-                            <AppBarButton Label="Find Stops">
+                            <AppBarButton Label="Find Stops" Command="{Binding RefreshCommand}">
                                 <AppBarButton.Icon>
                                     <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
                                 </AppBarButton.Icon>
@@ -52,7 +52,7 @@
                     <Grid>
                         <CommandBar RequestedTheme="Dark" Background="#303030" BorderBrush="#303030">
                             <CommandBar.SecondaryCommands>
-                                <AppBarToggleButton Icon="ThreeBars" Label="Automatically Get All Stop Arrivals"/>
+                                <AppBarToggleButton Icon="ThreeBars"  Label="Automatically Get All Stop Arrivals"/>
                                 <AppBarToggleButton Icon="TwoBars" Label="Manually Get Arrivals In Stop Groups"/>
                                 <AppBarToggleButton Icon="OneBar" Label="Manually Get All Stop Arrivals"/>
                                 <AppBarSeparator/>
@@ -62,7 +62,7 @@
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
                             <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
                             <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
-                            <AppBarButton Label="Find Stops">
+                            <AppBarButton Label="Find Stops" Command="{Binding RefreshCommand}">
                                 <AppBarButton.Icon>
                                     <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
                                 </AppBarButton.Icon>

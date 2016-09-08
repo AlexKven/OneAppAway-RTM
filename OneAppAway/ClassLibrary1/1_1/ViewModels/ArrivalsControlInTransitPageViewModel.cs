@@ -201,18 +201,18 @@ namespace OneAppAway._1_1.ViewModels
                 (_DataContext as IDisposable)?.Dispose();
                 if (value.HasValue)
                 {
-                    _DataContext = new StopArrivalsViewModel(value.Value);
+                    _DataContext = new StopArrivalsControlViewModel(value.Value);
                     MapLocation = value.Value.Position;
                 }
                 else
-                    _DataContext = new StopArrivalsViewModel(new TransitStop());
+                    _DataContext = new StopArrivalsControlViewModel(new TransitStop());
                 OnPropertyChanged("DataContext");
                 SetCenterRegion();
             }
         }
 
-        private StopArrivalsViewModel _DataContext;
-        public StopArrivalsViewModel DataContext
+        private StopArrivalsControlViewModel _DataContext;
+        public StopArrivalsControlViewModel DataContext
         {
             get { return _DataContext; }
         }

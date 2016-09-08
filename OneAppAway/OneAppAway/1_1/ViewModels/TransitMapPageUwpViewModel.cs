@@ -12,7 +12,7 @@ namespace OneAppAway._1_1.ViewModels
     class TransitMapPageUwpViewModel : TransitMapPageViewModel
     {
         public TransitMapPageUwpViewModel(MemoryCache cache)
-            : base(cache) { }
+            : base(cache, UwpSettingsManager.Instance) { }
 
         protected override bool MultiSelect
         {

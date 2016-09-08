@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="1_1\AsyncHelpers.cs" />
     <Compile Include="1_1\Command.cs" />
     <Compile Include="1_1\Converters\MinutesUntilArrivalConverter.cs" />
     <Compile Include="1_1\Data\AlertStatus.cs" />
@@ -41,12 +42,19 @@
     <Compile Include="1_1\Data\Cloud.cs" />
     <Compile Include="1_1\Data\DatabaseRetriever.cs" />
     <Compile Include="1_1\Data\DatabaseManager.cs" />
+    <Compile Include="1_1\Data\DataSource.cs" />
+    <Compile Include="1_1\Data\DataSourceFunctionType.cs" />
+    <Compile Include="1_1\Data\DataSourcePreference.cs" />
     <Compile Include="1_1\Data\GooglePolylineConverter.cs" />
     <Compile Include="1_1\Data\LatLonRect.cs" />
     <Compile Include="1_1\Data\MapView.cs" />
     <Compile Include="1_1\Data\MemoryCache.cs" />
+    <Compile Include="1_1\Data\MemoryCacheDataSource.cs" />
+    <Compile Include="1_1\Data\OneBusAwayDataSource.cs" />
     <Compile Include="1_1\Data\RealTimeArrival.cs" />
+    <Compile Include="1_1\Data\RetrievedData.cs" />
     <Compile Include="1_1\Data\ScheduledArrival.cs" />
+    <Compile Include="1_1\Data\SettingsManagerBase.cs" />
     <Compile Include="1_1\Data\SqlProvider.cs" />
     <Compile Include="1_1\Data\SqlProviderBase.cs" />
     <Compile Include="1_1\Data\SqlProviderExtensions.cs" />
@@ -67,7 +75,7 @@
     <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
     <Compile Include="1_1\ViewModels\RealTimeArrivalViewModel.cs" />
     <Compile Include="1_1\ViewModels\StopArrivalsBoxViewModel.cs" />
-    <Compile Include="1_1\ViewModels\StopArrivalsViewModel.cs" />
+    <Compile Include="1_1\ViewModels\StopArrivalsControlViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapStopBrowserViewModel.cs" />
     <Compile Include="Keys.cs" />

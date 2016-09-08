@@ -11,6 +11,7 @@ namespace OneAppAway._1_1.ViewModels
 {
     public class StopArrivalsBoxViewModel : BaseViewModel
     {
+        #region Static
         private static List<WeakReference<StopArrivalsBoxViewModel>> Instances = new List<WeakReference<StopArrivalsBoxViewModel>>();
 
         static StopArrivalsBoxViewModel()
@@ -33,6 +34,7 @@ namespace OneAppAway._1_1.ViewModels
                 }
             }, 3);
         }
+        #endregion
 
         private CancellationTokenSource TokenSource = new CancellationTokenSource();
         public StopArrivalsBoxViewModel()
@@ -63,10 +65,10 @@ namespace OneAppAway._1_1.ViewModels
                     Items.Clear();
                     return;
                 }
-                var arrivals = await ApiLayer.GetTransitArrivals(Stop.ID, 5, 35, TokenSource.Token);
-                if (arrivals != null)
+                var arrivals = await DataSource.GetRealTimeArrivalsForStopAsync(Stop.ID, 5, 35, DataSourcePreference.All, TokenSource.Token); //await ApiLayer.GetTransitArrivals(Stop.ID, 5, 35, TokenSource.Token);
+                if (arrivals.HasData)
                 {
-                    var viewModels = arrivals.Select(arrival => new RealTimeArrivalViewModel(arrival));
+                    var viewModels = arrivals.Data.Select(arrival => new RealTimeArrivalViewModel(arrival));
                     //var toRemove = new List<RealTimeArrivalViewModel>();
                     //var toChange = new List<RealTimeArrivalViewModel>();
                     //var toAdd = new List<RealTimeArrivalViewModel>();

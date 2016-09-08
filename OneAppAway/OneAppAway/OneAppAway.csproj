@@ -117,6 +117,7 @@
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
     <Compile Include="1_1\Data\LocationHelper.cs" />
+    <Compile Include="1_1\Data\UwpSettingsManager.cs" />
     <Compile Include="1_1\Helpers.cs" />
     <Compile Include="1_1\Selectors\LargeAndSmallTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\TitleOnlyTitleBarTemplateSelector.cs" />

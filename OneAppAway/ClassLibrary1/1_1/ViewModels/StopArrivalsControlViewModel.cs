@@ -10,11 +10,11 @@ using System.Windows.Input;
 
 namespace OneAppAway._1_1.ViewModels
 {
-    public class StopArrivalsViewModel : BaseViewModel, IDisposable
+    public class StopArrivalsControlViewModel : BaseViewModel, IDisposable
     {
         private MemoryCache Cache = new MemoryCache();
         public TransitStop Stop { get; }
-        public StopArrivalsViewModel(TransitStop stop)
+        public StopArrivalsControlViewModel(TransitStop stop)
         {
             Stop = stop;
             if (stop.Children != null)
@@ -22,9 +22,10 @@ namespace OneAppAway._1_1.ViewModels
                 foreach (var childID in stop.Children)
                 {
                     //var child = TransitStop.SqlProvider.Select(DatabaseManager.MemoryDatabase, $"ID = '{childID}'").FirstOrDefault();
-                    var child = MemoryCache.GetStop(childID);
-                    if (child.HasValue)
-                        ChildrenSource.Add(new StopArrivalsViewModel(child.Value) { IsTopLevel = false }); //Nested ViewModels!
+                    //var child = MemoryCache.GetStop(childID);
+                    var child = DataSource.GetTransitStop(childID, DataSourcePreference.MemoryCacheOnly);
+                    if (child.HasData)
+                        ChildrenSource.Add(new StopArrivalsControlViewModel(child.Data) { IsTopLevel = false }); //Nested ViewModels!
                 }
             }
             if (ChildrenSource != null && ChildrenSource.Count > 0)
@@ -40,8 +41,8 @@ namespace OneAppAway._1_1.ViewModels
             LoadRouteNames();
         }
 
-        private ObservableCollection<StopArrivalsViewModel> _ChildrenSource = new ObservableCollection<StopArrivalsViewModel>();
-        public ObservableCollection<StopArrivalsViewModel> ChildrenSource
+        private ObservableCollection<StopArrivalsControlViewModel> _ChildrenSource = new ObservableCollection<StopArrivalsControlViewModel>();
+        public ObservableCollection<StopArrivalsControlViewModel> ChildrenSource
         {
             get { return _ChildrenSource; }
             private set { _ChildrenSource = value; }
@@ -54,9 +55,10 @@ namespace OneAppAway._1_1.ViewModels
             IsBusy = true;
             foreach (var routeId in Stop.Routes)
             {
-                var route = await ApiLayer.GetTransitRoute(routeId, new System.Threading.CancellationToken());
-                if (route.HasValue)
-                    RouteNames.Add(route.Value.Name);
+                //var route = await ApiLayer.GetTransitRoute(routeId, new System.Threading.CancellationToken());
+                var route = await DataSource.GetTransitRouteAsync(routeId, DataSourcePreference.All, System.Threading.CancellationToken.None);
+                if (route.HasData)
+                    RouteNames.Add(route.Data.Name);
             }
             IsBusy = false;
         }

@@ -47,6 +47,7 @@
     <RootPropertyPathName Name="TitleTemplate" />
     <RootPropertyPathName Name="PageDataContext" />
     <RootPropertyPathName Name="TitleVisibility" />
+    <RootPropertyPathName Name="RefreshCommand" />
     <RootPropertyPathName Name="CenterOnCurrentLocationCommand" />
     <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
     <RootPropertyPathName Name="Tag" />

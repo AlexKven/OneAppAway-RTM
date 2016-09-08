@@ -73,5 +73,7 @@ namespace OneAppAway._1_1.Data
                 return StopCache[id];
             return null;
         }
+
+        public static IEnumerable<TransitStop> QueryStops(Func<TransitStop, bool> predicate) => StopCache.Where(kvp => predicate(kvp.Value)).Select(kvp => kvp.Value);
     }
 }

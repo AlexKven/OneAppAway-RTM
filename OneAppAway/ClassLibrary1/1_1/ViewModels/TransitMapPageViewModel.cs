@@ -17,7 +17,7 @@ namespace OneAppAway._1_1.ViewModels
         public const double MAX_LAT_RANGE = 0.01;
         public const double MAX_LON_RANGE = 0.015;
 
-        public TransitMapPageViewModel(MemoryCache cache)
+        public TransitMapPageViewModel(MemoryCache cache, SettingsManagerBase settingsManager)
             : this()
         {
             Cache = cache;
@@ -27,8 +27,8 @@ namespace OneAppAway._1_1.ViewModels
         public TransitMapPageViewModel()
         {
             StopsClickedCommand = new Command(StopsClickedCommand_Execute);
-            CenterOnCurrentLocationCommand = new Command(CenterOnCurrentLocation_Excecute);
-            SelectedStops.CollectionChanged += SelectedStops_CollectionChanged;
+            CenterOnCurrentLocationCommand = new Command(CenterOnCurrentLocation_Execute);
+            RefreshCommand = new Command(Refresh_Execute);
         }
 
         #region Fields
@@ -51,7 +51,8 @@ namespace OneAppAway._1_1.ViewModels
         public ObservableRangeCollection<TransitStop> SelectedStops { get; } = new ObservableRangeCollection<TransitStop>();
 
         public ICommand StopsClickedCommand { get; }
-        public Command CenterOnCurrentLocationCommand { get; }
+        public ICommand CenterOnCurrentLocationCommand { get; }
+        public ICommand RefreshCommand { get; }
 
         private double _ZoomLevel = 1;
         public double ZoomLevel
@@ -105,6 +106,41 @@ namespace OneAppAway._1_1.ViewModels
                     CurrentZoomRate = -1;
             }
         }
+
+        private bool _AutoDownloadArrivals;
+        public bool AutoDownloadArrivals
+        {
+            get { return _AutoDownloadArrivals; }
+            set { SetProperty(ref _AutoDownloadArrivals, value); }
+        }
+
+        private bool _ManuallyDownloadArrivalsGroups;
+        public bool ManuallyDownloadArrivalsGroups
+        {
+            get { return _ManuallyDownloadArrivalsGroups; }
+            set { SetProperty(ref _ManuallyDownloadArrivalsGroups, value); }
+        }
+
+        private bool _ManuallyDownloadArrivalsAll;
+        public bool ManuallyDownloadArrivalsAll
+        {
+            get { return _ManuallyDownloadArrivalsAll; }
+            set { SetProperty(ref _ManuallyDownloadArrivalsAll, value); }
+        }
+
+        private bool _AutomaticallyDownloadStops;
+        public bool AutomaticallyDownloadStops
+        {
+            get { return _AutomaticallyDownloadStops; }
+            set { SetProperty(ref _AutomaticallyDownloadStops, value); }
+        }
+
+        private bool _ManuallyDownloadStops;
+        public bool ManuallyDownloadStops
+        {
+            get { return _ManuallyDownloadStops; }
+            set { SetProperty(ref _ManuallyDownloadStops, value); }
+        }
         #endregion
 
         #region Methods
@@ -128,22 +164,27 @@ namespace OneAppAway._1_1.ViewModels
                     newRegion = new LatLonRect[] { newArea };
                 else
                     newRegion = oldArea.GetNewRegion(newArea);
-                foreach (var piece in newRegion)
-                {
-                    foreach (var subPiece in piece.Miniaturize(new LatLon(MAX_LAT_RANGE, MAX_LON_RANGE)))
-                    {
-                        PendingRegions.Enqueue(subPiece);
-                    }
-                }
+                AppendRegions(newRegion);
                 if (!IsBusy)
                     RefreshShownStops(TokenSource.Token);
             }
             lastZoomLevel = ZoomLevel;
         }
 
+        private void AppendRegions(IEnumerable<LatLonRect> newRegion)
+        {
+            foreach (var piece in newRegion)
+            {
+                foreach (var subPiece in piece.Miniaturize(new LatLon(MAX_LAT_RANGE, MAX_LON_RANGE)))
+                {
+                    PendingRegions.Enqueue(subPiece);
+                }
+            }
+        }
+
         protected abstract Task GetLocation(Action<LatLon> locationCallback);
 
-        protected async void RefreshShownStops(CancellationToken token)
+        protected async void RefreshShownStops(CancellationToken token, bool download = false)
         {
             IsBusy = true;
             try
@@ -174,7 +215,8 @@ namespace OneAppAway._1_1.ViewModels
                         //var fwtc = new string[] { "1_80439", "1_80431", "1_80438", "1_80432", "1_80437", "1_80433", "3_27814", "3_29410" };
                         if (region.Intersects(area))
                         {
-                            var stops = (await _1_1.Data.ApiLayer.GetTransitStopsForArea(region, token))?.Where(stop => !ShownStops.Contains(stop));
+                            var sResult = await DataSource.GetTransitStopsForAreaAsync(region, download ? DataSourcePreference.All : DataSourcePreference.OfflineSources, token);
+                            var stops = sResult.Data.Where(stop => !ShownStops.Contains(stop));
                             //var fwtcStop = new TransitStop() { ID = "FWTC", Position = new LatLon(47.31753, -122.30486), Path = "_vx_HlnniVF??LJ??MF??nIG??MK??LG?", Name = "Federal Way Transit Center" };
                             //TransitStop.SqlProvider.Insert(fwtcStop, DatabaseManager.MemoryDatabase);
                             if (stops == null)
@@ -204,6 +246,11 @@ namespace OneAppAway._1_1.ViewModels
                 IsBusy = false;
             }
         }
+
+        private void LoadFromSettings()
+        {
+
+        }
         #endregion
 
         #region Event Handlers
@@ -215,7 +262,7 @@ namespace OneAppAway._1_1.ViewModels
                 SelectedStops.ReplaceRange((IEnumerable<TransitStop>)parameter);
         }
 
-        private async void CenterOnCurrentLocation_Excecute(object parameter)
+        private async void CenterOnCurrentLocation_Execute(object parameter)
         {
             IsBusy = true;
             try
@@ -234,8 +281,14 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
 
-        private void SelectedStops_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private async void Refresh_Execute(object parameter)
         {
+            if (ZoomLevel < SmallThreshold)
+                return;
+            AppendRegions(new LatLonRect[] { Area });
+            while (IsBusy)
+                await Task.Delay(100);
+            RefreshShownStops(TokenSource.Token, true);
         }
         #endregion
 

@@ -71,7 +71,7 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void StopArrivalsControlBase_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            if ((DataContext as ViewModels.StopArrivalsViewModel)?.IsTopLevel ?? false)
+            if ((DataContext as ViewModels.StopArrivalsControlViewModel)?.IsTopLevel ?? false)
             {
                 ExpandButton.Visibility = Visibility.Visible;
                 CompressButton.Visibility = Visibility.Visible;
@@ -91,7 +91,7 @@ namespace OneAppAway._1_1.Views.Controls
                 CloseButton.Visibility = Visibility.Collapsed;
             }
             RefreshButton.Command = new Command((obj) => ArrivalsBox.Refresh());
-            ArrivalsBox.Stop = (DataContext as ViewModels.StopArrivalsViewModel)?.Stop ?? new Data.TransitStop();
+            ArrivalsBox.Stop = (DataContext as ViewModels.StopArrivalsControlViewModel)?.Stop ?? new Data.TransitStop();
         }
     }
 }

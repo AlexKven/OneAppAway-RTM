@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OneAppAway._1_1.Data
+{
+    public abstract class SettingsManagerBase
+    {
+        public abstract T GetSetting<T>(string settingName, bool roaming, T def);
+
+        public T GetSetting<T>(string settingName, bool roaming) => GetSetting<T>(settingName, roaming, default(T));
+
+        public abstract void SetSetting<T>(string settingName, bool roaming, T value);
+    }
+}

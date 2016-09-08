@@ -14,6 +14,7 @@ namespace OneAppAway._1_1.ViewModels
 {
     public class RealTimeArrivalViewModel : BaseViewModel
     {
+        #region Static
         internal static List<WeakReference<RealTimeArrivalViewModel>> Instances = new List<WeakReference<RealTimeArrivalViewModel>>();
 
         static RealTimeArrivalViewModel()
@@ -36,6 +37,7 @@ namespace OneAppAway._1_1.ViewModels
                 }
             }, 1);
         }
+        #endregion
 
         public RealTimeArrival Arrival { get; }
 
@@ -106,7 +108,5 @@ namespace OneAppAway._1_1.ViewModels
             get { return _MinutesAway; }
             set { SetProperty(ref _MinutesAway, value); }
         }
-
-    
     }
 }
