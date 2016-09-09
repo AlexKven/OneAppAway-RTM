@@ -8,6 +8,7 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls.Maps;
 using OneAppAway._1_1.Data;
+using OneAppAway._1_1.Helpers;
 using System.IO;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Graphics.Imaging;

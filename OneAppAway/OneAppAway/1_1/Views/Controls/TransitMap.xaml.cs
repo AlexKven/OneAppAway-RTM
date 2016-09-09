@@ -23,6 +23,7 @@ using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media.Animation;
 using System.Collections.Specialized;
 using MvvmHelpers;
+using OneAppAway._1_1.Helpers;
 using System.Windows.Input;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236

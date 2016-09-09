@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OneAppAway</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <AssemblyName>CommonClasses</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -39,6 +39,9 @@
     <Compile Include="1_1\Converters\MinutesUntilArrivalConverter.cs" />
     <Compile Include="1_1\Data\AlertStatus.cs" />
     <Compile Include="1_1\Data\ApiLayer.cs" />
+    <Compile Include="1_1\Data\LocationSearchResult.cs" />
+    <Compile Include="1_1\Data\ManuallyDownloadArrivalsMode.cs" />
+    <Compile Include="1_1\Data\NetworkManagerBase.cs" />
     <Compile Include="1_1\Data\Cloud.cs" />
     <Compile Include="1_1\Data\DatabaseRetriever.cs" />
     <Compile Include="1_1\Data\DatabaseManager.cs" />
@@ -50,6 +53,7 @@
     <Compile Include="1_1\Data\MapView.cs" />
     <Compile Include="1_1\Data\MemoryCache.cs" />
     <Compile Include="1_1\Data\MemoryCacheDataSource.cs" />
+    <Compile Include="1_1\Data\NetworkType.cs" />
     <Compile Include="1_1\Data\OneBusAwayDataSource.cs" />
     <Compile Include="1_1\Data\RealTimeArrival.cs" />
     <Compile Include="1_1\Data\RetrievedData.cs" />

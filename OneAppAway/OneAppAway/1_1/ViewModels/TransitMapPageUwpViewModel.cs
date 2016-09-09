@@ -1,4 +1,5 @@
 ﻿using OneAppAway._1_1.Data;
+using OneAppAway._1_1.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace OneAppAway._1_1.ViewModels
     class TransitMapPageUwpViewModel : TransitMapPageViewModel
     {
         public TransitMapPageUwpViewModel(MemoryCache cache)
-            : base(cache, UwpSettingsManager.Instance) { }
+            : base(cache) { }
 
-        protected override bool MultiSelect
+        protected override bool IsMultiSelectOn
         {
             get
             {
@@ -22,9 +23,21 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
 
+        protected override NetworkManagerBase NetworkManager => UwpNetworkManager.Instance;
+
+        protected override SettingsManagerBase SettingsManager => UwpSettingsManager.Instance;
+
         protected override async Task GetLocation(Action<LatLon> locationCallback)
         {
             await LocationHelper.ProgressivelyAcquireLocation(pos => locationCallback(pos.ToLatLon()));
+        }
+
+        protected override async void Search_Execute(object parameter)
+        {
+            SearchResults.Clear();
+            var results = await Windows.Services.Maps.MapLocationFinder.FindLocationsAsync(parameter.ToString(), Area.Center.ToGeopoint());
+            SearchResults.AddRange(results.Locations.Select(ml => new LocationSearchResult() { Location = ml.Point.ToLatLon(), Name = ml.Address.FormattedAddress, Command = GoToLocationCommand }));
+            IsSearchBoxOpen = true;
         }
     }
 }

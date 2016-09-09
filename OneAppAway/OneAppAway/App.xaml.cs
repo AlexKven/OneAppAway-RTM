@@ -26,6 +26,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using OneAppAway._1_1.Data;
 using static OneAppAway.ServiceDay;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=402347&clcid=0x409
@@ -160,6 +161,7 @@ namespace OneAppAway
         {
             Window.Current.SizeChanged += Current_SizeChanged;
             Window.Current.CoreWindow.SizeChanged += CoreWindow_SizeChanged;
+            UwpNetworkManager.Instance.Dispatcher = RootFrame.Dispatcher;
             //BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             //LocationManager.Dispatcher = RootFrame.Dispatcher;
             SetTitleBar();

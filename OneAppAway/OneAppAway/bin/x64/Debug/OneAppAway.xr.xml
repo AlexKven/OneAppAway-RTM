@@ -47,8 +47,13 @@
     <RootPropertyPathName Name="TitleTemplate" />
     <RootPropertyPathName Name="PageDataContext" />
     <RootPropertyPathName Name="TitleVisibility" />
+    <RootPropertyPathName Name="IsSearchBoxOpen" />
+    <RootPropertyPathName Name="SearchResults" />
+    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="ManuallyDownloadStops" />
     <RootPropertyPathName Name="RefreshCommand" />
     <RootPropertyPathName Name="CenterOnCurrentLocationCommand" />
+    <RootPropertyPathName Name="SearchCommand" />
     <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="IsChecked" />
@@ -59,7 +64,6 @@
     <RootPropertyPathName Name="Route" />
     <RootPropertyPathName Name="ShowProgress" />
     <RootPropertyPathName Name="IsDownloaded" />
-    <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="RouteId" />
     <RootPropertyPathName Name="Agency" />
     <RootPropertyPathName Name="Description" />
@@ -78,6 +82,7 @@
     <RootType FullName="OneAppAway.Converters.BasicGeopositionToStringConverter" />
     <RootType FullName="OneAppAway.Converters.BandwidthOptionsRowHeightConverter" />
     <RootType FullName="OneAppAway.Converters.DoubleToGridlengthConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.InvertBoolConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.DegreeOfConfidenceToBackgroundConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.BoolToVisibilityConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.NullZeroConverter" />
@@ -445,10 +450,28 @@
     <RootType FullName="OneAppAway._1_1.Views.Pages.ApplicationPage">
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Content" />
+      <RootProperty Name="Resources" />
       <RootProperty Name="TitleTemplateSelector" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage1" />
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage2" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
+      <RootProperty Name="Placement" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.Helpers.FlyoutHelpers">
+      <RootMethod Name="GetIsOpen" />
+      <RootMethod Name="SetIsOpen" />
+      <RootMethod Name="GetParent" />
+      <RootMethod Name="SetParent" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="SelectionMode" />
+      <RootProperty Name="ItemsPanel" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
     <RootType FullName="OneAppAway._1_1.Selectors.LargeAndSmallTitleBarTemplateSelector">
       <RootProperty Name="LargeTemplateThresholdWidth" />
       <RootProperty Name="LargeTemplateThresholdWidthMobile" />
@@ -458,11 +481,15 @@
       <RootProperty Name="SmallTemplate" />
       <RootProperty Name="OverflowTemplate" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+    <RootType FullName="OneAppAway._1_1.Views.Controls.EnterCommandTextBox">
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Command" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.FlyoutBase">
+      <RootMethod Name="GetAttachedFlyout" />
+      <RootMethod Name="SetAttachedFlyout" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="RequestedTheme" />
@@ -472,8 +499,9 @@
       <RootProperty Name="PrimaryCommands" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
-      <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
+      <RootProperty Name="IsChecked" />
+      <RootProperty Name="Icon" />
       <RootEvent Name="Checked" />
       <RootEvent Name="Unchecked" />
     </RootType>
@@ -541,6 +569,10 @@
     </RootType>
     <RootType FullName="OneAppAway.FavoritesPage" />
     <RootType FullName="OneAppAway.HelpTip" />
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Content" />
@@ -646,12 +678,6 @@
       <RootProperty Name="ItemWidth" />
       <RootProperty Name="Orientation" />
       <RootProperty Name="ItemHeight" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
-      <RootProperty Name="SelectionMode" />
-      <RootProperty Name="ItemsPanel" />
-      <RootProperty Name="ItemTemplate" />
-      <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="OneAppAway.RoutesPage" />
     <RootType FullName="Windows.UI.Xaml.GridLength" />

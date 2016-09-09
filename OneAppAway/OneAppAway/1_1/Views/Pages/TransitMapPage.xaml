@@ -5,10 +5,37 @@
     xmlns:localP="using:OneAppAway._1_1.Views.Pages"
     xmlns:localC="using:OneAppAway._1_1.Views.Controls"
     xmlns:localS="using:OneAppAway._1_1.Selectors"
+    xmlns:conv="using:OneAppAway._1_1.Converters"
+    xmlns:localH="using:OneAppAway._1_1.Helpers"
+    xmlns:data="clr-namespace:OneAppAway._1_1.Data;assembly=CommonClasses"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="Self">
+    <localP:ApplicationPage.Resources>
+        <Flyout x:Key="SearchFlyout" Placement="Bottom" localH:FlyoutHelpers.IsOpen="{Binding IsSearchBoxOpen, Mode=TwoWay}" localH:FlyoutHelpers.Parent="{Binding ElementName=SearchBox}">
+            <!--<ItemsControl ItemsSource="{Binding SearchResults}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Button Content="{Binding Name}" CommandParameter="{Binding Location}" Command="{Binding Command}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>-->
+            <ListView ItemsSource="{Binding SearchResults}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Flyout>
+        <!--<conv:EnumComparisonConverter x:TypeArguments="data:ManuallyDownloadArrivalsMode" x:Key="DownloadArrivalsModeConverter"/>-->
+    </localP:ApplicationPage.Resources>
     <localP:ApplicationPage.TitleTemplateSelector>
         <localS:LargeAndSmallTitleBarTemplateSelector LargeTemplateThresholdWidth="650" LargeTemplateThresholdWidthMobile="400" PreferedLargeWidth="550" PreferedSmallWidth="300">
             <localS:LargeAndSmallTitleBarTemplateSelector.LargeTemplate>
@@ -18,15 +45,14 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <localC:EnterCommandTextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0" Command="{Binding SearchCommand}" FlyoutBase.AttachedFlyout="{StaticResource SearchFlyout}"/>
                         <CommandBar RequestedTheme="Dark" Background="#303030" Grid.Column="1" BorderBrush="#303030">
                             <CommandBar.SecondaryCommands>
-                                <AppBarToggleButton Icon="ThreeBars" Label="Automatically Get All Stop Arrivals"/>
-                                <AppBarToggleButton Icon="TwoBars" Label="Manually Get Arrivals In Stop Groups"/>
-                                <AppBarToggleButton Icon="OneBar" Label="Manually Get All Stop Arrivals"/>
+                                <AppBarToggleButton Label="Automatically Get All Stop Arrivals"/>
+                                <AppBarToggleButton Label="Manually Get Arrivals In Stop Groups"/>
+                                <AppBarToggleButton Label="Manually Get All Stop Arrivals"/>
                                 <AppBarSeparator/>
-                                <AppBarToggleButton Icon="ThreeBars" Label="Automatically Download Stops"/>
-                                <AppBarToggleButton Icon="OneBar" Label="Manually Download Stops"/>
+                                <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
                             <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
@@ -42,8 +68,8 @@
             </localS:LargeAndSmallTitleBarTemplateSelector.LargeTemplate>
             <localS:LargeAndSmallTitleBarTemplateSelector.SmallTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <TextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <Grid Loaded="Grid_Loaded">
+                        <localC:EnterCommandTextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0" Command="{Binding SearchCommand}" FlyoutBase.AttachedFlyout="{StaticResource SearchFlyout}"/>
                     </Grid>
                 </DataTemplate>
             </localS:LargeAndSmallTitleBarTemplateSelector.SmallTemplate>
@@ -52,12 +78,11 @@
                     <Grid>
                         <CommandBar RequestedTheme="Dark" Background="#303030" BorderBrush="#303030">
                             <CommandBar.SecondaryCommands>
-                                <AppBarToggleButton Icon="ThreeBars"  Label="Automatically Get All Stop Arrivals"/>
-                                <AppBarToggleButton Icon="TwoBars" Label="Manually Get Arrivals In Stop Groups"/>
-                                <AppBarToggleButton Icon="OneBar" Label="Manually Get All Stop Arrivals"/>
+                                <AppBarToggleButton Label="Automatically Get All Stop Arrivals"/>
+                                <AppBarToggleButton Label="Manually Get Arrivals In Stop Groups"/>
+                                <AppBarToggleButton Label="Manually Get All Stop Arrivals"/>
                                 <AppBarSeparator/>
-                                <AppBarToggleButton Icon="ThreeBars" Label="Automatically Download Stops"/>
-                                <AppBarToggleButton Icon="OneBar" Label="Manually Download Stops"/>
+                                <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
                             <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>

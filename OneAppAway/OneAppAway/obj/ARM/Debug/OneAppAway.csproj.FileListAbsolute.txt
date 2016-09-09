@@ -156,8 +156,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\System.Xml.XmlDocum
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\System.Xml.XmlSerializer.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\WriteableBitmapEx.WinRT.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\WriteableBitmapEx.WinRT.pdb
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\ClassLibrary1.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\ClassLibrary1.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\OneAppAway.csprojResolveAssemblyReference.cache
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\App.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\App.g.cs
@@ -388,3 +386,5 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\StopArrivalsBox.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\RealTimeArrivalControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\StopArrivalsBox.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\CommonClasses.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\CommonClasses.pdb

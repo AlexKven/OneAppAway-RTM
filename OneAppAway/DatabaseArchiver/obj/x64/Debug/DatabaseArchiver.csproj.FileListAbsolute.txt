@@ -458,8 +458,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.Re
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.XDocument.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.XmlDocument.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\System.Xml.XmlSerializer.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\ClassLibrary1.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\ClassLibrary1.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\DatabaseArchiver.csprojResolveAssemblyReference.cache
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\App.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\App.g.cs
@@ -546,3 +544,5 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Microsoft.Too
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\SQLitePCL.raw.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\SQLitePCL.Ext.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\ProjectArchitectures.txt
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\CommonClasses.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\CommonClasses.pdb

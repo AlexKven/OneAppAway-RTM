@@ -21,6 +21,7 @@
         <converters:BasicGeopositionToStringConverter x:Key="BasicGeopositionStringConverter"/>
         <converters:BandwidthOptionsRowHeightConverter x:Key="BandwidthButtonConverter"/>
         <converters:DoubleToGridlengthConverter x:Key="GridLengthConverter"/>
+        <conv_1_1:InvertBoolConverter x:Key="InvertBoolConverter"/>
         <conv_1_1:DegreeOfConfidenceToBackgroundConverter x:Key="DegreeOfConfidenceToBackgroundConverter"/>
         <conv_1_1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <conv_1_1:NullZeroConverter x:Key="NullZeroConverter"/>

@@ -17,28 +17,32 @@ namespace OneAppAway._1_1.ViewModels
         public const double MAX_LAT_RANGE = 0.01;
         public const double MAX_LON_RANGE = 0.015;
 
-        public TransitMapPageViewModel(MemoryCache cache, SettingsManagerBase settingsManager)
-            : this()
-        {
-            Cache = cache;
-            LoadSpecialStops();
-        }
-
-        public TransitMapPageViewModel()
+        public TransitMapPageViewModel(MemoryCache cache)
         {
             StopsClickedCommand = new Command(StopsClickedCommand_Execute);
             CenterOnCurrentLocationCommand = new Command(CenterOnCurrentLocation_Execute);
             RefreshCommand = new Command(Refresh_Execute);
+            SearchCommand = new Command(Search_Execute, obj => (obj?.ToString()?.Length ?? 0) > 4);
+            GoToLocationCommand = new Command(GoToLocation_Execute);
+            Cache = cache;
+            NetworkManager.NetworkTypeChanged += (s, e) => LoadFromSettings(); //*MemoryLeak*!!! Temporary
+            LoadSpecialStops();
+            LoadFromSettings();
         }
 
         #region Fields
         private RectSubset OuterStopCacheMargin = new RectSubset() { Left = -.25, LeftScale = RectSubsetScale.Relative, Right = -.25, RightScale = RectSubsetScale.Relative, Top = -.25, TopScale = RectSubsetScale.Relative, Bottom = -.25, BottomScale = RectSubsetScale.Relative };
         private Queue<LatLonRect> PendingRegions = new Queue<LatLonRect>();
+        private bool UnlimitedNetwork = false;
+        #endregion
+
+        #region Protected Properties
+        protected abstract SettingsManagerBase SettingsManager { get; }
+        protected abstract NetworkManagerBase NetworkManager { get; }
+        protected abstract bool IsMultiSelectOn { get; }
         #endregion
 
         #region Properties
-        protected abstract bool MultiSelect { get; }
-
         public double SmallThreshold => 14;
         public double MediumThreshold => 16.5;
         public double LargeThreshold => 18;
@@ -49,10 +53,31 @@ namespace OneAppAway._1_1.ViewModels
 
         public ObservableRangeCollection<TransitStop> ShownStops { get; } = new ObservableRangeCollection<TransitStop>();
         public ObservableRangeCollection<TransitStop> SelectedStops { get; } = new ObservableRangeCollection<TransitStop>();
+        public ObservableRangeCollection<LocationSearchResult> SearchResults { get; } = new ObservableRangeCollection<LocationSearchResult>();
 
         public ICommand StopsClickedCommand { get; }
         public ICommand CenterOnCurrentLocationCommand { get; }
         public ICommand RefreshCommand { get; }
+        public ICommand SearchCommand { get; }
+        public ICommand GoToLocationCommand { get; }
+
+        private bool _HasSelectedStops;
+        public bool HasSelectedStops
+        {
+            get { return _HasSelectedStops; }
+            set
+            {
+                SetProperty(ref _HasSelectedStops, value);
+                CanGoBack = HasSelectedStops || IsSearchBoxOpen;
+            }
+        }
+
+        private bool _CanGoBack;
+        public bool CanGoBack
+        {
+            get { return _CanGoBack; }
+            private set { SetProperty(ref _CanGoBack, value); }
+        }
 
         private double _ZoomLevel = 1;
         public double ZoomLevel
@@ -81,6 +106,19 @@ namespace OneAppAway._1_1.ViewModels
         {
             get { return _CurrentZoomRate; }
             set { SetProperty(ref _CurrentZoomRate, value); }
+        }
+
+        private bool _IsSearchBoxOpen = false;
+        public bool IsSearchBoxOpen
+        {
+            get { return _IsSearchBoxOpen; }
+            set
+            {
+                SetProperty(ref _IsSearchBoxOpen, value);
+                CanGoBack = HasSelectedStops || IsSearchBoxOpen;
+                if (!IsSearchBoxOpen)
+                    SearchResults.Clear();
+            }
         }
 
         private bool _ZoomInButtonPressed = false;
@@ -125,22 +163,23 @@ namespace OneAppAway._1_1.ViewModels
         public bool ManuallyDownloadArrivalsAll
         {
             get { return _ManuallyDownloadArrivalsAll; }
-            set { SetProperty(ref _ManuallyDownloadArrivalsAll, value); }
-        }
-
-        private bool _AutomaticallyDownloadStops;
-        public bool AutomaticallyDownloadStops
-        {
-            get { return _AutomaticallyDownloadStops; }
-            set { SetProperty(ref _AutomaticallyDownloadStops, value); }
+            set
+            {
+                SetProperty(ref _ManuallyDownloadArrivalsAll, value);
+            }
         }
 
         private bool _ManuallyDownloadStops;
         public bool ManuallyDownloadStops
         {
             get { return _ManuallyDownloadStops; }
-            set { SetProperty(ref _ManuallyDownloadStops, value); }
+            set
+            {
+                SetManuallyDownloadStopsInternal(value);
+                SetToSettings();
+            }
         }
+        private void SetManuallyDownloadStopsInternal(bool value) => SetProperty(ref _ManuallyDownloadStops, value, "ManuallyDownloadStops");
         #endregion
 
         #region Methods
@@ -166,7 +205,7 @@ namespace OneAppAway._1_1.ViewModels
                     newRegion = oldArea.GetNewRegion(newArea);
                 AppendRegions(newRegion);
                 if (!IsBusy)
-                    RefreshShownStops(TokenSource.Token);
+                    RefreshShownStops(TokenSource.Token, !ManuallyDownloadStops);
             }
             lastZoomLevel = ZoomLevel;
         }
@@ -249,14 +288,32 @@ namespace OneAppAway._1_1.ViewModels
 
         private void LoadFromSettings()
         {
+            if (NetworkManager.NetworkType == NetworkType.Unlimited)
+                UnlimitedNetwork = true;
+            else if (NetworkManager.NetworkType == NetworkType.Metered)
+                UnlimitedNetwork = false;
 
+            SetManuallyDownloadStopsInternal(SettingsManager.GetSetting($"{(UnlimitedNetwork ? "UnlimitedData" : "LimitedData")}.ManuallyDownloadStops", false, false));
+        }
+
+        private void SetToSettings()
+        {
+            SettingsManager.SetSetting($"{(UnlimitedNetwork ? "UnlimitedData" : "LimitedData")}.ManuallyDownloadStops", false, ManuallyDownloadStops);
+        }
+
+        public void GoBack()
+        {
+            if (IsSearchBoxOpen)
+                IsSearchBoxOpen = false;
+            else
+                SelectedStops.Clear();
         }
         #endregion
 
         #region Event Handlers
         private void StopsClickedCommand_Execute(object parameter)
         {
-            if (MultiSelect)
+            if (IsMultiSelectOn)
                 SelectedStops.AddRange((IEnumerable<TransitStop>)parameter);
             else
                 SelectedStops.ReplaceRange((IEnumerable<TransitStop>)parameter);
@@ -289,6 +346,20 @@ namespace OneAppAway._1_1.ViewModels
             while (IsBusy)
                 await Task.Delay(100);
             RefreshShownStops(TokenSource.Token, true);
+        }
+
+        protected abstract void Search_Execute(object parameter);
+
+        private void GoToLocation_Execute(object parameter)
+        {
+            if (parameter is LatLon)
+            {
+                var pos = (LatLon)parameter;
+                if (ZoomLevel < 14)
+                    ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos, 16.75)));
+                else
+                    ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos)));
+            }
         }
         #endregion
 

@@ -1,6 +1,7 @@
 ﻿using OneAppAway._1_1.Data;
 using OneAppAway._1_1.ViewModels;
 using OneAppAway._1_1.Views.Controls;
+using OneAppAway._1_1.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,7 +44,9 @@ namespace OneAppAway._1_1.Views.Pages
             VM.BindToControl(MainMap, TransitMap.StopsClickedCommandProperty, "StopsClickedCommand");
             VM.BindToControl(MainMap, TransitMap.AreaDelayProperty, "Area", true);
             VM.BindToControl(MainMap, TransitMap.ZoomLevelDelayProperty, "ZoomLevel", true);
-            SetBinding(CanGoBackProperty, new Binding() { Source = MainMap, Path = new PropertyPath("HasSelectedStops"), Mode = BindingMode.OneWay });
+            VM.BindToControl(MainMap, TransitMap.HasSelectedStopsProperty, "HasSelectedStops", true);
+            VM.BindToControl(this, CanGoBackProperty, "CanGoBack");
+            //SetBinding(CanGoBackProperty, new Binding() { Source = MainMap, Path = new PropertyPath("CanGoBack"), Mode = BindingMode.OneWay });
         }
 
         #region Methods
@@ -72,7 +75,7 @@ namespace OneAppAway._1_1.Views.Pages
 
         public override void GoBack()
         {
-            VM.SelectedStops.Clear();
+            VM.GoBack();
         }
         #endregion
 
@@ -118,6 +121,9 @@ namespace OneAppAway._1_1.Views.Pages
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             ((Grid)sender).DataContext = VM;
+            var textbox = ((Grid)sender).Children.FirstOrDefault(child => child is EnterCommandTextBox) as EnterCommandTextBox;
+            var flyout = (Flyout)this.Resources["SearchFlyout"];
+            FlyoutHelpers.SetParent(flyout, textbox);
             ((Grid)sender).Loaded -= Grid_Loaded;
         }
     }

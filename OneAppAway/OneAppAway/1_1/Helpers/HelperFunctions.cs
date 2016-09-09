@@ -12,13 +12,13 @@ using Windows.UI.Xaml.Media.Animation;
 using MvvmHelpers;
 using Windows.UI.Core;
 
-namespace OneAppAway._1_1
+namespace OneAppAway._1_1.Helpers
 {
-    public static class Helpers
+    public static class HelperFunctions
     {
         private static DispatcherTimer Timer = new DispatcherTimer();
 
-        static Helpers()
+        static HelperFunctions()
         {
             Timer.Interval = TimeSpan.FromSeconds(10);
             Timer.Tick += (s, e) => TimeDetails.Instance.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => TimeDetails.Instance.Tick()).ToString();

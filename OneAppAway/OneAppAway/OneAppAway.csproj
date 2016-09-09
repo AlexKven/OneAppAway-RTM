@@ -108,6 +108,8 @@
     </Compile>
     <Compile Include="1_1\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="1_1\Converters\DegreeOfConfidenceToBackgroundConverter.cs" />
+    <Compile Include="1_1\Converters\EnumComparisonConverter.cs" />
+    <Compile Include="1_1\Converters\InvertBoolConverter.cs" />
     <Compile Include="1_1\Converters\IsEarlyToForegroundConverter.cs" />
     <Compile Include="1_1\Converters\IsPredictedToForegroundConverter.cs" />
     <Compile Include="1_1\Converters\LatLonToGeopointConverter.cs" />
@@ -117,8 +119,10 @@
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
     <Compile Include="1_1\Data\LocationHelper.cs" />
+    <Compile Include="1_1\Data\UwpNetworkManager.cs" />
     <Compile Include="1_1\Data\UwpSettingsManager.cs" />
-    <Compile Include="1_1\Helpers.cs" />
+    <Compile Include="1_1\Helpers\HelperFunctions.cs" />
+    <Compile Include="1_1\Helpers\FlyoutHelpers.cs" />
     <Compile Include="1_1\Selectors\LargeAndSmallTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\TitleOnlyTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\TransitMapPageTitleBarTemplateSelector.cs" />
@@ -129,6 +133,7 @@
     <Compile Include="1_1\Views\Controls\AutoFitTextBlock.xaml.cs">
       <DependentUpon>AutoFitTextBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="1_1\Views\Controls\EnterCommandTextBox.cs" />
     <Compile Include="1_1\Views\Controls\RealTimeArrivalControl.xaml.cs">
       <DependentUpon>RealTimeArrivalControl.xaml</DependentUpon>
     </Compile>
