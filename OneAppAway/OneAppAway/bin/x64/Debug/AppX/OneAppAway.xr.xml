@@ -52,9 +52,12 @@
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="ManuallyDownloadStops" />
     <RootPropertyPathName Name="RefreshCommand" />
+    <RootPropertyPathName Name="ZoomOutButtonPressed" />
+    <RootPropertyPathName Name="ZoomInButtonPressed" />
     <RootPropertyPathName Name="CenterOnCurrentLocationCommand" />
     <RootPropertyPathName Name="SearchCommand" />
     <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
+    <RootPropertyPathName Name="CurrentZoomRate" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Background" />
@@ -411,7 +414,9 @@
       <RootProperty Name="VerticalContentAlignment" />
       <RootEvent Name="SizeChanged" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap" />
+    <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap">
+      <RootProperty Name="CurrentZoomRate" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
       <RootProperty Name="RequestedTheme" />
@@ -514,8 +519,16 @@
       <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
     </RootType>
+    <RootType FullName="OneAppAway._1_1.Helpers.BindingHelper">
+      <RootMethod Name="GetAppliedBindingHelper" />
+      <RootMethod Name="SetAppliedBindingHelper" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.BitmapIcon">
       <RootProperty Name="UriSource" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.Helpers.ExternalBinding">
+      <RootProperty Name="PropertyName" />
+      <RootProperty Name="Value" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TransitMapPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">

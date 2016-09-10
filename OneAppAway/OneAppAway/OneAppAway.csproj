@@ -121,6 +121,10 @@
     <Compile Include="1_1\Data\LocationHelper.cs" />
     <Compile Include="1_1\Data\UwpNetworkManager.cs" />
     <Compile Include="1_1\Data\UwpSettingsManager.cs" />
+    <Compile Include="1_1\Helpers\BindingHelperCollection.cs" />
+    <Compile Include="1_1\Helpers\ExternalBinding.cs" />
+    <Compile Include="1_1\Helpers\BindingHelper.cs" />
+    <Compile Include="1_1\Helpers\EventCommands.cs" />
     <Compile Include="1_1\Helpers\HelperFunctions.cs" />
     <Compile Include="1_1\Helpers\FlyoutHelpers.cs" />
     <Compile Include="1_1\Selectors\LargeAndSmallTitleBarTemplateSelector.cs" />

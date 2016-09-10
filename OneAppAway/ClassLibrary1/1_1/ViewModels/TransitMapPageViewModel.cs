@@ -34,6 +34,9 @@ namespace OneAppAway._1_1.ViewModels
         private RectSubset OuterStopCacheMargin = new RectSubset() { Left = -.25, LeftScale = RectSubsetScale.Relative, Right = -.25, RightScale = RectSubsetScale.Relative, Top = -.25, TopScale = RectSubsetScale.Relative, Bottom = -.25, BottomScale = RectSubsetScale.Relative };
         private Queue<LatLonRect> PendingRegions = new Queue<LatLonRect>();
         private bool UnlimitedNetwork = false;
+        private CancellationTokenSource TokenSource = new CancellationTokenSource();
+        private MemoryCache Cache;
+        double lastZoomLevel = 0;
         #endregion
 
         #region Protected Properties
@@ -43,24 +46,27 @@ namespace OneAppAway._1_1.ViewModels
         #endregion
 
         #region Properties
+        #region Constant Properties
         public double SmallThreshold => 14;
         public double MediumThreshold => 16.5;
         public double LargeThreshold => 18;
+        #endregion
 
-        private CancellationTokenSource TokenSource = new CancellationTokenSource();
-        private MemoryCache Cache;
-        double lastZoomLevel = 0;
-
+        #region Collections
         public ObservableRangeCollection<TransitStop> ShownStops { get; } = new ObservableRangeCollection<TransitStop>();
         public ObservableRangeCollection<TransitStop> SelectedStops { get; } = new ObservableRangeCollection<TransitStop>();
         public ObservableRangeCollection<LocationSearchResult> SearchResults { get; } = new ObservableRangeCollection<LocationSearchResult>();
+        #endregion
 
+        #region Commands
         public ICommand StopsClickedCommand { get; }
         public ICommand CenterOnCurrentLocationCommand { get; }
         public ICommand RefreshCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand GoToLocationCommand { get; }
+        #endregion
 
+        #region Main Map Control
         private bool _HasSelectedStops;
         public bool HasSelectedStops
         {
@@ -69,23 +75,6 @@ namespace OneAppAway._1_1.ViewModels
             {
                 SetProperty(ref _HasSelectedStops, value);
                 CanGoBack = HasSelectedStops || IsSearchBoxOpen;
-            }
-        }
-
-        private bool _CanGoBack;
-        public bool CanGoBack
-        {
-            get { return _CanGoBack; }
-            private set { SetProperty(ref _CanGoBack, value); }
-        }
-
-        private double _ZoomLevel = 1;
-        public double ZoomLevel
-        {
-            get { return _ZoomLevel; }
-            set
-            {
-                SetProperty(ref _ZoomLevel, value);
             }
         }
 
@@ -101,13 +90,34 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
 
+        private double _ZoomLevel = 1;
+        public double ZoomLevel
+        {
+            get { return _ZoomLevel; }
+            set
+            {
+                SetProperty(ref _ZoomLevel, value);
+            }
+        }
+
         private double _CurrentZoomRate = 0;
         public double CurrentZoomRate
         {
             get { return _CurrentZoomRate; }
             set { SetProperty(ref _CurrentZoomRate, value); }
         }
+        #endregion
 
+        #region Page
+        private bool _CanGoBack;
+        public bool CanGoBack
+        {
+            get { return _CanGoBack; }
+            private set { SetProperty(ref _CanGoBack, value); }
+        }
+        #endregion
+
+        #region Appbar Controls
         private bool _IsSearchBoxOpen = false;
         public bool IsSearchBoxOpen
         {
@@ -129,8 +139,18 @@ namespace OneAppAway._1_1.ViewModels
             {
                 SetProperty(ref _ZoomInButtonPressed, value);
                 if (value)
-                    CurrentZoomRate = 1;
+                    OnZoom(true);
+                else
+                    CurrentZoomRate = 0;
             }
+        }
+        private async void OnZoom(bool zoomIn)
+        {
+            await Task.Delay(100);
+            if (zoomIn ? ZoomInButtonPressed : ZoomOutButtonPressed)
+                CurrentZoomRate = zoomIn ? 1 : -1;
+            else
+                ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(ZoomLevel + (zoomIn ? 1 : -1))));
         }
 
         private bool _ZoomOutButtonPressed = false;
@@ -141,7 +161,9 @@ namespace OneAppAway._1_1.ViewModels
             {
                 SetProperty(ref _ZoomOutButtonPressed, value);
                 if (value)
-                    CurrentZoomRate = -1;
+                    OnZoom(false);
+                else
+                    CurrentZoomRate = 0;
             }
         }
 
@@ -180,6 +202,7 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
         private void SetManuallyDownloadStopsInternal(bool value) => SetProperty(ref _ManuallyDownloadStops, value, "ManuallyDownloadStops");
+        #endregion
         #endregion
 
         #region Methods

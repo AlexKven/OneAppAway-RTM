@@ -9,7 +9,7 @@
     mc:Ignorable="d" RequestedTheme="Dark">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock VerticalAlignment="Top" FontSize="32">Test Page 1</TextBlock>
-        <Button x:ConnectionId='1' HorizontalAlignment="Center"                     >Navigate</Button>
+        <Button x:ConnectionId='1' HorizontalAlignment="Center"                      x:Name="_Button">Navigate</Button>
     </Grid>
 </local:ApplicationPage>
 

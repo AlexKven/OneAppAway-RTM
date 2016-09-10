@@ -14,14 +14,15 @@ namespace OneAppAway._1_1.Views.Controls
     {
         protected override void OnKeyDown(KeyRoutedEventArgs e)
         {
-            base.OnKeyDown(e);
-            if (e.Key == Windows.System.VirtualKey.Enter)
+            if (e.Key == Windows.System.VirtualKey.Enter && e.KeyStatus.RepeatCount == 0)
             {
                 if (Command?.CanExecute(Text) ?? false)
                 {
                     Command.Execute(Text);
                 }
             }
+            e.Handled = true;
+            base.OnKeyDown(e);
         }
 
         public ICommand Command

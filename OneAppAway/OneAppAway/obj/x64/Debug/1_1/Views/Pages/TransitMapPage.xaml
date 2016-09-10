@@ -55,8 +55,16 @@
                                 <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
-                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
-                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
+                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press">
+                                <localH:BindingHelper.AppliedBindingHelper>
+                                    <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomInButtonPressed, Mode=TwoWay}"/>
+                                </localH:BindingHelper.AppliedBindingHelper>
+                            </AppBarButton>
+                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press">
+                                <localH:BindingHelper.AppliedBindingHelper>
+                                    <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomOutButtonPressed, Mode=TwoWay}"/>
+                                </localH:BindingHelper.AppliedBindingHelper>
+                            </AppBarButton>
                             <AppBarButton Label="Find Stops" Command="{Binding RefreshCommand}">
                                 <AppBarButton.Icon>
                                     <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
@@ -85,8 +93,16 @@
                                 <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
-                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press"/>
-                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press"/>
+                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press">
+                                <localH:BindingHelper.AppliedBindingHelper>
+                                    <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomInButtonPressed, Mode=TwoWay}"/>
+                                </localH:BindingHelper.AppliedBindingHelper>
+                            </AppBarButton>
+                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press">
+                                <localH:BindingHelper.AppliedBindingHelper>
+                                    <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomOutButtonPressed, Mode=TwoWay}"/>
+                                </localH:BindingHelper.AppliedBindingHelper>
+                            </AppBarButton>
                             <AppBarButton Label="Find Stops" Command="{Binding RefreshCommand}">
                                 <AppBarButton.Icon>
                                     <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
@@ -104,7 +120,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <localC:TransitMap x:ConnectionId='5' x:Name="MainMap" Grid.Row="1">
+        <localC:TransitMap x:ConnectionId='5' x:Name="MainMap" Grid.Row="1" CurrentZoomRate="{Binding CurrentZoomRate}">
 
         </localC:TransitMap>
         <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" IsHitTestVisible="False">
