@@ -55,12 +55,12 @@
                                 <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
-                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press">
+                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Release">
                                 <localH:BindingHelper.AppliedBindingHelper>
                                     <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomInButtonPressed, Mode=TwoWay}"/>
                                 </localH:BindingHelper.AppliedBindingHelper>
                             </AppBarButton>
-                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press">
+                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Release">
                                 <localH:BindingHelper.AppliedBindingHelper>
                                     <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomOutButtonPressed, Mode=TwoWay}"/>
                                 </localH:BindingHelper.AppliedBindingHelper>
@@ -93,12 +93,12 @@
                                 <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
                             <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
-                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Press">
+                            <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Release">
                                 <localH:BindingHelper.AppliedBindingHelper>
                                     <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomInButtonPressed, Mode=TwoWay}"/>
                                 </localH:BindingHelper.AppliedBindingHelper>
                             </AppBarButton>
-                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Press">
+                            <AppBarButton Icon="ZoomOut" Label="Zoom Out" ClickMode="Release">
                                 <localH:BindingHelper.AppliedBindingHelper>
                                     <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomOutButtonPressed, Mode=TwoWay}"/>
                                 </localH:BindingHelper.AppliedBindingHelper>

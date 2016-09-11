@@ -130,6 +130,7 @@
     <Compile Include="1_1\Selectors\LargeAndSmallTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\TitleOnlyTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\TransitMapPageTitleBarTemplateSelector.cs" />
+    <Compile Include="1_1\UwpIntervalExecuter.cs" />
     <Compile Include="1_1\ViewModels\HamburgerBarPageEntryViewModel.cs" />
     <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapPageUwpViewModel.cs" />

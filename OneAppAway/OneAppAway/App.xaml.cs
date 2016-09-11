@@ -85,6 +85,7 @@ namespace OneAppAway
 
                 MainOuterFrame = new _1_1.Views.OuterFrame(RootFrame);
                 Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
+                UwpIntervalExecuter.InitializeDispatcher(Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher);
                 MainOuterFrame.SizeChanged += (s, e) =>
                 {
                     CurrentWidth = e.NewSize.Width;

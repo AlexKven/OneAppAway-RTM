@@ -1,4 +1,5 @@
 ﻿using MvvmHelpers;
+using OneAppAway._1_1.Abstract;
 using OneAppAway._1_1.Data;
 using System;
 using System.Collections.Generic;
@@ -14,25 +15,40 @@ namespace OneAppAway._1_1.ViewModels
         #region Static
         private static List<WeakReference<StopArrivalsBoxViewModel>> Instances = new List<WeakReference<StopArrivalsBoxViewModel>>();
 
+        private static IntervalExecuterBase _IntervalExecuter;
+        public static IntervalExecuterBase IntervalExecuter
+        {
+            get { return _IntervalExecuter; }
+            set
+            {
+                if (IntervalExecuter != null)
+                    IntervalExecuter.DeregisterTask(IntervalExecuterCommand);
+                _IntervalExecuter = value;
+                if (IntervalExecuter != null)
+                    IntervalExecuter.RegisterTask(IntervalExecuterCommand, TimeSpan.FromSeconds(30));
+            }
+        }
+
+        private static Command IntervalExecuterCommand = new Command((obj) =>
+        {
+            for (int i = 0; i < Instances.Count; i++)
+            {
+                var instance = Instances[i];
+                StopArrivalsBoxViewModel reference;
+                if (instance.TryGetTarget(out reference))
+                {
+                    reference.Refresh();
+                }
+                else
+                {
+                    Instances.Remove(instance);
+                    i--;
+                }
+            }
+        });
+
         static StopArrivalsBoxViewModel()
         {
-            TimeDetails.Instance.RegisterTask(() =>
-            {
-                for (int i = 0; i < Instances.Count; i++)
-                {
-                    var instance = Instances[i];
-                    StopArrivalsBoxViewModel reference;
-                    if (instance.TryGetTarget(out reference))
-                    {
-                        reference.Refresh();
-                    }
-                    else
-                    {
-                        Instances.Remove(instance);
-                        i--;
-                    }
-                }
-            }, 3);
         }
         #endregion
 

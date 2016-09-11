@@ -1,4 +1,5 @@
 ﻿using MvvmHelpers;
+using OneAppAway._1_1.Abstract;
 using OneAppAway._1_1.Converters;
 using OneAppAway._1_1.Data;
 using System;
@@ -17,26 +18,40 @@ namespace OneAppAway._1_1.ViewModels
         #region Static
         internal static List<WeakReference<RealTimeArrivalViewModel>> Instances = new List<WeakReference<RealTimeArrivalViewModel>>();
 
-        static RealTimeArrivalViewModel()
+        private static IntervalExecuterBase _IntervalExecuter;
+        public static IntervalExecuterBase IntervalExecuter
         {
-            TimeDetails.Instance.RegisterTask(() =>
+            get { return _IntervalExecuter; }
+            set
             {
-                for (int i = 0; i < Instances.Count; i++)
-                {
-                    var instance = Instances[i];
-                    RealTimeArrivalViewModel reference;
-                    if (instance.TryGetTarget(out reference))
-                    {
-                        reference.RefreshMinutesAway();
-                    }
-                    else
-                    {
-                        Instances.Remove(instance);
-                        i--;
-                    }
-                }
-            }, 1);
+                if (IntervalExecuter != null)
+                    IntervalExecuter.DeregisterTask(IntervalExecuterCommand);
+                _IntervalExecuter = value;
+                if (IntervalExecuter != null)
+                    IntervalExecuter.RegisterTask(IntervalExecuterCommand, TimeSpan.FromSeconds(10));
+            }
         }
+
+        private static Command IntervalExecuterCommand = new Command((obj) =>
+        {
+            for (int i = 0; i < Instances.Count; i++)
+            {
+                var instance = Instances[i];
+                RealTimeArrivalViewModel reference;
+                if (instance.TryGetTarget(out reference))
+                {
+                    reference.RefreshMinutesAway();
+                }
+                else
+                {
+                    Instances.Remove(instance);
+                    i--;
+                }
+            }
+        });
+        #endregion
+
+        #region Static
         #endregion
 
         public RealTimeArrival Arrival { get; }
@@ -83,7 +98,7 @@ namespace OneAppAway._1_1.ViewModels
             }
             else
             {
-                MinutesAway = (int)MinutesUntilArrivalConverter.Instance.Convert(TimeDetails.Instance.Now, typeof(int), Arrival.PredictedArrivalTime ?? Arrival.ScheduledArrivalTime.Value, null);
+                MinutesAway = (int)((Arrival.PredictedArrivalTime ?? Arrival.ScheduledArrivalTime.Value) - DateTime.Now).TotalMinutes;
             }
         }
 

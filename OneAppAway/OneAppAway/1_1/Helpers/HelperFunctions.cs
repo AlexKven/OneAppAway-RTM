@@ -20,9 +20,6 @@ namespace OneAppAway._1_1.Helpers
 
         static HelperFunctions()
         {
-            Timer.Interval = TimeSpan.FromSeconds(10);
-            Timer.Tick += (s, e) => TimeDetails.Instance.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => TimeDetails.Instance.Tick()).ToString();
-            Timer.Start();
         }
 
         public static BasicGeoposition ToBasicGeoposition(this LatLon value)
