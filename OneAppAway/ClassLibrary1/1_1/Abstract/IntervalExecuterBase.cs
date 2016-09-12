@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneAppAway._1_1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,18 @@ namespace OneAppAway._1_1.Abstract
 {
     public abstract class IntervalExecuterBase
     {
+        private static IntervalExecuterBase _Instance;
+        public static IntervalExecuterBase Instance
+        {
+            get { return _Instance; }
+            set
+            {
+                _Instance = value;
+                RealTimeArrivalViewModel.IntervalExecuter = Instance;
+                StopArrivalsBoxViewModel.IntervalExecuter = Instance;
+            }
+        }
+
         private class TickIntervalTask
         {
             public ICommand Command { get; set; }

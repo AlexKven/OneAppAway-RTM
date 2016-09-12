@@ -28,6 +28,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using OneAppAway._1_1.Data;
 using static OneAppAway.ServiceDay;
+using OneAppAway._1_1.Abstract;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=402347&clcid=0x409
 
@@ -85,7 +86,6 @@ namespace OneAppAway
 
                 MainOuterFrame = new _1_1.Views.OuterFrame(RootFrame);
                 Window.Current.Content = MainOuterFrame;// MainHamburgerBar;
-                UwpIntervalExecuter.InitializeDispatcher(Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher);
                 MainOuterFrame.SizeChanged += (s, e) =>
                 {
                     CurrentWidth = e.NewSize.Width;
@@ -162,7 +162,9 @@ namespace OneAppAway
         {
             Window.Current.SizeChanged += Current_SizeChanged;
             Window.Current.CoreWindow.SizeChanged += CoreWindow_SizeChanged;
-            UwpNetworkManager.Instance.Dispatcher = RootFrame.Dispatcher;
+            NetworkManagerBase.Instance = new UwpNetworkManager() { Dispatcher = RootFrame.Dispatcher };
+            SettingsManagerBase.Instance = new UwpSettingsManager();
+            IntervalExecuterBase.Instance = new UwpIntervalExecuter(RootFrame.Dispatcher);
             //BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             //LocationManager.Dispatcher = RootFrame.Dispatcher;
             SetTitleBar();

@@ -23,10 +23,6 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
 
-        protected override NetworkManagerBase NetworkManager => UwpNetworkManager.Instance;
-
-        protected override SettingsManagerBase SettingsManager => UwpSettingsManager.Instance;
-
         protected override async Task GetLocation(Action<LatLon> locationCallback)
         {
             await LocationHelper.ProgressivelyAcquireLocation(pos => locationCallback(pos.ToLatLon()));

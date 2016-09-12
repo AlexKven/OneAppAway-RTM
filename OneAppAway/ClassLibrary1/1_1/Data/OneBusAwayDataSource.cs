@@ -144,7 +144,6 @@ namespace OneAppAway._1_1.Data
         #endregion
 
         #region Static Parsing & HTTP Functions
-
         private static TransitStop ParseTransitStop(XElement element)
         {
             string lat = element.Element("lat")?.Value;
@@ -222,12 +221,19 @@ namespace OneAppAway._1_1.Data
             string request = "http://api.pugetsound.onebusaway.org/api/where/" + compactRequest + ".xml?key=" + Keys.ObaKey + parameters?.Aggregate("", (acc, item) => acc + "&" + item.Key + "=" + item.Value) ?? "" + "includeReferences=" + (includeReferences ? "true" : "false");
             HttpResponseMessage resp;
             HttpClient client;
-            using (client = new HttpClient())
+            try
             {
-                resp = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, request), cancellationToken);
+                using (client = new HttpClient())
+                {
+                    resp = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, request), cancellationToken);
+                }
+                if (cancellationToken.IsCancellationRequested) return null;
+                return await resp.Content.ReadAsStringAsync();
             }
-            if (cancellationToken.IsCancellationRequested) return null;
-            return await resp.Content.ReadAsStringAsync();
+            catch (HttpRequestException ex)
+            {
+                throw new Exception($"Please check your internet connection. ({ex.Message})", ex);
+            }
         }
 
         public override async Task<RetrievedData<IEnumerable<RealTimeArrival>>> GetRealTimeArrivalsForStop(string stopId, int minsBefore, int minsAfter, CancellationToken cancellationToken)

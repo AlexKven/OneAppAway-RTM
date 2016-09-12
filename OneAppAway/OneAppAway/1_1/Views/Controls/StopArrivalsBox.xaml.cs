@@ -33,20 +33,29 @@ namespace OneAppAway._1_1.Views.Controls
             VM = new StopArrivalsBoxViewModel();
         }
 
-        public void Refresh()
+        public void Refresh(bool forceOnline)
         {
-            VM?.Refresh();
+            VM?.Refresh(forceOnline);
         }
-        
+
         public TransitStop Stop
         {
             get { return (TransitStop)GetValue(StopProperty); }
             set { SetValue(StopProperty, value); }
         }
         public static readonly DependencyProperty StopProperty =
-            DependencyProperty.Register("Stop", typeof(TransitStop), typeof(StopArrivalsBox), new PropertyMetadata(new TransitStop(), (s, e) => ((StopArrivalsBox)s).VM.Stop = (TransitStop)e.NewValue));
+            DependencyProperty.Register("Stop", typeof(TransitStop), typeof(StopArrivalsBox), new PropertyMetadata(new TransitStop(), (s, e) =>
+            {
+                var autoDownloadMode = SettingsManagerBase.Instance.CurrentDownloadArrivalsMode;
+                var stop = (TransitStop)e.NewValue;
+                bool autoDownload = false;
+                if (autoDownloadMode == ManuallyDownloadArrivalsMode.Never || (autoDownloadMode == ManuallyDownloadArrivalsMode.GroupsOnly && stop.Parent == null))
+                autoDownload = true;
+                ((StopArrivalsBox)s).VM.AutoDownload = autoDownload;
+                ((StopArrivalsBox)s).VM.Stop = stop;
+            }));
 
-        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void IntermediateGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (e.NewSize.Width > 0)
                 MainScrollViewer.Width = e.NewSize.Width;

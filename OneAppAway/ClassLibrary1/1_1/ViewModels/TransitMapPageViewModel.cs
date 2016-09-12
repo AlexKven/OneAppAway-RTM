@@ -25,7 +25,7 @@ namespace OneAppAway._1_1.ViewModels
             SearchCommand = new Command(Search_Execute, obj => (obj?.ToString()?.Length ?? 0) > 4);
             GoToLocationCommand = new Command(GoToLocation_Execute);
             Cache = cache;
-            NetworkManager.NetworkTypeChanged += (s, e) => LoadFromSettings(); //*MemoryLeak*!!! Temporary
+            NetworkManagerBase.Instance.NetworkTypeChanged += (s, e) => LoadFromSettings(); //*MemoryLeak*!!! Temporary
             LoadSpecialStops();
             LoadFromSettings();
         }
@@ -33,15 +33,13 @@ namespace OneAppAway._1_1.ViewModels
         #region Fields
         private RectSubset OuterStopCacheMargin = new RectSubset() { Left = -.25, LeftScale = RectSubsetScale.Relative, Right = -.25, RightScale = RectSubsetScale.Relative, Top = -.25, TopScale = RectSubsetScale.Relative, Bottom = -.25, BottomScale = RectSubsetScale.Relative };
         private Queue<LatLonRect> PendingRegions = new Queue<LatLonRect>();
-        private bool UnlimitedNetwork = false;
         private CancellationTokenSource TokenSource = new CancellationTokenSource();
         private MemoryCache Cache;
         double lastZoomLevel = 0;
+        private bool NonUISetProperties = false;
         #endregion
 
         #region Protected Properties
-        protected abstract SettingsManagerBase SettingsManager { get; }
-        protected abstract NetworkManagerBase NetworkManager { get; }
         protected abstract bool IsMultiSelectOn { get; }
         #endregion
 
@@ -171,14 +169,32 @@ namespace OneAppAway._1_1.ViewModels
         public bool AutoDownloadArrivals
         {
             get { return _AutoDownloadArrivals; }
-            set { SetProperty(ref _AutoDownloadArrivals, value); }
+            set
+            {
+                if (!NonUISetProperties)
+                {
+                    SetMutallyExclusiveProperties(ManuallyDownloadArrivalsMode.Never, value);
+                    SetToSettings();
+                }
+                else
+                    SetProperty(ref _AutoDownloadArrivals, value);
+            }
         }
 
         private bool _ManuallyDownloadArrivalsGroups;
         public bool ManuallyDownloadArrivalsGroups
         {
             get { return _ManuallyDownloadArrivalsGroups; }
-            set { SetProperty(ref _ManuallyDownloadArrivalsGroups, value); }
+            set
+            {
+                if (!NonUISetProperties)
+                {
+                    SetMutallyExclusiveProperties(ManuallyDownloadArrivalsMode.GroupsOnly, value);
+                    SetToSettings();
+                }
+                else
+                    SetProperty(ref _ManuallyDownloadArrivalsGroups, value);
+            }
         }
 
         private bool _ManuallyDownloadArrivalsAll;
@@ -187,7 +203,13 @@ namespace OneAppAway._1_1.ViewModels
             get { return _ManuallyDownloadArrivalsAll; }
             set
             {
-                SetProperty(ref _ManuallyDownloadArrivalsAll, value);
+                if (!NonUISetProperties)
+                {
+                    SetMutallyExclusiveProperties(ManuallyDownloadArrivalsMode.Always, value);
+                    SetToSettings();
+                }
+                else
+                    SetProperty(ref _ManuallyDownloadArrivalsAll, value);
             }
         }
 
@@ -197,11 +219,11 @@ namespace OneAppAway._1_1.ViewModels
             get { return _ManuallyDownloadStops; }
             set
             {
-                SetManuallyDownloadStopsInternal(value);
-                SetToSettings();
+                SetProperty(ref _ManuallyDownloadStops, value);
+                if (!NonUISetProperties)
+                    SetToSettings();
             }
         }
-        private void SetManuallyDownloadStopsInternal(bool value) => SetProperty(ref _ManuallyDownloadStops, value, "ManuallyDownloadStops");
         #endregion
         #endregion
 
@@ -212,6 +234,59 @@ namespace OneAppAway._1_1.ViewModels
             Cache.Add(fwtc);
         }
 
+        private void SetMutallyExclusiveProperties(ManuallyDownloadArrivalsMode mode, bool value)
+        {
+            NonUISetProperties = true;
+            try
+            {
+                if (value)
+                {
+                    switch (mode)
+                    {
+                        case ManuallyDownloadArrivalsMode.Always:
+                            AutoDownloadArrivals = false;
+                            ManuallyDownloadArrivalsGroups = false;
+                            ManuallyDownloadArrivalsAll = true;
+                            break;
+                        case ManuallyDownloadArrivalsMode.Never:
+                            AutoDownloadArrivals = true;
+                            ManuallyDownloadArrivalsGroups = false;
+                            ManuallyDownloadArrivalsAll = false;
+                            break;
+                        case ManuallyDownloadArrivalsMode.GroupsOnly:
+                            AutoDownloadArrivals = false;
+                            ManuallyDownloadArrivalsGroups = true;
+                            ManuallyDownloadArrivalsAll = false;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (mode)
+                    {
+                        case ManuallyDownloadArrivalsMode.Always:
+                            AutoDownloadArrivals = false;
+                            ManuallyDownloadArrivalsGroups = true;
+                            ManuallyDownloadArrivalsAll = false;
+                            break;
+                        case ManuallyDownloadArrivalsMode.Never:
+                            AutoDownloadArrivals = false;
+                            ManuallyDownloadArrivalsGroups = true;
+                            ManuallyDownloadArrivalsAll = false;
+                            break;
+                        case ManuallyDownloadArrivalsMode.GroupsOnly:
+                            AutoDownloadArrivals = true;
+                            ManuallyDownloadArrivalsGroups = false;
+                            ManuallyDownloadArrivalsAll = false;
+                            break;
+                    }
+                }
+            }
+            finally
+            {
+                NonUISetProperties = false;
+            }
+        }
         private void OnAreaChanged(LatLonRect oldArea, LatLonRect newArea)
         {
             if (ZoomLevel < SmallThreshold)
@@ -296,7 +371,6 @@ namespace OneAppAway._1_1.ViewModels
             }
             catch (HttpRequestException)
             {
-                //No internet!
                 PendingRegions.Clear();
             }
             catch (OperationCanceledException)
@@ -311,17 +385,25 @@ namespace OneAppAway._1_1.ViewModels
 
         private void LoadFromSettings()
         {
-            if (NetworkManager.NetworkType == NetworkType.Unlimited)
-                UnlimitedNetwork = true;
-            else if (NetworkManager.NetworkType == NetworkType.Metered)
-                UnlimitedNetwork = false;
-
-            SetManuallyDownloadStopsInternal(SettingsManager.GetSetting($"{(UnlimitedNetwork ? "UnlimitedData" : "LimitedData")}.ManuallyDownloadStops", false, false));
+            NonUISetProperties = true;
+            try
+            {
+                ManuallyDownloadStops = SettingsManagerBase.Instance.GetSetting($"{(NetworkManagerBase.Instance.UnlimitedNetwork ? "UnlimitedData" : "LimitedData")}.ManuallyDownloadStops", false, false);
+                var downloadArrivalsMode = SettingsManagerBase.Instance.CurrentDownloadArrivalsMode;
+                AutoDownloadArrivals = downloadArrivalsMode == ManuallyDownloadArrivalsMode.Never;
+                ManuallyDownloadArrivalsAll = downloadArrivalsMode == ManuallyDownloadArrivalsMode.Always;
+                ManuallyDownloadArrivalsGroups = downloadArrivalsMode == ManuallyDownloadArrivalsMode.GroupsOnly;
+            }
+            finally
+            {
+                NonUISetProperties = false;
+            }
         }
 
         private void SetToSettings()
         {
-            SettingsManager.SetSetting($"{(UnlimitedNetwork ? "UnlimitedData" : "LimitedData")}.ManuallyDownloadStops", false, ManuallyDownloadStops);
+            SettingsManagerBase.Instance.SetSetting($"{(NetworkManagerBase.Instance.UnlimitedNetwork ? "UnlimitedData" : "LimitedData")}.ManuallyDownloadStops", false, ManuallyDownloadStops);
+            SettingsManagerBase.Instance.CurrentDownloadArrivalsMode = AutoDownloadArrivals ? ManuallyDownloadArrivalsMode.Never : ManuallyDownloadArrivalsGroups ? ManuallyDownloadArrivalsMode.GroupsOnly : ManuallyDownloadArrivalsMode.Always;
         }
 
         public void GoBack()

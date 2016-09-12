@@ -108,7 +108,7 @@
     </Compile>
     <Compile Include="1_1\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="1_1\Converters\DegreeOfConfidenceToBackgroundConverter.cs" />
-    <Compile Include="1_1\Converters\EnumComparisonConverter.cs" />
+    <Compile Include="1_1\Converters\EnumCaseVisibilityConverter.cs" />
     <Compile Include="1_1\Converters\InvertBoolConverter.cs" />
     <Compile Include="1_1\Converters\IsEarlyToForegroundConverter.cs" />
     <Compile Include="1_1\Converters\IsPredictedToForegroundConverter.cs" />

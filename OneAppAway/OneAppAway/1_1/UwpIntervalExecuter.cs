@@ -12,22 +12,17 @@ namespace OneAppAway._1_1
 {
     public class UwpIntervalExecuter : IntervalExecuterBase
     {
-        public static UwpIntervalExecuter Instance { get; } = new UwpIntervalExecuter();
-        public static void InitializeDispatcher(CoreDispatcher dispatcher)
-        {
-            Instance.Dispatcher = dispatcher;
-            RealTimeArrivalViewModel.IntervalExecuter = Instance;
-            StopArrivalsBoxViewModel.IntervalExecuter = Instance;
-        }
-
         private CoreDispatcher Dispatcher;
-        private UwpIntervalExecuter() { }
+        internal UwpIntervalExecuter(CoreDispatcher dispatcher)
+        {
+            Dispatcher = dispatcher;
+        }
 
         private DispatcherTimer Timer = new DispatcherTimer();
         protected override void Initialize()
         {
             Timer.Interval = TimeSpan.FromSeconds(3);
-            Timer.Tick += async (s, e) => await Instance?.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => Instance.Tick());
+            Timer.Tick += async (s, e) => await (Instance as UwpIntervalExecuter)?.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => (Instance as UwpIntervalExecuter).Tick());
             Timer.Start();
         }
     }

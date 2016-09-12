@@ -28,8 +28,13 @@ namespace OneAppAway._1_1.ViewModels
         }
         bool Maximized = false;
 
-        public ArrivalsControlInTransitPageViewModel()
+        private SettingsManagerBase SettingsManager;
+        private NetworkManagerBase NetworkManager;
+
+        public ArrivalsControlInTransitPageViewModel(SettingsManagerBase settingsManager, NetworkManagerBase networkManager)
         {
+            SettingsManager = settingsManager;
+            NetworkManager = networkManager;
             ExpandCommand = new Command((obj) =>
             {
                 NumColsRequested += .5;

@@ -8,7 +8,10 @@ namespace OneAppAway._1_1.Data
 {
     public abstract class NetworkManagerBase
     {
+        public static NetworkManagerBase Instance { get; set; }
+
         public abstract NetworkType NetworkType { get; }
+        public abstract bool UnlimitedNetwork { get; }
         public event EventHandler NetworkTypeChanged;
         protected void OnNetworkTypeChanged()
         {

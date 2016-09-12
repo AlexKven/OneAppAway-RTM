@@ -95,7 +95,5 @@ namespace OneAppAway._1_1.ViewModels
         public double Width { get; }
 
         public bool IsTopLevel { get; private set; } = true;
-
-        public ICommand RefreshCommand { get; }
     }
 }

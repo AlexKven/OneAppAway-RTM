@@ -27,6 +27,7 @@
         <conv_1_1:NullZeroConverter x:Key="NullZeroConverter"/>
         <conv_1_1:IsEarlyToForegroundConverter x:Key="IsEarlyToForegroundConverter"/>
         <conv_1_1:IsPredictedToForegroundConverter x:Key="IsPredictedToForegroundConverter"/>
+        <conv_1_1:EnumCaseVisibilityConverter x:Key="EnumCaseVisibilityConverter"/>
         <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
             <Grid>
                 <VisualStateManager.VisualStateGroups>

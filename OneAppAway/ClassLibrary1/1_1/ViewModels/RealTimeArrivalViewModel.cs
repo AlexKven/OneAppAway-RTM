@@ -51,9 +51,6 @@ namespace OneAppAway._1_1.ViewModels
         });
         #endregion
 
-        #region Static
-        #endregion
-
         public RealTimeArrival Arrival { get; }
 
         public RealTimeArrivalViewModel(RealTimeArrival arrival)

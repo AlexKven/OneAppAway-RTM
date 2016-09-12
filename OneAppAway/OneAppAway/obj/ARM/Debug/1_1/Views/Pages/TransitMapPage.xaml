@@ -48,9 +48,9 @@
                         <localC:EnterCommandTextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0" Command="{Binding SearchCommand}" FlyoutBase.AttachedFlyout="{StaticResource SearchFlyout}"/>
                         <CommandBar RequestedTheme="Dark" Background="#303030" Grid.Column="1" BorderBrush="#303030">
                             <CommandBar.SecondaryCommands>
-                                <AppBarToggleButton Label="Automatically Get All Stop Arrivals"/>
-                                <AppBarToggleButton Label="Manually Get Arrivals In Stop Groups"/>
-                                <AppBarToggleButton Label="Manually Get All Stop Arrivals"/>
+                                <AppBarToggleButton IsChecked="{Binding AutoDownloadArrivals, Mode=TwoWay}" Label="Automatically Get All Stop Arrivals"/>
+                                <AppBarToggleButton IsChecked="{Binding ManuallyDownloadArrivalsGroups, Mode=TwoWay}" Label="Manually Get Arrivals In Stop Groups"/>
+                                <AppBarToggleButton IsChecked="{Binding ManuallyDownloadArrivalsAll, Mode=TwoWay}" Label="Manually Get All Stop Arrivals"/>
                                 <AppBarSeparator/>
                                 <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
@@ -86,9 +86,9 @@
                     <Grid>
                         <CommandBar RequestedTheme="Dark" Background="#303030" BorderBrush="#303030">
                             <CommandBar.SecondaryCommands>
-                                <AppBarToggleButton Label="Automatically Get All Stop Arrivals"/>
-                                <AppBarToggleButton Label="Manually Get Arrivals In Stop Groups"/>
-                                <AppBarToggleButton Label="Manually Get All Stop Arrivals"/>
+                                <AppBarToggleButton IsChecked="{Binding AutoDownloadArrivals, Mode=TwoWay}" Label="Automatically Get All Stop Arrivals"/>
+                                <AppBarToggleButton IsChecked="{Binding ManuallyDownloadArrivalsGroups, Mode=TwoWay}" Label="Manually Get Arrivals In Stop Groups"/>
+                                <AppBarToggleButton IsChecked="{Binding ManuallyDownloadArrivalsAll, Mode=TwoWay}" Label="Manually Get All Stop Arrivals"/>
                                 <AppBarSeparator/>
                                 <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>

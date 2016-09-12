@@ -37,7 +37,7 @@ namespace OneAppAway._1_1.ViewModels
                 StopArrivalsBoxViewModel reference;
                 if (instance.TryGetTarget(out reference))
                 {
-                    reference.Refresh();
+                    reference.Refresh(false);
                 }
                 else
                 {
@@ -51,6 +51,8 @@ namespace OneAppAway._1_1.ViewModels
         {
         }
         #endregion
+
+        public bool AutoDownload { get; set; } = false;
 
         private CancellationTokenSource TokenSource = new CancellationTokenSource();
         public StopArrivalsBoxViewModel()
@@ -67,13 +69,39 @@ namespace OneAppAway._1_1.ViewModels
                 var old = Stop;
                 SetProperty(ref _Stop, value);
                 if (Stop != old)
-                    Refresh();
+                {
+                    Refresh(false);
+                }
             }
         }
 
-        public async void Refresh()
+        private DataLoadStatus _LoadStatus;
+        public DataLoadStatus LoadStatus
         {
+            get { return _LoadStatus; }
+            set { SetProperty(ref _LoadStatus, value); }
+        }
+
+        private string _ErrorMessage = "";
+        public string ErrorMessage
+        {
+            get { return _ErrorMessage; }
+            set { SetProperty(ref _ErrorMessage, value); }
+        }
+
+        private bool _Error = false;
+        public bool Error
+        {
+            get { return _Error; }
+            set { SetProperty(ref _Error, value); }
+        }
+
+        public async void Refresh(bool forceOnline)
+        {
+            Error = false;
+            AutoDownload = AutoDownload || forceOnline;
             IsBusy = true;
+            LoadStatus = DataLoadStatus.Loading;
             try
             {
                 if (Stop.ID == null)
@@ -81,7 +109,12 @@ namespace OneAppAway._1_1.ViewModels
                     Items.Clear();
                     return;
                 }
-                var arrivals = await DataSource.GetRealTimeArrivalsForStopAsync(Stop.ID, 5, 35, DataSourcePreference.All, TokenSource.Token); //await ApiLayer.GetTransitArrivals(Stop.ID, 5, 35, TokenSource.Token);
+                var arrivals = await DataSource.GetRealTimeArrivalsForStopAsync(Stop.ID, 5, 35, AutoDownload ? DataSourcePreference.All : DataSourcePreference.OfflineSources, TokenSource.Token); //await ApiLayer.GetTransitArrivals(Stop.ID, 5, 35, TokenSource.Token);
+                if (arrivals.ErrorMessage != null)
+                {
+                    Error = true;
+                    ErrorMessage = arrivals.ErrorMessage;
+                }
                 if (arrivals.HasData)
                 {
                     var viewModels = arrivals.Data.Select(arrival => new RealTimeArrivalViewModel(arrival));
@@ -101,11 +134,15 @@ namespace OneAppAway._1_1.ViewModels
                     //        toRemove.Add(oldItem);
                     //}
                     Items.ReplaceRange(viewModels);
+                    //Items.Add(new RealTimeArrivalViewModel(new RealTimeArrival()));
                 }
             }
             finally
             {
                 IsBusy = false;
+                LoadStatus = AutoDownload ? DataLoadStatus.All : (Items.Count == 0) ? DataLoadStatus.None : DataLoadStatus.OfflineOnly;
+                if (Stop.ID == null)
+                    LoadStatus = DataLoadStatus.All;
             }
         }
 

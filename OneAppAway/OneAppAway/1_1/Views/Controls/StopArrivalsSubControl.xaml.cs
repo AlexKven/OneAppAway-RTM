@@ -90,7 +90,7 @@ namespace OneAppAway._1_1.Views.Controls
                 CompressButton.Visibility = Visibility.Collapsed;
                 CloseButton.Visibility = Visibility.Collapsed;
             }
-            RefreshButton.Command = new Command((obj) => ArrivalsBox.Refresh());
+            RefreshButton.Command = new Command((obj) => ArrivalsBox.Refresh(true));
             ArrivalsBox.Stop = (DataContext as ViewModels.StopArrivalsControlViewModel)?.Stop ?? new Data.TransitStop();
         }
     }

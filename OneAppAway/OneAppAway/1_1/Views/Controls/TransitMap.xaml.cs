@@ -478,7 +478,7 @@ namespace OneAppAway._1_1.Views.Controls
         private void SetArrivalsViewModel()
         {
             ArrivalsPopup = new StopArrivalsControl() { RenderTransform = ArrivalsPopupTransform };
-            ArrivalsViewModel = new ArrivalsControlInTransitPageViewModel();
+            ArrivalsViewModel = new ArrivalsControlInTransitPageViewModel(UwpSettingsManager.Instance, UwpNetworkManager.Instance);
             ArrivalsViewModel.VisibilityChangedCallback += async visible =>
             {
                 DoubleAnimation opacityAnimation = new DoubleAnimation() { From = visible ? 0 : 1, To = visible ? 1 : 0, Duration = TimeSpan.FromMilliseconds(150) };
