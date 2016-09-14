@@ -33,5 +33,7 @@ namespace OneAppAway._1_1.Data
         public double? ZoomLevel { get; }
 
         public LatLonRect? Area { get; }
+
+        public bool Animate { get; set; } = true;
     }
 }

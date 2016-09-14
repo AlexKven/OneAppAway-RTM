@@ -156,6 +156,8 @@ where AgencyInfo.id = RouteInfo.id and RouteInfo.id = StopInfo.id and StopInfo.i
                 connection = Archiver.GetConnection();
                 UpdateCounter();
             }
+
+            
         }
 
         private async void DatabaseSizeButton_Click(object sender, RoutedEventArgs e)

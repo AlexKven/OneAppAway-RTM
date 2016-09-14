@@ -24,6 +24,7 @@ namespace OneAppAway._1_1.ViewModels
             RefreshCommand = new Command(Refresh_Execute);
             SearchCommand = new Command(Search_Execute, obj => (obj?.ToString()?.Length ?? 0) > 4);
             GoToLocationCommand = new Command(GoToLocation_Execute);
+            NavigatedToCommand = new Command(OnNavigatedTo);
             Cache = cache;
             NetworkManagerBase.Instance.NetworkTypeChanged += (s, e) => LoadFromSettings(); //*MemoryLeak*!!! Temporary
             LoadSpecialStops();
@@ -35,7 +36,7 @@ namespace OneAppAway._1_1.ViewModels
         private Queue<LatLonRect> PendingRegions = new Queue<LatLonRect>();
         private CancellationTokenSource TokenSource = new CancellationTokenSource();
         private MemoryCache Cache;
-        double lastZoomLevel = 0;
+        double lastZoomLevel = -1;
         private bool NonUISetProperties = false;
         #endregion
 
@@ -62,6 +63,7 @@ namespace OneAppAway._1_1.ViewModels
         public ICommand RefreshCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand GoToLocationCommand { get; }
+        public ICommand NavigatedToCommand { get; }
         #endregion
 
         #region Main Map Control
@@ -224,6 +226,13 @@ namespace OneAppAway._1_1.ViewModels
                     SetToSettings();
             }
         }
+
+        private bool _IsFindingLocation = false;
+        public bool IsFindingLocation
+        {
+            get { return _IsFindingLocation; }
+            set { SetProperty(ref _IsFindingLocation, value); }
+        }
         #endregion
         #endregion
 
@@ -289,7 +298,7 @@ namespace OneAppAway._1_1.ViewModels
         }
         private void OnAreaChanged(LatLonRect oldArea, LatLonRect newArea)
         {
-            if (ZoomLevel < SmallThreshold)
+            if ((ZoomLevel < SmallThreshold && lastZoomLevel != -1) || (newArea.Span.Latitude > MAX_LAT_RANGE * 8 || newArea.Span.Longitude > MAX_LON_RANGE * 8))
             {
                 ShownStops.Clear();
                 PendingRegions.Clear();
@@ -413,6 +422,10 @@ namespace OneAppAway._1_1.ViewModels
             else
                 SelectedStops.Clear();
         }
+
+        protected virtual void OnNavigatedTo(object parameter)
+        {
+        }
         #endregion
 
         #region Event Handlers
@@ -426,20 +439,20 @@ namespace OneAppAway._1_1.ViewModels
 
         private async void CenterOnCurrentLocation_Execute(object parameter)
         {
-            IsBusy = true;
+            IsFindingLocation = true;
             try
             {
                 await GetLocation((pos) =>
                 {
                     if (ZoomLevel < 14)
-                        ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos, 16.75)));
+                        OnViewChangeRequested(new MapView(pos, 16.75));
                     else
-                        ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos)));
+                        OnViewChangeRequested(new MapView(pos));
                 });
             }
             finally
             {
-                IsBusy = false;
+                IsFindingLocation = false;
             }
         }
 
@@ -457,6 +470,14 @@ namespace OneAppAway._1_1.ViewModels
 
         private void GoToLocation_Execute(object parameter)
         {
+            if (parameter == null)
+                return;
+            if (parameter is LocationSearchResult)
+            {
+                parameter = ((LocationSearchResult)parameter).Location;
+                IsSearchBoxOpen = false;
+                SearchResults.Clear();
+            }
             if (parameter is LatLon)
             {
                 var pos = (LatLon)parameter;
@@ -470,6 +491,10 @@ namespace OneAppAway._1_1.ViewModels
 
         #region Events
         public event EventHandler<EventArgs<MapView>> ViewChangeRequested;
+        protected void OnViewChangeRequested(MapView view)
+        {
+            ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(view));
+        }
         #endregion
 
         //bool startRefreshShownStopsRunning = false;

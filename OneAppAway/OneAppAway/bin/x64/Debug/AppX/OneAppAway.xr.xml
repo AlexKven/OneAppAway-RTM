@@ -52,7 +52,10 @@
     <RootPropertyPathName Name="TitleVisibility" />
     <RootPropertyPathName Name="IsSearchBoxOpen" />
     <RootPropertyPathName Name="SearchResults" />
+    <RootPropertyPathName Name="GoToLocationCommand" />
+    <RootPropertyPathName Name="SelectedItem" />
     <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="IsFindingLocation" />
     <RootPropertyPathName Name="ManuallyDownloadStops" />
     <RootPropertyPathName Name="ManuallyDownloadArrivalsAll" />
     <RootPropertyPathName Name="ManuallyDownloadArrivalsGroups" />
@@ -323,6 +326,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="IsActive" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="IsHitTestVisible" />
@@ -486,6 +490,19 @@
       <RootProperty Name="ItemsPanel" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
+      <RootMethod Name="GetBehaviors" />
+      <RootMethod Name="SetBehaviors" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.DataTriggerBehavior" />
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
+      <RootProperty Name="EventName" />
+      <RootProperty Name="Actions" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.InvokeCommandAction">
+      <RootProperty Name="Command" />
+      <RootProperty Name="CommandParameter" />
+    </RootType>
     <RootType FullName="OneAppAway._1_1.Selectors.LargeAndSmallTitleBarTemplateSelector">
       <RootProperty Name="LargeTemplateThresholdWidth" />
       <RootProperty Name="LargeTemplateThresholdWidthMobile" />
@@ -524,6 +541,7 @@
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
       <RootProperty Name="Command" />
+      <RootProperty Name="IsEnabled" />
       <RootProperty Name="ClickMode" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />

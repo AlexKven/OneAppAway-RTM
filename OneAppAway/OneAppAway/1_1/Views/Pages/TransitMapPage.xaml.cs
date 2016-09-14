@@ -17,6 +17,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Composition;
+using Microsoft.Graphics.Canvas.Effects;
+using Microsoft.Graphics.Canvas.Brushes;
+using Microsoft.Graphics.Canvas.UI;
+using System.Reflection.Emit;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -65,6 +70,8 @@ namespace OneAppAway._1_1.Views.Pages
         {
             base.OnNavigatedTo(e);
             VM.ViewChangeRequested += VM_ViewChangeRequested;
+            if (VM.NavigatedToCommand?.CanExecute(e.Parameter) ?? false)
+                VM.NavigatedToCommand.Execute(e.Parameter);
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

@@ -16,7 +16,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>E3D1DFC63356830D7CF47344081F256F0A49C375016D90E49F6003DB39013ABB</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>CD795E71F692C02EBB4140AA642B8FE5F7BBC4318DD5E88DF2C0A41467A83087</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>16469AlexKven.14062E657A0DF_1.0.7.0_x64__yke5jzwbk3qzj</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>16469AlexKven.14062E657A0DF_yke5jzwbk3qzj!App</RegisteredUserModeAppID>
     <RegisteredPackageID>16469AlexKven.14062E657A0DF</RegisteredPackageID>
@@ -28,17 +28,21 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-09-12T22:54:57.429</Modified>
+      <Modified>2016-09-14T21:33:22.427</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2016-09-12T22:54:55.912</Modified>
+      <Modified>2016-09-14T21:33:20.428</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v10.0\ExtensionSDKs\AdDuplex.Windows10\10.0.1.5\References\CommonConfiguration\neutral\AdDuplex.winmd">
       <PackagePath>AdDuplex.winmd</PackagePath>
       <Modified>2016-07-26T00:48:21.902</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Win2D.uwp\1.19.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
+      <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
+      <Modified>2016-08-09T15:14:36.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -103,6 +107,14 @@
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.Win32.Primitives\4.0.0\lib\dotnet\Microsoft.Win32.Primitives.dll">
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
       <Modified>2015-07-23T06:07:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.Xaml.Behaviors.Uwp.Managed\1.1.0\lib\uap10.0\Microsoft.Xaml.Interactions.dll">
+      <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
+      <Modified>2016-02-22T21:59:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Microsoft.Xaml.Behaviors.Uwp.Managed\1.1.0\lib\uap10.0\Microsoft.Xaml.Interactivity.dll">
+      <PackagePath>Microsoft.Xaml.Interactivity.dll</PackagePath>
+      <Modified>2016-02-22T21:59:50.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Refractored.MvvmHelpers\1.0.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\MvvmHelpers.dll">
       <PackagePath>MvvmHelpers.dll</PackagePath>
@@ -480,13 +492,17 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-23T06:11:12.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\Win2D.uwp\1.19.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
+      <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
+      <Modified>2016-08-09T15:14:36.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\WriteableBitmapEx\1.5.0\lib\NetCore45\WriteableBitmapEx.WinRT.dll">
       <PackagePath>WriteableBitmapEx.WinRT.dll</PackagePath>
       <Modified>2015-03-31T23:28:46.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll">
       <PackagePath>CommonClasses.dll</PackagePath>
-      <Modified>2016-09-12T22:54:51.702</Modified>
+      <Modified>2016-09-14T21:30:17.147</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v10.0\ExtensionSDKs\AdDuplex.Windows10\10.0.1.5\Redist\CommonConfiguration\neutral\AdDuplex\Themes\Generic.xbf">
       <PackagePath>AdDuplex\Themes\Generic.xbf</PackagePath>
@@ -738,7 +754,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.xr.xml">
       <PackagePath>OneAppAway.xr.xml</PackagePath>
-      <Modified>2016-09-12T21:40:57.653</Modified>
+      <Modified>2016-09-14T20:47:09.118</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -746,11 +762,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-09-12T21:41:00.845</Modified>
+      <Modified>2016-09-14T20:50:03.145</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2016-09-12T22:54:57.414</Modified>
+      <Modified>2016-09-14T21:33:22.413</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

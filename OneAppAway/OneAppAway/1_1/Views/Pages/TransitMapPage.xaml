@@ -8,7 +8,8 @@
     xmlns:conv="using:OneAppAway._1_1.Converters"
     xmlns:localH="using:OneAppAway._1_1.Helpers"
     xmlns:data="clr-namespace:OneAppAway._1_1.Data;assembly=CommonClasses"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="Self">
@@ -26,7 +27,17 @@
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>-->
-            <ListView ItemsSource="{Binding SearchResults}">
+            <ListView ItemsSource="{Binding SearchResults}" x:Name="MainListView">
+                <i:Interaction.Behaviors>
+                    <core:DataTriggerBehavior >
+                        
+                    </core:DataTriggerBehavior>
+                    <core:EventTriggerBehavior EventName="SelectionChanged">
+                        <core:EventTriggerBehavior.Actions>
+                            <core:InvokeCommandAction Command="{Binding GoToLocationCommand}" CommandParameter="{Binding ElementName=MainListView, Path=SelectedItem}"/>
+                        </core:EventTriggerBehavior.Actions>
+                    </core:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
@@ -46,7 +57,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <localC:EnterCommandTextBox PlaceholderText="Search Stops" VerticalAlignment="Center" Margin="0,0,5,0" Command="{Binding SearchCommand}" FlyoutBase.AttachedFlyout="{StaticResource SearchFlyout}"/>
-                        <CommandBar RequestedTheme="Dark" Background="#303030" Grid.Column="1" BorderBrush="#303030">
+                        <CommandBar Grid.Column="1" RequestedTheme="Dark" Background="#303030" BorderBrush="#303030">
                             <CommandBar.SecondaryCommands>
                                 <AppBarToggleButton IsChecked="{Binding AutoDownloadArrivals, Mode=TwoWay}" Label="Automatically Get All Stop Arrivals"/>
                                 <AppBarToggleButton IsChecked="{Binding ManuallyDownloadArrivalsGroups, Mode=TwoWay}" Label="Manually Get Arrivals In Stop Groups"/>
@@ -54,7 +65,7 @@
                                 <AppBarSeparator/>
                                 <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
-                            <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
+                            <AppBarButton Icon="MapPin" Label="Go To Current Location" Command="{Binding CenterOnCurrentLocationCommand}" IsEnabled="{Binding IsFindingLocation, Converter={StaticResource InvertBoolConverter}}"/>
                             <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Release">
                                 <localH:BindingHelper.AppliedBindingHelper>
                                     <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomInButtonPressed, Mode=TwoWay}"/>
@@ -71,6 +82,7 @@
                                 </AppBarButton.Icon>
                             </AppBarButton>
                         </CommandBar>
+                        <ProgressRing Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="17.5,0,0,0" Width="30" Height="30" IsHitTestVisible="False" Visibility="{Binding IsFindingLocation, Converter={StaticResource BoolToVisibilityConverter}}" IsActive="{Binding IsFindingLocation}"/>
                     </Grid>
                 </DataTemplate>
             </localS:LargeAndSmallTitleBarTemplateSelector.LargeTemplate>
@@ -92,7 +104,7 @@
                                 <AppBarSeparator/>
                                 <AppBarToggleButton Label="Manually Download Stops" IsChecked="{Binding ManuallyDownloadStops, Mode=TwoWay}"/>
                             </CommandBar.SecondaryCommands>
-                            <AppBarButton Icon="MapPin" Label="Current Location" Command="{Binding CenterOnCurrentLocationCommand}"/>
+                            <AppBarButton Icon="MapPin" Label="Go To Current Location" Command="{Binding CenterOnCurrentLocationCommand}" IsEnabled="{Binding IsFindingLocation, Converter={StaticResource InvertBoolConverter}}"/>
                             <AppBarButton Icon="ZoomIn" Label="Zoom In" ClickMode="Release">
                                 <localH:BindingHelper.AppliedBindingHelper>
                                     <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomInButtonPressed, Mode=TwoWay}"/>
@@ -109,6 +121,7 @@
                                 </AppBarButton.Icon>
                             </AppBarButton>
                         </CommandBar>
+                        <ProgressRing VerticalAlignment="Center" HorizontalAlignment="Left" Margin="17.5,0,0,0" Width="30" Height="30" IsHitTestVisible="False" Visibility="{Binding IsFindingLocation, Converter={StaticResource BoolToVisibilityConverter}}" IsActive="{Binding IsFindingLocation}"/>
                     </Grid>
                 </DataTemplate>
             </localS:LargeAndSmallTitleBarTemplateSelector.OverflowTemplate>

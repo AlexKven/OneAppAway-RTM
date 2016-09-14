@@ -624,11 +624,11 @@ namespace OneAppAway._1_1.Views.Controls
                 Geopoint adjustedCenter = null;
                 if (view.Center != null)
                     adjustedCenter = (Geopoint)CenterConverter.Convert(view.Center.Value, typeof(Geopoint), null, null);
-                await MainMap.TrySetViewAsync(adjustedCenter, view.ZoomLevel, null, null, MapAnimationKind.Bow);
+                await MainMap.TrySetViewAsync(adjustedCenter, view.ZoomLevel, null, null, view.Animate ? MapAnimationKind.Default : MapAnimationKind.None);
             }
             else
             {
-                await MainMap.TrySetViewBoundsAsync(new GeoboundingBox(view.Area.Value.NW.ToBasicGeoposition(), view.Area.Value.SE.ToBasicGeoposition()), null, MapAnimationKind.Default);
+                await MainMap.TrySetViewBoundsAsync(new GeoboundingBox(view.Area.Value.NW.ToBasicGeoposition(), view.Area.Value.SE.ToBasicGeoposition()), null, view.Animate ? MapAnimationKind.Default : MapAnimationKind.None);
             }
         }
         #endregion

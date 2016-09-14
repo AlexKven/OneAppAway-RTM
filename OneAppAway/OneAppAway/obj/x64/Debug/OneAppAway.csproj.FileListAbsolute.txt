@@ -388,3 +388,9 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\SQLitePCL.Ext.pri.x
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\ProjectArchitectures.txt
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\CommonClasses.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\CommonClasses.pdb
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Microsoft.Xaml.Interactions.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Microsoft.Xaml.Interactivity.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Microsoft.Graphics.Canvas.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Microsoft.Graphics.Canvas.winmd
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Microsoft.Xaml.Interactions.pri.xml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Microsoft.Xaml.Interactivity.pri.xml

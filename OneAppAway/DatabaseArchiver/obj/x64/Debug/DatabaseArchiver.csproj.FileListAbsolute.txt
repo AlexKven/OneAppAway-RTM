@@ -546,3 +546,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\SQLitePCL.Ext
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\ProjectArchitectures.txt
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\CommonClasses.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\CommonClasses.pdb
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Microsoft.Xaml.Interactions.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\bin\x64\Debug\Microsoft.Xaml.Interactivity.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Microsoft.Xaml.Interactions.pri.xml
+C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\obj\x64\Debug\Microsoft.Xaml.Interactivity.pri.xml
