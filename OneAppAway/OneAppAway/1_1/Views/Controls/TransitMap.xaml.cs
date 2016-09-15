@@ -45,7 +45,7 @@ namespace OneAppAway._1_1.Views.Controls
         private List<TransitStopIconWrapper> StopIconWrappers = new List<TransitStopIconWrapper>();
 
         private ArrivalsControlInTransitPageViewModel ArrivalsViewModel;
-        private StopArrivalsControl ArrivalsPopup;
+        private StopArrivalsOuterControl ArrivalsPopup;
         private TranslateTransform ArrivalsPopupTransform = new TranslateTransform();
         #endregion
 
@@ -178,8 +178,6 @@ namespace OneAppAway._1_1.Views.Controls
             get { return (LatLonRect)GetValue(AreaDelayProperty); }
             set { SetValue(AreaDelayProperty, value); }
         }
-
-        // Using a DependencyProperty as the backing store for AreaDelay.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AreaDelayProperty =
             DependencyProperty.Register("AreaDelay", typeof(LatLonRect), typeof(TransitMap), new PropertyMetadata(new LatLonRect()));
 
@@ -217,6 +215,14 @@ namespace OneAppAway._1_1.Views.Controls
         }
         public static readonly DependencyProperty StopsClickedCommandProperty =
             DependencyProperty.Register("StopsClickedCommand", typeof(ICommand), typeof(TransitMap), new PropertyMetadata(null));
+        
+        public ICommand StopTitleClickedCommand
+        {
+            get { return (ICommand)GetValue(StopTitleClickedCommandProperty); }
+            set { SetValue(StopTitleClickedCommandProperty, value); }
+        }
+        public static readonly DependencyProperty StopTitleClickedCommandProperty =
+            DependencyProperty.Register("StopTitleClickedCommand", typeof(ICommand), typeof(TransitMap), new PropertyMetadata(null));
         
         public bool HasSelectedStops
         {
@@ -477,8 +483,8 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void SetArrivalsViewModel()
         {
-            ArrivalsPopup = new StopArrivalsControl() { RenderTransform = ArrivalsPopupTransform };
-            ArrivalsViewModel = new ArrivalsControlInTransitPageViewModel(UwpSettingsManager.Instance, UwpNetworkManager.Instance);
+            ArrivalsPopup = new StopArrivalsOuterControl() { RenderTransform = ArrivalsPopupTransform };
+            ArrivalsViewModel = new ArrivalsControlInTransitPageViewModel();
             ArrivalsViewModel.VisibilityChangedCallback += async visible =>
             {
                 DoubleAnimation opacityAnimation = new DoubleAnimation() { From = visible ? 0 : 1, To = visible ? 1 : 0, Duration = TimeSpan.FromMilliseconds(150) };
@@ -497,22 +503,21 @@ namespace OneAppAway._1_1.Views.Controls
                     ArrivalsViewModel.IsVisible = false;
             };
             ArrivalsViewModel.BindToControl(OnMapPopup, MapControl.LocationProperty, "MapLocation", false, LatLonToGeopointConverter.Instance, "UnsetNAL");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.WidthProperty, "Width");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.HeightProperty, "Height");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.WidthProperty, "Width");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.HeightProperty, "Height");
             ArrivalsPopup.Visibility = Visibility.Visible;
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.VisibilityProperty, "IsVisible", false, BoolToVisibilityConverter.Instance);
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.IsExpandEnabledProperty, "IsExpandEnabled");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.IsCompressEnabledProperty, "IsCompressEnabled");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.DataContextProperty, "DataContext");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.ExpandCommandProperty, "ExpandCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.CompressCommandProperty, "CompressCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.CloseCommandProperty, "CloseCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.ShowBottomArrowProperty, "ShowBottomArrow");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsControl.ShowRoutesListProperty, "ShowRoutesList");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.VisibilityProperty, "IsVisible", false, BoolToVisibilityConverter.Instance);
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.DataContextProperty, "DataContext");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.ExpandCommandProperty, "ExpandCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.CompressCommandProperty, "CompressCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.CloseCommandProperty, "CloseCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.ShowBottomArrowProperty, "ShowBottomArrow");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.ShowRoutesListProperty, "ShowRoutesList");
             ArrivalsViewModel.BindToControl(this, TransitMap.CenterRegionProperty, "CenterRegion");
             ArrivalsViewModel.PropertyChanged += ArrivalsViewModel_PropertyChanged;
             OnMapPopup.Content = ArrivalsPopup;
             ArrivalsViewModel.SetSize(MainMap.ActualWidth, MainMap.ActualHeight);
+            ArrivalsPopup.SetBinding(StopArrivalsOuterControl.TitleCommandProperty, new Binding { Source = this, Path = new PropertyPath("StopTitleClickedCommand") });
         }
 
         private void SetArea()

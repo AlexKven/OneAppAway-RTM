@@ -26,9 +26,15 @@
     <RootPropertyPathName Name="Width" />
     <RootPropertyPathName Name="ShowBottomArrow" />
     <RootPropertyPathName Name="ShowRoutesList" />
+    <RootPropertyPathName Name="TopControlsVisibility" />
+    <RootPropertyPathName Name="ExpandCommand" />
+    <RootPropertyPathName Name="CompressCommand" />
+    <RootPropertyPathName Name="CloseCommand" />
+    <RootPropertyPathName Name="TitleCommand" />
     <RootPropertyPathName Name="HasChildren" />
     <RootPropertyPathName Name="RouteNames" />
     <RootPropertyPathName Name="ChildrenSource" />
+    <RootPropertyPathName Name="TitleVisibility" />
     <RootPropertyPathName Name="TitleToolTip" />
     <RootPropertyPathName Name="StopName" />
     <RootPropertyPathName Name="IconUri" />
@@ -50,7 +56,6 @@
     <RootPropertyPathName Name="ToggleMenuCommand" />
     <RootPropertyPathName Name="TitleTemplate" />
     <RootPropertyPathName Name="PageDataContext" />
-    <RootPropertyPathName Name="TitleVisibility" />
     <RootPropertyPathName Name="Points" />
     <RootPropertyPathName Name="Text" />
     <RootPropertyPathName Name="IsSearchBoxOpen" />
@@ -71,6 +76,7 @@
     <RootPropertyPathName Name="SearchCommand" />
     <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
     <RootPropertyPathName Name="CurrentZoomRate" />
+    <RootPropertyPathName Name="NavigateToStopPageCommand" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Background" />
@@ -182,6 +188,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
@@ -310,13 +317,13 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Command" />
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Width" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Command" />
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="Tag" />
@@ -396,11 +403,17 @@
       <RootEvent Name="SizeChanged" />
       <RootEvent Name="DataContextChanged" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsSubControl">
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ShowRoutesList" />
+      <RootProperty Name="TopControlsVisibility" />
+      <RootProperty Name="ExpandCommand" />
+      <RootProperty Name="CompressCommand" />
+      <RootProperty Name="CloseCommand" />
+      <RootProperty Name="TitleCommand" />
       <RootProperty Name="Width" />
+      <RootProperty Name="TitleVisibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
       <RootProperty Name="Points" />
@@ -411,7 +424,7 @@
       <RootProperty Name="StrokeThickness" />
       <RootProperty Name="Stroke" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl" />
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsOuterControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
@@ -438,6 +451,7 @@
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap">
       <RootProperty Name="CurrentZoomRate" />
+      <RootProperty Name="StopTitleClickedCommand" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
@@ -572,6 +586,7 @@
       <RootProperty Name="Value" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TransitMapPage" />
+    <RootType FullName="OneAppAway._1_1.Views.Pages.TransitStopPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootEvent Name="Navigated" />
       <RootEvent Name="Navigating" />

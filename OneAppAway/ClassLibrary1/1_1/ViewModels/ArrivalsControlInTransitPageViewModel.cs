@@ -11,11 +11,14 @@ namespace OneAppAway._1_1.ViewModels
 {
     public class ArrivalsControlInTransitPageViewModel : BaseViewModel
     {
+        #region Constants
         const double COLUMN_SIZE = 310;
         const double MAXIMIZED_MAP_MARGIN = 50;
         const double ARRIVALS_CONTROL_TRIANGLE_HEIGHT = 30;
         const double NORMAL_HEIGHT = 400;
+        #endregion
 
+        #region Fields
         private double MapWidth;
         private double MapHeight;
         private double NumColsRequested = 1;
@@ -27,14 +30,10 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
         bool Maximized = false;
+        #endregion
 
-        private SettingsManagerBase SettingsManager;
-        private NetworkManagerBase NetworkManager;
-
-        public ArrivalsControlInTransitPageViewModel(SettingsManagerBase settingsManager, NetworkManagerBase networkManager)
+        public ArrivalsControlInTransitPageViewModel()
         {
-            SettingsManager = settingsManager;
-            NetworkManager = networkManager;
             ExpandCommand = new Command((obj) =>
             {
                 NumColsRequested += .5;
@@ -55,36 +54,11 @@ namespace OneAppAway._1_1.ViewModels
             });
         }
 
+        #region Command Properties
         public ICommand ExpandCommand { get; }
         public ICommand CompressCommand { get; }
         public ICommand CloseCommand { get; }
-
-        private void Maximize()
-        {
-            Maximized = true;
-            IsOnMap = false;
-            SetCenterRegion();
-        }
-
-        private void Restore()
-        {
-            Maximized = false;
-            IsOnMap = true;
-            SetCenterRegion();
-        }
-
-        private void SetCenterRegion()
-        {
-            if (Stop.HasValue)
-            {
-                if (Maximized)
-                    CenterRegion = new RectSubset() { Top = MAXIMIZED_MAP_MARGIN, TopValueType = RectSubsetValueType.Length };
-                else
-                    CenterRegion = new RectSubset() { Top = 0.2, TopValueType = RectSubsetValueType.Length, TopScale = RectSubsetScale.Relative };
-            }
-            else
-                CenterRegion = new RectSubset();
-        }
+        #endregion
 
         public void SetSize(double mapWidth, double mapHeight)
         {
@@ -173,7 +147,10 @@ namespace OneAppAway._1_1.ViewModels
         public bool ShowRoutesList
         {
             get { return _ShowRoutesList; }
-            set { SetProperty(ref _ShowRoutesList, value); }
+            set
+            {
+                SetProperty(ref _ShowRoutesList, value);
+            }
         }
 
         private double _Width;
@@ -206,11 +183,11 @@ namespace OneAppAway._1_1.ViewModels
                 (_DataContext as IDisposable)?.Dispose();
                 if (value.HasValue)
                 {
-                    _DataContext = new StopArrivalsControlViewModel(value.Value);
+                    _DataContext = new StopArrivalsControlViewModel(value.Value, true);
                     MapLocation = value.Value.Position;
                 }
                 else
-                    _DataContext = new StopArrivalsControlViewModel(new TransitStop());
+                    _DataContext = new StopArrivalsControlViewModel(new TransitStop(), true);
                 OnPropertyChanged("DataContext");
                 SetCenterRegion();
             }
@@ -241,6 +218,35 @@ namespace OneAppAway._1_1.ViewModels
                 SetProperty(ref _IsOnMap, value);
             }
         }
+
+        #region Private Actions
+        private void Maximize()
+        {
+            Maximized = true;
+            IsOnMap = false;
+            SetCenterRegion();
+        }
+
+        private void Restore()
+        {
+            Maximized = false;
+            IsOnMap = true;
+            SetCenterRegion();
+        }
+
+        private void SetCenterRegion()
+        {
+            if (Stop.HasValue)
+            {
+                if (Maximized)
+                    CenterRegion = new RectSubset() { Top = MAXIMIZED_MAP_MARGIN, TopValueType = RectSubsetValueType.Length };
+                else
+                    CenterRegion = new RectSubset() { Top = 0.2, TopValueType = RectSubsetValueType.Length, TopScale = RectSubsetScale.Relative };
+            }
+            else
+                CenterRegion = new RectSubset();
+        }
+        #endregion
 
         public event EventHandler Closed;
     }

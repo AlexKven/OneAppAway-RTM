@@ -10,13 +10,14 @@ using System.Windows.Input;
 
 namespace OneAppAway._1_1.ViewModels
 {
-    public class StopArrivalsControlViewModel : BaseViewModel, IDisposable
+    public class StopArrivalsControlViewModel : BaseViewModel
     {
-        private MemoryCache Cache = new MemoryCache();
         public TransitStop Stop { get; }
-        public StopArrivalsControlViewModel(TransitStop stop)
+        public bool ShowRoutesList { get; }
+        public StopArrivalsControlViewModel(TransitStop stop, bool showRoutesList)
         {
             Stop = stop;
+            ShowRoutesList = showRoutesList;
             if (stop.Children != null)
             {
                 foreach (var childID in stop.Children)
@@ -25,7 +26,7 @@ namespace OneAppAway._1_1.ViewModels
                     //var child = MemoryCache.GetStop(childID);
                     var child = DataSource.GetTransitStop(childID, DataSourcePreference.MemoryCacheOnly);
                     if (child.HasData)
-                        ChildrenSource.Add(new StopArrivalsControlViewModel(child.Data) { IsTopLevel = false }); //Nested ViewModels!
+                        ChildrenSource.Add(new StopArrivalsControlViewModel(child.Data, ShowRoutesList) { IsTopLevel = false }); //Nested ViewModels!
                 }
             }
             if (ChildrenSource != null && ChildrenSource.Count > 0)
@@ -64,11 +65,6 @@ namespace OneAppAway._1_1.ViewModels
             IsBusy = false;
         }
 
-        public void Dispose()
-        {
-            Cache.Dispose();
-        }
-
         private ObservableCollection<string> _RouteNames = new ObservableCollection<string>();
         public ObservableCollection<string> RouteNames
         {
@@ -90,6 +86,13 @@ namespace OneAppAway._1_1.ViewModels
         {
             get { return _TitleToolTip; }
             set { SetProperty(ref _TitleToolTip, value); }
+        }
+
+        private bool _ShowSizeControls = false;
+        public bool ShowSizeControls
+        {
+            get { return _ShowSizeControls; }
+            set { SetProperty(ref _ShowSizeControls, value); }
         }
 
         public bool HasChildren { get; }

@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-09-15T21:23:26.189</Modified>
+      <Modified>2016-09-15T23:32:00.838</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2016-09-15T21:23:20.399</Modified>
+      <Modified>2016-09-15T23:31:51.631</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v10.0\ExtensionSDKs\AdDuplex.Windows10\10.0.1.5\References\CommonConfiguration\neutral\AdDuplex.winmd">
       <PackagePath>AdDuplex.winmd</PackagePath>
@@ -502,7 +502,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll">
       <PackagePath>CommonClasses.dll</PackagePath>
-      <Modified>2016-09-15T21:23:12.985</Modified>
+      <Modified>2016-09-15T23:31:44.103</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v10.0\ExtensionSDKs\AdDuplex.Windows10\10.0.1.5\Redist\CommonConfiguration\neutral\AdDuplex\Themes\Generic.xbf">
       <PackagePath>AdDuplex\Themes\Generic.xbf</PackagePath>
@@ -758,7 +758,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.xr.xml">
       <PackagePath>OneAppAway.xr.xml</PackagePath>
-      <Modified>2016-09-15T20:04:25.144</Modified>
+      <Modified>2016-09-15T23:31:50.667</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -766,11 +766,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-09-15T20:04:30.081</Modified>
+      <Modified>2016-09-15T23:31:53.749</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2016-09-15T21:23:26.164</Modified>
+      <Modified>2016-09-15T23:32:00.829</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

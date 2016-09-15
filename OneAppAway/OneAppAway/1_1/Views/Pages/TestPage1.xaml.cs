@@ -29,7 +29,7 @@ namespace OneAppAway._1_1.Views.Pages
         public TestPage1()
         {
             this.InitializeComponent();
-            DataContext = new BaseViewModel() { Title = "Test Page 1" };
+            DataContext = new BaseViewModel() { Title = "Developer Page" };
             
         }
 

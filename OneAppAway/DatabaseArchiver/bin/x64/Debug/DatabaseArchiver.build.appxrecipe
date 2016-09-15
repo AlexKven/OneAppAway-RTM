@@ -388,9 +388,6 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\1_1\XmlDataSources\TransitCenterData.xml">
-      <PackagePath>CommonClasses\1_1\XmlDataSources\TransitCenterData.xml</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>

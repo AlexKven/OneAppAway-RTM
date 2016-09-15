@@ -146,12 +146,12 @@
     <Compile Include="1_1\Views\Controls\StopArrivalsBox.xaml.cs">
       <DependentUpon>StopArrivalsBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
-      <DependentUpon>StopArrivalsControl.xaml</DependentUpon>
+    <Compile Include="1_1\Views\Controls\StopArrivalsOuterControl.xaml.cs">
+      <DependentUpon>StopArrivalsOuterControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Views\Controls\StopArrivalsControlBase.cs" />
-    <Compile Include="1_1\Views\Controls\StopArrivalsSubControl.xaml.cs">
-      <DependentUpon>StopArrivalsSubControl.xaml</DependentUpon>
+    <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
+      <DependentUpon>StopArrivalsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Views\Controls\TransitMap.xaml.cs">
       <DependentUpon>TransitMap.xaml</DependentUpon>
@@ -170,6 +170,9 @@
     </Compile>
     <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
       <DependentUpon>TransitMapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\TransitStopPage.xaml.cs">
+      <DependentUpon>TransitStopPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Views\Structures\TitleBarElementSize.cs" />
     <Compile Include="1_1\Selectors\TitleBarTemplateSelectorBase.cs" />
@@ -352,11 +355,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="1_1\Views\Controls\StopArrivalsControl.xaml">
+    <Page Include="1_1\Views\Controls\StopArrivalsOuterControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="1_1\Views\Controls\StopArrivalsSubControl.xaml">
+    <Page Include="1_1\Views\Controls\StopArrivalsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -377,6 +380,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="1_1\Views\Pages\TransitMapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TransitStopPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

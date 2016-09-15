@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" RequestedTheme="Dark">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock VerticalAlignment="Top" FontSize="32">Test Page 1</TextBlock>
-        <Button HorizontalAlignment="Center" Click="Button_Click" x:Name="_Button">Navigate</Button>
+        <Button HorizontalAlignment="Center" Click="Button_Click" x:Name="_Button">Shape Designer</Button>
     </Grid>
 </local:ApplicationPage>

@@ -8,30 +8,26 @@
     xmlns:conv="using:OneAppAway._1_1.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400"                                                   RequestedTheme="Dark" x:Name="self">
+    d:DesignWidth="400" MinHeight="200"                                                                 x:Name="self">
 
     <Grid>
-        <!--<Grid.Resources>
+        <Grid.Resources>
             <conv:BoolToVisibilityConverter x:Key="BoolVisibilityConverter"/>
-        </Grid.Resources>-->
+        </Grid.Resources>
         <Grid.RowDefinitions>
-            <!--<RowDefinition Height="Auto"/>-->
-            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--<Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>-->
-        <Rectangle Fill="#EE333333"/>
-        <!--<Rectangle Grid.ColumnSpan="3" Fill="#303030"/>-->
-        <local:StopArrivalsSubControl x:ConnectionId='2' x:Name="SubControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}"/>
+        </Grid.ColumnDefinitions>
         <!--<Rectangle>
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="1,0" StartPoint="0.5,0">
                     <GradientStop Color="#00202020"/>
-                    <GradientStop Color="#80202020"/>
+                    <GradientStop Color="#80202020" Offset="1"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
@@ -40,21 +36,22 @@
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,0">
                     <GradientStop Color="#80202020"/>
-                    <GradientStop Color="#00202020"/>
+                    <GradientStop Color="#00202020" Offset="1"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>-->
-        <!--<Image Width="40" Height="40" Source="{Binding IconUri}" VerticalAlignment="Top"/>
-        <Button Background="Transparent" Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="1" Margin="4" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-            <TextBlock Text="{Binding StopName}" FontSize="15" TextTrimming="WordEllipsis" TextWrapping="WrapWholeWords" Foreground="White" VerticalAlignment="Center"/>
+        <Rectangle Grid.ColumnSpan="3" Fill="#303030" Visibility="{Binding Path=IsTopLevel, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        <Image Width="40" Height="40" Source="{Binding IconUri}" VerticalAlignment="Top" Visibility="{Binding ElementName=self, Path=TitleVisibility}"/>
+        <Button x:ConnectionId='2' x:Name="TitleButton" Height="38" Background="Transparent" Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="1" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ToolTipService.ToolTip="{Binding TitleToolTip}" Visibility="{Binding ElementName=self, Path=TitleVisibility}" Command="{Binding ElementName=self, Path=TitleCommand}">
+            <local:AutoFitTextBlock Text="{Binding StopName}" FontSize="18" Foreground="White" VerticalAlignment="Stretch"/>
         </Button>
-        <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Top">
-            <Button RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" Visibility="{Binding Path=HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}"></Button>
-            <Button RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="CompressButton">&#xE73F;</Button>
-            <Button RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="ExpandButton">&#xE740;</Button>
-            <Button RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton">❌</Button>
+        <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Top" Visibility="{Binding ElementName=self, Path=TitleVisibility}">
+            <Button x:ConnectionId='4' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" Visibility="{Binding Path=HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}" x:Name="RefreshButton"></Button>
+            <Button x:ConnectionId='5' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="CompressButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CompressCommand}">&#xE73F;</Button>
+            <Button x:ConnectionId='6' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="ExpandButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=ExpandCommand}">&#xE740;</Button>
+            <Button x:ConnectionId='7' RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CloseCommand}">❌</Button>
         </StackPanel>
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}">
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding ChildrenSource}" VerticalContentAlignment="Stretch">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -63,18 +60,18 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:StopArrivalsSubControl VerticalAlignment="Stretch" Width="215"/>
+                        <local:StopArrivalsControl VerticalAlignment="Stretch" Width="{Binding Width}" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TopControlsVisibility="Collapsed" TitleVisibility="Visible" TitleCommand="{Binding ElementName=self, Path=TitleCommand}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
         <Grid Grid.Row="1" Grid.ColumnSpan="3" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsIndeterminate="{Binding IsBusy}"/>
-            <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Height="45" HorizontalContentAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" Visibility="{Binding ElementName=self, Path=ShowRoutesList, Converter={StaticResource BoolToVisibilityConverter}}">
                 <ItemsControl ItemsSource="{Binding RouteNames}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -83,8 +80,8 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Background="#303030" Template="{ThemeResource SimpleButtonTemplate}" Margin="2">
-                                <Border BorderBrush="{ThemeResource SystemColorControlAccentBrush}" BorderThickness="2" MinWidth="46" Height="46">
+                            <Button Background="#303030" Template="{ThemeResource SimpleButtonTemplate}" Margin="1">
+                                <Border BorderBrush="{ThemeResource SystemColorControlAccentBrush}" BorderThickness="2" MinWidth="43" Height="43">
                                     <TextBlock Margin="2, 0, 2, 0" Foreground="White" FontSize="20" Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </Button>
@@ -92,8 +89,8 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-        </Grid>-->
-        <Polygon Grid.Row="1" Points="0, 0, 30, 30, 60, 0" Fill="#EE333333" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding ElementName=self, Path=ShowBottomArrow, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <local:StopArrivalsBox x:ConnectionId='3' Grid.Row="1" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </Grid>
     </Grid>
 </local:StopArrivalsControlBase>
 

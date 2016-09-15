@@ -20,6 +20,7 @@ namespace OneAppAway._1_1.ViewModels
         public TransitMapPageViewModel(MemoryCache cache)
         {
             StopsClickedCommand = new Command(StopsClickedCommand_Execute);
+            NavigateToStopPageCommand = new Command(NavigateToStopPageCommand_Execute);
             CenterOnCurrentLocationCommand = new Command(CenterOnCurrentLocation_Execute);
             RefreshCommand = new Command(Refresh_Execute);
             SearchCommand = new Command(Search_Execute, obj => (obj?.ToString()?.Length ?? 0) > 4);
@@ -63,6 +64,7 @@ namespace OneAppAway._1_1.ViewModels
 
         #region Commands
         public ICommand StopsClickedCommand { get; }
+        public ICommand NavigateToStopPageCommand { get; }
         public ICommand CenterOnCurrentLocationCommand { get; }
         public ICommand RefreshCommand { get; }
         public ICommand CancelRefreshCommand { get; }
@@ -440,6 +442,11 @@ namespace OneAppAway._1_1.ViewModels
                 SelectedStops.AddRange((IEnumerable<TransitStop>)parameter);
             else
                 SelectedStops.ReplaceRange((IEnumerable<TransitStop>)parameter);
+        }
+
+        private void NavigateToStopPageCommand_Execute(object parameter)
+        {
+
         }
 
         private async void CenterOnCurrentLocation_Execute(object parameter)
