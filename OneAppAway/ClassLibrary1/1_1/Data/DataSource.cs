@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Windows.Storage.Streams;
 using static OneAppAway._1_1.AsyncHelpers;
 
 namespace OneAppAway._1_1.Data
@@ -17,6 +21,7 @@ namespace OneAppAway._1_1.Data
         {
             Sources.Add(new MemoryCacheDataSource());
             Sources.Add(new OneBusAwayDataSource());
+            Sources.Add(new TransitCenterDataSource());
         }
 
         //private Task<RetrievedData<T>> GenericGetDataAsync<T, F>(string id, DataSourcePreference preference, CancellationToken cancellationToken, Func<Func<Task<RetrievedData<T>>>> runFunction,  )

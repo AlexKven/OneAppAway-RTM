@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OneAppAway._1_1.Data
 {
+    [DataContract]
     public struct TransitStop
     {
         //private static SqlProvider<TransitStop> _SqlProvider;
@@ -49,20 +52,52 @@ namespace OneAppAway._1_1.Data
         private static TransitStopSqlProvider _SqlProvider = new TransitStopSqlProvider();
         public static TransitStopSqlProvider SqlProvider => _SqlProvider;
 
+        public static IEnumerable<Type> GetSerializationTypes()
+        {
+            Type[] myTypes = new[] { typeof(string), typeof(LatLon), typeof(AlertStatus), typeof(string[]) };
+            return myTypes.Union(LatLon.GetSerializationTypes());
+        }
+
+        [DataMember]
+        [XmlAttribute]
         public string ID { get; set; }
+        [DataMember]
+        [XmlAttribute]
         public string Parent { get; set; }
+        [DataMember]
+        [XmlElement]
         public LatLon Position { get; set; }
+        [DataMember]
+        [XmlAttribute]
         public StopDirection Direction { get; set; }
+        [DataMember]
+        [XmlAttribute]
         public string Path { get; set; }
+        [DataMember]
+        [XmlAttribute]
         public string Name { get; set; }
+        [DataMember]
+        [XmlAttribute]
         public string Code { get; set; }
+        [DataMember]
+        [XmlAttribute]
         public string Provider { get; set; }
+        [DataMember]
+        [XmlAttribute]
         public string ProviderID { get; set; }
 
+        [DataMember]
+        [XmlArray]
         public string[] Children { get; set; }
         //public int LocationType { get; set; }
+        [DataMember]
+        [XmlArray]
         public string[] Routes { get; set; }
+        [DataMember]
+        [XmlArray]
         public string[] Alerts { get; set; }
+        [DataMember]
+        [XmlAttribute]
         public AlertStatus Status { get; set; }
 
         public static bool operator ==(TransitStop lhs, TransitStop rhs)

@@ -1,17 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace OneAppAway._1_1.Data
 {
-    public struct LatLon : IEquatable<LatLon>
+    public struct LatLon : IEquatable<LatLon>, IXmlSerializable
     {
         public static LatLon Seattle => new LatLon(47.6062100, -122.3320700);
 
-        public double Latitude { get; }
-        public double Longitude { get; }
+        public static IEnumerable<Type> GetSerializationTypes()
+        {
+            yield return typeof(double);
+        }
+        
+        private double _Latitude;
+        private double _Longitude;
+        
+        public double Latitude
+        {
+            get { return _Latitude; }
+            private set { _Latitude = value; }
+        }
+        
+        public double Longitude
+        {
+            get { return _Longitude; }
+            private set { _Longitude = value; }
+        }
 
         public bool IsZero => Latitude == 0 && Longitude == 0;
         public bool IsNotALocation
@@ -44,8 +65,8 @@ namespace OneAppAway._1_1.Data
                 longitude += 360;
             while (longitude >= 180)
                 longitude -= 360;
-            Latitude = latitude;
-            Longitude = longitude;
+            _Latitude = latitude;
+            _Longitude = longitude;
         }
 
         public static LatLon operator -(LatLon value)
@@ -124,6 +145,25 @@ namespace OneAppAway._1_1.Data
         public bool Equals(LatLon other)
         {
             return this == other;
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            _Latitude = double.Parse(reader.GetAttribute("Latitude"));
+            _Longitude = double.Parse(reader.GetAttribute("Longitude"));
+            
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteValue(ToString());
+            writer.WriteAttributeString("Latitude", Latitude.ToString());
+            writer.WriteAttributeString("Longitude", Longitude.ToString());
         }
 
         public static bool operator ==(LatLon left, LatLon right)

@@ -30,7 +30,7 @@ namespace OneAppAway._1_1.Data
 
         public RetrievedData(T data)
         {
-            HasData = true;
+            HasData = data != null;
             Data = data;
         }
 

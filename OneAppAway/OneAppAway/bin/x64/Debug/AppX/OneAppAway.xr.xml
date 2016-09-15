@@ -29,6 +29,7 @@
     <RootPropertyPathName Name="HasChildren" />
     <RootPropertyPathName Name="RouteNames" />
     <RootPropertyPathName Name="ChildrenSource" />
+    <RootPropertyPathName Name="TitleToolTip" />
     <RootPropertyPathName Name="StopName" />
     <RootPropertyPathName Name="IconUri" />
     <RootPropertyPathName Name="IsTopLevel" />
@@ -407,6 +408,10 @@
       <RootProperty Name="StrokeThickness" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
+      <RootMethod Name="GetToolTip" />
+      <RootMethod Name="SetToolTip" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Visibility" />

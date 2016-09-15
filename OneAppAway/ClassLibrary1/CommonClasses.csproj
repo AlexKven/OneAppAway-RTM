@@ -64,6 +64,7 @@
     <Compile Include="1_1\Data\SqlProvider.cs" />
     <Compile Include="1_1\Data\SqlProviderBase.cs" />
     <Compile Include="1_1\Data\SqlProviderExtensions.cs" />
+    <Compile Include="1_1\Data\TransitCenterDataSource.cs" />
     <Compile Include="1_1\Data\TransitRoute.cs" />
     <Compile Include="1_1\Data\TransitRouteSqlProvider.cs" />
     <Compile Include="1_1\Data\TransitStop.cs" />
@@ -120,6 +121,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="1_1\XmlDataSources\TransitCenterData.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

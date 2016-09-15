@@ -42,7 +42,7 @@
         </Rectangle>-->
         <Rectangle Grid.ColumnSpan="3" Fill="#303030" Visibility="{Binding Path=IsTopLevel, Converter={StaticResource BoolToVisibilityConverter}}"/>
         <Image Width="40" Height="40" Source="{Binding IconUri}" VerticalAlignment="Top"/>
-        <Button Height="38" Background="Transparent" Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="1" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button Height="38" Background="Transparent" Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="1" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ToolTipService.ToolTip="{Binding TitleToolTip}">
             <local:AutoFitTextBlock Text="{Binding StopName}" FontSize="18" Foreground="White" VerticalAlignment="Stretch"/>
         </Button>
         <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Top">

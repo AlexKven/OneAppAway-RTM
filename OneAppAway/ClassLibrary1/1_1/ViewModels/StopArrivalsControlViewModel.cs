@@ -33,6 +33,7 @@ namespace OneAppAway._1_1.ViewModels
             else
                 Width = 290;
             StopName = stop.Name;
+            TitleToolTip = $"Stop ID = {stop.ID}";
             if (ChildrenSource.Count > 0)
                 StopName += $" ({ChildrenSource.Count.ToString()} stops)";
             HasChildren = ChildrenSource.Count > 0;
@@ -82,6 +83,13 @@ namespace OneAppAway._1_1.ViewModels
             {
                 SetProperty(ref _StopName, value);
             }
+        }
+
+        private string _TitleToolTip;
+        public string TitleToolTip
+        {
+            get { return _TitleToolTip; }
+            set { SetProperty(ref _TitleToolTip, value); }
         }
 
         public bool HasChildren { get; }

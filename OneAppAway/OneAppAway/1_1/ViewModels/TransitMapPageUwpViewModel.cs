@@ -46,6 +46,12 @@ namespace OneAppAway._1_1.ViewModels
             {
                 await LocationHelper.ProgressivelyAcquireLocation(pos => locationCallback(pos.ToLatLon()), LocationTimeout);
             }
+            catch (TimeoutException)
+            {
+                MessageDialog dialog = new MessageDialog("Finding your location took too long and timed out. Try again and we'll try it with more time.");
+                await dialog.ShowAsync();
+                LocationTimeout += LocationTimeout;
+            }
             catch (Exception ex)
             {
                 MessageDialog dialog = new MessageDialog(ex.Message);

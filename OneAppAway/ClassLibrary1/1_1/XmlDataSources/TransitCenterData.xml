@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TransitStops>
+  <TransitStop ID="_FWTC0" Path="_vx_HlnniVF??LJ??MF??nIG??MK??LG?" Name="Federal Way Transit Center">
+    <Position Latitude="47.31753" Longitude="-122.30486"/>
+    <Children>
+      <string>1_80439</string>
+      <string>1_80431</string>
+      <string>1_80432</string>
+      <string>1_80438</string>
+      <string>1_80437</string>
+      <string>1_80433</string>
+      <string>3_27814</string>
+      <string>3_29410</string>
+    </Children>
+  </TransitStop>
+  <TransitStop ID="_IDS0" Path="qnoaHffsiV?{@yE??z@" Name="International Dist/Chinatown Station">
+    <Position Latitude="47.59850" Longitude="-122.32802"/>
+    <Children>
+      <string>1_623</string>
+      <string>1_624</string>
+      <string>1_621</string>
+    </Children>
+  </TransitStop>
+  <TransitStop ID="_PSS0" Path="_hpaH`wsiVMa@}EhEL`@" Name="Pioneer Square Station">
+    <Position Latitude="47.60263" Longitude="-122.33130"/>
+    <Children>
+      <string>1_501</string>
+      <string>1_502</string>
+      <string>1_532</string>
+    </Children>
+  </TransitStop>
+  <TransitStop ID="_USS0" Path="}fqaHpstiVOg@uEdENb@" Name="University Street Station">
+    <Position Latitude="47.60754" Longitude="-122.33579"/>
+    <Children>
+      <string>1_455</string>
+      <string>1_456</string>
+      <string>1_565</string>
+    </Children>
+  </TransitStop>
+  <TransitStop ID="_WSS0" Path="qaraHx`uiVRSmCqISR" Name="Westlake Station">
+    <Position Latitude="47.61162" Longitude="-122.33663"/>
+    <Children>
+      <string>1_1108</string>
+      <string>1_1109</string>
+      <string>1_1121</string>
+    </Children>
+  </TransitStop>
+  <TransitStop ID="_CHS0" Path="umsaHvsqiViHB?j@hH?" Name="Capitol Hill Station">
+    <Position Latitude="47.61913" Longitude="-122.32025"/>
+    <Children>
+      <string>1_99603</string>
+      <string>1_99610</string>
+    </Children>
+  </TransitStop>
+  <TransitStop ID="_UWS0" Path="wsyaHdnniV?k@lF??j@" Name="University of Washington Station">
+    <Position Latitude="47.64952" Longitude="-122.30377"/>
+    <Children>
+      <string>1_99605</string>
+      <string>1_99604</string>
+    </Children>
+  </TransitStop>
+  <TransitStop ID="_SDS0" Path="wjnaHr`siV?k@hG??j@" Name="Stadium Station">
+    <Position Latitude="47.59155" Longitude="-122.32718"/>
+    <Children>
+      <string>1_99260</string>
+      <string>1_99101</string>
+    </Children>
+  </TransitStop>
+  <TransitStop ID="_SOS0" Path="c}kaHxasiV?_@_C??^" Name="SODO Station">
+    <Position Latitude="47.58003" Longitude="-122.32742"/>
+    <Children>
+      <string>1_99111</string>
+      <string>1_99256</string>
+    </Children>
+  </TransitStop>
+</TransitStops>

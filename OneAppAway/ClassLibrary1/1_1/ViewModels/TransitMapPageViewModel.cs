@@ -27,7 +27,6 @@ namespace OneAppAway._1_1.ViewModels
             NavigatedToCommand = new Command(OnNavigatedTo);
             Cache = cache;
             NetworkManagerBase.Instance.NetworkTypeChanged += (s, e) => LoadFromSettings(); //*MemoryLeak*!!! Temporary
-            LoadSpecialStops();
             LoadFromSettings();
         }
 
@@ -237,11 +236,11 @@ namespace OneAppAway._1_1.ViewModels
         #endregion
 
         #region Methods
-        private void LoadSpecialStops()
-        {
-            var fwtc = new TransitStop() { ID = "FWTC", Position = new LatLon(47.31753, -122.30486), Path = "_vx_HlnniVF??LJ??MF??nIG??MK??LG?", Name = "Federal Way Transit Center", Children = new[] { "1_80439", "1_80431", "1_80438", "1_80432", "1_80437", "1_80433", "3_27814", "3_29410" } };
-            Cache.Add(fwtc);
-        }
+        //private void LoadSpecialStops()
+        //{
+        //    var fwtc = new TransitStop() { ID = "FWTC", Position = new LatLon(47.31753, -122.30486), Path = "_vx_HlnniVF??LJ??MF??nIG??MK??LG?", Name = "Federal Way Transit Center", Children = new[] { "1_80439", "1_80431", "1_80438", "1_80432", "1_80437", "1_80433", "3_27814", "3_29410" } };
+        //    Cache.Add(fwtc);
+        //}
 
         private void SetMutallyExclusiveProperties(ManuallyDownloadArrivalsMode mode, bool value)
         {
