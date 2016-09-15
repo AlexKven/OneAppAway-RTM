@@ -61,6 +61,7 @@
     <RootPropertyPathName Name="ManuallyDownloadArrivalsAll" />
     <RootPropertyPathName Name="ManuallyDownloadArrivalsGroups" />
     <RootPropertyPathName Name="AutoDownloadArrivals" />
+    <RootPropertyPathName Name="CancelRefreshCommand" />
     <RootPropertyPathName Name="RefreshCommand" />
     <RootPropertyPathName Name="ZoomOutButtonPressed" />
     <RootPropertyPathName Name="ZoomInButtonPressed" />

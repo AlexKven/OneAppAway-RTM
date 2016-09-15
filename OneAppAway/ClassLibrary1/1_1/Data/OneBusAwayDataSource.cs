@@ -67,7 +67,7 @@ namespace OneAppAway._1_1.Data
             {
                 StringReader reader = new StringReader(await SendRequest("route/" + id, null, false, cancellationToken));
                 if (cancellationToken.IsCancellationRequested)
-                    return null;
+                    throw new OperationCanceledException();
 
                 XDocument xDoc = XDocument.Load(reader);
 
@@ -90,7 +90,7 @@ namespace OneAppAway._1_1.Data
             {
                 StringReader reader = new StringReader(await SendRequest("arrival-and-departure-for-stop/" + stopId, new Dictionary<string, string>() { ["tripId"] = tripId }, false, cancellationToken));
                 if (cancellationToken.IsCancellationRequested)
-                    return null;
+                    throw new OperationCanceledException();
 
                 XDocument xDoc = XDocument.Load(reader);
 
@@ -121,7 +121,7 @@ namespace OneAppAway._1_1.Data
                     return null;
                 var responseString = await SendRequest("stops-for-location", new Dictionary<string, string>() { ["lat"] = area.Center.Latitude.ToString(), ["lon"] = area.Center.Longitude.ToString(), ["latSpan"] = area.Span.Latitude.ToString(), ["lonSpan"] = area.Span.Longitude.ToString() }, false, cancellationToken);
                 if (cancellationToken.IsCancellationRequested)
-                    return null;
+                    throw new OperationCanceledException();
 
                 StringReader reader = new StringReader(responseString);
                 XDocument xDoc = XDocument.Load(reader);
@@ -227,7 +227,7 @@ namespace OneAppAway._1_1.Data
                 {
                     resp = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, request), cancellationToken);
                 }
-                if (cancellationToken.IsCancellationRequested) return null;
+                if (cancellationToken.IsCancellationRequested) throw new OperationCanceledException();
                 return await resp.Content.ReadAsStringAsync();
             }
             catch (HttpRequestException ex)
@@ -242,7 +242,7 @@ namespace OneAppAway._1_1.Data
             {
                 StringReader reader = new StringReader(await SendRequest("arrivals-and-departures-for-stop/" + stopId, new Dictionary<string, string>() { ["minutesBefore"] = minsBefore.ToString(), ["minutesAfter"] = minsAfter.ToString() }, false, cancellationToken));
                 if (cancellationToken.IsCancellationRequested)
-                    return null;
+                    throw new OperationCanceledException();
 
                 XDocument xDoc = XDocument.Load(reader);
 

@@ -64,6 +64,8 @@ namespace OneAppAway._1_1.Data
             var result = new RetrievedData<TransitStop>();
             foreach (var source in Sources)
             {
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
                 if (result.HasData || !source.IsQualified(preference))
                     continue;
                 if ((source.GetTransitStopFunction & DataSourceFunctionType.Provision) == DataSourceFunctionType.Provision)
@@ -71,6 +73,8 @@ namespace OneAppAway._1_1.Data
             }
             if (result.HasData)
             {
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
                 foreach (var source in Sources)
                 {
                     if (!result.HasData || !source.IsQualified(preference))
@@ -87,6 +91,8 @@ namespace OneAppAway._1_1.Data
             var result = new RetrievedData<TransitRoute>();
             foreach (var source in Sources)
             {
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
                 if (result.HasData || !source.IsQualified(preference))
                     continue;
                 if ((source.GetTransitRouteFunction & DataSourceFunctionType.Provision) == DataSourceFunctionType.Provision)
@@ -94,6 +100,8 @@ namespace OneAppAway._1_1.Data
             }
             if (result.HasData)
             {
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
                 foreach (var source in Sources)
                 {
                     if (!result.HasData || !source.IsQualified(preference))
@@ -110,6 +118,8 @@ namespace OneAppAway._1_1.Data
             var result = new RetrievedData<RealTimeArrival>();
             foreach (var source in Sources)
             {
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
                 if (result.HasData || !source.IsQualified(preference))
                     continue;
                 if ((source.GetRealTimeArrivalFunction & DataSourceFunctionType.Provision) == DataSourceFunctionType.Provision)
@@ -117,6 +127,8 @@ namespace OneAppAway._1_1.Data
             }
             if (result.HasData)
             {
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
                 foreach (var source in Sources)
                 {
                     if (!result.HasData || !source.IsQualified(preference))
@@ -135,9 +147,10 @@ namespace OneAppAway._1_1.Data
             List<Exception> resultExceptions = new List<Exception>();
             foreach (var source in Sources)
             {
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
                 if (!source.IsQualified(preference))
                     continue;
-
                 if (source.CanGetTransitStopsForArea)
                 {
                     var sResult = await source.GetTransitStopsForArea(area, cancellationToken);

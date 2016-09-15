@@ -73,4 +73,14 @@
       <string>1_99256</string>
     </Children>
   </TransitStop>
+  <TransitStop ID="_PPS0" Path="wuraHnysiVzA|EvAkA_BgF" Name="Pacific Place Station">
+    <Position Latitude="47.61398201072932" Longitude="-122.33178734779358"/>
+    <Children>
+      <string>1_1086</string>
+      <string>1_1084</string>
+      <string>1_1083</string>
+      <string>1_1082</string>
+      <string>1_1192</string>
+    </Children>
+  </TransitStop>
 </TransitStops>

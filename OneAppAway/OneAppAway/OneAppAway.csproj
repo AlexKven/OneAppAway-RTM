@@ -313,6 +313,7 @@
     <Content Include="Assets\Icons\MeIcon.png" />
     <Content Include="Assets\Icons\MyLocationIcon256.png" />
     <Content Include="Assets\Icons\MyLocationIcon32.png" />
+    <Content Include="Assets\Icons\CancelRefreshStopsIcon.png" />
     <Content Include="Assets\Icons\RefreshStopsIcon.png" />
     <Content Include="Assets\Icons\SmallLogo.scale-100.png" />
     <Content Include="Assets\Icons\VehicleBase.png" />

@@ -514,6 +514,9 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\MyLocationIcon32.png">
       <PackagePath>Assets\Icons\MyLocationIcon32.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\CancelRefreshStopsIcon.png">
+      <PackagePath>Assets\Icons\CancelRefreshStopsIcon.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\RefreshStopsIcon.png">
       <PackagePath>Assets\Icons\RefreshStopsIcon.png</PackagePath>
     </AppxPackagedFile>

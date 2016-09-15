@@ -76,9 +76,14 @@
                                     <localH:ExternalBinding PropertyName="IsPressed" Value="{Binding ZoomOutButtonPressed, Mode=TwoWay}"/>
                                 </localH:BindingHelper.AppliedBindingHelper>
                             </AppBarButton>
-                            <AppBarButton Label="Find Stops" Command="{Binding RefreshCommand}">
+                            <AppBarButton Label="Find Stops" Command="{Binding RefreshCommand}" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=Invert}">
                                 <AppBarButton.Icon>
                                     <BitmapIcon UriSource="/Assets/Icons/RefreshStopsIcon.png"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarButton Label="Cancel Finding Stops" Command="{Binding CancelRefreshCommand}" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <AppBarButton.Icon>
+                                    <BitmapIcon UriSource="/Assets/Icons/CancelRefreshStopsIcon.png"/>
                                 </AppBarButton.Icon>
                             </AppBarButton>
                         </CommandBar>

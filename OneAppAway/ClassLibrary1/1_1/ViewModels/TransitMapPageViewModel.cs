@@ -25,6 +25,11 @@ namespace OneAppAway._1_1.ViewModels
             SearchCommand = new Command(Search_Execute, obj => (obj?.ToString()?.Length ?? 0) > 4);
             GoToLocationCommand = new Command(GoToLocation_Execute);
             NavigatedToCommand = new Command(OnNavigatedTo);
+            CancelRefreshCommand = new Command((obj) =>
+            {
+                TokenSource.Cancel();
+                TokenSource = new CancellationTokenSource();
+            });
             Cache = cache;
             NetworkManagerBase.Instance.NetworkTypeChanged += (s, e) => LoadFromSettings(); //*MemoryLeak*!!! Temporary
             LoadFromSettings();
@@ -60,6 +65,7 @@ namespace OneAppAway._1_1.ViewModels
         public ICommand StopsClickedCommand { get; }
         public ICommand CenterOnCurrentLocationCommand { get; }
         public ICommand RefreshCommand { get; }
+        public ICommand CancelRefreshCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand GoToLocationCommand { get; }
         public ICommand NavigatedToCommand { get; }
