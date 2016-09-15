@@ -331,7 +331,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
             _typeTable[51] = typeof(global::OneAppAway._1_1.Selectors.TitleBarTemplateSelectorBase);
             _typeTable[52] = typeof(global::Windows.UI.Xaml.DataTemplate);
             _typeTable[53] = typeof(global::OneAppAway._1_1.Views.Pages.TestPage1);
-            _typeTable[54] = typeof(global::OneAppAway._1_1.Views.Pages.TestPage2);
+            _typeTable[54] = typeof(global::OneAppAway._1_1.Views.Pages.ShapeDesignerPage);
             _typeTable[55] = typeof(global::OneAppAway._1_1.Helpers.FlyoutHelpers);
             _typeTable[56] = typeof(global::Windows.UI.Xaml.FrameworkElement);
             _typeTable[57] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
@@ -459,7 +459,7 @@ namespace OneAppAway.OneAppAway_XamlTypeInfo
         private object Activate_48_ApplicationPage() { return new global::OneAppAway._1_1.Views.Pages.ApplicationPage(); }
         private object Activate_50_ObservableDictionary() { return new global::OneAppAway.Common.ObservableDictionary(); }
         private object Activate_53_TestPage1() { return new global::OneAppAway._1_1.Views.Pages.TestPage1(); }
-        private object Activate_54_TestPage2() { return new global::OneAppAway._1_1.Views.Pages.TestPage2(); }
+        private object Activate_54_TestPage2() { return new global::OneAppAway._1_1.Views.Pages.ShapeDesignerPage(); }
         private object Activate_58_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
         private object Activate_60_DataTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.DataTriggerBehavior(); }
         private object Activate_62_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }

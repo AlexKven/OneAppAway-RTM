@@ -119,6 +119,7 @@
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
     <Compile Include="1_1\Data\LocationHelper.cs" />
+    <Compile Include="1_1\Data\PointWrapper.cs" />
     <Compile Include="1_1\Data\UwpNetworkManager.cs" />
     <Compile Include="1_1\Data\UwpSettingsManager.cs" />
     <Compile Include="1_1\Helpers\BindingHelperCollection.cs" />
@@ -164,8 +165,8 @@
     <Compile Include="1_1\Views\Pages\TestPage1.xaml.cs">
       <DependentUpon>TestPage1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1_1\Views\Pages\TestPage2.xaml.cs">
-      <DependentUpon>TestPage2.xaml</DependentUpon>
+    <Compile Include="1_1\Views\Pages\ShapeDesignerPage.xaml.cs">
+      <DependentUpon>ShapeDesignerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
       <DependentUpon>TransitMapPage.xaml</DependentUpon>
@@ -371,7 +372,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="1_1\Views\Pages\TestPage2.xaml">
+    <Page Include="1_1\Views\Pages\ShapeDesignerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,8 +19,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\OuterFram
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\OuterFrame.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TestPage1.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TestPage1.g.cs
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TestPage2.g.i.cs
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TestPage2.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TransitMapPage.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TransitMapPage.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Data\OuterFrame.g.i.cs
@@ -82,7 +80,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\TransitMap.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\OuterFrame.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TestPage1.xaml
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TestPage2.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TransitMapPage.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Data\OuterFrame.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Pages\AboutPage.xaml
@@ -119,7 +116,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\TransitMap.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\OuterFrame.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TestPage1.xbf
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TestPage2.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\TransitMapPage.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Data\OuterFrame.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Pages\AboutPage.xbf
@@ -162,7 +158,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\TransitMap.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\OuterFrame.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Pages\TestPage1.xbf
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Pages\TestPage2.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Pages\TransitMapPage.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Data\OuterFrame.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Pages\AboutPage.xbf
@@ -394,3 +389,8 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Microsoft.Graphics.
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Microsoft.Graphics.Canvas.winmd
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Microsoft.Xaml.Interactions.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Microsoft.Xaml.Interactivity.pri.xml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Pages\ShapeDesignerPage.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\ShapeDesignerPage.g.i.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\ShapeDesignerPage.g.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\ShapeDesignerPage.xaml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Pages\ShapeDesignerPage.xbf

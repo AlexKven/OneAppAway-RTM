@@ -51,6 +51,8 @@
     <RootPropertyPathName Name="TitleTemplate" />
     <RootPropertyPathName Name="PageDataContext" />
     <RootPropertyPathName Name="TitleVisibility" />
+    <RootPropertyPathName Name="Points" />
+    <RootPropertyPathName Name="Text" />
     <RootPropertyPathName Name="IsSearchBoxOpen" />
     <RootPropertyPathName Name="SearchResults" />
     <RootPropertyPathName Name="GoToLocationCommand" />
@@ -255,8 +257,8 @@
       <RootProperty Name="MinWidth" />
       <RootProperty Name="Height" />
       <RootProperty Name="Child" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
@@ -286,6 +288,7 @@
       <RootEvent Name="CenterChanged" />
       <RootEvent Name="MapElementPointerEntered" />
       <RootEvent Name="MapElementPointerExited" />
+      <RootEvent Name="ActualCameraChanged" />
       <RootMethod Name="GetNormalizedAnchorPoint" />
       <RootMethod Name="SetNormalizedAnchorPoint" />
     </RootType>
@@ -405,8 +408,8 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Visibility" />
-      <RootProperty Name="Stroke" />
       <RootProperty Name="StrokeThickness" />
+      <RootProperty Name="Stroke" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
@@ -478,7 +481,12 @@
       <RootProperty Name="TitleTemplateSelector" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage1" />
-    <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage2" />
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="Text" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.Views.Pages.ShapeDesignerPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
       <RootProperty Name="Placement" />
       <RootProperty Name="Content" />
@@ -615,10 +623,6 @@
     </RootType>
     <RootType FullName="OneAppAway.FavoritesPage" />
     <RootType FullName="OneAppAway.HelpTip" />
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Content" />

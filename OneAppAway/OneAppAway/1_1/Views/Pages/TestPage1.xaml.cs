@@ -35,7 +35,7 @@ namespace OneAppAway._1_1.Views.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(TestPage2)); Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.Control);
+            Frame.Navigate(typeof(ShapeDesignerPage)); Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.Control);
         }
     }
 }
