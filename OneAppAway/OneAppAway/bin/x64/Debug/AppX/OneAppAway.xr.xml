@@ -10,6 +10,9 @@
     <RootPropertyPathName Name="FontWeight" />
     <RootPropertyPathName Name="FontStyle" />
     <RootPropertyPathName Name="FontSize" />
+    <RootPropertyPathName Name="IsDropOffOnly" />
+    <RootPropertyPathName Name="IsCancelled" />
+    <RootPropertyPathName Name="HasAlert" />
     <RootPropertyPathName Name="RouteDestination" />
     <RootPropertyPathName Name="ScheduledArrivalTimeText" />
     <RootPropertyPathName Name="PredictedArrivalTimeText" />
@@ -111,6 +114,7 @@
     <RootType FullName="OneAppAway._1_1.Converters.IsEarlyToForegroundConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.IsPredictedToForegroundConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.EnumCaseVisibilityConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.FadeOnDropOffOnlyConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
@@ -185,11 +189,11 @@
       <RootProperty Name="Stretch" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="RenderTransform" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Visibility" />
-      <RootProperty Name="Margin" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
@@ -314,6 +318,7 @@
       <RootProperty Name="Background" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Opacity" />
       <RootProperty Name="Content" />
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
@@ -332,6 +337,8 @@
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="OneAppAway._1_1.Views.Controls.RealTimeArrivalControl">
       <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="VerticalAlignment" />

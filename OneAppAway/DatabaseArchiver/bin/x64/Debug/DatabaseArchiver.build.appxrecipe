@@ -388,6 +388,9 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\FodyWeavers.xml">
+      <PackagePath>CommonClasses\FodyWeavers.xml</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\DatabaseArchiver\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>

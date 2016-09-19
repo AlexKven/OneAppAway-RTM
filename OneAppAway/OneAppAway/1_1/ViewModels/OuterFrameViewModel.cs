@@ -2,6 +2,7 @@
 using OneAppAway._1_1.Selectors;
 using OneAppAway._1_1.Views.Controls;
 using OneAppAway._1_1.Views.Pages;
+using OneAppAway.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,10 +32,10 @@ namespace OneAppAway._1_1.ViewModels
         public OuterFrameViewModel(App currentApp, ApplicationFrame frame)
         {
             CurrentApp = currentApp;
-            GoBackCommand = new Command(obj => GoBack(), obj => Frame.CanGoBack || (Page != null && Page.CanGoBack));
-            ToggleMenuCommand = new Command(obj => IsMenuOpen = !IsMenuOpen);
-            NavigateBackCommand = new Command(obj => Frame.GoBack(), obj => Frame.CanGoBack);
-            NavigateForwardCommand = new Command(obj => Frame.GoForward(), obj => Frame.CanGoForward);
+            GoBackCommand = new RelayCommand(obj => GoBack(), obj => Frame.CanGoBack || (Page != null && Page.CanGoBack));
+            ToggleMenuCommand = new RelayCommand(obj => IsMenuOpen = !IsMenuOpen);
+            NavigateBackCommand = new RelayCommand(obj => Frame.GoBack(), obj => Frame.CanGoBack);
+            NavigateForwardCommand = new RelayCommand(obj => Frame.GoForward(), obj => Frame.CanGoForward);
             Frame = frame;
             RegisterFrameEvents();
             RefreshPage();
@@ -118,12 +119,12 @@ namespace OneAppAway._1_1.ViewModels
             Frame.ContentChanged += Frame_ContentChanged;
             Frame.RegisterPropertyChangedCallback(Windows.UI.Xaml.Controls.Frame.CanGoBackProperty, (s, e) =>
             {
-                GoBackCommand.ChangeCanExecute();
-                NavigateBackCommand.ChangeCanExecute();
+                GoBackCommand.RaiseCanExecuteChanged();
+                NavigateBackCommand.RaiseCanExecuteChanged();
             });
             Frame.RegisterPropertyChangedCallback(Windows.UI.Xaml.Controls.Frame.CanGoForwardProperty, (s, e) =>
             {
-                NavigateForwardCommand.ChangeCanExecute();
+                NavigateForwardCommand.RaiseCanExecuteChanged();
             });
             //Frame.Navigated += Frame_Navigated;
             //Frame.Loaded += Frame_Loaded;
@@ -140,7 +141,7 @@ namespace OneAppAway._1_1.ViewModels
         #region Event Handlers
         private void Page_CanGoBackChanged(object sender, EventArgs e)
         {
-            GoBackCommand.ChangeCanExecute();
+            GoBackCommand.RaiseCanExecuteChanged();
         }
 
         private void Frame_ContentChanged(object sender, EventArgs e)
@@ -293,9 +294,9 @@ namespace OneAppAway._1_1.ViewModels
             RefreshTitleTemplate();
             RefreshTitleControlsTemplate();
             RefreshTitleElementSizes();
-            GoBackCommand.ChangeCanExecute();
-            NavigateBackCommand.ChangeCanExecute();
-            NavigateForwardCommand.ChangeCanExecute();
+            GoBackCommand.RaiseCanExecuteChanged();
+            NavigateBackCommand.RaiseCanExecuteChanged();
+            NavigateForwardCommand.RaiseCanExecuteChanged();
             RegisterPageEvents();
         }
 
@@ -513,10 +514,10 @@ namespace OneAppAway._1_1.ViewModels
 
         #region Properties
 
-        public Command GoBackCommand { get; }
-        public Command NavigateBackCommand { get; }
-        public Command NavigateForwardCommand { get; }
-        public Command ToggleMenuCommand { get; }
+        public RelayCommand GoBackCommand { get; }
+        public RelayCommand NavigateBackCommand { get; }
+        public RelayCommand NavigateForwardCommand { get; }
+        public RelayCommand ToggleMenuCommand { get; }
 
         public ObservableRangeCollection<HamburgerBarPageEntryViewModel> PageEntries { get; } = new ObservableRangeCollection<HamburgerBarPageEntryViewModel>();
 

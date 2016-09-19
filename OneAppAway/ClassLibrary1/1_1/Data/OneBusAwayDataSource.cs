@@ -88,7 +88,7 @@ namespace OneAppAway._1_1.Data
         {
             try
             {
-                StringReader reader = new StringReader(await SendRequest("arrival-and-departure-for-stop/" + stopId, new Dictionary<string, string>() { ["tripId"] = tripId }, false, cancellationToken));
+                StringReader reader = new StringReader(await SendRequest("arrival-and-departure-for-stop/" + stopId, new Dictionary<string, string>() { ["tripId"] = tripId }, true, cancellationToken));
                 if (cancellationToken.IsCancellationRequested)
                     throw new OperationCanceledException();
 

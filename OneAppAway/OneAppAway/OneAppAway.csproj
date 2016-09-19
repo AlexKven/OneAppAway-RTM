@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="1_1\Views\Structures\TitleBarElementSize.cs" />
     <Compile Include="1_1\Selectors\TitleBarTemplateSelectorBase.cs" />
+    <Compile Include="1_1\Converters\FadeOnDropOffOnlyConverter.cs" />
     <Compile Include="Data\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>
@@ -224,7 +225,6 @@
     <Compile Include="Common\NavigationFriendlyPage.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
-    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Data\CompactFormatter.cs" />
     <Compile Include="Controls\BusArrivalBox.xaml.cs" />
@@ -277,6 +277,8 @@
     <None Include="OneAppAway_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\Cancel.png" />
+    <Content Include="Assets\Icons\Alert.png" />
     <Content Include="Assets\Icons\BusAlert20.png" />
     <Content Include="Assets\Icons\BusAlert40.png" />
     <Content Include="Assets\Icons\BusAlert60.png" />

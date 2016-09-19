@@ -1,5 +1,6 @@
 ﻿using MvvmHelpers;
 using OneAppAway._1_1.Data;
+using OneAppAway.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,12 +35,12 @@ namespace OneAppAway._1_1.ViewModels
 
         public ArrivalsControlInTransitPageViewModel()
         {
-            ExpandCommand = new Command((obj) =>
+            ExpandCommand = new RelayCommand((obj) =>
             {
                 NumColsRequested += .5;
                 SetSize(MapWidth, MapHeight);
             }, (obj) => IsExpandEnabled);
-            CompressCommand = new Command((obj) =>
+            CompressCommand = new RelayCommand((obj) =>
             {
                 do
                 {
@@ -47,7 +48,7 @@ namespace OneAppAway._1_1.ViewModels
                 } while (NumColsRequested >= MaxColsVisible && NumColsRequested > 1);
                 SetSize(MapWidth, MapHeight);
             }, (obj) => IsCompressEnabled);
-            CloseCommand = new Command((obj) => {
+            CloseCommand = new RelayCommand((obj) => {
                 Stop = null;
                 SetVisibility();
                 Closed?.Invoke(this, EventArgs.Empty);
@@ -110,7 +111,7 @@ namespace OneAppAway._1_1.ViewModels
             set
             {
                 SetProperty(ref _IsExpandEnabled, value);
-                (ExpandCommand as Command)?.ChangeCanExecute();
+                (ExpandCommand as RelayCommand)?.RaiseCanExecuteChanged();
             }
         }
 
@@ -121,7 +122,7 @@ namespace OneAppAway._1_1.ViewModels
             set
             {
                 SetProperty(ref _IsCompressEnabled, value);
-                (CompressCommand as Command)?.ChangeCanExecute();
+                (CompressCommand as RelayCommand)?.RaiseCanExecuteChanged();
             }
         }
 

@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OneAppAway._1_1.Helpers;
+using OneAppAway.Common;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -27,7 +28,7 @@ namespace OneAppAway._1_1.Views.Controls
             //ExpandButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("ExpandCommand") });
             //CompressButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("CompressCommand") });
             //CloseButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("CloseCommand") });
-            RefreshButton.Command = new Command((obj) => ArrivalsBox.Refresh(true));
+            RefreshButton.Command = new RelayCommand((obj) => ArrivalsBox.Refresh(true));
         }
         
         public Visibility TitleVisibility

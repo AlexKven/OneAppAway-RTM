@@ -1,9 +1,12 @@
 ﻿using MvvmHelpers;
+using OneAppAway._1_1.Data;
 using OneAppAway._1_1.Views.Structures;
+using OneAppAway.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Input;
 using Windows.Devices.Geolocation;
@@ -30,7 +33,20 @@ namespace OneAppAway._1_1.Views.Pages
         {
             this.InitializeComponent();
             DataContext = new BaseViewModel() { Title = "Developer Page" };
-            
+            MainRealTimeArrivalControl.Arrival = new RealTimeArrival()
+            {
+                Status = AlertStatus.Alert,
+                RouteName = "193",
+                PredictedArrivalTime = DateTime.Now + TimeSpan.FromMinutes(5),
+                ScheduledArrivalTime = DateTime.Now + TimeSpan.FromMinutes(1),
+                Destination = "First Hill",
+                IsDropOffOnly = true
+            };
+        }
+
+        private static void TestAction(TestPage1 target, object obj)
+        {
+            target.ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

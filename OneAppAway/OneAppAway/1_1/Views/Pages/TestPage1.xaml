@@ -6,8 +6,10 @@
     xmlns:localC="using:OneAppAway._1_1.Views.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:OneAppAway._1_1.Data"
     mc:Ignorable="d" RequestedTheme="Dark">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <localC:RealTimeArrivalControl Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="MainRealTimeArrivalControl"/>
         <Button HorizontalAlignment="Center" Click="Button_Click" x:Name="_Button">Shape Designer</Button>
     </Grid>
 </local:ApplicationPage>

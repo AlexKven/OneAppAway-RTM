@@ -9,6 +9,7 @@ using System.Threading;
 using System.Net.Http;
 using System.Windows.Input;
 using System.Collections.Specialized;
+using OneAppAway.Common;
 
 namespace OneAppAway._1_1.ViewModels
 {
@@ -19,14 +20,14 @@ namespace OneAppAway._1_1.ViewModels
 
         public TransitMapPageViewModel(MemoryCache cache)
         {
-            StopsClickedCommand = new Command(StopsClickedCommand_Execute);
-            NavigateToStopPageCommand = new Command(NavigateToStopPageCommand_Execute);
-            CenterOnCurrentLocationCommand = new Command(CenterOnCurrentLocation_Execute);
-            RefreshCommand = new Command(Refresh_Execute);
-            SearchCommand = new Command(Search_Execute, obj => (obj?.ToString()?.Length ?? 0) > 4);
-            GoToLocationCommand = new Command(GoToLocation_Execute);
-            NavigatedToCommand = new Command(OnNavigatedTo);
-            CancelRefreshCommand = new Command((obj) =>
+            StopsClickedCommand = new WeakRelayCommand(StopsClickedCommand_Execute);
+            NavigateToStopPageCommand = new RelayCommand(NavigateToStopPageCommand_Execute);
+            CenterOnCurrentLocationCommand = new RelayCommand(CenterOnCurrentLocation_Execute);
+            RefreshCommand = new RelayCommand(Refresh_Execute);
+            SearchCommand = new RelayCommand(Search_Execute, obj => (obj?.ToString()?.Length ?? 0) > 4);
+            GoToLocationCommand = new RelayCommand(GoToLocation_Execute);
+            NavigatedToCommand = new RelayCommand(OnNavigatedTo);
+            CancelRefreshCommand = new RelayCommand((obj) =>
             {
                 TokenSource.Cancel();
                 TokenSource = new CancellationTokenSource();

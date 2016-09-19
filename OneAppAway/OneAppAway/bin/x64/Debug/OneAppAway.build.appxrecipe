@@ -394,6 +394,12 @@
     <AppxPackagedFile Include="C:\Users\kvenc\.nuget\packages\SQLitePCL.native.sqlite3.v140\0.9.2\build\native\sqlite3\v140\x64\esqlite3.dll">
       <PackagePath>esqlite3.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\Cancel.png">
+      <PackagePath>Assets\Icons\Cancel.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\Alert.png">
+      <PackagePath>Assets\Icons\Alert.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAlert20.png">
       <PackagePath>Assets\Icons\BusAlert20.png</PackagePath>
     </AppxPackagedFile>
@@ -566,6 +572,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\FodyWeavers.xml">
+      <PackagePath>CommonClasses\FodyWeavers.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.xr.xml">
       <PackagePath>OneAppAway.xr.xml</PackagePath>

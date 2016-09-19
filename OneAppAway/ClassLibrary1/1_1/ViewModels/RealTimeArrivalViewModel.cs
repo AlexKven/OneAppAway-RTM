@@ -2,6 +2,7 @@
 using OneAppAway._1_1.Abstract;
 using OneAppAway._1_1.Converters;
 using OneAppAway._1_1.Data;
+using OneAppAway.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,7 +33,7 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
 
-        private static Command IntervalExecuterCommand = new Command((obj) =>
+        private static RelayCommand IntervalExecuterCommand = new RelayCommand((obj) =>
         {
             for (int i = 0; i < Instances.Count; i++)
             {
@@ -61,6 +62,9 @@ namespace OneAppAway._1_1.ViewModels
             RouteDestination = arrival.Destination;
             DegreeOfConfidence = arrival.DegreeOfConfidence;
             IsPredicted = arrival.PredictedArrivalTime.HasValue;
+            HasAlert = arrival.Status == AlertStatus.Alert;
+            IsCancelled = arrival.Status == AlertStatus.Cancelled;
+            IsDropOffOnly = arrival.IsDropOffOnly;
 
             PredictedArrivalTimeText = arrival.PredictedArrivalTime?.ToString("h:mm tt") ?? "Unknown";
             if (arrival.ScheduledArrivalTime == null)
@@ -107,6 +111,7 @@ namespace OneAppAway._1_1.ViewModels
         }
         public bool IsCancelled { get; }
         public bool HasAlert { get; }
+        public bool IsDropOffOnly { get; }
         public string RouteName { get; }
         public string RouteDestination { get; }
         public string PredictedArrivalTimeText { get; }

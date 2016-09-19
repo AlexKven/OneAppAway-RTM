@@ -1,5 +1,6 @@
 ﻿using MvvmHelpers;
 using OneAppAway._1_1.Views.Controls;
+using OneAppAway.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace OneAppAway._1_1.ViewModels
             IconFontFamily = iconFontFamily;
             IconFontSize = iconFontSize;
             Frame.Navigated += Frame_Navigated;
-            NavigateCommand = new Command(TryNavigate);
+            NavigateCommand = new RelayCommand(TryNavigate);
         }
 
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
@@ -39,7 +40,7 @@ namespace OneAppAway._1_1.ViewModels
                 Frame.Navigate(PageType);
         }
 
-        public Command NavigateCommand { get; }
+        public RelayCommand NavigateCommand { get; }
 
         public FontFamily IconFontFamily { get; }
         public double IconFontSize { get; }

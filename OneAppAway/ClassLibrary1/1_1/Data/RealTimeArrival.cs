@@ -23,6 +23,7 @@ namespace OneAppAway._1_1.Data
         public LatLon? KnownVehicleLocation { get; set; }
         public double? Orientation { get; set; }
         public double DegreeOfConfidence { get; set; }
+        public bool IsDropOffOnly { get; set; }
 
         //public int MinutesLate
         //{

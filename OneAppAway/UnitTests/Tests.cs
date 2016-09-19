@@ -68,13 +68,13 @@ namespace UnitTests
             Assert.IsTrue(topOffset == 2.5, $"leftOffset is {topOffset}; expected 2.5.");
         }
 
-        private static void AssertExpectedVsActual<T>(string valueName, T expected, T actual) where T : IEquatable<T>
+        internal static void AssertExpectedVsActual<T>(string valueName, T expected, T actual) where T : IEquatable<T>
         {
             if (!expected.Equals(actual))
                 Assert.Fail($"{valueName} value is incorrect. Expected = {expected.ToString()}. Actual = {actual.ToString()}.");
         }
 
-        private static void AssertExpectedException<E>(string operationDescription, Action operation) where E : Exception
+        internal static void AssertExpectedException<E>(string operationDescription, Action operation) where E : Exception
         {
             bool exceptionThrown = false;
             try

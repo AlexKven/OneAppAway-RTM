@@ -1,6 +1,7 @@
 ﻿using MvvmHelpers;
 using OneAppAway._1_1.Abstract;
 using OneAppAway._1_1.Data;
+using OneAppAway.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
 
-        private static Command IntervalExecuterCommand = new Command((obj) =>
+        private static RelayCommand IntervalExecuterCommand = new RelayCommand((obj) =>
         {
             for (int i = 0; i < Instances.Count; i++)
             {
