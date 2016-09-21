@@ -158,7 +158,7 @@ namespace OneAppAway._1_1.ViewModels
             if (zoomIn ? ZoomInButtonPressed : ZoomOutButtonPressed)
                 CurrentZoomRate = zoomIn ? 1 : -1;
             else
-                ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(ZoomLevel + (zoomIn ? 1 : -1))));
+                OnChangeViewRequested(new MapView(ZoomLevel + (zoomIn ? 1 : -1)));
         }
 
         private bool _ZoomOutButtonPressed = false;
@@ -458,9 +458,9 @@ namespace OneAppAway._1_1.ViewModels
                 await GetLocation((pos) =>
                 {
                     if (ZoomLevel < 14)
-                        OnViewChangeRequested(new MapView(pos, 16.75));
+                        OnChangeViewRequested(new MapView(pos, 16.75));
                     else
-                        OnViewChangeRequested(new MapView(pos));
+                        OnChangeViewRequested(new MapView(pos));
                 });
             }
             finally
@@ -495,18 +495,20 @@ namespace OneAppAway._1_1.ViewModels
             {
                 var pos = (LatLon)parameter;
                 if (ZoomLevel < 14)
-                    ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos, 16.75)));
+                    OnChangeViewRequested(new MapView(pos, 16.75));
                 else
-                    ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(new MapView(pos)));
+                    OnChangeViewRequested(new MapView(pos));
             }
         }
         #endregion
 
-        #region Events
-        public event EventHandler<EventArgs<MapView>> ViewChangeRequested;
-        protected void OnViewChangeRequested(MapView view)
+        #region Back Commands
+        public ICommand ChangeViewBackCommand { get; set; }
+
+        protected void OnChangeViewRequested(MapView view)
         {
-            ViewChangeRequested?.Invoke(this, new EventArgs<MapView>(view));
+            if (ChangeViewBackCommand?.CanExecute(view) ?? false)
+                ChangeViewBackCommand?.Execute(view);
         }
         #endregion
 

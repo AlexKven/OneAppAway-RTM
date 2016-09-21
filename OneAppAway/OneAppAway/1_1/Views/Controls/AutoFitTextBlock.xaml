@@ -8,5 +8,5 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400" x:Name="Self" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SizeChanged="Self_SizeChanged">
-    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" DataContext="{Binding ElementName=Self, Path=DataContext}" FontFamily="{Binding FontFamily}" FontWeight="{Binding FontWeight}" FontStyle="{Binding FontStyle}" x:Name="InnerBlock" FontSize="{Binding FontSize, Mode=OneTime}" TextWrapping="WrapWholeWords" SizeChanged="InnerBlock_SizeChanged"/>
+    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" DataContext="{Binding ElementName=Self }" FontFamily="{Binding FontFamily}" FontWeight="{Binding FontWeight}" FontStyle="{Binding FontStyle}" x:Name="InnerBlock" FontSize="{Binding FontSize, Mode=OneTime}" TextWrapping="WrapWholeWords" SizeChanged="InnerBlock_SizeChanged"/>
 </UserControl>

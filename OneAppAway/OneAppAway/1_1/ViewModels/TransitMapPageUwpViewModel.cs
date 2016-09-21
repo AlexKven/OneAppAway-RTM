@@ -27,7 +27,7 @@ namespace OneAppAway._1_1.ViewModels
             {
                 var location = LocationHelper.GetLastKnownLocation();
                 if (location != null)
-                    OnViewChangeRequested(new MapView(location.Value.ToLatLon(), 16.75) { Animate = false });
+                    OnChangeViewRequested(new MapView(location.Value.ToLatLon(), 16.75) { Animate = false });
             }
             base.OnNavigatedTo(parameter);
         }

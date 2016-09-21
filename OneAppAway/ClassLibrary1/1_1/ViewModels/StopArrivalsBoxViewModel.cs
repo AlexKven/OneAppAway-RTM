@@ -118,7 +118,7 @@ namespace OneAppAway._1_1.ViewModels
                 }
                 if (arrivals.HasData)
                 {
-                    var viewModels = arrivals.Data.Select(arrival => new RealTimeArrivalViewModel(arrival));
+                    //var viewModels = arrivals.Data.Select(arrival => new RealTimeArrivalViewModel(arrival));
                     //var toRemove = new List<RealTimeArrivalViewModel>();
                     //var toChange = new List<RealTimeArrivalViewModel>();
                     //var toAdd = new List<RealTimeArrivalViewModel>();
@@ -134,7 +134,7 @@ namespace OneAppAway._1_1.ViewModels
                     //    if (!viewModels.Contains(oldItem))
                     //        toRemove.Add(oldItem);
                     //}
-                    Items.ReplaceRange(viewModels);
+                    Items.ReplaceRange(arrivals.Data);
                     //Items.Add(new RealTimeArrivalViewModel(new RealTimeArrival()));
                 }
             }
@@ -147,8 +147,8 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
 
-        private ObservableRangeCollection<RealTimeArrivalViewModel> _Items = new ObservableRangeCollection<RealTimeArrivalViewModel>();
-        public ObservableRangeCollection<RealTimeArrivalViewModel> Items
+        private ObservableRangeCollection<RealTimeArrival> _Items = new ObservableRangeCollection<RealTimeArrival>();
+        public ObservableRangeCollection<RealTimeArrival> Items
         {
             get { return _Items; }
         }

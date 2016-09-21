@@ -22,6 +22,8 @@ using Microsoft.Graphics.Canvas.Effects;
 using Microsoft.Graphics.Canvas.Brushes;
 using Microsoft.Graphics.Canvas.UI;
 using System.Reflection.Emit;
+using System.Windows.Input;
+using OneAppAway.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -36,6 +38,8 @@ namespace OneAppAway._1_1.Views.Pages
         public TransitMapPage()
         {
             this.InitializeComponent();
+            ChangeViewCommand = new WeakRelayCommand(ChangeViewCommand_Execute);
+
             VM = new TransitMapPageUwpViewModel(Cache) { Title = "Transit Map" };
             DataContext = VM;
             //DatabaseManager.Initialize(null);
@@ -51,6 +55,7 @@ namespace OneAppAway._1_1.Views.Pages
             VM.BindToControl(MainMap, TransitMap.ZoomLevelDelayProperty, "ZoomLevel", true);
             VM.BindToControl(MainMap, TransitMap.HasSelectedStopsProperty, "HasSelectedStops", true);
             VM.BindToControl(this, CanGoBackProperty, "CanGoBack");
+            VM.ChangeViewBackCommand = ChangeViewCommand;
             //SetBinding(CanGoBackProperty, new Binding() { Source = MainMap, Path = new PropertyPath("CanGoBack"), Mode = BindingMode.OneWay });
         }
 
@@ -65,11 +70,15 @@ namespace OneAppAway._1_1.Views.Pages
 
         #endregion
 
+        #region Properties
+        public ICommand ChangeViewCommand { get; }
+        #endregion
+
         #region Overrides
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            VM.ViewChangeRequested += VM_ViewChangeRequested;
+            //
             if (VM.NavigatedToCommand?.CanExecute(e.Parameter) ?? false)
                 VM.NavigatedToCommand.Execute(e.Parameter);
         }
@@ -77,7 +86,6 @@ namespace OneAppAway._1_1.Views.Pages
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
-            VM.ViewChangeRequested -= VM_ViewChangeRequested;
         }
 
         public override void GoBack()
@@ -87,9 +95,9 @@ namespace OneAppAway._1_1.Views.Pages
         #endregion
 
         #region Event Handlers
-        private async void VM_ViewChangeRequested(object sender, EventArgs<MapView> e)
+        private async void ChangeViewCommand_Execute(object parameter)
         {
-            await MainMap.TrySetView(e.Parameter);
+            await MainMap.TrySetView((MapView)parameter);
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

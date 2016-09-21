@@ -179,8 +179,10 @@ namespace OneAppAway._1_1.Data
             string routeId = element.Element("routeId")?.Value;
             string tripId = element.Element("tripId")?.Value;
             string stopId = element.Element("stopId")?.Value;
+            string freqSeconds = element?.Element("frequency")?.Element("headway")?.Value;
             string predictedArrivalTime = element.Element("predictedArrivalTime")?.Value;
             string scheduledArrivalTime = element.Element("scheduledArrivalTime")?.Value;
+            string arrivalEnabled = element.Element("ArrivalEnabled")?.Value;
             string lastUpdateTime = null;
             string destination = element.Element("tripHeadsign")?.Value;
             long predictedArrivalLong = long.Parse(predictedArrivalTime);
@@ -189,6 +191,13 @@ namespace OneAppAway._1_1.Data
             DateTime? predictedArrival = predictedArrivalLong == 0 ? null : new DateTime?((new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(predictedArrivalLong)).ToLocalTime());
             DateTime scheduledArrival = (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(scheduledArrivalLong)).ToLocalTime();
             DateTime? lastUpdate;
+            double frequency;
+            if (double.TryParse(freqSeconds, out frequency))
+            {
+                frequency /= 60;
+            }
+            else
+                frequency = -1;
             if ((element = element.Element("tripStatus")) != null)
             {
                 if (element.Element("predicted")?.Value == "true")
@@ -207,8 +216,8 @@ namespace OneAppAway._1_1.Data
                 else
                     degreeOfConfidence = -1;
             }
-            System.Diagnostics.Debug.WriteLine($"Degree of confidence for {routeName}: {degreeOfConfidence}");
-            return new RealTimeArrival() { RouteName = routeName, PredictedArrivalTime = predictedArrival, ScheduledArrivalTime = scheduledArrival, DegreeOfConfidence = degreeOfConfidence, Route = routeId, Trip = tripId, Stop = stopId, Destination = destination };
+            bool isDropOffOnly = arrivalEnabled == "false";
+            return new RealTimeArrival() { RouteName = routeName, PredictedArrivalTime = predictedArrival, ScheduledArrivalTime = scheduledArrival, DegreeOfConfidence = degreeOfConfidence, Route = routeId, Trip = tripId, Stop = stopId, Destination = destination, IsDropOffOnly = isDropOffOnly, FrequencyMinutes = frequency == -1 ? null : new double?(frequency) };
         }
 
         private static IEnumerable<T> ParseList<T>(XElement listElement, string elementName, Func<XElement, T> parser)

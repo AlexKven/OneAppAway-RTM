@@ -6,14 +6,3 @@ C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debu
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.pdb
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\ClassLibrary1.dll
 C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\ClassLibrary1.pdb
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\UnitTests.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\UnitTests.pdb
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\CommonClasses.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\MvvmHelpers.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\SQLitePCL.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\Windows.Foundation.UniversalApiContract.winmd
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\CommonClasses.pdb
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\bin\Debug\MvvmHelpers.xml
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\UnitTests\obj\Debug\UnitTests.pdb

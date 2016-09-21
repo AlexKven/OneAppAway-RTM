@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>KAPENTAWATT16</Machine>
+    <WindowsUser>AlexKven</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>5e9c89da-693d-4336-91f2-e9cc2a0054c9</PackageIdentityName>
+    <PackageIdentityPublisher>CN=AlexKven</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\obj\x64\Debug\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <RegisteredManifestChecksum>79DF19A673FD1AEAD0149FB52F0E734D032907D46DE4C74E272B288871CDA892</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>5e9c89da-693d-4336-91f2-e9cc2a0054c9_1.0.0.0_x64__6c11z77mz121w</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>5e9c89da-693d-4336-91f2-e9cc2a0054c9_6c11z77mz121w!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>5e9c89da-693d-4336-91f2-e9cc2a0054c9</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=AlexKven</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-09-20T15:51:22.093</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\OneAppAway_Windows8_1.Windows.exe">
+      <PackagePath>OneAppAway_Windows8_1.Windows.exe</PackagePath>
+      <Modified>2016-09-20T15:51:20.875</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-07T05:01:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-07T05:01:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-07T05:01:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-07T05:01:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\OneAppAway_Windows8_1.Windows.xr.xml">
+      <PackagePath>OneAppAway_Windows8_1.Windows.xr.xml</PackagePath>
+      <Modified>2016-09-20T15:51:20.612</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2016-09-20T15:51:20.759</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2016-09-20T15:51:20.759</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-09-20T15:51:21.812</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

@@ -56,7 +56,9 @@ namespace OneAppAway._1_1.ViewModels
 
         public RealTimeArrivalViewModel(RealTimeArrival arrival)
         {
-            Instances.Add(new WeakReference<RealTimeArrivalViewModel>(this));
+            if (arrival.FrequencyMinutes == null)
+                Instances.Add(new WeakReference<RealTimeArrivalViewModel>(this));
+            HasLongRouteName = arrival.RouteName.Length >= 8;
             Arrival = arrival;
             RouteName = arrival.RouteName;
             RouteDestination = arrival.Destination;
@@ -65,30 +67,38 @@ namespace OneAppAway._1_1.ViewModels
             HasAlert = arrival.Status == AlertStatus.Alert;
             IsCancelled = arrival.Status == AlertStatus.Cancelled;
             IsDropOffOnly = arrival.IsDropOffOnly;
+            IsFrequencyBased = arrival.FrequencyMinutes != null;
 
-            PredictedArrivalTimeText = arrival.PredictedArrivalTime?.ToString("h:mm tt") ?? "Unknown";
-            if (arrival.ScheduledArrivalTime == null)
-                ScheduledArrivalTimeText = "(Unscheduled)";
-            else
-                ScheduledArrivalTimeText = $"(Sched. {arrival.ScheduledArrivalTime?.ToString("h:mm")})";
-            if (arrival.PredictedArrivalTime != null && arrival.ScheduledArrivalTime != null)
+            if (arrival.FrequencyMinutes == null)
             {
-                var minsLate = (int)(arrival.PredictedArrivalTime.Value - arrival.ScheduledArrivalTime.Value).TotalMinutes;
-                if (minsLate > 0)
-                {
-                    PredictedArrivalTimeText += $", {minsLate}m late";
-                }
-                else if (minsLate == 0)
-                {
-                    PredictedArrivalTimeText += ", on time";
-                }
+                PredictedArrivalTimeText = arrival.PredictedArrivalTime?.ToString("h:mm tt") ?? "Unknown";
+                if (arrival.ScheduledArrivalTime == null)
+                    ScheduledArrivalTimeText = "(Unscheduled)";
                 else
+                    ScheduledArrivalTimeText = $"(Sched. {arrival.ScheduledArrivalTime?.ToString("h:mm")})";
+                if (arrival.PredictedArrivalTime != null && arrival.ScheduledArrivalTime != null)
                 {
-                    PredictedArrivalTimeText += $", {-minsLate}m early";
+                    var minsLate = (int)(arrival.PredictedArrivalTime.Value - arrival.ScheduledArrivalTime.Value).TotalMinutes;
+                    if (minsLate > 0)
+                    {
+                        PredictedArrivalTimeText += $", {minsLate}m late";
+                    }
+                    else if (minsLate == 0)
+                    {
+                        PredictedArrivalTimeText += ", on time";
+                    }
+                    else
+                    {
+                        PredictedArrivalTimeText += $", {-minsLate}m early";
+                    }
+                    IsEarly = minsLate < 0;
                 }
-                IsEarly = minsLate < 0;
+                RefreshMinutesAway();
             }
-            RefreshMinutesAway();
+            else
+            {
+                Frequency = (int)arrival.FrequencyMinutes.Value;
+            }
         }
 
         private void RefreshMinutesAway()
@@ -112,6 +122,8 @@ namespace OneAppAway._1_1.ViewModels
         public bool IsCancelled { get; }
         public bool HasAlert { get; }
         public bool IsDropOffOnly { get; }
+        public bool IsFrequencyBased { get; }
+        public bool HasLongRouteName { get; }
         public string RouteName { get; }
         public string RouteDestination { get; }
         public string PredictedArrivalTimeText { get; }
@@ -120,10 +132,26 @@ namespace OneAppAway._1_1.ViewModels
         public double DegreeOfConfidence { get; }
 
         private int _MinutesAway = 0;
+        private int Frequency = 0;
         public int MinutesAway
         {
             get { return _MinutesAway; }
-            set { SetProperty(ref _MinutesAway, value); }
+            set
+            {
+                SetProperty(ref _MinutesAway, value);
+                OnPropertyChanged("MinutesDisplayed");
+            }
+        }
+
+        public string MinutesDisplayed
+        {
+            get
+            {
+                if (IsFrequencyBased)
+                    return $"Every {Frequency} mins";
+                else
+                    return MinutesAway == 0 ? "NOW" : MinutesAway.ToString();
+            }
         }
     }
 }

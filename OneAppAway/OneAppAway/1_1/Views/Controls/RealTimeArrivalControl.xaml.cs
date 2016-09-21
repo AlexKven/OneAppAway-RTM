@@ -32,6 +32,19 @@ namespace OneAppAway._1_1.Views.Controls
             set { SetValue(ArrivalProperty, value); }
         }
         public static readonly DependencyProperty ArrivalProperty =
-            DependencyProperty.Register("Arrival", typeof(RealTimeArrival), typeof(RealTimeArrivalControl), new PropertyMetadata(new RealTimeArrival(), (s, e) => ((RealTimeArrivalControl)s).DataContext = new RealTimeArrivalViewModel((RealTimeArrival)e.NewValue)));
+            DependencyProperty.Register("Arrival", typeof(RealTimeArrival), typeof(RealTimeArrivalControl), new PropertyMetadata(new RealTimeArrival(), OnArrivalChangedStatic));
+        static void OnArrivalChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var typedSender = sender as RealTimeArrivalControl;
+            if (e.NewValue is RealTimeArrival)
+            {
+                var viewModel = new RealTimeArrivalViewModel((RealTimeArrival)e.NewValue);
+                typedSender.MainButton.DataContext = viewModel;
+                if (viewModel.HasLongRouteName)
+                    VisualStateManager.GoToState(typedSender, "LongRouteNameArrivalState", true);
+                if (viewModel.IsFrequencyBased)
+                    VisualStateManager.GoToState(typedSender, "FrequencyBasedArrivalState", true);
+            }
+        }
     }
 }

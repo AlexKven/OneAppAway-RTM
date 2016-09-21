@@ -20,7 +20,7 @@
                     <ItemsControl ItemsSource="{Binding Items}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <local:RealTimeArrivalControl Width="{Binding ElementName=MainScrollViewer, Path=Width}"/>
+                                <local:RealTimeArrivalControl Width="{Binding ElementName=MainScrollViewer, Path=Width}" Arrival="{Binding}"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>

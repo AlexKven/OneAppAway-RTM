@@ -35,12 +35,11 @@ namespace OneAppAway._1_1.Views.Pages
             DataContext = new BaseViewModel() { Title = "Developer Page" };
             MainRealTimeArrivalControl.Arrival = new RealTimeArrival()
             {
-                Status = AlertStatus.Alert,
-                RouteName = "193",
+                Status = AlertStatus.Cancelled,
+                RouteName = "193 Express to First Hill, Seattle",
                 PredictedArrivalTime = DateTime.Now + TimeSpan.FromMinutes(5),
                 ScheduledArrivalTime = DateTime.Now + TimeSpan.FromMinutes(1),
-                Destination = "First Hill",
-                IsDropOffOnly = true
+                Destination = "First Hill"
             };
         }
 

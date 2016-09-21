@@ -60,6 +60,7 @@
     <Compile Include="1_1\Data\NetworkType.cs" />
     <Compile Include="1_1\Data\OneBusAwayDataSource.cs" />
     <Compile Include="1_1\Data\RealTimeArrival.cs" />
+    <Compile Include="1_1\Data\RealTimeArrivalViewModelTemplateType.cs" />
     <Compile Include="1_1\Data\RetrievedData.cs" />
     <Compile Include="1_1\Data\ScheduledArrival.cs" />
     <Compile Include="1_1\Data\SettingsManagerBase.cs" />
