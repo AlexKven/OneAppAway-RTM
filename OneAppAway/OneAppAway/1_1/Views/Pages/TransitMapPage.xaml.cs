@@ -39,6 +39,7 @@ namespace OneAppAway._1_1.Views.Pages
         {
             this.InitializeComponent();
             ChangeViewCommand = new WeakRelayCommand(ChangeViewCommand_Execute);
+            NavigateToStopPageCommand = new WeakRelayCommand(NavigateToStopPageCommand_Execute);
 
             VM = new TransitMapPageUwpViewModel(Cache) { Title = "Transit Map" };
             DataContext = VM;
@@ -56,6 +57,7 @@ namespace OneAppAway._1_1.Views.Pages
             VM.BindToControl(MainMap, TransitMap.HasSelectedStopsProperty, "HasSelectedStops", true);
             VM.BindToControl(this, CanGoBackProperty, "CanGoBack");
             VM.ChangeViewBackCommand = ChangeViewCommand;
+            VM.NavigateToStopPageBackCommand = NavigateToStopPageCommand;
             //SetBinding(CanGoBackProperty, new Binding() { Source = MainMap, Path = new PropertyPath("CanGoBack"), Mode = BindingMode.OneWay });
         }
 
@@ -72,6 +74,7 @@ namespace OneAppAway._1_1.Views.Pages
 
         #region Properties
         public ICommand ChangeViewCommand { get; }
+        public ICommand NavigateToStopPageCommand { get; }
         #endregion
 
         #region Overrides
@@ -98,6 +101,15 @@ namespace OneAppAway._1_1.Views.Pages
         private async void ChangeViewCommand_Execute(object parameter)
         {
             await MainMap.TrySetView((MapView)parameter);
+        }
+
+        private void NavigateToStopPageCommand_Execute(object parameter)
+        {
+            string stop = parameter as string;
+            if (stop != null)
+            {
+                Frame.Navigate(typeof(TransitStopPage), stop);
+            }
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

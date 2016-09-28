@@ -45,7 +45,7 @@ namespace OneAppAway._1_1.Views.Controls
         private List<TransitStopIconWrapper> StopIconWrappers = new List<TransitStopIconWrapper>();
 
         private ArrivalsControlInTransitPageViewModel ArrivalsViewModel;
-        private StopArrivalsOuterControl ArrivalsPopup;
+        private StopPopupOuterControl ArrivalsPopup;
         private TranslateTransform ArrivalsPopupTransform = new TranslateTransform();
         #endregion
 
@@ -483,7 +483,7 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void SetArrivalsViewModel()
         {
-            ArrivalsPopup = new StopArrivalsOuterControl() { RenderTransform = ArrivalsPopupTransform };
+            ArrivalsPopup = new StopPopupOuterControl() { RenderTransform = ArrivalsPopupTransform };
             ArrivalsViewModel = new ArrivalsControlInTransitPageViewModel();
             ArrivalsViewModel.VisibilityChangedCallback += async visible =>
             {
@@ -503,21 +503,21 @@ namespace OneAppAway._1_1.Views.Controls
                     ArrivalsViewModel.IsVisible = false;
             };
             ArrivalsViewModel.BindToControl(OnMapPopup, MapControl.LocationProperty, "MapLocation", false, LatLonToGeopointConverter.Instance, "UnsetNAL");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.WidthProperty, "Width");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.HeightProperty, "Height");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.WidthProperty, "Width");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.HeightProperty, "Height");
             ArrivalsPopup.Visibility = Visibility.Visible;
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.VisibilityProperty, "IsVisible", false, BoolToVisibilityConverter.Instance);
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.DataContextProperty, "DataContext");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.ExpandCommandProperty, "ExpandCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.CompressCommandProperty, "CompressCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.CloseCommandProperty, "CloseCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.ShowBottomArrowProperty, "ShowBottomArrow");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopArrivalsOuterControl.ShowRoutesListProperty, "ShowRoutesList");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.VisibilityProperty, "IsVisible", false, BoolToVisibilityConverter.Instance);
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.DataContextProperty, "DataContext");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ExpandCommandProperty, "ExpandCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.CompressCommandProperty, "CompressCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.CloseCommandProperty, "CloseCommand");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ShowBottomArrowProperty, "ShowBottomArrow");
+            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ShowRoutesListProperty, "ShowRoutesList");
             ArrivalsViewModel.BindToControl(this, TransitMap.CenterRegionProperty, "CenterRegion");
             ArrivalsViewModel.PropertyChanged += ArrivalsViewModel_PropertyChanged;
             OnMapPopup.Content = ArrivalsPopup;
             ArrivalsViewModel.SetSize(MainMap.ActualWidth, MainMap.ActualHeight);
-            ArrivalsPopup.SetBinding(StopArrivalsOuterControl.TitleCommandProperty, new Binding { Source = this, Path = new PropertyPath("StopTitleClickedCommand") });
+            ArrivalsPopup.SetBinding(StopPopupOuterControl.TitleCommandProperty, new Binding { Source = this, Path = new PropertyPath("StopTitleClickedCommand") });
         }
 
         private void SetArea()
@@ -629,7 +629,7 @@ namespace OneAppAway._1_1.Views.Controls
                 Geopoint adjustedCenter = null;
                 if (view.Center != null)
                     adjustedCenter = (Geopoint)CenterConverter.Convert(view.Center.Value, typeof(Geopoint), null, null);
-                await MainMap.TrySetViewAsync(adjustedCenter, view.ZoomLevel, null, null, view.Animate ? MapAnimationKind.Default : MapAnimationKind.None);
+                var result = await MainMap.TrySetViewAsync(adjustedCenter, view.ZoomLevel, null, null, view.Animate ? MapAnimationKind.Default : MapAnimationKind.None);
             }
             else
             {

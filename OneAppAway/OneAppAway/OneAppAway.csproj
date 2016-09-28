@@ -11,7 +11,7 @@
     <AssemblyName>OneAppAway</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -122,6 +122,7 @@
     <Compile Include="1_1\Data\PointWrapper.cs" />
     <Compile Include="1_1\Data\UwpNetworkManager.cs" />
     <Compile Include="1_1\Data\UwpSettingsManager.cs" />
+    <Compile Include="1_1\Helpers\AttachedProperties.cs" />
     <Compile Include="1_1\Helpers\BindingHelperCollection.cs" />
     <Compile Include="1_1\Helpers\ExternalBinding.cs" />
     <Compile Include="1_1\Helpers\BindingHelper.cs" />
@@ -147,16 +148,18 @@
     <Compile Include="1_1\Views\Controls\StopArrivalsBox.xaml.cs">
       <DependentUpon>StopArrivalsBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1_1\Views\Controls\StopArrivalsOuterControl.xaml.cs">
-      <DependentUpon>StopArrivalsOuterControl.xaml</DependentUpon>
+    <Compile Include="1_1\Views\Controls\StopPopupOuterControl.xaml.cs">
+      <DependentUpon>StopPopupOuterControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1_1\Views\Controls\StopArrivalsControlBase.cs" />
-    <Compile Include="1_1\Views\Controls\StopArrivalsControl.xaml.cs">
-      <DependentUpon>StopArrivalsControl.xaml</DependentUpon>
+    <Compile Include="1_1\Views\Controls\StopPopupControlBase.cs" />
+    <Compile Include="1_1\Views\Controls\StopPopupControl.xaml.cs">
+      <DependentUpon>StopPopupControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="1_1\Views\Controls\SwitchCasePanel.cs" />
     <Compile Include="1_1\Views\Controls\TransitMap.xaml.cs">
       <DependentUpon>TransitMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="1_1\Views\Controls\TransitMapAddInBase.cs" />
     <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
     <Compile Include="1_1\Views\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
@@ -358,11 +361,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="1_1\Views\Controls\StopArrivalsOuterControl.xaml">
+    <Page Include="1_1\Views\Controls\StopPopupOuterControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="1_1\Views\Controls\StopArrivalsControl.xaml">
+    <Page Include="1_1\Views\Controls\StopPopupControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -501,7 +504,7 @@
     <SDKReference Include="Microsoft.VCLibs.120, Version=14.0">
       <Name>Microsoft Visual C++ 2013 Runtime Package for Windows Universal</Name>
     </SDKReference>
-    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+    <SDKReference Include="WindowsMobile, Version=10.0.14393.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>

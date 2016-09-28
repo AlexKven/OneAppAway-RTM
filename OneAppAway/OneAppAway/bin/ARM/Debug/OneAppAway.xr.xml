@@ -5,16 +5,18 @@
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Title" />
-    <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="FontFamily" />
     <RootPropertyPathName Name="FontWeight" />
     <RootPropertyPathName Name="FontStyle" />
     <RootPropertyPathName Name="FontSize" />
+    <RootPropertyPathName Name="IsDropOffOnly" />
+    <RootPropertyPathName Name="IsCancelled" />
+    <RootPropertyPathName Name="HasAlert" />
     <RootPropertyPathName Name="RouteDestination" />
     <RootPropertyPathName Name="ScheduledArrivalTimeText" />
     <RootPropertyPathName Name="PredictedArrivalTimeText" />
     <RootPropertyPathName Name="IsPredicted" />
-    <RootPropertyPathName Name="MinutesAway" />
+    <RootPropertyPathName Name="MinutesDisplayed" />
     <RootPropertyPathName Name="IsEarly" />
     <RootPropertyPathName Name="RouteName" />
     <RootPropertyPathName Name="DegreeOfConfidence" />
@@ -75,6 +77,7 @@
     <RootPropertyPathName Name="CenterOnCurrentLocationCommand" />
     <RootPropertyPathName Name="SearchCommand" />
     <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
+    <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="CurrentZoomRate" />
     <RootPropertyPathName Name="NavigateToStopPageCommand" />
     <RootPropertyPathName Name="Tag" />
@@ -111,6 +114,7 @@
     <RootType FullName="OneAppAway._1_1.Converters.IsEarlyToForegroundConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.IsPredictedToForegroundConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.EnumCaseVisibilityConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.FadeOnDropOffOnlyConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
@@ -129,6 +133,8 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="FontStyle" />
       <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="MaxHeight" />
@@ -137,22 +143,20 @@
       <RootProperty Name="Tag" />
       <RootProperty Name="Opacity" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Visibility" />
       <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="ElementName" />
-      <RootProperty Name="Path" />
       <RootProperty Name="Mode" />
       <RootProperty Name="Converter" />
       <RootProperty Name="ConverterParameter" />
+      <RootProperty Name="Path" />
       <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Children" />
-      <RootProperty Name="Height" />
       <RootProperty Name="Resources" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Background" />
@@ -185,11 +189,11 @@
       <RootProperty Name="Stretch" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="RenderTransform" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Visibility" />
-      <RootProperty Name="Margin" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
@@ -234,8 +238,8 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.VisualState">
       <RootProperty Name="Storyboard" />
-      <RootProperty Name="StateTriggers" />
       <RootProperty Name="Setters" />
+      <RootProperty Name="StateTriggers" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.Storyboard">
       <RootProperty Name="Children" />
@@ -308,12 +312,15 @@
       <RootProperty Name="Text" />
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Foreground" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Template" />
       <RootProperty Name="Background" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Opacity" />
+      <RootProperty Name="Flyout" />
       <RootProperty Name="Content" />
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
@@ -330,8 +337,24 @@
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Setter">
+      <RootProperty Name="Target" />
+      <RootProperty Name="Value" />
+      <RootProperty Name="Property" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
+      <RootProperty Name="Placement" />
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
+      <RootProperty Name="Text" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutSeparator" />
     <RootType FullName="OneAppAway._1_1.Views.Controls.RealTimeArrivalControl">
       <RootProperty Name="Width" />
+      <RootProperty Name="Arrival" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="VerticalAlignment" />
@@ -396,14 +419,14 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControlBase">
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupControlBase">
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Content" />
       <RootProperty Name="MinHeight" />
       <RootEvent Name="SizeChanged" />
       <RootEvent Name="DataContextChanged" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl">
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupControl">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ShowRoutesList" />
@@ -424,10 +447,26 @@
       <RootProperty Name="StrokeThickness" />
       <RootProperty Name="Stroke" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsOuterControl" />
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupOuterControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="SecondaryCommands" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.Helpers.AttachedProperties">
+      <RootMethod Name="GetOpenedBackgroundColor" />
+      <RootMethod Name="SetOpenedBackgroundColor" />
+      <RootMethod Name="GetClosedBackgroundColor" />
+      <RootMethod Name="SetClosedBackgroundColor" />
+      <RootMethod Name="GetUseBackgroundColorHelper" />
+      <RootMethod Name="SetUseBackgroundColorHelper" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="VerticalAlignment" />
@@ -437,6 +476,15 @@
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Minimum" />
       <RootProperty Name="Maximum" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="ClickMode" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="VerticalAlignment" />
@@ -452,6 +500,10 @@
     <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap">
       <RootProperty Name="CurrentZoomRate" />
       <RootProperty Name="StopTitleClickedCommand" />
+      <RootProperty Name="SmallThreshold" />
+      <RootProperty Name="MediumThreshold" />
+      <RootProperty Name="LargeThreshold" />
+      <RootProperty Name="IsHitTestVisible" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
@@ -550,13 +602,6 @@
       <RootMethod Name="GetAttachedFlyout" />
       <RootMethod Name="SetAttachedFlyout" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="RequestedTheme" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="BorderBrush" />
-      <RootProperty Name="SecondaryCommands" />
-      <RootProperty Name="PrimaryCommands" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
       <RootProperty Name="IsChecked" />
       <RootProperty Name="Label" />
@@ -565,15 +610,6 @@
       <RootEvent Name="Unchecked" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarSeparator" />
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
-      <RootProperty Name="Command" />
-      <RootProperty Name="IsEnabled" />
-      <RootProperty Name="ClickMode" />
-      <RootProperty Name="Visibility" />
-      <RootEvent Name="Click" />
-    </RootType>
     <RootType FullName="OneAppAway._1_1.Helpers.BindingHelper">
       <RootMethod Name="GetAppliedBindingHelper" />
       <RootMethod Name="SetAppliedBindingHelper" />
@@ -596,11 +632,6 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Content" />
       <RootEvent Name="SizeChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Setter">
-      <RootProperty Name="Target" />
-      <RootProperty Name="Value" />
-      <RootProperty Name="Property" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
       <RootProperty Name="FontSize" />

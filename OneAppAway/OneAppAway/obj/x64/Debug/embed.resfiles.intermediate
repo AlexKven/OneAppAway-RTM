@@ -2,8 +2,8 @@
 1_1\Views\Controls\AutoFitTextBlock.xbf
 1_1\Views\Controls\RealTimeArrivalControl.xbf
 1_1\Views\Controls\StopArrivalsBox.xbf
-1_1\Views\Controls\StopArrivalsControl.xbf
-1_1\Views\Controls\StopArrivalsOuterControl.xbf
+1_1\Views\Controls\StopPopupControl.xbf
+1_1\Views\Controls\StopPopupOuterControl.xbf
 1_1\Views\Controls\TransitMap.xbf
 1_1\Views\OuterFrame.xbf
 1_1\Views\Pages\ShapeDesignerPage.xbf

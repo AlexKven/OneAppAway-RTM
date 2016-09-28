@@ -419,14 +419,14 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControlBase">
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupControlBase">
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Content" />
       <RootProperty Name="MinHeight" />
       <RootEvent Name="SizeChanged" />
       <RootEvent Name="DataContextChanged" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsControl">
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupControl">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ShowRoutesList" />
@@ -447,10 +447,26 @@
       <RootProperty Name="StrokeThickness" />
       <RootProperty Name="Stroke" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsOuterControl" />
+    <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupOuterControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="SecondaryCommands" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.Helpers.AttachedProperties">
+      <RootMethod Name="GetOpenedBackgroundColor" />
+      <RootMethod Name="SetOpenedBackgroundColor" />
+      <RootMethod Name="GetClosedBackgroundColor" />
+      <RootMethod Name="SetClosedBackgroundColor" />
+      <RootMethod Name="GetUseBackgroundColorHelper" />
+      <RootMethod Name="SetUseBackgroundColorHelper" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="VerticalAlignment" />
@@ -460,6 +476,15 @@
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Minimum" />
       <RootProperty Name="Maximum" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="ClickMode" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="VerticalAlignment" />
@@ -475,6 +500,10 @@
     <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap">
       <RootProperty Name="CurrentZoomRate" />
       <RootProperty Name="StopTitleClickedCommand" />
+      <RootProperty Name="SmallThreshold" />
+      <RootProperty Name="MediumThreshold" />
+      <RootProperty Name="LargeThreshold" />
+      <RootProperty Name="IsHitTestVisible" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
@@ -573,13 +602,6 @@
       <RootMethod Name="GetAttachedFlyout" />
       <RootMethod Name="SetAttachedFlyout" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="RequestedTheme" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="BorderBrush" />
-      <RootProperty Name="SecondaryCommands" />
-      <RootProperty Name="PrimaryCommands" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
       <RootProperty Name="IsChecked" />
       <RootProperty Name="Label" />
@@ -588,15 +610,6 @@
       <RootEvent Name="Unchecked" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarSeparator" />
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
-      <RootProperty Name="Command" />
-      <RootProperty Name="IsEnabled" />
-      <RootProperty Name="ClickMode" />
-      <RootProperty Name="Visibility" />
-      <RootEvent Name="Click" />
-    </RootType>
     <RootType FullName="OneAppAway._1_1.Helpers.BindingHelper">
       <RootMethod Name="GetAppliedBindingHelper" />
       <RootMethod Name="SetAppliedBindingHelper" />

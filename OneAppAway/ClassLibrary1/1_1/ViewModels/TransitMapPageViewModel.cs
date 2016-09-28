@@ -447,7 +447,7 @@ namespace OneAppAway._1_1.ViewModels
 
         private void NavigateToStopPageCommand_Execute(object parameter)
         {
-
+            OnNavigateToStopPageRequested(parameter as string);
         }
 
         private async void CenterOnCurrentLocation_Execute(object parameter)
@@ -504,11 +504,17 @@ namespace OneAppAway._1_1.ViewModels
 
         #region Back Commands
         public ICommand ChangeViewBackCommand { get; set; }
-
         protected void OnChangeViewRequested(MapView view)
         {
             if (ChangeViewBackCommand?.CanExecute(view) ?? false)
-                ChangeViewBackCommand?.Execute(view);
+                ChangeViewBackCommand.Execute(view);
+        }
+
+        public ICommand NavigateToStopPageBackCommand { get; set; }
+        protected void OnNavigateToStopPageRequested(string stop)
+        {
+            if (NavigateToStopPageBackCommand?.CanExecute(stop) ?? false)
+                NavigateToStopPageBackCommand.Execute(stop);
         }
         #endregion
 

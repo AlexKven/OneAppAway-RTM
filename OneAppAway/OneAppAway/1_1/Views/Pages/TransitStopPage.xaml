@@ -9,6 +9,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <localC:TransitMap Grid.ColumnSpan="2" x:Name="MainMapControl" SmallThreshold="8" MediumThreshold="8" LargeThreshold="8" IsHitTestVisible="False"/>
+        <Rectangle Fill="#30303030"/>
     </Grid>
 </local:ApplicationPage>

@@ -15,7 +15,7 @@
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10240.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.14393.0" />
     <PackageDependency Name="Microsoft.VCLibs.140.00.Debug" MinVersion="14.0.24210.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
     <PackageDependency Name="Microsoft.VCLibs.120.00.Debug.Universal" MinVersion="12.0.30501.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
   </Dependencies>
@@ -156,6 +156,41 @@
         <ActivatableClass ActivatableClassId="Microsoft.Graphics.Canvas.CanvasImage" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>winsdkfb.dll</Path>
+        <ActivatableClass ActivatableClassId="winsdkfb.FBSession" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBMediaObject" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBClient" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBSendRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FacebookDialog" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBMediaStream" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.winsdkfb_uwp_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPaging" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBSingleValue" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBCursors" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBGroup" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBUser" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBProfilePicture" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPaginatedArray" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPage" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBProfilePictureData" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBAppRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPermission" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBError" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.ProfilePictureControl" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBAppRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBFeedRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBAccessTokenData" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBSDKAppEvents" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.ColorLuminosityConverter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBLoginButton" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.HttpManager" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.ScaleConverter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBResult" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBPermissions" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
   </Extensions>
   <build:Metadata>
     <build:Item Name="SharedGUID" Value="7adc8fb2-42f2-4666-aa62-00a2942a2cf6" />
@@ -170,7 +205,7 @@
     <build:Item Name="TargetRuntime" Value="Managed" />
     <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.25527.1" />
     <build:Item Name="AdDuplex.Windows10" Version="10.0.1.5" />
-    <build:Item Name="WindowsMobile" Version="10.0.10240.0" />
+    <build:Item Name="WindowsMobile" Version="10.0.14393.0" />
     <build:Item Name="MakePri.exe" Version="10.0.14393.33 (rs1_release_sec.160727-1952)" />
   </build:Metadata>
 </Package>

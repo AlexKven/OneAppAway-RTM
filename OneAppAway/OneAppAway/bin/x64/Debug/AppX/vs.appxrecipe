@@ -16,7 +16,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>7CA2BA9FA37C86A0DB1CCEE2ED6260F0109DAEF593EFFF1169141B2C66D0CCD1</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>51AF2AA3C62677D330915A1AA505A8BC6CA2C1F40E5670A28BFE89FDDDBB243A</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>16469AlexKven.14062E657A0DF_1.0.7.0_x64__yke5jzwbk3qzj</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>16469AlexKven.14062E657A0DF_yke5jzwbk3qzj!App</RegisteredUserModeAppID>
     <RegisteredPackageID>16469AlexKven.14062E657A0DF</RegisteredPackageID>
@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-09-21T20:44:14.245</Modified>
+      <Modified>2016-09-27T22:06:15.983</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2016-09-21T20:44:11.594</Modified>
+      <Modified>2016-09-27T22:06:14.559</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v10.0\ExtensionSDKs\AdDuplex.Windows10\10.0.1.5\References\CommonConfiguration\neutral\AdDuplex.winmd">
       <PackagePath>AdDuplex.winmd</PackagePath>
@@ -43,6 +43,10 @@
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Win2D.uwp\1.19.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
       <Modified>2016-08-09T15:14:36.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\lib\win10\winsdkfb.winmd">
+      <PackagePath>winsdkfb.winmd</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -100,6 +104,26 @@
       <PackagePath>Microsoft.Toolkit.Uwp.dll</PackagePath>
       <Modified>2016-08-16T17:22:38.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.Notifications\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.Notifications.dll</PackagePath>
+      <Modified>2016-08-16T17:22:36.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.Services\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.Services.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.Services.dll</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.dll</PackagePath>
+      <Modified>2016-08-16T17:22:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Animations\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Animations.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Animations.dll</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.dll</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.VisualBasic\10.0.0\lib\netcore50\Microsoft.VisualBasic.dll">
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
       <Modified>2015-07-23T06:07:08.000</Modified>
@@ -115,6 +139,10 @@
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Xaml.Behaviors.Uwp.Managed\1.1.0\lib\uap10.0\Microsoft.Xaml.Interactivity.dll">
       <PackagePath>Microsoft.Xaml.Interactivity.dll</PackagePath>
       <Modified>2016-02-22T21:59:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Newtonsoft.Json\9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2016-06-14T06:06:14.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Refractored.MvvmHelpers\1.0.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\MvvmHelpers.dll">
       <PackagePath>MvvmHelpers.dll</PackagePath>
@@ -496,13 +524,41 @@
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
       <Modified>2016-08-09T15:14:36.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb.dll">
+      <PackagePath>winsdkfb.dll</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\WriteableBitmapEx\1.5.0\lib\NetCore45\WriteableBitmapEx.WinRT.dll">
       <PackagePath>WriteableBitmapEx.WinRT.dll</PackagePath>
       <Modified>2015-03-31T23:28:46.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll">
       <PackagePath>CommonClasses.dll</PackagePath>
-      <Modified>2016-09-21T20:44:03.954</Modified>
+      <Modified>2016-09-27T21:54:27.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Controls\FacebookLoginButton.xbf">
+      <PackagePath>FacebookLoginButton.xbf</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\FacebookDialog.xbf">
+      <PackagePath>FacebookDialog.xbf</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\FacebookProfilePictureControl.xbf">
+      <PackagePath>FacebookProfilePictureControl.xbf</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Themes\Generic.xbf">
+      <PackagePath>Generic.xbf</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Themes\Styles.xbf">
+      <PackagePath>Styles.xbf</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Images\fb_blank_profile_portrait.png">
+      <PackagePath>fb_blank_profile_portrait.png</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v10.0\ExtensionSDKs\AdDuplex.Windows10\10.0.1.5\Redist\CommonConfiguration\neutral\AdDuplex\Themes\Generic.xbf">
       <PackagePath>AdDuplex\Themes\Generic.xbf</PackagePath>
@@ -762,24 +818,72 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.xr.xml">
       <PackagePath>OneAppAway.xr.xml</PackagePath>
-      <Modified>2016-09-21T19:55:08.659</Modified>
+      <Modified>2016-09-24T22:44:36.960</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10240.0\\redist\Debug\X64\ucrtbased.dll">
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.14393.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
-      <Modified>2015-07-10T05:26:00.000</Modified>
+      <Modified>2016-07-28T18:45:18.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2016-09-20T06:51:42.394</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Images\fb_blank_profile_portrait.png">
+      <PackagePath>winsdkfb\Images\fb_blank_profile_portrait.png</PackagePath>
+      <Modified>2016-06-21T18:00:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\AdaptiveGridView\AdaptiveGridView.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\AdaptiveGridView\AdaptiveGridView.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\HamburgerMenu\HamburgerMenu.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\HamburgerMenu\HamburgerMenu.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\HeaderedTextBlock\HeaderedTextBlock.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\HeaderedTextBlock\HeaderedTextBlock.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\ImageEx\ImageEx.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\ImageEx\ImageEx.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\PullToRefreshListView\PullToRefreshListView.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\PullToRefreshListView\PullToRefreshListView.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\RadialGauge\RadialGauge.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\RadialGauge\RadialGauge.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\RangeSelector\RangeSelector.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\RangeSelector\RangeSelector.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\RotatorTile\RotatorTile.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\RotatorTile\RotatorTile.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\SlidableListItem\SlidableListItem.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\SlidableListItem\SlidableListItem.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Microsoft.Toolkit.Uwp.UI.Controls\1.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.Controls\Themes\Generic.xaml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\Themes\Generic.xaml</PackagePath>
+      <Modified>2016-08-16T17:22:38.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-09-21T20:03:24.238</Modified>
+      <Modified>2016-09-27T21:59:38.332</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2016-09-21T20:44:14.224</Modified>
+      <Modified>2016-09-27T22:06:15.969</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
