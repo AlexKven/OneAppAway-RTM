@@ -101,6 +101,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1_1\AddIns\ShownStopsAddIn.cs" />
     <Compile Include="1_1\Agency.cs" />
     <Compile Include="1_1\AttachedProperties.cs" />
     <Compile Include="1_1\BusMap.xaml.cs">

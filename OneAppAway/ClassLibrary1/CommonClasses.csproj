@@ -81,6 +81,8 @@
     <Compile Include="1_1\Data\MapStopSize.cs" />
     <Compile Include="1_1\Data\WeakDelegateWrapper.cs" />
     <Compile Include="1_1\EventArgs.cs" />
+    <Compile Include="1_1\Helpers\CompositeCollectionBinding.cs" />
+    <Compile Include="1_1\Helpers\WeakEventListener.cs" />
     <Compile Include="1_1\ViewModels\ArrivalsControlInTransitPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
     <Compile Include="1_1\ViewModels\RealTimeArrivalViewModel.cs" />

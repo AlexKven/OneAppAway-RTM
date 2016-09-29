@@ -62,6 +62,7 @@ namespace OneAppAway
                     if (allPoints.Count > 0)
                     {
                         GeoboundingBox box = GeoboundingBox.TryCompute(allPoints);
+                        
                         await MainMap.MapControl.TrySetViewBoundsAsync(box, new Thickness(0), MapAnimationKind.Bow);
                     }
                 }

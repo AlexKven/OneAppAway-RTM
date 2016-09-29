@@ -55,10 +55,17 @@ namespace OneAppAway._1_1.Views.Controls
             MainMap.MapServiceToken = Keys.BingMapKey;
             CenterConverter.Add(new LatLonTransformConverter() { Transform = ll => CenterOffset.IsNotALocation ? ll : ll + CenterOffset, ReverseTransform = ll => CenterOffset.IsNotALocation ? ll : ll - CenterOffset });
             CenterConverter.Add(LatLonToGeopointConverter.Instance);
+            WeakEventListener<TransitMap, object, NotifyCollectionChangedEventArgs> addInsListener = new WeakEventListener<TransitMap, object, NotifyCollectionChangedEventArgs>(this);
+            addInsListener.OnEventAction = (map, obj, e) => map.AddIns_CollectionChanged(obj, e);
+            AddIns.CollectionChanged += addInsListener.OnEvent;
+
+            MapRouteBindings = new CompositeCollectionBinding<MapRouteView, TransitMapAddInBase>(MainMap.Routes);
+            MapElementBindings = new CompositeCollectionBinding<MapElement, TransitMapAddInBase>(MainMap.MapElements);
+            MapChildrenBindings = new CompositeCollectionBinding<DependencyObject, TransitMapAddInBase>(MainMap.Children);
 
             //MainMap.SetBinding(MapControl.CenterProperty, new Binding() { Converter = CenterConverters, Source = this, Path = new PropertyPath("Center"), Mode = BindingMode.TwoWay });
             //MainMap.SetBinding(MapControl.ZoomLevelProperty, new Binding() { Source = this, Path = new PropertyPath("ZoomLevel"), Mode = BindingMode.TwoWay });
-            
+
             //MapIcon centerIndicator = new MapIcon() { NormalizedAnchorPoint = new Point(0.5, 1) };
             //BindingOperations.SetBinding(centerIndicator, MapIcon.LocationProperty, new Binding() { Source = this, Path = new PropertyPath("Center"), Converter = LatLonToGeopointConverter.Instance });
             //MainMap.MapElements.Add(centerIndicator);
@@ -250,7 +257,7 @@ namespace OneAppAway._1_1.Views.Controls
                     map.MainMap.StartContinuousZoom((double)e.NewValue);
             }
         }
-        
+
         //public bool IsMapUpdatingSuspended
         //{
         //    get { return (bool)GetValue(IsMapUpdatingSuspendedProperty); }
@@ -844,6 +851,37 @@ namespace OneAppAway._1_1.Views.Controls
         #region Events
         public event EventHandler CenterChanged;
         public event EventHandler ZoomLevelChanged;
+        #endregion
+
+        #region AddIns
+        private ObservableCollection<TransitMapAddInBase> _AddIns = new ObservableCollection<TransitMapAddInBase>();
+        public ObservableCollection<TransitMapAddInBase> AddIns => _AddIns;
+
+        private CompositeCollectionBinding<MapElement, TransitMapAddInBase> MapElementBindings;
+        private CompositeCollectionBinding<DependencyObject, TransitMapAddInBase> MapChildrenBindings;
+        private CompositeCollectionBinding<MapRouteView, TransitMapAddInBase> MapRouteBindings;
+
+        private void AddIns_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (TransitMapAddInBase addin in e.NewItems)
+                {
+                    MapElementBindings.AddCollection(addin, addin.MapElementsShown);
+                    MapRouteBindings.AddCollection(addin, addin.MapRoutesShown);
+                    MapChildrenBindings.AddCollection(addin, addin.MapChildrenShown);
+                }
+            }
+            if (e.OldItems != null)
+            {
+                foreach (TransitMapAddInBase addin in e.NewItems)
+                {
+                    MapElementBindings.RemoveCollection(addin);
+                    MapRouteBindings.RemoveCollection(addin);
+                    MapChildrenBindings.RemoveCollection(addin);
+                }
+            }
+        }
         #endregion
     }
 }

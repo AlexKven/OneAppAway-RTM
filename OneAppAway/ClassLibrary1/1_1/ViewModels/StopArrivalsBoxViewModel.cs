@@ -115,6 +115,7 @@ namespace OneAppAway._1_1.ViewModels
                 {
                     Error = true;
                     ErrorMessage = arrivals.ErrorMessage;
+                    
                 }
                 if (arrivals.HasData)
                 {
