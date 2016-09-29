@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Controls.Maps;
 
 namespace OneAppAway._1_1.Views.Controls
 {
-    public abstract class TransitMapAddInBase : DependencyObject
+    public abstract class TransitMapAddInBase : FrameworkElement
     {
         private ObservableRangeCollection<MapElement> _MapElementsShown = new ObservableRangeCollection<MapElement>();
         private ObservableRangeCollection<DependencyObject> _MapChildrenShown = new ObservableRangeCollection<DependencyObject>();

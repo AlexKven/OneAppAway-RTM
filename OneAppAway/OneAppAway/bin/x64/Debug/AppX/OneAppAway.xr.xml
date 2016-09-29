@@ -500,9 +500,6 @@
     <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap">
       <RootProperty Name="CurrentZoomRate" />
       <RootProperty Name="StopTitleClickedCommand" />
-      <RootProperty Name="SmallThreshold" />
-      <RootProperty Name="MediumThreshold" />
-      <RootProperty Name="LargeThreshold" />
       <RootProperty Name="IsHitTestVisible" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">

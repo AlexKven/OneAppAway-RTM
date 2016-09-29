@@ -24,6 +24,7 @@ using Microsoft.Graphics.Canvas.UI;
 using System.Reflection.Emit;
 using System.Windows.Input;
 using OneAppAway.Common;
+using OneAppAway._1_1.AddIns;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,23 +36,26 @@ namespace OneAppAway._1_1.Views.Pages
     public sealed partial class TransitMapPage : ApplicationPage
     {
         private TransitMapPageUwpViewModel VM;
+        private ShownStopsAddIn StopsAddIn = new ShownStopsAddIn();
+
         public TransitMapPage()
         {
             this.InitializeComponent();
             ChangeViewCommand = new WeakRelayCommand(ChangeViewCommand_Execute);
             NavigateToStopPageCommand = new WeakRelayCommand(NavigateToStopPageCommand_Execute);
+            MainMap.AddIns.Add(StopsAddIn);
 
             VM = new TransitMapPageUwpViewModel(Cache) { Title = "Transit Map" };
             DataContext = VM;
             //DatabaseManager.Initialize(null);
             //TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabase, true);
             //MainMap.StopsSource = Stops;
-            MainMap.StopsSource = VM.ShownStops;
+            StopsAddIn.StopsSource = VM.ShownStops;
             MainMap.SelectedStopsSource = VM.SelectedStops;
-            MainMap.SmallThreshold = VM.SmallThreshold;
-            MainMap.MediumThreshold = VM.MediumThreshold;
-            MainMap.LargeThreshold = VM.LargeThreshold;
-            VM.BindToControl(MainMap, TransitMap.StopsClickedCommandProperty, "StopsClickedCommand");
+            StopsAddIn.SmallThreshold = VM.SmallThreshold;
+            StopsAddIn.MediumThreshold = VM.MediumThreshold;
+            StopsAddIn.LargeThreshold = VM.LargeThreshold;
+            VM.BindToControl(StopsAddIn, ShownStopsAddIn.StopsClickedCommandProperty, "StopsClickedCommand");
             VM.BindToControl(MainMap, TransitMap.AreaDelayProperty, "Area", true);
             VM.BindToControl(MainMap, TransitMap.ZoomLevelDelayProperty, "ZoomLevel", true);
             VM.BindToControl(MainMap, TransitMap.HasSelectedStopsProperty, "HasSelectedStops", true);
