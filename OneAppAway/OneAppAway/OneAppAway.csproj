@@ -101,6 +101,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1_1\AddIns\MapTakeover.cs" />
+    <Compile Include="1_1\AddIns\MapTakeoverRequestedEventArgs.cs" />
     <Compile Include="1_1\AddIns\ShownStopsAddIn.cs" />
     <Compile Include="1_1\Agency.cs" />
     <Compile Include="1_1\AttachedProperties.cs" />
@@ -160,7 +162,7 @@
     <Compile Include="1_1\Views\Controls\TransitMap.xaml.cs">
       <DependentUpon>TransitMap.xaml</DependentUpon>
     </Compile>
-    <Compile Include="1_1\Views\Controls\TransitMapAddInBase.cs" />
+    <Compile Include="1_1\AddIns\TransitMapAddInBase.cs" />
     <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
     <Compile Include="1_1\Views\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>

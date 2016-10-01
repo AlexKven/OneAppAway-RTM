@@ -52,10 +52,8 @@ namespace OneAppAway._1_1.Views.Pages
             //MainMap.StopsSource = Stops;
             StopsAddIn.StopsSource = VM.ShownStops;
             MainMap.SelectedStopsSource = VM.SelectedStops;
-            StopsAddIn.SmallThreshold = VM.SmallThreshold;
-            StopsAddIn.MediumThreshold = VM.MediumThreshold;
-            StopsAddIn.LargeThreshold = VM.LargeThreshold;
-            VM.BindToControl(StopsAddIn, ShownStopsAddIn.StopsClickedCommandProperty, "StopsClickedCommand");
+            VM.BindToDependencyObject(StopsAddIn, ShownStopsAddIn.StopsClickedCommandProperty, "StopsClickedCommand");
+            VM.BindToDependencyObject(StopsAddIn, ShownStopsAddIn.StopSizeProperty, "ShownStopSize");
             VM.BindToControl(MainMap, TransitMap.AreaDelayProperty, "Area", true);
             VM.BindToControl(MainMap, TransitMap.ZoomLevelDelayProperty, "ZoomLevel", true);
             VM.BindToControl(MainMap, TransitMap.HasSelectedStopsProperty, "HasSelectedStops", true);

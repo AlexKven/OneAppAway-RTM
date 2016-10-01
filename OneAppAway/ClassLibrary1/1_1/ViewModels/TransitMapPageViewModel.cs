@@ -105,6 +105,7 @@ namespace OneAppAway._1_1.ViewModels
             set
             {
                 SetProperty(ref _ZoomLevel, value);
+                ShownStopSize = GetStopSize();
             }
         }
 
@@ -113,6 +114,18 @@ namespace OneAppAway._1_1.ViewModels
         {
             get { return _CurrentZoomRate; }
             set { SetProperty(ref _CurrentZoomRate, value); }
+        }
+        #endregion
+
+        #region Shown Stops AddIn
+        private MapStopSize _ShownStopSize;
+        public MapStopSize ShownStopSize
+        {
+            get { return _ShownStopSize; }
+            set
+            {
+                SetProperty(ref _ShownStopSize, value);
+            }
         }
         #endregion
 
@@ -433,6 +446,18 @@ namespace OneAppAway._1_1.ViewModels
 
         protected virtual void OnNavigatedTo(object parameter)
         {
+        }
+
+        private MapStopSize GetStopSize()
+        {
+            if (ZoomLevel > LargeThreshold)
+                return MapStopSize.Large;
+            else if (ZoomLevel > MediumThreshold)
+                return MapStopSize.Medium;
+            else if (ZoomLevel > SmallThreshold)
+                return MapStopSize.Small;
+            else
+                return MapStopSize.Invisible;
         }
         #endregion
 

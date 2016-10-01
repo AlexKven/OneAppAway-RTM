@@ -52,6 +52,11 @@ namespace OneAppAway._1_1.Helpers
             control.SetBinding(propertyTo, new Binding() { Source = vm, Path = new PropertyPath(propertyFrom), Converter = converter, ConverterParameter = converterParam, Mode = twoWay ? BindingMode.TwoWay : BindingMode.OneWay });
         }
 
+        public static void BindToDependencyObject(this BaseViewModel vm, DependencyObject obj, DependencyProperty propertyTo, string propertyFrom, bool twoWay = false, IValueConverter converter = null, object converterParam = null)
+        {
+            BindingOperations.SetBinding(obj, propertyTo, new Binding() { Source = vm, Path = new PropertyPath(propertyFrom), Converter = converter, ConverterParameter = converterParam, Mode = twoWay ? BindingMode.TwoWay : BindingMode.OneWay });
+        }
+
         public static Task BeginAsync(this Storyboard storyboard)
         {
             System.Threading.Tasks.TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();

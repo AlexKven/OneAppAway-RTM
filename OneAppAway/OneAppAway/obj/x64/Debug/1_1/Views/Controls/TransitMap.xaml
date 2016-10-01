@@ -13,14 +13,15 @@
     <Grid x:ConnectionId='2' x:Name="MainGrid">
         <Maps:MapControl x:ConnectionId='3' Grid.RowSpan="2" TransitFeaturesVisible="False" PedestrianFeaturesVisible="True" TiltInteractionMode="Disabled"                                                                                                                                                                                                                                                                                     RotateInteractionMode="Disabled" ZoomInteractionMode="GestureOnly" x:Name="MainMap">
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="#88FFFFFF">
-                <TextBlock x:ConnectionId='6' x:Name="CoordsBlock" Margin="2" Foreground="Black"/>
-                <TextBlock x:ConnectionId='7' x:Name="CoordsBlock2" Margin="2" Foreground="Black"/>
-                <TextBlock x:ConnectionId='8' x:Name="ZoomLevelBlock" Margin="2" Foreground="Black"/>
+                <TextBlock x:ConnectionId='7' x:Name="CoordsBlock" Margin="2" Foreground="Black"/>
+                <TextBlock x:ConnectionId='8' x:Name="CoordsBlock2" Margin="2" Foreground="Black"/>
+                <TextBlock x:ConnectionId='9' x:Name="ZoomLevelBlock" Margin="2" Foreground="Black"/>
             </StackPanel>
-            <ContentControl x:ConnectionId='5' x:Name="OnMapPopup" Maps:MapControl.NormalizedAnchorPoint="0.5, 1"/>
+            <ContentControl x:ConnectionId='6' x:Name="OnMapPopup" Maps:MapControl.NormalizedAnchorPoint="0.5, 1"/>
             <!--<local:StopArrivalsControl x:Name="ArrivalsPopup"/>-->
         </Maps:MapControl>
-        <ContentControl x:ConnectionId='4' x:Name="OffMapPopup" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <ContentControl x:ConnectionId='4' x:Name="TakeoverControl"/>
+        <ContentControl x:ConnectionId='5' x:Name="OffMapPopup" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>
 

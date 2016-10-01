@@ -20,6 +20,7 @@
             <ContentControl x:Name="OnMapPopup" Maps:MapControl.NormalizedAnchorPoint="0.5, 1"/>
             <!--<local:StopArrivalsControl x:Name="ArrivalsPopup"/>-->
         </Maps:MapControl>
+        <ContentControl x:Name="TakeoverControl"/>
         <ContentControl x:Name="OffMapPopup" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>

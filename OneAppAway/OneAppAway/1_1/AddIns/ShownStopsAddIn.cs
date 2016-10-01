@@ -11,38 +11,22 @@ using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Data;
+using Windows.Foundation;
+using OneAppAway._1_1.Addins;
 
 namespace OneAppAway._1_1.AddIns
 {
     public class ShownStopsAddIn : TransitMapAddInBase
     {
         #region Fields
-        private StopSizeThresholdConverter StopSizeConverter = new StopSizeThresholdConverter() { LargeThreshold = 18, MediumThreshold = 16.5, SmallThreshold = 14 };
-
+        //private StopSizeThresholdConverter StopSizeConverter = new StopSizeThresholdConverter() { LargeThreshold = 18, MediumThreshold = 16.5, SmallThreshold = 14 };
+        
         private bool StopsSourceChangeHandled = false;
         private List<string> HiddenStops = new List<string>();
         private List<TransitStopIconWrapper> StopIconWrappers = new List<TransitStopIconWrapper>();
         #endregion
 
         #region Properties
-        public double SmallThreshold
-        {
-            get { return StopSizeConverter.SmallThreshold; }
-            set { StopSizeConverter.SmallThreshold = value; }
-        }
-
-        public double MediumThreshold
-        {
-            get { return StopSizeConverter.MediumThreshold; }
-            set { StopSizeConverter.MediumThreshold = value; }
-        }
-
-        public double LargeThreshold
-        {
-            get { return StopSizeConverter.LargeThreshold; }
-            set { StopSizeConverter.LargeThreshold = value; }
-        }
-
         public ICommand StopsClickedCommand
         {
             get { return (ICommand)GetValue(StopsClickedCommandProperty); }
@@ -62,33 +46,48 @@ namespace OneAppAway._1_1.AddIns
         {
             ((ShownStopsAddIn)sender).OnStopsSourceChanged(e.OldValue, e.NewValue);
         }
+
+        public MapStopSize StopSize
+        {
+            get { return (MapStopSize)GetValue(StopSizeProperty); }
+            set { SetValue(StopSizeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for StopSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StopSizeProperty =
+            DependencyProperty.Register("StopSize", typeof(MapStopSize), typeof(ShownStopsAddIn), new PropertyMetadata(MapStopSize.Medium, OnStopSizeChangedStatic));
+        static void OnStopSizeChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var wrappers = (sender as ShownStopsAddIn)?.StopIconWrappers;
+            if (wrappers == null)
+                return;
+            foreach (var wrapper in wrappers)
+                wrapper.StopSize = (MapStopSize)e.NewValue;
+        }
         #endregion
 
         #region Methods
-        private void MainMap_MapElementPointerEntered(MapElementPointerEnteredEventArgs args)
+        public override void OnMapElementPointerEntered(MapElement element, LatLon pointOnMap, Point pointOnControl)
         {
-            var wrapper = StopIconWrappers.FirstOrDefault(w => w.Element == args.MapElement);
+            var wrapper = StopIconWrappers.FirstOrDefault(w => w.Element == element);
             if (wrapper != null)
                 wrapper.Hovered = true;
         }
 
-        private void MainMap_MapElementPointerExited(MapElementPointerExitedEventArgs args)
+        public override void OnMapElementPointerExited(MapElement element, LatLon pointOnMap, Point pointOnControl)
         {
-            var wrapper = StopIconWrappers.FirstOrDefault(w => w.Element == args.MapElement);
+            var wrapper = StopIconWrappers.FirstOrDefault(w => w.Element == element);
             if (wrapper != null)
                 wrapper.Hovered = false;
         }
 
-        private void MainMap_MapElementClick(MapControl sender, MapElementClickEventArgs args)
+        public override void OnMapElementsClicked(IEnumerable<MapElement> elements, LatLon pointOnMap, Point pointOnControl)
         {
-            //foreach (var el in args.MapElements)
-            //{
-            //}
-            if (args.MapElements != null && args.MapElements.Count > 0)
+            if (elements != null && elements.Count() > 0)
             {
                 //if (ArrivalsViewModel == null)
                 //    SetArrivalsViewModel();
-                var stops = StopIconWrappers.Where(w => w.Element == args.MapElements[0]).Select(w => w.Stop);
+                var stops = StopIconWrappers.Where(w => elements.Contains(w.Element)).Select(w => w.Stop);
                 //ArrivalsViewModel.Stop = stop;
                 //if (stop.HasValue)
                 //{
@@ -139,8 +138,7 @@ namespace OneAppAway._1_1.AddIns
         {
             foreach (var stop in stops)
             {
-                TransitStopIconWrapper wrapper = new TransitStopIconWrapper(stop);
-                BindingOperations.SetBinding(wrapper, TransitStopIconWrapper.StopSizeProperty, new Binding() { Source = this, Path = new PropertyPath("ZoomLevelDelay"), Mode = BindingMode.OneWay, Converter = StopSizeConverter });
+                TransitStopIconWrapper wrapper = new TransitStopIconWrapper(stop) { StopSize = this.StopSize };
                 if (stop.Children != null)
                 {
                     HiddenStops.AddRange(stop.Children);

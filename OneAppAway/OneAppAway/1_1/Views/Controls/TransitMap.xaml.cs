@@ -25,6 +25,8 @@ using System.Collections.Specialized;
 using MvvmHelpers;
 using OneAppAway._1_1.Helpers;
 using System.Windows.Input;
+using OneAppAway._1_1.AddIns;
+using OneAppAway._1_1.Addins;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -348,7 +350,7 @@ namespace OneAppAway._1_1.Views.Controls
             LatLon oldOffset = CenterOffset;
             if (LatitudePerPixel != double.NaN && LongitudePerPixel != double.NaN)
             {
-                if (CenterRegion.DoesNothing || LatitudePerPixel == double.NaN || LongitudePerPixel == double.NaN)
+                if ((CenterRegion.DoesNothing && (CurrentTakeover?.CenterRegionOverride.DoesNothing ?? true)) || LatitudePerPixel == double.NaN || LongitudePerPixel == double.NaN)
                 {
                     CenterOffset = new LatLon();
                 }
@@ -361,6 +363,14 @@ namespace OneAppAway._1_1.Views.Controls
                     double leftOffset;
                     double topOffset;
                     CenterRegion.Apply(ref width, ref height, out leftOffset, out topOffset);
+                    if (CurrentTakeover != null)
+                    {
+                        double leftOffset2;
+                        double topOffset2;
+                        CurrentTakeover.CenterRegionOverride.Apply(ref width, ref height, out leftOffset2, out topOffset2);
+                        leftOffset += leftOffset2;
+                        topOffset += topOffset2;
+                    }
                     double newWidthCenter = leftOffset + width / 2;
                     double newHeightCenter = topOffset + height / 2;
                     double pixelOffsetX = newWidthCenter - widthCenter;
@@ -683,9 +693,24 @@ namespace OneAppAway._1_1.Views.Controls
         private ObservableCollection<TransitMapAddInBase> _AddIns = new ObservableCollection<TransitMapAddInBase>();
         public ObservableCollection<TransitMapAddInBase> AddIns => _AddIns;
 
+        private MapTakeover _CurrentTakeover;
+        internal MapTakeover CurrentTakeover
+        {
+            get { return _CurrentTakeover; }
+            set
+            {
+                _CurrentTakeover = value;
+                OnCenterRegionChanged();
+            }
+        }
+
+        internal TransitMapAddInBase CurrentTakeoverOwner { get; set; }
+
         private CompositeCollectionBinding<MapElement, TransitMapAddInBase> MapElementBindings;
         private CompositeCollectionBinding<DependencyObject, TransitMapAddInBase> MapChildrenBindings;
         private CompositeCollectionBinding<MapRouteView, TransitMapAddInBase> MapRouteBindings;
+
+        private Dictionary<TransitMapAddInBase, WeakEventListener<TransitMap, object, MapTakeoverRequestedEventArgs>> MapTakeoverRequestedListeners = new Dictionary<TransitMapAddInBase, WeakEventListener<TransitMap, object, MapTakeoverRequestedEventArgs>>();
 
         private void AddIns_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -696,16 +721,33 @@ namespace OneAppAway._1_1.Views.Controls
                     MapElementBindings.AddCollection(addin, addin.MapElementsShown);
                     MapRouteBindings.AddCollection(addin, addin.MapRoutesShown);
                     MapChildrenBindings.AddCollection(addin, addin.MapChildrenShown);
+                    WeakEventListener<TransitMap, object, MapTakeoverRequestedEventArgs> takeoverRequestedListener = new WeakEventListener<TransitMap, object, MapTakeoverRequestedEventArgs>(this);
+                    takeoverRequestedListener.OnEventAction = (map, _sender, _e) => map.Addin_TakeoverRequested(_sender, _e);
+                    addin.TakeoverRequested += takeoverRequestedListener.OnEvent;
                 }
             }
             if (e.OldItems != null)
             {
-                foreach (TransitMapAddInBase addin in e.NewItems)
+                foreach (TransitMapAddInBase addin in e.OldItems)
                 {
                     MapElementBindings.RemoveCollection(addin);
                     MapRouteBindings.RemoveCollection(addin);
                     MapChildrenBindings.RemoveCollection(addin);
+                    MapTakeoverRequestedListeners[addin].Detach();
+                    MapTakeoverRequestedListeners.Remove(addin);
                 }
+            }
+        }
+
+        private void Addin_TakeoverRequested(object sender, MapTakeoverRequestedEventArgs e)
+        {
+            if (CurrentTakeover != null)
+                CurrentTakeoverOwner?.OnTakeoverEvicted(CurrentTakeover);
+            if (e.Takeover != null)
+            {
+                CurrentTakeoverOwner = sender as TransitMapAddInBase;
+                CurrentTakeoverOwner?.OnTakeoverGranted(e.Takeover);
+                CurrentTakeover = e.Takeover;
             }
         }
         #endregion
@@ -714,24 +756,18 @@ namespace OneAppAway._1_1.Views.Controls
         {
             foreach (var addin in AddIns)
             {
-                
+                addin.OnMapElementsClicked(args.MapElements.Intersect(addin.MapElementsShown), args.Location.ToLatLon(), args.Position);
             }
         }
 
         private void MainMap_MapElementPointerEntered(MapControl sender, MapElementPointerEnteredEventArgs args)
         {
-            foreach (var addin in AddIns)
-            {
-
-            }
+            AddIns.FirstOrDefault(addin => addin.MapElementsShown.Contains(args.MapElement))?.OnMapElementPointerEntered(args.MapElement, args.Location.ToLatLon(), args.Position);
         }
 
         private void MainMap_MapElementPointerExited(MapControl sender, MapElementPointerExitedEventArgs args)
         {
-            foreach (var addin in AddIns)
-            {
-
-            }
+            AddIns.FirstOrDefault(addin => addin.MapElementsShown.Contains(args.MapElement))?.OnMapElementPointerExited(args.MapElement, args.Location.ToLatLon(), args.Position);
         }
     }
 }
