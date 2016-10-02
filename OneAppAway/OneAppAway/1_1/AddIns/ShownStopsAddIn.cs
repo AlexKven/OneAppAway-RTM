@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Data;
 using Windows.Foundation;
 using OneAppAway._1_1.Addins;
+using OneAppAway._1_1.Helpers;
+using System.Collections.Specialized;
 
 namespace OneAppAway._1_1.AddIns
 {
@@ -21,9 +23,9 @@ namespace OneAppAway._1_1.AddIns
         #region Fields
         //private StopSizeThresholdConverter StopSizeConverter = new StopSizeThresholdConverter() { LargeThreshold = 18, MediumThreshold = 16.5, SmallThreshold = 14 };
         
-        private bool StopsSourceChangeHandled = false;
         private List<string> HiddenStops = new List<string>();
         private List<TransitStopIconWrapper> StopIconWrappers = new List<TransitStopIconWrapper>();
+        private WeakEventListener<ShownStopsAddIn, object, NotifyCollectionChangedEventArgs> StopsSource_CollectionChanged_Listener;
         #endregion
 
         #region Properties
@@ -102,19 +104,22 @@ namespace OneAppAway._1_1.AddIns
 
         private void RegisterStopsSourceHandlers(ObservableCollection<TransitStop> collection)
         {
-            if (!StopsSourceChangeHandled)
+            if (StopsSource_CollectionChanged_Listener == null)
             {
-                collection.CollectionChanged += StopsSource_CollectionChanged;
-                StopsSourceChangeHandled = true;
+                StopsSource_CollectionChanged_Listener = new WeakEventListener<ShownStopsAddIn, object, NotifyCollectionChangedEventArgs>(this);
+                StopsSource_CollectionChanged_Listener.OnEventAction = (addin, sender, e) => addin.StopsSource_CollectionChanged(sender, e);
+                StopsSource_CollectionChanged_Listener.OnDetachAction = (listener) => listener.OnEventAction = null;
+                collection.CollectionChanged += StopsSource_CollectionChanged_Listener.OnEvent;
             }
         }
 
         private void UnregisterStopsSourceHandlers(ObservableCollection<TransitStop> collection)
         {
-            if (StopsSourceChangeHandled)
+            if (StopsSource_CollectionChanged_Listener != null)
             {
-                collection.CollectionChanged -= StopsSource_CollectionChanged;
-                StopsSourceChangeHandled = false;
+                collection.CollectionChanged -= StopsSource_CollectionChanged_Listener.OnEvent;
+                StopsSource_CollectionChanged_Listener?.Detach();
+                StopsSource_CollectionChanged_Listener = null;
             }
         }
 
@@ -171,7 +176,7 @@ namespace OneAppAway._1_1.AddIns
         #endregion
 
         #region Event Handlers
-        private void StopsSource_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void StopsSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
