@@ -25,7 +25,8 @@
         </Grid.ColumnDefinitions>-->
         <Rectangle Fill="#EE333333"/>
         <!--<Rectangle Grid.ColumnSpan="3" Fill="#303030"/>-->
-        <local:StopPopupControl x:Name="SubControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TopControlsVisibility="{Binding ElementName=self, Path=TopControlsVisibility}" ExpandCommand="{Binding ElementName=self, Path=ExpandCommand}" CompressCommand="{Binding ElementName=self, Path=CompressCommand}" CloseCommand="{Binding ElementName=self, Path=CloseCommand}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}"/>
+        <Rectangle Fill="#303030" VerticalAlignment="Top" Height="40"/>
+        <local:StopPopupControl x:Name="SubControl" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TopControlsVisibility="{Binding ElementName=self, Path=TopControlsVisibility}" ExpandCommand="{Binding ElementName=self, Path=ExpandCommand}" CompressCommand="{Binding ElementName=self, Path=CompressCommand}" CloseCommand="{Binding ElementName=self, Path=CloseCommand}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}" Stop="{Binding ElementName=self, Path=Stop}"/>
         <!--<Rectangle>
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="1,0" StartPoint="0.5,0">

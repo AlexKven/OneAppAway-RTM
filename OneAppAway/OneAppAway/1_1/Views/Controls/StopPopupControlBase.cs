@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OneAppAway._1_1.Data;
+using OneAppAway._1_1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +11,26 @@ using Windows.UI.Xaml.Controls;
 
 namespace OneAppAway._1_1.Views.Controls
 {
-    public class StopPopupControlBase : UserControl
+    public abstract class StopPopupControlBase : UserControl
     {
+        public StopPopupControlBase()
+        {
+        }
+
+        public TransitStop Stop
+        {
+            get { return (TransitStop)GetValue(StopProperty); }
+            set { SetValue(StopProperty, value); }
+        }
+        public static readonly DependencyProperty StopProperty =
+            DependencyProperty.Register("Stop", typeof(TransitStop), typeof(StopPopupControlBase), new PropertyMetadata(new TransitStop(), OnStopChangedStatic));
+        private static void OnStopChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as StopPopupControlBase)?.OnStopChanged((TransitStop)e.NewValue);
+        }
+
+        protected virtual void OnStopChanged(TransitStop stop) { }
+
         public bool ShowRoutesList
         {
             get { return (bool)GetValue(ShowRoutesListProperty); }

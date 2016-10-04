@@ -11,7 +11,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400" MinHeight="200" DataContextChanged="StopArrivalsControlBase_DataContextChanged" x:Name="self">
 
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.Resources>
             <conv:BoolToVisibilityConverter x:Key="BoolVisibilityConverter"/>
         </Grid.Resources>
@@ -42,7 +42,6 @@
             </Rectangle.Fill>
         </Rectangle>-->
         
-        <Rectangle Grid.ColumnSpan="3" Fill="#303030" Visibility="{Binding Path=IsTopLevel, Converter={StaticResource BoolToVisibilityConverter}}"/>
         <Image Width="40" Height="40" Source="{Binding IconUri}" VerticalAlignment="Top" Visibility="{Binding ElementName=self, Path=TitleVisibility}"/>
         <Button x:Name="TitleButton" Height="38" Background="Transparent" Template="{ThemeResource SimpleButtonTemplate}" Grid.Column="1" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ToolTipService.ToolTip="{Binding TitleToolTip}" Visibility="{Binding ElementName=self, Path=TitleVisibility}" Command="{Binding ElementName=self, Path=TitleCommand}">
             <local:AutoFitTextBlock Text="{Binding StopName}" FontSize="18" Foreground="White" VerticalAlignment="Stretch"/>
@@ -53,8 +52,8 @@
             <Button RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="ExpandButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=ExpandCommand}">&#xE740;</Button>
             <Button RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CloseCommand}">❌</Button>
         </StackPanel>
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding ChildrenSource}" VerticalContentAlignment="Stretch">
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalScrollMode="{Binding ElementName=self, Path=Width, Converter={StaticResource ScrollViewerScrollModeConverter}}" HorizontalScrollBarVisibility="{Binding ElementName=self, Path=Width, Converter={StaticResource ScrollViewerScrollModeConverter}, ConverterParameter=ScrollBarVisibility}">
+            <ItemsControl ItemsSource="{Binding Children}" VerticalContentAlignment="Stretch">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
@@ -62,7 +61,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:StopPopupControl VerticalAlignment="Stretch" Width="{Binding Width}" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TopControlsVisibility="Collapsed" TitleVisibility="Visible" TitleCommand="{Binding ElementName=self, Path=TitleCommand}"/>
+                        <local:StopPopupControl IsTopLevel="false"  Stop="{Binding}" VerticalAlignment="Stretch" MinWidth="190" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -102,7 +101,7 @@
                 </ItemsControl>
             </ScrollViewer>
 
-            <local:StopArrivalsBox Grid.Row="2" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <local:StopArrivalsBox Grid.Row="2" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}"/>
         </Grid>
     </Grid>
 </local:StopPopupControlBase>

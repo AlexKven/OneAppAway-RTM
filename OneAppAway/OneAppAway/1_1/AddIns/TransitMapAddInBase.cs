@@ -25,6 +25,8 @@ namespace OneAppAway._1_1.Addins
         public virtual void OnMapElementPointerEntered(MapElement element, LatLon pointOnMap, Point pointOnControl) { }
         public virtual void OnMapElementsClicked(IEnumerable<MapElement> elements, LatLon pointOnMap, Point pointOnControl) { }
 
+        public virtual void OnSizeChanged(Size? previousSize, Size newSize) { }
+
         public virtual void OnTakeoverGranted(MapTakeover takeover) { }
         public virtual void OnTakeoverEvicted(MapTakeover takeover) { }
 

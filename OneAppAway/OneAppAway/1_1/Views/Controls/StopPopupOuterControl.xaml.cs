@@ -83,8 +83,8 @@ namespace OneAppAway._1_1.Views.Controls
         #region Event Handlers
         private void StopArrivalsControlBase_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (!double.IsNaN(e.NewSize.Width) && e.NewSize.Width > 0)
-                SubControl.Width = e.NewSize.Width;
+            //if (!double.IsNaN(e.NewSize.Width) && e.NewSize.Width > 0)
+            //    SubControl.Width = e.NewSize.Width;
         }
         #endregion
     }

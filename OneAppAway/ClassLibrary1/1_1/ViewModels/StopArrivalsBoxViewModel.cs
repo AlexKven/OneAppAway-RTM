@@ -99,6 +99,11 @@ namespace OneAppAway._1_1.ViewModels
 
         public async void Refresh(bool forceOnline)
         {
+            if (Stop.Children != null)
+            {
+                Items.Clear();
+                return;
+            }
             Error = false;
             AutoDownload = AutoDownload || forceOnline;
             IsBusy = true;

@@ -1,0 +1,28 @@
+﻿<UserControl
+    x:Class="OneAppAway.PopupStopArrivalsBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OneAppAway"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400" RequestedTheme="Dark">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="#EE333333" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Button x:ConnectionId='1' x:Name="CloseButton"  RequestedTheme="Dark" Background="Red" Foreground="White" Width="35" Height="35" FontFamily="Segoe UI Symbol" FontSize="16"                           Grid.Column="1">❌</Button>
+        <TextBlock x:ConnectionId='2' x:Name="CaptionBox" VerticalAlignment="Center" FontSize="16" Margin="2" />
+        <local:MultiStopArrivalsBox x:ConnectionId='3' Grid.Row="1" Grid.ColumnSpan="2" x:Name="ArrivalsBox"/>
+        <Polygon Grid.Row="2" Grid.ColumnSpan="2" Points="0, 0, 30, 30, 60, 0" Fill="#EE333333" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</UserControl>
+

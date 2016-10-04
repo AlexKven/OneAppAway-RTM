@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using static System.Math;
 
 namespace OneAppAway._1_1.ViewModels
 {
@@ -71,8 +72,8 @@ namespace OneAppAway._1_1.ViewModels
                 Restore();
             IsCompressEnabled = NumColsRequested > 1;
             IsExpandEnabled = NumColsRequested < MaxColsVisible;
-            Width = Maximized ? MapWidth : NumColsRequested * COLUMN_SIZE;
-            Height = Maximized ? MapHeight - MAXIMIZED_MAP_MARGIN + ARRIVALS_CONTROL_TRIANGLE_HEIGHT : Math.Min(NORMAL_HEIGHT, MapHeight - MAXIMIZED_MAP_MARGIN);
+            Width = Max(0, Maximized ? MapWidth : NumColsRequested * COLUMN_SIZE);
+            Height = Max(0, Maximized ? MapHeight - MAXIMIZED_MAP_MARGIN + ARRIVALS_CONTROL_TRIANGLE_HEIGHT : Min(NORMAL_HEIGHT, MapHeight - MAXIMIZED_MAP_MARGIN));
             ShowBottomArrow = Height > 275;
             ShowRoutesList = Height > 225;
         }
@@ -184,18 +185,18 @@ namespace OneAppAway._1_1.ViewModels
                 (_DataContext as IDisposable)?.Dispose();
                 if (value.HasValue)
                 {
-                    _DataContext = new StopArrivalsControlViewModel(value.Value, true);
+                    //_DataContext = new StopPopupViewModel(value.Value, true);
                     MapLocation = value.Value.Position;
                 }
                 else
-                    _DataContext = new StopArrivalsControlViewModel(new TransitStop(), true);
+                    //_DataContext = new StopPopupViewModel(new TransitStop(), true);
                 OnPropertyChanged("DataContext");
                 SetCenterRegion();
             }
         }
 
-        private StopArrivalsControlViewModel _DataContext;
-        public StopArrivalsControlViewModel DataContext
+        private StopPopupViewModel _DataContext;
+        public StopPopupViewModel DataContext
         {
             get { return _DataContext; }
         }

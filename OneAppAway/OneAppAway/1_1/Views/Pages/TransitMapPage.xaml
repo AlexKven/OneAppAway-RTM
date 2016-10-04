@@ -143,7 +143,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <localC:TransitMap x:Name="MainMap" Grid.Row="1" CurrentZoomRate="{Binding CurrentZoomRate}" StopTitleClickedCommand="{Binding NavigateToStopPageCommand}"/>
+        <localC:TransitMap x:Name="MainMap" Grid.Row="1" CurrentZoomRate="{Binding CurrentZoomRate}"/>
         <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" IsHitTestVisible="False">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0,1">

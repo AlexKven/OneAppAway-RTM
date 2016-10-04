@@ -104,12 +104,14 @@
     <Compile Include="1_1\AddIns\MapTakeover.cs" />
     <Compile Include="1_1\AddIns\MapTakeoverRequestedEventArgs.cs" />
     <Compile Include="1_1\AddIns\ShownStopsAddIn.cs" />
+    <Compile Include="1_1\AddIns\StopDetailsPopupAddIn.cs" />
     <Compile Include="1_1\Agency.cs" />
     <Compile Include="1_1\AttachedProperties.cs" />
     <Compile Include="1_1\BusMap.xaml.cs">
       <DependentUpon>BusMap.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="1_1\Converters\DefaultIfNaNConverter.cs" />
     <Compile Include="1_1\Converters\DegreeOfConfidenceToBackgroundConverter.cs" />
     <Compile Include="1_1\Converters\EnumCaseVisibilityConverter.cs" />
     <Compile Include="1_1\Converters\InvertBoolConverter.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="1_1\Converters\LatLonTransformConverter.cs" />
     <Compile Include="1_1\Converters\MinutesUntilArrivalConverter.cs" />
     <Compile Include="1_1\Converters\NullZeroConverter.cs" />
+    <Compile Include="1_1\Converters\ScrollViewerScrollModeConverter.cs" />
     <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
     <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
     <Compile Include="1_1\Data\LocationHelper.cs" />
@@ -145,6 +148,7 @@
       <DependentUpon>AutoFitTextBlock.xaml</DependentUpon>
     </Compile>
     <Compile Include="1_1\Views\Controls\EnterCommandTextBox.cs" />
+    <Compile Include="1_1\Views\Controls\PassivelySizedContentControl.cs" />
     <Compile Include="1_1\Views\Controls\RealTimeArrivalControl.xaml.cs">
       <DependentUpon>RealTimeArrivalControl.xaml</DependentUpon>
     </Compile>

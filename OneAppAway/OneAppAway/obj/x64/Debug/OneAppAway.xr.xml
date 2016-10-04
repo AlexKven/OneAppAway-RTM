@@ -33,14 +33,14 @@
     <RootPropertyPathName Name="CompressCommand" />
     <RootPropertyPathName Name="CloseCommand" />
     <RootPropertyPathName Name="TitleCommand" />
+    <RootPropertyPathName Name="Stop" />
     <RootPropertyPathName Name="HasChildren" />
     <RootPropertyPathName Name="RouteNames" />
-    <RootPropertyPathName Name="ChildrenSource" />
+    <RootPropertyPathName Name="Children" />
     <RootPropertyPathName Name="TitleVisibility" />
     <RootPropertyPathName Name="TitleToolTip" />
     <RootPropertyPathName Name="StopName" />
     <RootPropertyPathName Name="IconUri" />
-    <RootPropertyPathName Name="IsTopLevel" />
     <RootPropertyPathName Name="TitleControlsTemplate" />
     <RootPropertyPathName Name="TitleControlsActualWidth" />
     <RootPropertyPathName Name="TitleControlsVisibility" />
@@ -79,7 +79,6 @@
     <RootPropertyPathName Name="TitleControlsOverflowTemplate" />
     <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="CurrentZoomRate" />
-    <RootPropertyPathName Name="NavigateToStopPageCommand" />
     <RootPropertyPathName Name="Tag" />
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Background" />
@@ -115,6 +114,8 @@
     <RootType FullName="OneAppAway._1_1.Converters.IsPredictedToForegroundConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.EnumCaseVisibilityConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.FadeOnDropOffOnlyConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.ScrollViewerScrollModeConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.DefaultIfNaNConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
@@ -200,8 +201,8 @@
       <RootProperty Name="Fill" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Opacity" />
-      <RootProperty Name="Height" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Height" />
       <RootProperty Name="Width" />
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Margin" />
@@ -418,6 +419,7 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Stop" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupControlBase">
       <RootProperty Name="RequestedTheme" />
@@ -427,16 +429,16 @@
       <RootEvent Name="DataContextChanged" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupControl">
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ShowRoutesList" />
       <RootProperty Name="TopControlsVisibility" />
       <RootProperty Name="ExpandCommand" />
       <RootProperty Name="CompressCommand" />
       <RootProperty Name="CloseCommand" />
       <RootProperty Name="TitleCommand" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="TitleVisibility" />
+      <RootProperty Name="Stop" />
+      <RootProperty Name="IsTopLevel" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="MinWidth" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
       <RootProperty Name="Points" />
@@ -499,7 +501,6 @@
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap">
       <RootProperty Name="CurrentZoomRate" />
-      <RootProperty Name="StopTitleClickedCommand" />
       <RootProperty Name="IsHitTestVisible" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">

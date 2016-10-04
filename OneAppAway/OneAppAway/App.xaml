@@ -29,6 +29,8 @@
         <conv_1_1:IsPredictedToForegroundConverter x:Key="IsPredictedToForegroundConverter"/>
         <conv_1_1:EnumCaseVisibilityConverter x:Key="EnumCaseVisibilityConverter"/>
         <conv_1_1:FadeOnDropOffOnlyConverter x:Key="FadeOnDropOffOnlyConverter"/>
+        <conv_1_1:ScrollViewerScrollModeConverter x:Key="ScrollViewerScrollModeConverter"/>
+        <conv_1_1:DefaultIfNaNConverter x:Key="DefaultIfNaNConverter"/>
         <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
             <Grid>
                 <VisualStateManager.VisualStateGroups>

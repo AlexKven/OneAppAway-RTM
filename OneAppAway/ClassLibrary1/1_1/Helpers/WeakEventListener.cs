@@ -43,15 +43,35 @@ namespace OneAppAway._1_1.Helpers
             weakInstance = new WeakReference(instance);
         }
 
+        private Action<TInstance, TSource, TEventArgs> _OnEventAction;
         /// <summary>
         /// Gets or sets the method to call when the event fires.
         /// </summary>
-        public Action<TInstance, TSource, TEventArgs> OnEventAction { get; set; }
+        public Action<TInstance, TSource, TEventArgs> OnEventAction
+        {
+            get { return _OnEventAction; }
+            set
+            {
+                //if (value?.Target != null)
+                //    throw new Exception("Any delegate passed to a WeakEventListener must be static, otherwise a memory leak exists.");
+                _OnEventAction = value;
+            }
+        }
 
+        private Action<WeakEventListener<TInstance, TSource, TEventArgs>> _OnDetachAction;
         /// <summary>
         /// Gets or sets the method to call when detaching from the event.
         /// </summary>
-        public Action<WeakEventListener<TInstance, TSource, TEventArgs>> OnDetachAction { get; set; }
+        public Action<WeakEventListener<TInstance, TSource, TEventArgs>> OnDetachAction
+        {
+            get { return _OnDetachAction; }
+            set
+            {
+                //if (value?.Target != null)
+                //    throw new Exception("Any delegate passed to a WeakEventListener must be static, otherwise a memory leak exists.");
+                _OnDetachAction = value;
+            }
+        }
 
         /// <summary>
         /// Handler for the subscribed event calls OnEventAction to handle it.

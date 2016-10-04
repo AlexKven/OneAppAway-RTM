@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OneAppAway._1_1.Helpers;
 using OneAppAway.Common;
+using OneAppAway._1_1.Data;
+using OneAppAway._1_1.ViewModels;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -22,15 +24,55 @@ namespace OneAppAway._1_1.Views.Controls
 {
     public sealed partial class StopPopupControl : StopPopupControlBase
     {
+        private StopPopupViewModel VM = new StopPopupViewModel();
+
         public StopPopupControl()
         {
             this.InitializeComponent();
+            MainGrid.DataContext = VM;
+            VM.PropertyChanged += VM_PropertyChanged;
+            RefreshMainGridWidth();
             //ExpandButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("ExpandCommand") });
             //CompressButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("CompressCommand") });
             //CloseButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("CloseCommand") });
-            RefreshButton.Command = new RelayCommand((obj) => ArrivalsBox.Refresh(true));
+            //RegisterPropertyChangedCallback(WidthProperty, WidthChanged);
         }
-        
+
+        private bool _IsTopLevel = true;
+        public bool IsTopLevel
+        {
+            get { return _IsTopLevel; }
+            set
+            {
+                _IsTopLevel = value;
+                RefreshMainGridWidth();
+            }
+        }
+
+        private void VM_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "HasChildren")
+                RefreshMainGridWidth();
+        }
+
+        private void RefreshMainGridWidth()
+        {
+            if (IsTopLevel)
+                return;
+            else if (!VM.HasChildren)
+                MainGrid.Width = 290;
+            else
+                MainGrid.Width = double.NaN;
+        }
+
+        //protected override Size MeasureOverride(Size availableSize)
+        //{
+        //    var size = availableSize;
+        //    if (double.IsInfinity(size.Width))
+        //        size.Width = 290;
+        //    return base.MeasureOverride(size);
+        //}
+
         public Visibility TitleVisibility
         {
             get { return (Visibility)GetValue(TitleVisibilityProperty); }
@@ -58,8 +100,13 @@ namespace OneAppAway._1_1.Views.Controls
             //    CompressButton.Visibility = Visibility.Collapsed;
             //    CloseButton.Visibility = Visibility.Collapsed;
             //}
-            TitleButton.CommandParameter = (DataContext as ViewModels.StopArrivalsControlViewModel)?.Stop.ID;
-            ArrivalsBox.Stop = (DataContext as ViewModels.StopArrivalsControlViewModel)?.Stop ?? new Data.TransitStop();
+            //TitleButton.CommandParameter = (DataContext as ViewModels.StopPopupViewModel)?.Stop.ID;
+            //ArrivalsBox.Stop = (DataContext as ViewModels.StopPopupViewModel)?.Stop ?? new Data.TransitStop();
+        }
+
+        protected override void OnStopChanged(TransitStop stop)
+        {
+            VM.Stop = stop;
         }
     }
 }

@@ -40,10 +40,6 @@ namespace OneAppAway._1_1.Views.Controls
 
         private bool? User_CenterChanged = null;
         private bool? User_ZoomLevelChanged = null;
-
-        private ArrivalsControlInTransitPageViewModel ArrivalsViewModel;
-        private StopPopupOuterControl ArrivalsPopup;
-        private TranslateTransform ArrivalsPopupTransform = new TranslateTransform();
         #endregion
 
         public TransitMap()
@@ -169,34 +165,6 @@ namespace OneAppAway._1_1.Views.Controls
 
         private TimeSpan DelayedPropertyWait { get; set; } = TimeSpan.FromMilliseconds(100);
         internal MapControl UnderlyingMapControl => MainMap;
-
-        public object SelectedStopsSource
-        {
-            get { return (object)GetValue(SelectedStopsSourceProperty); }
-            set { SetValue(SelectedStopsSourceProperty, value); }
-        }
-        public static readonly DependencyProperty SelectedStopsSourceProperty =
-            DependencyProperty.Register("SelectedStops", typeof(object), typeof(TransitMap), new PropertyMetadata(null, OnSelectedStopsSourceChangedStatic));
-        static void OnSelectedStopsSourceChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            ((TransitMap)sender).OnSelectedStopsSourceChanged(e.OldValue, e.NewValue);
-        }
-        
-        public ICommand StopTitleClickedCommand
-        {
-            get { return (ICommand)GetValue(StopTitleClickedCommandProperty); }
-            set { SetValue(StopTitleClickedCommandProperty, value); }
-        }
-        public static readonly DependencyProperty StopTitleClickedCommandProperty =
-            DependencyProperty.Register("StopTitleClickedCommand", typeof(ICommand), typeof(TransitMap), new PropertyMetadata(null));
-        
-        public bool HasSelectedStops
-        {
-            get { return (bool)GetValue(HasSelectedStopsProperty); }
-            private set { SetValue(HasSelectedStopsProperty, value); }
-        }
-        public static readonly DependencyProperty HasSelectedStopsProperty =
-            DependencyProperty.Register("HasSelectedStops", typeof(bool), typeof(TransitMap), new PropertyMetadata(false));
         
         public double CurrentZoomRate
         {
@@ -276,22 +244,6 @@ namespace OneAppAway._1_1.Views.Controls
                 MainMap_CenterChanged(MainMap, null);
         }
 
-        void OnSelectedStopsSourceChanged(object oldValue, object newValue)
-        {
-            if (oldValue is ObservableCollection<TransitStop>)
-                UnregisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)oldValue);
-            if (newValue is ObservableCollection<TransitStop>)
-                RegisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)newValue);
-            else if (newValue is IEnumerable<TransitStop>)
-            {
-                SetStopArrivalsControl(CombineSeveralStops(null, ((IEnumerable<TransitStop>)newValue).ToArray()));
-            }
-            else if (newValue is TransitStop)
-                SetStopArrivalsControl((TransitStop)newValue);
-            else
-                ClearStopArrivalsControl();
-        }
-
         private void OnAreaChanged()
         {
             DelaySetArea();
@@ -299,23 +251,6 @@ namespace OneAppAway._1_1.Views.Controls
         #endregion
 
         #region Private Actions
-        private async void SetStopArrivalsControl(TransitStop stop)
-        {
-            if (ArrivalsViewModel == null)
-                SetArrivalsViewModel();
-            ArrivalsViewModel.Stop = stop;
-            TrySetView(new MapView(stop.Position)).ToString();
-            await Task.Delay(150);
-
-            ArrivalsViewModel.SetVisibility();
-        }
-
-        private void ClearStopArrivalsControl()
-        {
-            ArrivalsViewModel.Stop = null;
-            ArrivalsViewModel.SetVisibility();
-        }
-
         private void SetLatLonDensities()
         {
             if (MainMap.ActualWidth > 0 && MainMap.ActualHeight > 0)
@@ -403,45 +338,6 @@ namespace OneAppAway._1_1.Views.Controls
             User_CenterChanged = null;
         }
 
-        private void SetArrivalsViewModel()
-        {
-            ArrivalsPopup = new StopPopupOuterControl() { RenderTransform = ArrivalsPopupTransform };
-            ArrivalsViewModel = new ArrivalsControlInTransitPageViewModel();
-            ArrivalsViewModel.VisibilityChangedCallback += async visible =>
-            {
-                DoubleAnimation opacityAnimation = new DoubleAnimation() { From = visible ? 0 : 1, To = visible ? 1 : 0, Duration = TimeSpan.FromMilliseconds(150) };
-                DoubleAnimation slideAnimation = new DoubleAnimation() { From = visible ? 10 : 0, To = visible ? 0 : 10, Duration = TimeSpan.FromMilliseconds(150) };
-                Storyboard.SetTarget(opacityAnimation, ArrivalsPopup);
-                Storyboard.SetTargetProperty(opacityAnimation, "Opacity");
-                Storyboard.SetTarget(slideAnimation, ArrivalsPopupTransform);
-                Storyboard.SetTargetProperty(slideAnimation, "Y");
-                Storyboard sb = new Storyboard();
-                sb.Children.Add(opacityAnimation);
-                sb.Children.Add(slideAnimation);
-                if (visible)
-                    ArrivalsViewModel.IsVisible = true;
-                await sb.BeginAsync();
-                if (!visible)
-                    ArrivalsViewModel.IsVisible = false;
-            };
-            ArrivalsViewModel.BindToControl(OnMapPopup, MapControl.LocationProperty, "MapLocation", false, LatLonToGeopointConverter.Instance, "UnsetNAL");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.WidthProperty, "Width");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.HeightProperty, "Height");
-            ArrivalsPopup.Visibility = Visibility.Visible;
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.VisibilityProperty, "IsVisible", false, BoolToVisibilityConverter.Instance);
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.DataContextProperty, "DataContext");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ExpandCommandProperty, "ExpandCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.CompressCommandProperty, "CompressCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.CloseCommandProperty, "CloseCommand");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ShowBottomArrowProperty, "ShowBottomArrow");
-            ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ShowRoutesListProperty, "ShowRoutesList");
-            ArrivalsViewModel.BindToControl(this, TransitMap.CenterRegionProperty, "CenterRegion");
-            ArrivalsViewModel.PropertyChanged += ArrivalsViewModel_PropertyChanged;
-            OnMapPopup.Content = ArrivalsPopup;
-            ArrivalsViewModel.SetSize(MainMap.ActualWidth, MainMap.ActualHeight);
-            ArrivalsPopup.SetBinding(StopPopupOuterControl.TitleCommandProperty, new Binding { Source = this, Path = new PropertyPath("StopTitleClickedCommand") });
-        }
-
         private void SetArea()
         {
             if (MainMap.ActualWidth > 0 && MainMap.ActualHeight > 0)
@@ -463,64 +359,6 @@ namespace OneAppAway._1_1.Views.Controls
             }
             else
                 Area = LatLonRect.NotAnArea;
-        }
-        #endregion
-
-        #region Event Registration
-        private bool SelectedStopsSourceChangeHandled = false;
-        private bool ArrivalsViewModelCloseEventHandled = false;
-
-        private void RegisterSelectedStopsSourceHandlers(ObservableCollection<TransitStop> collection)
-        {
-            if (!SelectedStopsSourceChangeHandled)
-            {
-                collection.CollectionChanged += SelectedStopsSource_CollectionChanged;
-                SelectedStopsSourceChangeHandled = true;
-            }
-        }
-
-        private void UnregisterSelectedStopsSourceHandlers(ObservableCollection<TransitStop> collection)
-        {
-            if (SelectedStopsSourceChangeHandled)
-            {
-                collection.CollectionChanged -= SelectedStopsSource_CollectionChanged;
-                SelectedStopsSourceChangeHandled = false;
-            }
-        }
-
-        private void RegisterArrivalsViewModelCloseEventHandler()
-        {
-            if (!ArrivalsViewModelCloseEventHandled && ArrivalsViewModel != null)
-            {
-                ArrivalsViewModel.Closed += ArrivalsViewModel_Closed;
-                ArrivalsViewModelCloseEventHandled = true;
-            }
-        }
-
-        private void UnregisterArrivalsViewModelCloseEventHandler()
-        {
-            if (ArrivalsViewModelCloseEventHandled)
-            {
-                ArrivalsViewModel.Closed -= ArrivalsViewModel_Closed;
-                ArrivalsViewModelCloseEventHandled = true;
-            }
-        }
-        #endregion
-
-        #region Functions
-        private static TransitStop CombineSeveralStops(LatLon? center, params TransitStop[] stops)
-        {
-            if (stops.Length == 0)
-                throw new ArgumentException("stops needs to contain at least one stop.", "stops");
-            if (stops.Length == 1)
-                return stops[0];
-            TransitStop result = new TransitStop();
-            result.Name = $"Selected Stops";
-            result.Direction = Data.StopDirection.Unspecified;
-            result.ID = stops.Aggregate("", (acc, stop) => acc + "&" + stop.ID).Substring(1);
-            result.Position = center ?? stops[0].Position;
-            result.Children = stops.Select(stop => stop.ID).ToArray();
-            return result;
         }
         #endregion
 
@@ -555,8 +393,10 @@ namespace OneAppAway._1_1.Views.Controls
         {
             if (RecalculateCenterOffset())
                 OnCenterChanged();
-            if (ArrivalsViewModel != null)
-                ArrivalsViewModel.SetSize(e.NewSize.Width, e.NewSize.Height);
+            foreach (var addIn in AddIns)
+            {
+                addIn.OnSizeChanged(e.PreviousSize, e.NewSize);
+            }
         }
 
         private void MainMap_ZoomLevelChanged(Windows.UI.Xaml.Controls.Maps.MapControl sender, object args)
@@ -584,61 +424,16 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (SelectedStopsSource is ObservableCollection<TransitStop>)
-                RegisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)SelectedStopsSource);
-            RegisterArrivalsViewModelCloseEventHandler();
+            //if (SelectedStopsSource is ObservableCollection<TransitStop>)
+            //    RegisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)SelectedStopsSource);
+            //RegisterArrivalsViewModelCloseEventHandler();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            if (SelectedStopsSource is ObservableCollection<TransitStop>)
-                UnregisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)SelectedStopsSource);
-            UnregisterArrivalsViewModelCloseEventHandler();
-        }
-
-        private void SelectedStopsSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            
-            if (!(HasSelectedStops = !(((IEnumerable<TransitStop>)SelectedStopsSource).Count() == 0)))
-            {
-                if (ArrivalsViewModel.Stop.HasValue)
-                {
-                    ClearStopArrivalsControl();
-                }
-                return;
-            }
-
-            LatLon? center = null;
-            if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems.Count == 1)
-            {
-                center = ((TransitStop)e.NewItems[0]).Position;
-            }
-            SetStopArrivalsControl(CombineSeveralStops(center, ((IEnumerable<TransitStop>)SelectedStopsSource).ToArray()));
-        }
-
-        private void ArrivalsViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "IsOnMap")
-            {
-                if (ArrivalsViewModel.IsOnMap && OffMapPopup.Content == ArrivalsPopup)
-                {
-                    OffMapPopup.Content = null;
-                    OnMapPopup.Content = ArrivalsPopup;
-                }
-                else if (!ArrivalsViewModel.IsOnMap && OnMapPopup.Content == ArrivalsPopup)
-                {
-                    OnMapPopup.Content = null;
-                    OffMapPopup.Content = ArrivalsPopup;
-                }
-            }
-        }
-
-        private void ArrivalsViewModel_Closed(object sender, EventArgs e)
-        {
-            if (SelectedStopsSource is ObservableCollection<TransitStop>)
-            {
-                ((ObservableCollection<TransitStop>)SelectedStopsSource).Clear();
-            }
+            //if (SelectedStopsSource is ObservableCollection<TransitStop>)
+            //    UnregisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)SelectedStopsSource);
+            //UnregisterArrivalsViewModelCloseEventHandler();
         }
         #endregion
 
@@ -716,25 +511,26 @@ namespace OneAppAway._1_1.Views.Controls
         {
             if (e.NewItems != null)
             {
-                foreach (TransitMapAddInBase addin in e.NewItems)
+                foreach (TransitMapAddInBase addIn in e.NewItems)
                 {
-                    MapElementBindings.AddCollection(addin, addin.MapElementsShown);
-                    MapRouteBindings.AddCollection(addin, addin.MapRoutesShown);
-                    MapChildrenBindings.AddCollection(addin, addin.MapChildrenShown);
+                    MapElementBindings.AddCollection(addIn, addIn.MapElementsShown);
+                    MapRouteBindings.AddCollection(addIn, addIn.MapRoutesShown);
+                    MapChildrenBindings.AddCollection(addIn, addIn.MapChildrenShown);
                     WeakEventListener<TransitMap, object, MapTakeoverRequestedEventArgs> takeoverRequestedListener = new WeakEventListener<TransitMap, object, MapTakeoverRequestedEventArgs>(this);
                     takeoverRequestedListener.OnEventAction = (map, _sender, _e) => map.Addin_TakeoverRequested(_sender, _e);
-                    addin.TakeoverRequested += takeoverRequestedListener.OnEvent;
+                    addIn.TakeoverRequested += takeoverRequestedListener.OnEvent;
+                    addIn.OnSizeChanged(null, new Size(ActualWidth, ActualHeight));
                 }
             }
             if (e.OldItems != null)
             {
-                foreach (TransitMapAddInBase addin in e.OldItems)
+                foreach (TransitMapAddInBase addIn in e.OldItems)
                 {
-                    MapElementBindings.RemoveCollection(addin);
-                    MapRouteBindings.RemoveCollection(addin);
-                    MapChildrenBindings.RemoveCollection(addin);
-                    MapTakeoverRequestedListeners[addin].Detach();
-                    MapTakeoverRequestedListeners.Remove(addin);
+                    MapElementBindings.RemoveCollection(addIn);
+                    MapRouteBindings.RemoveCollection(addIn);
+                    MapChildrenBindings.RemoveCollection(addIn);
+                    MapTakeoverRequestedListeners[addIn].Detach();
+                    MapTakeoverRequestedListeners.Remove(addIn);
                 }
             }
         }

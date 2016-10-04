@@ -87,7 +87,7 @@
     <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
     <Compile Include="1_1\ViewModels\RealTimeArrivalViewModel.cs" />
     <Compile Include="1_1\ViewModels\StopArrivalsBoxViewModel.cs" />
-    <Compile Include="1_1\ViewModels\StopArrivalsControlViewModel.cs" />
+    <Compile Include="1_1\ViewModels\StopPopupViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapStopBrowserViewModel.cs" />
     <Compile Include="Common\WeakRelayCommand.cs" />

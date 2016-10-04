@@ -37,6 +37,7 @@ namespace OneAppAway._1_1.Views.Pages
     {
         private TransitMapPageUwpViewModel VM;
         private ShownStopsAddIn StopsAddIn = new ShownStopsAddIn();
+        private StopDetailsPopupAddIn StopDetailsAddIn = new StopDetailsPopupAddIn();
 
         public TransitMapPage()
         {
@@ -44,6 +45,7 @@ namespace OneAppAway._1_1.Views.Pages
             ChangeViewCommand = new WeakRelayCommand(ChangeViewCommand_Execute);
             NavigateToStopPageCommand = new WeakRelayCommand(NavigateToStopPageCommand_Execute);
             MainMap.AddIns.Add(StopsAddIn);
+            MainMap.AddIns.Add(StopDetailsAddIn);
 
             VM = new TransitMapPageUwpViewModel(Cache) { Title = "Transit Map" };
             DataContext = VM;
@@ -51,12 +53,12 @@ namespace OneAppAway._1_1.Views.Pages
             //TransitStop.SqlProvider.CreateTable(DatabaseManager.MemoryDatabase, true);
             //MainMap.StopsSource = Stops;
             StopsAddIn.StopsSource = VM.ShownStops;
-            MainMap.SelectedStopsSource = VM.SelectedStops;
+            StopDetailsAddIn.SelectedStopsSource = VM.SelectedStops;
             VM.BindToDependencyObject(StopsAddIn, ShownStopsAddIn.StopsClickedCommandProperty, "StopsClickedCommand");
             VM.BindToDependencyObject(StopsAddIn, ShownStopsAddIn.StopSizeProperty, "ShownStopSize");
             VM.BindToControl(MainMap, TransitMap.AreaDelayProperty, "Area", true);
             VM.BindToControl(MainMap, TransitMap.ZoomLevelDelayProperty, "ZoomLevel", true);
-            VM.BindToControl(MainMap, TransitMap.HasSelectedStopsProperty, "HasSelectedStops", true);
+            VM.BindToDependencyObject(StopDetailsAddIn, StopDetailsPopupAddIn.HasSelectedStopsProperty, "HasSelectedStops", true);
             VM.BindToControl(this, CanGoBackProperty, "CanGoBack");
             VM.ChangeViewBackCommand = ChangeViewCommand;
             VM.NavigateToStopPageBackCommand = NavigateToStopPageCommand;
