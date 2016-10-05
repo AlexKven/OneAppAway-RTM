@@ -34,6 +34,7 @@
     <RootPropertyPathName Name="CloseCommand" />
     <RootPropertyPathName Name="TitleCommand" />
     <RootPropertyPathName Name="Stop" />
+    <RootPropertyPathName Name="ShowCompactMenu" />
     <RootPropertyPathName Name="HasChildren" />
     <RootPropertyPathName Name="RouteNames" />
     <RootPropertyPathName Name="Children" />
@@ -116,6 +117,7 @@
     <RootType FullName="OneAppAway._1_1.Converters.FadeOnDropOffOnlyConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.ScrollViewerScrollModeConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.DefaultIfNaNConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.IsCompactToAppBarClosedDisplayModeConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
@@ -436,6 +438,7 @@
       <RootProperty Name="CloseCommand" />
       <RootProperty Name="TitleCommand" />
       <RootProperty Name="Stop" />
+      <RootProperty Name="ShowCompactMenu" />
       <RootProperty Name="IsTopLevel" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="MinWidth" />
@@ -457,6 +460,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Background" />
+      <RootProperty Name="ClosedDisplayMode" />
       <RootProperty Name="PrimaryCommands" />
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="BorderBrush" />
@@ -479,24 +483,21 @@
       <RootProperty Name="Minimum" />
       <RootProperty Name="Maximum" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
-      <RootProperty Name="Command" />
-      <RootProperty Name="IsEnabled" />
-      <RootProperty Name="ClickMode" />
-      <RootProperty Name="Visibility" />
-      <RootEvent Name="Click" />
+      <RootProperty Name="IsChecked" />
+      <RootEvent Name="Checked" />
+      <RootEvent Name="Unchecked" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
-      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Content" />
       <RootProperty Name="Template" />
       <RootProperty Name="Background" />
       <RootProperty Name="Resources" />
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="VerticalContentAlignment" />
       <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap">
@@ -600,14 +601,16 @@
       <RootMethod Name="GetAttachedFlyout" />
       <RootMethod Name="SetAttachedFlyout" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
-      <RootProperty Name="IsChecked" />
-      <RootProperty Name="Label" />
-      <RootProperty Name="Icon" />
-      <RootEvent Name="Checked" />
-      <RootEvent Name="Unchecked" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarSeparator" />
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="ClickMode" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
+    </RootType>
     <RootType FullName="OneAppAway._1_1.Helpers.BindingHelper">
       <RootMethod Name="GetAppliedBindingHelper" />
       <RootMethod Name="SetAppliedBindingHelper" />

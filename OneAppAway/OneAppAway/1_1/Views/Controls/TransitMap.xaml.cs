@@ -495,7 +495,10 @@ namespace OneAppAway._1_1.Views.Controls
             set
             {
                 _CurrentTakeover = value;
+                TakeoverOverlayControl.Visibility = CurrentTakeover?.MapOverlay == null ? Visibility.Collapsed : Visibility.Visible;
+                TakeoverOverlayControl.Content = CurrentTakeover?.MapOverlay;
                 OnCenterRegionChanged();
+                SetTakeoverView();
             }
         }
 
@@ -543,8 +546,14 @@ namespace OneAppAway._1_1.Views.Controls
             {
                 CurrentTakeoverOwner = sender as TransitMapAddInBase;
                 CurrentTakeoverOwner?.OnTakeoverGranted(e.Takeover);
-                CurrentTakeover = e.Takeover;
             }
+            CurrentTakeover = e.Takeover;
+        }
+
+        private async void SetTakeoverView()
+        {
+            if (CurrentTakeover?.ViewOverride != null)
+                await TrySetView(CurrentTakeover.ViewOverride);
         }
         #endregion
 

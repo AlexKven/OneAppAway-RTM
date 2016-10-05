@@ -115,6 +115,7 @@
     <Compile Include="1_1\Converters\DegreeOfConfidenceToBackgroundConverter.cs" />
     <Compile Include="1_1\Converters\EnumCaseVisibilityConverter.cs" />
     <Compile Include="1_1\Converters\InvertBoolConverter.cs" />
+    <Compile Include="1_1\Converters\IsCompactToAppBarClosedDisplayModeConverter.cs" />
     <Compile Include="1_1\Converters\IsEarlyToForegroundConverter.cs" />
     <Compile Include="1_1\Converters\IsPredictedToForegroundConverter.cs" />
     <Compile Include="1_1\Converters\LatLonToGeopointConverter.cs" />

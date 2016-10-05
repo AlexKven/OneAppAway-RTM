@@ -108,5 +108,10 @@ namespace OneAppAway._1_1.Views.Controls
         {
             VM.Stop = stop;
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            ArrivalsBox.Refresh(true);
+        }
     }
 }

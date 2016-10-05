@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -19,24 +20,7 @@ namespace OneAppAway._1_1.ViewModels
             set
             {
                 SetProperty(ref _Stop, value);
-                StopName = Stop.Name;
-                TitleToolTip = $"Stop ID = {Stop.ID}";
-                if (Children.Count > 0)
-                    StopName += $" ({Children.Count.ToString()} stops)";
-                HasChildren = Children.Count > 0;
-                Children.Clear();
-                if (Stop.Children != null)
-                {
-                    foreach (var childID in Stop.Children)
-                    {
-                        var child = DataSource.GetTransitStop(childID, DataSourcePreference.MemoryCacheOnly);
-                        if (child.HasData)
-                            Children.Add(child.Data);
-                    }
-                }
-                string postfix = ((Stop.Direction == StopDirection.Unspecified) ? "BusBase" : ("BusDirection" + Stop.Direction.ToString()));
-                _IconUri = new Uri($"ms-appx:///Assets/Icons/{postfix}40.png");
-                LoadRouteNames();
+                LoadStopProperties();
             }
         }
 
@@ -53,6 +37,28 @@ namespace OneAppAway._1_1.ViewModels
         {
             get { return _Children; }
             private set { _Children = value; }
+        }
+
+        private async void LoadStopProperties()
+        {
+            StopName = Stop.Name;
+            TitleToolTip = $"Stop ID = {Stop.ID}";
+            Children.Clear();
+            if (Stop.Children != null)
+            {
+                foreach (var childID in Stop.Children)
+                {
+                    var child = await DataSource.GetTransitStopAsync(childID, DataSourcePreference.All, CancellationToken.None);
+                    if (child.HasData)
+                        Children.Add(child.Data);
+                }
+            }
+            if (Children.Count > 0)
+                StopName += $" ({Children.Count.ToString()} stops)";
+            HasChildren = Children.Count > 0;
+            string postfix = ((Stop.Direction == StopDirection.Unspecified) ? "BusBase" : ("BusDirection" + Stop.Direction.ToString()));
+            IconUri = new Uri($"ms-appx:///Assets/Icons/{postfix}40.png");
+            LoadRouteNames();
         }
 
         private async void LoadRouteNames()
@@ -112,6 +118,10 @@ namespace OneAppAway._1_1.ViewModels
         public Uri IconUri
         {
             get { return _IconUri; }
+            set
+            {
+                SetProperty(ref _IconUri, value);
+            }
         }
 
         //public double Width { get; }

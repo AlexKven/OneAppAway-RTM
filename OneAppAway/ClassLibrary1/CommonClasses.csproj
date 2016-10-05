@@ -90,6 +90,7 @@
     <Compile Include="1_1\ViewModels\StopPopupViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapStopBrowserViewModel.cs" />
+    <Compile Include="Common\DisableableRelayCommand.cs" />
     <Compile Include="Common\WeakRelayCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Keys.cs" />

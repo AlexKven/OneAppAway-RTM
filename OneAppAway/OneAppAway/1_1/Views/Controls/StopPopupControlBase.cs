@@ -39,6 +39,14 @@ namespace OneAppAway._1_1.Views.Controls
         public static readonly DependencyProperty ShowRoutesListProperty =
             DependencyProperty.Register("ShowRoutesList", typeof(bool), typeof(StopPopupControlBase), new PropertyMetadata(true));
 
+        public bool ShowCompactMenu
+        {
+            get { return (bool)GetValue(ShowCompactMenuProperty); }
+            set { SetValue(ShowCompactMenuProperty, value); }
+        }
+        public static readonly DependencyProperty ShowCompactMenuProperty =
+            DependencyProperty.Register("ShowCompactMenu", typeof(bool), typeof(StopPopupControlBase), new PropertyMetadata(false));
+
         public Visibility TopControlsVisibility
         {
             get { return (Visibility)GetValue(TopControlsVisibilityProperty); }

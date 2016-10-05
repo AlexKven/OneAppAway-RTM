@@ -19,21 +19,73 @@ using Windows.Foundation;
 using System.ComponentModel;
 using Windows.UI.Xaml.Data;
 using OneAppAway._1_1.Converters;
+using OneAppAway.Common;
+using static System.Math;
+using Windows.UI.Xaml.Controls.Maps;
 
 namespace OneAppAway._1_1.AddIns
 {
     public class StopDetailsPopupAddIn : TransitMapAddInBase
     {
+        #region Constants
+        private const double COLUMN_SIZE = 310;
+        private const double MAXIMIZED_MAP_MARGIN = 50;
+        private const double ARRIVALS_CONTROL_TRIANGLE_HEIGHT = 30;
+        private const double NORMAL_HEIGHT = 400;
+
+        private const float SLIDE_OFFSET = 25;
+        private const double ANIMATION_DURATION = 200;
+        #endregion
+
         #region Fields
-        private ContentControl OnMapPopup = new ContentControl();
-        private ContentControl OffMapPopup = new ContentControl();
-        private StopPopupOuterControl ArrivalsPopup = new StopPopupOuterControl() { Width = 500 };
+        private ContentControl OnMapPopup = new ContentControl() { Visibility = Visibility.Collapsed, HorizontalContentAlignment = HorizontalAlignment.Stretch, VerticalContentAlignment = VerticalAlignment.Stretch };
+        private ContentControl OffMapPopup = new ContentControl() { Visibility = Visibility.Collapsed, HorizontalContentAlignment = HorizontalAlignment.Stretch, VerticalContentAlignment = VerticalAlignment.Stretch, Margin = new Thickness(0, 0, 0, 20) };
+        private StopPopupOuterControl ArrivalsPopup = new StopPopupOuterControl() { Visibility = Visibility.Collapsed };
+
+        private double MapWidth;
+        private double MapHeight;
+        private double NumColsRequested = 1;
+        private double MaxColsVisible
+        {
+            get
+            {
+                return Math.Floor(Math.Max(0, 2 * (MapWidth - 100 - COLUMN_SIZE / 2) / COLUMN_SIZE)) / 2 + 1;
+            }
+        }
+        bool Maximized = false;
+
+        private DisableableRelayCommand ExpandCommand;
+        private DisableableRelayCommand CompressCommand;
+        private DisableableRelayCommand CloseCommand;
         #endregion
 
         public StopDetailsPopupAddIn()
         {
+            ExpandCommand = new DisableableRelayCommand((obj) =>
+            {
+                NumColsRequested += .5;
+                RefreshPopupSize();
+            });
+            CompressCommand = new DisableableRelayCommand((obj) =>
+            {
+                do
+                {
+                    NumColsRequested -= .5;
+                } while (NumColsRequested >= MaxColsVisible && NumColsRequested > 1);
+                RefreshPopupSize();
+            });
+            CloseCommand = new DisableableRelayCommand((obj) => ClosePopup());
+            MapControl.SetNormalizedAnchorPoint(OnMapPopup, new Point(0.5, 1));
+
+            ArrivalsPopup.SetBinding(StopPopupOuterControl.TitleCommandProperty, new Binding() { Source = this, Path = new PropertyPath("StopTitleClickedCommand") });
+            ArrivalsPopup.ExpandCommand = ExpandCommand;
+            ArrivalsPopup.CompressCommand = CompressCommand;
+            ArrivalsPopup.CloseCommand = CloseCommand;
+            ArrivalsPopup.Offset(offsetY: SLIDE_OFFSET).Fade(value: 0).SetDurationForAll(0).Start();
+
             MapChildrenShown.Add(OnMapPopup);
-            SetArrivalsViewModel();
+
+            RefreshPopupSize();
         }
 
         #region Properties
@@ -64,6 +116,28 @@ namespace OneAppAway._1_1.AddIns
         }
         public static readonly DependencyProperty HasSelectedStopsProperty =
             DependencyProperty.Register("HasSelectedStops", typeof(bool), typeof(StopDetailsPopupAddIn), new PropertyMetadata(false));
+        
+        private double _Width;
+        public double Width
+        {
+            get { return _Width; }
+            set
+            {
+                _Width = value;
+                OnMapPopup.Width = Width;
+            }
+        }
+
+        private double _Height;
+        public double Height
+        {
+            get { return _Height; }
+            set
+            {
+                _Height = value;
+                OnMapPopup.Height = Height;
+            }
+        }
         #endregion
 
         #region Methods
@@ -75,103 +149,111 @@ namespace OneAppAway._1_1.AddIns
                 RegisterSelectedStopsSourceHandlers((ObservableCollection<TransitStop>)newValue);
             else if (newValue is IEnumerable<TransitStop>)
             {
-                SetStopArrivalsControl(CombineSeveralStops(null, ((IEnumerable<TransitStop>)newValue).ToArray()));
+                SetPopup(CombineSeveralStops(null, ((IEnumerable<TransitStop>)newValue).ToArray()));
             }
             else if (newValue is TransitStop)
-                SetStopArrivalsControl((TransitStop)newValue);
+                SetPopup((TransitStop)newValue);
             else
-                ClearStopArrivalsControl();
+                ClosePopup();
         }
 
-        private async void SetStopArrivalsControl(TransitStop stop)
+        private void SetPopup(TransitStop stop)
         {
-            //if (ArrivalsViewModel == null)
-            //    SetArrivalsViewModel();
             ArrivalsPopup.Stop = stop;
-            //ArrivalsViewModel.Stop = stop;
-            //TrySetView(new MapView(stop.Position)).ToString();
-            await Task.Delay(150);
-            //ArrivalsViewModel.SetVisibility();
+            if (ArrivalsPopup.Visibility != Visibility.Visible)
+            {
+                ArrivalsPopup.Visibility = Visibility.Visible;
+                OnMapPopup.Visibility = Visibility.Visible;
+                OffMapPopup.Visibility = Visibility.Visible;
+                ArrivalsPopup.Offset(offsetY: 0).Fade(value: 1).SetDurationForAll(ANIMATION_DURATION).Start();
+            }
+            MapControl.SetLocation(OnMapPopup, stop.Position.ToGeopoint());
+            SetTakeover(new MapView(stop.Position));
         }
 
         public override void OnSizeChanged(Size? previousSize, Size newSize)
         {
-            //ArrivalsViewModel.SetSize(newSize.Width, newSize.Height);
+            MapWidth = newSize.Width;
+            MapHeight = newSize.Height;
+            RefreshPopupSize();
         }
 
-        private void ClearStopArrivalsControl()
+        private void RefreshPopupSize()
         {
+            if (NumColsRequested >= MaxColsVisible && !Maximized)
+                Maximize();
+            if (NumColsRequested < MaxColsVisible && Maximized)
+                Restore();
+            CompressCommand.IsEnabled = NumColsRequested > 1;
+            ExpandCommand.IsEnabled = NumColsRequested < MaxColsVisible;
+            Width = Max(0, Maximized ? MapWidth : NumColsRequested * COLUMN_SIZE);
+            Height = Max(0, Maximized ? MapHeight - MAXIMIZED_MAP_MARGIN + ARRIVALS_CONTROL_TRIANGLE_HEIGHT : Min(NORMAL_HEIGHT, MapHeight - MAXIMIZED_MAP_MARGIN));
+            ArrivalsPopup.ShowBottomArrow = Height > 275;
+            ArrivalsPopup.ShowRoutesList = Height > 225;
+            ArrivalsPopup.ShowCompactMenu = Height < 350;
+        }
+
+        private async void ClosePopup()
+        {
+            if (ArrivalsPopup.Visibility != Visibility.Collapsed)
+                await ArrivalsPopup.Offset(offsetY: SLIDE_OFFSET).Fade(value: 0).SetDurationForAll(ANIMATION_DURATION).StartAsync();
+            ArrivalsPopup.Visibility = Visibility.Collapsed;
+            OnMapPopup.Visibility = Visibility.Collapsed;
+            OffMapPopup.Visibility = Visibility.Collapsed;
             ArrivalsPopup.Stop = new TransitStop();
-            //ArrivalsViewModel.Stop = null;
-            //ArrivalsViewModel.SetVisibility();
         }
 
-        private void SetArrivalsViewModel()
+        private void Maximize()
         {
-            //ArrivalsViewModel = new ArrivalsControlInTransitPageViewModel();
-            //ArrivalsViewModel.VisibilityChangedCallback += async visible =>
-            //{
-            //    if (visible)
-            //    {
-            //        ArrivalsViewModel.IsVisible = true;
-            //        ArrivalsPopup.Offset(offsetY: 0).Fade(value: 1).SetDurationForAll(200).Start();
-            //    }
-            //    else
-            //    {
-            //        await ArrivalsPopup.Offset(offsetY: 20).Fade(value: 0).SetDurationForAll(200).StartAsync();
-            //        ArrivalsViewModel.IsVisible = false;
-            //    }
-            //    //DoubleAnimation opacityAnimation = new DoubleAnimation() { From = visible ? 0 : 1, To = visible ? 1 : 0, Duration = TimeSpan.FromMilliseconds(150) };
-            //    //DoubleAnimation slideAnimation = new DoubleAnimation() { From = visible ? 10 : 0, To = visible ? 0 : 10, Duration = TimeSpan.FromMilliseconds(150) };
-            //    //Storyboard.SetTarget(opacityAnimation, ArrivalsPopup);
-            //    //Storyboard.SetTargetProperty(opacityAnimation, "Opacity");
-            //    //Storyboard.SetTarget(slideAnimation, ArrivalsPopupTransform);
-            //    //Storyboard.SetTargetProperty(slideAnimation, "Y");
-            //    //Storyboard sb = new Storyboard();
-            //    //sb.Children.Add(opacityAnimation);
-            //    //sb.Children.Add(slideAnimation);
-            //    //if (visible)
-            //    //    ArrivalsViewModel.IsVisible = true;
-            //    //await sb.BeginAsync();
-            //    //if (!visible)
-            //    //    ArrivalsViewModel.IsVisible = false;
-            //};
-            ////ArrivalsViewModel.BindToControl(OnMapPopup, MapControl.LocationProperty, "MapLocation", false, LatLonToGeopointConverter.Instance, "UnsetNAL");
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.WidthProperty, "Width");
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.HeightProperty, "Height");
-            //ArrivalsPopup.Visibility = Visibility.Visible;
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.VisibilityProperty, "IsVisible", false, BoolToVisibilityConverter.Instance);
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.DataContextProperty, "DataContext");
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ExpandCommandProperty, "ExpandCommand");
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.CompressCommandProperty, "CompressCommand");
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.CloseCommandProperty, "CloseCommand");
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ShowBottomArrowProperty, "ShowBottomArrow");
-            //ArrivalsViewModel.BindToControl(ArrivalsPopup, StopPopupOuterControl.ShowRoutesListProperty, "ShowRoutesList");
-            ////ArrivalsViewModel.BindToControl(this, TransitMap.CenterRegionProperty, "CenterRegion");
-            //ArrivalsViewModel.PropertyChanged += ArrivalsViewModel_PropertyChanged;
+            OnMapPopup.Content = null;
+            OffMapPopup.Content = ArrivalsPopup;
+            Maximized = true;
+            SetTakeover();
+        }
+
+        private void Restore()
+        {
+            OffMapPopup.Content = null;
             OnMapPopup.Content = ArrivalsPopup;
-            ArrivalsPopup.SetBinding(StopPopupOuterControl.TitleCommandProperty, new Binding() { Source = this, Path = new PropertyPath("StopTitleClickedCommand") });
+            Maximized = false;
+            SetTakeover();
+        }
+
+        private void SetTakeover(MapView requestedView = null)
+        {
+            if (ArrivalsPopup.Visibility == Visibility.Visible)
+            {
+                MapTakeover takeover;
+                if (Maximized)
+                    takeover = new MapTakeover(OffMapPopup, new RectSubset() { Top = MAXIMIZED_MAP_MARGIN, TopValueType = RectSubsetValueType.Length }, requestedView);
+                else
+                    takeover = new MapTakeover(null, new RectSubset() { Top = 0.2, TopValueType = RectSubsetValueType.Length, TopScale = RectSubsetScale.Relative }, requestedView);
+                InvokeTakeoverRequested(takeover);
+            }
+            else
+                InvokeTakeoverRequested(null);
         }
 
         #region Event Registration
-        private bool SelectedStopsSourceChangeHandled = false;
-        private bool ArrivalsViewModelCloseEventHandled = false;
+        private WeakEventListener<StopDetailsPopupAddIn, object, NotifyCollectionChangedEventArgs> SelectedStopsSource_CollectionChanged_Listener;
 
         private void RegisterSelectedStopsSourceHandlers(ObservableCollection<TransitStop> collection)
         {
-            if (!SelectedStopsSourceChangeHandled)
+            if (SelectedStopsSource_CollectionChanged_Listener == null)
             {
-                collection.CollectionChanged += SelectedStopsSource_CollectionChanged;
-                SelectedStopsSourceChangeHandled = true;
+                SelectedStopsSource_CollectionChanged_Listener = new WeakEventListener<StopDetailsPopupAddIn, object, NotifyCollectionChangedEventArgs>(this);
+                SelectedStopsSource_CollectionChanged_Listener.OnEventAction = (listener, sender, e) => listener.SelectedStopsSource_CollectionChanged(sender, e);
+                SelectedStopsSource_CollectionChanged_Listener.OnDetachAction = (listener) => listener.OnEventAction = null;
+                collection.CollectionChanged += SelectedStopsSource_CollectionChanged_Listener.OnEvent;
             }
         }
 
         private void UnregisterSelectedStopsSourceHandlers(ObservableCollection<TransitStop> collection)
         {
-            if (SelectedStopsSourceChangeHandled)
+            if (SelectedStopsSource_CollectionChanged_Listener != null)
             {
-                collection.CollectionChanged -= SelectedStopsSource_CollectionChanged;
-                SelectedStopsSourceChangeHandled = false;
+                SelectedStopsSource_CollectionChanged_Listener.Detach();
+                SelectedStopsSource_CollectionChanged_Listener = null;
             }
         }
 
@@ -230,7 +312,7 @@ namespace OneAppAway._1_1.AddIns
             {
                 center = ((TransitStop)e.NewItems[0]).Position;
             }
-            SetStopArrivalsControl(CombineSeveralStops(center, ((IEnumerable<TransitStop>)SelectedStopsSource).ToArray()));
+            SetPopup(CombineSeveralStops(center, ((IEnumerable<TransitStop>)SelectedStopsSource).ToArray()));
         }
 
         //private void ArrivalsViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

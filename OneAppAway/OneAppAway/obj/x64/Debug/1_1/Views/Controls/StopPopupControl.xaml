@@ -47,7 +47,7 @@
             <local:AutoFitTextBlock Text="{Binding StopName}" FontSize="18" Foreground="White" VerticalAlignment="Stretch"/>
         </Button>
         <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Top" Visibility="{Binding ElementName=self, Path=TitleVisibility}">
-            <Button x:ConnectionId='5' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" Visibility="{Binding Path=HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}" x:Name="RefreshButton"></Button>
+            <Button x:ConnectionId='5' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" Visibility="{Binding Path=HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}" x:Name="RefreshButton"                            ></Button>
             <Button x:ConnectionId='6' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="CompressButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CompressCommand}">&#xE73F;</Button>
             <Button x:ConnectionId='7' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="ExpandButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=ExpandCommand}">&#xE740;</Button>
             <Button x:ConnectionId='8' RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CloseCommand}">❌</Button>
@@ -61,7 +61,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:StopPopupControl IsTopLevel="false"  Stop="{Binding}" VerticalAlignment="Stretch" MinWidth="190" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}"/>
+                        <local:StopPopupControl IsTopLevel="false"  Stop="{Binding}" VerticalAlignment="Stretch" MinWidth="190" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}" ShowCompactMenu="{Binding ElementName=self, Path=ShowCompactMenu}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -72,12 +72,13 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <CommandBar HorizontalAlignment="Stretch" Background="#00303030" localH:AttachedProperties.OpenedBackgroundColor="#FF303030" localH:AttachedProperties.ClosedBackgroundColor="#00303030" localH:AttachedProperties.UseBackgroundColorHelper="True">
+            <CommandBar HorizontalAlignment="Stretch" Background="#00303030" localH:AttachedProperties.OpenedBackgroundColor="#FF303030" localH:AttachedProperties.ClosedBackgroundColor="#00303030" localH:AttachedProperties.UseBackgroundColorHelper="True" ClosedDisplayMode="{Binding ElementName=self, Path=ShowCompactMenu, Converter={StaticResource IsCompactToAppBarClosedDisplayModeConverter}}">
                 <!--<CommandBar.RenderTransform>
                     <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
                 </CommandBar.RenderTransform>-->
-                <AppBarButton Icon="Clock" Label="Schedule"/>
-                <AppBarButton Icon="Priority" Label="Alerts"/>
+                <AppBarToggleButton Icon="Important" Label="Alerts"/>
+                <AppBarToggleButton Icon="Calendar" Label="Schedule"/>
+                <AppBarToggleButton Icon="Clock" Label="Arrivals" IsChecked="True"/>
             </CommandBar>
             <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsIndeterminate="{Binding IsBusy}"/>
 

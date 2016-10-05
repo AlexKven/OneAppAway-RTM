@@ -92,7 +92,6 @@ namespace OneAppAway._1_1.Helpers
         private static void _bar_Opening(object sender, object e)
         {
             var bar = sender as CommandBar;
-            bar.Blur(value: 3).Rotate(value: 3).Start();
             var brush = bar?.Background as SolidColorBrush;
             if (brush == null)
                 return;
