@@ -37,6 +37,9 @@
     <RootPropertyPathName Name="ShowCompactMenu" />
     <RootPropertyPathName Name="HasChildren" />
     <RootPropertyPathName Name="RouteNames" />
+    <RootPropertyPathName Name="ShowArrivals" />
+    <RootPropertyPathName Name="ShowSchedule" />
+    <RootPropertyPathName Name="ShowAlerts" />
     <RootPropertyPathName Name="Children" />
     <RootPropertyPathName Name="TitleVisibility" />
     <RootPropertyPathName Name="TitleToolTip" />

@@ -124,6 +124,71 @@ namespace OneAppAway._1_1.ViewModels
             }
         }
 
+        private bool IsSettingTab = false;
+
+        private bool _ShowArrivals = true;
+        public bool ShowArrivals
+        {
+            get { return _ShowArrivals; }
+            set
+            {
+                SetProperty(ref _ShowArrivals, value);
+                if (IsSettingTab)
+                    return;
+                IsSettingTab = true;
+                if (ShowArrivals)
+                {
+                    ShowSchedule = false;
+                    ShowAlerts = false;
+                }
+                else
+                    ShowSchedule = true;
+                IsSettingTab = false;
+            }
+        }
+
+        private bool _ShowSchedule = false;
+        public bool ShowSchedule
+        {
+            get { return _ShowSchedule; }
+            set
+            {
+                SetProperty(ref _ShowSchedule, value);
+                if (IsSettingTab)
+                    return;
+                IsSettingTab = true;
+                if (ShowSchedule)
+                {
+                    ShowAlerts = false;
+                    ShowArrivals = false;
+                }
+                else
+                    ShowArrivals = true;
+                IsSettingTab = false;
+            }
+        }
+
+        private bool _ShowAlerts = false;
+        public bool ShowAlerts
+        {
+            get { return _ShowAlerts; }
+            set
+            {
+                SetProperty(ref _ShowAlerts, value);
+                if (IsSettingTab)
+                    return;
+                IsSettingTab = true;
+                if (ShowAlerts)
+                {
+                    ShowSchedule = false;
+                    ShowArrivals = false;
+                }
+                else
+                    ShowArrivals = true;
+                IsSettingTab = false;
+            }
+        }
+
         //public double Width { get; }
 
         //public bool IsTopLevel { get; private set; } = true;

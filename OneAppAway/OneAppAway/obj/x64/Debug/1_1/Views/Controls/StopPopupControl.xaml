@@ -76,9 +76,9 @@
                 <!--<CommandBar.RenderTransform>
                     <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
                 </CommandBar.RenderTransform>-->
-                <AppBarToggleButton Icon="Important" Label="Alerts"/>
-                <AppBarToggleButton Icon="Calendar" Label="Schedule"/>
-                <AppBarToggleButton Icon="Clock" Label="Arrivals" IsChecked="True"/>
+                <AppBarToggleButton Icon="Important" Label="Alerts" IsChecked="{Binding ShowAlerts, Mode=TwoWay}"/>
+                <AppBarToggleButton Icon="Calendar" Label="Schedule" IsChecked="{Binding ShowSchedule, Mode=TwoWay}"/>
+                <AppBarToggleButton Icon="Clock" Label="Arrivals" IsChecked="{Binding ShowArrivals, Mode=TwoWay}"/>
             </CommandBar>
             <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsIndeterminate="{Binding IsBusy}"/>
 
@@ -102,7 +102,7 @@
                 </ItemsControl>
             </ScrollViewer>
 
-            <local:StopArrivalsBox x:ConnectionId='4' Grid.Row="2" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}"/>
+            <local:StopArrivalsBox x:ConnectionId='4' x:DeferLoadStrategy="Lazy" Grid.Row="2" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}"/>
         </Grid>
     </Grid>
 </local:StopPopupControlBase>
