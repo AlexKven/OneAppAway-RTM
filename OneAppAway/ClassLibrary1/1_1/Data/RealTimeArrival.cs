@@ -9,9 +9,11 @@ namespace OneAppAway._1_1.Data
     public struct RealTimeArrival
     {
         public string Route { get; set; }
+        public string PrevRoute { get; set; }
         public string Trip { get; set; }
         public string Stop { get; set; }
         public string RouteName { get; set; }
+        public string PrevRouteName { get; set; }
         //public string RouteLongName { get; set; }
         public DateTime? ScheduledArrivalTime { get; set; }
         public DateTime? PredictedArrivalTime { get; set; }
@@ -25,27 +27,5 @@ namespace OneAppAway._1_1.Data
         public double DegreeOfConfidence { get; set; }
         public bool IsDropOffOnly { get; set; }
 
-        //public int MinutesLate
-        //{
-        //    get
-        //    {
-        //        return (int)(PredictedArrivalTime.Value - ScheduledArrivalTime).TotalMinutes;
-        //    }
-        //}
-
-        //public string TimelinessDescription
-        //{
-        //    get
-        //    {
-        //        if (PredictedArrivalTime == null) return "Unknown";
-        //        int late = MinutesLate;
-        //        if (late == 0)
-        //            return "On Time";
-        //        else if (late > 0)
-        //            return late.ToString() + "m Late";
-        //        else
-        //            return (-late).ToString() + "m Early";
-        //    }
-        //}
     }
 }

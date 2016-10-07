@@ -43,6 +43,7 @@
     <Compile Include="1_1\Data\AlertStatus.cs" />
     <Compile Include="1_1\Data\ApiLayer.cs" />
     <Compile Include="1_1\Data\DataLoadStatus.cs" />
+    <Compile Include="1_1\Data\DaySchedule.cs" />
     <Compile Include="1_1\Data\LocationSearchResult.cs" />
     <Compile Include="1_1\Data\ManuallyDownloadArrivalsMode.cs" />
     <Compile Include="1_1\Data\NetworkManagerBase.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="1_1\Data\RealTimeArrivalViewModelTemplateType.cs" />
     <Compile Include="1_1\Data\RetrievedData.cs" />
     <Compile Include="1_1\Data\ScheduledArrival.cs" />
+    <Compile Include="1_1\Data\ServiceDay.cs" />
     <Compile Include="1_1\Data\SettingsManagerBase.cs" />
     <Compile Include="1_1\Data\SqlProvider.cs" />
     <Compile Include="1_1\Data\SqlProviderBase.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="1_1\Data\UITaskWrapper.cs" />
     <Compile Include="1_1\Data\MapStopSize.cs" />
     <Compile Include="1_1\Data\WeakDelegateWrapper.cs" />
+    <Compile Include="1_1\Data\WeekSchedule.cs" />
     <Compile Include="1_1\EventArgs.cs" />
     <Compile Include="1_1\Helpers\CompositeCollectionBinding.cs" />
     <Compile Include="1_1\Helpers\WeakEventListener.cs" />

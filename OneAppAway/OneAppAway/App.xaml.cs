@@ -165,6 +165,7 @@ namespace OneAppAway
             NetworkManagerBase.Instance = new UwpNetworkManager() { Dispatcher = RootFrame.Dispatcher };
             SettingsManagerBase.Instance = new UwpSettingsManager();
             IntervalExecuterBase.Instance = new UwpIntervalExecuter(RootFrame.Dispatcher);
+            DataSource.Sources.Add(new OneAppAway._.Data.InterimObaScheduleSource());
             //BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             //LocationManager.Dispatcher = RootFrame.Dispatcher;
             SetTitleBar();

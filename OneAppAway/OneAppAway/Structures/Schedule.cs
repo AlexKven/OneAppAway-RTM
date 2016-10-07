@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using OneAppAway._1_1.Data;
 
 namespace OneAppAway
 {
@@ -27,7 +28,7 @@ namespace OneAppAway
         All = 255
     }
 
-    public class WeekSchedule
+    public class WeekSchedule : OneAppAway._1_1.Data.WeekSchedule
     {
         private List<ServiceDay> Days = new List<ServiceDay>();
         private List<DaySchedule> DaySchedules = new List<DaySchedule>();
@@ -168,6 +169,16 @@ namespace OneAppAway
             }
         }
 
+        public override IEnumerable<_1_1.Data.ServiceDay> GetScheduleGroups()
+        {
+            return DayGroups.Select(d => (_1_1.Data.ServiceDay)((int)d));
+        }
+
+        public override IEnumerable<_1_1.Data.ScheduledArrival> GetSchedule(_1_1.Data.ServiceDay day)
+        {
+            return this[(ServiceDay)((int)day)].Select(a => new _1_1.Data.ScheduledArrival() { ScheduledArrivalTime = a.ScheduledArrivalTime, ScheduledDepartureTime = a.ScheduledDepartureTime, Route = a.Route, Stop = a.Stop, Trip = a.Trip, Destination = a.Destination });
+        }
+
         public string[] Routes
         {
             get
@@ -180,6 +191,14 @@ namespace OneAppAway
                 }
                 return result.ToArray();
             }
+        }
+
+        public override void Union(_1_1.Data.WeekSchedule other)
+        {
+            //Doesn't do a union, but will serve as placeholder for actual functionality in future versions.
+            Days = (other as WeekSchedule)?.Days;
+            DaySchedules = (other as WeekSchedule)?.DaySchedules;
+            TechnicalDays = (other as WeekSchedule)?.TechnicalDays;
         }
 
         public bool IsEmpty

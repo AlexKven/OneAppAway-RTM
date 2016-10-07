@@ -15,7 +15,7 @@ namespace OneAppAway._1_1.Data
     public abstract class DataSource
     {
         #region Static
-        private static List<DataSource> Sources = new List<DataSource>();
+        public static List<DataSource> Sources = new List<DataSource>();
 
         static DataSource()
         {
@@ -172,6 +172,40 @@ namespace OneAppAway._1_1.Data
             return new RetrievedData<IEnumerable<TransitStop>>(resultStops, resultErrors.Count == 0 ? null : resultErrors.Aggregate("", (acc, err) => (acc == "" ? "" : ", ") + err), resultExceptions.Count == 0 ? null : new AggregateException(resultExceptions));
         }
 
+        public static async Task<RetrievedData<WeekSchedule>> GetScheduleForStopAsync(string stopId, DataSourcePreference preference, CancellationToken cancellationToken)
+        {
+            WeekSchedule result = null;
+            List<string> resultErrors = new List<string>();
+            List<Exception> resultExceptions = new List<Exception>();
+            foreach (var source in Sources)
+            {
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
+                if (!source.IsQualified(preference))
+                    continue;
+                if (source.CanGetScheduleForStop)
+                {
+                    var sResult = await source.GetScheduleForStop(stopId, cancellationToken);
+                    if (sResult.HasData)
+                    {
+                        if (result == null)
+                            result = sResult.Data;
+                        else
+                            result.Union(sResult.Data);
+                    }
+                    if (sResult.ErrorMessage != null)
+                        resultErrors.Add(sResult.ErrorMessage);
+                    if (sResult.CaughtException != null)
+                        resultExceptions.Add(sResult.CaughtException);
+                }
+            }
+            //if (result == null)
+            //    resultStops = new TransitStop[] { };
+            if (result == null)
+                return new RetrievedData<WeekSchedule>(resultErrors.Count == 0 ? null : resultErrors.Aggregate("", (acc, err) => (acc == "" ? "" : ", ") + err), resultExceptions.Count == 0 ? null : new AggregateException(resultExceptions));
+            return new RetrievedData<WeekSchedule>(result, resultErrors.Count == 0 ? null : resultErrors.Aggregate("", (acc, err) => (acc == "" ? "" : ", ") + err), resultExceptions.Count == 0 ? null : new AggregateException(resultExceptions));
+        }
+
         public static async Task<RetrievedData<IEnumerable<RealTimeArrival>>> GetRealTimeArrivalsForStopAsync(string stopId, int minsBefore, int minsAfter, DataSourcePreference preference, CancellationToken cancellationToken)
         {
             IEnumerable<RealTimeArrival> resultArrivals = null;
@@ -207,6 +241,7 @@ namespace OneAppAway._1_1.Data
         public static RetrievedData<TransitRoute> GetTransitRoute(string id, DataSourcePreference preference) => RunSync(() => GetTransitRouteAsync(id, preference, CancellationToken.None));
         public static RetrievedData<RealTimeArrival> GetRealTimeArrival(string stopId, string tripId, DataSourcePreference preference) => RunSync(() => GetRealTimeArrivalAsync(stopId, tripId, preference, CancellationToken.None));
         public static RetrievedData<IEnumerable<TransitStop>> GetTransitStopsForArea(LatLonRect area, DataSourcePreference preference) => RunSync(() => GetTransitStopsForAreaAsync(area, preference, CancellationToken.None));
+        public static RetrievedData<WeekSchedule> GetScheduleForStop(string stopId, DataSourcePreference preference) => RunSync(() => GetScheduleForStopAsync(stopId, preference, CancellationToken.None));
         public static RetrievedData<IEnumerable<RealTimeArrival>> GetRealTimeArrivalsForStop(string stopId, int minsBefore, int minsAfter, DataSourcePreference preference) => RunSync(() => GetRealTimeArrivalsForStopAsync(stopId, minsBefore, minsAfter, preference, CancellationToken.None));
         #endregion
 
@@ -244,6 +279,9 @@ namespace OneAppAway._1_1.Data
 
         public abstract bool CanGetRealTimeArrivalsForStop { get; }
         public abstract Task<RetrievedData<IEnumerable<RealTimeArrival>>> GetRealTimeArrivalsForStop(string stopId, int minsBefore, int minsAfter, CancellationToken cancellationToken);
+
+        public abstract bool CanGetScheduleForStop { get; }
+        public abstract Task<RetrievedData<WeekSchedule>> GetScheduleForStop(string stopId, CancellationToken cancellationToken);
         #endregion
     }
 }

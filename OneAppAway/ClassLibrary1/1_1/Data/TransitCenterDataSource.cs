@@ -34,6 +34,12 @@ namespace OneAppAway._1_1.Data
         #endregion
 
         #region Unused
+        public override bool CanGetScheduleForStop => false;
+        public override Task<RetrievedData<WeekSchedule>> GetScheduleForStop(string stopId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public override Task<RetrievedData<RealTimeArrival>> CorrectRealTimeArrival(RealTimeArrival arrival, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

@@ -153,6 +153,9 @@
     <Compile Include="1_1\Views\Controls\RealTimeArrivalControl.xaml.cs">
       <DependentUpon>RealTimeArrivalControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="1_1\Views\Controls\ScheduleControl.xaml.cs">
+      <DependentUpon>ScheduleControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="1_1\Views\Controls\StopArrivalsBox.xaml.cs">
       <DependentUpon>StopArrivalsBox.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,7 @@
     <Compile Include="1_1\Views\Structures\TitleBarElementSize.cs" />
     <Compile Include="1_1\Selectors\TitleBarTemplateSelectorBase.cs" />
     <Compile Include="1_1\Converters\FadeOnDropOffOnlyConverter.cs" />
+    <Compile Include="Data\InterimObaScheduleSource.cs" />
     <Compile Include="Data\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>
@@ -362,6 +366,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="1_1\Views\Controls\RealTimeArrivalControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\ScheduleControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

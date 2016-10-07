@@ -25,6 +25,12 @@ namespace OneAppAway._1_1.Data
         #endregion
 
         #region Not Implemented
+        public override bool CanGetScheduleForStop => false;
+        public override Task<RetrievedData<WeekSchedule>> GetScheduleForStop(string stopId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public override Task<RetrievedData<TransitRoute>> CorrectTransitRoute(TransitRoute route, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

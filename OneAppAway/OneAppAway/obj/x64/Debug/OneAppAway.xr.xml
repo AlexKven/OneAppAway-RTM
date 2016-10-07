@@ -36,9 +36,9 @@
     <RootPropertyPathName Name="Stop" />
     <RootPropertyPathName Name="ShowCompactMenu" />
     <RootPropertyPathName Name="HasChildren" />
-    <RootPropertyPathName Name="RouteNames" />
-    <RootPropertyPathName Name="ShowArrivals" />
     <RootPropertyPathName Name="ShowSchedule" />
+    <RootPropertyPathName Name="ShowArrivals" />
+    <RootPropertyPathName Name="RouteNames" />
     <RootPropertyPathName Name="ShowAlerts" />
     <RootPropertyPathName Name="Children" />
     <RootPropertyPathName Name="TitleVisibility" />
@@ -362,6 +362,7 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
+    <RootType FullName="OneAppAway._1_1.Views.Controls.ScheduleControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
@@ -486,22 +487,24 @@
       <RootProperty Name="Minimum" />
       <RootProperty Name="Maximum" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Template" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Resources" />
+      <RootEvent Name="SizeChanged" />
+    </RootType>
+    <RootType FullName="OneAppAway.ScheduleBrowser" />
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
       <RootProperty Name="IsChecked" />
       <RootEvent Name="Checked" />
       <RootEvent Name="Unchecked" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="VerticalContentAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="Template" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="Resources" />
-      <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.TransitMap">
       <RootProperty Name="CurrentZoomRate" />
@@ -755,7 +758,6 @@
       <RootMethod Name="GetRowSpan" />
       <RootMethod Name="SetRowSpan" />
     </RootType>
-    <RootType FullName="OneAppAway.ScheduleBrowser" />
     <RootType FullName="OneAppAway.StopArrivalsBox">
       <RootProperty Name="HideTitle" />
     </RootType>

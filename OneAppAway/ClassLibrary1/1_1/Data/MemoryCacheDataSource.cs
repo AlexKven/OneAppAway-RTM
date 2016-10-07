@@ -20,6 +20,14 @@ namespace OneAppAway._1_1.Data
         public override bool CanGetRealTimeArrivalsForStop => false;
         #endregion
 
+        #region Not Implemented
+        public override bool CanGetScheduleForStop => false;
+        public override Task<RetrievedData<WeekSchedule>> GetScheduleForStop(string stopId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
         public override Task<RetrievedData<RealTimeArrival>> CorrectRealTimeArrival(RealTimeArrival arrival, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

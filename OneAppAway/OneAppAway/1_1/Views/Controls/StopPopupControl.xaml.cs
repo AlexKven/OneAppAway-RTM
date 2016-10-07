@@ -17,6 +17,7 @@ using OneAppAway._1_1.Helpers;
 using OneAppAway.Common;
 using OneAppAway._1_1.Data;
 using OneAppAway._1_1.ViewModels;
+using System.Threading;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -25,6 +26,8 @@ namespace OneAppAway._1_1.Views.Controls
     public sealed partial class StopPopupControl : StopPopupControlBase
     {
         private StopPopupViewModel VM = new StopPopupViewModel();
+
+        private bool ScheduleSet = false;
 
         public StopPopupControl()
         {
@@ -53,6 +56,8 @@ namespace OneAppAway._1_1.Views.Controls
         {
             if (e.PropertyName == "HasChildren")
                 RefreshMainGridWidth();
+            if (VM.ShowSchedule && !ScheduleSet)
+                SetSchedule();
         }
 
         private void RefreshMainGridWidth()
@@ -112,6 +117,18 @@ namespace OneAppAway._1_1.Views.Controls
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             ArrivalsBox.Refresh(true);
+        }
+
+        private async void SetSchedule()
+        {
+            ScheduleSet = true;
+            var sch = await DataSource.GetScheduleForStopAsync(VM.Stop.ID, DataSourcePreference.All, CancellationToken.None);
+            if (sch.HasData)
+            {
+                var typed = sch.Data as OneAppAway.WeekSchedule;
+                FindName("ScheduleViewer");
+                ScheduleViewer.Schedule = typed[ServiceDay.Monday];
+            }
         }
     }
 }
