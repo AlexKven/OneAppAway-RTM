@@ -20,10 +20,13 @@
     <RootPropertyPathName Name="IsEarly" />
     <RootPropertyPathName Name="RouteName" />
     <RootPropertyPathName Name="DegreeOfConfidence" />
+    <RootPropertyPathName Name="IsBusy" />
+    <RootPropertyPathName Name="Subtitle" />
+    <RootPropertyPathName Name="HasSchedule" />
+    <RootPropertyPathName Name="DayGroups" />
     <RootPropertyPathName Name="LoadStatus" />
     <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="ErrorMessage" />
-    <RootPropertyPathName Name="IsBusy" />
     <RootPropertyPathName Name="Items" />
     <RootPropertyPathName Name="Width" />
     <RootPropertyPathName Name="ShowBottomArrow" />
@@ -362,16 +365,28 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
-    <RootType FullName="OneAppAway._1_1.Views.Controls.ScheduleControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="IsActive" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
-      <RootProperty Name="IsHitTestVisible" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="SelectedIndex" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="Items" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.Views.Controls.ScheduleControl">
+      <RootProperty Name="Stop" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="HorizontalAlignment" />
@@ -498,7 +513,6 @@
       <RootProperty Name="Resources" />
       <RootEvent Name="SizeChanged" />
     </RootType>
-    <RootType FullName="OneAppAway.ScheduleBrowser" />
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
@@ -687,15 +701,6 @@
       <RootEvent Name="Checked" />
       <RootEvent Name="Unchecked" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
-      <RootProperty Name="Width" />
-      <RootProperty Name="SelectedIndex" />
-      <RootProperty Name="IsEnabled" />
-      <RootProperty Name="Items" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootEvent Name="SelectionChanged" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBoxItem">
       <RootProperty Name="Tag" />
       <RootProperty Name="Content" />
@@ -758,6 +763,7 @@
       <RootMethod Name="GetRowSpan" />
       <RootMethod Name="SetRowSpan" />
     </RootType>
+    <RootType FullName="OneAppAway.ScheduleBrowser" />
     <RootType FullName="OneAppAway.StopArrivalsBox">
       <RootProperty Name="HideTitle" />
     </RootType>

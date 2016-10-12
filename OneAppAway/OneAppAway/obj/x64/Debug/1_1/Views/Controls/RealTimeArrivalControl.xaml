@@ -51,7 +51,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition x:ConnectionId='7' Width="auto" MinWidth="120" x:Name="RingColumn"/>
-                <ColumnDefinition x:ConnectionId='8' Width="45" x:Name="MinutesColumn"/>
+                <ColumnDefinition x:ConnectionId='8' Width="55" x:Name="MinutesColumn"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>

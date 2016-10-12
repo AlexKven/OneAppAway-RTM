@@ -119,16 +119,10 @@ namespace OneAppAway._1_1.Views.Controls
             ArrivalsBox.Refresh(true);
         }
 
-        private async void SetSchedule()
+        private void SetSchedule()
         {
+            FindName("ScheduleViewer");
             ScheduleSet = true;
-            var sch = await DataSource.GetScheduleForStopAsync(VM.Stop.ID, DataSourcePreference.All, CancellationToken.None);
-            if (sch.HasData)
-            {
-                var typed = sch.Data as OneAppAway.WeekSchedule;
-                FindName("ScheduleViewer");
-                ScheduleViewer.Schedule = typed[ServiceDay.Monday];
-            }
         }
     }
 }

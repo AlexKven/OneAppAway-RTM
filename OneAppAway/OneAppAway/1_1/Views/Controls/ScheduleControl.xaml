@@ -8,8 +8,21 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-
-    <Grid>
-
+    <Grid x:Name="MainGrid">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ComboBox ItemsSource="{Binding DayGroups}">
+                <!--<ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource ServiceDayFriendlyNameConverter}}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>-->
+            </ComboBox>
+        </Grid>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" Text="{Binding Subtitle}" Visibility="{Binding HasSchedule, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}"/>
+        <ProgressRing VerticalAlignment="Center" HorizontalAlignment="Center" IsActive="{Binding IsBusy}" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsHitTestVisible="False"/>
     </Grid>
 </UserControl>

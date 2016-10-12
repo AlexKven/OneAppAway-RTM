@@ -20,7 +20,7 @@
             <ContentControl x:ConnectionId='5' x:Name="OnMapPopup" Maps:MapControl.NormalizedAnchorPoint="0.5, 1"/>
             <!--<local:StopArrivalsControl x:Name="ArrivalsPopup"/>-->
         </Maps:MapControl>
-        <ContentControl x:ConnectionId='4' x:Name="OffMapPopup" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <ContentControl x:ConnectionId='4' x:Name="TakeoverOverlayControl" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
     </Grid>
 </UserControl>
 

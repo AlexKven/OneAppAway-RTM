@@ -113,7 +113,7 @@
             
             <!--Schedule Tab-->
             <ContentControl Grid.Row="1" Visibility="{Binding ShowSchedule, Converter={StaticResource BoolToVisibilityConverter}}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                <old:ScheduleBrowser x:ConnectionId='4' x:Name="ScheduleViewer" x:DeferLoadStrategy="Lazy"/>
+                <local:ScheduleControl x:ConnectionId='4' x:Name="ScheduleViewer" Stop="{Binding ElementName=self, Path=Stop}" x:DeferLoadStrategy="Lazy"/>
             </ContentControl>
         </Grid>
     </Grid>

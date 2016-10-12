@@ -40,6 +40,7 @@
     <Compile Include="1_1\AsyncHelpers.cs" />
     <Compile Include="1_1\Command.cs" />
     <Compile Include="1_1\Converters\MinutesUntilArrivalConverter.cs" />
+    <Compile Include="1_1\Converters\RelayConverter.cs" />
     <Compile Include="1_1\Data\AlertStatus.cs" />
     <Compile Include="1_1\Data\ApiLayer.cs" />
     <Compile Include="1_1\Data\DataLoadStatus.cs" />
@@ -85,10 +86,12 @@
     <Compile Include="1_1\Data\WeekSchedule.cs" />
     <Compile Include="1_1\EventArgs.cs" />
     <Compile Include="1_1\Helpers\CompositeCollectionBinding.cs" />
+    <Compile Include="1_1\Helpers\GeneralExtensionMethods.cs" />
     <Compile Include="1_1\Helpers\WeakEventListener.cs" />
     <Compile Include="1_1\ViewModels\ArrivalsControlInTransitPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />
     <Compile Include="1_1\ViewModels\RealTimeArrivalViewModel.cs" />
+    <Compile Include="1_1\ViewModels\ScheduleControlViewModel.cs" />
     <Compile Include="1_1\ViewModels\StopArrivalsBoxViewModel.cs" />
     <Compile Include="1_1\ViewModels\StopPopupViewModel.cs" />
     <Compile Include="1_1\ViewModels\TransitMapPageViewModel.cs" />

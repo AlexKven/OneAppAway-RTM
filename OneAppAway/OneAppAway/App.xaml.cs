@@ -29,6 +29,7 @@ using Windows.UI.Xaml.Navigation;
 using OneAppAway._1_1.Data;
 using static OneAppAway.ServiceDay;
 using OneAppAway._1_1.Abstract;
+using OneAppAway._1_1.Converters;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=402347&clcid=0x409
 
@@ -51,7 +52,6 @@ namespace OneAppAway
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-            
         }
 
         /// <summary>
@@ -175,6 +175,7 @@ namespace OneAppAway
             await OneAppAway._1_1.Views.Controls.TransitStopIconWrapper.LoadImages();
             AdDuplex.AdDuplexClient.Initialize("bef2bb37-a5ad-49d7-9ba6-b1ccaf4be44b");
             Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
+            this.Resources.Add("ServiceDayFriendlyNameConverter", new RelayConverter<OneAppAway._1_1.Data.ServiceDay, object, string>((d, p) => OneAppAway._1_1.Helpers.GeneralExtensionMethods.GetFriendlyName(d), null));
         }
 
         private void CoreWindow_SizeChanged(CoreWindow sender, WindowSizeChangedEventArgs args)

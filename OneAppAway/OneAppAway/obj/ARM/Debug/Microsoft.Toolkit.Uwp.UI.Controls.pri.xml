@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Microsoft.Toolkit.Uwp.UI.Controls" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls">
+				<NamedResource name="Microsoft.Toolkit.Uwp.UI.Controls.xr.xml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/Microsoft.Toolkit.Uwp.UI.Controls.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="AdaptiveGridView">
+					<NamedResource name="AdaptiveGridView.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/AdaptiveGridView/AdaptiveGridView.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\AdaptiveGridView\AdaptiveGridView.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="AdaptiveGridView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/AdaptiveGridView/AdaptiveGridView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="HamburgerMenu">
+					<NamedResource name="HamburgerMenu.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/HamburgerMenu/HamburgerMenu.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\HamburgerMenu\HamburgerMenu.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="HamburgerMenu.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/HamburgerMenu/HamburgerMenu.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="HeaderedTextBlock">
+					<NamedResource name="HeaderedTextBlock.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedTextBlock/HeaderedTextBlock.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\HeaderedTextBlock\HeaderedTextBlock.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="HeaderedTextBlock.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedTextBlock/HeaderedTextBlock.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="ImageEx">
+					<NamedResource name="ImageEx.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageEx/ImageEx.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\ImageEx\ImageEx.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ImageEx.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageEx/ImageEx.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="PullToRefreshListView">
+					<NamedResource name="PullToRefreshListView.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/PullToRefreshListView/PullToRefreshListView.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\PullToRefreshListView\PullToRefreshListView.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="PullToRefreshListView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/PullToRefreshListView/PullToRefreshListView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RadialGauge">
+					<NamedResource name="RadialGauge.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/RadialGauge/RadialGauge.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\RadialGauge\RadialGauge.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="RadialGauge.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/RadialGauge/RadialGauge.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RangeSelector">
+					<NamedResource name="RangeSelector.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/RangeSelector/RangeSelector.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\RangeSelector\RangeSelector.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="RangeSelector.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/RangeSelector/RangeSelector.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RotatorTile">
+					<NamedResource name="RotatorTile.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/RotatorTile/RotatorTile.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\RotatorTile\RotatorTile.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="RotatorTile.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/RotatorTile/RotatorTile.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="SlidableListItem">
+					<NamedResource name="SlidableListItem.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/SlidableListItem/SlidableListItem.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\SlidableListItem\SlidableListItem.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="SlidableListItem.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/SlidableListItem/SlidableListItem.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/Themes/Generic.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\Themes\Generic.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Generic.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

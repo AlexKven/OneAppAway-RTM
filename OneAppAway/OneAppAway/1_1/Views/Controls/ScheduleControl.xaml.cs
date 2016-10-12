@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OneAppAway._1_1.Data;
+using OneAppAway._1_1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,9 +21,24 @@ namespace OneAppAway._1_1.Views.Controls
 {
     public sealed partial class ScheduleControl : UserControl
     {
+        private ScheduleControlViewModel VM;
         public ScheduleControl()
         {
             this.InitializeComponent();
+            VM = new ScheduleControlViewModel();
+            MainGrid.DataContext = VM;
         }
+        
+        public TransitStop Stop
+        {
+            get { return (TransitStop)GetValue(StopProperty); }
+            set { SetValue(StopProperty, value); }
+        }
+        public static readonly DependencyProperty StopProperty =
+            DependencyProperty.Register("Stop", typeof(TransitStop), typeof(ScheduleControl), new PropertyMetadata(new TransitStop(), (s, e) =>
+            {
+                if (e.NewValue is TransitStop)
+                    ((ScheduleControl)s).VM.Stop = (TransitStop)e.NewValue;
+            }));
     }
 }
