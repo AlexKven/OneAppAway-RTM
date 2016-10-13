@@ -166,8 +166,8 @@
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Children" />
-      <RootProperty Name="Resources" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Resources" />
       <RootProperty Name="Background" />
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="MinHeight" />
@@ -377,11 +377,11 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="ItemsSource" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="SelectedIndex" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Items" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="SelectionChanged" />
     </RootType>

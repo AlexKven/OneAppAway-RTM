@@ -9,12 +9,12 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid x:Name="MainGrid">
-        <Grid>
+        <Grid Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ComboBox ItemsSource="{Binding DayGroups}">
+            <ComboBox ItemsSource="{Binding DayGroups}" HorizontalAlignment="Stretch">
                 <!--<ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Converter={StaticResource ServiceDayFriendlyNameConverter}}"/>
