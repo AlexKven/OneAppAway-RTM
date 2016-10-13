@@ -1,8 +1,3 @@
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\ClassLibrary1.dll
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\CommonClasses.csprojResolveAssemblyReference.cache
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\ClassLibrary1.dll
-C:\Users\Alexander\Documents\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\MvvmHelpers.dll
@@ -15,5 +10,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\Windows.Foundation.U
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\MvvmHelpers.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\SQLite-net.xml
+C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\CommonClasses.csprojResolveAssemblyReference.cache
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\CommonClasses.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\obj\Debug\CommonClasses.pdb

@@ -1,4 +1,0 @@
-SQLitePCL, Version=3.8.7.2, Culture=neutral, PublicKeyToken=bddade01e9c850c5
-  SQLitePCL.Resources.resources
-CommonClasses, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  OneAppAway._1_1.XmlDataSources.TransitCenterData.xml

@@ -5,6 +5,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\App.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\BusMap.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\AutoFitTextBlock.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\RealTimeArrivalControl.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\ScheduleControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\StopArrivalsBox.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\StopPopupOuterControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\StopPopupControl.xbf
@@ -187,7 +188,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\WriteableBitmapEx.W
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\WriteableBitmapEx.WinRT.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\CommonClasses.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\CommonClasses.pdb
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\OneAppAway.csprojResolveAssemblyReference.cache
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\App.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\App.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\BusMap.g.i.cs
@@ -196,6 +196,8 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\AutoFitTextBlock.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\RealTimeArrivalControl.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\RealTimeArrivalControl.g.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\ScheduleControl.g.i.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\ScheduleControl.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopArrivalsBox.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopArrivalsBox.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopPopupOuterControl.g.i.cs
@@ -269,6 +271,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\App.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\BusMap.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\AutoFitTextBlock.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\RealTimeArrivalControl.xaml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\ScheduleControl.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopArrivalsBox.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopPopupOuterControl.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopPopupControl.xaml
@@ -307,6 +310,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\App.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\BusMap.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\AutoFitTextBlock.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\RealTimeArrivalControl.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\ScheduleControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopArrivalsBox.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopPopupOuterControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\StopPopupControl.xbf
@@ -424,8 +428,3 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Microsoft.Xaml.Inte
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\SQLitePCL.raw.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\SQLitePCL.Ext.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\ProjectArchitectures.txt
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\1_1\Views\Controls\ScheduleControl.xbf
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\ScheduleControl.g.i.cs
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\ScheduleControl.g.cs
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\ScheduleControl.xaml
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\Views\Controls\ScheduleControl.xbf
