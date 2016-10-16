@@ -176,6 +176,10 @@ namespace OneAppAway
             AdDuplex.AdDuplexClient.Initialize("bef2bb37-a5ad-49d7-9ba6-b1ccaf4be44b");
             Common.SuspensionManager.KnownTypes.Add(typeof(string[]));
             this.Resources.Add("ServiceDayFriendlyNameConverter", new RelayConverter<OneAppAway._1_1.Data.ServiceDay, object, string>((d, p) => OneAppAway._1_1.Helpers.GeneralExtensionMethods.GetFriendlyName(d), null));
+
+            Func<Color, Color> lighten = clr => Color.FromArgb(clr.A, (byte)(128 + clr.R / 2), (byte)(128 + clr.G / 2), (byte)(128 + clr.B / 2));
+            Color accentColor = ((Color)App.Current.Resources["SystemColorControlAccentColor"]);
+            this.Resources.Add("LightAccentBrush", new SolidColorBrush(lighten(accentColor)));
         }
 
         private void CoreWindow_SizeChanged(CoreWindow sender, WindowSizeChangedEventArgs args)

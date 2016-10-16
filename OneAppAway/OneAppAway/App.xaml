@@ -32,6 +32,7 @@
         <conv_1_1:ScrollViewerScrollModeConverter x:Key="ScrollViewerScrollModeConverter"/>
         <conv_1_1:DefaultIfNaNConverter x:Key="DefaultIfNaNConverter"/>
         <conv_1_1:IsCompactToAppBarClosedDisplayModeConverter x:Key="IsCompactToAppBarClosedDisplayModeConverter"/>
+        <conv_1_1:BoldIfTrueConverter x:Key="BoldIfTrueConverter"/>
         <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
             <Grid>
                 <VisualStateManager.VisualStateGroups>

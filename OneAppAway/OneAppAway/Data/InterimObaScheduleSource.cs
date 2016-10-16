@@ -72,6 +72,10 @@ namespace OneAppAway._.Data
         {
             try
             {
+                if (stopId == null)
+                {
+                    return new RetrievedData<_1_1.Data.WeekSchedule>();
+                }
                 var schedule = await ApiLayer.GetScheduleForStop(stopId, cancellationToken);
                 return new RetrievedData<_1_1.Data.WeekSchedule>(schedule);
             }

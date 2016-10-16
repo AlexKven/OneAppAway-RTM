@@ -110,6 +110,7 @@
     <Compile Include="1_1\BusMap.xaml.cs">
       <DependentUpon>BusMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="1_1\Converters\BoldIfTrueConverter.cs" />
     <Compile Include="1_1\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="1_1\Converters\DefaultIfNaNConverter.cs" />
     <Compile Include="1_1\Converters\DegreeOfConfidenceToBackgroundConverter.cs" />
