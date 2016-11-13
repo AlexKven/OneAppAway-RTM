@@ -1,5 +1,6 @@
 ﻿using MvvmHelpers;
 using OneAppAway._1_1.Data;
+using OneAppAway._1_1.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,24 @@ namespace OneAppAway._1_1.ViewModels
             public IEnumerable<Tuple<string, bool>> Times { get; set; }
         }
 
+        public class DayScheduleGroup
+        {
+            public ServiceDay DayGroup { get; }
+            public string DayGroupDescription { get; }
+            public bool ScheduleLoaded { get; set; } = false;
+            public ObservableRangeCollection<RouteScheduleGroup> Schedule { get; } = new ObservableRangeCollection<RouteScheduleGroup>();
+
+            public DayScheduleGroup(ServiceDay dayGroup)
+            {
+                DayGroup = dayGroup;
+            }
+
+            public override string ToString()
+            {
+                return DayGroup.GetFriendlyName();
+            }
+        }
+
         private WeekSchedule Schedule;
         private CancellationTokenSource TokenSource;
 
@@ -25,16 +44,16 @@ namespace OneAppAway._1_1.ViewModels
             TokenSource = new CancellationTokenSource();
         }
 
-        public ObservableRangeCollection<ServiceDay> DayGroups { get; } = new ObservableRangeCollection<ServiceDay>();
+        public ObservableRangeCollection<DayScheduleGroup> DayGroups { get; } = new ObservableRangeCollection<DayScheduleGroup>();
 
-        private ServiceDay _SelectedDayGroup = ServiceDay.None;
-        public ServiceDay SelectedDayGroup
+        private DayScheduleGroup _SelectedDayGroup;
+        public DayScheduleGroup SelectedDayGroup
         {
             get { return _SelectedDayGroup; }
             set
             {
                 SetProperty(ref _SelectedDayGroup, value);
-                LoadSelectedSchedule();
+                LoadSelectedSchedule().ToString();
             }
         }
 
@@ -59,15 +78,27 @@ namespace OneAppAway._1_1.ViewModels
             return result;
         }
 
-        private async void LoadSelectedSchedule()
+        public async Task LoadSelectedSchedule()
         {
-            SelectedSchedule.Clear();
-            if (SelectedDayGroup != ServiceDay.None)
+            IsBusy = true;
+            if (SelectedDayGroup != null)
             {
-                var sched = await LoadRouteNames(Schedule.GetSchedule(SelectedDayGroup));
-                bool military = SettingsManagerBase.Instance?.GetSetting("MilitaryTime", false, false) ?? false;
-                SelectedSchedule.AddRange(sched.GroupBy(a => $"{a.Item2} to {a.Item1.Destination}").Select(g => new RouteScheduleGroup() { RouteAndDestination = g.Key, Times = g.Select(t => new Tuple<string, bool>(GetDisplayTimeForArrival(t.Item1, military), military ? false : (t.Item1.ScheduledDepartureTime.Hour >= 12))) }));
+                if (!SelectedDayGroup.ScheduleLoaded)
+                {
+                    SelectedDayGroup.Schedule.Clear();
+                    if (SelectedDayGroup.DayGroup != ServiceDay.None)
+                    {
+                        var sched = await LoadRouteNames(Schedule.GetSchedule(SelectedDayGroup.DayGroup));
+                        bool military = SettingsManagerBase.Instance?.GetSetting("MilitaryTime", false, false) ?? false;
+                        SelectedDayGroup.Schedule.AddRange(sched.GroupBy(a => $"{a.Item2} to {a.Item1.Destination}").Select(g => new RouteScheduleGroup() { RouteAndDestination = g.Key, Times = g.Select(t => new Tuple<string, bool>(GetDisplayTimeForArrival(t.Item1, military), military ? false : (t.Item1.ScheduledDepartureTime.Hour >= 12))) }));
+                        SelectedDayGroup.ScheduleLoaded = true;
+                    }
+                }
+                SelectedSchedule.ReplaceRange(SelectedDayGroup.Schedule);
             }
+            else
+                SelectedSchedule.Clear();
+            IsBusy = false;
         }
 
         private static string GetDisplayTimeForArrival(ScheduledArrival arrival, bool military)
@@ -117,10 +148,21 @@ namespace OneAppAway._1_1.ViewModels
                     Schedule = retrievedSchedule.Data;
                     DayGroups.Clear();
                     var groups = Schedule.GetScheduleGroups().ToArray();
-                    if (groups.Length > 0)
-                        DayGroups.AddRange(groups);
+                    foreach (var group in groups)
+                    {
+                        DayGroups.Add(new DayScheduleGroup(group));
+                    }
+                    //if (groups.Length > 0)
+                    //    DayGroups.AddRange(groups);
                     HasSchedule = true;
+                    var today = DateTime.Today.DayOfWeek.ToServiceDay();
+                    var todaysGroup = DayGroups.FirstOrDefault(dg => (dg.DayGroup & today) == today);
+                    if (todaysGroup == null)
+                        SelectedDayGroup = DayGroups[0];
+                    else
+                        SelectedDayGroup = todaysGroup;
                 }
+                //LoadSelectedSchedule();
             }
             catch (OperationCanceledException)
             {

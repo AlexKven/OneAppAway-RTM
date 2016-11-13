@@ -6,32 +6,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:sys="using:System"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <Grid>
+    <Grid SizeChanged="Grid_SizeChanged">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid SizeChanged="IntermediateGrid_SizeChanged">
-            <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="MainScrollViewer" Width="200" Height="200">
-                    <ItemsControl ItemsSource="{Binding Items}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <local:RealTimeArrivalControl Width="{Binding ElementName=MainScrollViewer, Path=Width}" Arrival="{Binding}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </ScrollViewer>
-            </Canvas>
-        </Grid>
+        <ScrollViewer x:Name="MainScrollViewer" HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled" HorizontalContentAlignment="Stretch" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Items}" HorizontalContentAlignment="Stretch">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:RealTimeArrivalControl Arrival="{Binding}" HorizontalAlignment="Stretch" Width="{Binding ElementName=MainScrollViewer, Path=Width}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         <ProgressRing Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsActive="{Binding IsBusy}"/>
         <StackPanel HorizontalAlignment="Center" Margin="4" VerticalAlignment="Center" Visibility="{Binding LoadStatus, Converter={StaticResource EnumCaseVisibilityConverter}, ConverterParameter=None}">
             <TextBlock TextWrapping="WrapWholeWords" FontSize="24" Text="Click refresh to download arrival data for this stop"/>

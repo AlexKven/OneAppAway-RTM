@@ -1,0 +1,1 @@
+C:\GitHub\OneAppAway-RTM\OneAppAway\TestUWP\TestUWP.csproj;x64

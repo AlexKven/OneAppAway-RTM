@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>KAPENTAWATT16</Machine>
+    <Machine>KAPENTAWATT16-5</Machine>
     <WindowsUser>AlexKven</WindowsUser>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetOsVersion>6.3</TargetOsVersion>
@@ -28,50 +28,50 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-09-20T15:51:22.093</Modified>
+      <Modified>2016-10-17T00:26:09.191</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\OneAppAway_Windows8_1.Windows.exe">
       <PackagePath>OneAppAway_Windows8_1.Windows.exe</PackagePath>
-      <Modified>2016-09-20T15:51:20.875</Modified>
+      <Modified>2016-10-17T00:26:04.478</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-07-07T05:01:10.000</Modified>
+      <Modified>2016-10-12T06:40:21.886</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-07-07T05:01:10.000</Modified>
+      <Modified>2016-10-12T06:40:21.887</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-07-07T05:01:10.000</Modified>
+      <Modified>2016-10-12T06:40:21.954</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-07-07T05:01:10.000</Modified>
+      <Modified>2016-10-12T06:40:21.954</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\OneAppAway_Windows8_1.Windows.xr.xml">
       <PackagePath>OneAppAway_Windows8_1.Windows.xr.xml</PackagePath>
-      <Modified>2016-09-20T15:51:20.612</Modified>
+      <Modified>2016-10-12T06:40:22.885</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2016-09-20T15:51:20.759</Modified>
+      <Modified>2016-10-17T00:26:04.190</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2016-09-20T15:51:20.759</Modified>
+      <Modified>2016-10-17T00:26:04.192</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.Windows\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-09-20T15:51:21.812</Modified>
+      <Modified>2016-10-17T00:26:08.724</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

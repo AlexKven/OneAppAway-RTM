@@ -32,7 +32,8 @@ namespace OneAppAway._1_1.Views.Controls
         public TransitStop Stop
         {
             get { return (TransitStop)GetValue(StopProperty); }
-            set { SetValue(StopProperty, value); }
+            set { SetValue(StopProperty, value);
+            }
         }
         public static readonly DependencyProperty StopProperty =
             DependencyProperty.Register("Stop", typeof(TransitStop), typeof(ScheduleControl), new PropertyMetadata(new TransitStop(), (s, e) =>
@@ -40,5 +41,10 @@ namespace OneAppAway._1_1.Views.Controls
                 if (e.NewValue is TransitStop)
                     ((ScheduleControl)s).VM.Stop = (TransitStop)e.NewValue;
             }));
+
+        private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

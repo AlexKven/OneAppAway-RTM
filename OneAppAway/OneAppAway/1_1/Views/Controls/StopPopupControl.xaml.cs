@@ -111,6 +111,7 @@ namespace OneAppAway._1_1.Views.Controls
 
         protected override void OnStopChanged(TransitStop stop)
         {
+            VM.ShowArrivals = true;
             VM.Stop = stop;
         }
 
@@ -123,6 +124,14 @@ namespace OneAppAway._1_1.Views.Controls
         {
             FindName("ScheduleViewer");
             ScheduleSet = true;
+        }
+
+        private void IntermediateGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width > 0)
+                ManuallySizedGrid.Width = e.NewSize.Width;
+            if (e.NewSize.Height > 0)
+                ManuallySizedGrid.Height = e.NewSize.Height;
         }
     }
 }

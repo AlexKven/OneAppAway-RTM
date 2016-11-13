@@ -7,20 +7,81 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    x:Name="self">
+    <UserControl.Resources>
+
+        <ScrollViewer x:Key="ScheduleViewer" HorizontalContentAlignment="Stretch" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+            <ListView ItemsSource="{Binding SelectedSchedule}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Margin="3" FontSize="18" HorizontalAlignment="Stretch" TextWrapping="WrapWholeWords" Text="{Binding RouteAndDestination}" Foreground="{ThemeResource LightAccentBrush}"/>
+                            <ItemsControl ItemsSource="{Binding Times}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="45" ItemHeight="20"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:AutoFitTextBlock Text="{Binding Item1}" FontWeight="{Binding Item2, Converter={StaticResource BoldIfTrueConverter}}" Margin="2,1,2,1"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+    </UserControl.Resources>
     <Grid x:Name="MainGrid">
         <Grid Visibility="{Binding HasSchedule, Converter={StaticResource BoolToVisibilityConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ComboBox ItemsSource="{Binding DayGroups}" HorizontalAlignment="Stretch" SelectedItem="{Binding SelectedDayGroup, Mode=TwoWay}">
-                <ComboBox.ItemTemplate>
+
+            <!--<Pivot x:Name="MainPivot" ItemsSource="{Binding DayGroups}" SelectedItem="{Binding SelectedDayGroup, Mode=TwoWay}" SelectionChanged="Pivot_SelectionChanged">
+                <Pivot.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Converter={StaticResource ServiceDayFriendlyNameConverter}}"/>
+                        <PivotItem Header="{Binding}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                            <ScrollViewer HorizontalContentAlignment="Stretch" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                                <ListView ItemsSource="{Binding Schedule}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock Margin="3" FontSize="18" HorizontalAlignment="Stretch" TextWrapping="WrapWholeWords" Text="{Binding RouteAndDestination}" Foreground="{ThemeResource LightAccentBrush}"/>
+                                                <ItemsControl ItemsSource="{Binding Times}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="45" ItemHeight="20"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <local:AutoFitTextBlock Text="{Binding Item1}" FontWeight="{Binding Item2, Converter={StaticResource BoldIfTrueConverter}}" Margin="2,1,2,1"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </ScrollViewer>
+                        </PivotItem>
                     </DataTemplate>
-                </ComboBox.ItemTemplate>
+                </Pivot.ItemTemplate>
+            </Pivot>-->
+            
+            <ComboBox ItemsSource="{Binding DayGroups}" HorizontalAlignment="Stretch" SelectedItem="{Binding SelectedDayGroup, Mode=TwoWay}">
+                <!--<ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>-->
             </ComboBox>
+            
             <ScrollViewer Grid.Row="1" HorizontalContentAlignment="Stretch" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
                 <ListView ItemsSource="{Binding SelectedSchedule}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
                     <ListView.ItemTemplate>
@@ -30,7 +91,7 @@
                                 <ItemsControl ItemsSource="{Binding Times}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="50" ItemHeight="20"/>
+                                            <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="45" ItemHeight="20"/>
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
@@ -44,6 +105,8 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
+            
+
         </Grid>
         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" Text="{Binding Subtitle}" Visibility="{Binding HasSchedule, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}"/>
         <ProgressRing VerticalAlignment="Center" HorizontalAlignment="Center" IsActive="{Binding IsBusy}" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsHitTestVisible="False"/>

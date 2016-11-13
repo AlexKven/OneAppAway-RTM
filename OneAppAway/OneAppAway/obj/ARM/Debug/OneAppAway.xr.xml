@@ -20,10 +20,16 @@
     <RootPropertyPathName Name="IsEarly" />
     <RootPropertyPathName Name="RouteName" />
     <RootPropertyPathName Name="DegreeOfConfidence" />
+    <RootPropertyPathName Name="SelectedSchedule" />
+    <RootPropertyPathName Name="Times" />
+    <RootPropertyPathName Name="Item1" />
+    <RootPropertyPathName Name="Item2" />
+    <RootPropertyPathName Name="RouteAndDestination" />
     <RootPropertyPathName Name="IsBusy" />
     <RootPropertyPathName Name="Subtitle" />
     <RootPropertyPathName Name="HasSchedule" />
     <RootPropertyPathName Name="DayGroups" />
+    <RootPropertyPathName Name="SelectedDayGroup" />
     <RootPropertyPathName Name="LoadStatus" />
     <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="ErrorMessage" />
@@ -124,6 +130,7 @@
     <RootType FullName="OneAppAway._1_1.Converters.ScrollViewerScrollModeConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.DefaultIfNaNConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.IsCompactToAppBarClosedDisplayModeConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.BoldIfTrueConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
@@ -147,6 +154,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="MaxHeight" />
+      <RootProperty Name="TextAlignment" />
       <RootProperty Name="Inlines" />
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Tag" />
@@ -166,15 +174,17 @@
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Children" />
-      <RootProperty Name="Resources" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Resources" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
       <RootProperty Name="Background" />
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="MinHeight" />
-      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Tag" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="SizeChanged" />
       <RootEvent Name="Loaded" />
       <RootMethod Name="GetColumn" />
@@ -289,7 +299,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="Width" />
+      <RootProperty Name="Resources" />
       <RootProperty Name="RequestedTheme" />
       <RootEvent Name="SizeChanged" />
       <RootEvent Name="Unloaded" />
@@ -322,6 +332,7 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="FontWeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Template" />
@@ -360,10 +371,67 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutSeparator" />
     <RootType FullName="OneAppAway._1_1.Views.Controls.RealTimeArrivalControl">
-      <RootProperty Name="Width" />
       <RootProperty Name="Arrival" />
-      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="HorizontalScrollMode" />
+      <RootProperty Name="HorizontalScrollBarVisibility" />
+      <RootProperty Name="VerticalScrollMode" />
+      <RootProperty Name="VerticalScrollBarVisibility" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="SelectionMode" />
+      <RootProperty Name="ItemsPanel" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="Children" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="Height" />
+      <RootEvent Name="SizeChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemsPanel" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="Items" />
+      <RootProperty Name="ItemTemplateSelector" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.VariableSizedWrapGrid">
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="ItemWidth" />
+      <RootProperty Name="ItemHeight" />
+      <RootMethod Name="GetRowSpan" />
+      <RootMethod Name="SetRowSpan" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="VerticalAlignment" />
@@ -377,64 +445,17 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="ItemsSource" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="SelectedItem" />
       <RootProperty Name="Width" />
       <RootProperty Name="SelectedIndex" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Items" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.ScheduleControl">
       <RootProperty Name="Stop" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Children" />
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="Tag" />
-      <RootProperty Name="Height" />
-      <RootEvent Name="SizeChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Children" />
-      <RootEvent Name="SizeChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
-      <RootProperty Name="HorizontalScrollBarVisibility" />
-      <RootProperty Name="HorizontalScrollMode" />
-      <RootProperty Name="VerticalScrollMode" />
-      <RootProperty Name="VerticalScrollBarVisibility" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="VerticalContentAlignment" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Tag" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="ItemsPanel" />
-      <RootProperty Name="VerticalContentAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Tag" />
-      <RootProperty Name="Items" />
-      <RootProperty Name="ItemTemplateSelector" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
-      <RootProperty Name="Template" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopArrivalsBox">
       <RootProperty Name="RequestedTheme" />
@@ -475,6 +496,12 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Children" />
+      <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="HorizontalAlignment" />
@@ -581,13 +608,6 @@
       <RootMethod Name="SetIsOpen" />
       <RootMethod Name="GetParent" />
       <RootMethod Name="SetParent" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="SelectionMode" />
-      <RootProperty Name="ItemsPanel" />
-      <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
       <RootMethod Name="GetBehaviors" />
@@ -755,13 +775,6 @@
       <RootProperty Name="IsChecked" />
       <RootProperty Name="IsDownloaded" />
       <RootEvent Name="Click" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.VariableSizedWrapGrid">
-      <RootProperty Name="ItemWidth" />
-      <RootProperty Name="ItemHeight" />
-      <RootProperty Name="Orientation" />
-      <RootMethod Name="GetRowSpan" />
-      <RootMethod Name="SetRowSpan" />
     </RootType>
     <RootType FullName="OneAppAway.ScheduleBrowser" />
     <RootType FullName="OneAppAway.StopArrivalsBox">

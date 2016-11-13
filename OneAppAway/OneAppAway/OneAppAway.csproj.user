@@ -1,38 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <AppxPackageIsForStore>True</AppxPackageIsForStore>
-    <AppxShowAllApps>False</AppxShowAllApps>
-    <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
-    <UseEmulator>true</UseEmulator>
-    <RemoteDebugMachine>10.122.61.9</RemoteDebugMachine>
-    <RemoteDebugEnabled>false</RemoteDebugEnabled>
-    <UseAuthentication>false</UseAuthentication>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
     <UseEmulator>true</UseEmulator>
-    <RemoteDebugMachine>variablecn</RemoteDebugMachine>
-    <RemoteDebugEnabled>false</RemoteDebugEnabled>
-    <UseAuthentication>false</UseAuthentication>
-    <AuthenticationMode>Windows</AuthenticationMode>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <DebugEngines>{3B476D35-A401-11D2-AAD4-00C04F990171}</DebugEngines>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <CreateCleanLayout>false</CreateCleanLayout>
-    <DeviceId>30f105c9-681e-420b-a277-7c086ead8a4e</DeviceId>
-    <RemoteDebugMachine>Bdellium</RemoteDebugMachine>
-    <RemoteDebugEnabled>false</RemoteDebugEnabled>
-    <AuthenticationMode>Windows</AuthenticationMode>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
-    <UseEmulator>true</UseEmulator>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
 </Project>

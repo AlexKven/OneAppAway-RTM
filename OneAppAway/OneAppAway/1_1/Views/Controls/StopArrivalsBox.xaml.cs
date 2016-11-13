@@ -55,12 +55,18 @@ namespace OneAppAway._1_1.Views.Controls
                 ((StopArrivalsBox)s).VM.Stop = stop;
             }));
 
-        private void IntermediateGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (e.NewSize.Width > 0)
                 MainScrollViewer.Width = e.NewSize.Width;
-            if (e.NewSize.Height > 0)
-                MainScrollViewer.Height = e.NewSize.Height;
         }
+
+        //private void IntermediateGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        //{
+        //    if (e.NewSize.Width > 0)
+        //        MainScrollViewer.Width = e.NewSize.Width;
+        //    if (e.NewSize.Height > 0)
+        //        MainScrollViewer.Height = e.NewSize.Height;
+        //}
     }
 }

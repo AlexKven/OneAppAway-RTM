@@ -67,54 +67,58 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <Grid Grid.Row="1" Grid.ColumnSpan="3" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <CommandBar HorizontalAlignment="Stretch" Background="#00303030" localH:AttachedProperties.OpenedBackgroundColor="#FF303030" localH:AttachedProperties.ClosedBackgroundColor="#00303030" localH:AttachedProperties.UseBackgroundColorHelper="True" ClosedDisplayMode="{Binding ElementName=self, Path=ShowCompactMenu, Converter={StaticResource IsCompactToAppBarClosedDisplayModeConverter}}">
-                <!--<CommandBar.RenderTransform>
+        <Grid SizeChanged="IntermediateGrid_SizeChanged" Grid.Row="1" Grid.ColumnSpan="3" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}">
+            <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid x:Name="ManuallySizedGrid" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Height="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <CommandBar HorizontalAlignment="Stretch" Background="#00303030" localH:AttachedProperties.OpenedBackgroundColor="#FF303030" localH:AttachedProperties.ClosedBackgroundColor="#00303030" localH:AttachedProperties.UseBackgroundColorHelper="True" ClosedDisplayMode="{Binding ElementName=self, Path=ShowCompactMenu, Converter={StaticResource IsCompactToAppBarClosedDisplayModeConverter}}">
+                        <!--<CommandBar.RenderTransform>
                     <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
                 </CommandBar.RenderTransform>-->
-                <AppBarToggleButton Icon="Important" Label="Alerts" IsChecked="{Binding ShowAlerts, Mode=TwoWay}"/>
-                <AppBarToggleButton Icon="Calendar" Label="Schedule" IsChecked="{Binding ShowSchedule, Mode=TwoWay}"/>
-                <AppBarToggleButton Icon="Clock" Label="Arrivals" IsChecked="{Binding ShowArrivals, Mode=TwoWay}"/>
-            </CommandBar>
-            <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsIndeterminate="{Binding IsBusy}"/>
+                        <AppBarToggleButton Icon="Important" Label="Alerts" IsChecked="{Binding ShowAlerts, Mode=TwoWay}"/>
+                        <AppBarToggleButton Icon="Calendar" Label="Schedule" IsChecked="{Binding ShowSchedule, Mode=TwoWay}"/>
+                        <AppBarToggleButton Icon="Clock" Label="Arrivals" IsChecked="{Binding ShowArrivals, Mode=TwoWay}"/>
+                    </CommandBar>
+                    <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsIndeterminate="{Binding IsBusy}"/>
 
-            <!--Arrivals Tab-->
-            <Grid Grid.Row="1" Visibility="{Binding ShowArrivals, Converter={StaticResource BoolToVisibilityConverter}}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <!--Routes List-->
-                <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Height="45" HorizontalContentAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" Visibility="{Binding ElementName=self, Path=ShowRoutesList, Converter={StaticResource BoolToVisibilityConverter}}">
-                    <ItemsControl ItemsSource="{Binding RouteNames}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Background="#303030" Template="{ThemeResource SimpleButtonTemplate}" Margin="1">
-                                    <Border BorderBrush="{ThemeResource SystemColorControlAccentBrush}" BorderThickness="2" MinWidth="43" Height="43">
-                                        <TextBlock Margin="2, 0, 2, 0" Foreground="White" FontSize="20" Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </Button>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
+                    <!--Arrivals Tab-->
+                    <Grid Grid.Row="1" Visibility="{Binding ShowArrivals, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!--Routes List-->
+                        <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Height="45" HorizontalContentAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" Visibility="{Binding ElementName=self, Path=ShowRoutesList, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <ItemsControl ItemsSource="{Binding RouteNames}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Background="#303030" Template="{ThemeResource SimpleButtonTemplate}" Margin="1">
+                                            <Border BorderBrush="{ThemeResource SystemColorControlAccentBrush}" BorderThickness="2" MinWidth="43" Height="43">
+                                                <TextBlock Margin="2, 0, 2, 0" Foreground="White" FontSize="20" Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
 
-                <local:StopArrivalsBox Grid.Row="1" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}"/>
-            </Grid>
-            
-            <!--Schedule Tab-->
-            <ContentControl Grid.Row="1" Visibility="{Binding ShowSchedule, Converter={StaticResource BoolToVisibilityConverter}}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                <local:ScheduleControl x:Name="ScheduleViewer" Stop="{Binding ElementName=self, Path=Stop}" x:DeferLoadStrategy="Lazy"/>
-            </ContentControl>
+                        <local:StopArrivalsBox Grid.Row="1" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}"/>
+                    </Grid>
+
+                    <!--Schedule Tab-->
+                    <ContentControl Grid.Row="1" Visibility="{Binding ShowSchedule, Converter={StaticResource BoolToVisibilityConverter}}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                        <local:ScheduleControl x:Name="ScheduleViewer" Stop="{Binding ElementName=self, Path=Stop}" x:DeferLoadStrategy="Lazy"/>
+                    </ContentControl>
+                </Grid>
+            </Canvas>
         </Grid>
     </Grid>
 </local:StopPopupControlBase>

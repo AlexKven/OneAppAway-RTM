@@ -16,7 +16,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>C8BCF2637A1C6BA865B94923F0CEA947EF4ACAB165692BE402E64FF829A8F9D3</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>9E38CD858BC330DAF4C4C3920F5F99C3C25DD20BE0F1DB43675ADF5926DEA688</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>16469AlexKven.14062E657A0DF_1.0.7.0_x64__yke5jzwbk3qzj</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>16469AlexKven.14062E657A0DF_yke5jzwbk3qzj!App</RegisteredUserModeAppID>
     <RegisteredPackageID>16469AlexKven.14062E657A0DF</RegisteredPackageID>
@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-16T05:31:11.613</Modified>
+      <Modified>2016-11-13T07:49:06.870</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2016-10-16T05:31:09.370</Modified>
+      <Modified>2016-11-13T07:49:00.887</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.1.6\References\CommonConfiguration\neutral\AdDuplex.winmd">
       <PackagePath>AdDuplex.winmd</PackagePath>
@@ -252,9 +252,9 @@
       <PackagePath>System.IO.Compression.dll</PackagePath>
       <Modified>2015-07-23T06:08:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\System.IO.Compression.clrcompression-x64\4.0.0\runtimes\win10-x64\native\ClrCompression.dll">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\System.IO.Compression.clrcompression-x86\4.0.0\runtimes\win10-x86\native\ClrCompression.dll">
       <PackagePath>ClrCompression.dll</PackagePath>
-      <Modified>2015-07-23T05:49:06.000</Modified>
+      <Modified>2015-07-23T06:08:02.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\System.IO.Compression.ZipFile\4.0.0\lib\dotnet\System.IO.Compression.ZipFile.dll">
       <PackagePath>System.IO.Compression.ZipFile.dll</PackagePath>
@@ -520,11 +520,11 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-23T06:11:12.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Win2D.uwp\1.19.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Win2D.uwp\1.19.0\runtimes\win10-x86\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
       <Modified>2016-08-09T15:14:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb.dll">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x86\native\winsdkfb.dll">
       <PackagePath>winsdkfb.dll</PackagePath>
       <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
@@ -534,29 +534,29 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll">
       <PackagePath>CommonClasses.dll</PackagePath>
-      <Modified>2016-10-16T04:57:24.152</Modified>
+      <Modified>2016-11-13T06:13:59.306</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Controls\FacebookLoginButton.xbf">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x86\native\winsdkfb\Controls\FacebookLoginButton.xbf">
       <PackagePath>FacebookLoginButton.xbf</PackagePath>
       <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\FacebookDialog.xbf">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x86\native\winsdkfb\FacebookDialog.xbf">
       <PackagePath>FacebookDialog.xbf</PackagePath>
       <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\FacebookProfilePictureControl.xbf">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x86\native\winsdkfb\FacebookProfilePictureControl.xbf">
       <PackagePath>FacebookProfilePictureControl.xbf</PackagePath>
       <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Themes\Generic.xbf">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x86\native\winsdkfb\Themes\Generic.xbf">
       <PackagePath>Generic.xbf</PackagePath>
       <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Themes\Styles.xbf">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x86\native\winsdkfb\Themes\Styles.xbf">
       <PackagePath>Styles.xbf</PackagePath>
       <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Images\fb_blank_profile_portrait.png">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x86\native\winsdkfb\Images\fb_blank_profile_portrait.png">
       <PackagePath>fb_blank_profile_portrait.png</PackagePath>
       <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
@@ -818,17 +818,17 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\OneAppAway.xr.xml">
       <PackagePath>OneAppAway.xr.xml</PackagePath>
-      <Modified>2016-10-16T05:29:59.333</Modified>
+      <Modified>2016-11-13T07:48:59.744</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.14393.0\\redist\Debug\X64\ucrtbased.dll">
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
-      <Modified>2016-07-28T18:45:18.000</Modified>
+      <Modified>2016-03-29T16:11:30.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2016-10-13T19:21:32.969</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x64\native\winsdkfb\Images\fb_blank_profile_portrait.png">
+    <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.10.20160621.3\runtimes\win10-x86\native\winsdkfb\Images\fb_blank_profile_portrait.png">
       <PackagePath>winsdkfb\Images\fb_blank_profile_portrait.png</PackagePath>
       <Modified>2016-06-21T18:00:40.000</Modified>
     </AppxPackagedFile>
@@ -879,37 +879,37 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-16T05:31:10.317</Modified>
+      <Modified>2016-11-13T07:49:04.509</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2016-10-16T05:31:11.600</Modified>
+      <Modified>2016-11-13T07:49:06.855</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24210.0</Version>
+      <Version>14.0.24516.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24210.0</Version>
+      <Version>14.0.24516.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24210.0</Version>
+      <Version>14.0.24516.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
@@ -970,27 +970,27 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24210.0</Version>
+      <Version>14.0.24516.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24210.0</Version>
+      <Version>14.0.24516.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24210.0</Version>
+      <Version>14.0.24516.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>

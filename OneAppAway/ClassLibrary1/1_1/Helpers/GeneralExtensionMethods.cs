@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static OneAppAway._1_1.Data.ServiceDay;
+using static System.Math;
 
 namespace OneAppAway._1_1.Helpers
 {
@@ -106,6 +107,11 @@ namespace OneAppAway._1_1.Helpers
             {
                 return "None";
             }
+        }
+
+        public static ServiceDay ToServiceDay(this DayOfWeek day)
+        {
+            return (ServiceDay)((int)Pow(2, ((int)day + 6) % 7));
         }
     }
 }

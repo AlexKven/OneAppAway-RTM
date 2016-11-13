@@ -12,6 +12,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\MvvmHelpers.dl
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Newtonsoft.Json.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\System.Spatial.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\MvvmHelpers.xml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Newtonsoft.Json.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\System.Spatial.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.Azure.WebJobs.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.Azure.WebJobs.Host.xml
@@ -20,7 +21,6 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.Data
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.Data.Services.Client.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.WindowsAzure.Configuration.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Microsoft.WindowsAzure.Storage.xml
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\Newtonsoft.Json.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\de\System.Spatial.resources.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\es\System.Spatial.resources.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAwayAnalytics\bin\Debug\fr\System.Spatial.resources.dll

@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{20C382CE-9305-462A-803B-26710F88748F}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OneAppAway</RootNamespace>
+    <AssemblyName>OneAppAway</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>OneAppAway_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxPackageDir>C:\AppPackages\OneAppAway\</AppxPackageDir>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>4C9398A8DE465CD0BB8CAB66C3EEA638F9F59404</PackageCertificateThumbprint>
+    <AppxBundle>Always</AppxBundle>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="Assets\Icons\VehicleBase.pdn" />
+    <None Include="OneAppAway_StoreKey.pfx" />
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="1_1\AddIns\MapTakeover.cs" />
+    <Compile Include="1_1\AddIns\MapTakeoverRequestedEventArgs.cs" />
+    <Compile Include="1_1\AddIns\ShownStopsAddIn.cs" />
+    <Compile Include="1_1\AddIns\StopDetailsPopupAddIn.cs" />
+    <Compile Include="1_1\Agency.cs" />
+    <Compile Include="1_1\AttachedProperties.cs" />
+    <Compile Include="1_1\BusMap.xaml.cs">
+      <DependentUpon>BusMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Converters\BoldIfTrueConverter.cs" />
+    <Compile Include="1_1\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="1_1\Converters\DefaultIfNaNConverter.cs" />
+    <Compile Include="1_1\Converters\DegreeOfConfidenceToBackgroundConverter.cs" />
+    <Compile Include="1_1\Converters\EnumCaseVisibilityConverter.cs" />
+    <Compile Include="1_1\Converters\InvertBoolConverter.cs" />
+    <Compile Include="1_1\Converters\IsCompactToAppBarClosedDisplayModeConverter.cs" />
+    <Compile Include="1_1\Converters\IsEarlyToForegroundConverter.cs" />
+    <Compile Include="1_1\Converters\IsPredictedToForegroundConverter.cs" />
+    <Compile Include="1_1\Converters\LatLonToGeopointConverter.cs" />
+    <Compile Include="1_1\Converters\LatLonTransformConverter.cs" />
+    <Compile Include="1_1\Converters\MinutesUntilArrivalConverter.cs" />
+    <Compile Include="1_1\Converters\NullZeroConverter.cs" />
+    <Compile Include="1_1\Converters\ScrollViewerScrollModeConverter.cs" />
+    <Compile Include="1_1\Converters\StopSizeThresholdConverter.cs" />
+    <Compile Include="1_1\Converters\ValueConverterGroup.cs" />
+    <Compile Include="1_1\Data\LocationHelper.cs" />
+    <Compile Include="1_1\Data\PointWrapper.cs" />
+    <Compile Include="1_1\Data\UwpNetworkManager.cs" />
+    <Compile Include="1_1\Data\UwpSettingsManager.cs" />
+    <Compile Include="1_1\Helpers\AttachedProperties.cs" />
+    <Compile Include="1_1\Helpers\BindingHelperCollection.cs" />
+    <Compile Include="1_1\Helpers\ExternalBinding.cs" />
+    <Compile Include="1_1\Helpers\BindingHelper.cs" />
+    <Compile Include="1_1\Helpers\EventCommandBinding.cs" />
+    <Compile Include="1_1\Helpers\HelperFunctions.cs" />
+    <Compile Include="1_1\Helpers\FlyoutHelpers.cs" />
+    <Compile Include="1_1\Selectors\RealTimeArrivalControlTemplateSelector.cs" />
+    <Compile Include="1_1\Selectors\LargeAndSmallTitleBarTemplateSelector.cs" />
+    <Compile Include="1_1\Selectors\TitleOnlyTitleBarTemplateSelector.cs" />
+    <Compile Include="1_1\Selectors\TransitMapPageTitleBarTemplateSelector.cs" />
+    <Compile Include="1_1\UwpIntervalExecuter.cs" />
+    <Compile Include="1_1\ViewModels\HamburgerBarPageEntryViewModel.cs" />
+    <Compile Include="1_1\ViewModels\OuterFrameViewModel.cs" />
+    <Compile Include="1_1\ViewModels\TransitMapPageUwpViewModel.cs" />
+    <Compile Include="1_1\Views\Controls\ApplicationFrame.cs" />
+    <Compile Include="1_1\Views\Controls\AutoFitTextBlock.xaml.cs">
+      <DependentUpon>AutoFitTextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\EnterCommandTextBox.cs" />
+    <Compile Include="1_1\Views\Controls\PassivelySizedContentControl.cs" />
+    <Compile Include="1_1\Views\Controls\RealTimeArrivalControl.xaml.cs">
+      <DependentUpon>RealTimeArrivalControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\ScheduleControl.xaml.cs">
+      <DependentUpon>ScheduleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\StopArrivalsBox.xaml.cs">
+      <DependentUpon>StopArrivalsBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\StopPopupOuterControl.xaml.cs">
+      <DependentUpon>StopPopupOuterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\StopPopupControlBase.cs" />
+    <Compile Include="1_1\Views\Controls\StopPopupControl.xaml.cs">
+      <DependentUpon>StopPopupControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Controls\SwitchCasePanel.cs" />
+    <Compile Include="1_1\Views\Controls\TransitMap.xaml.cs">
+      <DependentUpon>TransitMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\AddIns\TransitMapAddInBase.cs" />
+    <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
+    <Compile Include="1_1\Views\OuterFrame.xaml.cs">
+      <DependentUpon>OuterFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\ApplicationPage.cs" />
+    <Compile Include="1_1\Route.cs" />
+    <Compile Include="1_1\Views\Pages\TestPage1.xaml.cs">
+      <DependentUpon>TestPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\ShapeDesignerPage.xaml.cs">
+      <DependentUpon>ShapeDesignerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\TransitMapPage.xaml.cs">
+      <DependentUpon>TransitMapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Pages\TransitStopPage.xaml.cs">
+      <DependentUpon>TransitStopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="1_1\Views\Structures\TitleBarElementSize.cs" />
+    <Compile Include="1_1\Selectors\TitleBarTemplateSelectorBase.cs" />
+    <Compile Include="1_1\Converters\FadeOnDropOffOnlyConverter.cs" />
+    <Compile Include="Data\InterimObaScheduleSource.cs" />
+    <Compile Include="Data\OuterFrame.xaml.cs">
+      <DependentUpon>OuterFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keys.cs" />
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AdRow.xaml.cs">
+      <DependentUpon>AdRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataGrid.xaml.cs">
+      <DependentUpon>DataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FavoritesManager.cs" />
+    <Compile Include="FavoritesPage.xaml.cs">
+      <DependentUpon>FavoritesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LocationManager.cs" />
+    <Compile Include="Pages\HelpTip.xaml.cs">
+      <DependentUpon>HelpTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RemoveFromFavoritesPage.xaml.cs">
+      <DependentUpon>RemoveFromFavoritesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Structures\ContextLocation.cs" />
+    <Compile Include="Structures\FavoriteArrival.cs" />
+    <Compile Include="Structures\Message.cs" />
+    <Compile Include="Pages\AddToFavoritesPage.xaml.cs">
+      <DependentUpon>AddToFavoritesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ApiLayer.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PopupStopArrivalsBox.xaml.cs">
+      <DependentUpon>PopupStopArrivalsBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Correction.cs" />
+    <Compile Include="Data\Corrections.cs" />
+    <Compile Include="Pages\MessagePopupPage.xaml.cs">
+      <DependentUpon>MessagePopupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationSettings.cs" />
+    <Compile Include="Settings\BandwidthManager.cs" />
+    <Compile Include="ComboBoxIconAndText.cs" />
+    <Compile Include="Common\NavigationFriendlyPage.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Data\CompactFormatter.cs" />
+    <Compile Include="Controls\BusArrivalBox.xaml.cs" />
+    <Compile Include="Controls\BusMap.xaml.cs" />
+    <Compile Include="Controls\HamburgerBar.xaml.cs" />
+    <Compile Include="Controls\MultiStopArrivalsBox.xaml.cs" />
+    <Compile Include="Controls\RouteListingControl.xaml.cs" />
+    <Compile Include="Controls\ScheduleBrowser.xaml.cs" />
+    <Compile Include="Controls\StopArrivalsBox.xaml.cs" />
+    <Compile Include="Converters\AddSubtractConverter.cs" />
+    <Compile Include="Converters\BandwidthOptionsRowHeightConverter.cs" />
+    <Compile Include="Converters\BasicGeopositionToStringConverter.cs" />
+    <Compile Include="Converters\ColorToBrushConverter.cs" />
+    <Compile Include="Converters\DoubleToGridlengthConverter.cs" />
+    <Compile Include="Converters\LightenColorConverter.cs" />
+    <Compile Include="Converters\MaxMinConverter.cs" />
+    <Compile Include="Converters\MinutesUntilArrivalConverter.cs" />
+    <Compile Include="Converters\RandomConverter.cs" />
+    <Compile Include="Converters\TimeDifferenceConverter.cs" />
+    <Compile Include="Converters\TimespanMinutesConverter.cs" />
+    <Compile Include="Converters\ValueConverterGroup.cs" />
+    <Compile Include="Data\Data.cs" />
+    <Compile Include="Data\DownloadManager.cs" />
+    <Compile Include="Data\FileManager.cs" />
+    <Compile Include="HelperFunctions.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BusMapPage.xaml.cs" />
+    <Compile Include="Pages\RoutesPage.xaml.cs" />
+    <Compile Include="Pages\RouteViewPage.xaml.cs" />
+    <Compile Include="Pages\SettingsPage.xaml.cs" />
+    <Compile Include="Pages\StopViewPage.xaml.cs" />
+    <Compile Include="Pages\TestPage.xaml.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structures\Schedule.cs" />
+    <Compile Include="ScrollViewerSnapping.cs" />
+    <Compile Include="Settings\SettingsManager.cs" />
+    <Compile Include="Structures\Structs.cs" />
+    <Compile Include="TaskManager.cs" />
+    <Compile Include="TemplateSelectors\RouteListingTemplateSelector.cs" />
+    <Compile Include="Controls\WeekScheduleBrowser.xaml.cs">
+      <DependentUpon>WeekScheduleBrowser.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="OneAppAway_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Icons\Cancel.png" />
+    <Content Include="Assets\Icons\Alert.png" />
+    <Content Include="Assets\Icons\BusAlert20.png" />
+    <Content Include="Assets\Icons\BusAlert40.png" />
+    <Content Include="Assets\Icons\BusAlert60.png" />
+    <Content Include="Assets\Icons\BusAnalyticsIcon.png" />
+    <Content Include="Assets\Icons\BusBase.png" />
+    <Content Include="Assets\Icons\BusBase20.png" />
+    <Content Include="Assets\Icons\BusBase40.png" />
+    <Content Include="Assets\Icons\BusClosed20.png" />
+    <Content Include="Assets\Icons\BusClosed40.png" />
+    <Content Include="Assets\Icons\BusClosed60.png" />
+    <Content Include="Assets\Icons\BusDirectionE.png" />
+    <Content Include="Assets\Icons\BusDirectionE20.png" />
+    <Content Include="Assets\Icons\BusDirectionE40.png" />
+    <Content Include="Assets\Icons\BusDirectionN.png" />
+    <Content Include="Assets\Icons\BusDirectionN20.png" />
+    <Content Include="Assets\Icons\BusDirectionN40.png" />
+    <Content Include="Assets\Icons\BusDirectionNE.png" />
+    <Content Include="Assets\Icons\BusDirectionNE20.png" />
+    <Content Include="Assets\Icons\BusDirectionNE40.png" />
+    <Content Include="Assets\Icons\BusDirectionNW.png" />
+    <Content Include="Assets\Icons\BusDirectionNW20.png" />
+    <Content Include="Assets\Icons\BusDirectionNW40.png" />
+    <Content Include="Assets\Icons\BusDirectionS.png" />
+    <Content Include="Assets\Icons\BusDirectionS20.png" />
+    <Content Include="Assets\Icons\BusDirectionS40.png" />
+    <Content Include="Assets\Icons\BusDirectionSE.png" />
+    <Content Include="Assets\Icons\BusDirectionSE20.png" />
+    <Content Include="Assets\Icons\BusDirectionSE40.png" />
+    <Content Include="Assets\Icons\BusDirectionSW.png" />
+    <Content Include="Assets\Icons\BusDirectionSW20.png" />
+    <Content Include="Assets\Icons\BusDirectionSW40.png" />
+    <Content Include="Assets\Icons\BusDirectionW.png" />
+    <Content Include="Assets\Icons\BusDirectionW20.png" />
+    <Content Include="Assets\Icons\BusDirectionW40.png" />
+    <Content Include="Assets\Icons\BusGeneric16.png" />
+    <Content Include="Assets\Icons\BusRoutesIcon.png" />
+    <Content Include="Assets\Icons\LogoBase.png" />
+    <Content Include="Assets\Icons\MeIcon.png" />
+    <Content Include="Assets\Icons\MyLocationIcon256.png" />
+    <Content Include="Assets\Icons\MyLocationIcon32.png" />
+    <Content Include="Assets\Icons\CancelRefreshStopsIcon.png" />
+    <Content Include="Assets\Icons\RefreshStopsIcon.png" />
+    <Content Include="Assets\Icons\SmallLogo.scale-100.png" />
+    <Content Include="Assets\Icons\VehicleBase.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\ShadowCorner.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.targetsize-24.png" />
+    <Content Include="Assets\SmallLogo.targetsize-48.png" />
+    <Content Include="Assets\SmallLogo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\WideLogo.scale-100.png" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="1_1\BusMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\AutoFitTextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\RealTimeArrivalControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\ScheduleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\StopArrivalsBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\StopPopupOuterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\StopPopupControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\TransitMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\OuterFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TestPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\ShapeDesignerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TransitMapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Pages\TransitStopPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Data\OuterFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AdRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FavoritesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HelpTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddToFavoritesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BusArrivalBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\BusMap.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\HamburgerBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MultiStopArrivalsBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\RouteListingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ScheduleBrowser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\StopArrivalsBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\BusMapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\RoutesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\RouteViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\StopViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TestPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PopupStopArrivalsBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WeekScheduleBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MessagePopupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RemoveFromFavoritesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="AdDuplex.Windows10, Version=10.0.1.6">
+      <Name>AdDuplex SDK for Windows 10 %28XAML%29</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs.120, Version=14.0">
+      <Name>Microsoft Visual C++ 2013 Runtime Package for Windows Universal</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.14393.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxSystemBinary Include="OneAppAway.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Visuals\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\CommonClasses.csproj">
+      <Project>{24eec194-2107-40a6-b5a4-57083e05131d}</Project>
+      <Name>CommonClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\UWPShared\UWPShared.projitems" Label="Shared" />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

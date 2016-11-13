@@ -188,6 +188,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\WriteableBitmapEx.W
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\WriteableBitmapEx.WinRT.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\CommonClasses.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x64\Debug\CommonClasses.pdb
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\OneAppAway.csprojResolveAssemblyReference.cache
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\App.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\App.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\1_1\BusMap.g.i.cs
@@ -428,4 +429,3 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\Microsoft.Xaml.Inte
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\SQLitePCL.raw.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\SQLitePCL.Ext.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\ProjectArchitectures.txt
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x64\Debug\OneAppAway.csprojResolveAssemblyReference.cache

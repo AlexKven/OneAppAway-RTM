@@ -10,7 +10,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400" Width="50">
+    d:DesignWidth="400">
 
     <Button x:Name="MainButton" Template="{ThemeResource SimpleButtonTemplate}" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="{Binding IsDropOffOnly, Converter={StaticResource FadeOnDropOffOnlyConverter}}">
         <VisualStateManager.VisualStateGroups>
@@ -50,7 +50,7 @@
                 <ColumnDefinition Width="45" x:Name="RouteNameRow"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto" MinWidth="120" x:Name="RingColumn"/>
+                <ColumnDefinition Width="auto" MinWidth="110" x:Name="RingColumn"/>
                 <ColumnDefinition Width="55" x:Name="MinutesColumn"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -64,7 +64,7 @@
             <local:AutoFitTextBlock x:Name="MinutesBlock" FontSize="28" Grid.RowSpan="2" Grid.Row="1" Grid.Column="4" Margin="5,5,15,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding MinutesDisplayed}" Foreground="{Binding IsEarly, Converter={StaticResource IsEarlyToForegroundConverter}, ConverterParameter={StaticResource SystemColorControlAccentColor}}"/>
             <TextBlock x:Name="PredictedArrivalTimeBlock" Grid.Column="3" Grid.Row="1" Margin="2,0,2,0" Text="{Binding PredictedArrivalTimeText}" Foreground="{Binding IsPredicted, Converter={StaticResource IsPredictedToForegroundConverter}, ConverterParameter={StaticResource SystemColorControlAccentColor}}"/>
             <TextBlock x:Name="ScheduledArrivalTimeBlock" Grid.Column="3" Grid.Row="2" Margin="2,0,2,0" Text="{Binding ScheduledArrivalTimeText}"/>
-            <TextBlock Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" MaxHeight="45" HorizontalAlignment="Left" Margin="5,2,5,2" TextWrapping="WrapWholeWords" TextTrimming="WordEllipsis" FontSize="10" Text="{Binding RouteDestination}"/>
+            <TextBlock Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" MaxHeight="45" HorizontalAlignment="Stretch" TextAlignment="Left" Margin="5,2,5,2" TextWrapping="WrapWholeWords" TextTrimming="WordEllipsis" FontSize="10" Text="{Binding RouteDestination}"/>
             <local:AutoFitTextBlock Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" x:Name="FrequencyWarningBlock" Visibility="Collapsed" Text="(No schedule or arrival data for this route)"/>
             <Image Source="/Assets/Icons/Alert.png" Margin="5" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch" Stretch="Uniform" Visibility="{Binding HasAlert, Converter={StaticResource BoolToVisibilityConverter}}"/>
             <Image Source="/Assets/Icons/Cancel.png" Margin="5" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Stretch" Stretch="Uniform" Visibility="{Binding IsCancelled, Converter={StaticResource BoolToVisibilityConverter}}" x:Name="CancelImage"/>

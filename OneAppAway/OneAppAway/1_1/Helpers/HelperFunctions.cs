@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media.Animation;
 using MvvmHelpers;
 using Windows.UI.Core;
+using static System.Math;
 
 namespace OneAppAway._1_1.Helpers
 {

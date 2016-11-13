@@ -14,24 +14,20 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid x:ConnectionId='1'                                           >
-            <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <ScrollViewer x:ConnectionId='2' HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="MainScrollViewer" Width="200" Height="200">
-                    <ItemsControl ItemsSource="{Binding Items}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <local:RealTimeArrivalControl Width="{Binding ElementName=MainScrollViewer, Path=Width}" Arrival="{Binding}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </ScrollViewer>
-            </Canvas>
-        </Grid>
+        <ScrollViewer x:ConnectionId='1' HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" x:Name="MainScrollViewer">
+            <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:RealTimeArrivalControl Width="{Binding ElementName=MainScrollViewer, Path=Width}" Arrival="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
         <ProgressRing Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" IsActive="{Binding IsBusy}"/>
         <StackPanel HorizontalAlignment="Center" Margin="4" VerticalAlignment="Center" Visibility="{Binding LoadStatus, Converter={StaticResource EnumCaseVisibilityConverter}, ConverterParameter=None}">
             <TextBlock TextWrapping="WrapWholeWords" FontSize="24" Text="Click refresh to download arrival data for this stop"/>

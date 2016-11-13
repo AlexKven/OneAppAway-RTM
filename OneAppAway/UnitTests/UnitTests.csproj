@@ -67,6 +67,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CompositeCollectionBindingTests.cs" />
+    <Compile Include="GeneralExtensionMethodTests.cs" />
     <Compile Include="ICommandTests.cs" />
     <Compile Include="TestDataSource.cs" />
     <Compile Include="Tests.cs" />
