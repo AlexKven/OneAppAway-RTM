@@ -13,6 +13,9 @@ namespace OneAppAway._1_1.ViewModels
 {
     public class StopPopupViewModel : BaseViewModel
     {
+        private CancellationTokenSource LoadRoutesTokenSource;
+        private bool RoutesLoaded = false;
+
         private TransitStop _Stop;
         public TransitStop Stop
         {
@@ -30,6 +33,7 @@ namespace OneAppAway._1_1.ViewModels
             //    Width = Children.Aggregate(0.0, (acc, child) => acc + child.Width);
             //else
             //    Width = 290;
+            LoadRoutesTokenSource = new CancellationTokenSource();
         }
 
         private ObservableCollection<TransitStop> _Children = new ObservableCollection<TransitStop>();
@@ -41,6 +45,7 @@ namespace OneAppAway._1_1.ViewModels
 
         private async void LoadStopProperties()
         {
+            RoutesLoaded = false;
             StopName = Stop.Name;
             TitleToolTip = $"Stop ID = {Stop.ID}";
             Children.Clear();
@@ -63,18 +68,26 @@ namespace OneAppAway._1_1.ViewModels
 
         private async void LoadRouteNames()
         {
-            RouteNames.Clear();
-            if (Stop.Routes == null)
-                return;
-            IsBusy = true;
-            foreach (var routeId in Stop.Routes)
+            try
             {
-                //var route = await ApiLayer.GetTransitRoute(routeId, new System.Threading.CancellationToken());
-                var route = await DataSource.GetTransitRouteAsync(routeId, DataSourcePreference.All, System.Threading.CancellationToken.None);
-                if (route.HasData)
-                    RouteNames.Add(route.Data.Name);
+                RouteNames.Clear();
+                if (Stop.Routes == null)
+                    return;
+                IsBusy = true;
+                foreach (var routeId in Stop.Routes)
+                {
+                    //var route = await ApiLayer.GetTransitRoute(routeId, new System.Threading.CancellationToken());
+                    var route = await DataSource.GetTransitRouteAsync(routeId, DataSourcePreference.All, LoadRoutesTokenSource.Token);
+                    if (route.HasData)
+                        RouteNames.Add(route.Data.Name);
+                }
+                RoutesLoaded = true;
             }
-            IsBusy = false;
+            catch (OperationCanceledException) { }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         private ObservableCollection<string> _RouteNames = new ObservableCollection<string>();
@@ -132,7 +145,17 @@ namespace OneAppAway._1_1.ViewModels
             get { return _ShowArrivals; }
             set
             {
+                var old = ShowArrivals;
                 SetProperty(ref _ShowArrivals, value);
+                if (!ShowArrivals && old && !RoutesLoaded)
+                {
+                    LoadRoutesTokenSource.Cancel();
+                    LoadRoutesTokenSource = new CancellationTokenSource();
+                }
+                else if (ShowArrivals && !old && !RoutesLoaded)
+                {
+                    LoadRouteNames();
+                }
                 if (IsSettingTab)
                     return;
                 IsSettingTab = true;

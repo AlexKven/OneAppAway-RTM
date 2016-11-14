@@ -44,6 +44,12 @@ namespace OneAppAway._1_1.ViewModels
             TokenSource = new CancellationTokenSource();
         }
 
+        private void CancelTasks()
+        {
+            TokenSource.Cancel();
+            TokenSource = new CancellationTokenSource();
+        }
+
         public ObservableRangeCollection<DayScheduleGroup> DayGroups { get; } = new ObservableRangeCollection<DayScheduleGroup>();
 
         private DayScheduleGroup _SelectedDayGroup;
@@ -127,8 +133,13 @@ namespace OneAppAway._1_1.ViewModels
             get { return _Stop; }
             set
             {
+                var oldStop = _Stop;
                 SetProperty(ref _Stop, value);
-                LoadSchedule();
+                if (_Stop != oldStop)
+                {
+                    CancelTasks();
+                    LoadSchedule();
+                }
             }
         }
 
@@ -142,31 +153,40 @@ namespace OneAppAway._1_1.ViewModels
                     Subtitle = "No stop is selected.";
                     HasSchedule = false;
                 }
-                var retrievedSchedule = await DataSource.GetScheduleForStopAsync(Stop.ID, DataSourcePreference.All, TokenSource.Token);
-                if (retrievedSchedule.HasData)
+                else
                 {
-                    Schedule = retrievedSchedule.Data;
-                    DayGroups.Clear();
-                    var groups = Schedule.GetScheduleGroups().ToArray();
-                    foreach (var group in groups)
+                    Subtitle = null;
+                    var retrievedSchedule = await DataSource.GetScheduleForStopAsync(Stop.ID, DataSourcePreference.All, TokenSource.Token);
+                    if (retrievedSchedule.HasData)
                     {
-                        DayGroups.Add(new DayScheduleGroup(group));
+                        Schedule = retrievedSchedule.Data;
+                        DayGroups.Clear();
+                        var groups = Schedule.GetScheduleGroups().ToArray();
+                        foreach (var group in groups)
+                        {
+                            DayGroups.Add(new DayScheduleGroup(group));
+                        }
+                        //if (groups.Length > 0)
+                        //    DayGroups.AddRange(groups);
+                        HasSchedule = true;
+                        var today = DateTime.Today.DayOfWeek.ToServiceDay();
+                        var todaysGroup = DayGroups.FirstOrDefault(dg => (dg.DayGroup & today) == today);
+                        if (todaysGroup == null)
+                            SelectedDayGroup = DayGroups[0];
+                        else
+                            SelectedDayGroup = todaysGroup;
                     }
-                    //if (groups.Length > 0)
-                    //    DayGroups.AddRange(groups);
-                    HasSchedule = true;
-                    var today = DateTime.Today.DayOfWeek.ToServiceDay();
-                    var todaysGroup = DayGroups.FirstOrDefault(dg => (dg.DayGroup & today) == today);
-                    if (todaysGroup == null)
-                        SelectedDayGroup = DayGroups[0];
-                    else
-                        SelectedDayGroup = todaysGroup;
+                    //LoadSelectedSchedule();
                 }
-                //LoadSelectedSchedule();
             }
             catch (OperationCanceledException)
             {
                 Subtitle = "Schedule retrieval was cancelled.";
+                HasSchedule = false;
+            }
+            catch (Exception ex)
+            {
+                Subtitle = "Error has occured: " + ex.Message;
                 HasSchedule = false;
             }
             finally
