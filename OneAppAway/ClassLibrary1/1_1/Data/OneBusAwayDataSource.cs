@@ -189,6 +189,7 @@ namespace OneAppAway._1_1.Data
             string predictedArrivalTime = element.Element("predictedArrivalTime")?.Value;
             string scheduledArrivalTime = element.Element("scheduledArrivalTime")?.Value;
             string arrivalEnabled = element.Element("ArrivalEnabled")?.Value;
+            string vehicle = null;
             string lastUpdateTime = null;
             string destination = element.Element("tripHeadsign")?.Value;
             long predictedArrivalLong = long.Parse(predictedArrivalTime);
@@ -208,6 +209,7 @@ namespace OneAppAway._1_1.Data
             {
                 if (element.Element("predicted")?.Value == "true")
                     lastUpdateTime = element.Element("lastUpdateTime")?.Value;
+                vehicle = element.Element("vehicleId")?.Value;
             }
             lastUpdateLong = lastUpdateTime == null ? null : new long?(long.Parse(scheduledArrivalTime));
             lastUpdate = lastUpdateLong == null ? null : new DateTime?((new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(lastUpdateLong.Value)).ToLocalTime());
@@ -223,7 +225,7 @@ namespace OneAppAway._1_1.Data
                     degreeOfConfidence = -1;
             }
             bool isDropOffOnly = arrivalEnabled == "false";
-            return new RealTimeArrival() { RouteName = routeName, PredictedArrivalTime = predictedArrival, ScheduledArrivalTime = scheduledArrival, DegreeOfConfidence = degreeOfConfidence, Route = routeId, Trip = tripId, Stop = stopId, Destination = destination, IsDropOffOnly = isDropOffOnly, FrequencyMinutes = frequency == -1 ? null : new double?(frequency) };
+            return new RealTimeArrival() { RouteName = routeName, PredictedArrivalTime = predictedArrival, ScheduledArrivalTime = scheduledArrival, DegreeOfConfidence = degreeOfConfidence, Route = routeId, Trip = tripId, Stop = stopId, Destination = destination, IsDropOffOnly = isDropOffOnly, FrequencyMinutes = frequency == -1 ? null : new double?(frequency), Vehicle = vehicle };
         }
 
         private static IEnumerable<T> ParseList<T>(XElement listElement, string elementName, Func<XElement, T> parser)
@@ -255,7 +257,7 @@ namespace OneAppAway._1_1.Data
         {
             try
             {
-                StringReader reader = new StringReader(await SendRequest("arrivals-and-departures-for-stop/" + stopId, new Dictionary<string, string>() { ["minutesBefore"] = minsBefore.ToString(), ["minutesAfter"] = minsAfter.ToString() }, false, cancellationToken));
+                StringReader reader = new StringReader(await SendRequest("arrivals-and-departures-for-stop/" + stopId, new Dictionary<string, string>() { ["minutesBefore"] = minsBefore.ToString(), ["minutesAfter"] = minsAfter.ToString() }, true, cancellationToken));
                 if (cancellationToken.IsCancellationRequested)
                     throw new OperationCanceledException();
 
@@ -270,7 +272,7 @@ namespace OneAppAway._1_1.Data
 
                 //foreach (XElement el1 in el.Elements("arrivalAndDeparture"))
                 //    result.Add(ParseRealTimeArrival(el1));
-
+                
                 return new RetrievedData<IEnumerable<RealTimeArrival>>(ParseList(el, "arrivalAndDeparture", ParseRealTimeArrival));
             }
             catch (OperationCanceledException)

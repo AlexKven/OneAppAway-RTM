@@ -9,13 +9,37 @@
 						<Value>Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml</Value>
 					</Candidate>
 				</NamedResource>
-				<ResourceMapSubtree name="AdaptiveGridView">
-					<NamedResource name="AdaptiveGridView.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/AdaptiveGridView/AdaptiveGridView.xaml">
+				<ResourceMapSubtree name="BladeView">
+					<NamedResource name="BladeView.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/BladeView/BladeView.xaml">
 						<Candidate type="Path">
-							<Value>Microsoft.Toolkit.Uwp.UI.Controls\AdaptiveGridView\AdaptiveGridView.xaml</Value>
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\BladeView\BladeView.xaml</Value>
 						</Candidate>
 					</NamedResource>
-					<NamedResource name="AdaptiveGridView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/AdaptiveGridView/AdaptiveGridView.xbf">
+					<NamedResource name="BladeView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/BladeView/BladeView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="DropShadowPanel">
+					<NamedResource name="DropShadowPanel.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/DropShadowPanel/DropShadowPanel.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\DropShadowPanel\DropShadowPanel.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="DropShadowPanel.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/DropShadowPanel/DropShadowPanel.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="GridSplitter">
+					<NamedResource name="GridSplitter.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/GridSplitter/GridSplitter.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\GridSplitter\GridSplitter.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="GridSplitter.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/GridSplitter/GridSplitter.xbf">
 						<Candidate type="EmbeddedData">
 							<Base64Value>[Embedded Binary Data]</Base64Value>
 						</Candidate>
@@ -52,6 +76,18 @@
 						</Candidate>
 					</NamedResource>
 					<NamedResource name="ImageEx.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageEx/ImageEx.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="MasterDetailsView">
+					<NamedResource name="MasterDetailsView.xaml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/MasterDetailsView/MasterDetailsView.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\MasterDetailsView\MasterDetailsView.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="MasterDetailsView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls/Files/Microsoft.Toolkit.Uwp.UI.Controls/MasterDetailsView/MasterDetailsView.xbf">
 						<Candidate type="EmbeddedData">
 							<Base64Value>[Embedded Binary Data]</Base64Value>
 						</Candidate>

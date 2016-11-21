@@ -429,3 +429,12 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\Microsoft.Xaml.Inte
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\SQLitePCL.raw.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\SQLitePCL.Ext.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\ProjectArchitectures.txt
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\1_1\Views\Controls\VehicleDetailControl.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Microsoft.Graph.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Microsoft.Graph.Core.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\ARM\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\VehicleDetailControl.g.i.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\VehicleDetailControl.g.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\VehicleDetailControl.xaml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\ARM\Debug\1_1\Views\Controls\VehicleDetailControl.xbf

@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:converters="using:OneAppAway.Converters"
     xmlns:conv_1_1="using:OneAppAway._1_1.Converters"
+    xmlns:conv_1_1_ext="using:OneAppAway._1_1.Converters;assembly=CommonClasses"
     RequestedTheme="Light">
     <Application.Resources>
         <local:ApplicationSettings x:Key="Settings"/>
@@ -33,6 +34,7 @@
         <conv_1_1:DefaultIfNaNConverter x:Key="DefaultIfNaNConverter"/>
         <conv_1_1:IsCompactToAppBarClosedDisplayModeConverter x:Key="IsCompactToAppBarClosedDisplayModeConverter"/>
         <conv_1_1:BoldIfTrueConverter x:Key="BoldIfTrueConverter"/>
+        <conv_1_1:StringFormatConverter x:Name="StringFormatConverter"/>
         <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="ButtonBase">
             <Grid>
                 <VisualStateManager.VisualStateGroups>

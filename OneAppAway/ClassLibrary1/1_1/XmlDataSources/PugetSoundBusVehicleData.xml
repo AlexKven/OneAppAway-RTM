@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VehicleDetailGroups>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="7001" NumberMax="7199" Name="Orion VII" Capacity="35" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/King_County_Metro_Orion_VII_7199.JPG/320px-King_County_Metro_Orion_VII_7199.JPG"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="3200" NumberMax="3594" Name="Gillig Phantom (40 ft)" Capacity="42" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/King_County_Metro_Transit_Gillig_PHANTOM_3436.jpg/320px-King_County_Metro_Transit_Gillig_PHANTOM_3436.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="2300" NumberMax="2573" Name="New Flyer D60HF" Capacity="64" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/King_County_Metro_Transit_D60HF_2353.jpg/320px-King_County_Metro_Transit_D60HF_2353.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="1100" NumberMax="1194" Name="Gillig Phantom (30 ft)" Capacity="30" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/King_County_Metro_Gillig_PHANTOM_1122.jpg/320px-King_County_Metro_Gillig_PHANTOM_1122.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="4100" NumberMax="4199" Name="Gillig Phantom Trolleybus" Capacity="42" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/KingCountyMetro_4191.jpg/320px-KingCountyMetro_4191.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="3600" NumberMax="3699" Name="New Flyer D40LF" Capacity="35" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/King_County_Metro_D40LF.jpg/320px-King_County_Metro_D40LF.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="2600" NumberMax="2812" Name="New Flyer DE60LF" Capacity="58" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/King_County_Metro_DE60LF_2648.jpg/320px-King_County_Metro_DE60LF_2648.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="2870" NumberMax="2899" Name="New Flyer D60LF" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/King_County_Metro_D60LF.jpg/320px-King_County_Metro_D60LF.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="6813" NumberMax="6865" Name="New Flyer DE60LF" Capacity="56" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/King_County_Metro_Transit_DE60LF_2818.jpg/320px-King_County_Metro_Transit_DE60LF_2818.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="6000" NumberMax="6019" Name="New Flyer DE60LFA" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/King_County_Metro_New_Flyer_DE60LFA.jpg/320px-King_County_Metro_New_Flyer_DE60LFA.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="6866" NumberMax="6999" Name="New Flyer DE60LFR" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/King_County_Metro_New_Flyer_DE60LFR_6968.JPG/320px-King_County_Metro_New_Flyer_DE60LFR_6968.JPG">
+    <IncludedNumbers>
+      <int>6800</int>
+    </IncludedNumbers>
+  </VehicleDetailGroup>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="6020" NumberMax="6117" Name="New Flyer DE60LFR" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/King_County_Metro_Rapid_Ride_New_Flyer_DE60LFR_6085.JPG/320px-King_County_Metro_Rapid_Ride_New_Flyer_DE60LFR_6085.JPG">
+    <ExcludedNumbers>
+      <int>6036</int>
+      <int>6037</int>
+      <int>6038</int>
+      <int>6039</int>
+      <int>6074</int>
+    </ExcludedNumbers>
+  </VehicleDetailGroup>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="3700" NumberMax="3759" Name="New Flyer Xcelsior XDE35" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/King_County_Metro_New_Flyer_XDE35.jpg/320px-King_County_Metro_New_Flyer_XDE35.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="7200" NumberMax="7259" Name="New Flyer Xcelsior XDE40" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/King_County_Metro_7251_at_Eastgate_P%26R_%2823625392165%29.jpg/320px-King_County_Metro_7251_at_Eastgate_P%26R_%2823625392165%29.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="4300" NumberMax="4409" Name="New Flyer Xcelsior XT40" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/KCM_4317_in_Chinatown.jpg/320px-KCM_4317_in_Chinatown.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="6200" NumberMax="6219" Name="New Flyer Xcelsior XDE60" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/King_County_Metro_6202_%28NFI_XDE60%29_in_Downtown_Seattle_%2824055174063%29.jpg/320px-King_County_Metro_6202_%28NFI_XDE60%29_in_Downtown_Seattle_%2824055174063%29.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="4500" NumberMax="4563" Name="New Flyer Xcelsior XT60 Trolleybus" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Seattle_XT60_trolleybus_4501_and_Breda_trolleybus_at_U-District_12th_Ave_NE_terminal_of_route_43%2C_Feb_2016.jpg/320px-Seattle_XT60_trolleybus_4501_and_Breda_trolleybus_at_U-District_12th_Ave_NE_terminal_of_route_43%2C_Feb_2016.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="4601" NumberMax="4603" Name="Proterra Catalyst (electric)" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/King_County_Metro_Proterra_Catalyst_electric_bus_leaving_Eastgate_P%26R_%2822997295244%29.jpg/320px-King_County_Metro_Proterra_Catalyst_electric_bus_leaving_Eastgate_P%26R_%2822997295244%29.jpg"/>
+  <VehicleDetailGroup NumberPrefix="1" NumberMin="8000" NumberMax="8084" Name="New Flyer Xcelsior XDE60" Capacity="Unknown" OperatedBy="King County Metro" FundedBy="King County Metro" Image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/KCM-8006-TRM.jpg/320px-KCM-8006-TRM.jpg"/>
+</VehicleDetailGroups>

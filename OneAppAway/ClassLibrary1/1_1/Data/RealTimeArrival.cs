@@ -17,6 +17,7 @@ namespace OneAppAway._1_1.Data
         //public string RouteLongName { get; set; }
         public DateTime? ScheduledArrivalTime { get; set; }
         public DateTime? PredictedArrivalTime { get; set; }
+        public string Vehicle { get; set; }
         public string Destination { get; set; }
         public string[] Alerts { get; set; }
         public AlertStatus Status { get; set; }

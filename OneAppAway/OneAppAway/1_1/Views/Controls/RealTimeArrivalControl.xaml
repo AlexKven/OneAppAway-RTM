@@ -38,12 +38,25 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Button.Flyout>
-            <MenuFlyout Placement="Top">
+            <Flyout Opened="Flyout_Opened">
+                <Flyout.FlyoutPresenterStyle>
+                    <Style TargetType="FlyoutPresenter">
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </Flyout.FlyoutPresenterStyle>
+                <StackPanel Width="200">
+                    <local:VehicleDetailControl Margin="5" Value="{Binding VehicleDetails}" Visibility="{Binding HasVehicleDetails, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <MenuFlyoutItem>Locate On Map</MenuFlyoutItem>
+                    <MenuFlyoutItem>Alerts</MenuFlyoutItem>
+                </StackPanel>
+            </Flyout>
+            <!--<MenuFlyout Placement="Top">
+                <MenuFlyoutItem Text="{Binding Vehicle}"/>
                 <MenuFlyoutItem Text="Favorite"/>
                 <MenuFlyoutItem Text="Watch"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem Text="See Alerts"/>
-            </MenuFlyout>
+            </MenuFlyout>-->
         </Button.Flyout>
         <Grid>
             <Grid.ColumnDefinitions>

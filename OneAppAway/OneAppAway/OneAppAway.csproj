@@ -172,6 +172,9 @@
     </Compile>
     <Compile Include="1_1\AddIns\TransitMapAddInBase.cs" />
     <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
+    <Compile Include="1_1\Views\Controls\VehicleDetailControl.xaml.cs">
+      <DependentUpon>VehicleDetailControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="1_1\Views\OuterFrame.xaml.cs">
       <DependentUpon>OuterFrame.xaml</DependentUpon>
     </Compile>
@@ -348,6 +351,8 @@
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\VehicleImages\2 Cars.png" />
+    <Content Include="Assets\VehicleImages\3 Cars.png" />
     <Content Include="Assets\WideLogo.scale-100.png" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
@@ -386,6 +391,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="1_1\Views\Controls\TransitMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="1_1\Views\Controls\VehicleDetailControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

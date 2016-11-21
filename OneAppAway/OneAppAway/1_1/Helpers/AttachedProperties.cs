@@ -105,5 +105,60 @@ namespace OneAppAway._1_1.Helpers
             sb.Children.Add(ca);
             sb.Begin();
         }
+
+
+
+
+        public static bool GetUseAttachedProperties(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(UseAttachedPropertiesProperty);
+        }
+        public static void SetUseAttachedProperties(DependencyObject obj, bool value)
+        {
+            obj.SetValue(UseAttachedPropertiesProperty, value);
+        }
+        public static readonly DependencyProperty UseAttachedPropertiesProperty =
+            DependencyProperty.RegisterAttached("UseAttachedProperties", typeof(bool), typeof(Image), new PropertyMetadata(false, OnUseAttachedPropertiesChangedStatic));
+
+        private static void OnUseAttachedPropertiesChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var typedSender = (Image)sender;
+            if ((bool)e.NewValue && !(bool)e.OldValue)
+            {
+                typedSender.Loading += TypedSender_Loading;
+                typedSender.ImageOpened += TypedSender_ImageOpened;
+            }
+            if (!(bool)e.NewValue && (bool)e.OldValue)
+            {
+                typedSender.Loading -= TypedSender_Loading;
+                typedSender.ImageOpened -= TypedSender_ImageOpened;
+            }
+        }
+
+        private static void TypedSender_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            SetIsLoading((DependencyObject)sender, false);
+        }
+
+        private static void TypedSender_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetIsLoading((DependencyObject)sender, false);
+        }
+
+        private static void TypedSender_Loading(FrameworkElement sender, object args)
+        {
+            SetIsLoading(sender, true);
+        }
+
+        public static bool GetIsLoading(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsLoadingProperty);
+        }
+        public static void SetIsLoading(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsLoadingProperty, value);
+        }
+        public static readonly DependencyProperty IsLoadingProperty =
+            DependencyProperty.RegisterAttached("IsLoading", typeof(bool), typeof(Image), new PropertyMetadata(false));
     }
 }

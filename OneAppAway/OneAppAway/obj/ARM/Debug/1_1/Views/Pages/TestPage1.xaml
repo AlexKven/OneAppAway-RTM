@@ -9,8 +9,11 @@
     xmlns:data="using:OneAppAway._1_1.Data"
     mc:Ignorable="d" RequestedTheme="Dark">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <localC:RealTimeArrivalControl x:ConnectionId='1' Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="MainRealTimeArrivalControl"/>
-        <Button x:ConnectionId='2' HorizontalAlignment="Center"                      x:Name="_Button">Shape Designer</Button>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <localC:RealTimeArrivalControl x:ConnectionId='2' Width="300" HorizontalAlignment="Center" x:Name="MainRealTimeArrivalControl"/>
+            <localC:VehicleDetailControl x:ConnectionId='3' Width="180" HorizontalAlignment="Center" x:Name="MainVehicleDetailControl"/>
+        </StackPanel>
+        <Button x:ConnectionId='1' HorizontalAlignment="Center"                      x:Name="_Button">Shape Designer</Button>
     </Grid>
 </local:ApplicationPage>
 

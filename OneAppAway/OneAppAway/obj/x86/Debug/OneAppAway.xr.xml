@@ -10,6 +10,8 @@
     <RootPropertyPathName Name="FontStyle" />
     <RootPropertyPathName Name="FontSize" />
     <RootPropertyPathName Name="IsDropOffOnly" />
+    <RootPropertyPathName Name="VehicleDetails" />
+    <RootPropertyPathName Name="HasVehicleDetails" />
     <RootPropertyPathName Name="IsCancelled" />
     <RootPropertyPathName Name="HasAlert" />
     <RootPropertyPathName Name="RouteDestination" />
@@ -54,6 +56,12 @@
     <RootPropertyPathName Name="TitleToolTip" />
     <RootPropertyPathName Name="StopName" />
     <RootPropertyPathName Name="IconUri" />
+    <RootPropertyPathName Name="Value" />
+    <RootPropertyPathName Name="ImageUri" />
+    <RootPropertyPathName Name="AgencyOperated" />
+    <RootPropertyPathName Name="SeatedCapacity" />
+    <RootPropertyPathName Name="VehicleName" />
+    <RootPropertyPathName Name="VehicleNumber" />
     <RootPropertyPathName Name="TitleControlsTemplate" />
     <RootPropertyPathName Name="TitleControlsActualWidth" />
     <RootPropertyPathName Name="TitleControlsVisibility" />
@@ -131,6 +139,7 @@
     <RootType FullName="OneAppAway._1_1.Converters.DefaultIfNaNConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.IsCompactToAppBarClosedDisplayModeConverter" />
     <RootType FullName="OneAppAway._1_1.Converters.BoldIfTrueConverter" />
+    <RootType FullName="OneAppAway._1_1.Converters.StringFormatConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
@@ -362,19 +371,44 @@
       <RootProperty Name="Value" />
       <RootProperty Name="Property" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
+    <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
+      <RootProperty Name="FlyoutPresenterStyle" />
+      <RootProperty Name="Content" />
       <RootProperty Name="Placement" />
-      <RootProperty Name="Items" />
+      <RootEvent Name="Opened" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.FlyoutPresenter" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Control">
+      <RootProperty Name="Padding" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="DataContext" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="Height" />
+      <RootEvent Name="SizeChanged" />
+    </RootType>
+    <RootType FullName="OneAppAway._1_1.Views.Controls.VehicleDetailControl">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Value" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
       <RootProperty Name="Text" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutSeparator" />
     <RootType FullName="OneAppAway._1_1.Views.Controls.RealTimeArrivalControl">
       <RootProperty Name="Arrival" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
-      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="HorizontalContentAlignment" />
@@ -399,18 +433,6 @@
       <RootProperty Name="SelectionMode" />
       <RootProperty Name="ItemsPanel" />
       <RootEvent Name="SelectionChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Children" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="Tag" />
-      <RootProperty Name="Height" />
-      <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="ItemsSource" />
@@ -551,6 +573,15 @@
       <RootProperty Name="CurrentZoomRate" />
       <RootProperty Name="IsHitTestVisible" />
     </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.ImageEx">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="IsCacheEnabled" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Source" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Imaging.BitmapImage">
+      <RootProperty Name="UriSource" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
       <RootProperty Name="RequestedTheme" />
@@ -599,10 +630,6 @@
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.ShapeDesignerPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
-      <RootProperty Name="Placement" />
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="OneAppAway._1_1.Helpers.FlyoutHelpers">
       <RootMethod Name="GetIsOpen" />
       <RootMethod Name="SetIsOpen" />

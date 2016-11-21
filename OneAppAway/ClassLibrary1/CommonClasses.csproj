@@ -42,6 +42,7 @@
     <Compile Include="1_1\Command.cs" />
     <Compile Include="1_1\Converters\MinutesUntilArrivalConverter.cs" />
     <Compile Include="1_1\Converters\RelayConverter.cs" />
+    <Compile Include="1_1\Converters\StringFormatConverter.cs" />
     <Compile Include="1_1\Data\AlertStatus.cs" />
     <Compile Include="1_1\Data\ApiLayer.cs" />
     <Compile Include="1_1\Data\DataLoadStatus.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="1_1\Data\MemoryCacheDataSource.cs" />
     <Compile Include="1_1\Data\NetworkType.cs" />
     <Compile Include="1_1\Data\OneBusAwayDataSource.cs" />
+    <Compile Include="1_1\Data\PugetSoundVehicleDetailSource.cs" />
     <Compile Include="1_1\Data\RealTimeArrival.cs" />
     <Compile Include="1_1\Data\RealTimeArrivalViewModelTemplateType.cs" />
     <Compile Include="1_1\Data\RetrievedData.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="1_1\Data\UIDataSource.cs" />
     <Compile Include="1_1\Data\UITaskWrapper.cs" />
     <Compile Include="1_1\Data\MapStopSize.cs" />
+    <Compile Include="1_1\Data\VehicleDetail.cs" />
     <Compile Include="1_1\Data\WeakDelegateWrapper.cs" />
     <Compile Include="1_1\Data\WeekSchedule.cs" />
     <Compile Include="1_1\EventArgs.cs" />
@@ -141,6 +144,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="1_1\XmlDataSources\PugetSoundBusVehicleData.xml" />
+    <EmbeddedResource Include="1_1\XmlDataSources\LinkLightRailThreeCarTrainsSchedule.xml" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>

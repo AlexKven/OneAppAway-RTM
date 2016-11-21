@@ -41,6 +41,8 @@ namespace OneAppAway._1_1.Views.Pages
                 ScheduledArrivalTime = DateTime.Now + TimeSpan.FromMinutes(1),
                 Destination = "First Hill"
             };
+
+            //MainVehicleDetailControl.Value = PugetSoundVehicleDetailSource.Instance.GetVehicleDetails(new RealTimeArrival() { Vehicle = "1_7180" });
         }
 
         private static void TestAction(TestPage1 target, object obj)

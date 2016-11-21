@@ -46,5 +46,9 @@ namespace OneAppAway._1_1.Views.Controls
                     VisualStateManager.GoToState(typedSender, "FrequencyBasedArrivalState", true);
             }
         }
+
+        private void Flyout_Opened(object sender, object e)
+        {
+        }
     }
 }

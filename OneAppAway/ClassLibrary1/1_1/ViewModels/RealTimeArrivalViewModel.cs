@@ -64,10 +64,15 @@ namespace OneAppAway._1_1.ViewModels
             RouteDestination = arrival.Destination;
             DegreeOfConfidence = arrival.DegreeOfConfidence;
             IsPredicted = arrival.PredictedArrivalTime.HasValue;
+            Vehicle = arrival.Vehicle;
             HasAlert = arrival.Status == AlertStatus.Alert;
             IsCancelled = arrival.Status == AlertStatus.Cancelled;
             IsDropOffOnly = arrival.IsDropOffOnly;
             IsFrequencyBased = arrival.FrequencyMinutes != null;
+            var detail = PugetSoundVehicleDetailSource.Instance.GetVehicleDetails(arrival);
+            HasVehicleDetails = detail.HasValue;
+            if (HasVehicleDetails)
+                VehicleDetails = detail.Value;
 
             if (arrival.FrequencyMinutes == null)
             {
@@ -129,7 +134,10 @@ namespace OneAppAway._1_1.ViewModels
         public string PredictedArrivalTimeText { get; }
         public string ScheduledArrivalTimeText { get; }
         public bool IsPredicted { get; }
+        public string Vehicle { get; }
         public double DegreeOfConfidence { get; }
+        public VehicleDetail VehicleDetails { get; }
+        public bool HasVehicleDetails { get; }
 
         private int _MinutesAway = 0;
         private int Frequency = 0;

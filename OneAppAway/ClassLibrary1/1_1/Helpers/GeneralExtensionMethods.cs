@@ -113,5 +113,10 @@ namespace OneAppAway._1_1.Helpers
         {
             return (ServiceDay)((int)Pow(2, ((int)day + 6) % 7));
         }
+
+        public static ServiceDay GetServiceDay(this DateTime date)
+        {
+            return (date - TimeSpan.FromHours(4)).DayOfWeek.ToServiceDay();
+        }
     }
 }
