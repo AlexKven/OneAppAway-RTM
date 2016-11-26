@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-11-21T05:32:51.628</Modified>
+      <Modified>2016-11-26T02:22:39.120</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2016-11-21T05:32:48.813</Modified>
+      <Modified>2016-11-26T02:22:35.450</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.1.6\References\CommonConfiguration\neutral\AdDuplex.winmd">
       <PackagePath>AdDuplex.winmd</PackagePath>
@@ -550,7 +550,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll">
       <PackagePath>CommonClasses.dll</PackagePath>
-      <Modified>2016-11-21T05:32:44.965</Modified>
+      <Modified>2016-11-26T02:22:31.387</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.12.20161020.4\runtimes\win10-x86\native\winsdkfb\Controls\FacebookLoginButton.xbf">
       <PackagePath>FacebookLoginButton.xbf</PackagePath>
@@ -915,11 +915,11 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-11-21T01:46:08.453</Modified>
+      <Modified>2016-11-26T02:12:03.447</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2016-11-21T05:32:51.614</Modified>
+      <Modified>2016-11-26T02:22:39.093</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,10 @@ namespace OneAppAway._1_1.Data
         public override bool CanGetRealTimeArrivalsForStop => true;
         #endregion
 
+        #region Fields
+        private static Queue<DateTime> ApiCalls = new Queue<DateTime>();
+        #endregion
+
         #region Not Implemented
         public override bool CanGetScheduleForStop => false;
         public override Task<RetrievedData<WeekSchedule>> GetScheduleForStop(string stopId, CancellationToken cancellationToken)
@@ -235,6 +239,12 @@ namespace OneAppAway._1_1.Data
 
         private static async Task<string> SendRequest(string compactRequest, Dictionary<string, string> parameters, bool includeReferences, CancellationToken cancellationToken)
         {
+            var now = DateTime.Now;
+            while (ApiCalls.Count > 0 && now - ApiCalls.Peek() > TimeSpan.FromMinutes(1))
+            {
+                ApiCalls.Dequeue();
+            }
+            await Task.Delay(Max((ApiCalls.Count - 10) * 2, 0));
             string request = "http://api.pugetsound.onebusaway.org/api/where/" + compactRequest + ".xml?key=" + Keys.ObaKey + parameters?.Aggregate("", (acc, item) => acc + "&" + item.Key + "=" + item.Value) ?? "" + "includeReferences=" + (includeReferences ? "true" : "false");
             HttpResponseMessage resp;
             HttpClient client;
@@ -243,6 +253,7 @@ namespace OneAppAway._1_1.Data
                 using (client = new HttpClient())
                 {
                     resp = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, request), cancellationToken);
+                    ApiCalls.Enqueue(now);
                 }
                 if (cancellationToken.IsCancellationRequested) throw new OperationCanceledException();
                 return await resp.Content.ReadAsStringAsync();
