@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <selector>
+      <item android:state_pressed="true" >
+        <shape>
+          <solid
+              android:color="#1976D2" />
+          <corners
+              android:radius="3dp" />
+          <padding
+              android:left="10dp"
+              android:top="10dp"
+              android:right="10dp"
+              android:bottom="10dp" />
+        </shape>
+      </item>
+      <item>
+        <shape>
+          <solid
+              android:color="#2196F3" />
+          <corners
+              android:radius="3dp" />
+          <padding
+              android:left="10dp"
+              android:top="10dp"
+              android:right="10dp"
+              android:bottom="10dp" />
+        </shape>
+      </item>
+    </selector>
+  </item>
+  <item android:drawable="@drawable/hamburger"/>
+  <!--<item>
+    <shape>
+      <solid android:color="#DDDDDD"/>
+      <padding android:left="20dp" android:right="20dp" android:top="20dp" android:bottom="20dp"/>
+    </shape>
+  </item>-->
+</layer-list>
