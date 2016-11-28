@@ -556,6 +556,15 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusRoutesIcon.png">
       <PackagePath>Assets\Icons\BusRoutesIcon.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\LiveBusBase.png">
+      <PackagePath>Assets\Icons\LiveBusBase.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\LiveBusBase_Background.png">
+      <PackagePath>Assets\Icons\LiveBusBase_Background.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\LiveBusBase_OverlayMask.png">
+      <PackagePath>Assets\Icons\LiveBusBase_OverlayMask.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\LogoBase.png">
       <PackagePath>Assets\Icons\LogoBase.png</PackagePath>
     </AppxPackagedFile>

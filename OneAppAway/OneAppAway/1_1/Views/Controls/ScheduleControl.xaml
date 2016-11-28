@@ -74,7 +74,7 @@
                 </Pivot.ItemTemplate>
             </Pivot>-->
             
-            <ComboBox ItemsSource="{Binding DayGroups}" HorizontalAlignment="Stretch" SelectedItem="{Binding SelectedDayGroup, Mode=TwoWay}">
+            <ComboBox ItemsSource="{Binding DayGroups}" HorizontalAlignment="Stretch" SelectedItem="{Binding SelectedDayGroup, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InvertBoolConverter}}">
                 <!--<ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}"/>

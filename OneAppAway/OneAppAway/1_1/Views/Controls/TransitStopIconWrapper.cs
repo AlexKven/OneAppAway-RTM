@@ -9,11 +9,13 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls.Maps;
 using OneAppAway._1_1.Data;
 using OneAppAway._1_1.Helpers;
+using OneAppAway._1_1.Imaging;
 using System.IO;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Graphics.Imaging;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
+using static System.Math;
 
 namespace OneAppAway._1_1.Views.Controls
 {
@@ -40,10 +42,28 @@ namespace OneAppAway._1_1.Views.Controls
                     else
                         postfix = j == 9 ? "BusAlert" : "BusClosed";
                     postfix += (i == 0 ? "20" : "40");
-                    var bitmap = await WriteableBitmapExtensions.FromContent(null, new Uri($"ms-appx:///Assets/Icons/{postfix}.png"));
+                    var sprite = new Sprite() { ImageUri = new Uri($"ms-appx:///Assets/Icons/{postfix}.png") };
+                    await sprite.Load();
+                    sprite.Unlock();
+                    var buffer1 = new SpriteBitmapStream(sprite).GetFullBuffer();
+                    using (MemoryStream stream1 = new MemoryStream(buffer1, true))
+                    {
+                        BusIconStreams[i * NUM_ICON_TYPES + j] = stream1.AsRandomAccessStream();
+                    }
+                    //var bitmap = await WriteableBitmapExtensions.FromContent(null, new Uri($"ms-appx:///Assets/Icons/{postfix}.png"));
                     InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream();
-                    await bitmap.ToStream(stream, BitmapEncoder.PngEncoderId);
-                    BusIconStreams[i * NUM_ICON_TYPES + j] = stream;
+                    
+                    await sprite.Bitmap.ToStream(stream, BitmapEncoder.BmpEncoderId);
+                    //BusIconStreams[i * NUM_ICON_TYPES + j] = stream;
+                    byte[] buffer = new byte[stream.Size];
+                    stream.AsStreamForRead().Read(buffer, 0, buffer.Length);
+                    for (int k = 0; k < buffer.Length; k++)
+                    {
+                        if (buffer[k] != buffer1[k])
+                        {
+                            //System.Diagnostics.Debug.WriteLine($"{buffer[k]} vs {buffer1[k]}");
+                        }
+                    }
                 }
             }
         }

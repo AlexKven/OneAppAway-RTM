@@ -136,6 +136,13 @@
     <Compile Include="1_1\Helpers\EventCommandBinding.cs" />
     <Compile Include="1_1\Helpers\HelperFunctions.cs" />
     <Compile Include="1_1\Helpers\FlyoutHelpers.cs" />
+    <Compile Include="1_1\Imaging\CompositeSprite.cs" />
+    <Compile Include="1_1\Imaging\ExternallyAppliedSpriteBase.cs" />
+    <Compile Include="1_1\Imaging\MaskedSprite.cs" />
+    <Compile Include="1_1\Imaging\SpriteBase.cs" />
+    <Compile Include="1_1\Imaging\SpriteBitmapStream.cs" />
+    <Compile Include="1_1\Imaging\TransformedSprite.cs" />
+    <Compile Include="1_1\Imaging\Sprite.cs" />
     <Compile Include="1_1\Selectors\RealTimeArrivalControlTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\LargeAndSmallTitleBarTemplateSelector.cs" />
     <Compile Include="1_1\Selectors\TitleOnlyTitleBarTemplateSelector.cs" />
@@ -172,6 +179,7 @@
     </Compile>
     <Compile Include="1_1\AddIns\TransitMapAddInBase.cs" />
     <Compile Include="1_1\Views\Controls\TransitStopIconWrapper.cs" />
+    <Compile Include="1_1\Views\Controls\TransitVehicleIconWrapper.cs" />
     <Compile Include="1_1\Views\Controls\VehicleDetailControl.xaml.cs">
       <DependentUpon>VehicleDetailControl.xaml</DependentUpon>
     </Compile>
@@ -334,6 +342,9 @@
     <Content Include="Assets\Icons\BusDirectionW40.png" />
     <Content Include="Assets\Icons\BusGeneric16.png" />
     <Content Include="Assets\Icons\BusRoutesIcon.png" />
+    <Content Include="Assets\Icons\LiveBusBase.png" />
+    <Content Include="Assets\Icons\LiveBusBase_Background.png" />
+    <Content Include="Assets\Icons\LiveBusBase_OverlayMask.png" />
     <Content Include="Assets\Icons\LogoBase.png" />
     <Content Include="Assets\Icons\MeIcon.png" />
     <Content Include="Assets\Icons\MyLocationIcon256.png" />

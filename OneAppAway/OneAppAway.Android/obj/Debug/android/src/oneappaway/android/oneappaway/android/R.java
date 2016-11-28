@@ -303,7 +303,6 @@ containing a value of this type.
         public static final int auto=0x7f09000a;
         public static final int button1=0x7f09000f;
         public static final int dark=0x7f09000b;
-        public static final int fragment1=0x7f090011;
         public static final int hybrid=0x7f090000;
         public static final int icon_only=0x7f090007;
         public static final int light=0x7f09000c;
@@ -314,7 +313,7 @@ containing a value of this type.
         public static final int tableLayout1=0x7f09000d;
         public static final int tableRow1=0x7f09000e;
         public static final int tableRow2=0x7f090010;
-        public static final int tableRow3=0x7f090012;
+        public static final int tableRow3=0x7f090011;
         public static final int terrain=0x7f090004;
         public static final int wide=0x7f090009;
     }

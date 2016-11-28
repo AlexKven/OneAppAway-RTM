@@ -1,5 +1,6 @@
 ﻿using MvvmHelpers;
 using OneAppAway._1_1.Data;
+using OneAppAway._1_1.Imaging;
 using OneAppAway._1_1.Views.Structures;
 using OneAppAway.Common;
 using System;
@@ -12,13 +13,16 @@ using System.Windows.Input;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using static System.Math;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,18 +33,14 @@ namespace OneAppAway._1_1.Views.Pages
     /// </summary>
     public sealed partial class TestPage1 : ApplicationPage
     {
+        private TransformedSprite TestTransformedSprite;
+        private SpriteBase TestSprite;
+
         public TestPage1()
         {
             this.InitializeComponent();
             DataContext = new BaseViewModel() { Title = "Developer Page" };
-            MainRealTimeArrivalControl.Arrival = new RealTimeArrival()
-            {
-                Status = AlertStatus.Cancelled,
-                RouteName = "193 Express to First Hill, Seattle",
-                PredictedArrivalTime = DateTime.Now + TimeSpan.FromMinutes(5),
-                ScheduledArrivalTime = DateTime.Now + TimeSpan.FromMinutes(1),
-                Destination = "First Hill"
-            };
+
 
             //MainVehicleDetailControl.Value = PugetSoundVehicleDetailSource.Instance.GetVehicleDetails(new RealTimeArrival() { Vehicle = "1_7180" });
         }
@@ -53,6 +53,31 @@ namespace OneAppAway._1_1.Views.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(ShapeDesignerPage)); Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.Control);
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Color accentColor = ((Color)App.Current.Resources["SystemColorControlAccentColor"]);
+            TestTransformedSprite = new TransformedSprite() { AppliedSprite = new Sprite() { ImageUri = new Uri("ms-appx:///Assets/Icons/LiveBusBase_Background.png") }, RelativeTransformOrigin = new Point(0.5, 0.5) };
+            TestSprite = TestTransformedSprite;
+            await TestSprite.Load();
+            TestSprite.Unlock();
+            SetImageRotation();
+        }
+
+        private void SetImageRotation()
+        {
+            if (TestSprite?.IsLoaded ?? false)
+            {
+                TestTransformedSprite.Transform = new RotateTransform() { Angle = AngleSlider.Value }; // new RotateTransform() { Angle = AngleSlider.Value }; //new RotateTransform() { Angle = AngleSlider.Value };
+                TestSprite.Render();
+                TestImage.Source = TestSprite.Bitmap;
+            }
+        }
+
+        private void AngleSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            SetImageRotation();
         }
     }
 }
