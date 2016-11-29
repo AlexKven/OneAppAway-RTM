@@ -21,22 +21,49 @@ namespace OneAppAway._1_1.Imaging
             Point transformed;
             if (!InverseTransform.TryTransform(new Point((int)(x - OffsetX), (int)(y - OffsetY)), out transformed))
                 return Colors.Transparent;
-            int fX = (int)(transformed.X + OffsetX);
-            int fY = (int)(transformed.Y + OffsetY);
-            if (fX < 0 || fX >= Width || fY < 0 || fY >= Height)
-                return Colors.Transparent;
-            else
-                return base.Render(fX, fY);
+            double fX = transformed.X + OffsetX;
+            double fY = transformed.Y + OffsetY;
+            //if (fX < 0 || fX >= Width || fY < 0 || fY >= Height)
+            //    return Colors.Transparent;
+            //else
+            //{
+                int x1 = (int)Floor(fX);
+                int x2 = (int)Ceiling(fX);
+                int y1 = (int)Floor(fY);
+                int y2 = (int)Ceiling(fY);
+                double xF = fX - x1;
+                double yF = fY - y1;
+                if (xF == 0)
+                {
+                    if (yF == 0)
+                        return base.Render(x1, y1);
+                    else
+                        return CombineColors(base.Render(x1, y1), base.Render(x1, y2), yF);
+                }
+                else
+                {
+                    if (yF == 0)
+                        return CombineColors(base.Render(x1, y1), base.Render(x2, y1), xF);
+                    else
+                        return CombineColors(CombineColors(base.Render(x1, y1), base.Render(x2, y1), xF), CombineColors(base.Render(x1, y2), base.Render(x2, y2), xF), yF);
+                }
+                //return base.Render(fX, fY);
+            //}
         }
 
         private GeneralTransform InverseTransform;
-        private double OffsetX;
-        private double OffsetY;
+        private int OffsetX;
+        private int OffsetY;
 
         private void RefreshOffsets()
         {
-            OffsetX = Width * RelativeTransformOrigin.X;
-            OffsetY = Height * RelativeTransformOrigin.Y;
+            OffsetX = (int)(Width * RelativeTransformOrigin.X);
+            OffsetY = (int)(Height * RelativeTransformOrigin.Y);
+        }
+
+        public static Color CombineColors(Color clr1, Color clr2, double portion)
+        {
+            return Color.FromArgb((byte)(clr1.A + (clr2.A - clr1.A) * portion), (byte)(clr1.R + (clr2.R - clr1.R) * portion), (byte)(clr1.G + (clr2.G - clr1.G) * portion), (byte)(clr1.B + (clr2.B - clr1.B) * portion));
         }
 
         private GeneralTransform _Transform;

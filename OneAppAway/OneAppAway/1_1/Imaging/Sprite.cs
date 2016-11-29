@@ -41,6 +41,8 @@ namespace OneAppAway._1_1.Imaging
 
         public override Color Render(int x, int y)
         {
+            if (x < 0 || x >= Width || y < 0 || y >= Height)
+                return Colors.Transparent;
             int ind = 4 * (y * Bitmap.PixelWidth + x);
             return Color.FromArgb(BitmapBytes[ind + 3], BitmapBytes[ind], BitmapBytes[ind + 1], BitmapBytes[ind + 2]);
         }

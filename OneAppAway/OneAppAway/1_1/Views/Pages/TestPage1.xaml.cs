@@ -58,8 +58,8 @@ namespace OneAppAway._1_1.Views.Pages
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Color accentColor = ((Color)App.Current.Resources["SystemColorControlAccentColor"]);
-            TestTransformedSprite = new TransformedSprite() { AppliedSprite = new Sprite() { ImageUri = new Uri("ms-appx:///Assets/Icons/LiveBusBase_Background.png") }, RelativeTransformOrigin = new Point(0.5, 0.5) };
-            TestSprite = TestTransformedSprite;
+            TestTransformedSprite = new TransformedSprite() { AppliedSprite = new Sprite() { ImageUri = new Uri("ms-appx:///Assets/Icons/BusArrow60.png") }, RelativeTransformOrigin = new Point(0.5, 0.473) };
+            TestSprite = new CompositeSprite(new Sprite() { ImageUri = new Uri("ms-appx:///Assets/Icons/BusBase60.png") }, TestTransformedSprite);
             await TestSprite.Load();
             TestSprite.Unlock();
             SetImageRotation();

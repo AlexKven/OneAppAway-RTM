@@ -304,6 +304,10 @@
     <None Include="OneAppAway_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\BusArrow.png" />
+    <Content Include="Assets\Icons\BusArrow40.png" />
+    <Content Include="Assets\Icons\BusArrow60.png" />
+    <Content Include="Assets\Icons\BusBase60.png" />
     <Content Include="Assets\Icons\Cancel.png" />
     <Content Include="Assets\Icons\Alert.png" />
     <Content Include="Assets\Icons\BusAlert20.png" />

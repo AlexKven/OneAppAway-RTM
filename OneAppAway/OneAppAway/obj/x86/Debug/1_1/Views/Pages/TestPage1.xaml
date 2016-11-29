@@ -11,9 +11,9 @@
     <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
     <Grid Background="#111111">
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch">
-            <Image x:ConnectionId='1' x:Name="TestImage" Width="320" Height="320"/>
+            <Image x:ConnectionId='1' x:Name="TestImage" Width="60" Height="60"/>
             <Button x:ConnectionId='2' HorizontalAlignment="Center"                       >Load Test Image</Button>
-            <Slider x:ConnectionId='3' HorizontalAlignment="Center" Minimum="0" Maximum="360" Width="200" x:Name="AngleSlider"                                         StepFrequency="0.01" SnapsTo="StepValues"/>
+            <Slider x:ConnectionId='3' HorizontalAlignment="Center" Minimum="0" Maximum="360" Width="300" x:Name="AngleSlider"                                         StepFrequency="5" SnapsTo="StepValues"/>
             <Button x:ConnectionId='4' HorizontalAlignment="Center"                      x:Name="_Button">Shape Designer</Button>
         </StackPanel>
     </Grid>
