@@ -27,7 +27,7 @@ namespace OneAppAway._1_1.Imaging
         public override async Task Load()
         {
             await AppliedSprite?.Load();
-            _Bitmap = new WriteableBitmap(AppliedSprite.Bitmap.PixelWidth, AppliedSprite.Bitmap.PixelHeight);
+            Bitmap = new WriteableBitmap((int)Ceiling(Width), (int)Ceiling(Height));
         }
 
         public override Color Render(int x, int y)
@@ -38,9 +38,8 @@ namespace OneAppAway._1_1.Imaging
         public override bool IsLoaded => AppliedSprite.IsLoaded;
 
         public override bool IsLocked => AppliedSprite.IsLocked;
-
-        private WriteableBitmap _Bitmap;
-        public override WriteableBitmap Bitmap => _Bitmap;
+        
+        public override WriteableBitmap Bitmap { get; set; }
 
         private SpriteBase _AppliedSprite;
         public virtual SpriteBase AppliedSprite

@@ -32,6 +32,7 @@
     <RootPropertyPathName Name="HasSchedule" />
     <RootPropertyPathName Name="DayGroups" />
     <RootPropertyPathName Name="SelectedDayGroup" />
+    <RootPropertyPathName Name="IsLoading" />
     <RootPropertyPathName Name="LoadStatus" />
     <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="ErrorMessage" />
@@ -399,8 +400,6 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Value" />
       <RootProperty Name="Visibility" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
       <RootProperty Name="Text" />
@@ -469,9 +468,9 @@
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="SelectedItem" />
+      <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
       <RootProperty Name="SelectedIndex" />
-      <RootProperty Name="IsEnabled" />
       <RootProperty Name="Items" />
       <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="SelectionChanged" />
@@ -623,6 +622,18 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="TitleTemplateSelector" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Slider">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Minimum" />
+      <RootProperty Name="Maximum" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="StepFrequency" />
+      <RootProperty Name="SnapsTo" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="Value" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootEvent Name="ValueChanged" />
+    </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Pages.TestPage1" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Text" />
@@ -753,18 +764,6 @@
       <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="OneAppAway.CardinalDirection" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Slider">
-      <RootProperty Name="IsEnabled" />
-      <RootProperty Name="Minimum" />
-      <RootProperty Name="Value" />
-      <RootProperty Name="SnapsTo" />
-      <RootProperty Name="StepFrequency" />
-      <RootProperty Name="Maximum" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Width" />
-      <RootEvent Name="ValueChanged" />
-    </RootType>
     <RootType FullName="OneAppAway.AddToFavoritesPage" />
     <RootType FullName="OneAppAway.Converters.RandomConverter" />
     <RootType FullName="OneAppAway.BusArrivalBox" />

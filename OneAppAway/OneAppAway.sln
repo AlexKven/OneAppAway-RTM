@@ -37,8 +37,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneAppAway.Android", "OneAp
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		UWPShared\UWPShared.projitems*{0c05e78e-c056-4f36-ab2d-1ed9a65be017}*SharedItemsImports = 4
 		UWPShared\UWPShared.projitems*{20c382ce-9305-462a-803b-26710f88748f}*SharedItemsImports = 4
+		OneAppAway_Windows8_1\OneAppAway_Windows8_1.Shared\OneAppAway_Windows8_1.Shared.projitems*{730d3e89-3876-4ad6-9e21-bec2cd228177}*SharedItemsImports = 4
 		UWPShared\UWPShared.projitems*{7adc8fb2-42f2-4666-aa62-00a2942a2cf6}*SharedItemsImports = 13
+		OneAppAway_Windows8_1\OneAppAway_Windows8_1.Shared\OneAppAway_Windows8_1.Shared.projitems*{8a31328d-af1d-4ed5-aa82-18048510bd38}*SharedItemsImports = 4
+		OneAppAway_Windows8_1\OneAppAway_Windows8_1.Shared\OneAppAway_Windows8_1.Shared.projitems*{eb8c353e-7f44-48e7-bbfe-a3bca9c2642e}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>KAPENTAWATT16-5</Machine>
+    <Machine>KAPENTAWATT16</Machine>
     <WindowsUser>AlexKven</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -16,7 +16,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>48DDFD640DC90E374CC1BA6A01DD28FDEB8DA7FC33ADE4B35DDF713114F4385C</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>698F6BFEA9EBA79FFB16FB8111CC6FC7D21BBF00DF63D9DD3AC03B56EB38117F</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>16469AlexKven.14062E657A0DF_1.0.7.0_x86__yke5jzwbk3qzj</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>16469AlexKven.14062E657A0DF_yke5jzwbk3qzj!App</RegisteredUserModeAppID>
     <RegisteredPackageID>16469AlexKven.14062E657A0DF</RegisteredPackageID>
@@ -28,17 +28,17 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-11-29T06:42:34.065</Modified>
+      <Modified>2016-11-29T18:55:11.384</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2016-11-29T06:42:24.501</Modified>
+      <Modified>2016-11-29T18:55:09.898</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.1.6\References\CommonConfiguration\neutral\AdDuplex.winmd">
       <PackagePath>AdDuplex.winmd</PackagePath>
-      <Modified>2016-10-13T02:22:45.940</Modified>
+      <Modified>2016-10-13T03:29:04.781</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Win2D.uwp\1.19.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
@@ -162,7 +162,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\Refractored.MvvmHelpers\1.0.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\MvvmHelpers.dll">
       <PackagePath>MvvmHelpers.dll</PackagePath>
-      <Modified>2016-10-13T02:30:33.118</Modified>
+      <Modified>2016-09-20T02:18:15.369</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\sqlite-net-pcl\1.1.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll">
       <PackagePath>SQLite-net.dll</PackagePath>
@@ -550,7 +550,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll">
       <PackagePath>CommonClasses.dll</PackagePath>
-      <Modified>2016-11-26T02:22:31.387</Modified>
+      <Modified>2016-11-29T17:55:29.364</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.12.20161020.4\runtimes\win10-x86\native\winsdkfb\Controls\FacebookLoginButton.xbf">
       <PackagePath>FacebookLoginButton.xbf</PackagePath>
@@ -578,11 +578,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.1.6\Redist\CommonConfiguration\neutral\AdDuplex\Themes\Generic.xbf">
       <PackagePath>AdDuplex\Themes\Generic.xbf</PackagePath>
-      <Modified>2016-10-13T02:22:45.909</Modified>
+      <Modified>2016-10-13T03:29:04.748</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.1.6\Redist\CommonConfiguration\neutral\AdDuplex\InterstitialUserControl.xbf">
       <PackagePath>AdDuplex\InterstitialUserControl.xbf</PackagePath>
-      <Modified>2016-10-13T02:22:45.904</Modified>
+      <Modified>2016-10-13T03:29:04.742</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\SQLitePCL\3.8.7.2\build\netcore451\SQLitePCL.Ext.dll">
       <PackagePath>SQLitePCL.Ext.dll</PackagePath>
@@ -594,283 +594,283 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusArrow.png">
       <PackagePath>Assets\Icons\BusArrow.png</PackagePath>
-      <Modified>2016-11-29T06:37:35.338</Modified>
+      <Modified>2016-11-29T17:56:02.909</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusArrow40.png">
       <PackagePath>Assets\Icons\BusArrow40.png</PackagePath>
-      <Modified>2016-11-29T06:32:54.178</Modified>
+      <Modified>2016-11-29T17:56:02.909</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusArrow60.png">
       <PackagePath>Assets\Icons\BusArrow60.png</PackagePath>
-      <Modified>2016-11-29T06:41:11.260</Modified>
+      <Modified>2016-11-29T17:56:02.909</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusBase60.png">
       <PackagePath>Assets\Icons\BusBase60.png</PackagePath>
-      <Modified>2016-11-29T06:40:52.925</Modified>
+      <Modified>2016-11-29T17:56:02.909</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\Cancel.png">
       <PackagePath>Assets\Icons\Cancel.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.959</Modified>
+      <Modified>2016-09-20T00:59:23.027</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\Alert.png">
       <PackagePath>Assets\Icons\Alert.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.914</Modified>
+      <Modified>2016-09-20T00:59:22.983</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAlert20.png">
       <PackagePath>Assets\Icons\BusAlert20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.914</Modified>
+      <Modified>2016-09-20T00:59:22.983</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAlert40.png">
       <PackagePath>Assets\Icons\BusAlert40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.915</Modified>
+      <Modified>2016-09-20T00:59:22.984</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAlert60.png">
       <PackagePath>Assets\Icons\BusAlert60.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.917</Modified>
+      <Modified>2016-09-20T00:59:22.985</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusAnalyticsIcon.png">
       <PackagePath>Assets\Icons\BusAnalyticsIcon.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.919</Modified>
+      <Modified>2016-09-20T00:59:22.987</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusBase.png">
       <PackagePath>Assets\Icons\BusBase.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.920</Modified>
+      <Modified>2016-09-20T00:59:22.988</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusBase20.png">
       <PackagePath>Assets\Icons\BusBase20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.921</Modified>
+      <Modified>2016-09-20T00:59:22.989</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusBase40.png">
       <PackagePath>Assets\Icons\BusBase40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.922</Modified>
+      <Modified>2016-09-20T00:59:22.989</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusClosed20.png">
       <PackagePath>Assets\Icons\BusClosed20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.923</Modified>
+      <Modified>2016-09-20T00:59:22.991</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusClosed40.png">
       <PackagePath>Assets\Icons\BusClosed40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.924</Modified>
+      <Modified>2016-09-20T00:59:22.992</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusClosed60.png">
       <PackagePath>Assets\Icons\BusClosed60.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.925</Modified>
+      <Modified>2016-09-20T00:59:22.993</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionE.png">
       <PackagePath>Assets\Icons\BusDirectionE.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.931</Modified>
+      <Modified>2016-09-20T00:59:23.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionE20.png">
       <PackagePath>Assets\Icons\BusDirectionE20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.931</Modified>
+      <Modified>2016-09-20T00:59:23.001</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionE40.png">
       <PackagePath>Assets\Icons\BusDirectionE40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.932</Modified>
+      <Modified>2016-09-20T00:59:23.001</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionN.png">
       <PackagePath>Assets\Icons\BusDirectionN.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.933</Modified>
+      <Modified>2016-09-20T00:59:23.002</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionN20.png">
       <PackagePath>Assets\Icons\BusDirectionN20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.934</Modified>
+      <Modified>2016-09-20T00:59:23.004</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionN40.png">
       <PackagePath>Assets\Icons\BusDirectionN40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.935</Modified>
+      <Modified>2016-09-20T00:59:23.005</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionNE.png">
       <PackagePath>Assets\Icons\BusDirectionNE.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.937</Modified>
+      <Modified>2016-09-20T00:59:23.006</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionNE20.png">
       <PackagePath>Assets\Icons\BusDirectionNE20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.938</Modified>
+      <Modified>2016-09-20T00:59:23.006</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionNE40.png">
       <PackagePath>Assets\Icons\BusDirectionNE40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.940</Modified>
+      <Modified>2016-09-20T00:59:23.007</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionNW.png">
       <PackagePath>Assets\Icons\BusDirectionNW.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.940</Modified>
+      <Modified>2016-09-20T00:59:23.009</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionNW20.png">
       <PackagePath>Assets\Icons\BusDirectionNW20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.941</Modified>
+      <Modified>2016-09-20T00:59:23.011</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionNW40.png">
       <PackagePath>Assets\Icons\BusDirectionNW40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.942</Modified>
+      <Modified>2016-09-20T00:59:23.012</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionS.png">
       <PackagePath>Assets\Icons\BusDirectionS.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.943</Modified>
+      <Modified>2016-09-20T00:59:23.012</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionS20.png">
       <PackagePath>Assets\Icons\BusDirectionS20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.944</Modified>
+      <Modified>2016-09-20T00:59:23.013</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionS40.png">
       <PackagePath>Assets\Icons\BusDirectionS40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.945</Modified>
+      <Modified>2016-09-20T00:59:23.014</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionSE.png">
       <PackagePath>Assets\Icons\BusDirectionSE.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.947</Modified>
+      <Modified>2016-09-20T00:59:23.015</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionSE20.png">
       <PackagePath>Assets\Icons\BusDirectionSE20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.948</Modified>
+      <Modified>2016-09-20T00:59:23.016</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionSE40.png">
       <PackagePath>Assets\Icons\BusDirectionSE40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.948</Modified>
+      <Modified>2016-09-20T00:59:23.017</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionSW.png">
       <PackagePath>Assets\Icons\BusDirectionSW.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.949</Modified>
+      <Modified>2016-09-20T00:59:23.018</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionSW20.png">
       <PackagePath>Assets\Icons\BusDirectionSW20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.951</Modified>
+      <Modified>2016-09-20T00:59:23.019</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionSW40.png">
       <PackagePath>Assets\Icons\BusDirectionSW40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.952</Modified>
+      <Modified>2016-09-20T00:59:23.021</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionW.png">
       <PackagePath>Assets\Icons\BusDirectionW.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.954</Modified>
+      <Modified>2016-09-20T00:59:23.022</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionW20.png">
       <PackagePath>Assets\Icons\BusDirectionW20.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.955</Modified>
+      <Modified>2016-09-20T00:59:23.023</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusDirectionW40.png">
       <PackagePath>Assets\Icons\BusDirectionW40.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.956</Modified>
+      <Modified>2016-09-20T00:59:23.024</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusGeneric16.png">
       <PackagePath>Assets\Icons\BusGeneric16.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.957</Modified>
+      <Modified>2016-09-20T00:59:23.025</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\BusRoutesIcon.png">
       <PackagePath>Assets\Icons\BusRoutesIcon.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.958</Modified>
+      <Modified>2016-09-20T00:59:23.026</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\LiveBusBase.png">
       <PackagePath>Assets\Icons\LiveBusBase.png</PackagePath>
-      <Modified>2016-11-27T21:08:15.094</Modified>
+      <Modified>2016-11-29T17:44:58.529</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\LiveBusBase_Background.png">
       <PackagePath>Assets\Icons\LiveBusBase_Background.png</PackagePath>
-      <Modified>2016-11-27T23:26:28.166</Modified>
+      <Modified>2016-11-29T17:44:58.529</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\LiveBusBase_OverlayMask.png">
       <PackagePath>Assets\Icons\LiveBusBase_OverlayMask.png</PackagePath>
-      <Modified>2016-11-27T23:26:45.840</Modified>
+      <Modified>2016-11-29T17:44:58.529</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\LogoBase.png">
       <PackagePath>Assets\Icons\LogoBase.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.961</Modified>
+      <Modified>2016-09-20T00:59:23.030</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\MeIcon.png">
       <PackagePath>Assets\Icons\MeIcon.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.962</Modified>
+      <Modified>2016-09-20T00:59:23.030</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\MyLocationIcon256.png">
       <PackagePath>Assets\Icons\MyLocationIcon256.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.964</Modified>
+      <Modified>2016-09-20T00:59:23.031</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\MyLocationIcon32.png">
       <PackagePath>Assets\Icons\MyLocationIcon32.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.965</Modified>
+      <Modified>2016-09-20T00:59:23.032</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\CancelRefreshStopsIcon.png">
       <PackagePath>Assets\Icons\CancelRefreshStopsIcon.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.960</Modified>
+      <Modified>2016-09-20T00:59:23.028</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\RefreshStopsIcon.png">
       <PackagePath>Assets\Icons\RefreshStopsIcon.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.966</Modified>
+      <Modified>2016-09-20T00:59:23.033</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\SmallLogo.scale-100.png">
       <PackagePath>Assets\Icons\SmallLogo.scale-100.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.967</Modified>
+      <Modified>2016-09-20T00:59:23.034</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\VehicleBase.png">
       <PackagePath>Assets\Icons\VehicleBase.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.972</Modified>
+      <Modified>2016-09-20T00:59:23.039</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-12T06:39:41.973</Modified>
+      <Modified>2016-09-20T00:59:23.040</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\ShadowCorner.png">
       <PackagePath>Assets\ShadowCorner.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.974</Modified>
+      <Modified>2016-09-20T00:59:23.041</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-12T06:39:41.975</Modified>
+      <Modified>2016-09-20T00:59:23.042</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\SmallLogo.targetsize-24.png">
       <PackagePath>Assets\SmallLogo.targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-12T06:39:41.976</Modified>
+      <Modified>2016-09-20T00:59:23.043</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\SmallLogo.targetsize-48.png">
       <PackagePath>Assets\SmallLogo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-12T06:39:41.977</Modified>
+      <Modified>2016-09-20T00:59:23.044</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\SmallLogo.targetsize-48_altform-unplated.png">
       <PackagePath>Assets\SmallLogo.targetsize-48_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-12T06:39:41.978</Modified>
+      <Modified>2016-09-20T00:59:23.045</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-12T06:39:41.982</Modified>
+      <Modified>2016-09-20T00:59:23.073</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-12T06:39:41.983</Modified>
+      <Modified>2016-09-20T00:59:23.074</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-12T06:39:41.984</Modified>
+      <Modified>2016-09-20T00:59:23.075</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\VehicleImages\2 Cars.png">
       <PackagePath>Assets\VehicleImages\2 Cars.png</PackagePath>
-      <Modified>2016-11-21T01:43:16.122</Modified>
+      <Modified>2016-11-29T17:44:58.529</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\VehicleImages\3 Cars.png">
       <PackagePath>Assets\VehicleImages\3 Cars.png</PackagePath>
-      <Modified>2016-11-21T01:43:16.139</Modified>
+      <Modified>2016-11-29T17:44:58.544</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\WideLogo.scale-100.png">
       <PackagePath>Assets\WideLogo.scale-100.png</PackagePath>
-      <Modified>2016-10-12T06:39:41.985</Modified>
+      <Modified>2016-09-20T00:59:23.076</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2016-10-12T06:39:42.869</Modified>
+      <Modified>2016-09-20T00:59:23.710</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\FodyWeavers.xml">
       <PackagePath>CommonClasses\FodyWeavers.xml</PackagePath>
-      <Modified>2016-10-12T06:39:09.859</Modified>
+      <Modified>2016-09-20T00:59:00.364</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\OneAppAway.xr.xml">
       <PackagePath>OneAppAway.xr.xml</PackagePath>
-      <Modified>2016-11-27T23:15:54.096</Modified>
+      <Modified>2016-11-29T17:45:10.040</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -878,7 +878,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
-      <Modified>2016-10-13T19:21:32.969</Modified>
+      <Modified>2016-09-20T06:51:42.394</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.12.20161020.4\runtimes\win10-x86\native\winsdkfb\Images\fb_blank_profile_portrait.png">
       <PackagePath>winsdkfb\Images\fb_blank_profile_portrait.png</PackagePath>
@@ -943,37 +943,37 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-11-29T06:42:26.433</Modified>
+      <Modified>2016-11-29T18:55:10.594</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2016-11-29T06:42:34.054</Modified>
+      <Modified>2016-11-29T18:55:11.373</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24516.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24516.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24516.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
@@ -1034,27 +1034,27 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24516.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24516.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.24516.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24516.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>

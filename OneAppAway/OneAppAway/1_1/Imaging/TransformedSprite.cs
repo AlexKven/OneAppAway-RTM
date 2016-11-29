@@ -47,9 +47,11 @@ namespace OneAppAway._1_1.Imaging
                     else
                         return CombineColors(CombineColors(base.Render(x1, y1), base.Render(x2, y1), xF), CombineColors(base.Render(x1, y2), base.Render(x2, y2), xF), yF);
                 }
-                //return base.Render(fX, fY);
+            //return base.Render(fX, fY);
             //}
         }
+        public override double Width => OnCalculateActualSize(new Size(AppliedSprite?.Width ?? double.NaN, AppliedSprite?.Height ?? double.NaN)).Width;
+        public override double Height => OnCalculateActualSize(new Size(AppliedSprite?.Width ?? double.NaN, AppliedSprite?.Height ?? double.NaN)).Height;
 
         private GeneralTransform InverseTransform;
         private int OffsetX;
@@ -59,6 +61,17 @@ namespace OneAppAway._1_1.Imaging
         {
             OffsetX = (int)(Width * RelativeTransformOrigin.X);
             OffsetY = (int)(Height * RelativeTransformOrigin.Y);
+        }
+
+        protected Size OnCalculateActualSize(Size appliedSpriteSize)
+        {
+            if (InverseTransform == null)
+                return appliedSpriteSize;
+            else
+            {
+                var bounds = Transform.TransformBounds(new Rect(new Point(), appliedSpriteSize));
+                return new Size(bounds.Width, bounds.Height);
+            }
         }
 
         public static Color CombineColors(Color clr1, Color clr2, double portion)

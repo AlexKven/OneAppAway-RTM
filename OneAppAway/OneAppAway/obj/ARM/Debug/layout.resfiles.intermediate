@@ -3,9 +3,13 @@ Assets\Icons\BusAlert20.png
 Assets\Icons\BusAlert40.png
 Assets\Icons\BusAlert60.png
 Assets\Icons\BusAnalyticsIcon.png
+Assets\Icons\BusArrow.png
+Assets\Icons\BusArrow40.png
+Assets\Icons\BusArrow60.png
 Assets\Icons\BusBase.png
 Assets\Icons\BusBase20.png
 Assets\Icons\BusBase40.png
+Assets\Icons\BusBase60.png
 Assets\Icons\BusClosed20.png
 Assets\Icons\BusClosed40.png
 Assets\Icons\BusClosed60.png
@@ -37,6 +41,9 @@ Assets\Icons\BusGeneric16.png
 Assets\Icons\BusRoutesIcon.png
 Assets\Icons\Cancel.png
 Assets\Icons\CancelRefreshStopsIcon.png
+Assets\Icons\LiveBusBase.png
+Assets\Icons\LiveBusBase_Background.png
+Assets\Icons\LiveBusBase_OverlayMask.png
 Assets\Icons\LogoBase.png
 Assets\Icons\MeIcon.png
 Assets\Icons\MyLocationIcon256.png

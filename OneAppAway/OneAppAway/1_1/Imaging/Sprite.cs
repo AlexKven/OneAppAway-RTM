@@ -11,9 +11,10 @@ namespace OneAppAway._1_1.Imaging
 {
     public class Sprite : SpriteBase
     {
-        private WriteableBitmap _Bitmap;
-        public override WriteableBitmap Bitmap => _Bitmap;
+        public override WriteableBitmap Bitmap { get; set; }
         public override bool IsLoaded => Bitmap != null;
+        public override double Width => Bitmap?.PixelWidth ?? double.NaN;
+        public override double Height => Bitmap?.PixelHeight ?? double.NaN;
 
         public byte[] BitmapBytes;
         public override bool IsLocked => BitmapBytes == null;
@@ -27,7 +28,7 @@ namespace OneAppAway._1_1.Imaging
 
         public override void Unlock()
         {
-            BitmapBytes = new byte[Width * Height * 4];
+            BitmapBytes = new byte[(int)(Width * Height * 4)];
             using (var stream = Bitmap.PixelBuffer.AsStream())
             {
                 stream.Read(BitmapBytes, 0, BitmapBytes.Length);
@@ -36,7 +37,7 @@ namespace OneAppAway._1_1.Imaging
 
         public override async Task Load()
         {
-            _Bitmap = await WriteableBitmapExtensions.FromContent(null, ImageUri);
+            Bitmap = await WriteableBitmapExtensions.FromContent(null, ImageUri);
         }
 
         public override Color Render(int x, int y)

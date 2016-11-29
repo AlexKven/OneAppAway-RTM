@@ -11,6 +11,8 @@ namespace OneAppAway._1_1.Imaging
     public class MaskedSprite : ExternallyAppliedSpriteBase
     {
         public Func<Color, Color> Mask { get; set; }
+        public override double Width => AppliedSprite?.Width ?? double.NaN;
+        public override double Height => AppliedSprite?.Height ?? double.NaN;
 
         public override Color Render(int x, int y)
         {

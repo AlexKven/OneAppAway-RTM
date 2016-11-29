@@ -30,11 +30,11 @@ namespace OneAppAway._1_1.Imaging
         public SpriteBitmapStream(SpriteBase sprite)
         {
             Sprite = sprite;
-            IntToBytes(sprite.Width, WidthB);
-            IntToBytes(sprite.Height, HeightB);
-            _Length = Sprite.Width * Sprite.Height * 4 + 54;
+            IntToBytes(sprite.PixelWidth, WidthB);
+            IntToBytes(sprite.PixelHeight, HeightB);
+            _Length = Sprite.PixelWidth * Sprite.PixelHeight * 4 + 54;
             IntToBytes((int)Length, SizeB);
-            NumPixels = sprite.Width * sprite.Height;
+            NumPixels = sprite.PixelWidth * sprite.PixelHeight;
         }
 
         private byte GetByte(int index)
@@ -97,8 +97,8 @@ namespace OneAppAway._1_1.Imaging
                 int comp = index % 4;
                 int pixel = index / 4;
                 int normalOrder = NumPixels - pixel - 1;
-                int x = normalOrder % Sprite.Width;
-                int y = normalOrder / Sprite.Width;
+                int x = normalOrder % Sprite.PixelWidth;
+                int y = normalOrder / Sprite.PixelWidth;
                 var color = Sprite.Render(x, y);
                 switch (comp)
                 {

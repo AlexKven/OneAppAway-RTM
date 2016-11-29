@@ -14,6 +14,9 @@ namespace OneAppAway._1_1.Imaging
 {
     public class CompositeSprite : SpriteBase
     {
+        public override double Width => Sprites.Count > 0 ? Sprites[0].Width : double.NaN;
+        public override double Height => Sprites.Count > 0 ? Sprites[0].Height : double.NaN;
+
         public CompositeSprite(params SpriteBase[] sprites)
         {
             Sprites.AddRange(sprites);
@@ -39,7 +42,7 @@ namespace OneAppAway._1_1.Imaging
                 return;
             foreach (SpriteBase sprite in Sprites)
                 await sprite.Load();
-            _Bitmap = new WriteableBitmap(Sprites[0].Width, Sprites[0].Height);
+            Bitmap = new WriteableBitmap((int)Ceiling(Width), (int)Ceiling(Height));
         }
 
         public override Color Render(int x, int y)
@@ -83,9 +86,8 @@ namespace OneAppAway._1_1.Imaging
         public override bool IsLoaded => Bitmap != null;
 
         public override bool IsLocked => _IsLocked;
-
-        private WriteableBitmap _Bitmap;
-        public override WriteableBitmap Bitmap => _Bitmap;
+        
+        public override WriteableBitmap Bitmap { get; set; }
 
         public List<SpriteBase> Sprites { get; } = new List<SpriteBase>();
     }

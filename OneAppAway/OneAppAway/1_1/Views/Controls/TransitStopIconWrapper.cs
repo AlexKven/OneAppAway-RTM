@@ -45,24 +45,24 @@ namespace OneAppAway._1_1.Views.Controls
                     var sprite = new Sprite() { ImageUri = new Uri($"ms-appx:///Assets/Icons/{postfix}.png") };
                     await sprite.Load();
                     sprite.Unlock();
-                    var buffer1 = new SpriteBitmapStream(sprite).GetFullBuffer();
-                    using (MemoryStream stream1 = new MemoryStream(buffer1, true))
-                    {
-                        BusIconStreams[i * NUM_ICON_TYPES + j] = stream1.AsRandomAccessStream();
-                    }
+                    //var buffer1 = new SpriteBitmapStream(sprite).GetFullBuffer();
+                    //using (MemoryStream stream1 = new MemoryStream(buffer1, true))
+                    //{
+                    //    BusIconStreams[i * NUM_ICON_TYPES + j] = stream1.AsRandomAccessStream();
+                    //}
                     //var bitmap = await WriteableBitmapExtensions.FromContent(null, new Uri($"ms-appx:///Assets/Icons/{postfix}.png"));
                     InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream();
                     
                     await sprite.Bitmap.ToStream(stream, BitmapEncoder.BmpEncoderId);
-                    //BusIconStreams[i * NUM_ICON_TYPES + j] = stream;
+                    BusIconStreams[i * NUM_ICON_TYPES + j] = stream;
                     byte[] buffer = new byte[stream.Size];
                     stream.AsStreamForRead().Read(buffer, 0, buffer.Length);
                     for (int k = 0; k < buffer.Length; k++)
                     {
-                        if (buffer[k] != buffer1[k])
-                        {
-                            //System.Diagnostics.Debug.WriteLine($"{buffer[k]} vs {buffer1[k]}");
-                        }
+                        //if (buffer[k] != buffer1[k])
+                        //{
+                        //    //System.Diagnostics.Debug.WriteLine($"{buffer[k]} vs {buffer1[k]}");
+                        //}
                     }
                 }
             }
