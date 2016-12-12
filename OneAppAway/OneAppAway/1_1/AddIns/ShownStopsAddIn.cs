@@ -12,7 +12,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Data;
 using Windows.Foundation;
-using OneAppAway._1_1.Addins;
 using OneAppAway._1_1.Helpers;
 using System.Collections.Specialized;
 

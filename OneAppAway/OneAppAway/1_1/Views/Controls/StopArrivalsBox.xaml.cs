@@ -1,7 +1,9 @@
 ﻿using OneAppAway._1_1.Data;
 using OneAppAway._1_1.ViewModels;
+using OneAppAway._1_1.Views.Pages;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -27,6 +29,8 @@ namespace OneAppAway._1_1.Views.Controls
             set { DataContext = value; }
         }
 
+        public ObservableCollection<RealTimeArrival> ShownArrivals => VM.Items;
+
         public StopArrivalsBox()
         {
             this.InitializeComponent();
@@ -44,16 +48,17 @@ namespace OneAppAway._1_1.Views.Controls
             set { SetValue(StopProperty, value); }
         }
         public static readonly DependencyProperty StopProperty =
-            DependencyProperty.Register("Stop", typeof(TransitStop), typeof(StopArrivalsBox), new PropertyMetadata(new TransitStop(), (s, e) =>
-            {
-                var autoDownloadMode = SettingsManagerBase.Instance.CurrentDownloadArrivalsMode;
-                var stop = (TransitStop)e.NewValue;
-                bool autoDownload = false;
-                if (autoDownloadMode == ManuallyDownloadArrivalsMode.Never || (autoDownloadMode == ManuallyDownloadArrivalsMode.GroupsOnly && stop.Parent == null))
+            DependencyProperty.Register("Stop", typeof(TransitStop), typeof(StopArrivalsBox), new PropertyMetadata(new TransitStop(), OnStopsChangedStatic));
+        static void OnStopsChangedStatic(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var autoDownloadMode = SettingsManagerBase.Instance.CurrentDownloadArrivalsMode;
+            var stop = (TransitStop)e.NewValue;
+            bool autoDownload = false;
+            if (autoDownloadMode == ManuallyDownloadArrivalsMode.Never || (autoDownloadMode == ManuallyDownloadArrivalsMode.GroupsOnly && stop.Parent == null))
                 autoDownload = true;
-                ((StopArrivalsBox)s).VM.AutoDownload = autoDownload;
-                ((StopArrivalsBox)s).VM.Stop = stop;
-            }));
+            ((StopArrivalsBox)sender).VM.AutoDownload = autoDownload;
+            ((StopArrivalsBox)sender).VM.Stop = stop;
+        }
 
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {

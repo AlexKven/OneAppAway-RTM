@@ -18,6 +18,9 @@ using OneAppAway.Common;
 using OneAppAway._1_1.Data;
 using OneAppAway._1_1.ViewModels;
 using System.Threading;
+using System.ComponentModel;
+using System.Collections.Specialized;
+using System.Threading.Tasks;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -28,6 +31,7 @@ namespace OneAppAway._1_1.Views.Controls
         private StopPopupViewModel VM = new StopPopupViewModel();
 
         private bool ScheduleSet = false;
+        private CompositeCollectionBinding<RealTimeArrival, string> ShownArrivalsBinding;
 
         public StopPopupControl()
         {
@@ -39,6 +43,33 @@ namespace OneAppAway._1_1.Views.Controls
             //CompressButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("CompressCommand") });
             //CloseButton.SetBinding(Button.CommandProperty, new Binding() { Source = this, Path = new PropertyPath("CloseCommand") });
             //RegisterPropertyChangedCallback(WidthProperty, WidthChanged);
+            ShownArrivalsBinding = new CompositeCollectionBinding<RealTimeArrival, string>(ShownArrivals);
+            WeakEventListener<StopPopupControl, object, NotifyCollectionChangedEventArgs> childrenListener = new WeakEventListener<StopPopupControl, object, NotifyCollectionChangedEventArgs>(this);
+            childrenListener.OnEventAction = (t, s, e) => t.Children_CollectionChanged(s, e);
+            VM.Children.CollectionChanged += childrenListener.OnEvent;
+        }
+
+        private void Children_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            ShownArrivalsBinding.ClearCollections();
+            SubItemsControl.Children.Clear();
+            foreach (var item in VM.Children)
+            {
+                StopPopupControl subControl = new StopPopupControl();
+                subControl.Stop = item;
+                subControl.IsTopLevel = false;
+                subControl.VerticalAlignment = VerticalAlignment.Stretch;
+                subControl.MinWidth = 190;
+                subControl.SetBinding(ShowRoutesListProperty, new Binding() { Source = this, Path = new PropertyPath("ShowRoutesList") });
+                subControl.SetBinding(TitleCommandProperty, new Binding() { Source = this, Path = new PropertyPath("TitleCommand") });
+                subControl.SetBinding(ShowCompactMenuProperty, new Binding() { Source = this, Path = new PropertyPath("ShowCompactMenu") });
+                ShownArrivalsBinding.AddCollection(item.ID, subControl.ShownArrivals);
+                SubItemsControl.Children.Add(subControl);
+            }
+            if (VM.Children.Count == 0)
+            {
+                ShownArrivalsBinding.AddCollection("0", ArrivalsBox.ShownArrivals);
+            }
         }
 
         private bool _IsTopLevel = true;

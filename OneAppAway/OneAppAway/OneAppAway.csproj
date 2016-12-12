@@ -100,9 +100,11 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1_1\AddIns\CurrentLocationAddIn.cs" />
     <Compile Include="1_1\AddIns\MapTakeover.cs" />
     <Compile Include="1_1\AddIns\MapTakeoverRequestedEventArgs.cs" />
     <Compile Include="1_1\AddIns\ShownStopsAddIn.cs" />
+    <Compile Include="1_1\AddIns\ShownVehiclesAddIn.cs" />
     <Compile Include="1_1\AddIns\StopDetailsPopupAddIn.cs" />
     <Compile Include="1_1\Agency.cs" />
     <Compile Include="1_1\AttachedProperties.cs" />
@@ -346,6 +348,8 @@
     <Content Include="Assets\Icons\BusDirectionW40.png" />
     <Content Include="Assets\Icons\BusGeneric16.png" />
     <Content Include="Assets\Icons\BusRoutesIcon.png" />
+    <Content Include="Assets\Icons\CurrentLocation.png" />
+    <Content Include="Assets\Icons\CurrentLocationUnsure.png" />
     <Content Include="Assets\Icons\LiveBusBase.png" />
     <Content Include="Assets\Icons\LiveBusBase_Background.png" />
     <Content Include="Assets\Icons\LiveBusBase_OverlayMask.png" />

@@ -33,6 +33,7 @@ namespace OneAppAway._1_1.ViewModels
                 TokenSource = new CancellationTokenSource();
             });
             Cache = cache;
+            SelectedStops.CollectionChanged += SelectedStops_CollectionChanged;
             NetworkManagerBase.Instance.NetworkTypeChanged += (s, e) => LoadFromSettings(); //*MemoryLeak*!!! Temporary
             LoadFromSettings();
         }
@@ -473,6 +474,11 @@ namespace OneAppAway._1_1.ViewModels
         private void NavigateToStopPageCommand_Execute(object parameter)
         {
             OnNavigateToStopPageRequested(parameter as string);
+        }
+
+        private void SelectedStops_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            
         }
 
         private async void CenterOnCurrentLocation_Execute(object parameter)

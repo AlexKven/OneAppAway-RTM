@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OneAppAway._1_1.Data;
+using OneAppAway._1_1.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,10 +22,14 @@ namespace OneAppAway._1_1.Views.Controls
 {
     public sealed partial class StopPopupOuterControl : StopPopupControlBase
     {
+        private CompositeCollectionBinding<RealTimeArrival, int> ShownArrivalsBinding;
+
         public StopPopupOuterControl()
         {
             this.InitializeComponent();
             this.TopControlsVisibility = Visibility.Visible;
+            ShownArrivalsBinding = new CompositeCollectionBinding<RealTimeArrival, int>(ShownArrivals);
+            ShownArrivalsBinding.AddCollection(0, SubControl.ShownArrivals);
         }
 
         //#region Enabled Properties

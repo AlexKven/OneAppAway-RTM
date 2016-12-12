@@ -98,7 +98,7 @@ namespace OneAppAway._1_1.Views.Controls
             var typedSender = sender as TransitStopIconWrapper;
             if (newVal != oldVal)
             {
-                typedSender.SetCorrectStopSize();
+                typedSender?.SetCorrectStopSize();
             }
         }
 

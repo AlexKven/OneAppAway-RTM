@@ -23,8 +23,8 @@ namespace OneAppAway._1_1.Data
 
         private async void NetworkInformation_NetworkStatusChanged(object sender)
         {
-            if (Dispatcher == null) return;
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+            if (App.Dispatcher == null) return;
+            await App.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
             {
                 GetNetworkInfo();
                 OnNetworkTypeChanged();
@@ -47,7 +47,5 @@ namespace OneAppAway._1_1.Data
                 _UnlimitedNetwork = false;
             }
         }
-
-        public CoreDispatcher Dispatcher { set; get; }
     }
 }

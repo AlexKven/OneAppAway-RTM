@@ -12,17 +12,16 @@ namespace OneAppAway._1_1
 {
     public class UwpIntervalExecuter : IntervalExecuterBase
     {
-        private CoreDispatcher Dispatcher;
-        internal UwpIntervalExecuter(CoreDispatcher dispatcher)
+        internal UwpIntervalExecuter()
         {
-            Dispatcher = dispatcher;
+            MinInterval = TimeSpan.FromSeconds(1);
         }
 
         private DispatcherTimer Timer = new DispatcherTimer();
         protected override void Initialize()
         {
             Timer.Interval = TimeSpan.FromSeconds(3);
-            Timer.Tick += async (s, e) => await (Instance as UwpIntervalExecuter)?.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => (Instance as UwpIntervalExecuter).Tick());
+            Timer.Tick += async (s, e) => await App.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => (Instance as UwpIntervalExecuter).Tick());
             Timer.Start();
         }
     }

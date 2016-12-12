@@ -59,7 +59,8 @@ namespace OneAppAway._1_1.Views.Pages
         {
             Color accentColor = ((Color)App.Current.Resources["SystemColorControlAccentColor"]);
             TestTransformedSprite = new TransformedSprite() { AppliedSprite = new Sprite() { ImageUri = new Uri("ms-appx:///Assets/Icons/BusArrow.png") }, RelativeTransformOrigin = new Point(0.5, 0.473) };
-            TestSprite = new TransformedSprite() { AppliedSprite = new CompositeSprite(new Sprite() { ImageUri = new Uri("ms-appx:///Assets/Icons/BusBase.png") }, TestTransformedSprite), Transform = new ScaleTransform() { ScaleX = .234375 * 1 / 3, ScaleY = .234375 * 1 / 3 } };
+            TestSprite = new TransformedSprite() { AppliedSprite = new CompositeSprite(new Sprite() { ImageUri = new Uri("ms-appx:///Assets/Icons/BusBase.png") }, TestTransformedSprite), Transform = new ScaleTransform() { /*ScaleX = .234375 * 1 / 3, ScaleY = .234375 * 1 / 3*/ } };
+            //TestSprite = new CompositeSprite(new Sprite() { ImageUri = new Uri("ms-appx:///Assets/Icons/BusBase.png") }, TestTransformedSprite);
             await TestSprite.Load();
             TestSprite.Unlock();
             SetImageRotation();

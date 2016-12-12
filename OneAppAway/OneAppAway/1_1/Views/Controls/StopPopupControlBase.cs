@@ -2,6 +2,7 @@
 using OneAppAway._1_1.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace OneAppAway._1_1.Views.Controls
         {
             (sender as StopPopupControlBase)?.OnStopChanged((TransitStop)e.NewValue);
         }
+
+        public ObservableCollection<RealTimeArrival> ShownArrivals { get; } = new ObservableCollection<RealTimeArrival>();
 
         protected virtual void OnStopChanged(TransitStop stop) { }
 

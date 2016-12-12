@@ -54,7 +54,7 @@
             <Button RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CloseCommand}">❌</Button>
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalScrollMode="{Binding ElementName=self, Path=Width, Converter={StaticResource ScrollViewerScrollModeConverter}}" HorizontalScrollBarVisibility="{Binding ElementName=self, Path=Width, Converter={StaticResource ScrollViewerScrollModeConverter}, ConverterParameter=ScrollBarVisibility}">
-            <ItemsControl ItemsSource="{Binding Children}" VerticalContentAlignment="Stretch">
+            <!--<ItemsControl VerticalContentAlignment="Stretch" x:Name="SubItemsControl">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
@@ -62,10 +62,13 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:StopPopupControl IsTopLevel="false"  Stop="{Binding}" VerticalAlignment="Stretch" MinWidth="190" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}" ShowCompactMenu="{Binding ElementName=self, Path=ShowCompactMenu}"/>
+                        <local:StopPopupControl IsTopLevel="false" Stop="{Binding}" VerticalAlignment="Stretch" MinWidth="190" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}" ShowCompactMenu="{Binding ElementName=self, Path=ShowCompactMenu}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            </ItemsControl>-->
+            <StackPanel Orientation="Horizontal" x:Name="SubItemsControl">
+                
+            </StackPanel>
         </ScrollViewer>
         <Grid SizeChanged="IntermediateGrid_SizeChanged" Grid.Row="1" Grid.ColumnSpan="3" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}">
             <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">

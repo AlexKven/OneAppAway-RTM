@@ -43,6 +43,7 @@ namespace OneAppAway
         //public readonly HamburgerBar MainHamburgerBar = new HamburgerBar();
         public _1_1.Views.OuterFrame MainOuterFrame;
         public ApplicationFrame RootFrame;
+        public static CoreDispatcher Dispatcher { get; private set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -162,9 +163,10 @@ namespace OneAppAway
         {
             Window.Current.SizeChanged += Current_SizeChanged;
             Window.Current.CoreWindow.SizeChanged += CoreWindow_SizeChanged;
-            NetworkManagerBase.Instance = new UwpNetworkManager() { Dispatcher = RootFrame.Dispatcher };
+            Dispatcher = RootFrame.Dispatcher;
+            NetworkManagerBase.Instance = new UwpNetworkManager();
             SettingsManagerBase.Instance = new UwpSettingsManager();
-            IntervalExecuterBase.Instance = new UwpIntervalExecuter(RootFrame.Dispatcher);
+            IntervalExecuterBase.Instance = new UwpIntervalExecuter();
             DataSource.Sources.Add(new OneAppAway._.Data.InterimObaScheduleSource());
             //BandwidthManager.Dispatcher = RootFrame.Dispatcher;
             //LocationManager.Dispatcher = RootFrame.Dispatcher;

@@ -10,6 +10,8 @@ namespace OneAppAway._1_1.Abstract
 {
     public abstract class IntervalExecuterBase
     {
+        public TimeSpan MinInterval { get; set; }
+
         private static IntervalExecuterBase _Instance;
         public static IntervalExecuterBase Instance
         {
@@ -50,6 +52,9 @@ namespace OneAppAway._1_1.Abstract
         {
             var now = DateTime.Now;
             var timeSinceLastTick = now - LastTickTime ?? TimeSpan.Zero;
+            if (timeSinceLastTick < MinInterval && LastTickTime.HasValue)
+                return;
+            
             foreach (var task in RegisteredTasks)
             {
                 while (task.RemainingTime <= TimeSpan.Zero)

@@ -10,7 +10,7 @@ using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls.Maps;
 
-namespace OneAppAway._1_1.Addins
+namespace OneAppAway._1_1.AddIns
 {
     public abstract class TransitMapAddInBase : DependencyObject
     {

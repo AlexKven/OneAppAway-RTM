@@ -27,7 +27,7 @@ namespace OneAppAway._1_1.ViewModels
             {
                 var location = LocationHelper.GetLastKnownLocation();
                 if (location != null)
-                    OnChangeViewRequested(new MapView(location.Value.ToLatLon(), 16.75) { Animate = false });
+                    OnChangeViewRequested(new MapView(location.Value, 16.75) { Animate = false });
             }
             base.OnNavigatedTo(parameter);
         }
@@ -44,7 +44,7 @@ namespace OneAppAway._1_1.ViewModels
         {
             try
             {
-                await LocationHelper.ProgressivelyAcquireLocation(pos => locationCallback(pos.ToLatLon()), LocationTimeout);
+                await LocationHelper.ProgressivelyAcquireLocation(pos => locationCallback(pos), LocationTimeout);
             }
             catch (TimeoutException)
             {

@@ -26,7 +26,6 @@ using MvvmHelpers;
 using OneAppAway._1_1.Helpers;
 using System.Windows.Input;
 using OneAppAway._1_1.AddIns;
-using OneAppAway._1_1.Addins;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 

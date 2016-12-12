@@ -23,6 +23,10 @@ namespace OneAppAway._1_1.ViewModels
             set
             {
                 SetProperty(ref _Stop, value);
+                if (Stop.Children == null)
+                    HasChildren = false;
+                else
+                    HasChildren = Stop.Children.Length > 0;
                 LoadStopProperties();
             }
         }

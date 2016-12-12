@@ -52,7 +52,6 @@
     <RootPropertyPathName Name="ShowArrivals" />
     <RootPropertyPathName Name="RouteNames" />
     <RootPropertyPathName Name="ShowAlerts" />
-    <RootPropertyPathName Name="Children" />
     <RootPropertyPathName Name="TitleVisibility" />
     <RootPropertyPathName Name="TitleToolTip" />
     <RootPropertyPathName Name="StopName" />
@@ -438,7 +437,6 @@
       <RootProperty Name="ItemsPanel" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Items" />
@@ -500,9 +498,6 @@
       <RootProperty Name="TitleCommand" />
       <RootProperty Name="Stop" />
       <RootProperty Name="ShowCompactMenu" />
-      <RootProperty Name="IsTopLevel" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="MinWidth" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
       <RootProperty Name="Points" />

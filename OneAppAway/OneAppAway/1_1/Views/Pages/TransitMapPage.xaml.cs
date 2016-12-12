@@ -46,6 +46,7 @@ namespace OneAppAway._1_1.Views.Pages
             NavigateToStopPageCommand = new WeakRelayCommand(NavigateToStopPageCommand_Execute);
             MainMap.AddIns.Add(StopsAddIn);
             MainMap.AddIns.Add(StopDetailsAddIn);
+            MainMap.AddIns.Add(new CurrentLocationAddIn());
 
             VM = new TransitMapPageUwpViewModel(Cache) { Title = "Transit Map" };
             DataContext = VM;

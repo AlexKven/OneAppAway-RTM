@@ -1,5 +1,4 @@
-﻿using OneAppAway._1_1.Addins;
-using OneAppAway._1_1.Data;
+﻿using OneAppAway._1_1.Data;
 using OneAppAway._1_1.Helpers;
 using OneAppAway._1_1.ViewModels;
 using OneAppAway._1_1.Views.Controls;
@@ -86,6 +85,13 @@ namespace OneAppAway._1_1.AddIns
             MapChildrenShown.Add(OnMapPopup);
 
             RefreshPopupSize();
+
+            ArrivalsPopup.ShownArrivals.CollectionChanged += ShownArrivals_CollectionChanged;
+        }
+
+        private void ShownArrivals_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine($"Number of arrivals: {ArrivalsPopup.ShownArrivals.Count}.");
         }
 
         #region Properties

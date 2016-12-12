@@ -71,6 +71,11 @@ namespace OneAppAway._1_1.Helpers
             part.Item1.Size = 0;
         }
 
+        private void ClearItems()
+        {
+            BoundList.Clear();
+        }
+
         private void RemoveItems(TKey key, int index, int numItems)
         {
             var part = GetPartition(key);
@@ -90,30 +95,38 @@ namespace OneAppAway._1_1.Helpers
 
             WeakEventListener<CompositeCollectionBinding<T, TKey>, object, NotifyCollectionChangedEventArgs> listener = new WeakEventListener<CompositeCollectionBinding<T, TKey>, object, NotifyCollectionChangedEventArgs>(this);
             listener.OnEventAction = (_this, sender, e) => _this.Collection_CollectionChanged(sender, e);
+            listener.OnDetachAction = l => collection.CollectionChanged -= l.OnEvent;
             collection.CollectionChanged += listener.OnEvent;
             Listeners.Add(key, listener);
         }
 
         private void Collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            var key = CollectionsDictionary.First(item => item.Value == sender).Key;
-            switch (e.Action)
+            try
             {
-                case NotifyCollectionChangedAction.Add:
-                    InsertItems(key, e.NewStartingIndex, e.NewItems.Cast<T>().ToArray());
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    RemoveItems(key, e.OldStartingIndex, e.OldItems.Count);
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-                    ReplaceItems(key, e.NewStartingIndex, e.NewItems.Cast<T>().ToArray());
-                    break;
-                case NotifyCollectionChangedAction.Move:
-                    throw new NotImplementedException();
-                case NotifyCollectionChangedAction.Reset:
-                    ClearItems(key);
-                    InsertItems(key, 0, ((ObservableCollection<T>)sender).ToArray());
-                    break;
+                var key = CollectionsDictionary.First(item => item.Value == sender).Key;
+                switch (e.Action)
+                {
+                    case NotifyCollectionChangedAction.Add:
+                        InsertItems(key, e.NewStartingIndex, e.NewItems.Cast<T>().ToArray());
+                        break;
+                    case NotifyCollectionChangedAction.Remove:
+                        RemoveItems(key, e.OldStartingIndex, e.OldItems.Count);
+                        break;
+                    case NotifyCollectionChangedAction.Replace:
+                        ReplaceItems(key, e.NewStartingIndex, e.NewItems.Cast<T>().ToArray());
+                        break;
+                    case NotifyCollectionChangedAction.Move:
+                        throw new NotImplementedException();
+                    case NotifyCollectionChangedAction.Reset:
+                        ClearItems(key);
+                        InsertItems(key, 0, ((ObservableCollection<T>)sender).ToArray());
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -124,6 +137,18 @@ namespace OneAppAway._1_1.Helpers
             CollectionsDictionary.Remove(key);
             Listeners[key].Detach();
             Listeners.Remove(key);
+        }
+
+        public void ClearCollections()
+        {
+            ClearItems();
+            CollectionPartitions.Clear();
+            CollectionsDictionary.Clear();
+            foreach (var listener in Listeners)
+            {
+                listener.Value.Detach();
+            }
+            Listeners.Clear();
         }
     }
 }
