@@ -360,6 +360,7 @@
     <Content Include="Assets\Icons\CancelRefreshStopsIcon.png" />
     <Content Include="Assets\Icons\RefreshStopsIcon.png" />
     <Content Include="Assets\Icons\SmallLogo.scale-100.png" />
+    <Content Include="Assets\Icons\TemporaryGreenBus.png" />
     <Content Include="Assets\Icons\VehicleBase.png" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\ShadowCorner.png" />

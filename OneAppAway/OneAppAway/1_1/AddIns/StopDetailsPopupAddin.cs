@@ -41,6 +41,10 @@ namespace OneAppAway._1_1.AddIns
         private ContentControl OffMapPopup = new ContentControl() { Visibility = Visibility.Collapsed, HorizontalContentAlignment = HorizontalAlignment.Stretch, VerticalContentAlignment = VerticalAlignment.Stretch, Margin = new Thickness(0, 0, 0, 20) };
         private StopPopupOuterControl ArrivalsPopup = new StopPopupOuterControl() { Visibility = Visibility.Collapsed };
 
+        private ObservableCollection<RealTimeArrival> ShownVehicleArrivals = new ObservableCollection<RealTimeArrival>();
+        private CompositeCollectionBinding<RealTimeArrival, int> ShownVehicleArrivalsBinding;
+        private Dictionary<Tuple<string, string>, TransitVehicleIconWrapper> VehicleWrappers = new Dictionary<Tuple<string, string>, TransitVehicleIconWrapper>();
+
         private double MapWidth;
         private double MapHeight;
         private double NumColsRequested = 1;
@@ -81,6 +85,10 @@ namespace OneAppAway._1_1.AddIns
             ArrivalsPopup.CompressCommand = CompressCommand;
             ArrivalsPopup.CloseCommand = CloseCommand;
             ArrivalsPopup.Offset(offsetY: SLIDE_OFFSET).Fade(value: 0).SetDurationForAll(0).Start();
+
+            ShownVehicleArrivals.CollectionChanged += ShownVehicleArrivals_CollectionChanged;
+            ShownVehicleArrivalsBinding = new CompositeCollectionBinding<RealTimeArrival, int>(ShownVehicleArrivals);
+            ShownVehicleArrivalsBinding.AddCollection(0, ArrivalsPopup.ShownArrivals);
 
             MapChildrenShown.Add(OnMapPopup);
 
@@ -240,6 +248,50 @@ namespace OneAppAway._1_1.AddIns
                 InvokeTakeoverRequested(null);
         }
 
+        private bool AddVehicle(RealTimeArrival arrival)
+        {
+            var key = new Tuple<string, string>(arrival.Stop, arrival.Trip);
+            if (!VehicleWrappers.ContainsKey(key))
+            {
+                TransitVehicleIconWrapper tviw = new TransitVehicleIconWrapper();
+                tviw.Arrival = arrival;
+                MapElementsShown.Add(tviw.Element);
+                VehicleWrappers.Add(key, tviw);
+                return true;
+            }
+            return false;
+        }
+
+        private bool RemoveVehicle(RealTimeArrival arrival)
+        {
+            var key = new Tuple<string, string>(arrival.Stop, arrival.Trip);
+            if (VehicleWrappers.ContainsKey(key))
+            {
+                var tviw = VehicleWrappers[key];
+                MapElementsShown.Remove(tviw.Element);
+                VehicleWrappers.Remove(key);
+                return true;
+            }
+            return false;
+        }
+
+        private void ClearVehicles()
+        {
+            VehicleWrappers.Clear();
+            MapElementsShown.Clear();
+        }
+
+        //private bool UpdateVehicle(RealTimeArrival arrival, bool skipCheck = false)
+        //{
+        //    var key = new Tuple<string, string>(arrival.Stop, arrival.Trip);
+        //    if (VehicleWrappers.ContainsKey(key))
+        //    {
+        //        var tviw = VehicleWrappers[key];
+        //        tviw.Arrival = arrival;
+        //    }
+        //    return false;
+        //}
+
         #region Event Registration
         private WeakEventListener<StopDetailsPopupAddIn, object, NotifyCollectionChangedEventArgs> SelectedStopsSource_CollectionChanged_Listener;
 
@@ -343,6 +395,37 @@ namespace OneAppAway._1_1.AddIns
             if (SelectedStopsSource is ObservableCollection<TransitStop>)
             {
                 ((ObservableCollection<TransitStop>)SelectedStopsSource).Clear();
+            }
+        }
+
+        private void ShownVehicleArrivals_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Move)
+                return;
+            if (e.Action == NotifyCollectionChangedAction.Reset)
+            {
+                ClearVehicles();
+                foreach (var arrival in ShownVehicleArrivals)
+                {
+                    AddVehicle(arrival);
+                }
+            }
+            else
+            {
+                if (e.NewItems != null)
+                {
+                    foreach (RealTimeArrival item in e.NewItems)
+                    {
+                        AddVehicle(item);
+                    }
+                }
+                if (e.OldItems != null)
+                {
+                    foreach (RealTimeArrival item in e.OldItems)
+                    {
+                        RemoveVehicle(item);
+                    }
+                }
             }
         }
         #endregion

@@ -54,6 +54,8 @@ namespace OneAppAway._1_1.Abstract
             var timeSinceLastTick = now - LastTickTime ?? TimeSpan.Zero;
             if (timeSinceLastTick < MinInterval && LastTickTime.HasValue)
                 return;
+            dynamic d = 5.ToString();
+            
             
             foreach (var task in RegisteredTasks)
             {

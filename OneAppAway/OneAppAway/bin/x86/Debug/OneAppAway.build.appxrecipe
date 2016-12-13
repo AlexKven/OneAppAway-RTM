@@ -604,6 +604,9 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\SmallLogo.scale-100.png">
       <PackagePath>Assets\Icons\SmallLogo.scale-100.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\TemporaryGreenBus.png">
+      <PackagePath>Assets\Icons\TemporaryGreenBus.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\Assets\Icons\VehicleBase.png">
       <PackagePath>Assets\Icons\VehicleBase.png</PackagePath>
     </AppxPackagedFile>

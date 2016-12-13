@@ -15,7 +15,7 @@ namespace OneAppAway._1_1.Data
 
         static LocationHelper()
         {
-            Locator.ReportInterval = 15000;
+            Locator.ReportInterval = 10000;
             Locator.PositionChanged += Locator_PositionChanged;
             Locator.StatusChanged += Locator_StatusChanged;
         }
