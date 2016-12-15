@@ -97,11 +97,6 @@ namespace OneAppAway._1_1.AddIns
             ArrivalsPopup.ShownArrivals.CollectionChanged += ShownArrivals_CollectionChanged;
         }
 
-        private void ShownArrivals_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine($"Number of arrivals: {ArrivalsPopup.ShownArrivals.Count}.");
-        }
-
         #region Properties
         public object SelectedStopsSource
         {
@@ -248,18 +243,22 @@ namespace OneAppAway._1_1.AddIns
                 InvokeTakeoverRequested(null);
         }
 
-        private bool AddVehicle(RealTimeArrival arrival)
+        private void SetVehicle(RealTimeArrival arrival)
         {
             var key = new Tuple<string, string>(arrival.Stop, arrival.Trip);
-            if (!VehicleWrappers.ContainsKey(key))
+            if (VehicleWrappers.ContainsKey(key))
+            {
+                var tviw = VehicleWrappers[key];
+                tviw.Arrival = arrival;
+                VehicleWrappers[key] = tviw;
+            }
+            else
             {
                 TransitVehicleIconWrapper tviw = new TransitVehicleIconWrapper();
                 tviw.Arrival = arrival;
                 MapElementsShown.Add(tviw.Element);
                 VehicleWrappers.Add(key, tviw);
-                return true;
             }
-            return false;
         }
 
         private bool RemoveVehicle(RealTimeArrival arrival)
@@ -373,6 +372,11 @@ namespace OneAppAway._1_1.AddIns
             SetPopup(CombineSeveralStops(center, ((IEnumerable<TransitStop>)SelectedStopsSource).ToArray()));
         }
 
+        private void ShownArrivals_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine($"Number of arrivals: {ArrivalsPopup.ShownArrivals.Count}.");
+        }
+
         //private void ArrivalsViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         //{
         //    if (e.PropertyName == "IsOnMap")
@@ -407,7 +411,7 @@ namespace OneAppAway._1_1.AddIns
                 ClearVehicles();
                 foreach (var arrival in ShownVehicleArrivals)
                 {
-                    AddVehicle(arrival);
+                    SetVehicle(arrival);
                 }
             }
             else
@@ -416,10 +420,10 @@ namespace OneAppAway._1_1.AddIns
                 {
                     foreach (RealTimeArrival item in e.NewItems)
                     {
-                        AddVehicle(item);
+                        SetVehicle(item);
                     }
                 }
-                if (e.OldItems != null)
+                if (e.OldItems != null && e.Action != NotifyCollectionChangedAction.Replace)
                 {
                     foreach (RealTimeArrival item in e.OldItems)
                     {

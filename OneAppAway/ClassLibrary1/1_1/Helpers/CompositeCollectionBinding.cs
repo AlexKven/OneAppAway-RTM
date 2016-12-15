@@ -61,6 +61,27 @@ namespace OneAppAway._1_1.Helpers
             }
         }
 
+        private void MoveItems(TKey key, int oldIndex, int newIndex, int count)
+        {
+            var part = GetPartition(key);
+            int startI = oldIndex < newIndex ? 0 : count - 1;
+            int endI = oldIndex < newIndex ? count - 1 : 0;
+            int dirI = oldIndex < newIndex ? 1 : -1;
+            for (int i = startI; dirI * i < dirI * endI; i += dirI)
+            {
+                if (BoundList is ObservableCollection<T>)
+                {
+                    ((ObservableCollection<T>)BoundList).Move(part.Item2 + oldIndex + i, part.Item2 + newIndex + i);
+                }
+                else
+                {
+                    var temp = BoundList[part.Item2 + oldIndex + i];
+                    BoundList.RemoveAt(part.Item2 + oldIndex + i);
+                    BoundList.Insert(part.Item2 + newIndex + i, temp);
+                }
+            }
+        }
+
         private void ClearItems(TKey key)
         {
             var part = GetPartition(key);
@@ -117,7 +138,8 @@ namespace OneAppAway._1_1.Helpers
                         ReplaceItems(key, e.NewStartingIndex, e.NewItems.Cast<T>().ToArray());
                         break;
                     case NotifyCollectionChangedAction.Move:
-                        throw new NotImplementedException();
+                        MoveItems(key, e.OldStartingIndex, e.NewStartingIndex, e.NewItems.Count);
+                        break;
                     case NotifyCollectionChangedAction.Reset:
                         ClearItems(key);
                         InsertItems(key, 0, ((ObservableCollection<T>)sender).ToArray());

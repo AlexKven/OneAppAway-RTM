@@ -140,8 +140,49 @@ namespace OneAppAway._1_1.ViewModels
                     //    if (!viewModels.Contains(oldItem))
                     //        toRemove.Add(oldItem);
                     //}
-                    Items.ReplaceRange(arrivals.Data);
                     //Items.Add(new RealTimeArrivalViewModel(new RealTimeArrival()));
+
+
+                    //Items.ReplaceRange(arrivals.Data);
+
+
+                    foreach (var newItem in arrivals.Data)
+                    {
+                        int curIndex = -1;
+                        int newIndex = 0;
+                        for (int i = 0; i < Items.Count; i++)
+                        {
+                            if (Items[i].Trip == newItem.Trip)
+                                curIndex = i;
+                            var bkaeOther = Items[i].BestKnownArrivalTime;
+                            var bkaeThis = newItem.BestKnownArrivalTime;
+                            if (bkaeOther.HasValue && bkaeThis.HasValue)
+                            {
+                                if (bkaeOther < bkaeThis)
+                                    newIndex = i;
+                            }
+                        }
+                        if (curIndex >= 0)
+                        {
+                            Items[curIndex] = newItem;
+                            if (curIndex != newIndex)
+                            {
+                                if (newIndex >= Items.Count)
+                                {
+
+                                }
+                                Items.Move(curIndex, newIndex);
+                            }
+                        }
+                        else
+                        {
+                            if (newIndex > Items.Count)
+                            {
+
+                            }
+                            Items.Insert(newIndex, newItem);
+                        }
+                    }
                 }
             }
             finally

@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-12-13T06:09:31.108</Modified>
+      <Modified>2016-12-15T05:00:24.158</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2016-12-13T06:09:15.382</Modified>
+      <Modified>2016-12-15T05:00:22.638</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.1.6\References\CommonConfiguration\neutral\AdDuplex.winmd">
       <PackagePath>AdDuplex.winmd</PackagePath>
@@ -550,7 +550,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll">
       <PackagePath>CommonClasses.dll</PackagePath>
-      <Modified>2016-12-13T05:52:46.258</Modified>
+      <Modified>2016-12-15T05:00:19.672</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.12.20161020.4\runtimes\win10-x86\native\winsdkfb\Controls\FacebookLoginButton.xbf">
       <PackagePath>FacebookLoginButton.xbf</PackagePath>
@@ -959,7 +959,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2016-12-13T06:09:31.093</Modified>
+      <Modified>2016-12-15T05:00:24.147</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
