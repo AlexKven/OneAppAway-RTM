@@ -18,6 +18,7 @@ namespace OneAppAway._1_1.ViewModels
     {
         #region Static
         internal static List<WeakReference<RealTimeArrivalViewModel>> Instances = new List<WeakReference<RealTimeArrivalViewModel>>();
+        private static TimeSpan Interval = TimeSpan.FromSeconds(10); 
 
         private static IntervalExecuterBase _IntervalExecuter;
         public static IntervalExecuterBase IntervalExecuter
@@ -29,12 +30,15 @@ namespace OneAppAway._1_1.ViewModels
                     IntervalExecuter.DeregisterTask(IntervalExecuterCommand);
                 _IntervalExecuter = value;
                 if (IntervalExecuter != null)
-                    IntervalExecuter.RegisterTask(IntervalExecuterCommand, TimeSpan.FromSeconds(10));
+                    IntervalExecuter.RegisterTask(IntervalExecuterCommand, Interval, TimeSpan.Zero);
             }
         }
 
-        private static RelayCommand IntervalExecuterCommand = new RelayCommand((obj) =>
+        private static RelayCommand IntervalExecuterCommand = new RelayCommand(async (obj) =>
         {
+            if (Instances.Count == 0)
+                return;
+            int msDelay = (int)(Interval.TotalMilliseconds / Instances.Count);
             for (int i = 0; i < Instances.Count; i++)
             {
                 var instance = Instances[i];
@@ -48,6 +52,8 @@ namespace OneAppAway._1_1.ViewModels
                     Instances.Remove(instance);
                     i--;
                 }
+                if (i < Instances.Count)
+                    await Task.Delay(msDelay);
             }
         });
         #endregion

@@ -15,6 +15,7 @@ namespace OneAppAway._1_1.ViewModels
     {
         #region Static
         private static List<WeakReference<StopArrivalsBoxViewModel>> Instances = new List<WeakReference<StopArrivalsBoxViewModel>>();
+        private static TimeSpan Interval = TimeSpan.FromSeconds(10);
 
         private static IntervalExecuterBase _IntervalExecuter;
         public static IntervalExecuterBase IntervalExecuter
@@ -26,12 +27,15 @@ namespace OneAppAway._1_1.ViewModels
                     IntervalExecuter.DeregisterTask(IntervalExecuterCommand);
                 _IntervalExecuter = value;
                 if (IntervalExecuter != null)
-                    IntervalExecuter.RegisterTask(IntervalExecuterCommand, TimeSpan.FromSeconds(30));
+                    IntervalExecuter.RegisterTask(IntervalExecuterCommand, TimeSpan.FromSeconds(30), TimeSpan.Zero);
             }
         }
 
-        private static RelayCommand IntervalExecuterCommand = new RelayCommand((obj) =>
+        private static RelayCommand IntervalExecuterCommand = new RelayCommand(async (obj) =>
         {
+            if (Instances.Count == 0)
+                return;
+            int msDelay = (int)(Interval.TotalMilliseconds / Instances.Count);
             for (int i = 0; i < Instances.Count; i++)
             {
                 var instance = Instances[i];
@@ -45,6 +49,8 @@ namespace OneAppAway._1_1.ViewModels
                     Instances.Remove(instance);
                     i--;
                 }
+                if (i < Instances.Count)
+                    await Task.Delay(msDelay);
             }
         });
 
@@ -152,13 +158,17 @@ namespace OneAppAway._1_1.ViewModels
                         int newIndex = 0;
                         for (int i = 0; i < Items.Count; i++)
                         {
-                            if (Items[i].Trip == newItem.Trip)
-                                curIndex = i;
                             var bkaeOther = Items[i].BestKnownArrivalTime;
                             var bkaeThis = newItem.BestKnownArrivalTime;
+                            if (Items[i].Trip == newItem.Trip)
+                            {
+                                curIndex = i;
+                                if (!bkaeThis.HasValue)
+                                    newIndex = i;
+                            }
                             if (bkaeOther.HasValue && bkaeThis.HasValue)
                             {
-                                if (bkaeOther < bkaeThis)
+                                if (bkaeOther < bkaeThis || (bkaeOther == bkaeThis && curIndex == i))
                                     newIndex = i;
                             }
                         }

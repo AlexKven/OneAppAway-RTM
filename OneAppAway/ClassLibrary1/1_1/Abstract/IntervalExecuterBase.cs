@@ -56,7 +56,6 @@ namespace OneAppAway._1_1.Abstract
                 return;
             dynamic d = 5.ToString();
             
-            
             foreach (var task in RegisteredTasks)
             {
                 while (task.RemainingTime <= TimeSpan.Zero)
@@ -69,9 +68,9 @@ namespace OneAppAway._1_1.Abstract
             LastTickTime = now;
         }
 
-        public void RegisterTask(ICommand command, TimeSpan tickInterval)
+        public void RegisterTask(ICommand command, TimeSpan tickInterval, TimeSpan phase)
         {
-            RegisteredTasks.Add(new TickIntervalTask() { Command = command, TickInterval = tickInterval });
+            RegisteredTasks.Add(new TickIntervalTask() { Command = command, TickInterval = tickInterval, RemainingTime = phase });
         }
 
         public void DeregisterTask(ICommand command)
