@@ -26,6 +26,7 @@ using MvvmHelpers;
 using OneAppAway._1_1.Helpers;
 using System.Windows.Input;
 using OneAppAway._1_1.AddIns;
+using Windows.UI.Core;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -61,6 +62,7 @@ namespace OneAppAway._1_1.Views.Controls
             //MapIcon centerIndicator = new MapIcon() { NormalizedAnchorPoint = new Point(0.5, 1) };
             //BindingOperations.SetBinding(centerIndicator, MapIcon.LocationProperty, new Binding() { Source = this, Path = new PropertyPath("Center"), Converter = LatLonToGeopointConverter.Instance });
             //MainMap.MapElements.Add(centerIndicator);
+            
         }
 
         #region Properties

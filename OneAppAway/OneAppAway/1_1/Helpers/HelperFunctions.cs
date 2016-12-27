@@ -23,14 +23,14 @@ namespace OneAppAway._1_1.Helpers
         {
         }
 
-        public static BasicGeoposition ToBasicGeoposition(this LatLon value)
+        public static BasicGeoposition ToBasicGeoposition(this LatLon value, double altitude = 1)
         {
-            return new BasicGeoposition() { Latitude = value.Latitude, Longitude = value.Longitude };
+            return new BasicGeoposition() { Latitude = value.Latitude, Longitude = value.Longitude, Altitude = altitude };
         }
 
-        public static Geopoint ToGeopoint(this LatLon value)
+        public static Geopoint ToGeopoint(this LatLon value, double altitude = 1)
         {
-            return new Geopoint(value.ToBasicGeoposition());
+            return new Geopoint(value.ToBasicGeoposition(altitude), AltitudeReferenceSystem.Terrain);
         }
 
         public static LatLon ToLatLon(this BasicGeoposition value)

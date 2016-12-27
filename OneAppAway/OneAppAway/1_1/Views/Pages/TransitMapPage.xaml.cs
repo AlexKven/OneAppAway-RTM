@@ -63,6 +63,7 @@ namespace OneAppAway._1_1.Views.Pages
             VM.BindToControl(this, CanGoBackProperty, "CanGoBack");
             VM.ChangeViewBackCommand = ChangeViewCommand;
             VM.NavigateToStopPageBackCommand = NavigateToStopPageCommand;
+            
             //SetBinding(CanGoBackProperty, new Binding() { Source = MainMap, Path = new PropertyPath("CanGoBack"), Mode = BindingMode.OneWay });
         }
 

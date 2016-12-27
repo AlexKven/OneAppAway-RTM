@@ -140,6 +140,7 @@
     <Compile Include="1_1\Helpers\FlyoutHelpers.cs" />
     <Compile Include="1_1\Imaging\CompositeSprite.cs" />
     <Compile Include="1_1\Imaging\ExternallyAppliedSpriteBase.cs" />
+    <Compile Include="1_1\Imaging\MapIconImageGenerator.cs" />
     <Compile Include="1_1\Imaging\MaskedSprite.cs" />
     <Compile Include="1_1\Imaging\SpriteBase.cs" />
     <Compile Include="1_1\Imaging\SpriteBitmapStream.cs" />
@@ -306,6 +307,7 @@
     <None Include="OneAppAway_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\ArrowBase.png" />
     <Content Include="Assets\Icons\BusArrow.png" />
     <Content Include="Assets\Icons\BusArrow40.png" />
     <Content Include="Assets\Icons\BusArrow60.png" />
