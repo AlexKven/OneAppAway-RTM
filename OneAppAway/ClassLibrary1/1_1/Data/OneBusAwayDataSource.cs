@@ -193,7 +193,7 @@ namespace OneAppAway._1_1.Data
             string predictedArrivalTime = element.Element("predictedArrivalTime")?.Value;
             string scheduledArrivalTime = element.Element("scheduledArrivalTime")?.Value;
             string arrivalEnabled = element.Element("ArrivalEnabled")?.Value;
-            string vehicle = null, knownLocationLat = null, knownLocationLon = null, predictedLocationLat = null, predictedLocationLon = null;
+            string vehicle = null, knownLocationLat = null, knownLocationLon = null, scheduledLocationLat = null, scheduledLocationLon = null;
             string lastUpdateTime = null;
             string destination = element.Element("tripHeadsign")?.Value;
             long predictedArrivalLong = long.Parse(predictedArrivalTime);
@@ -216,8 +216,8 @@ namespace OneAppAway._1_1.Data
                 vehicle = element.Element("vehicleId")?.Value;
                 knownLocationLat = element.Element("lastKnownLocation")?.Element("lat")?.Value;
                 knownLocationLon = element.Element("lastKnownLocation")?.Element("lon")?.Value;
-                predictedLocationLat = element.Element("position")?.Element("lat")?.Value;
-                predictedLocationLon = element.Element("position")?.Element("lon")?.Value;
+                scheduledLocationLat = element.Element("position")?.Element("lat")?.Value;
+                scheduledLocationLon = element.Element("position")?.Element("lon")?.Value;
             }
             lastUpdateLong = lastUpdateTime == null ? null : new long?(long.Parse(scheduledArrivalTime));
             lastUpdate = lastUpdateLong == null ? null : new DateTime?((new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromMilliseconds(lastUpdateLong.Value)).ToLocalTime());
@@ -233,7 +233,7 @@ namespace OneAppAway._1_1.Data
                     degreeOfConfidence = -1;
             }
             bool isDropOffOnly = arrivalEnabled == "false";
-            return new RealTimeArrival() { RouteName = routeName, PredictedArrivalTime = predictedArrival, ScheduledArrivalTime = scheduledArrival, DegreeOfConfidence = degreeOfConfidence, Route = routeId, Trip = tripId, Stop = stopId, Destination = destination, IsDropOffOnly = isDropOffOnly, FrequencyMinutes = frequency == -1 ? null : new double?(frequency), Vehicle = vehicle, KnownVehicleLocation = knownLocationLat == null ? null : new LatLon?(new LatLon(double.Parse(knownLocationLat), double.Parse(knownLocationLon))), PotentialVehicleLocation = predictedLocationLat == null ? null : new LatLon?(new LatLon(double.Parse(predictedLocationLat), double.Parse(predictedLocationLon))) };
+            return new RealTimeArrival() { RouteName = routeName, PredictedArrivalTime = predictedArrival, ScheduledArrivalTime = scheduledArrival, DegreeOfConfidence = degreeOfConfidence, Route = routeId, Trip = tripId, Stop = stopId, Destination = destination, IsDropOffOnly = isDropOffOnly, FrequencyMinutes = frequency == -1 ? null : new double?(frequency), Vehicle = vehicle, KnownVehicleLocation = knownLocationLat == null ? null : new LatLon?(new LatLon(double.Parse(knownLocationLat), double.Parse(knownLocationLon))), ScheduledVehicleLocation = scheduledLocationLat == null ? null : new LatLon?(new LatLon(double.Parse(scheduledLocationLat), double.Parse(scheduledLocationLon))) };
         }
 
         private static IEnumerable<T> ParseList<T>(XElement listElement, string elementName, Func<XElement, T> parser)

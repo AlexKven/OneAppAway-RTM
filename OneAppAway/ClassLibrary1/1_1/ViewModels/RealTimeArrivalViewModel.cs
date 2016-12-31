@@ -75,6 +75,9 @@ namespace OneAppAway._1_1.ViewModels
             IsCancelled = arrival.Status == AlertStatus.Cancelled;
             IsDropOffOnly = arrival.IsDropOffOnly;
             IsFrequencyBased = arrival.FrequencyMinutes != null;
+            HasScheduledLocation = arrival.ScheduledVehicleLocation.HasValue;
+            HasKnownLocation = arrival.KnownVehicleLocation.HasValue;
+            
             var detail = PugetSoundVehicleDetailSource.Instance.GetVehicleDetails(arrival);
             HasVehicleDetails = detail.HasValue;
             if (HasVehicleDetails)
@@ -144,6 +147,8 @@ namespace OneAppAway._1_1.ViewModels
         public double DegreeOfConfidence { get; }
         public VehicleDetail VehicleDetails { get; }
         public bool HasVehicleDetails { get; }
+        public bool HasScheduledLocation { get; }
+        public bool HasKnownLocation { get; }
 
         private int _MinutesAway = 0;
         private int Frequency = 0;

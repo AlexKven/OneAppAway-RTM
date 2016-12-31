@@ -28,10 +28,10 @@ namespace OneAppAway._1_1.Views.Controls
             set
             {
                 _Arrival = value;
-                Element.Visible = Arrival.PotentialVehicleLocation.HasValue;
-                if (Arrival.PotentialVehicleLocation.HasValue)
+                Element.Visible = Arrival.ScheduledVehicleLocation.HasValue;
+                if (Arrival.ScheduledVehicleLocation.HasValue)
                 {
-                    Element.Location = Arrival.PotentialVehicleLocation.Value.ToGeopoint();
+                    Element.Location = Arrival.ScheduledVehicleLocation.Value.ToGeopoint();
                 }
                 Element.Title = Arrival.RouteName;
             }

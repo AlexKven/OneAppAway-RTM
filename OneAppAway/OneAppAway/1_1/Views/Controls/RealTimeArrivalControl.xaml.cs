@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -46,7 +47,15 @@ namespace OneAppAway._1_1.Views.Controls
                     VisualStateManager.GoToState(typedSender, "FrequencyBasedArrivalState", true);
             }
         }
-
+        
+        public ICommand NavigateToLocationCommand
+        {
+            get { return (ICommand)GetValue(NavigateToLocationCommandProperty); }
+            set { SetValue(NavigateToLocationCommandProperty, value); }
+        }
+        public static readonly DependencyProperty NavigateToLocationCommandProperty =
+            DependencyProperty.Register("NavigateToLocationCommand", typeof(ICommand), typeof(RealTimeArrivalControl), new PropertyMetadata(null));
+        
         private void Flyout_Opened(object sender, object e)
         {
         }

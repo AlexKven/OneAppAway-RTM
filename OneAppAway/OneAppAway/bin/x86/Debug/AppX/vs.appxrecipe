@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-12-27T22:27:19.229</Modified>
+      <Modified>2016-12-31T02:46:19.724</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\OneAppAway.exe">
       <PackagePath>entrypoint\OneAppAway.exe</PackagePath>
-      <Modified>2016-12-27T22:27:17.693</Modified>
+      <Modified>2016-12-31T02:46:17.748</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\AdDuplex.Windows10\10.0.1.6\References\CommonConfiguration\neutral\AdDuplex.winmd">
       <PackagePath>AdDuplex.winmd</PackagePath>
@@ -550,7 +550,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\ClassLibrary1\bin\Debug\CommonClasses.dll">
       <PackagePath>CommonClasses.dll</PackagePath>
-      <Modified>2016-12-18T23:40:04.125</Modified>
+      <Modified>2016-12-31T02:46:10.084</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\AlexKven\.nuget\packages\winsdkfb\0.12.20161020.4\runtimes\win10-x86\native\winsdkfb\Controls\FacebookLoginButton.xbf">
       <PackagePath>FacebookLoginButton.xbf</PackagePath>
@@ -886,7 +886,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\OneAppAway.xr.xml">
       <PackagePath>OneAppAway.xr.xml</PackagePath>
-      <Modified>2016-12-17T05:15:49.571</Modified>
+      <Modified>2016-12-31T02:46:16.829</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -959,11 +959,11 @@
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-12-27T21:50:10.085</Modified>
+      <Modified>2016-12-31T02:46:18.851</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\OneAppAway.exe">
       <PackagePath>OneAppAway.exe</PackagePath>
-      <Modified>2016-12-27T22:27:19.188</Modified>
+      <Modified>2016-12-31T02:46:19.711</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

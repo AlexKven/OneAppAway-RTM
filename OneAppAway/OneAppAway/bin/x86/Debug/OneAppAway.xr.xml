@@ -10,6 +10,8 @@
     <RootPropertyPathName Name="FontStyle" />
     <RootPropertyPathName Name="FontSize" />
     <RootPropertyPathName Name="IsDropOffOnly" />
+    <RootPropertyPathName Name="HasScheduled" />
+    <RootPropertyPathName Name="HasKnownLocation" />
     <RootPropertyPathName Name="VehicleDetails" />
     <RootPropertyPathName Name="HasVehicleDetails" />
     <RootPropertyPathName Name="IsCancelled" />
@@ -401,6 +403,7 @@
       <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.RealTimeArrivalControl">

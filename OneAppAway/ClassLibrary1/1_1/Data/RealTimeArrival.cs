@@ -23,7 +23,7 @@ namespace OneAppAway._1_1.Data
         public string[] Alerts { get; set; }
         public AlertStatus Status { get; set; }
         public double? FrequencyMinutes { get; set; }
-        public LatLon? PotentialVehicleLocation { get; set; }
+        public LatLon? ScheduledVehicleLocation { get; set; }
         public LatLon? KnownVehicleLocation { get; set; }
         public double? Orientation { get; set; }
         public double DegreeOfConfidence { get; set; }
