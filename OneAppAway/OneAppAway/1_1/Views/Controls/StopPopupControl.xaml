@@ -113,7 +113,7 @@
                             </ItemsControl>
                         </ScrollViewer>
 
-                        <local:StopArrivalsBox Grid.Row="1" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}"/>
+                        <local:StopArrivalsBox Grid.Row="1" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}" NavigateToLocationCommand="{Binding ElementName=self, Path=NavigateToLocationCommand}"/>
                     </Grid>
 
                     <!--Schedule Tab-->

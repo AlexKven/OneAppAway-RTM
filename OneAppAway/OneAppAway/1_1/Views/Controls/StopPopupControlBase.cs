@@ -17,6 +17,14 @@ namespace OneAppAway._1_1.Views.Controls
         public StopPopupControlBase()
         {
         }
+        
+        public ICommand NavigateToLocationCommand
+        {
+            get { return (ICommand)GetValue(NavigateToLocationCommandProperty); }
+            set { SetValue(NavigateToLocationCommandProperty, value); }
+        }
+        public static readonly DependencyProperty NavigateToLocationCommandProperty =
+            DependencyProperty.Register("NavigateToLocationCommand", typeof(ICommand), typeof(StopPopupControlBase), new PropertyMetadata(null));
 
         public TransitStop Stop
         {

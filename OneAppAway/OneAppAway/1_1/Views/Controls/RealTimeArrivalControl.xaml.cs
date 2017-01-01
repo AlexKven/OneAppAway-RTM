@@ -59,5 +59,17 @@ namespace OneAppAway._1_1.Views.Controls
         private void Flyout_Opened(object sender, object e)
         {
         }
+
+        private void FindVehicle_Click(object sender, RoutedEventArgs e)
+        {
+            if (Arrival.KnownVehicleLocation.HasValue)
+                NavigateToLocationCommand?.Execute(Arrival.KnownVehicleLocation);
+        }
+
+        private void FindVehicleScheduled_Click(object sender, RoutedEventArgs e)
+        {
+            if (Arrival.ScheduledVehicleLocation.HasValue)
+                NavigateToLocationCommand?.Execute(Arrival.ScheduledVehicleLocation);
+        }
     }
 }

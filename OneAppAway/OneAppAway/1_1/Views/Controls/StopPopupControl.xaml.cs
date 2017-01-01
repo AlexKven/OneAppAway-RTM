@@ -64,6 +64,7 @@ namespace OneAppAway._1_1.Views.Controls
                 subControl.SetBinding(TitleCommandProperty, new Binding() { Source = this, Path = new PropertyPath("TitleCommand") });
                 subControl.SetBinding(ShowCompactMenuProperty, new Binding() { Source = this, Path = new PropertyPath("ShowCompactMenu") });
                 ShownArrivalsBinding.AddCollection(item.ID, subControl.ShownArrivals);
+                subControl.SetBinding(StopPopupControlBase.NavigateToLocationCommandProperty, new Binding() { Source = this, Path = new PropertyPath("NavigateToLocationCommand") });
                 SubItemsControl.Children.Add(subControl);
             }
             if (VM.Children.Count == 0)

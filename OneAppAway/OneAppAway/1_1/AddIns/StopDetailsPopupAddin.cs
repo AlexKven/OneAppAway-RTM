@@ -85,6 +85,14 @@ namespace OneAppAway._1_1.AddIns
             ArrivalsPopup.CompressCommand = CompressCommand;
             ArrivalsPopup.CloseCommand = CloseCommand;
             ArrivalsPopup.Offset(offsetY: SLIDE_OFFSET).Fade(value: 0).SetDurationForAll(0).Start();
+            ArrivalsPopup.NavigateToLocationCommand = new RelayCommand(ll =>
+            {
+                if (ll is LatLon)
+                {
+                    MapControl.SetLocation(OnMapPopup, ((LatLon)ll).ToGeopoint());
+                    SetTakeover(new MapView((LatLon)ll));
+                }
+            });
 
             ShownVehicleArrivals.CollectionChanged += ShownVehicleArrivals_CollectionChanged;
             ShownVehicleArrivalsBinding = new CompositeCollectionBinding<RealTimeArrival, int>(ShownVehicleArrivals);

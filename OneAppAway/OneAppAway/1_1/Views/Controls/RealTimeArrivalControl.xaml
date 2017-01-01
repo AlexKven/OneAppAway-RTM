@@ -46,8 +46,8 @@
                 </Flyout.FlyoutPresenterStyle>
                 <StackPanel Width="200">
                     <local:VehicleDetailControl Margin="5" Value="{Binding VehicleDetails}" Visibility="{Binding HasVehicleDetails, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                    <MenuFlyoutItem Visibility="{Binding HasKnownLocation, Converter={StaticResource BoolToVisibilityConverter}}">Find On Map</MenuFlyoutItem>
-                    <MenuFlyoutItem Visibility="{Binding HasScheduled, Converter={StaticResource BoolToVisibilityConverter}}">Find On Map (Scheduled)</MenuFlyoutItem>
+                    <MenuFlyoutItem Visibility="{Binding HasKnownLocation, Converter={StaticResource BoolToVisibilityConverter}}" Click="FindVehicle_Click">Find On Map</MenuFlyoutItem>
+                    <MenuFlyoutItem Visibility="{Binding HasScheduled, Converter={StaticResource BoolToVisibilityConverter}}" Click="FindVehicleScheduled_Click">Find On Map (Scheduled)</MenuFlyoutItem>
                 </StackPanel>
             </Flyout>
             <!--<MenuFlyout Placement="Top">

@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     xmlns:sys="using:System"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400" x:Name="self">
     <Grid SizeChanged="Grid_SizeChanged">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -19,7 +19,7 @@
             <ItemsControl ItemsSource="{Binding Items}" HorizontalContentAlignment="Stretch">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:RealTimeArrivalControl Arrival="{Binding}" HorizontalAlignment="Stretch" Width="{Binding ElementName=MainScrollViewer, Path=Width}"/>
+                        <local:RealTimeArrivalControl NavigateToLocationCommand="{Binding ElementName=self, Path=NavigateToLocationCommand}" Arrival="{Binding}" HorizontalAlignment="Stretch" Width="{Binding ElementName=MainScrollViewer, Path=Width}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
