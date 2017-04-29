@@ -1,4 +1,4 @@
-﻿<UserControl
+﻿<UserControl x:ConnectionId='1'
     x:Class="OneAppAway._1_1.Views.Controls.StopArrivalsBox"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,18 +8,18 @@
     mc:Ignorable="d"
     xmlns:sys="using:System"
     d:DesignHeight="300"
-    d:DesignWidth="400">
-    <Grid x:ConnectionId='1'                               >
+    d:DesignWidth="400" x:Name="self">
+    <Grid x:ConnectionId='2'                               >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <ScrollViewer x:ConnectionId='2' x:Name="MainScrollViewer" HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled" HorizontalContentAlignment="Stretch" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer x:ConnectionId='3' x:Name="MainScrollViewer" HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled" HorizontalContentAlignment="Stretch" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding Items}" HorizontalContentAlignment="Stretch">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:RealTimeArrivalControl Arrival="{Binding}" HorizontalAlignment="Stretch" Width="{Binding ElementName=MainScrollViewer, Path=Width}"/>
+                        <local:RealTimeArrivalControl NavigateToLocationCommand="{Binding ElementName=self, Path=NavigateToLocationCommand}" Arrival="{Binding}" HorizontalAlignment="Stretch" Width="{Binding ElementName=MainScrollViewer, Path=Width}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

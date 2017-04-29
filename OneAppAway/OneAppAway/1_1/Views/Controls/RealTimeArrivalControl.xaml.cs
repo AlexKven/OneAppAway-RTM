@@ -62,12 +62,14 @@ namespace OneAppAway._1_1.Views.Controls
 
         private void FindVehicle_Click(object sender, RoutedEventArgs e)
         {
+            MainButton.Flyout.Hide();
             if (Arrival.KnownVehicleLocation.HasValue)
                 NavigateToLocationCommand?.Execute(Arrival.KnownVehicleLocation);
         }
 
         private void FindVehicleScheduled_Click(object sender, RoutedEventArgs e)
         {
+            MainButton.Flyout.Hide();
             if (Arrival.ScheduledVehicleLocation.HasValue)
                 NavigateToLocationCommand?.Execute(Arrival.ScheduledVehicleLocation);
         }

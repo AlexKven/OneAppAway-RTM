@@ -1,1 +1,0 @@
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway_Windows8_1\OneAppAway_Windows8_1.WindowsPhone\OneAppAway_Windows8_1.WindowsPhone.csproj;x86

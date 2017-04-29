@@ -43,3 +43,11 @@ Temporary Items
 .apdisk
 /bfg.jar
 *Keys.cs
+
+#Bin, Obj, and Config
+bin
+obj
+config
+.dll
+.exe
+.pdb

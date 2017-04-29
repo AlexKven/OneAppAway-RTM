@@ -48,13 +48,13 @@
             <local:AutoFitTextBlock Text="{Binding StopName}" FontSize="18" Foreground="White" VerticalAlignment="Stretch"/>
         </Button>
         <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Top" Visibility="{Binding ElementName=self, Path=TitleVisibility}">
-            <Button x:ConnectionId='8' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" Visibility="{Binding Path=HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}" x:Name="RefreshButton"                            ></Button>
-            <Button x:ConnectionId='9' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="CompressButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CompressCommand}">&#xE73F;</Button>
-            <Button x:ConnectionId='10' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="ExpandButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=ExpandCommand}">&#xE740;</Button>
-            <Button x:ConnectionId='11' RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CloseCommand}">❌</Button>
+            <Button x:ConnectionId='9' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" Visibility="{Binding Path=HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}" x:Name="RefreshButton"                            ></Button>
+            <Button x:ConnectionId='10' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="CompressButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CompressCommand}">&#xE73F;</Button>
+            <Button x:ConnectionId='11' RequestedTheme="Dark" Background="Gray" Foreground="White" Width="40" Height="40" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="0,1,1,0" x:Name="ExpandButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=ExpandCommand}">&#xE740;</Button>
+            <Button x:ConnectionId='12' RequestedTheme="Dark" Background="Red" Foreground="White" Width="40" Height="40" FontFamily="Segoe UI Symbol" FontSize="16" Margin="0,1,1,0" x:Name="CloseButton" Visibility="{Binding ElementName=self, Path=TopControlsVisibility}" Command="{Binding ElementName=self, Path=CloseCommand}">❌</Button>
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalScrollMode="{Binding ElementName=self, Path=Width, Converter={StaticResource ScrollViewerScrollModeConverter}}" HorizontalScrollBarVisibility="{Binding ElementName=self, Path=Width, Converter={StaticResource ScrollViewerScrollModeConverter}, ConverterParameter=ScrollBarVisibility}">
-            <ItemsControl ItemsSource="{Binding Children}" VerticalContentAlignment="Stretch">
+            <!--<ItemsControl VerticalContentAlignment="Stretch" x:Name="SubItemsControl">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
@@ -62,10 +62,13 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:StopPopupControl IsTopLevel="false"  Stop="{Binding}" VerticalAlignment="Stretch" MinWidth="190" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}" ShowCompactMenu="{Binding ElementName=self, Path=ShowCompactMenu}"/>
+                        <local:StopPopupControl IsTopLevel="false" Stop="{Binding}" VerticalAlignment="Stretch" MinWidth="190" ShowRoutesList="{Binding ElementName=self, Path=ShowRoutesList}" TitleCommand="{Binding ElementName=self, Path=TitleCommand}" ShowCompactMenu="{Binding ElementName=self, Path=ShowCompactMenu}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            </ItemsControl>-->
+            <StackPanel x:ConnectionId='8' Orientation="Horizontal" x:Name="SubItemsControl">
+                
+            </StackPanel>
         </ScrollViewer>
         <Grid x:ConnectionId='4'                                            Grid.Row="1" Grid.ColumnSpan="3" Visibility="{Binding HasChildren, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}">
             <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -110,7 +113,7 @@
                             </ItemsControl>
                         </ScrollViewer>
 
-                        <local:StopArrivalsBox x:ConnectionId='7' Grid.Row="1" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}"/>
+                        <local:StopArrivalsBox x:ConnectionId='7' Grid.Row="1" x:Name="ArrivalsBox" RequestedTheme="Dark" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stop="{Binding ElementName=self, Path=Stop}" NavigateToLocationCommand="{Binding ElementName=self, Path=NavigateToLocationCommand}"/>
                     </Grid>
 
                     <!--Schedule Tab-->

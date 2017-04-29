@@ -2,7 +2,10 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\OneAppAway.Andr
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\OneAppAway.Android.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\OneAppAway.Android.OneAppAway.Android.apk
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\OneAppAway.Android.OneAppAway.Android-Signed.apk
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\OneAppAway.Android.csprojResolveAssemblyReference.cache
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\Xamarin.GooglePlayServices.Base.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\Xamarin.GooglePlayServices.Basement.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\Xamarin.GooglePlayServices.Maps.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\OneAppAway.Android.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\OneAppAway.Android.pdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\bin\OneAppAway.Android.OneAppAway.Android.apk
@@ -10,7 +13,9 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\layout\main
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\values\strings.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\drawable\icon.png
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\menu\mainmenu.xml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\drawable\hamburger_button.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\values\styles.xml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\drawable\hamburger.png
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\R.cs.flag
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\uploadflags.txt
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\OneAppAway.Android.dll.mdb
@@ -37,11 +42,5 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\drawable\hamburger.png
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\drawable\hamburger_button.xml
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\Xamarin.Android.Support.v4.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\Xamarin.GooglePlayServices.Base.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\Xamarin.GooglePlayServices.Basement.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\Xamarin.GooglePlayServices.Maps.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\OneAppAway.Android.dll.mdb
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\OneAppAway.Android.dll.mdb

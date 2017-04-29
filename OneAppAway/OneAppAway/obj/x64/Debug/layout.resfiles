@@ -1,11 +1,16 @@
 Assets\Icons\Alert.png
+Assets\Icons\ArrowBase.png
 Assets\Icons\BusAlert20.png
 Assets\Icons\BusAlert40.png
 Assets\Icons\BusAlert60.png
 Assets\Icons\BusAnalyticsIcon.png
+Assets\Icons\BusArrow.png
+Assets\Icons\BusArrow40.png
+Assets\Icons\BusArrow60.png
 Assets\Icons\BusBase.png
 Assets\Icons\BusBase20.png
 Assets\Icons\BusBase40.png
+Assets\Icons\BusBase60.png
 Assets\Icons\BusClosed20.png
 Assets\Icons\BusClosed40.png
 Assets\Icons\BusClosed60.png
@@ -37,12 +42,18 @@ Assets\Icons\BusGeneric16.png
 Assets\Icons\BusRoutesIcon.png
 Assets\Icons\Cancel.png
 Assets\Icons\CancelRefreshStopsIcon.png
+Assets\Icons\CurrentLocation.png
+Assets\Icons\CurrentLocationUnsure.png
+Assets\Icons\LiveBusBase.png
+Assets\Icons\LiveBusBase_Background.png
+Assets\Icons\LiveBusBase_OverlayMask.png
 Assets\Icons\LogoBase.png
 Assets\Icons\MeIcon.png
 Assets\Icons\MyLocationIcon256.png
 Assets\Icons\MyLocationIcon32.png
 Assets\Icons\RefreshStopsIcon.png
 Assets\Icons\SmallLogo.scale-100.png
+Assets\Icons\TemporaryGreenBus.png
 Assets\Icons\VehicleBase.png
 Assets\Logo.png
 Assets\ShadowCorner.png
@@ -53,6 +64,8 @@ Assets\SmallLogo.targetsize-48_altform-unplated.png
 Assets\SplashScreen.png
 Assets\StoreLogo.scale-100.png
 Assets\StoreLogo.scale-200.png
+Assets\VehicleImages\2 Cars.png
+Assets\VehicleImages\3 Cars.png
 Assets\WideLogo.scale-100.png
 OneAppAway.xr.xml
 Properties\Default.rd.xml

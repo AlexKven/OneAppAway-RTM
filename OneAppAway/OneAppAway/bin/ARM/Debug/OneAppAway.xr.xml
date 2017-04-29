@@ -10,6 +10,8 @@
     <RootPropertyPathName Name="FontStyle" />
     <RootPropertyPathName Name="FontSize" />
     <RootPropertyPathName Name="IsDropOffOnly" />
+    <RootPropertyPathName Name="HasScheduled" />
+    <RootPropertyPathName Name="HasKnownLocation" />
     <RootPropertyPathName Name="VehicleDetails" />
     <RootPropertyPathName Name="HasVehicleDetails" />
     <RootPropertyPathName Name="IsCancelled" />
@@ -37,6 +39,7 @@
     <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="ErrorMessage" />
     <RootPropertyPathName Name="Items" />
+    <RootPropertyPathName Name="NavigateToLocationCommand" />
     <RootPropertyPathName Name="Width" />
     <RootPropertyPathName Name="ShowBottomArrow" />
     <RootPropertyPathName Name="ShowRoutesList" />
@@ -401,9 +404,12 @@
       <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Text" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.RealTimeArrivalControl">
+      <RootProperty Name="NavigateToLocationCommand" />
       <RootProperty Name="Arrival" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
@@ -481,6 +487,7 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Stop" />
+      <RootProperty Name="NavigateToLocationCommand" />
     </RootType>
     <RootType FullName="OneAppAway._1_1.Views.Controls.StopPopupControlBase">
       <RootProperty Name="RequestedTheme" />
@@ -498,6 +505,7 @@
       <RootProperty Name="TitleCommand" />
       <RootProperty Name="Stop" />
       <RootProperty Name="ShowCompactMenu" />
+      <RootProperty Name="NavigateToLocationCommand" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
       <RootProperty Name="Points" />

@@ -10,6 +10,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\Controls\StopPopupOuterControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\Controls\StopPopupControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\Controls\TransitMap.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\Controls\VehicleDetailControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\OuterFrame.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\Pages\TestPage1.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\Pages\ShapeDesignerPage.xbf
@@ -50,6 +51,10 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Core\OneAppAway.exe
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\OneAppAway.build.appxrecipe
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\AdDuplex.winmd
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.CSharp.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.Graph.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.Graph.Core.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\System.ComponentModel.DataAnnotations.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\System.Core.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\System.Net.dll
@@ -207,6 +212,8 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\StopPopupControl.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\TransitMap.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\TransitMap.g.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\VehicleDetailControl.g.i.cs
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\VehicleDetailControl.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\OuterFrame.g.i.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\OuterFrame.g.cs
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Pages\TestPage1.g.i.cs
@@ -277,6 +284,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\StopPopupOuterControl.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\StopPopupControl.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\TransitMap.xaml
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\VehicleDetailControl.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\OuterFrame.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Pages\TestPage1.xaml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Pages\ShapeDesignerPage.xaml
@@ -316,6 +324,7 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\StopPopupOuterControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\StopPopupControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\TransitMap.xbf
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\VehicleDetailControl.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\OuterFrame.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Pages\TestPage1.xbf
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Pages\ShapeDesignerPage.xbf
@@ -429,12 +438,3 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\Microsoft.Xaml.Inte
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\SQLitePCL.raw.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\SQLitePCL.Ext.pri.xml
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\ProjectArchitectures.txt
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\1_1\Views\Controls\VehicleDetailControl.xbf
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\VehicleDetailControl.g.i.cs
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\VehicleDetailControl.g.cs
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\VehicleDetailControl.xaml
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\obj\x86\Debug\1_1\Views\Controls\VehicleDetailControl.xbf
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.Graph.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.Graph.Core.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway\bin\x86\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll

@@ -542,8 +542,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="AdDuplex.Windows10, Version=10.0.1.6">
-      <Name>AdDuplex SDK for Windows 10 %28XAML%29</Name>
+    <SDKReference Include="AdDuplex.Windows10, Version=10.1.1.1">
+      <Name>AdDuplex SDK for Windows 10 %28XAML%291</Name>
     </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>

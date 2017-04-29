@@ -8,9 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:OneAppAway._1_1.Data"
     mc:Ignorable="d" RequestedTheme="Dark">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <localC:RealTimeArrivalControl x:ConnectionId='1' Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="MainRealTimeArrivalControl"/>
-        <Button x:ConnectionId='2' HorizontalAlignment="Center"                      x:Name="_Button">Shape Designer</Button>
+    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
+    <Grid Background="#111111">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <Image x:ConnectionId='1' x:Name="TestImage" Width="256" Height="256"/>
+            <Button x:ConnectionId='2' HorizontalAlignment="Center"                       >Load Test Image</Button>
+            <Slider x:ConnectionId='3' HorizontalAlignment="Center" Minimum="0" Maximum="360" Width="300" x:Name="AngleSlider"                                         StepFrequency="5" SnapsTo="StepValues"/>
+            <Button x:ConnectionId='4' HorizontalAlignment="Center"                      x:Name="_Button">Shape Designer</Button>
+        </StackPanel>
     </Grid>
 </local:ApplicationPage>
 
