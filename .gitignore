@@ -42,9 +42,12 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /bfg.jar
-*Keys.cs
 
-#Bin, Obj, and Config
+# Contains Keys
+*Keys.cs
+*AndroidManifest.xml
+
+# Bin, Obj, and Config
 bin
 obj
 config

@@ -81,7 +81,7 @@
                         <!--<CommandBar.RenderTransform>
                     <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
                 </CommandBar.RenderTransform>-->
-                        <AppBarToggleButton Icon="Important" Label="Alerts" IsChecked="{Binding ShowAlerts, Mode=TwoWay}"/>
+                        <!--<AppBarToggleButton Icon="Important" Label="Alerts" IsChecked="{Binding ShowAlerts, Mode=TwoWay}"/>-->
                         <AppBarToggleButton Icon="Calendar" Label="Schedule" IsChecked="{Binding ShowSchedule, Mode=TwoWay}"/>
                         <AppBarToggleButton Icon="Clock" Label="Arrivals" IsChecked="{Binding ShowArrivals, Mode=TwoWay}"/>
                     </CommandBar>
