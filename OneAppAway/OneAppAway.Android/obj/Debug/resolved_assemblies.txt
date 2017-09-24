@@ -10,13 +10,13 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\Xamarin.GooglePlayServices.Base.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\Xamarin.GooglePlayServices.Basement.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\Xamarin.GooglePlayServices.Maps.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Threading.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Runtime.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.ComponentModel.Composition.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Threading.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Collections.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Collections.Concurrent.dll
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Diagnostics.Debug.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Reflection.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Diagnostics.Debug.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Linq.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Runtime.InteropServices.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Runtime.Extensions.dll
@@ -24,3 +24,4 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Net.Http.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.Runtime.Serialization.dll
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\System.ServiceModel.Internals.dll
+C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\android\assets\Mono.Security.dll

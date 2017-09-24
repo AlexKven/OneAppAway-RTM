@@ -19,5 +19,3 @@ C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\values\styl
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\res\drawable\hamburger.png
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\R.cs.flag
 C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\uploadflags.txt
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\obj\Debug\OneAppAway.Android.dll.mdb
-C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Android\bin\Debug\OneAppAway.Android.dll.mdb

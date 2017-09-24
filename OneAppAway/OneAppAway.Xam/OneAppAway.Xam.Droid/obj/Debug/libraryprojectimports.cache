@@ -7,9 +7,9 @@
     <ResolvedResourceDirectory>C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Xam\OneAppAway.Xam.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
-    <ResolvedAssetDirectory>C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Xam\OneAppAway.Xam.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Maps.Android\library_project_imports\assets</ResolvedAssetDirectory>
-    <ResolvedAssetDirectory>C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Xam\OneAppAway.Xam.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\assets</ResolvedAssetDirectory>
-    <ResolvedAssetDirectory>C:\GitHub\OneAppAway-RTM\OneAppAway\OneAppAway.Xam\OneAppAway.Xam.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\Xamarin.Forms.Maps.Android\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>

@@ -54,7 +54,6 @@
     <RootPropertyPathName Name="ShowSchedule" />
     <RootPropertyPathName Name="ShowArrivals" />
     <RootPropertyPathName Name="RouteNames" />
-    <RootPropertyPathName Name="ShowAlerts" />
     <RootPropertyPathName Name="TitleVisibility" />
     <RootPropertyPathName Name="TitleToolTip" />
     <RootPropertyPathName Name="StopName" />

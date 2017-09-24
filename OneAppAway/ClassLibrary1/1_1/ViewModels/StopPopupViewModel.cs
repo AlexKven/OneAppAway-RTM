@@ -38,6 +38,11 @@ namespace OneAppAway._1_1.ViewModels
             //else
             //    Width = 290;
             LoadRoutesTokenSource = new CancellationTokenSource();
+            Children.CollectionChanged += Children_CollectionChanged;
+        }
+
+        private void Children_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
         }
 
         private ObservableCollection<TransitStop> _Children = new ObservableCollection<TransitStop>();

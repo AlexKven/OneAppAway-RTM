@@ -49,6 +49,7 @@ namespace OneAppAway._1_1.ViewModels
             //RefreshTitleElementSizes();
 
             PageEntries.Add(new HamburgerBarPageEntryViewModel(Frame, typeof(TransitMapPage), "Map", new FontFamily("Segoe UI Symbol"), 20, ""));
+            PageEntries.Add(new HamburgerBarPageEntryViewModel(Frame, typeof(OneAppAway.RoutesPage), "Routes", new FontFamily("Segoe UI Symbol"), 20, "R"));
         }
 
         private void GoBack()

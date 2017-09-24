@@ -116,11 +116,12 @@ namespace OneAppAway._1_1.ViewModels
             LoadStatus = DataLoadStatus.Loading;
             try
             {
-                if (Stop.ID == null)
-                {
-                    Items.Clear();
-                    return;
-                }
+                Items.Clear();
+                //if (Stop.ID == null)
+                //{
+                //    Items.Clear();
+                //    return;
+                //}
                 var arrivals = await DataSource.GetRealTimeArrivalsForStopAsync(Stop.ID, 5, 35, AutoDownload ? DataSourcePreference.All : DataSourcePreference.OfflineSources, TokenSource.Token); //await ApiLayer.GetTransitArrivals(Stop.ID, 5, 35, TokenSource.Token);
                 if (arrivals.ErrorMessage != null)
                 {

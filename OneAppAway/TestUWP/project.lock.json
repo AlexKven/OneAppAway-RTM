@@ -15610,7 +15610,7 @@
     "UAP,Version=v10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\AlexKven\\.nuget\\packages\\": {}
+    "C:\\Users\\kvenc\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
@@ -15618,7 +15618,12 @@
       "projectName": "TestUWP",
       "projectPath": "C:\\GitHub\\OneAppAway-RTM\\OneAppAway\\TestUWP\\TestUWP.csproj",
       "projectJsonPath": "C:\\GitHub\\OneAppAway-RTM\\OneAppAway\\TestUWP\\project.json",
-      "projectStyle": "ProjectJson"
+      "projectStyle": "ProjectJson",
+      "frameworks": {
+        "uap10.0": {
+          "projectReferences": {}
+        }
+      }
     },
     "dependencies": {
       "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"

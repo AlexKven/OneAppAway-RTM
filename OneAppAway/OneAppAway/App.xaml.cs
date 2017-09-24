@@ -30,6 +30,7 @@ using OneAppAway._1_1.Data;
 using static OneAppAway.ServiceDay;
 using OneAppAway._1_1.Abstract;
 using OneAppAway._1_1.Converters;
+using Windows.UI.Xaml.Hosting;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=402347&clcid=0x409
 

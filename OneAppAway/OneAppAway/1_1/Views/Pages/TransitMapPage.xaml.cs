@@ -25,6 +25,7 @@ using System.Reflection.Emit;
 using System.Windows.Input;
 using OneAppAway.Common;
 using OneAppAway._1_1.AddIns;
+using Windows.UI.Xaml.Hosting;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -42,6 +43,7 @@ namespace OneAppAway._1_1.Views.Pages
         public TransitMapPage()
         {
             this.InitializeComponent();
+
             ChangeViewCommand = new WeakRelayCommand(ChangeViewCommand_Execute);
             NavigateToStopPageCommand = new WeakRelayCommand(NavigateToStopPageCommand_Execute);
             MainMap.AddIns.Add(StopsAddIn);
