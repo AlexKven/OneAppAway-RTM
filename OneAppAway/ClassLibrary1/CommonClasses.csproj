@@ -91,6 +91,7 @@
     <Compile Include="1_1\EventArgs.cs" />
     <Compile Include="1_1\Helpers\CompositeCollectionBinding.cs" />
     <Compile Include="1_1\Helpers\GeneralExtensionMethods.cs" />
+    <Compile Include="1_1\Helpers\StaticLocker.cs" />
     <Compile Include="1_1\Helpers\WeakEventListener.cs" />
     <Compile Include="1_1\ViewModels\ArrivalsControlInTransitPageViewModel.cs" />
     <Compile Include="1_1\ViewModels\LightweightViewModelBase.cs" />

@@ -79,6 +79,7 @@ namespace OneAppAway._1_1.ViewModels
         {
             try
             {
+                await Helpers.StaticLocker.Lock("route");
                 RouteNames.Clear();
                 if (Stop.Routes == null)
                     return;
@@ -96,6 +97,7 @@ namespace OneAppAway._1_1.ViewModels
             finally
             {
                 IsBusy = false;
+                Helpers.StaticLocker.Unlock("route");
             }
         }
 

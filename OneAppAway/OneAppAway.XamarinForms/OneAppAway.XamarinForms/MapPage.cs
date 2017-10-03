@@ -21,9 +21,9 @@ namespace OneAppAway.XamarinForms
                 WidthRequest = 960,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
-            var stack = new StackLayout { Spacing = 0 };
-            stack.Children.Add(map);
-            Content = stack;
+            //var stack = new StackLayout { Spacing = 0 };
+            //stack.Children.Add(map);
+            Content = map;
         }
     }
 }

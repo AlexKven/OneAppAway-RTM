@@ -103,8 +103,9 @@ namespace OneAppAway._1_1.ViewModels
             set { SetProperty(ref _Error, value); }
         }
 
-        public async void Refresh(bool forceOnline)
+        public async void Refresh(bool forceOnline, bool clearFirst = false)
         {
+            //await Helpers.StaticLocker.Lock("refresh");
             if (Stop.Children != null)
             {
                 Items.Clear();
@@ -116,12 +117,12 @@ namespace OneAppAway._1_1.ViewModels
             LoadStatus = DataLoadStatus.Loading;
             try
             {
-                Items.Clear();
-                //if (Stop.ID == null)
-                //{
-                //    Items.Clear();
-                //    return;
-                //}
+                //Items.Clear();
+                if (Stop.ID == null)
+                {
+                    Items.Clear();
+                    return;
+                }
                 var arrivals = await DataSource.GetRealTimeArrivalsForStopAsync(Stop.ID, 5, 35, AutoDownload ? DataSourcePreference.All : DataSourcePreference.OfflineSources, TokenSource.Token); //await ApiLayer.GetTransitArrivals(Stop.ID, 5, 35, TokenSource.Token);
                 if (arrivals.ErrorMessage != null)
                 {
@@ -150,7 +151,7 @@ namespace OneAppAway._1_1.ViewModels
                     //Items.Add(new RealTimeArrivalViewModel(new RealTimeArrival()));
 
 
-                    //Items.ReplaceRange(arrivals.Data);
+                    Items.ReplaceRange(arrivals.Data);
 
 
                     foreach (var newItem in arrivals.Data)
@@ -198,6 +199,7 @@ namespace OneAppAway._1_1.ViewModels
             }
             finally
             {
+                //Helpers.StaticLocker.Unlock("refresh");
                 IsBusy = false;
                 LoadStatus = AutoDownload ? DataLoadStatus.All : (Items.Count == 0) ? DataLoadStatus.None : DataLoadStatus.OfflineOnly;
                 if (Stop.ID == null)
