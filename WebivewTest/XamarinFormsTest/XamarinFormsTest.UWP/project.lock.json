@@ -22246,10 +22246,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\kvenc\\Documents\\Visual Studio 2017\\Projects\\WebivewTest\\XamarinFormsTest\\XamarinFormsTest.UWP\\XamarinFormsTest.UWP.csproj",
+      "projectUniqueName": "C:\\GitHub\\OneAppAway-RTM\\WebivewTest\\XamarinFormsTest\\XamarinFormsTest.UWP\\XamarinFormsTest.UWP.csproj",
       "projectName": "XamarinFormsTest.UWP",
-      "projectPath": "C:\\Users\\kvenc\\Documents\\Visual Studio 2017\\Projects\\WebivewTest\\XamarinFormsTest\\XamarinFormsTest.UWP\\XamarinFormsTest.UWP.csproj",
-      "projectJsonPath": "C:\\Users\\kvenc\\Documents\\Visual Studio 2017\\Projects\\WebivewTest\\XamarinFormsTest\\XamarinFormsTest.UWP\\project.json",
+      "projectPath": "C:\\GitHub\\OneAppAway-RTM\\WebivewTest\\XamarinFormsTest\\XamarinFormsTest.UWP\\XamarinFormsTest.UWP.csproj",
+      "projectJsonPath": "C:\\GitHub\\OneAppAway-RTM\\WebivewTest\\XamarinFormsTest\\XamarinFormsTest.UWP\\project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {

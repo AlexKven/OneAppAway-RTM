@@ -4,7 +4,14 @@
              xmlns:local="clr-namespace:XamarinFormsTest"
              x:Class="XamarinFormsTest.MainPage"
              xmlns:views="clr-namespace:XamarinFormsTest.Views">
-    <views:AdvancedWebView x:Name="MainWebView">
+    <!--<views:AdvancedWebView x:Name="MainWebView">
         
-    </views:AdvancedWebView>
+    </views:AdvancedWebView>-->
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button HorizontalOptions="Center" VerticalOptions="Center" Text="Test" Clicked="Button_Clicked"/>
+    </Grid>
 </ContentPage>

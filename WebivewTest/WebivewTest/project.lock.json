@@ -22015,10 +22015,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\kvenc\\Documents\\Visual Studio 2017\\Projects\\WebivewTest\\WebivewTest\\WebivewTest.csproj",
+      "projectUniqueName": "C:\\GitHub\\OneAppAway-RTM\\WebivewTest\\WebivewTest\\WebivewTest.csproj",
       "projectName": "WebivewTest",
-      "projectPath": "C:\\Users\\kvenc\\Documents\\Visual Studio 2017\\Projects\\WebivewTest\\WebivewTest\\WebivewTest.csproj",
-      "projectJsonPath": "C:\\Users\\kvenc\\Documents\\Visual Studio 2017\\Projects\\WebivewTest\\WebivewTest\\project.json",
+      "projectPath": "C:\\GitHub\\OneAppAway-RTM\\WebivewTest\\WebivewTest\\WebivewTest.csproj",
+      "projectJsonPath": "C:\\GitHub\\OneAppAway-RTM\\WebivewTest\\WebivewTest\\project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {

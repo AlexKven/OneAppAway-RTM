@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html lang="us">
+<head>
+</head>
+<body bgcolor="Transparent" id="body">
+    <style>
+        .time-based-arrival 
+        {
+            margin: 0;
+            padding: 0, 0, 0, 0;
+            
+        }
+        .tba-minutes-away
+        {
+            margin: 0;
+            padding: 10px, 10px, 10px, 10px;
+            width: 50px; height: 50px;
+            background-color: green;
+            position: relative;
+            left: 0px;
+        }
+    </style>
+    <button id="button">A button element</button>
+    <h2 class="demoHeaders">Checkboxradio</h2>
+    <form style="margin-top: 1em;">
+        <div id="radioset">
+            <input type="radio" id="radio1" name="radio"><label for="radio1">Choice 1</label>
+            <input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">Choice 2</label>
+            <input type="radio" id="radio3" name="radio"><label for="radio3">Choice 3</label>
+        </div>
+    </form>
+    <div id="first" class="time-based-arrival">
+        <div class="tba-minutes-away">5</div>
+    </div>
+    <div class="time-based-arrival">
+        <div class="tba-minutes-away">8</div>
+    </div>
+    <!--<p><a id="b1">Top Text</a></p>
+    <p><a >Bottom Text</a></p>-->
+
+    <!--<button type="button"
+            onclick="window.external.notify('Holy crap, it friggin\' works!')">
+        Click me to display Date and Time.
+    </button>
+    <div onclick="window.external.notify('You clicked what??')" style="width:800px;height:700px;border:1px solid #000; background-color:rgba(255, 99, 71, 0.5); -ms-user-select:none" >This is a rectangle!</div>-->
+
+    <script src="Jquery/external/jquery/jquery.js"></script>
+    <script src="Jquery/jquery-ui.js"></script>
+    <script>
+        $("#button").button();
+    </script>
+    <script type="text/javascript">
+        function functionOne()
+        {
+            $("#button").prop("textContent", "Jquery!");
+            $("#button").animate({height: '250px'});
+            var div = document.createElement("div");
+            div.textContent = "It works!";
+            div.className = "tba-minutes-away"
+            document.getElementById("body").appendChild(div);
+        }
+    </script>
+</body>
+</html>
