@@ -1,4 +1,5 @@
-﻿using Android.Webkit;
+﻿using Android.Content.Res;
+using Android.Webkit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +16,71 @@ namespace XamarinFormsTest
 	{
         private Android.Webkit.WebView MainWebView;
 
-		public MainPage()
+#if __ANDROID__
+        class AssetWebViewClient : WebViewClient
+        {
+            public override WebResourceResponse ShouldInterceptRequest(Android.Webkit.WebView view, IWebResourceRequest request)
+            {
+                bool isStringAtPoint(string mainString, int index, string search)
+                {
+                    for (int k = 0; k < search.Length; k++)
+                    {
+                        if (index + k >= mainString.Length)
+                            return false;
+                        if (mainString[index + k] != search[k])
+                            return false;
+                    }
+                    return true;
+                }
+
+                WebResourceResponse result;
+                var path = request.Url.ToString();
+                string mime;
+                if (path.EndsWith(".css"))
+                    mime = "text/css";
+                else
+                    mime = "application/x-javascript";
+                path = path.Replace("file:///android_asset/Web", "Web/Jquery");
+                string fileContents;
+                using (var stream = Android.App.Application.Context.Assets.Open(path))
+                {
+                    StreamReader sr = new StreamReader(stream);
+                    fileContents = sr.ReadToEnd();
+                }
+
+                StringBuilder newFileContents = new StringBuilder();
+                
+                int i = 0;
+                while (i < fileContents.Length)
+                {
+                    if (isStringAtPoint(fileContents, i, "url(\""))
+                    {
+                        StringBuilder urlPath = new StringBuilder();
+                        while (!isStringAtPoint(fileContents, i, "\")") && i < fileContents.Length)
+                        {
+
+                        }
+                    }
+                    newFileContents.Append(fileContents[i]);
+                    i++;
+                }
+
+                //fileContents.Replace("images/ui-icons", "Web/Jquery/images/ui-icons");
+                MemoryStream newStream = new MemoryStream();
+                StreamWriter writer = new StreamWriter(newStream);
+                writer.Write(fileContents);
+                writer.Flush();
+                newStream.Position = 0;
+
+                result = new WebResourceResponse(mime, "UTF-8", newStream);
+                
+
+                return result;
+            }
+        }
+#endif
+
+        public MainPage()
 		{
 			InitializeComponent();
             //MainWebView.Source = "Web/TestPage.html";
@@ -28,13 +93,25 @@ namespace XamarinFormsTest
             Grid.SetRow(formsView, 1);
             MainGrid.Children.Add(formsView);
             MainWebView.SetWebChromeClient(new WebChromeClient());
+            MainWebView.SetWebViewClient(new AssetWebViewClient());
             var s = MainWebView.Settings;
             s.AllowUniversalAccessFromFileURLs = true;
             s.AllowFileAccessFromFileURLs = true;
-            using (var htmlStream = Android.App.Application.Context.Assets.Open("Web/DefaultArrivalsView.html"))
+            s.DomStorageEnabled = true;
+            s.JavaScriptEnabled = true;
+            s.AllowFileAccess = true;
+            s.JavaScriptCanOpenWindowsAutomatically = true;
+            s.AllowContentAccess = true;
+            
+
+            AssetManager assets = Android.App.Application.Context.Assets;
+
+            var about = assets.Open("AboutAssets.txt");
+
+            using (var htmlStream = assets.Open("Web/Jquery/index.html"))
             {
                 StreamReader sr = new StreamReader(htmlStream);
-                MainWebView.LoadDataWithBaseURL("file:///android_asset/Web/", sr.ReadToEnd(), "text/html", "utf-8", null);
+                MainWebView.LoadDataWithBaseURL("file:///android_asset/Web/Jquery", sr.ReadToEnd(), "text/html", "utf-8", null);
             }
 #endif
         }
