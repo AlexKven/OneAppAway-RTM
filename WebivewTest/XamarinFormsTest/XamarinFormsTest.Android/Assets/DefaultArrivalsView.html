@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Jquery/jquery-ui.css" rel="stylesheet">
+</head>
+<body bgcolor="Transparent" id="body">
+    <script src="Jquery/external/jquery/jquery.js"></script>
+    <script src="Jquery/jquery-ui.js"></script>
+    <script src="DefaultArrivalsView.js"></script>
+    <h2 class="demoHeaders">Accordion</h2>
+    <div id="accordion">
+        <h3>First</h3>
+        <div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+        <h3>Second</h3>
+        <div>Phasellus mattis tincidunt nibh.</div>
+        <h3>Third</h3>
+        <div>Nam dui erat, auctor a, dignissim quis.</div>
+    </div>
+    <script type="text/javascript">
+        $("#accordion").accordion();
+    </script>
+    <!--<script type="text/javascript">
+        var ShownArrivals = new Array();
+
+        function addArrival(trip, stop, route, prevRoute, routeName, prevRouteName, scheduledArrivalTime, predictedArrivalTime, vehicle, destination, frequencyMinutes, scheduledVehicleLocation, knownVehicleLocation, orientation, confidence, dropOffOnly) {
+            var div = document.createElement("div");
+            ShownArrivals.push({ route: route, trip: trip, element: div });
+            div.textContent = routeName + predictedArrivalTime;
+            $("body").append(div);
+        }</script>-->
+</body>
+</html>
